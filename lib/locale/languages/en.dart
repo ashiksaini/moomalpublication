@@ -1,0 +1,18 @@
+final Map<String, String> enUS = {
+  "sam_construction": "Sam Construction",
+  "sign_in": "Sign in",
+  "login": "Login",
+  "e_mail": "E-mail",
+  "password": "Password",
+  "dont_have_an_account": "Don't have an account?",
+  "sign_up": "Sign up",
+  "full_name": "Full Name",
+  "phone_number": "Phone Number",
+  "register": "Register",
+  "already_have_an_account": "Already have an account?",
+  "email_should_not_be_empty": "E-mail should not be empty",
+  "password_should_not_be_empty": "Password should not be empty",
+  "name_should_not_be_empty": "Name should not be empty",
+  "phone_number_should_not_be_empty": "Phone Number should not be empty",
+  "no_internet_access": "No Internet Access",
+};

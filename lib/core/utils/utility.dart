@@ -1,0 +1,4 @@
+class Utility {
+  Utility._();
+
+}
