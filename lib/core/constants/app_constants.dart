@@ -1,5 +1,5 @@
 class AppConstants {
   AppConstants._();
-  static String poppinsFont = 'poppins';
-  static String playfairFont = 'playfair';
+  static String calibriFont = 'Calibri';
+  static String gupterFont = 'Gupter';
 }

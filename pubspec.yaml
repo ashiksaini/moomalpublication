@@ -36,11 +36,11 @@ flutter:
   fonts:
     - family: Calibri
       fonts:
-        - asset: assets/fonts/poppins/calibri-regular.ttf
-        - asset: assets/fonts/poppins/calibri-bold.ttf
+        - asset: assets/fonts/calibri/calibri-regular.ttf
+        - asset: assets/fonts/calibri/calibri-bold.ttf
 
     - family: Gupter
       fonts:
-        - asset: assets/fonts/playfair/Gupter-Regular.ttf
-        - asset: assets/fonts/playfair/Gupter-Medium.ttf
-        - asset: assets/fonts/playfair/Gupter-Bold.ttf
+        - asset: assets/fonts/gupter/Gupter-Regular.ttf
+        - asset: assets/fonts/gupter/Gupter-Medium.ttf
+        - asset: assets/fonts/gupter/Gupter-Bold.ttf

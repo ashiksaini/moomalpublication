@@ -6,17 +6,39 @@ import '../theme/colors.dart';
 class CustomTextStyle {
   CustomTextStyle._();
 
-  //POPPINS
-  static TextStyle textStyle24Medium(
+  //calibriFont
+  static TextStyle textStyle16Bold(
     BuildContext context, {
-    Color color = AppColors.white,
+    Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(24, context),
-        fontWeight: FontWeight.w500,
-        fontFamily: AppConstants.poppinsFont,
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
+
+  static TextStyle textStyle18Bold(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.gupterFont,
+        color: color,
+      );
+
+
+
+
+
+
+
+
+
+
+
 
   static TextStyle textStyle20Medium(
     BuildContext context, {
@@ -25,18 +47,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(20, context),
         fontWeight: FontWeight.w500,
-        fontFamily: AppConstants.poppinsFont,
-        color: color,
-      );
-
-  static TextStyle textStyle16Bold(
-    BuildContext context, {
-    Color color = AppColors.white,
-  }) =>
-      TextStyle(
-        fontSize: scaleWidth(16, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -47,7 +58,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(16, context),
         fontWeight: FontWeight.w600,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -58,7 +69,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(16, context),
         fontWeight: FontWeight.w500,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -69,7 +80,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(8, context),
         fontWeight: FontWeight.w800,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
   static TextStyle textStyle16Regular(
@@ -79,7 +90,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(16, context),
         fontWeight: FontWeight.w400,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -90,7 +101,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(14, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -101,7 +112,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(14, context),
         fontWeight: FontWeight.w600,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -113,7 +124,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(14, context),
         fontWeight: FontWeight.w500,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
         letterSpacing: letterSpacing,
       );
@@ -126,7 +137,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(14, context),
         fontWeight: FontWeight.w400,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
         letterSpacing: letterSpacing,
       );
@@ -141,7 +152,7 @@ class CustomTextStyle {
         fontWeight: FontWeight.w700,
         letterSpacing: letterSpacing ?? 0.2,
         color: color,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
       );
   static TextStyle textStyle12Bold(
     BuildContext context, {
@@ -150,7 +161,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(12, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -161,7 +172,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(12, context),
         fontWeight: FontWeight.w600,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -172,7 +183,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(12, context),
         fontWeight: FontWeight.w500,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -183,7 +194,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(12, context),
         fontWeight: FontWeight.w400,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -194,7 +205,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(10, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
   static TextStyle textStyle10Regular(
@@ -204,7 +215,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(10, context),
         fontWeight: FontWeight.w400,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
   static TextStyle textStyle10SemiBold(
@@ -214,7 +225,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(10, context),
         fontWeight: FontWeight.w600,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -225,7 +236,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(8, context),
         fontWeight: FontWeight.w600,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -236,7 +247,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(13, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -247,7 +258,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(11, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
   static TextStyle textStyle11Medium(
@@ -257,7 +268,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(11, context),
         fontWeight: FontWeight.w500,
-        fontFamily: AppConstants.poppinsFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -269,7 +280,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(20, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.playfairFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -280,7 +291,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(20, context),
         fontWeight: FontWeight.w600,
-        fontFamily: AppConstants.playfairFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -291,7 +302,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(24, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.playfairFont,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 
@@ -303,7 +314,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(36, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.playfairFont,
+        fontFamily: AppConstants.calibriFont,
         letterSpacing: letterSpacing,
         color: color,
       );
@@ -316,7 +327,7 @@ class CustomTextStyle {
       TextStyle(
         fontSize: scaleWidth(30, context),
         fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.playfairFont,
+        fontFamily: AppConstants.calibriFont,
         letterSpacing: letterSpacing,
         color: color,
       );

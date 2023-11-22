@@ -15,4 +15,6 @@ final Map<String, String> enUS = {
   "name_should_not_be_empty": "Name should not be empty",
   "phone_number_should_not_be_empty": "Phone Number should not be empty",
   "no_internet_access": "No Internet Access",
+  
+  "add_to_cart": "Add To Cart",
 };
