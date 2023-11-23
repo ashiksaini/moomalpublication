@@ -19,4 +19,6 @@ final Map<String, String> enUS = {
   "login": "Login",
   "username": "Username",
   "password": "Password",
+  "explore": "Explore",
+  "new_arrival": "New Arrival",
 };
