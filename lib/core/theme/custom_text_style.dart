@@ -18,6 +18,17 @@ class CustomTextStyle {
         color: color,
       );
 
+      static TextStyle textStyle25Bold(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(25, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+
   static TextStyle textStyle18Bold(
     BuildContext context, {
     Color color = AppColors.grey,
@@ -28,6 +39,8 @@ class CustomTextStyle {
         fontFamily: AppConstants.gupterFont,
         color: color,
       );
+
+      
 
 
 
