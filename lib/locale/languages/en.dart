@@ -21,4 +21,7 @@ final Map<String, String> enUS = {
   "password": "Password",
   "explore": "Explore",
   "new_arrival": "New Arrival",
+  "category": "Category",
+  "ebooks": "E Book",
+  "test_series": "Test\nSeries"
 };

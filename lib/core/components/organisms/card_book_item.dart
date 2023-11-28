@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
@@ -28,19 +27,18 @@ class CardBookItem extends StatelessWidget {
           // Image
           Container(
             margin: EdgeInsets.symmetric(horizontal: scaleWidth(5, context), vertical: scaleHeight(5, context)),
-            height: scaleHeight(200, context),
+            height: scaleHeight(180, context),
             decoration: BoxDecoration(
               color: AppColors.white,
               borderRadius: BorderRadius.circular(scaleRadius(15, context)),
               boxShadow: [primaryBoxShadow()],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-              child: CachedNetworkImage(
-                imageUrl: "https://loremflickr.com/640/360",
-                fit: BoxFit.fill,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+                child: Image.asset(
+                  AppAssets.icImg,
+                  fit: BoxFit.cover,
+                )),
           ),
 
           Expanded(

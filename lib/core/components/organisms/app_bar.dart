@@ -21,12 +21,22 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context), horizontal: scaleWidth(8, context)),
-      decoration: BoxDecoration(color: AppColors.black, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(scaleRadius(20, context)), bottomRight: Radius.circular(scaleRadius(20, context)))),
+      padding: EdgeInsets.symmetric(vertical: scaleHeight(12, context), horizontal: scaleWidth(15, context)),
+      decoration: BoxDecoration(
+        color: AppColors.black,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(scaleRadius(20, context)),
+          bottomRight: Radius.circular(scaleRadius(20, context)),
+        ),
+      ),
       child: Row(
         children: [
           if (prefixIcon != null) ...{
-            SvgPicture.asset(prefixIcon!),
+            SvgPicture.asset(
+              prefixIcon!,
+              height: scaleHeight(32, context),
+              width: scaleWidth(32, context),
+            ),
             const HorizontalGap(size: 12),
           },
           Expanded(
@@ -36,7 +46,12 @@ class CustomAppbar extends StatelessWidget {
               textAlign: TextAlign.start,
             ),
           ),
-          if (suffixIcon != null) SvgPicture.asset(suffixIcon!),
+          if (suffixIcon != null)
+            SvgPicture.asset(
+              suffixIcon!,
+              height: scaleHeight(28, context),
+              width: scaleWidth(28, context),
+            ),
         ],
       ),
     );

@@ -12,6 +12,16 @@ class AppAssets {
   static const String icPassword = "${pathSvg}ic_password.svg";
   static const String icSearch = "${pathSvg}ic_search.svg";
   static const String icBackArrow = "${pathSvg}ic_back_arrow.svg";
+  static const String icHamburger = "${pathSvg}ic_hamburger.svg";
+  static const String icGrid = "${pathSvg}ic_grid.svg";
+  static const String icBook = "${pathSvg}ic_book.svg";
+  static const String icReport = "${pathSvg}ic_report.svg";
+  static const String icOpenBook = "${pathSvg}ic_open_book.svg";
+  static const String icUserboard = "${pathSvg}ic_user_board.svg";
+  static const String icReadingBook = "${pathSvg}ic_reading_book.svg";
+  static const String icClipboard = "${pathSvg}ic_clipboard.svg";
+  static const String icEdit = "${pathSvg}ic_edit.svg";
 
   static const String icLogo1 = "${pathPng}ic_logo_1.png";
+  static const String icImg = "${pathPng}img.png";
 }
