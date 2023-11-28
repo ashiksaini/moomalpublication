@@ -10,6 +10,11 @@ class AppAssets {
   static const String icBookmark = "${pathSvg}ic_bookmark.svg";
   static const String icUser = "${pathSvg}ic_user.svg";
   static const String icPassword = "${pathSvg}ic_password.svg";
+  static const String icVisibleEye = "${pathSvg}ic_invisible_eye.svg";
+  static const String icInvisibleEye = "${pathSvg}ic_visible_eye.svg";
+  static const String icTick = "${pathSvg}ic_tick.svg";
+
+  static const String bgAuth = "${pathSvg}bg_auth.svg";
 
   static const String icLogo1 = "${pathPng}ic_logo_1.png";
 }

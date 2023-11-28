@@ -45,3 +45,12 @@ flutter:
         - asset: assets/fonts/gupter/Gupter-Regular.ttf
         - asset: assets/fonts/gupter/Gupter-Medium.ttf
         - asset: assets/fonts/gupter/Gupter-Bold.ttf
+
+    - family: Mina
+      fonts:
+        - asset: assets/fonts/mina/Mina-Regular.ttf
+        - asset: assets/fonts/mina/Mina-Bold.ttf
+
+    - family: MontaguSlab
+      fonts:
+        - asset: assets/fonts/montagu_slab/MontaguSlab_48pt-Bold.ttf

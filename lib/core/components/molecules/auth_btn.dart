@@ -6,17 +6,21 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 
 class AuthBtn extends StatelessWidget {
   final String title;
-  const AuthBtn({super.key, required this.title});
+  final Function onClick;
+  const AuthBtn({super.key, required this.title, required this.onClick});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
-      color: AppColors.black.withOpacity(0.67),
-      child: Center(
-        child: CustomText(
-          text: title,
-          textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.white),
+    return GestureDetector(
+      onTap: () => onClick(),
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
+        color: AppColors.black.withOpacity(0.67),
+        child: Center(
+          child: CustomText(
+            text: title,
+            textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.white),
+          ),
         ),
       ),
     );
