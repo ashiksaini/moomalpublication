@@ -4,8 +4,8 @@ import 'package:moomalpublication/core/theme/colors.dart';
 BoxShadow primaryBoxShadow() {
   return const BoxShadow(
     color: AppColors.shadow,
-    offset: Offset(2, 5),
+    offset: Offset(1, 4),
     blurRadius: 4,
-    spreadRadius: 2,
+    spreadRadius: 1,
   );
 }

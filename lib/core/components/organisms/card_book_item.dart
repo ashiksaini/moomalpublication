@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
@@ -8,6 +7,7 @@ import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/vertical_space.dart';
 
 class CardBookItem extends StatelessWidget {
   const CardBookItem({super.key});
@@ -15,7 +15,6 @@ class CardBookItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: scaleWidth(200, context),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(scaleRadius(20, context)),
@@ -25,22 +24,23 @@ class CardBookItem extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // Image
           Container(
             margin: EdgeInsets.symmetric(horizontal: scaleWidth(5, context), vertical: scaleHeight(5, context)),
-            height: scaleHeight(200, context),
+            height: scaleHeight(180, context),
             decoration: BoxDecoration(
               color: AppColors.white,
               borderRadius: BorderRadius.circular(scaleRadius(15, context)),
               boxShadow: [primaryBoxShadow()],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-              child: CachedNetworkImage(
-                imageUrl: "https://loremflickr.com/640/360",
-                fit: BoxFit.fill,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+                child: Image.asset(
+                  AppAssets.icImg,
+                  fit: BoxFit.cover,
+                )),
           ),
+
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: scaleWidth(10, context), vertical: scaleHeight(10, context)),
@@ -48,11 +48,16 @@ class CardBookItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Title
                   CustomText(
                     text: "Moomal Rajasthan Study (Class-6 to 10)From -  ₹175",
                     textStyle: CustomTextStyle.textStyle16Bold(context),
                     textAlign: TextAlign.start,
                   ),
+
+                  const VerticalGap(size: 14),
+
+                  // Stars
                   Expanded(
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -72,7 +77,13 @@ class CardBookItem extends StatelessWidget {
                     ),
                   ),
 
-                  BtnAddToCart()
+                  const VerticalGap(size: 14),
+
+                  //Add to cart Btn
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: scaleWidth(5, context)),
+                    child: BtnAddToCart(),
+                  )
                 ],
               ),
             ),

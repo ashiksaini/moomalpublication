@@ -100,6 +100,16 @@ class CustomTextStyle {
       );
 
       
+      static TextStyle textStyle20R(
+    BuildContext context, {
+    Color color = AppColors.black,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(20, context),
+        fontWeight: FontWeight.w400,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
 
 
 
