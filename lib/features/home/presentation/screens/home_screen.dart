@@ -9,6 +9,8 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
+import 'package:moomalpublication/features/home/presentation/widgets/custom_filter_bar.dart';
+import 'package:moomalpublication/features/home/presentation/widgets/custom_navigation_drawer.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/main_category_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,6 +19,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Screen(
+      drawer: const CustomNavigationDrawer(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,6 +28,7 @@ class HomeScreen extends StatelessWidget {
               _getGreyBg(context),
               _getMainAppbar(context),
               _getMainCategories(context),
+              _getFilterBar(context),
             ],
           ),
           const VerticalGap(size: 30),
@@ -42,7 +46,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getGreyBg(BuildContext context) {
     return Container(
-      height: screenHeight(context) / 2.5,
+      height: screenHeight(context) / 2.2,
       decoration: BoxDecoration(
         color: AppColors.greyLight,
         borderRadius: BorderRadius.only(
@@ -86,6 +90,14 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _getFilterBar(BuildContext context) {
+    return Positioned(
+      bottom: scaleHeight(30, context),
+      left: scaleWidth(12, context),
+      right: scaleWidth(12, context),
+      child: const CustomFilterBar());
   }
 
   Widget _getTitle(BuildContext context, String title) {

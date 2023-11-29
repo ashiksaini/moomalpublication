@@ -9,6 +9,7 @@ class Screen extends StatelessWidget {
   final Color? screenBg;
   final Brightness? statusBarIconBrightness;
   final Brightness? statusBarBrightness;
+  final Drawer? drawer;
   final Widget child;
 
   const Screen({
@@ -18,6 +19,7 @@ class Screen extends StatelessWidget {
     this.statusBarColor,
     this.statusBarBrightness,
     this.statusBarIconBrightness,
+    this.drawer,
   });
 
   @override
@@ -30,6 +32,7 @@ class Screen extends StatelessWidget {
       ),
       child: Scaffold(
         backgroundColor: screenBg ?? AppColors.white,
+        drawer: drawer,
         body: SafeArea(
           child: ScrollConfiguration(
             behavior: NoGlowBehavior(),

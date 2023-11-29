@@ -42,7 +42,7 @@ class CustomTextStyle {
         color: color,
       );
 
-      static TextStyle textStyle18Bold(
+  static TextStyle textStyle18Bold(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -53,7 +53,7 @@ class CustomTextStyle {
         color: color,
       );
 
-      static TextStyle textStyle20Bold(
+  static TextStyle textStyle20Bold(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -64,7 +64,7 @@ class CustomTextStyle {
         color: color,
       );
 
-    static TextStyle textStyle22Bold(
+  static TextStyle textStyle22Bold(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -75,7 +75,7 @@ class CustomTextStyle {
         color: color,
       );
 
-      static TextStyle textStyle25Bold(
+  static TextStyle textStyle25Bold(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -85,7 +85,6 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
-
 
   /// Gupter Font
   static TextStyle textStyle18BoldGupter(
@@ -99,8 +98,7 @@ class CustomTextStyle {
         color: color,
       );
 
-      
-      static TextStyle textStyle20R(
+  static TextStyle textStyle20R(
     BuildContext context, {
     Color color = AppColors.black,
   }) =>
@@ -110,17 +108,6 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
-
-
-
-
-
-
-
-
-
-
-
 
   static TextStyle textStyle20Medium(
     BuildContext context, {
@@ -238,7 +225,7 @@ class CustomTextStyle {
       );
   static TextStyle textStyle12Bold(
     BuildContext context, {
-    Color color = AppColors.white,
+    Color color = AppColors.grey,
   }) =>
       TextStyle(
         fontSize: scaleWidth(12, context),
@@ -271,7 +258,7 @@ class CustomTextStyle {
 
   static TextStyle textStyle12R(
     BuildContext context, {
-    Color color = AppColors.white,
+    Color color = AppColors.grey,
   }) =>
       TextStyle(
         fontSize: scaleWidth(12, context),

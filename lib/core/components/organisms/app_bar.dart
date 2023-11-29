@@ -34,8 +34,8 @@ class CustomAppbar extends StatelessWidget {
           if (prefixIcon != null) ...{
             SvgPicture.asset(
               prefixIcon!,
-              height: scaleHeight(32, context),
-              width: scaleWidth(32, context),
+              height: scaleHeight(24, context),
+              width: scaleWidth(24, context),
             ),
             const HorizontalGap(size: 12),
           },
@@ -49,8 +49,8 @@ class CustomAppbar extends StatelessWidget {
           if (suffixIcon != null)
             SvgPicture.asset(
               suffixIcon!,
-              height: scaleHeight(28, context),
-              width: scaleWidth(28, context),
+              height: scaleHeight(24, context),
+              width: scaleWidth(24, context),
             ),
         ],
       ),
