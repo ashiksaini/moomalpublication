@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
-import 'package:moomalpublication/core/theme/box_decorations.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/features/splash/presentation/templates/splash_view.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -8,14 +10,23 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: gradientBg(),
-        ),
-        child: Center(
-          child: CardBookItem(),
+      body: SizedBox(
+        height: screenHeight(context),
+        width: screenWidth(context),
+        child: Stack(
+          children: [
+            _bg(),
+            SplashView(),
+          ],
         ),
       ),
+    );
+  }
+
+  Widget _bg() {
+    return SvgPicture.asset(
+      AppAssets.bgAuth,
+      fit: BoxFit.fill,
     );
   }
 }

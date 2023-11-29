@@ -6,13 +6,70 @@ import '../theme/colors.dart';
 class CustomTextStyle {
   CustomTextStyle._();
 
-  //calibriFont
+  /// Montagu Slab Font
+  static TextStyle textStyle60BoldMontaguSlab(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(60, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.montaguSlabFont,
+        color: color,
+      );
+
+  /// Mina Font
+  static TextStyle textStyle40BoldMina(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(40, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.minaFont,
+        color: color,
+      );
+
+  /// Calibri Font
   static TextStyle textStyle16Bold(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
         fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+
+      static TextStyle textStyle18Bold(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(18, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+
+      static TextStyle textStyle20Bold(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(20, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+
+    static TextStyle textStyle22Bold(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(22, context),
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -29,7 +86,9 @@ class CustomTextStyle {
         color: color,
       );
 
-  static TextStyle textStyle18Bold(
+
+  /// Gupter Font
+  static TextStyle textStyle18BoldGupter(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>

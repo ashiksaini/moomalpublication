@@ -21,6 +21,11 @@ class AppAssets {
   static const String icReadingBook = "${pathSvg}ic_reading_book.svg";
   static const String icClipboard = "${pathSvg}ic_clipboard.svg";
   static const String icEdit = "${pathSvg}ic_edit.svg";
+  static const String icVisibleEye = "${pathSvg}ic_invisible_eye.svg";
+  static const String icInvisibleEye = "${pathSvg}ic_visible_eye.svg";
+  static const String icTick = "${pathSvg}ic_tick.svg";
+
+  static const String bgAuth = "${pathSvg}bg_auth.svg";
 
   static const String icLogo1 = "${pathPng}ic_logo_1.png";
   static const String icImg = "${pathPng}img.png";
