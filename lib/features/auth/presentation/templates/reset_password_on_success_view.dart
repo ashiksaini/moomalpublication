@@ -8,9 +8,12 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
+import 'package:moomalpublication/features/auth/controllers/reset_password_on_success_controller.dart';
 
 class ResetPasswordOnSuccessView extends StatelessWidget {
-  const ResetPasswordOnSuccessView({super.key});
+  ResetPasswordOnSuccessView({super.key}) {
+    Get.put(ResetPasswordOnSuccessController());
+  }
 
   @override
   Widget build(BuildContext context) {

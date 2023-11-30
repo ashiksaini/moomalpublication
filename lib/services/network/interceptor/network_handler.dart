@@ -1,8 +1,9 @@
-
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart' as getx;
+// import 'package:get/get.dart' as getx;
+import 'package:moomalpublication/core/constants/app_constants.dart';
+import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
 
 mixin NetworkHandlingMixin {
@@ -12,51 +13,50 @@ mixin NetworkHandlingMixin {
   ) async {
     final int? statusCode = error.response?.statusCode;
 
-    // switch (statusCode) {
-    //   case 400:
-    //     showSnackBar(AppConstants.badRequest);
-    //     break;
+    switch (statusCode) {
+      case 400:
+        showSnackBar(AppConstants.badRequest);
+        break;
 
-    //   case 401:
-    //     // await handleUnauthorized(error, handler);
-    //     break;
+      case 401:
+        // await handleUnauthorized(error, handler);
+        break;
 
-    //   case 403:
-    //     showSnackBar(AppConstants.forbidden);
-    //     break;
+      case 403:
+        showSnackBar(AppConstants.forbidden);
+        break;
 
-    //   case 404:
-    //     showSnackBar(AppConstants.pageNotFound);
-    //     break;
+      case 404:
+        showSnackBar(AppConstants.pageNotFound);
+        break;
 
-    //   case 405:
-    //     showSnackBar(AppConstants.methodNotAllowed);
-    //     break;
+      case 405:
+        showSnackBar(AppConstants.methodNotAllowed);
+        break;
 
-    //   case 408:
-    //     showSnackBar(AppConstants.requestTimeout);
-    //     break;
+      case 408:
+        showSnackBar(AppConstants.requestTimeout);
+        break;
 
-    //   case 500:
-    //     showSnackBar(AppConstants.internalServerError);
-    //     break;
+      case 500:
+        showSnackBar(AppConstants.internalServerError);
+        break;
 
-    //   case 502:
-    //     showSnackBar(AppConstants.badGateway);
-    //     break;
+      case 502:
+        showSnackBar(AppConstants.badGateway);
+        break;
 
-    //   case 503:
-    //     showSnackBar(AppConstants.serviceUnavailable);
-    //     break;
+      case 503:
+        showSnackBar(AppConstants.serviceUnavailable);
+        break;
 
-    //   case 504:
-    //     showSnackBar(AppConstants.gatewayTimeout);
-    //     break;
+      case 504:
+        showSnackBar(AppConstants.gatewayTimeout);
+        break;
 
-    //   default:
-    //     showSnackBar(AppConstants.somethingWentWrong);
-    // }
-  
+      default:
+        showSnackBar(AppConstants.somethingWentWrong);
+    }
   }
 
   // Future<void> handleUnauthorized(
@@ -84,9 +84,7 @@ mixin NetworkHandlingMixin {
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
-      print(
-        "*************************************** Response *************************************** ",
-      );
+      print("*************************************** Response *************************************** ");
 
       // Print the response status code
       print('Status Code: ${response.statusCode}');
@@ -98,9 +96,7 @@ mixin NetworkHandlingMixin {
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      print(
-        "*************************************** Request *************************************** ",
-      );
+      print("*************************************** Request *************************************** ");
 
       // Print the request method (GET, POST, etc.)
       print('Request Method: ${options.method}');
@@ -125,7 +121,7 @@ mixin NetworkHandlingMixin {
   //       // dioo.options.headers = await DioClient.getHeaders(authToken: authToken);
   //       final dio.Response<Map<String, dynamic>> response = await dioo
   //           .post(ApiPaths.refreshToken, data: await getRefreshToken());
-        
+
   //       final parsedResponse = BaseReponse<LoginResponseData>.fromJson(
   //         response.data!,
   //         (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),

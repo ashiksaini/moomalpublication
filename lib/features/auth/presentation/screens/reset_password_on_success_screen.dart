@@ -20,7 +20,7 @@ class ResetPasswordOnSuccessScreen extends StatelessWidget {
             child: Stack(
               children: [
                 _bg(),
-                const ResetPasswordOnSuccessView(),
+                ResetPasswordOnSuccessView(),
               ],
             ),
           ),

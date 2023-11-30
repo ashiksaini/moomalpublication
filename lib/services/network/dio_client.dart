@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
-import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
+import 'package:moomalpublication/app_config.dart';
 import 'interceptor/network_interceptor.dart';
 
 class DioClient {
@@ -9,7 +8,7 @@ class DioClient {
   static late Dio? _dioWithAuth;
   static Dio? get dioWithAuth {
     if (_dioWithAuth == null) {
-       initWithAuth();
+      initWithAuth();
     }
 
     return _dioWithAuth;
@@ -49,9 +48,9 @@ class DioClient {
   static Future<Map<String, String>> getHeaders({String? authToken}) async {
     String? _authToken;
     if (authToken == null) {
-      _authToken = await SharedPreferencesHelper.getString(
-        SharedPreferenceKeys.accessToken,
-      );
+      // _authToken = await SharedPreferencesHelper.getString(
+      //   SharedPreferenceKeys.accessToken,
+      // );
     }
 
     return {
@@ -59,7 +58,7 @@ class DioClient {
     };
   }
 
-  static Dio createDio({String?baseUrl}) {
+  static Dio createDio({String? baseUrl}) {
     initBaseOption(baseUrl: baseUrl);
     final Dio dio = Dio(_options);
     return dio;
@@ -67,11 +66,11 @@ class DioClient {
 
   static void initBaseOption({String? baseUrl}) {
     _options = BaseOptions(
-      baseUrl: baseUrl!,
+      baseUrl: baseUrl ?? AppConfig.baseUrl,
       connectTimeout: const Duration(milliseconds: 1000 * 120),
       receiveTimeout: const Duration(milliseconds: 12000),
       receiveDataWhenStatusError: true,
-      contentType: Headers.jsonContentType,      
+      contentType: Headers.jsonContentType,
     );
   }
 }

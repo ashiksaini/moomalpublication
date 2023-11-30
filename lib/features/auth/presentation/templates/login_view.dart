@@ -51,7 +51,10 @@ class LoginView extends StatelessWidget {
             const VerticalGap(size: 20),
 
             // Register Btn
-            AuthBtn(title: "register".tr, onClick: () => AppRouting.toNamed(NameRoutes.signupScreen),),
+            AuthBtn(
+              title: "register".tr,
+              onClick: () => AppRouting.toNamed(NameRoutes.signupScreen),
+            ),
           ],
         ),
       );
@@ -143,9 +146,16 @@ class LoginView extends StatelessWidget {
 
   Widget _getLoginBtn(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          boxShadow: [primaryBoxShadow()],
-        ),
-        child: AuthBtn(title: "login".tr, onClick: _loginController.onClick,));
+      decoration: BoxDecoration(
+        boxShadow: [primaryBoxShadow()],
+      ),
+      child: AuthBtn(
+        title: "login".tr,
+        onClick: () {
+          if (!_loginController.loginResponse.value.isLoading) _loginController.onLogin();
+        },
+        isLoadingVisible: _loginController.loginResponse.value.isLoading,
+      ),
+    );
   }
 }

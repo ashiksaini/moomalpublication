@@ -1,5 +1,19 @@
 final Map<String, String> enUS = {
-  "sam_construction": "Sam Construction",
+  "moomalpublication": "Moomal Publicaiton",
+  
+  // Internet
+  'bad_request': "Bad Request",
+  'forbidden': "Forbidden",
+  'page_not_found': "Page Not Found",
+  'method_not_allowed': "Method Not Allowed",
+  'request_timeout': "Request Timeout",
+  'internal_server_error': 'Internal Server Error',
+  'bad_gateway': 'Bad Gateway',
+  'service_unavailable': 'Service Unavailable',
+  'gateway_timeout': 'Gateway Timeout',
+  'something_went_wrong': 'Something Went Wrong',
+
+  
   "sign_in": "Sign in",
   "dont_have_an_account": "Don't have an account?",
   "sign_up": "Sign up",
@@ -40,6 +54,7 @@ final Map<String, String> enUS = {
   "reset_password": "Reset Password",
   "forget_password_txt": "Forgot your password?",
   "forget_password_desc": " Please enter your username or email address. You will receive a link to create a new password via email.",
+  "please_enter_a_valid_email": "Please enter a valid Email",
 
   // Reset Password On Success
   "reset_password_on_success_desc" : "A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.",

@@ -14,13 +14,19 @@ class BaseController extends GetxController {
     if (emailTextEditingController.text.isEmpty) {
       showSnackBar("email_should_not_be_empty".tr);
       return false;
-    } else if (!emailTextEditingController.text.contains(RegExp(AppConstants.emailRegExPattern))) {
-      showSnackBar("please_enter_a_valid_email".tr);
-      return false;
     }
 
     if (passwordTextEditingController.text.isEmpty) {
       showSnackBar("password_should_not_be_empty".tr);
+      return false;
+    }
+
+    return true;
+  }
+
+  bool isValidEmail() {
+    if (!emailTextEditingController.text.contains(RegExp(AppConstants.emailRegExPattern))) {
+      showSnackBar("please_enter_a_valid_email".tr);
       return false;
     }
 
@@ -33,7 +39,7 @@ class BaseController extends GetxController {
     } else {
       passwordSuffixIcon.value = AppAssets.icVisibleEye;
     }
-    
+
     isPasswordVisible.value = !isPasswordVisible.value;
   }
 }

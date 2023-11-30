@@ -1,10 +1,10 @@
 class BaseReponse<T> {
-  final int? statusCode;
+  final String? status;
   final String? message;
   final T? data;
 
   BaseReponse({
-    this.statusCode,
+    this.status,
     this.message,
     this.data,
   });
@@ -14,7 +14,7 @@ class BaseReponse<T> {
     T Function(dynamic) fromJsonData,
   ) {
     return BaseReponse(
-      statusCode: json['status_code'] as int?,
+      status: json['status'] as String?,
       message: json['message']?.toString(),
       data: json['data'] != null ? fromJsonData(json['data']) : null,
     );

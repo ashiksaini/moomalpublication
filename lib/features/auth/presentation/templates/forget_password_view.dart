@@ -40,7 +40,10 @@ class ForgetPasswordView extends StatelessWidget {
 
             AuthBtn(
               title: "reset_password".tr,
-              onClick: _forgetPasswordController.onClick,
+              onClick: () {
+                if (!_forgetPasswordController.resetPasswordResponse.value.isLoading) _forgetPasswordController.onResetPasswordClick();
+              },
+              isLoadingVisible: _forgetPasswordController.resetPasswordResponse.value.isLoading,
             ),
           ],
         ),
@@ -96,6 +99,7 @@ class ForgetPasswordView extends StatelessWidget {
         _forgetPasswordController.emailTextEditingController,
         hint: "email_address".tr,
         textInputType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.done,
         prefixIcon: AppAssets.icUser,
       ),
     );

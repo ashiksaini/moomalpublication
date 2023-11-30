@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
+import 'package:moomalpublication/features/auth/presentation/screens/reset_password_on_success_screen.dart';
+import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 
@@ -30,15 +32,22 @@ class AppPages {
     ),
 
     GetPage(
-      name: NameRoutes.signupScreen,
-      page: () => const RegisterScreen(),
+      name: NameRoutes.forgetPasswordScreen,
+      page: () => const ForgetPasswordScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
     ),
 
     GetPage(
-      name: NameRoutes.forgetPasswordScreen,
-      page: () => const ForgetPasswordScreen(),
+      name: NameRoutes.resetPasswordOnSuccessScreen,
+      page: () => const ResetPasswordOnSuccessScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
+
+    GetPage(
+      name: NameRoutes.moomalpublicationApp,
+      page: () => const MoomalPublicationApp(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
     ),

@@ -1,11 +1,10 @@
 class SharedPreferenceKeys {
   SharedPreferenceKeys._();
   static const String isLogin = 'isLogin';
-  static const String accessToken = 'accessToken';
-  static const String serverClientId = 'serverClientId';
-  static const String refreshToken = 'refreshToken';
-  static const String hasShownTooltip = 'hasShownTooltip';
-  static const String onesignalPushIdKey = 'oneSignalPushIdKey';
-  static const String startTimeStamp = 'startTimeStamp';
-  static const String showInAppReviewAt = 'showInAppReviewAt';
+  static const String username = 'username';
+  static const String password = 'password';
+  static const String email = 'email';
+  static const String role = 'role';
+  static const String avatarUrl = 'avatarUrl';
+  static const String rememberMe = 'rememberMe';
 }
