@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
- 
+
 class AppRouting {
   AppRouting._();
 
@@ -19,12 +19,12 @@ class AppRouting {
   }
 
   // remove prev and keep current screen
-  static void offAndToNamed(String page , {dynamic argument}){
-    Get.offAndToNamed<dynamic>(page,arguments: argument);
+  static void offAndToNamed(String page, {dynamic argument}) {
+    Get.offAndToNamed<dynamic>(page, arguments: argument);
   }
 
   // until
-  static void ofNamedUntil(String page , {dynamic argument}){
+  static void ofNamedUntil(String page, {dynamic argument}) {
     Get.offNamedUntil<dynamic>(page, (route) => false);
   }
 

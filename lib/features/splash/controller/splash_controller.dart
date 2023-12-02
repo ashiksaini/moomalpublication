@@ -13,7 +13,8 @@ class SplashController extends BaseController {
   }
 
   Future<void> _checkIsLoggedIn() async {
-    final bool isLoggedIn = await SharedPreferencesHelper.getBool(SharedPreferenceKeys.isLogin);
+    final bool isLoggedIn =
+        await SharedPreferencesHelper.getBool(SharedPreferenceKeys.isLogin);
 
     if (isLoggedIn) {
       _navigateToHomeScreen();

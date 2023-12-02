@@ -33,7 +33,8 @@ class SearchScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
                   child: customTextFormField(
                     context,
                     TextEditingController(),
@@ -66,7 +67,8 @@ class SearchScreen extends StatelessWidget {
           const VerticalGap(size: 67),
           CustomText(
             text: "Search in Moomal Publication",
-            textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
+            textStyle: CustomTextStyle.textStyle20Bold(context,
+                color: AppColors.black),
           ),
           const VerticalGap(size: 10),
           CustomText(

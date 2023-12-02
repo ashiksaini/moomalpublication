@@ -25,7 +25,13 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
   }
 
   Future<void> _initPages() async {
-    _pages = [HomeScreen(), ShopScreen(), EBookScreen(), CartScreen(), ProfileScreen()];
+    _pages = [
+      HomeScreen(),
+      ShopScreen(),
+      EBookScreen(),
+      CartScreen(),
+      ProfileScreen()
+    ];
   }
 
   void _onTabChanged(int index) {

@@ -50,9 +50,11 @@ class RegisterView extends StatelessWidget {
             AuthBtn(
               title: "register".tr,
               onClick: () {
-                if (!_registerController.userRegisterResponse.value.isLoading) _registerController.onRegister();
+                if (!_registerController.userRegisterResponse.value.isLoading)
+                  _registerController.onRegister();
               },
-              isLoadingVisible: _registerController.userRegisterResponse.value.isLoading,
+              isLoadingVisible:
+                  _registerController.userRegisterResponse.value.isLoading,
             ),
           ],
         ),
@@ -134,7 +136,8 @@ class RegisterView extends StatelessWidget {
         ),
         TextSpan(
           text: "privacy_policy".tr,
-          recognizer: TapGestureRecognizer()..onTap = () => _registerController.onPrivacyPolicyClick(),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () => _registerController.onPrivacyPolicyClick(),
           style: TextStyle(
             color: AppColors.black.withOpacity(0.70),
             fontFamily: AppConstants.calibriFont,

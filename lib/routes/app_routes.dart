@@ -14,42 +14,37 @@ class AppPages {
       name: NameRoutes.splashScreen,
       page: () => const SplashScreen(),
       transition: Transition.leftToRight,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     ),
-
     GetPage(
       name: NameRoutes.signinScreen,
       page: () => const LoginScreen(),
       transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     ),
-
     GetPage(
       name: NameRoutes.signupScreen,
       page: () => const RegisterScreen(),
       transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     ),
-
     GetPage(
       name: NameRoutes.forgetPasswordScreen,
       page: () => const ForgetPasswordScreen(),
       transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     ),
-
     GetPage(
       name: NameRoutes.resetPasswordOnSuccessScreen,
       page: () => const ResetPasswordOnSuccessScreen(),
       transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     ),
-
     GetPage(
       name: NameRoutes.moomalpublicationApp,
       page: () => const MoomalPublicationApp(),
       transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 200),
     ),
   ];
 }

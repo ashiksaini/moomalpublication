@@ -68,7 +68,8 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
           const HorizontalGap(size: 4),
           CustomText(
             text: "reset_password_on_success".tr,
-            textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
+            textStyle: CustomTextStyle.textStyle18Bold(context,
+                color: AppColors.black),
           )
         ],
       ),
@@ -78,7 +79,8 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
   Widget _getResetPasswordOnSuccessDesc(BuildContext context) {
     return CustomText(
       text: "reset_password_on_success_desc".tr,
-      textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.white),
+      textStyle:
+          CustomTextStyle.textStyle18Bold(context, color: AppColors.white),
       textAlign: TextAlign.start,
     );
   }

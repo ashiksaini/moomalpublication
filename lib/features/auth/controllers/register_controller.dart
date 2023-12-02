@@ -9,17 +9,22 @@ import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class RegisterController extends BaseController {
-  final Rx<RegisterUserResponse> userRegisterResponse = Rx(RegisterUserResponse());
+  final Rx<RegisterUserResponse> userRegisterResponse =
+      Rx(RegisterUserResponse());
 
   Future<void> onRegister() async {
     if (super.isCredentialValid() && super.isValidEmail()) {
       userRegisterResponse.value = ApiResponse.loading();
-      userRegisterResponse.value = await RegisterUserServices.register(data: _getCredential());
+      userRegisterResponse.value =
+          await RegisterUserServices.register(data: _getCredential());
 
       if (userRegisterResponse.value.data != null) {
-        if (userRegisterResponse.value.data!.status!.compareTo(AppConstants.successfulResponse) == 0) {
+        if (userRegisterResponse.value.data!.status!
+                .compareTo(AppConstants.successfulResponse) ==
+            0) {
           showSnackBar(userRegisterResponse.value.data!.message.toString());
-          Future.delayed(const Duration(seconds: 4), () => _navigateToLoginScreen());
+          Future.delayed(
+              const Duration(seconds: 4), () => _navigateToLoginScreen());
         } else {
           showSnackBar(userRegisterResponse.value.data!.message.toString());
         }

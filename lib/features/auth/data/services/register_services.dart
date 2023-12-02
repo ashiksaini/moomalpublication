@@ -11,10 +11,14 @@ import 'package:get/get.dart' as getx;
 class RegisterUserServices {
   RegisterUserServices._();
 
-  static Future<RegisterUserResponse> register({Map<String, dynamic>? data}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<RegisterUserResponse> register(
+      {Map<String, dynamic>? data}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.registerUser, data: data);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .post(ApiPaths.registerUser, data: data);
 
         final parsedResponse = BaseReponse<UserData>.fromJson(
           response.data! as Map<String, dynamic>,

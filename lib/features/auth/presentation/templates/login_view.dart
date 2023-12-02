@@ -120,14 +120,16 @@ class LoginView extends StatelessWidget {
                 activeColor: AppColors.white,
                 value: _loginController.rememberMe.value,
                 onChanged: (value) {
-                  _loginController.rememberMe.value = !_loginController.rememberMe.value;
+                  _loginController.rememberMe.value =
+                      !_loginController.rememberMe.value;
                 },
               ),
             ),
             const HorizontalGap(size: 4),
             CustomText(
               text: "remember_me".tr,
-              textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.white),
+              textStyle: CustomTextStyle.textStyle18Bold(context,
+                  color: AppColors.white),
             ),
           ],
         ),
@@ -137,7 +139,8 @@ class LoginView extends StatelessWidget {
           onTap: () => AppRouting.toNamed(NameRoutes.forgetPasswordScreen),
           child: CustomText(
             text: "forget_password".tr,
-            textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.white),
+            textStyle: CustomTextStyle.textStyle18Bold(context,
+                color: AppColors.white),
           ),
         ),
       ],
@@ -152,7 +155,8 @@ class LoginView extends StatelessWidget {
       child: AuthBtn(
         title: "login".tr,
         onClick: () {
-          if (!_loginController.loginResponse.value.isLoading) _loginController.onLogin();
+          if (!_loginController.loginResponse.value.isLoading)
+            _loginController.onLogin();
         },
         isLoadingVisible: _loginController.loginResponse.value.isLoading,
       ),

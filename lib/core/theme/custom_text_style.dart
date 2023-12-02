@@ -41,7 +41,7 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
-  
+
   static TextStyle textStyle16Bold(
     BuildContext context, {
     Color color = AppColors.grey,

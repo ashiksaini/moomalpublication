@@ -5,9 +5,12 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 
 class BaseController extends GetxController {
-  final TextEditingController usernameTextEditingController = TextEditingController();
-  final TextEditingController emailTextEditingController = TextEditingController();
-  final TextEditingController passwordTextEditingController = TextEditingController();
+  final TextEditingController usernameTextEditingController =
+      TextEditingController();
+  final TextEditingController emailTextEditingController =
+      TextEditingController();
+  final TextEditingController passwordTextEditingController =
+      TextEditingController();
   final RxBool isPasswordVisible = RxBool(false);
   final RxString passwordSuffixIcon = RxString(AppAssets.icVisibleEye);
 
@@ -29,7 +32,8 @@ class BaseController extends GetxController {
     if (emailTextEditingController.text.isEmpty) {
       showSnackBar("email_should_not_be_empty".tr);
       return false;
-    } else if (!emailTextEditingController.text.contains(RegExp(AppConstants.emailRegExPattern))) {
+    } else if (!emailTextEditingController.text
+        .contains(RegExp(AppConstants.emailRegExPattern))) {
       showSnackBar("please_enter_a_valid_email".tr);
       return false;
     }

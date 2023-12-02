@@ -9,7 +9,10 @@ class Screen extends StatelessWidget {
   final Color? screenBg;
   final Brightness? statusBarIconBrightness;
   final Brightness? statusBarBrightness;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
   final Drawer? drawer;
+  final Key? scaffoldKey;
   final Widget child;
 
   const Screen({
@@ -17,6 +20,9 @@ class Screen extends StatelessWidget {
     required this.child,
     this.screenBg,
     this.statusBarColor,
+    this.padding,
+    this.margin,
+    this.scaffoldKey,
     this.statusBarBrightness,
     this.statusBarIconBrightness,
     this.drawer,
@@ -31,12 +37,15 @@ class Screen extends StatelessWidget {
         statusBarBrightness: statusBarBrightness ?? Brightness.dark,
       ),
       child: Scaffold(
+        key: scaffoldKey,
         backgroundColor: screenBg ?? AppColors.white,
         drawer: drawer,
         body: SafeArea(
           child: ScrollConfiguration(
             behavior: NoGlowBehavior(),
             child: Container(
+              margin: margin,
+              padding: padding,
               height: screenHeight(context),
               color: screenBg ?? AppColors.white,
               child: SingleChildScrollView(child: child),

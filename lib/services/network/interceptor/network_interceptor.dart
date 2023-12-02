@@ -5,7 +5,8 @@ import 'network_handler.dart';
 
 class NetworkInterceptor extends Interceptor with NetworkHandlingMixin {
   @override
-  void onResponse(Response<dynamic> response, ResponseInterceptorHandler handler) {
+  void onResponse(
+      Response<dynamic> response, ResponseInterceptorHandler handler) {
     if (kDebugMode) printResponse(response);
 
     // Move ahead with the response

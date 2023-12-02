@@ -25,7 +25,8 @@ TextFormField customTextFormField(
     cursorRadius: Radius.circular(scaleRadius(2, context)),
     keyboardType: textInputType,
     textInputAction: textInputAction,
-    style: textStyle ?? CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+    style: textStyle ??
+        CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
     obscureText: isPasswordField && !isPasswordVisible,
     decoration: InputDecoration(
       contentPadding: EdgeInsets.only(right: scaleWidth(10, context)),
@@ -40,10 +41,14 @@ TextFormField customTextFormField(
         borderRadius: BorderRadius.circular(scaleRadius(20, context)),
       ),
       hintText: hint,
-      hintStyle: hintTextStyle ?? CustomTextStyle.textStyle25Bold(context, color: AppColors.black.withOpacity(0.29)),
+      hintStyle: hintTextStyle ??
+          CustomTextStyle.textStyle25Bold(context,
+              color: AppColors.black.withOpacity(0.29)),
       prefixIcon: prefixIcon != null
           ? Padding(
-              padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context), vertical: scaleHeight(12, context)),
+              padding: EdgeInsets.symmetric(
+                  horizontal: scaleWidth(16, context),
+                  vertical: scaleHeight(12, context)),
               child: SvgPicture.asset(
                 prefixIcon,
                 height: scaleHeight(24, context),
@@ -55,7 +60,9 @@ TextFormField customTextFormField(
           ? GestureDetector(
               onTap: () => onSuffixIconClick!(),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context), vertical: scaleHeight(12, context)),
+                padding: EdgeInsets.symmetric(
+                    horizontal: scaleWidth(16, context),
+                    vertical: scaleHeight(12, context)),
                 child: SvgPicture.asset(
                   suffixIcon,
                   height: scaleHeight(24, context),
