@@ -9,6 +9,8 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
 import 'package:moomalpublication/features/shop/controller/shop_controller.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class ShopScreen extends StatelessWidget {
   final ShopController _shopController = Get.put(ShopController());
@@ -30,6 +32,7 @@ class ShopScreen extends StatelessWidget {
                 CustomAppbar(
                   title: "shop".tr,
                   suffixIcon: AppAssets.icSearch,
+                  onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
                 ),
 
                 // Data view

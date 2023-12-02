@@ -4,6 +4,7 @@ import 'package:moomalpublication/features/auth/presentation/screens/login_scree
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/reset_password_on_success_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
+import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 
@@ -44,6 +45,12 @@ class AppPages {
       name: NameRoutes.moomalpublicationApp,
       page: () => const MoomalPublicationApp(),
       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.searchScreen,
+      page: () => const SearchScreen(),
+      transition: Transition.upToDown,
       transitionDuration: const Duration(milliseconds: 200),
     ),
   ];

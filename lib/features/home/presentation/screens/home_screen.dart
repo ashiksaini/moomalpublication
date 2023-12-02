@@ -10,6 +10,8 @@ import 'package:moomalpublication/features/home/presentation/templates/dashboard
 import 'package:moomalpublication/features/home/presentation/widgets/custom_filter_bar.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/custom_navigation_drawer.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/main_category_card.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
@@ -94,6 +96,7 @@ class HomeScreen extends StatelessWidget {
         prefixIcon: AppAssets.icHamburger,
         suffixIcon: AppAssets.icSearch,
         onPrefixIconClick: () => _globalKey.currentState!.openDrawer(),
+        onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
       ),
     );
   }
