@@ -5,14 +5,15 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 
 class BaseController extends GetxController {
+  final TextEditingController usernameTextEditingController = TextEditingController();
   final TextEditingController emailTextEditingController = TextEditingController();
   final TextEditingController passwordTextEditingController = TextEditingController();
   final RxBool isPasswordVisible = RxBool(false);
   final RxString passwordSuffixIcon = RxString(AppAssets.icVisibleEye);
 
   bool isCredentialValid() {
-    if (emailTextEditingController.text.isEmpty) {
-      showSnackBar("email_should_not_be_empty".tr);
+    if (usernameTextEditingController.text.isEmpty) {
+      showSnackBar("username_should_not_be_empty".tr);
       return false;
     }
 
@@ -25,7 +26,10 @@ class BaseController extends GetxController {
   }
 
   bool isValidEmail() {
-    if (!emailTextEditingController.text.contains(RegExp(AppConstants.emailRegExPattern))) {
+    if (emailTextEditingController.text.isEmpty) {
+      showSnackBar("email_should_not_be_empty".tr);
+      return false;
+    } else if (!emailTextEditingController.text.contains(RegExp(AppConstants.emailRegExPattern))) {
       showSnackBar("please_enter_a_valid_email".tr);
       return false;
     }

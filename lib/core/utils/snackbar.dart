@@ -15,7 +15,7 @@ void showSnackBar(String message, {String err = ""}) {
         textStyle: CustomTextStyle.textStyle12Medium(Get.context!, color: AppColors.white),
       ),
       backgroundColor: AppColors.orange,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       dismissDirection: DismissDirection.down,
     ),
   );

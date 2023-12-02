@@ -34,8 +34,8 @@ class ForgetPasswordView extends StatelessWidget {
             _getForgetPasswordText(context),
             const VerticalGap(size: 45),
 
-            // Username field
-            _getUsernameTF(context),
+            // Email field
+            _getEmailTF(context),
             const VerticalGap(size: 30),
 
             AuthBtn(
@@ -88,7 +88,7 @@ class ForgetPasswordView extends StatelessWidget {
     );
   }
 
-  Widget _getUsernameTF(BuildContext context) {
+  Widget _getEmailTF(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [primaryBoxShadow()],
@@ -100,7 +100,7 @@ class ForgetPasswordView extends StatelessWidget {
         hint: "email_address".tr,
         textInputType: TextInputType.emailAddress,
         textInputAction: TextInputAction.done,
-        prefixIcon: AppAssets.icUser,
+        prefixIcon: AppAssets.icEmail,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:moomalpublication/features/auth/data/models/login_response_data.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Utility {
   Utility._();
@@ -18,6 +19,15 @@ class Utility {
       await SharedPreferencesHelper.setValue(SharedPreferenceKeys.password, password);
     } else {
       await SharedPreferencesHelper.remove(SharedPreferenceKeys.password);
+    }
+  }
+
+  static Future<void> launchurl(String url) async {
+    Uri uri = Uri.parse(url);
+    try {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } catch (e) {
+      throw 'Could not launch $url';
     }
   }
 }

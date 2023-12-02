@@ -31,6 +31,17 @@ class CustomTextStyle {
       );
 
   /// Calibri Font
+  static TextStyle textStyle15Bold(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(15, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+  
   static TextStyle textStyle16Bold(
     BuildContext context, {
     Color color = AppColors.grey,

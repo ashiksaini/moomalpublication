@@ -23,10 +23,10 @@ class SplashController extends BaseController {
   }
 
   void _navigateSignInScreen() {
-    AppRouting.toNamed(NameRoutes.signinScreen);
+    AppRouting.offAllNamed(NameRoutes.signinScreen);
   }
 
   void _navigateToHomeScreen() {
-    AppRouting.toNamed(NameRoutes.moomalpublicationApp);
+    AppRouting.offAllNamed(NameRoutes.moomalpublicationApp);
   }
 }

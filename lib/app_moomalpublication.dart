@@ -17,6 +17,7 @@ class MoomalPublication extends StatelessWidget {
       title: "moomalpublication".tr,
       getPages: AppPages.pages,
       initialRoute: NameRoutes.splashScreen,
+      // home: SearchScreen(),
     );
   }
 }

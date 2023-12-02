@@ -35,6 +35,6 @@ class ForgetPasswordController extends BaseController {
   }
 
   void _navigateResetPasswordOnSuccessScreen() {
-    AppRouting.offAndToNamed(NameRoutes.resetPasswordOnSuccessScreen);
+    AppRouting.offNamed(NameRoutes.resetPasswordOnSuccessScreen);
   }
 }

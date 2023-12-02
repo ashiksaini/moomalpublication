@@ -44,6 +44,7 @@ final Map<String, String> enUS = {
   "category": "Category",
   "ebooks": "E Book",
   "test_series": "Test\nSeries",
+  "username_should_not_be_empty": "Username should not be empty",
 
   // Register
   "email_address": "Email Address",

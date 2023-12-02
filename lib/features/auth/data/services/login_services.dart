@@ -8,8 +8,8 @@ import 'package:moomalpublication/services/internet_connectivity/internet_connec
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
 
-class SigninServices {
-  SigninServices._();
+class LoginServices {
+  LoginServices._();
 
   static Future<LoginResponse> login({Map<String, dynamic>? data}) async {
     if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
