@@ -6,7 +6,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/home/data/models/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/product_item/product_item.dart';
 
 class DashboardBooksView extends StatelessWidget {
   final String title;
@@ -49,29 +49,27 @@ class DashboardBooksView extends StatelessWidget {
   }
 
   Widget _getBooksBuilder(BuildContext context, int loadingItemCount, bool isLoading, List<ProductItem> data) {
-    return Padding(
+    return GridView.builder(
       padding: EdgeInsets.symmetric(
         horizontal: scaleWidth(10, context),
         vertical: scaleHeight(10, context),
       ),
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 12.0,
-          mainAxisSpacing: 15.0,
-          childAspectRatio: isLoading ? 0.58 : 0.5,
-        ),
-        itemCount: isLoading ? loadingItemCount : data.length,
-        itemBuilder: (context, index) {
-          if (isLoading) {
-            return const BookItemShimmerSkeleton();
-          } else {
-            return CardBookItem(item: data[index]);
-          }
-        },
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 12.0,
+        mainAxisSpacing: 15.0,
+        childAspectRatio: isLoading ? 0.58 : 0.5,
       ),
+      itemCount: isLoading ? loadingItemCount : data.length,
+      itemBuilder: (context, index) {
+        if (isLoading) {
+          return const BookItemShimmerSkeleton();
+        } else {
+          return CardBookItem(item: data[index]);
+        }
+      },
     );
   }
 }

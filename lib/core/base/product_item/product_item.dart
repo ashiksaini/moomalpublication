@@ -31,7 +31,7 @@ class ProductItem {
   dynamic dateOnSaleToGmt;
   bool? onSale;
   bool? purchasable;
-  int? totalSales;
+  String? totalSales;
   bool? virtual;
   bool? downloadable;
   List<dynamic>? downloads;
@@ -176,7 +176,7 @@ class ProductItem {
         dateOnSaleToGmt: json['date_on_sale_to_gmt'] as dynamic,
         onSale: json['on_sale'] as bool?,
         purchasable: json['purchasable'] as bool?,
-        totalSales: json['total_sales'] as int?,
+        totalSales: json['total_sales'].toString(),
         virtual: json['virtual'] as bool?,
         downloadable: json['downloadable'] as bool?,
         downloads: json['downloads'] as List<dynamic>?,

@@ -3,7 +3,7 @@ import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/home/data/models/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/features/home/data/models/products_request_data.dart';
 import 'package:moomalpublication/features/home/data/services/get_product_services.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';

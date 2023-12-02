@@ -9,7 +9,7 @@ import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/features/home/data/models/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class CardBookItem extends StatelessWidget {

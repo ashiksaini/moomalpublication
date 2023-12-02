@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return Screen(
+        isAppbarVisible: false,
         scaffoldKey: _globalKey,
         drawer: const CustomNavigationDrawer(),
         child: Column(

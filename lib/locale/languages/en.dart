@@ -58,4 +58,7 @@ final Map<String, String> enUS = {
   "ebooks": "E Book",
   "test_series": "Test\nSeries",
   "not_rated": "Not Rated",
+
+  // Shop
+  "shop": "Shop",
 };
