@@ -14,11 +14,10 @@ import 'package:moomalpublication/core/utils/horizontal_space.dart';
 /// Child View ---> Have a divdier between items,
 class CustomDropDown1 extends StatelessWidget {
   final List<String> items;
+  final Color color;
 
-  const CustomDropDown1({
-    super.key,
-    required this.items,
-  });
+  const CustomDropDown1(
+      {super.key, required this.items, this.color = AppColors.white});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class CustomDropDown1 extends StatelessWidget {
       child: DropdownButton2<String>(
         customButton: Container(
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: color,
             borderRadius: BorderRadius.circular(scaleRadius(10, context)),
           ),
           padding: EdgeInsets.symmetric(

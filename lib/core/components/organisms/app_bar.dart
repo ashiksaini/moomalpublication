@@ -10,18 +10,22 @@ class CustomAppbar extends StatelessWidget {
   final String? prefixIcon;
   final String? suffixIcon;
   final String title;
+  final int? maxLine;
 
   const CustomAppbar({
     super.key,
     required this.title,
     this.prefixIcon,
     this.suffixIcon,
+    this.maxLine = 1000,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(12, context), horizontal: scaleWidth(15, context)),
+      padding: EdgeInsets.symmetric(
+          vertical: scaleHeight(12, context),
+          horizontal: scaleWidth(15, context)),
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
@@ -42,7 +46,9 @@ class CustomAppbar extends StatelessWidget {
           Expanded(
             child: CustomText(
               text: title,
-              textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.white),
+              maxLines: maxLine,
+              textStyle: CustomTextStyle.textStyle25Bold(context,
+                  color: AppColors.white),
               textAlign: TextAlign.start,
             ),
           ),

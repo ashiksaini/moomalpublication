@@ -5,4 +5,5 @@ class NameRoutes {
   static const String forgetPasswordScreen = '/forgetPassword';
   static const String resetPasswordOnSuccessScreen = '/resetPasswordOnSuccessScreen';
   static const String moomalpublicationApp = '/moomalpublicationApp';
+  static const String testimonialScreen ='/testimonialScreen';
 }
