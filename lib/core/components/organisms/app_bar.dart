@@ -10,14 +10,16 @@ class CustomAppbar extends StatelessWidget {
   final String? prefixIcon;
   final String? suffixIcon;
   final String title;
-  final int? maxLine;
+  final Function? onPrefixIconClick;
+  final Function? onSuffixIconClick;
 
   const CustomAppbar({
     super.key,
     required this.title,
     this.prefixIcon,
     this.suffixIcon,
-    this.maxLine = 1000,
+    this.onPrefixIconClick,
+    this.onSuffixIconClick,
   });
 
   @override
@@ -36,10 +38,13 @@ class CustomAppbar extends StatelessWidget {
       child: Row(
         children: [
           if (prefixIcon != null) ...{
-            SvgPicture.asset(
-              prefixIcon!,
-              height: scaleHeight(24, context),
-              width: scaleWidth(24, context),
+            GestureDetector(
+              onTap: () => onPrefixIconClick!(),
+              child: SvgPicture.asset(
+                prefixIcon!,
+                height: scaleHeight(24, context),
+                width: scaleWidth(24, context),
+              ),
             ),
             const HorizontalGap(size: 12),
           },
@@ -53,10 +58,13 @@ class CustomAppbar extends StatelessWidget {
             ),
           ),
           if (suffixIcon != null)
-            SvgPicture.asset(
-              suffixIcon!,
-              height: scaleHeight(24, context),
-              width: scaleWidth(24, context),
+            GestureDetector(
+              onTap: () => onSuffixIconClick!(),
+              child: SvgPicture.asset(
+                suffixIcon!,
+                height: scaleHeight(24, context),
+                width: scaleWidth(24, context),
+              ),
             ),
         ],
       ),

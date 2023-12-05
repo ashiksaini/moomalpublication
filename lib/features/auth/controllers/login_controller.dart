@@ -4,7 +4,7 @@ import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/auth/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/auth/data/services/signin_services.dart';
+import 'package:moomalpublication/features/auth/data/services/login_services.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
@@ -25,7 +25,7 @@ class LoginController extends BaseController {
   Future<void> onLogin() async {
     if (super.isCredentialValid()) {
       loginResponse.value = ApiResponse.loading();
-      loginResponse.value = await SigninServices.login(data: _getCredential());
+      loginResponse.value = await LoginServices.login(data: _getCredential());
 
       if (loginResponse.value.data != null) {
         if (loginResponse.value.data!.status!.compareTo(AppConstants.successfulResponse) == 0) {
@@ -42,18 +42,18 @@ class LoginController extends BaseController {
 
   Map<String, String> _getCredential() {
     return {
-      "username": emailTextEditingController.text,
+      "username": usernameTextEditingController.text,
       "password": passwordTextEditingController.text,
     };
   }
 
   void _navigateToHomeScreen() {
-    AppRouting.offAndToNamed(NameRoutes.moomalpublicationApp);
+    AppRouting.offAllNamed(NameRoutes.moomalpublicationApp);
   }
 
   void _checkForRememberMe() async {
     if (await SharedPreferencesHelper.getBool(SharedPreferenceKeys.rememberMe)) {
-      emailTextEditingController.text = await SharedPreferencesHelper.getString(SharedPreferenceKeys.username) ?? "";
+      usernameTextEditingController.text = await SharedPreferencesHelper.getString(SharedPreferenceKeys.username) ?? "";
       passwordTextEditingController.text = await SharedPreferencesHelper.getString(SharedPreferenceKeys.password) ?? "";
     }
   }

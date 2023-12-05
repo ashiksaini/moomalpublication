@@ -33,7 +33,8 @@ class AuthBtn extends StatelessWidget {
                   height: scaleHeight(43, context),
                 )
               : Padding(
-                  padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
+                  padding:
+                      EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
                   child: CustomText(
                     text: title,
                     textStyle: CustomTextStyle.textStyle25Bold(

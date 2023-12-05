@@ -31,14 +31,16 @@ class SplashView extends StatelessWidget {
             // Find it
             CustomText(
               text: "find_it".tr,
-              textStyle: CustomTextStyle.textStyle40BoldMina(context, color: AppColors.greyDark),
+              textStyle: CustomTextStyle.textStyle40BoldMina(context,
+                  color: AppColors.greyDark),
             ),
             const VerticalGap(size: 10),
 
             // Yourselft
             CustomText(
               text: "yourself".tr,
-              textStyle: CustomTextStyle.textStyle60BoldMontaguSlab(context, color: AppColors.white),
+              textStyle: CustomTextStyle.textStyle60BoldMontaguSlab(context,
+                  color: AppColors.white),
             )
           ],
         ),

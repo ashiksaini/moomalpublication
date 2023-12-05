@@ -8,7 +8,7 @@ enum FromPage {
   writeReview,
 }
 
-enum LoginPageState{
+enum LoginPageState {
   enterEmail,
   loginWithEmail,
   enterOtp,

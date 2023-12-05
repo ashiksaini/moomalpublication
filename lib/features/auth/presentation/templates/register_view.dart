@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/molecules/auth_btn.dart';
@@ -34,6 +35,10 @@ class RegisterView extends StatelessWidget {
             _getUsernameTF(context),
             const VerticalGap(size: 30),
 
+            // Email field
+            _getEmailTF(context),
+            const VerticalGap(size: 30),
+
             // Password field
             _getPasswordTf(context),
             const VerticalGap(size: 14),
@@ -44,7 +49,12 @@ class RegisterView extends StatelessWidget {
 
             AuthBtn(
               title: "register".tr,
-              onClick: _registerController.onClick,
+              onClick: () {
+                if (!_registerController.userRegisterResponse.value.isLoading)
+                  _registerController.onRegister();
+              },
+              isLoadingVisible:
+                  _registerController.userRegisterResponse.value.isLoading,
             ),
           ],
         ),
@@ -68,10 +78,25 @@ class RegisterView extends StatelessWidget {
       ),
       child: customTextFormField(
         context,
+        _registerController.usernameTextEditingController,
+        hint: "username".tr,
+        prefixIcon: AppAssets.icUser,
+      ),
+    );
+  }
+
+  Widget _getEmailTF(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [primaryBoxShadow()],
+        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+      ),
+      child: customTextFormField(
+        context,
         _registerController.emailTextEditingController,
         hint: "email_address".tr,
         textInputType: TextInputType.emailAddress,
-        prefixIcon: AppAssets.icUser,
+        prefixIcon: AppAssets.icEmail,
       ),
     );
   }
@@ -111,6 +136,8 @@ class RegisterView extends StatelessWidget {
         ),
         TextSpan(
           text: "privacy_policy".tr,
+          recognizer: TapGestureRecognizer()
+            ..onTap = () => _registerController.onPrivacyPolicyClick(),
           style: TextStyle(
             color: AppColors.black.withOpacity(0.70),
             fontFamily: AppConstants.calibriFont,

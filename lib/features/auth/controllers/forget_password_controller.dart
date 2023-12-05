@@ -9,15 +9,19 @@ import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class ForgetPasswordController extends BaseController {
-  final Rx<ResetPasswordResponse> resetPasswordResponse = Rx(ResetPasswordResponse());
+  final Rx<ResetPasswordResponse> resetPasswordResponse =
+      Rx(ResetPasswordResponse());
 
   Future<void> onResetPasswordClick() async {
     if (super.isValidEmail()) {
       resetPasswordResponse.value = ApiResponse.loading();
-      resetPasswordResponse.value = await ResetPasswordServices.resetPassword(data: _getCredential());
+      resetPasswordResponse.value =
+          await ResetPasswordServices.resetPassword(data: _getCredential());
 
       if (resetPasswordResponse.value.data != null) {
-        if (resetPasswordResponse.value.data!.status!.compareTo(AppConstants.successfulResponse) == 0) {
+        if (resetPasswordResponse.value.data!.status!
+                .compareTo(AppConstants.successfulResponse) ==
+            0) {
           _navigateResetPasswordOnSuccessScreen();
         } else {
           showSnackBar(resetPasswordResponse.value.data!.message.toString());
@@ -35,6 +39,6 @@ class ForgetPasswordController extends BaseController {
   }
 
   void _navigateResetPasswordOnSuccessScreen() {
-    AppRouting.offAndToNamed(NameRoutes.resetPasswordOnSuccessScreen);
+    AppRouting.offNamed(NameRoutes.resetPasswordOnSuccessScreen);
   }
 }

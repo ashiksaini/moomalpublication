@@ -43,7 +43,8 @@ class MainCategoryCard extends StatelessWidget {
           const VerticalGap(size: 15),
           CustomText(
             text: title,
-            textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+            textStyle: CustomTextStyle.textStyle25Bold(context,
+                color: AppColors.black),
           ),
         ],
       ),

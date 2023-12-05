@@ -13,7 +13,8 @@ class SplashController extends BaseController {
   }
 
   Future<void> _checkIsLoggedIn() async {
-    final bool isLoggedIn = await SharedPreferencesHelper.getBool(SharedPreferenceKeys.isLogin);
+    final bool isLoggedIn =
+        await SharedPreferencesHelper.getBool(SharedPreferenceKeys.isLogin);
 
     if (isLoggedIn) {
       _navigateToHomeScreen();
@@ -23,10 +24,10 @@ class SplashController extends BaseController {
   }
 
   void _navigateSignInScreen() {
-    AppRouting.toNamed(NameRoutes.signinScreen);
+    AppRouting.offAllNamed(NameRoutes.signinScreen);
   }
 
   void _navigateToHomeScreen() {
-    AppRouting.toNamed(NameRoutes.moomalpublicationApp);
+    AppRouting.offAllNamed(NameRoutes.moomalpublicationApp);
   }
 }

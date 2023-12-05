@@ -1,5 +1,3 @@
-
-
 import 'package:moomalpublication/locale/languages/en.dart';
 
 abstract class AppTranslation {

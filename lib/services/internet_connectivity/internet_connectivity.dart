@@ -17,7 +17,8 @@ class InternetConnectivityController extends BaseController {
   }
 
   Future<void> _checkInternetConnection() async {
-    haveInternetConnection.value = await InternetConnectionChecker().hasConnection;
+    haveInternetConnection.value =
+        await InternetConnectionChecker().hasConnection;
   }
 
   void _observeInternetConnection() {

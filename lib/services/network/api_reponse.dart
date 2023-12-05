@@ -1,7 +1,7 @@
 class ApiResponse<T> {
-  T? data; 
+  T? data;
   bool isLoading;
- 
+
   ApiResponse({
     this.data,
     this.isLoading = false,

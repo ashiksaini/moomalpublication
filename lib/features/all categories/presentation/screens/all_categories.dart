@@ -1,8 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
-import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
 import 'package:moomalpublication/core/components/templates/screen.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -74,7 +72,7 @@ class AllCategories extends StatelessWidget {
         ),
         itemCount: itemCount,
         itemBuilder: (context, index) {
-          return const CardBookItem();
+          return Container();
         },
       ),
     );

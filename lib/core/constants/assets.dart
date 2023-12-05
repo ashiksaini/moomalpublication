@@ -33,6 +33,10 @@ class AppAssets {
   static const String icEBook = "${pathSvg}ic_ebook.svg";
   static const String icCart = "${pathSvg}ic_cart.svg";
   static const String icProfile = "${pathSvg}ic_profile.svg";
+  static const String icSearchScreenBg = "${pathSvg}ic_search_screen_bg.svg";
+  static const String icBackSmall = "${pathSvg}ic_back_small.svg";
+  static const String icClose = "${pathSvg}ic_close.svg";
+  static const String icEmail = "${pathSvg}ic_email.svg";
   static const String bgAuth = "${pathSvg}bg_auth.svg";
   static const String icShare = "${pathSvg}ic_share.svg";
   static const String bookImg = "${pathSvg}book.svg";
