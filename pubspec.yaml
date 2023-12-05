@@ -21,6 +21,7 @@ dependencies:
   cupertino_icons: 
   internet_connection_checker:
   dropdown_button2:
+  flutter_rating_bar:
   url_launcher:
 
 dev_dependencies:

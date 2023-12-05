@@ -108,6 +108,16 @@ class CustomTextStyle {
         fontFamily: AppConstants.gupterFont,
         color: color,
       );
+  static TextStyle textStyle16BoldGupter(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.gupterFont,
+        color: color,
+      );
 
   static TextStyle textStyle20R(
     BuildContext context, {
@@ -409,6 +419,37 @@ class CustomTextStyle {
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.calibriFont,
         letterSpacing: letterSpacing,
+        color: color,
+      );
+
+  static TextStyle textStyle15Medium(
+    BuildContext context, {
+    Color color = AppColors.white,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w400,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+  static TextStyle textStyle15Bold(
+    BuildContext context, {
+    Color color = AppColors.white,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+  static TextStyle textStyle20SemiMedium(
+    BuildContext context, {
+    Color color = AppColors.white,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w300,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 }

@@ -37,13 +37,20 @@ class AppAssets {
   static const String icBackSmall = "${pathSvg}ic_back_small.svg";
   static const String icClose = "${pathSvg}ic_close.svg";
   static const String icEmail = "${pathSvg}ic_email.svg";
-
   static const String bgAuth = "${pathSvg}bg_auth.svg";
+  static const String icShare = "${pathSvg}ic_share.svg";
+  static const String bookImg = "${pathSvg}book.svg";
+  static const String icForwardArrow = "${pathSvg}ic_arrow_forward.svg";
+  static const String icBorderedStar = "${pathSvg}ic_bordered_star.svg";
+  static const String icCartAdd = "${pathSvg}cart_add.svg";
 
   // Png
   static const String icLogo1 = "${pathPng}ic_logo_1.png";
   static const String icImg = "${pathPng}img.png";
+  static const String bookPng = "${pathPng}book.png";
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";
+
+  static const String studentProfile = "${pathPng}student_profile.png";
 }
