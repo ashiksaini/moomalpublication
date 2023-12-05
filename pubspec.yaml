@@ -16,12 +16,12 @@ dependencies:
   intl:
   shimmer:
   lottie:
-  url_launcher:
   cached_network_image:
   flutter_svg:
   cupertino_icons: 
   internet_connection_checker:
   dropdown_button2:
+  url_launcher:
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 class AppConstants {
-
   AppConstants._();
   static String calibriFont = 'Calibri';
   static String gupterFont = 'Gupter';
@@ -10,7 +9,8 @@ class AppConstants {
 
   static String successfulResponse = "success";
   static String failedResponse = "failed";
-  static const String emailRegExPattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
+  static const String emailRegExPattern =
+      r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
 
   static String badRequest = 'bad_request'.tr;
   static String forbidden = 'forbidden'.tr;

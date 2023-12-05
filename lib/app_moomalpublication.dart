@@ -6,7 +6,7 @@ import 'locale/app_translation.dart';
 
 class MoomalPublication extends StatelessWidget {
   const MoomalPublication({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

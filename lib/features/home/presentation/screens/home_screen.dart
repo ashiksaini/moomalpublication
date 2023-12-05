@@ -1,52 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
-import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
 import 'package:moomalpublication/core/components/templates/screen.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/core/utils/vertical_space.dart';
+import 'package:moomalpublication/features/home/controllers/home_controller.dart';
+import 'package:moomalpublication/features/home/presentation/templates/dashboard_books_view.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/custom_filter_bar.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/custom_navigation_drawer.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/main_category_card.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final HomeController _homeController = Get.put(HomeController());
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
+
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Screen(
-      drawer: const CustomNavigationDrawer(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              _getGreyBg(context),
-              _getMainAppbar(context),
-              _getMainCategories(context),
-              _getFilterBar(context),
-            ],
-          ),
-          const VerticalGap(size: 30),
-          _getTitle(context, "explore".tr),
-          const VerticalGap(size: 15),
-          _getBooksBuilder(context, 6),
-          const VerticalGap(size: 30),
-          _getTitle(context, "new_arrival".tr),
-          const VerticalGap(size: 15),
-          _getBooksBuilder(context, 4),
-        ],
-      ),
-    );
+    return Obx(() {
+      return Screen(
+        isAppbarVisible: false,
+        scaffoldKey: _globalKey,
+        drawer: const CustomNavigationDrawer(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Upper view
+            Stack(
+              children: [
+                _getGreyBg(context),
+                _getMainAppbar(context),
+                _getMainCategories(context),
+                _getFilterBar(context),
+              ],
+            ),
+
+            // Explore view
+            DashboardBooksView(
+              title: "explore".tr,
+              loadingItemCount: 6,
+              isLoading: _homeController.exploreProductResponse.value.isLoading,
+              data: _homeController.exploreProductList,
+            ),
+
+            // New Arrival view
+            DashboardBooksView(
+              title: "new_arrival".tr,
+              loadingItemCount: 4,
+              isLoading: _homeController.newArrivalProductResponse.value.isLoading,
+              data: _homeController.newArrivalProductList,
+            ),
+
+            // Best Seller view
+            DashboardBooksView(
+              title: "best_seller".tr,
+              loadingItemCount: 4,
+              isLoading: _homeController.bestSellerProductResponse.value.isLoading,
+              data: _homeController.bestSellerProductList,
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   Widget _getGreyBg(BuildContext context) {
     return Container(
-      height: screenHeight(context) / 2.2,
+      height: screenHeight(context) / 2.3,
       decoration: BoxDecoration(
         color: AppColors.greyLight,
         borderRadius: BorderRadius.only(
@@ -67,17 +91,19 @@ class HomeScreen extends StatelessWidget {
           bottomRight: Radius.circular(scaleRadius(20, context)),
         ),
       ),
-      child: const CustomAppbar(
-        title: "title",
+      child: CustomAppbar(
+        title: "moomalpublication".tr,
         prefixIcon: AppAssets.icHamburger,
         suffixIcon: AppAssets.icSearch,
+        onPrefixIconClick: () => _globalKey.currentState!.openDrawer(),
+        onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
       ),
     );
   }
 
   Widget _getMainCategories(BuildContext context) {
     return Positioned(
-      top: 120,
+      top: scaleHeight(100, context),
       child: SizedBox(
         width: screenWidth(context),
         child: Row(
@@ -97,36 +123,7 @@ class HomeScreen extends StatelessWidget {
       bottom: scaleHeight(30, context),
       left: scaleWidth(12, context),
       right: scaleWidth(12, context),
-      child: const CustomFilterBar());
-  }
-
-  Widget _getTitle(BuildContext context, String title) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: scaleWidth(20, context)),
-      child: CustomText(
-        text: title,
-        textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
-      ),
-    );
-  }
-
-  Widget _getBooksBuilder(BuildContext context, int itemCount) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 12.0,
-          mainAxisSpacing: 15.0,
-          childAspectRatio: 0.49,
-        ),
-        itemCount: itemCount,
-        itemBuilder: (context, index) {
-          return const CardBookItem();
-        },
-      ),
+      child: const CustomFilterBar(),
     );
   }
 }

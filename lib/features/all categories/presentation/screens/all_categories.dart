@@ -1,8 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
-import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
 import 'package:moomalpublication/core/components/templates/screen.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -23,24 +21,32 @@ class AllCategories extends StatelessWidget {
             suffixIcon: AppAssets.icSearch,
           ),
           Container(
-            padding: EdgeInsets.symmetric(vertical: scaleHeight(30, context), horizontal: scaleWidth(24, context)),
+            padding: EdgeInsets.symmetric(
+                vertical: scaleHeight(30, context),
+                horizontal: scaleWidth(24, context)),
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CategoryItem(icon: AppAssets.icReadingBook, title: "current_gk".tr),
-                    CategoryItem(icon: AppAssets.icUserboard, title: "current_gk".tr),
-                    CategoryItem(icon: AppAssets.icClipboard, title: "current_gk".tr),
+                    CategoryItem(
+                        icon: AppAssets.icReadingBook, title: "current_gk".tr),
+                    CategoryItem(
+                        icon: AppAssets.icUserboard, title: "current_gk".tr),
+                    CategoryItem(
+                        icon: AppAssets.icClipboard, title: "current_gk".tr),
                   ],
                 ),
                 const VerticalGap(size: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CategoryItem(icon: AppAssets.icEdit, title: "current_gk".tr),
-                    CategoryItem(icon: AppAssets.icOpenBook, title: "current_gk".tr),
-                    CategoryItem(icon: AppAssets.icReport, title: "current_gk".tr),
+                    CategoryItem(
+                        icon: AppAssets.icEdit, title: "current_gk".tr),
+                    CategoryItem(
+                        icon: AppAssets.icOpenBook, title: "current_gk".tr),
+                    CategoryItem(
+                        icon: AppAssets.icReport, title: "current_gk".tr),
                   ],
                 )
               ],
@@ -66,7 +72,7 @@ class AllCategories extends StatelessWidget {
         ),
         itemCount: itemCount,
         itemBuilder: (context, index) {
-          return const CardBookItem();
+          return Container();
         },
       ),
     );

@@ -42,8 +42,14 @@ class CustomDrawerHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomText(text: userName, textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white)),
-              CustomText(text: userPhNumber, textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white)),
+              CustomText(
+                  text: userName,
+                  textStyle: CustomTextStyle.textStyle20Bold(context,
+                      color: AppColors.white)),
+              CustomText(
+                  text: userPhNumber,
+                  textStyle: CustomTextStyle.textStyle20Bold(context,
+                      color: AppColors.white)),
             ],
           ),
         ),

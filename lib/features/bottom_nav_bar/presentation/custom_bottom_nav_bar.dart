@@ -39,7 +39,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     final shop = BottomNavItem(icon: AppAssets.icShop, label: 'shop'.tr);
     final ebook = BottomNavItem(icon: AppAssets.icEBook, label: 'ebook'.tr);
     final cart = BottomNavItem(icon: AppAssets.icCart, label: 'cart'.tr);
-    final profile = BottomNavItem(icon: AppAssets.icProfile, label: 'profile'.tr);
+    final profile =
+        BottomNavItem(icon: AppAssets.icProfile, label: 'profile'.tr);
 
     _navItems = [home, shop, ebook, cart, profile];
   }
@@ -80,7 +81,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               children: [
                 SvgPicture.asset(
                   navItem.icon,
-                  color: widget.selectedIndex == index ? selectedColor : unselectedColor,
+                  color: widget.selectedIndex == index
+                      ? selectedColor
+                      : unselectedColor,
                 ),
                 const VerticalGap(size: 2),
                 CustomText(

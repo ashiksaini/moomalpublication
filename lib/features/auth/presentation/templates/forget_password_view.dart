@@ -11,7 +11,8 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/auth/controllers/forget_password_controller.dart';
 
 class ForgetPasswordView extends StatelessWidget {
-  final ForgetPasswordController _forgetPasswordController = Get.put(ForgetPasswordController());
+  final ForgetPasswordController _forgetPasswordController =
+      Get.put(ForgetPasswordController());
 
   ForgetPasswordView({super.key});
 
@@ -34,16 +35,19 @@ class ForgetPasswordView extends StatelessWidget {
             _getForgetPasswordText(context),
             const VerticalGap(size: 45),
 
-            // Username field
-            _getUsernameTF(context),
+            // Email field
+            _getEmailTF(context),
             const VerticalGap(size: 30),
 
             AuthBtn(
               title: "reset_password".tr,
               onClick: () {
-                if (!_forgetPasswordController.resetPasswordResponse.value.isLoading) _forgetPasswordController.onResetPasswordClick();
+                if (!_forgetPasswordController
+                    .resetPasswordResponse.value.isLoading)
+                  _forgetPasswordController.onResetPasswordClick();
               },
-              isLoadingVisible: _forgetPasswordController.resetPasswordResponse.value.isLoading,
+              isLoadingVisible: _forgetPasswordController
+                  .resetPasswordResponse.value.isLoading,
             ),
           ],
         ),
@@ -88,7 +92,7 @@ class ForgetPasswordView extends StatelessWidget {
     );
   }
 
-  Widget _getUsernameTF(BuildContext context) {
+  Widget _getEmailTF(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [primaryBoxShadow()],
@@ -100,7 +104,7 @@ class ForgetPasswordView extends StatelessWidget {
         hint: "email_address".tr,
         textInputType: TextInputType.emailAddress,
         textInputAction: TextInputAction.done,
-        prefixIcon: AppAssets.icUser,
+        prefixIcon: AppAssets.icEmail,
       ),
     );
   }

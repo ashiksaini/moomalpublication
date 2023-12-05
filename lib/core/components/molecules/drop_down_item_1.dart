@@ -12,14 +12,13 @@ class DropDownItem1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.white
-      ),
+      decoration: const BoxDecoration(color: AppColors.white),
       padding: EdgeInsets.symmetric(
         vertical: scaleHeight(10, context),
         horizontal: scaleWidth(30, context),
       ),
-      child: CustomText(text: title, textStyle: CustomTextStyle.textStyle18Bold(context)),
+      child: CustomText(
+          text: title, textStyle: CustomTextStyle.textStyle18Bold(context)),
     );
   }
 }

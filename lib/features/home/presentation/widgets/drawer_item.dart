@@ -34,7 +34,9 @@ class CustomDrawerItem extends StatelessWidget {
           // Name
           Padding(
             padding: EdgeInsets.only(top: scaleHeight(4, context)),
-            child: CustomText(text: title, textStyle: CustomTextStyle.textStyle18Bold(context)),
+            child: CustomText(
+                text: title,
+                textStyle: CustomTextStyle.textStyle18Bold(context)),
           )
         ],
       ),

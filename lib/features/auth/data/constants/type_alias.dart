@@ -5,3 +5,4 @@ import 'package:moomalpublication/services/network/api_reponse.dart';
 
 typedef LoginResponse = ApiResponse<BaseReponse<LoginResponseData>>;
 typedef ResetPasswordResponse = ApiResponse<BaseReponse<UserData>>;
+typedef RegisterUserResponse = ApiResponse<BaseReponse<UserData>>;
