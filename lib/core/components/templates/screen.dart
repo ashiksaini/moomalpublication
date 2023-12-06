@@ -71,6 +71,7 @@ class Screen extends StatelessWidget {
                       suffixIcon: suffixIcon,
                       onPrefixIconClick: onPrefixIconClick,
                       onSuffixIconClick: onSuffixIconClick,
+                      maxLine: 1,
                     ),
 
                   // Screen

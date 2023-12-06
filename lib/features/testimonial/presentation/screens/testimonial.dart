@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
-import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/testimonial/presentation/templates/testimonial_text.dart';
 import 'package:moomalpublication/features/testimonial/presentation/widgets/student_card.dart';
@@ -26,7 +23,6 @@ class TestimonialScreen extends StatelessWidget {
           const VerticalGap(
             size: 30,
           ),
-         
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(9.0),

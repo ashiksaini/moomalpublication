@@ -8,7 +8,9 @@ class Schema {
 
   factory Schema.fromJson(Map<String, dynamic> json) => Schema(
         context: json['@context'] as String?,
-        graph: (json['@graph'] as List<dynamic>?)?.map((e) => Graph.fromJson(e as Map<String, dynamic>)).toList(),
+        graph: (json['@graph'] as List<dynamic>?)
+            ?.map((e) => Graph.fromJson(e as Map<String, dynamic>))
+            .toList(),
       );
 
   Map<String, dynamic> toFrom() => {

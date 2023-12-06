@@ -12,6 +12,7 @@ class CustomAppbar extends StatelessWidget {
   final String title;
   final Function? onPrefixIconClick;
   final Function? onSuffixIconClick;
+  final int? maxLine;
 
   const CustomAppbar({
     super.key,
@@ -20,6 +21,7 @@ class CustomAppbar extends StatelessWidget {
     this.suffixIcon,
     this.onPrefixIconClick,
     this.onSuffixIconClick,
+    this.maxLine,
   });
 
   @override

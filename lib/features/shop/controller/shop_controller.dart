@@ -32,7 +32,8 @@ class ShopController extends BaseController {
     }
 
     isLoadingMore.value = false;
-    productResponse.value = await GetProductServices.getProducts(query: ProductRequestData(perPage: 20, page: _pageNo).toJson());
+    productResponse.value = await GetProductServices.getProducts(
+        query: ProductRequestData(perPage: 20, page: _pageNo).toJson());
     if (productResponse.value.data != null) {
       if (productResponse.value.data!.isEmpty) isLastPage.value = true;
       productList.addAll(productResponse.value.data ?? []);
@@ -55,7 +56,8 @@ class ShopController extends BaseController {
   }
 
   void _scrollListener() {
-    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
       loadMoreData();
     }
   }

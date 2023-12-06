@@ -61,4 +61,10 @@ final Map<String, String> enUS = {
 
   // Shop
   "shop": "Shop",
+
+  // Product detail
+  "by_moomal_publication": "By Moomal Publication",
+  "price": "Price: ₹",
+  "quantity": "Qty: ",
+  "book_overview": "Book Overview"
 };

@@ -19,7 +19,7 @@ class QuantityButton extends StatelessWidget {
         CustomText(
           text: "Quantity:",
           maxLines: 5,
-          textStyle: CustomTextStyle.textStyle20SemiMedium(context,
+          textStyle: CustomTextStyle.textStyle20SemiBold(context,
               color: AppColors.black),
         ),
         quantityIncDecButton(context)
@@ -57,7 +57,7 @@ Widget quantityIncDecButton(BuildContext context) {
               ),
               child: CustomText(
                 text: "1",
-                textStyle: CustomTextStyle.textStyle20SemiMedium(context,
+                textStyle: CustomTextStyle.textStyle20SemiBold(context,
                     color: AppColors.black),
               ),
             ),
@@ -91,7 +91,7 @@ Widget quantityIncDecButton(BuildContext context) {
               horizontal: scaleWidth(8, context)),
           child: CustomText(
             text: "Delete",
-            textStyle: CustomTextStyle.textStyle20SemiMedium(context,
+            textStyle: CustomTextStyle.textStyle20SemiBold(context,
                 color: AppColors.black),
           ),
         ),

@@ -1,5 +1,3 @@
-import 'package:moomalpublication/app_config.dart';
-
 class ProductRequestData {
   int? category;
   String? orderBy;
@@ -27,8 +25,10 @@ class ProductRequestData {
     if (order != null) data.putIfAbsent('order', () => order);
     if (perPage != null) data.putIfAbsent('per_page', () => perPage);
     if (page != null) data.putIfAbsent('page', () => page);
-    data.putIfAbsent('consumer_key', () => AppConfig.consumerKey);
-    data.putIfAbsent('consumer_secret', () => AppConfig.consumerSecret);
+    data.putIfAbsent(
+        'consumer_key', () => "ck_0d68ec5d46979420eb3fe93eb254632ccf34a8d4");
+    data.putIfAbsent(
+        'consumer_secret', () => "cs_e2959e16b6e59b584f94b97fa8a731f8d562962c");
 
     return data;
   }
