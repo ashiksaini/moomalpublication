@@ -432,16 +432,7 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
-  static TextStyle textStyle15Bold(
-    BuildContext context, {
-    Color color = AppColors.white,
-  }) =>
-      TextStyle(
-        fontSize: scaleWidth(16, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
+
   static TextStyle textStyle20SemiMedium(
     BuildContext context, {
     Color color = AppColors.white,

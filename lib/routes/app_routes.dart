@@ -3,8 +3,6 @@ import 'package:moomalpublication/features/auth/presentation/screens/forget_pass
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/reset_password_on_success_screen.dart';
-import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
-import 'package:moomalpublication/features/detail_page/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
@@ -59,7 +57,9 @@ class AppPages {
     GetPage(
       name: NameRoutes.testimonialScreen,
       // page: () => const DetailPageScreen(),
-      page: () => const CartScreen(),
+      // page: () => const CartScreen(),
+      page: () => TestimonialScreen(),
+
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
     ),
