@@ -85,6 +85,17 @@ class CustomTextStyle {
         color: color,
       );
 
+      static textStyle15Regular(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(15, context),
+        fontWeight: FontWeight.w400,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+
   static TextStyle textStyle16Bold(
     BuildContext context, {
     Color color = AppColors.grey,

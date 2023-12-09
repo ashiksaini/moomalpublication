@@ -15,7 +15,6 @@ import 'package:moomalpublication/routes/routing.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
-  final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
 
   HomeScreen({super.key});
 
@@ -24,8 +23,8 @@ class HomeScreen extends StatelessWidget {
     return Obx(() {
       return Screen(
         isAppbarVisible: false,
-        scaffoldKey: _globalKey,
-        drawer: const CustomNavigationDrawer(),
+        scaffoldKey: _homeController.globalKey,
+        drawer: CustomNavigationDrawer(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -98,7 +97,7 @@ class HomeScreen extends StatelessWidget {
         title: "moomalpublication".tr,
         prefixIcon: AppAssets.icHamburger,
         suffixIcon: AppAssets.icSearch,
-        onPrefixIconClick: () => _globalKey.currentState!.openDrawer(),
+        onPrefixIconClick: () => _homeController.globalKey.currentState!.openDrawer(),
         onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
       ),
     );

@@ -68,4 +68,23 @@ final Map<String, String> enUS = {
   "quantity": "Qty: ",
   "book_overview": "Book Overview",
   "reviews": "Reviews",
+
+  // Drawer
+  "downloads": "Downloads",
+  "addresses": "Addresses",
+  "orders": "Orders",
+  "event_and_press_release": "Event And Press Release",
+  "testimonial": "Testimonial",
+  "quiz": "Quiz",
+  "contact_us": "Contact Us",
+  "setting": "Setting",
+  "online_test_series": "Online Test Series",
+  "overall_result": "Overall Result",
+  "logout": "Logout",
+
+  // Testimonial
+  "our": "OUR ",
+  "client": "CLIENT ",
+  "or": "OR ",
+  "student": "STUDENT ",
 };
