@@ -21,7 +21,7 @@ class CustomAppbar extends StatelessWidget {
     this.suffixIcon,
     this.onPrefixIconClick,
     this.onSuffixIconClick,
-    this.maxLine,
+    this.maxLine
   });
 
   @override

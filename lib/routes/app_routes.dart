@@ -58,7 +58,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.testimonialScreen,
-      page: () => const TestimonialScreen(),
+      page: () => TestimonialScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -70,7 +70,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.cartScreen,
-      page: () => const CartScreen(),
+      page: () => CartScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

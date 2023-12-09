@@ -9,4 +9,5 @@ class ApiPaths {
   static const String productReviews = 'moomal/v2/product-reviews/';
   static const String productReviewPost = 'wc/v3/products/reviews';
   static const String productRelated = 'moomal/v2/related-products/';
+  static const String testimonial = 'testimonial/v1/testimonials/';
 }
