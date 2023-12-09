@@ -4,4 +4,5 @@ class ApiPaths {
   static const String registerUser = 'moomalapi/v1/moomalcreateuser';
   static const String products = 'wc/v3/products';
   static const String search = 'wp/v2/search/';
+  static const String testimonial = 'testimonial/v1/testimonials/';
 }
