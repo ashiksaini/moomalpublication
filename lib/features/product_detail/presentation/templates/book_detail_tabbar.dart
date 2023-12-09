@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
 
 class BookDetailTabBar extends StatefulWidget {
   const BookDetailTabBar({super.key});
@@ -50,7 +51,7 @@ class _BookDetailTabBarState extends State<BookDetailTabBar> with SingleTickerPr
           indicatorSize: TabBarIndicatorSize.tab,
         ),
         ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.7),
+          constraints: BoxConstraints(maxHeight: screenHeight(context) * 0.1),
           child: TabBarView(
             controller: _tabController,
             children: [Text("jhdfg"), Text("jhdfg")],

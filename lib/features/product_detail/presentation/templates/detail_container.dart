@@ -63,6 +63,22 @@ class DetailContainer extends StatelessWidget {
 
           // Book Details
           const BookDetailTabBar(),
+          const VerticalGap(size: 50),
+
+          // Book Overview
+          Padding(
+            padding: EdgeInsets.only(left: scaleWidth(15, context)),
+            child: CustomText(
+              text: "reviews".tr,
+              textStyle: CustomTextStyle.textStyle25Bold(
+                context,
+                color: AppColors.black,
+              ),
+            ),
+          ),
+
+          _productDetailController.productReviews.isEmpty ? CustomText(text: "text", textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black.withOpacity(0.7))) : Container(),
+
           const SimilarProduct(),
         ],
       ),
