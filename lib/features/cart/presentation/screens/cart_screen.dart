@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
-import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
@@ -24,7 +23,6 @@ class CartScreen extends StatelessWidget {
             title: "My Cart",
             maxLine: 1,
             prefixIcon: AppAssets.icBackArrow,
-            suffixIcon: AppAssets.icSearch,
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -34,8 +32,6 @@ class CartScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("HOME > MY CART"),
-                    const VerticalGap(size: 14),
                     const ShadowContainer(
                       containerChild: CartCard(),
                     ),
