@@ -32,20 +32,17 @@ final Map<String, String> enUS = {
   // Register
   "email_address": "Email Address",
   "email_should_not_be_empty": "E-mail should not be empty",
-  "privacy_policy_desc":
-      "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
+  "privacy_policy_desc": "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
   "privacy_policy": " privacy policy.",
 
   // Forget password
   "reset_password": "Reset Password",
   "forget_password_txt": "Forgot your password?",
-  "forget_password_desc":
-      " Please enter your username or email address. You will receive a link to create a new password via email.",
+  "forget_password_desc": " Please enter your username or email address. You will receive a link to create a new password via email.",
   "please_enter_a_valid_email": "Please enter a valid Email",
 
   // Reset Password On Success
-  "reset_password_on_success_desc":
-      "A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.",
+  "reset_password_on_success_desc": "A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.",
   "reset_password_on_success": "Password reset email has been sent.",
 
   // Home Screen
@@ -79,6 +76,15 @@ final Map<String, String> enUS = {
   "quantity": "Qty: ",
   "book_overview": "Book Overview",
   "reviews": "Reviews",
+  "description": "Description",
+  "information": "Information",
+  "no_description_found": "No Description Found",
+  "no_information_found": "No Information Found",
+  "no_reviews_yet": "No Reviews Yet",
+  "write_a_review": "Write a Review",
+  "go_to_cart": "Go To Cart",
+  "buy_now": "Buy Now",
+  "similar_products": "Similar Products",
 
   // Drawer
   "downloads": "Downloads",

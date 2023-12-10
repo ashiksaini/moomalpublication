@@ -1,10 +1,13 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_detail/product_detail_data.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
 import 'package:moomalpublication/features/product_detail/data/services/product_detail_services.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class ProductDetailController extends BaseController {
@@ -19,7 +22,7 @@ class ProductDetailController extends BaseController {
 
   Rx<ProductDetailData?> productDetailData = Rx(null);
   RxList<ProductReview> productReviews = RxList([]);
-  RxList<ProductDetailData> similarProducts = RxList([]);
+  RxList<ProductItem> similarProducts = RxList([]);
   RxInt selectedQuantity = RxInt(1);
 
   @override
@@ -66,5 +69,9 @@ class ProductDetailController extends BaseController {
         similarProducts.value = similarProductResponse.value.data!;
       }
     }
+  }
+
+  void onItemClick(int index, ProductItem data) {
+    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name));
   }
 }

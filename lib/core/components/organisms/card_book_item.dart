@@ -42,12 +42,10 @@ class CardBookItem extends StatelessWidget {
   Widget _getImage(BuildContext context) {
     return Container(
       height: scaleHeight(195, context),
-      margin: EdgeInsets.symmetric(
-          horizontal: scaleWidth(5, context),
-          vertical: scaleHeight(5, context)),
+      margin: EdgeInsets.symmetric(horizontal: scaleWidth(5, context), vertical: scaleHeight(5, context)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-        child: (item.images!.isNotEmpty)
+        child: (item.images != null && item.images!.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: item.images!.first.src!,
                 fit: BoxFit.cover,
@@ -61,8 +59,7 @@ class CardBookItem extends StatelessWidget {
                 child: Center(
                   child: CustomText(
                     text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context,
-                        color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
                   ),
                 ),
               ),

@@ -13,6 +13,7 @@ import 'package:moomalpublication/features/product_detail/presentation/templates
 import 'package:moomalpublication/features/product_detail/presentation/templates/similar_product.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/book_type_grid.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/price_quantity.dart';
+import 'package:moomalpublication/features/product_detail/presentation/widgets/review_view.dart';
 
 class DetailContainer extends StatelessWidget {
   final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
@@ -34,58 +35,60 @@ class DetailContainer extends StatelessWidget {
     );
   }
 
-  Container _getBookDetailView(BuildContext context) {
-    return Container(
-      color: AppColors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Book View
-          _getBookView(context),
-          const VerticalGap(size: 30),
-
-          // Book Detail Grid
-          const BookTypeGrid(),
-          const VerticalGap(size: 50),
-
-          // Book Overview
-          Padding(
-            padding: EdgeInsets.only(left: scaleWidth(15, context)),
-            child: CustomText(
-              text: "book_overview".tr,
-              textStyle: CustomTextStyle.textStyle25Bold(
-                context,
-                color: AppColors.black,
+  Widget _getBookDetailView(BuildContext context) {
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.only(bottom: scaleHeight(50, context)),
+        color: AppColors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Book View
+            _getBookView(context),
+            const VerticalGap(size: 30),
+      
+            // Book Detail Grid
+            const BookTypeGrid(),
+            const VerticalGap(size: 50),
+      
+            // Book Overview
+            Padding(
+              padding: EdgeInsets.only(left: scaleWidth(15, context)),
+              child: CustomText(
+                text: "book_overview".tr,
+                textStyle: CustomTextStyle.textStyle25Bold(
+                  context,
+                  color: AppColors.black,
+                ),
               ),
             ),
-          ),
-          const VerticalGap(size: 30),
-
-          // Book Details
-          const BookDetailTabBar(),
-          const VerticalGap(size: 50),
-
-          // Book Overview
-          Padding(
-            padding: EdgeInsets.only(left: scaleWidth(15, context)),
-            child: CustomText(
-              text: "reviews".tr,
-              textStyle: CustomTextStyle.textStyle25Bold(
-                context,
-                color: AppColors.black,
-              ),
+            const VerticalGap(size: 8),
+      
+            // Book Details
+            BookDetailTabBar(
+              description: _productDetailController.productDetailData.value?.description,
+              information: _productDetailController.productDetailData.value?.type,
             ),
-          ),
-
-          _productDetailController.productReviews.isEmpty ? CustomText(text: "text", textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black.withOpacity(0.7))) : Container(),
-
-          const SimilarProduct(),
-        ],
+            const VerticalGap(size: 30),
+      
+            // Book Overview
+            _getReviewsView(context),
+            const VerticalGap(size: 30),
+      
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
+              child: ReviewView(title: "write_a_review".tr),
+            ),
+            const VerticalGap(size: 30),
+      
+            SimilarProduct(),
+          ],
+        ),
       ),
     );
   }
 
-  Container _getBookView(BuildContext context) {
+  Widget _getBookView(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
         top: scaleHeight(36, context),
@@ -143,6 +146,37 @@ class DetailContainer extends StatelessWidget {
 
           // Price Quantity View
           PriceQuantity(),
+        ],
+      ),
+    );
+  }
+
+  Widget _getReviewsView(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: scaleWidth(15, context)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Title
+          CustomText(
+            text: "reviews".tr,
+            textStyle: CustomTextStyle.textStyle25Bold(
+              context,
+              color: AppColors.black,
+            ),
+          ),
+          const VerticalGap(size: 8),
+
+          // Details
+          _productDetailController.productReviews.isEmpty
+              ? CustomText(
+                  text: "no_reviews_yet".tr,
+                  textStyle: CustomTextStyle.textStyle20Bold(
+                    context,
+                    color: AppColors.black.withOpacity(0.7),
+                  ),
+                )
+              : Container(),
         ],
       ),
     );

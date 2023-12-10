@@ -7,6 +7,7 @@ import 'package:moomalpublication/features/auth/presentation/screens/reset_passw
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
+import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
@@ -77,6 +78,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.allCategoryScreen,
       page: () => AllCategoriesScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.similarProductScreen,
+      page: () => SimilarProductScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
