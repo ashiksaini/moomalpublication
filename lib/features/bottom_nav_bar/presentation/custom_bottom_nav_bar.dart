@@ -48,7 +48,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: scaleHeight(58, context),
+      height: scaleHeight(60, context),
       padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -88,7 +88,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                 const VerticalGap(size: 2),
                 CustomText(
                   text: navItem.label,
-                  textStyle: CustomTextStyle.textStyle12R(context),
+                  textStyle: CustomTextStyle.textStyle12Regular(context),
                 ),
               ],
             ),

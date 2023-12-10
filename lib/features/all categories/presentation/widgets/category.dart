@@ -38,7 +38,7 @@ class CategoryItem extends StatelessWidget {
         const VerticalGap(size: 10),
         CustomText(
           text: title,
-          textStyle: CustomTextStyle.textStyle20R(context),
+          textStyle: CustomTextStyle.textStyle20Regular(context),
         ),
       ],
     );

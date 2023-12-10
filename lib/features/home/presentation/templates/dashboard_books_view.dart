@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -7,14 +8,16 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/features/home/controllers/home_controller.dart';
 
 class DashboardBooksView extends StatelessWidget {
   final String title;
   final int loadingItemCount;
   final bool isLoading;
   final List<ProductItem> data;
+  final HomeController _homeController = Get.find<HomeController>();
 
-  const DashboardBooksView({
+  DashboardBooksView({
     super.key,
     required this.title,
     required this.loadingItemCount,
@@ -43,12 +46,14 @@ class DashboardBooksView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: scaleWidth(20, context)),
       child: CustomText(
         text: title,
-        textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+        textStyle:
+            CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
       ),
     );
   }
 
-  Widget _getBooksBuilder(BuildContext context, int loadingItemCount, bool isLoading, List<ProductItem> data) {
+  Widget _getBooksBuilder(BuildContext context, int loadingItemCount,
+      bool isLoading, List<ProductItem> data) {
     return GridView.builder(
       padding: EdgeInsets.symmetric(
         horizontal: scaleWidth(10, context),
@@ -67,7 +72,12 @@ class DashboardBooksView extends StatelessWidget {
         if (isLoading) {
           return const BookItemShimmerSkeleton();
         } else {
-          return CardBookItem(item: data[index]);
+          return GestureDetector(
+            onTap: () {
+              _homeController.onItemClick(index, data[index]);
+            },
+            child: CardBookItem(item: data[index]),
+          );
         }
       },
     );

@@ -20,7 +20,7 @@ class MainCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: scaleHeight(140, context),
+      height: scaleHeight(145, context),
       width: scaleWidth(100, context),
       padding: EdgeInsets.only(
         top: scaleHeight(12, context),
@@ -43,8 +43,10 @@ class MainCategoryCard extends StatelessWidget {
           const VerticalGap(size: 15),
           CustomText(
             text: title,
-            textStyle: CustomTextStyle.textStyle25Bold(context,
-                color: AppColors.black),
+            textStyle: CustomTextStyle.textStyle25Bold(
+              context,
+              color: AppColors.black,
+            ),
           ),
         ],
       ),
