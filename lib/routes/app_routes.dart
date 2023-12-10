@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:moomalpublication/features/all%20categories/presentation/screens/all_categories.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
@@ -47,8 +48,7 @@ class AppPages {
     GetPage(
       name: NameRoutes.moomalpublicationApp,
       page: () => const MoomalPublicationApp(),
-      transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 200),
+      transition: Transition.noTransition
     ),
     GetPage(
       name: NameRoutes.searchScreen,
@@ -71,6 +71,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.cartScreen,
       page: () => CartScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.allCategoryScreen,
+      page: () => AllCategoriesScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

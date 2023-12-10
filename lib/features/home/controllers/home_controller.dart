@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/home/data/constants/drawer_item_type.dart';
+import 'package:moomalpublication/features/home/data/constants/drop_down_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/features/home/data/models/drawer_item.dart';
+import 'package:moomalpublication/features/home/data/models/drop_down_item.dart';
 import 'package:moomalpublication/features/home/data/models/products_request_data.dart';
 import 'package:moomalpublication/features/home/data/services/get_product_services.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -25,14 +26,24 @@ class HomeController extends BaseController {
   RxList<ProductItem> exploreProductList = RxList([]);
   RxList<ProductItem> newArrivalProductList = RxList([]);
   RxList<ProductItem> bestSellerProductList = RxList([]);
+  late Rx<DropdownItem<ExamType>?> selectedExam = Rx(null);
+  late Rx<DropdownItem<BookType>?> selectedBook = Rx(null);
+  late Rx<DropdownItem<Language>?> selectedLanguage = Rx(null);
 
   List<DrawerItem> drawerItems = [];
+  List<DropdownItem<ExamType>> exams = [];
+  List<DropdownItem<BookType>> books = [];
+  List<DropdownItem<Language>> languages = [];
 
   @override
   void onInit() {
     super.onInit();
 
     _initDrawerItemList();
+    _initExamsList();
+    _initBookTypeList();
+    _initLanguagesList();
+
     _getExploreBooks();
     _getNewArrivalBooks();
     _getBestSellerBooks();
@@ -64,6 +75,31 @@ class HomeController extends BaseController {
       overallResultItem,
       logoutItem,
     ]);
+  }
+
+  void _initExamsList() {
+    final allIndiaExam = DropdownItem(title: "all_india_exam".tr, type: ExamType.allIndiaExam);
+    final rajasthanExam = DropdownItem(title: "rajasthan_exam".tr, type: ExamType.rajasthanExam);
+
+    exams.addAll([allIndiaExam, rajasthanExam]);
+    selectedExam.value = exams.first;
+  }
+
+  void _initBookTypeList() {
+    final gk = DropdownItem(title: "gk".tr, type: BookType.gk);
+    final currentGk = DropdownItem(title: "current_gk".tr, type: BookType.currentGk);
+    final reetExam = DropdownItem(title: "reet_exam".tr, type: BookType.reetExam);
+
+    books.addAll([gk, currentGk, reetExam]);
+    selectedBook.value = books.first;
+  }
+
+  void _initLanguagesList() {
+    final english = DropdownItem(title: "english".tr, type: Language.english);
+    final hindi = DropdownItem(title: "hindi".tr, type: Language.hindi);
+
+    languages.addAll([english, hindi]);
+    selectedLanguage.value = languages.first;
   }
 
   Future<void> _getExploreBooks() async {
@@ -114,7 +150,7 @@ class HomeController extends BaseController {
 
   void onDrawerItemClick(DrawerItemType drawerItemType) {
     globalKey.currentState!.closeDrawer();
-    
+
     switch (drawerItemType) {
       case DrawerItemType.download:
       // TODO: Handle this case.

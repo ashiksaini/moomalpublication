@@ -50,8 +50,7 @@ class HomeScreen extends StatelessWidget {
             DashboardBooksView(
               title: "new_arrival".tr,
               loadingItemCount: 4,
-              isLoading:
-                  _homeController.newArrivalProductResponse.value.isLoading,
+              isLoading: _homeController.newArrivalProductResponse.value.isLoading,
               data: _homeController.newArrivalProductList,
             ),
 
@@ -59,8 +58,7 @@ class HomeScreen extends StatelessWidget {
             DashboardBooksView(
               title: "best_seller".tr,
               loadingItemCount: 4,
-              isLoading:
-                  _homeController.bestSellerProductResponse.value.isLoading,
+              isLoading: _homeController.bestSellerProductResponse.value.isLoading,
               data: _homeController.bestSellerProductList,
             ),
           ],
@@ -84,8 +82,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getMainAppbar(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-          top: scaleHeight(40, context), bottom: scaleHeight(60, context)),
+      padding: EdgeInsets.only(top: scaleHeight(40, context), bottom: scaleHeight(60, context)),
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
@@ -111,9 +108,21 @@ class HomeScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            MainCategoryCard(icon: AppAssets.icGrid, title: "category".tr),
-            MainCategoryCard(icon: AppAssets.icBook, title: "ebooks".tr),
-            MainCategoryCard(icon: AppAssets.icReport, title: "test_series".tr),
+            MainCategoryCard(
+              icon: AppAssets.icGrid,
+              title: "category".tr,
+              onClick: () => AppRouting.toNamed(NameRoutes.allCategoryScreen),
+            ),
+            MainCategoryCard(
+              icon: AppAssets.icBook,
+              title: "ebooks".tr,
+              onClick: () => AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 2),
+            ),
+            MainCategoryCard(
+              icon: AppAssets.icReport,
+              title: "test_series".tr,
+              onClick: () => AppRouting.toNamed(NameRoutes.allCategoryScreen),
+            ),
           ],
         ),
       ),
@@ -125,7 +134,7 @@ class HomeScreen extends StatelessWidget {
       bottom: scaleHeight(30, context),
       left: scaleWidth(12, context),
       right: scaleWidth(12, context),
-      child: const CustomFilterBar(),
+      child: CustomFilterBar(),
     );
   }
 }

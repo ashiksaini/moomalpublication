@@ -58,6 +58,17 @@ final Map<String, String> enUS = {
   "ebooks": "E Book",
   "test_series": "Test\nSeries",
   "not_rated": "Not Rated",
+  "all_india_exam": "All India Exam",
+  "rajasthan_exam": "Rajasthan Exam",
+  "gk": "GK",
+  "current_gk": "Current GK",
+  "reet_exam": "Reet Exam",
+  "hindi": "Hindi",
+  "english": "English",
+  "language": "Language",
+  "advance_filters": "Advance Filters",
+  "course_type": "Course Type",
+  "apply_filter": "Apply Filter",
 
   // Shop
   "shop": "Shop",

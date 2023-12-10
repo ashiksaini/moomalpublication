@@ -10,45 +10,50 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 class MainCategoryCard extends StatelessWidget {
   final String icon;
   final String title;
+  final Function onClick;
 
   const MainCategoryCard({
     super.key,
     required this.icon,
     required this.title,
+    required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: scaleHeight(145, context),
-      width: scaleWidth(100, context),
-      padding: EdgeInsets.only(
-        top: scaleHeight(12, context),
-        left: scaleWidth(5, context),
-        right: scaleWidth(5, context),
-        bottom: scaleWidth(5, context),
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(scaleRadius(10, context)),
-        boxShadow: [primaryBoxShadow()],
-      ),
-      child: Column(
-        children: [
-          SvgPicture.asset(
-            icon,
-            height: scaleHeight(48, context),
-            width: scaleWidth(48, context),
-          ),
-          const VerticalGap(size: 15),
-          CustomText(
-            text: title,
-            textStyle: CustomTextStyle.textStyle25Bold(
-              context,
-              color: AppColors.black,
+    return GestureDetector(
+      onTap: () => onClick(),
+      child: Container(
+        height: scaleHeight(145, context),
+        width: scaleWidth(100, context),
+        padding: EdgeInsets.only(
+          top: scaleHeight(12, context),
+          left: scaleWidth(5, context),
+          right: scaleWidth(5, context),
+          bottom: scaleWidth(5, context),
+        ),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+          boxShadow: [primaryBoxShadow()],
+        ),
+        child: Column(
+          children: [
+            SvgPicture.asset(
+              icon,
+              height: scaleHeight(48, context),
+              width: scaleWidth(48, context),
             ),
-          ),
-        ],
+            const VerticalGap(size: 15),
+            CustomText(
+              text: title,
+              textStyle: CustomTextStyle.textStyle25Bold(
+                context,
+                color: AppColors.black,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
