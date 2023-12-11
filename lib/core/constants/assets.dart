@@ -43,12 +43,6 @@ class AppAssets {
   static const String icForwardArrow = "${pathSvg}ic_arrow_forward.svg";
   static const String icBorderedStar = "${pathSvg}ic_bordered_star.svg";
   static const String icCartAdd = "${pathSvg}cart_add.svg";
-  static const String icLocation = "${pathSvg}icLocation.svg";
-  static const String icPhone = "${pathSvg}icPhone.svg";
-  static const String icFaceBook = "${pathSvg}icFacebook.svg";
-  static const String icYoutube = "${pathSvg}icYoutube.svg";
-  static const String icTwitter = "${pathSvg}icTwitter.svg";
-
   static const String icSelectedRadio = "${pathSvg}ic_selected_radio.svg";
   static const String icUnSelectedRadio = "${pathSvg}ic_unselected_radio.svg";
   static const String icDownload = "${pathSvg}ic_download.svg";
