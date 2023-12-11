@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/quiz/presentation/template/current_affair_quiz_card.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/tab_bar.dart';
 
 class QuizScreen extends StatefulWidget {

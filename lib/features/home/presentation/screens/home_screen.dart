@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
             MainCategoryCard(
               icon: AppAssets.icReport,
               title: "test_series".tr,
-              onClick: () => AppRouting.toNamed(NameRoutes.allCategoryScreen),
+              onClick: () => AppRouting.toNamed(NameRoutes.testSeriesScreen),
             ),
           ],
         ),
