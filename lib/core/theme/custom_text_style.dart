@@ -63,6 +63,16 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
+  static TextStyle textStyle18Medium(
+    BuildContext context, {
+    Color color = AppColors.black,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(18, context),
+        fontWeight: FontWeight.w400,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
 
   static TextStyle textStyle20Bold(
     BuildContext context, {
@@ -85,7 +95,16 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
-
+  static TextStyle textStyle22BoldUnderline(
+    BuildContext context, {
+    Color color = AppColors.orange,
+  }) =>
+      TextStyle(
+          fontSize: scaleWidth(22, context),
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decoration: TextDecoration.underline);
   static TextStyle textStyle25Bold(
     BuildContext context, {
     Color color = AppColors.grey,

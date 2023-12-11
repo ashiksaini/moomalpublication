@@ -8,4 +8,6 @@ class NameRoutes {
   static const String moomalpublicationApp = '/moomalpublicationApp';
   static const String testimonialScreen ='/testimonialScreen';
   static const String searchScreen = '/searchScreen';
+  static const String settingDetailScreen = '/settingDetailScreen';
+
 }

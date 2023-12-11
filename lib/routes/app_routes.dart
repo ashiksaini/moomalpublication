@@ -5,8 +5,9 @@ import 'package:moomalpublication/features/auth/presentation/screens/register_sc
 import 'package:moomalpublication/features/auth/presentation/screens/reset_password_on_success_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
+import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
+import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
-import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 
 class AppPages {
@@ -58,10 +59,18 @@ class AppPages {
       name: NameRoutes.testimonialScreen,
       // page: () => const DetailPageScreen(),
       // page: () => const CartScreen(),
-      page: () => TestimonialScreen(),
+      // page: () => TestimonialScreen(),
+      // page: () => const ContactUsScreen(),
+      page: () => SettingScreen(),
 
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 300),
+    ),
+    GetPage(
+      name: NameRoutes.settingDetailScreen,
+      page: () => SettingDetailedScreen(),
+      transition: Transition.upToDown,
+      transitionDuration: const Duration(milliseconds: 200),
     ),
   ];
 }

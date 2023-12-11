@@ -10,8 +10,8 @@ import 'package:moomalpublication/features/testimonial/presentation/widgets/test
 
 class TestimonialScreen extends StatelessWidget {
   TestimonialScreen({super.key});
-  final TestimonialController _testimonialController =
-      Get.put(TestimonialController());
+  // final TestimonialController _testimonialController =
+  //     Get.put(TestimonialController());
 
   @override
   Widget build(BuildContext context) {
