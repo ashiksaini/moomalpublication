@@ -164,11 +164,13 @@ class HomeController extends BaseController {
         AppRouting.toNamed(NameRoutes.testimonialScreen);
         break;
       case DrawerItemType.quiz:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.quizScreen);
+        break;
       case DrawerItemType.contactUs:
       // TODO: Handle this case.
       case DrawerItemType.settings:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.settingsScreen);
+        break;
       case DrawerItemType.onlineTestSeries:
       // TODO: Handle this case.
       case DrawerItemType.overallResult:

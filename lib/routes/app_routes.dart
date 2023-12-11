@@ -11,6 +11,7 @@ import 'package:moomalpublication/features/product_detail/presentation/screens/s
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
+import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -60,12 +61,6 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
-      name: NameRoutes.testimonialScreen,
-      page: () => TestimonialScreen(),
-      transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 200),
-    ),
-    GetPage(
       name: NameRoutes.productDetailScreen,
       page: () => ProductDetailScreen(),
       transition: Transition.rightToLeft,
@@ -90,15 +85,27 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
+      name: NameRoutes.testimonialScreen,
+      page: () => TestimonialScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.settingsScreen,
+      page: () => SettingScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
       name: NameRoutes.settingDetailScreen,
       page: () => SettingDetailedScreen(),
-      transition: Transition.upToDown,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.quizScreen,
       page: () => QuizScreen(),
-      transition: Transition.rightToLeft,
+      transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
   ];

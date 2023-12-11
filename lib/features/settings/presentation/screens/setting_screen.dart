@@ -16,80 +16,80 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          const CustomAppbar(
-            title: "Setting",
-            prefixIcon: AppAssets.icBackArrow,
-          ),
-          Expanded(
-            child: ScrollConfiguration(
-              behavior: NoGlowBehavior(),
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: scaleWidth(16, context)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          SettingCard(
-                            text: 'SHIPPING POLICY',
-                            onCardTap: () {
-                              settingController.navigateSettingDetailScreen(
-                                appBarTitle: 'SHIPPING POLICY',
-                                description: '',
-                              );
-                            },
-                          ),
-                          SettingCard(
-                            text: 'CANCELLATION & REFUND POLICY',
-                            onCardTap: () {
-                              settingController.navigateSettingDetailScreen(
-                                appBarTitle: 'CANCELLATION & REFUND POLICY',
-                                description: '',
-                              );
-                            },
-                          ),
-                          SettingCard(
-                            text: 'PRIVACY POLICY',
-                            onCardTap: () {
-                              settingController.navigateSettingDetailScreen(
-                                appBarTitle: 'PRIVACY POLICY',
-                                description: '',
-                              );
-                            },
-                          ),
-                          SettingCard(
-                            text: 'TERMS & CONDITIONS',
-                            onCardTap: () {
-                              settingController.navigateSettingDetailScreen(
-                                appBarTitle: 'TERMS & CONDITIONS',
-                                description: '',
-                              );
-                            },
-                          ),
-                          SettingCard(
-                            text: 'LOGOUT',
-                            color: AppColors.orange,
-                            onCardTap: () {
-                              settingController.navigateSettingDetailScreen(
-                                appBarTitle: 'LOGOUT',
-                                description: '',
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
+        child: Column(
+          children: [
+            const CustomAppbar(
+              title: "Setting",
+              prefixIcon: AppAssets.icBackArrow,
+            ),
+            Expanded(
+              child: ScrollConfiguration(
+                behavior: NoGlowBehavior(),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            SettingCard(
+                              text: 'SHIPPING POLICY',
+                              onCardTap: () {
+                                settingController.navigateSettingDetailScreen(
+                                  appBarTitle: 'SHIPPING POLICY',
+                                  description: '',
+                                );
+                              },
+                            ),
+                            SettingCard(
+                              text: 'CANCELLATION & REFUND POLICY',
+                              onCardTap: () {
+                                settingController.navigateSettingDetailScreen(
+                                  appBarTitle: 'CANCELLATION & REFUND POLICY',
+                                  description: '',
+                                );
+                              },
+                            ),
+                            SettingCard(
+                              text: 'PRIVACY POLICY',
+                              onCardTap: () {
+                                settingController.navigateSettingDetailScreen(
+                                  appBarTitle: 'PRIVACY POLICY',
+                                  description: '',
+                                );
+                              },
+                            ),
+                            SettingCard(
+                              text: 'TERMS & CONDITIONS',
+                              onCardTap: () {
+                                settingController.navigateSettingDetailScreen(
+                                  appBarTitle: 'TERMS & CONDITIONS',
+                                  description: '',
+                                );
+                              },
+                            ),
+                            SettingCard(
+                              text: 'LOGOUT',
+                              color: AppColors.orange,
+                              onCardTap: () {
+                                settingController.navigateSettingDetailScreen(
+                                  appBarTitle: 'LOGOUT',
+                                  description: '',
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          )
-        ],
-      )),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

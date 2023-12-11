@@ -3,7 +3,6 @@ import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/product_detail/data/models/product_detail/product_detail_data.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
 import 'package:moomalpublication/features/product_detail/data/services/product_detail_services.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -20,7 +19,7 @@ class ProductDetailController extends BaseController {
   Rx<SimilarProductResponse> similarProductResponse = Rx(ApiResponse());
   Rx<ProductReviewsResponse> productReviewsResponse = Rx(ApiResponse());
 
-  Rx<ProductDetailData?> productDetailData = Rx(null);
+  Rx<ProductItem?> productDetailData = Rx(null);
   RxList<ProductReview> productReviews = RxList([]);
   RxList<ProductItem> similarProducts = RxList([]);
   RxInt selectedQuantity = RxInt(1);
