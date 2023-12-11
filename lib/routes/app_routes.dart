@@ -1,11 +1,17 @@
 import 'package:get/get.dart';
+import 'package:moomalpublication/features/addresses/presentation/screen/address_screen.dart';
 import 'package:moomalpublication/features/all%20categories/presentation/screens/all_categories.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/reset_password_on_success_screen.dart';
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
+import 'package:moomalpublication/features/contact_us/presentation/screen/contact_us_screen.dart';
+import 'package:moomalpublication/features/downloads/presentation/screen/download_screen.dart';
+import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
+import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
+import 'package:moomalpublication/features/overall_results/presentation/screen/overall_result_screen.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
@@ -13,6 +19,7 @@ import 'package:moomalpublication/features/search/presentation/screens/search_sc
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
+import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 
@@ -49,11 +56,7 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
-    GetPage(
-      name: NameRoutes.moomalpublicationApp,
-      page: () => const MoomalPublicationApp(),
-      transition: Transition.noTransition
-    ),
+    GetPage(name: NameRoutes.moomalpublicationApp, page: () => const MoomalPublicationApp(), transition: Transition.noTransition),
     GetPage(
       name: NameRoutes.searchScreen,
       page: () => const SearchScreen(),
@@ -105,6 +108,48 @@ class AppPages {
     GetPage(
       name: NameRoutes.quizScreen,
       page: () => QuizScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.downloadScreen,
+      page: () => DownloadScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.addressesScreen,
+      page: () => AddressScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.orderScreen,
+      page: () => OrdersScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.eventAndPressReleaseScreen,
+      page: () => EventAndPressReleaseScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.contactUsScreen,
+      page: () => ContactUsScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.testSeriesScreen,
+      page: () => TestSeriesScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.overallResultScreen,
+      page: () => OverallResultScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
