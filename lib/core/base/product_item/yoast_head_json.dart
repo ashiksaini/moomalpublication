@@ -35,7 +35,9 @@ class YoastHeadJson {
 
   factory YoastHeadJson.fromJson(Map<String, dynamic> json) => YoastHeadJson(
         title: json['title'] as String?,
-        robots: json['robots'] == null ? null : Robots.fromJson(json['robots'] as Map<String, dynamic>),
+        robots: json['robots'] == null
+            ? null
+            : Robots.fromJson(json['robots'] as Map<String, dynamic>),
         canonical: json['canonical'] as String?,
         ogLocale: json['og_locale'] as String?,
         ogType: json['og_type'] as String?,
@@ -44,9 +46,13 @@ class YoastHeadJson {
         ogUrl: json['og_url'] as String?,
         ogSiteName: json['og_site_name'] as String?,
         articleModifiedTime: json['article_modified_time'] as String?,
-        ogImage: (json['og_image'] as List<dynamic>?)?.map((e) => OgImage.fromJson(e as Map<String, dynamic>)).toList(),
+        ogImage: (json['og_image'] as List<dynamic>?)
+            ?.map((e) => OgImage.fromJson(e as Map<String, dynamic>))
+            .toList(),
         twitterCard: json['twitter_card'] as String?,
-        schema: json['schema'] == null ? null : Schema.fromJson(json['schema'] as Map<String, dynamic>),
+        schema: json['schema'] == null
+            ? null
+            : Schema.fromJson(json['schema'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toFrom() => {

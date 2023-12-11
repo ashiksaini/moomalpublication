@@ -25,7 +25,8 @@ class PaginationDataViewer<T> extends StatefulWidget {
   });
 
   @override
-  _PaginationDataViewerState<T> createState() => _PaginationDataViewerState<T>();
+  _PaginationDataViewerState<T> createState() =>
+      _PaginationDataViewerState<T>();
 }
 
 class _PaginationDataViewerState<T> extends State<PaginationDataViewer<T>> {
@@ -47,7 +48,8 @@ class _PaginationDataViewerState<T> extends State<PaginationDataViewer<T>> {
   }
 
   void _scrollListener() {
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
       _loadMoreData();
     }
   }
@@ -100,7 +102,9 @@ class _PaginationDataViewerState<T> extends State<PaginationDataViewer<T>> {
           if (index < widget.dataList.length) {
             final item = widget.dataList[index];
             return GestureDetector(
-              onTap: () => (widget.onItemClick != null) ? widget.onItemClick!(item) : null,
+              onTap: () => (widget.onItemClick != null)
+                  ? widget.onItemClick!(item)
+                  : null,
               child: widget.itemBuilder(item),
             );
           } else {

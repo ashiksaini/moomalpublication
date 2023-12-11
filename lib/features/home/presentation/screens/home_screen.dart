@@ -15,7 +15,6 @@ import 'package:moomalpublication/routes/routing.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
-  final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
 
   HomeScreen({super.key});
 
@@ -24,8 +23,8 @@ class HomeScreen extends StatelessWidget {
     return Obx(() {
       return Screen(
         isAppbarVisible: false,
-        scaffoldKey: _globalKey,
-        drawer: const CustomNavigationDrawer(),
+        scaffoldKey: _homeController.globalKey,
+        drawer: CustomNavigationDrawer(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,7 +50,8 @@ class HomeScreen extends StatelessWidget {
             DashboardBooksView(
               title: "new_arrival".tr,
               loadingItemCount: 4,
-              isLoading: _homeController.newArrivalProductResponse.value.isLoading,
+              isLoading:
+                  _homeController.newArrivalProductResponse.value.isLoading,
               data: _homeController.newArrivalProductList,
             ),
 
@@ -59,7 +59,8 @@ class HomeScreen extends StatelessWidget {
             DashboardBooksView(
               title: "best_seller".tr,
               loadingItemCount: 4,
-              isLoading: _homeController.bestSellerProductResponse.value.isLoading,
+              isLoading:
+                  _homeController.bestSellerProductResponse.value.isLoading,
               data: _homeController.bestSellerProductList,
             ),
           ],
@@ -83,7 +84,8 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getMainAppbar(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: scaleHeight(40, context), bottom: scaleHeight(60, context)),
+      padding: EdgeInsets.only(
+          top: scaleHeight(40, context), bottom: scaleHeight(60, context)),
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
@@ -95,7 +97,7 @@ class HomeScreen extends StatelessWidget {
         title: "moomalpublication".tr,
         prefixIcon: AppAssets.icHamburger,
         suffixIcon: AppAssets.icSearch,
-        onPrefixIconClick: () => _globalKey.currentState!.openDrawer(),
+        onPrefixIconClick: () => _homeController.globalKey.currentState!.openDrawer(),
         onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
       ),
     );

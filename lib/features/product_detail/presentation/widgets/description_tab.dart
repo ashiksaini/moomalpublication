@@ -7,7 +7,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/detail_page/presentation/widgets/rating_bar.dart';
+import 'package:moomalpublication/features/product_detail/presentation/widgets/rating_bar.dart';
 
 class DescriptionTabSceen extends StatelessWidget {
   const DescriptionTabSceen({super.key});
@@ -41,8 +41,7 @@ class DescriptionTabSceen extends StatelessWidget {
           ),
           CustomText(
             textAlign: TextAlign.left,
-            text:
-                "YOUR RATING",
+            text: "YOUR RATING",
             textStyle: CustomTextStyle.textStyle20Bold(context,
                 color: AppColors.black),
           ),

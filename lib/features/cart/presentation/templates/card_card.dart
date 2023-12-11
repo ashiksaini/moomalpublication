@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
@@ -40,12 +39,12 @@ class CartCard extends StatelessWidget {
                     textAlign: TextAlign.left,
                     text: "MOOMAL CURRENT GK ANK-92",
                     maxLines: 5,
-                    textStyle: CustomTextStyle.textStyle20BoldPlayfair(context,
+                    textStyle: CustomTextStyle.textStyle20Bold(context,
                         color: AppColors.greyLight),
                   ),
                   CustomText(
                     text: "₹25",
-                    textStyle: CustomTextStyle.textStyle20BoldPlayfair(context,
+                    textStyle: CustomTextStyle.textStyle20Bold(context,
                         color: AppColors.greyLight),
                   ),
                   const VerticalGap(size: 9),

@@ -5,7 +5,7 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/features/detail_page/presentation/widgets/similar_product_card.dart';
+import 'package:moomalpublication/features/product_detail/presentation/widgets/similar_product_card.dart';
 
 class SimilarProduct extends StatelessWidget {
   const SimilarProduct({super.key});

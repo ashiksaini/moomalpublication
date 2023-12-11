@@ -49,6 +49,18 @@ class AppAssets {
   static const String icYoutube = "${pathSvg}icYoutube.svg";
   static const String icTwitter = "${pathSvg}icTwitter.svg";
 
+  static const String icSelectedRadio = "${pathSvg}ic_selected_radio.svg";
+  static const String icUnSelectedRadio = "${pathSvg}ic_unselected_radio.svg";
+  static const String icDownload = "${pathSvg}ic_download.svg";
+  static const String icAddress = "${pathSvg}ic_address.svg";
+  static const String icOrder = "${pathSvg}ic_orders.svg";
+  static const String icEventAndPressRelease = "${pathSvg}ic_events.svg";
+  static const String icTestimonial = "${pathSvg}ic_testimonial.svg";
+  static const String icQuiz = "${pathSvg}ic_quiz.svg";
+  static const String icContactUs = "${pathSvg}ic_contact.svg";
+  static const String icSettings = "${pathSvg}ic_settings.svg";
+  static const String icLogout = "${pathSvg}ic_logout.svg";
+  static const String icTestimonialUser = "${pathSvg}ic_testimonial_user.svg";
 
   // Png
   static const String icLogo1 = "${pathPng}ic_logo_1.png";

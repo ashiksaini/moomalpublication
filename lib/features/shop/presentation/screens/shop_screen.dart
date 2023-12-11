@@ -7,7 +7,6 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
-import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
 import 'package:moomalpublication/features/shop/controller/shop_controller.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -19,26 +18,26 @@ class ShopScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return Scaffold(
-        body: SafeArea(
-          child: RefreshIndicator(
-            backgroundColor: AppColors.white,
-            color: AppColors.orange,
-            onRefresh: () => _shopController.onRefresh(),
-            child: Column(
-              children: [
-                // Appbar
-                CustomAppbar(
-                  title: "shop".tr,
-                  suffixIcon: AppAssets.icSearch,
-                  onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
-                ),
+    return Obx(
+      () {
+        return Scaffold(
+          backgroundColor: AppColors.white,
+          body: SafeArea(
+            child: RefreshIndicator(
+              backgroundColor: AppColors.white,
+              color: AppColors.orange,
+              onRefresh: () => _shopController.onRefresh(),
+              child: Column(
+                children: [
+                  // Appbar
+                  CustomAppbar(
+                    title: "shop".tr,
+                    suffixIcon: AppAssets.icSearch,
+                    onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
+                  ),
 
-                // Data view
-                Expanded(
-                  child: ScrollConfiguration(
-                    behavior: NoGlowBehavior(),
+                  // Data view
+                  Expanded(
                     child: GridView.builder(
                       controller: _shopController.scrollController,
                       padding: EdgeInsets.symmetric(
@@ -56,24 +55,31 @@ class ShopScreen extends StatelessWidget {
                         if (_shopController.productResponse.value.isLoading) {
                           return const BookItemShimmerSkeleton();
                         } else {
-                          return CardBookItem(item: _shopController.productList[index]);
+                          return GestureDetector(
+                            onTap: () {
+                              _shopController.onItemClick(index, _shopController.productList[index]);
+                            },
+                            child: CardBookItem(
+                              item: _shopController.productList[index],
+                            ),
+                          );
                         }
                       },
                     ),
                   ),
-                ),
 
-                // Load more
-                if (_shopController.isLoadingMore.value)
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
-                    child: customProgressIndicator(),
-                  ),
-              ],
+                  // Load more
+                  if (_shopController.isLoadingMore.value)
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                      child: customProgressIndicator(),
+                    ),
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }

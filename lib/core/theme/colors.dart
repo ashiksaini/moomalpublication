@@ -26,5 +26,7 @@ class AppColors {
   static const Color pinkLight = Color(0xFFF5D0D9);
   static const Color green = Color(0xFF018344);
 
-  static const Color lightblue = Color.fromRGBO(247, 254, 255, 1);
+  static const Color lightblue = Color(0xFFD2F7FF);
+
+  static const Color cyan = Color(0xFFC7FCFF);
 }

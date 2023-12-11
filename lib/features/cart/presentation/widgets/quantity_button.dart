@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/core/utils/horizontal_space.dart';
-import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 
 class QuantityButton extends StatelessWidget {
   const QuantityButton({super.key});
@@ -19,7 +16,7 @@ class QuantityButton extends StatelessWidget {
         CustomText(
           text: "Quantity:",
           maxLines: 5,
-          textStyle: CustomTextStyle.textStyle20SemiMedium(context,
+          textStyle: CustomTextStyle.textStyle20SemiBold(context,
               color: AppColors.black),
         ),
         quantityIncDecButton(context)
@@ -57,7 +54,7 @@ Widget quantityIncDecButton(BuildContext context) {
               ),
               child: CustomText(
                 text: "1",
-                textStyle: CustomTextStyle.textStyle20SemiMedium(context,
+                textStyle: CustomTextStyle.textStyle20SemiBold(context,
                     color: AppColors.black),
               ),
             ),
@@ -91,7 +88,7 @@ Widget quantityIncDecButton(BuildContext context) {
               horizontal: scaleWidth(8, context)),
           child: CustomText(
             text: "Delete",
-            textStyle: CustomTextStyle.textStyle20SemiMedium(context,
+            textStyle: CustomTextStyle.textStyle20SemiBold(context,
                 color: AppColors.black),
           ),
         ),

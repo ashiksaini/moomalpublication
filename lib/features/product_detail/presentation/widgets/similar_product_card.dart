@@ -8,7 +8,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/detail_page/presentation/widgets/rating_bar.dart';
+import 'package:moomalpublication/features/product_detail/presentation/widgets/rating_bar.dart';
 
 class SimilarProductCard extends StatelessWidget {
   const SimilarProductCard({super.key});

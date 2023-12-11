@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
-import 'package:moomalpublication/features/detail_page/presentation/widgets/description_tab.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
 
 class BookDetailTabBar extends StatefulWidget {
   const BookDetailTabBar({super.key});
@@ -10,8 +10,7 @@ class BookDetailTabBar extends StatefulWidget {
   _BookDetailTabBarState createState() => _BookDetailTabBarState();
 }
 
-class _BookDetailTabBarState extends State<BookDetailTabBar>
-    with SingleTickerProviderStateMixin {
+class _BookDetailTabBarState extends State<BookDetailTabBar> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final TextEditingController colorController = TextEditingController();
 
@@ -52,11 +51,10 @@ class _BookDetailTabBarState extends State<BookDetailTabBar>
           indicatorSize: TabBarIndicatorSize.tab,
         ),
         ConstrainedBox(
-          constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.7),
+          constraints: BoxConstraints(maxHeight: screenHeight(context) * 0.1),
           child: TabBarView(
             controller: _tabController,
-            children: [DescriptionTabSceen(), Text("jhdfg")],
+            children: [Text("jhdfg"), Text("jhdfg")],
           ),
         ),
       ],

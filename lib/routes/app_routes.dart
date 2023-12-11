@@ -3,7 +3,9 @@ import 'package:moomalpublication/features/auth/presentation/screens/forget_pass
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/reset_password_on_success_screen.dart';
+import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
+import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
@@ -64,7 +66,19 @@ class AppPages {
       page: () => SettingScreen(),
 
       transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 300),
+       transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.productDetailScreen,
+      page: () => ProductDetailScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.cartScreen,
+      page: () => CartScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.settingDetailScreen,
@@ -72,5 +86,5 @@ class AppPages {
       transition: Transition.upToDown,
       transitionDuration: const Duration(milliseconds: 200),
     ),
-  ];
+   ];
 }

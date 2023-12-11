@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
 
 class Screen extends StatelessWidget {
   final Color? statusBarColor;
@@ -55,35 +54,33 @@ class Screen extends StatelessWidget {
         backgroundColor: screenBg ?? AppColors.white,
         drawer: drawer,
         body: SafeArea(
-          child: ScrollConfiguration(
-            behavior: NoGlowBehavior(),
-            child: RefreshIndicator(
-              backgroundColor: AppColors.white,
-              color: AppColors.orange,
-              onRefresh: () => onRefresh!(),
-              child: Column(
-                children: [
-                  // App bar
-                  if (isAppbarVisible)
-                    CustomAppbar(
-                      title: appBarTitle ?? "",
-                      prefixIcon: prefixIcon,
-                      suffixIcon: suffixIcon,
-                      onPrefixIconClick: onPrefixIconClick,
-                      onSuffixIconClick: onSuffixIconClick,
-                    ),
-
-                  // Screen
-                  Expanded(
-                    child: Container(
-                      margin: margin,
-                      padding: padding,
-                      color: screenBg ?? AppColors.white,
-                      child: SingleChildScrollView(child: child),
-                    ),
+          child: RefreshIndicator(
+            backgroundColor: AppColors.white,
+            color: AppColors.orange,
+            onRefresh: () => onRefresh!(),
+            child: Column(
+              children: [
+                // App bar
+                if (isAppbarVisible)
+                  CustomAppbar(
+                    title: appBarTitle ?? "",
+                    prefixIcon: prefixIcon,
+                    suffixIcon: suffixIcon,
+                    onPrefixIconClick: onPrefixIconClick,
+                    onSuffixIconClick: onSuffixIconClick,
+                    maxLine: 1,
                   ),
-                ],
-              ),
+          
+                // Screen
+                Expanded(
+                  child: Container(
+                    margin: margin,
+                    padding: padding,
+                    color: screenBg ?? AppColors.white,
+                    child: SingleChildScrollView(child: child),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
