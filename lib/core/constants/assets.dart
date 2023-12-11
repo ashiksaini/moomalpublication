@@ -63,6 +63,8 @@ class AppAssets {
   static const String icLogo1 = "${pathPng}ic_logo_1.png";
   static const String icImg = "${pathPng}img.png";
   static const String bookPng = "${pathPng}book.png";
+  static const String icAdmin = "${pathPng}ic_admin.png";
+
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

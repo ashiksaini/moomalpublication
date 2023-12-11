@@ -8,6 +8,7 @@ import 'package:moomalpublication/features/cart/presentation/screens/cart_screen
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
+import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
@@ -84,6 +85,18 @@ class AppPages {
     GetPage(
       name: NameRoutes.similarProductScreen,
       page: () => SimilarProductScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.settingDetailScreen,
+      page: () => SettingDetailedScreen(),
+      transition: Transition.upToDown,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.quizScreen,
+      page: () => QuizScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

@@ -12,4 +12,5 @@ class NameRoutes {
   static const String cartScreen = '/cartScreen';
   static const String allCategoryScreen = '/allCategoryScreen';
   static const String similarProductScreen = '/similarProductScreen';
+  static const String quizScreen = '/quizScreen';
 }
