@@ -7,9 +7,6 @@ class SettingController extends BaseController {
     AppRouting.toNamed(NameRoutes.settingDetailScreen, argument: [
       {"appBarTitle": appBarTitle},
       {"description": description},
-        
-
-        
     ]);
   }
 }
