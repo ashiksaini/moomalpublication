@@ -8,6 +8,8 @@ class SettingController extends BaseController {
       {"appBarTitle": appBarTitle},
       {"description": description},
         
+
+        
     ]);
   }
 }
