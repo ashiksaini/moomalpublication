@@ -85,7 +85,7 @@ class CustomTextStyle {
         color: color,
       );
 
-      static textStyle15Regular(
+  static textStyle15Regular(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -203,6 +203,16 @@ class CustomTextStyle {
         fontSize: scaleWidth(16, context),
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.gupterFont,
+        color: color,
+      );
+  static TextStyle textStyle20SemiMedium(
+    BuildContext context, {
+    Color color = AppColors.white,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w300,
+        fontFamily: AppConstants.calibriFont,
         color: color,
       );
 }
