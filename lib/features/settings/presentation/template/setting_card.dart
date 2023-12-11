@@ -25,19 +25,17 @@ class SettingCard extends StatelessWidget {
           onCardTap!();
         }
       },
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: scaleWidth(20, context)),
-        child: ShadowContainer(
-          backgroundColor: color,
-          borderRadius: scaleWidth(10, context),
-          containerChild: Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: scaleWidth(14, context)),
-              child: CustomText(
-                text: text,
-                textStyle: CustomTextStyle.textStyle22Bold(
-                  context,
-                ),
+      child: ShadowContainer(
+        backgroundColor: color,
+        borderRadius: scaleWidth(10, context),
+        containerChild: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: scaleWidth(15, context)),
+            child: CustomText(
+              text: text,
+              textStyle: CustomTextStyle.textStyle22Bold(
+                context,
+                color: AppColors.black,
               ),
             ),
           ),
