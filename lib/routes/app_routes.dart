@@ -10,6 +10,7 @@ import 'package:moomalpublication/features/product_detail/presentation/screens/d
 import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
+import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/routes/name_routes.dart';

@@ -13,4 +13,5 @@ class NameRoutes {
   static const String allCategoryScreen = '/allCategoryScreen';
   static const String similarProductScreen = '/similarProductScreen';
   static const String quizScreen = '/quizScreen';
+  static const String settingDetailScreen = '/settingDetailScreen';
 }
