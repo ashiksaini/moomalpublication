@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:moomalpublication/features/all%20categories/presentation/screens/all_categories.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
@@ -6,8 +7,10 @@ import 'package:moomalpublication/features/auth/presentation/screens/reset_passw
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
+import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
+import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -48,8 +51,7 @@ class AppPages {
     GetPage(
       name: NameRoutes.moomalpublicationApp,
       page: () => const MoomalPublicationApp(),
-      transition: Transition.rightToLeft,
-      transitionDuration: const Duration(milliseconds: 200),
+      transition: Transition.noTransition
     ),
     GetPage(
       name: NameRoutes.searchScreen,
@@ -59,15 +61,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.testimonialScreen,
-<<<<<<< HEAD
-      // page: () => const DetailPageScreen(),
-      page: () => const CartScreen(),
-      // page: () => TestimonialScreen(),
-      // page: () => const ContactUsScreen(),
-
-=======
       page: () => TestimonialScreen(),
->>>>>>> 536dbc8f3dced1ed402b2e7ae90ce97ea24773cd
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -83,7 +77,18 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
-<<<<<<< HEAD
+    GetPage(
+      name: NameRoutes.allCategoryScreen,
+      page: () => AllCategoriesScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.similarProductScreen,
+      page: () => SimilarProductScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
     GetPage(
       name: NameRoutes.settingDetailScreen,
       page: () => SettingDetailedScreen(),
@@ -96,7 +101,5 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
-=======
->>>>>>> 536dbc8f3dced1ed402b2e7ae90ce97ea24773cd
   ];
 }

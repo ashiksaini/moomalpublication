@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
+import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_detail/product_detail_data.dart';
@@ -66,7 +67,7 @@ class ProductDetailServices {
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get("${ApiPaths.productRelated}$productId", queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
-              (item) => ProductDetailData.fromJson(item as Map<String, dynamic>),
+              (item) => ProductItem.fromJson(item as Map<String, dynamic>),
             )
             .toList();
         return SimilarProductResponse.success(parsedResponse);

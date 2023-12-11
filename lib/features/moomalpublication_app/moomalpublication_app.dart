@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/features/bottom_nav_bar/presentation/custom_bottom_nav_bar.dart';
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
@@ -22,6 +23,8 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
   void initState() {
     super.initState();
     _initPages();
+
+    _selectedIndex = Get.arguments ?? 0;
   }
 
   Future<void> _initPages() async {
@@ -30,7 +33,7 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
       ShopScreen(),
       EBookScreen(),
       CartScreen(),
-      ProfileScreen()
+      ProfileScreen(),
     ];
   }
 

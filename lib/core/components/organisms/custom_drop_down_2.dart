@@ -13,15 +13,15 @@ import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/features/home/data/models/drop_down_item.dart';
 
 /// Custom Dropdown
-/// Parent View ---> Have a background with no boder,
+/// Parent View ---> Have a background with boder,
 /// Child View ---> Have a divdier between items,
-class CustomDropDown1<T> extends StatelessWidget {
+class CustomDropDown2<T> extends StatelessWidget {
   final List<DropdownItem<T>> items;
   final Rx<DropdownItem<T>?> selectedItem;
   final Color color;
   final double? width;
 
-  const CustomDropDown1({
+  const CustomDropDown2({
     super.key,
     required this.items,
     required this.selectedItem,
@@ -39,6 +39,7 @@ class CustomDropDown1<T> extends StatelessWidget {
             decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+              border: Border.all(color: AppColors.grey),
             ),
             padding: EdgeInsets.symmetric(
               horizontal: scaleWidth(10, context),
@@ -105,7 +106,7 @@ class CustomDropDown1<T> extends StatelessWidget {
             padding: EdgeInsets.zero,
             scrollPadding: EdgeInsets.zero,
             maxHeight: scaleHeight(250, context),
-            width: (width ?? screenWidth(context)),
+            width: width ?? screenWidth(context),
             offset: const Offset(0, 0),
             decoration: BoxDecoration(
               color: AppColors.white,

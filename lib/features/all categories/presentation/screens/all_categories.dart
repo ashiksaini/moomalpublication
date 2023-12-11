@@ -7,8 +7,8 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/all%20categories/presentation/widgets/category.dart';
 
-class AllCategories extends StatelessWidget {
-  const AllCategories({super.key});
+class AllCategoriesScreen extends StatelessWidget {
+  const AllCategoriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
