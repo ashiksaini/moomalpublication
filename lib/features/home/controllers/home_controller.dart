@@ -153,13 +153,17 @@ class HomeController extends BaseController {
 
     switch (drawerItemType) {
       case DrawerItemType.download:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.downloadScreen);
+        break;
       case DrawerItemType.address:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.addressesScreen);
+        break;
       case DrawerItemType.orders:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.orderScreen);
+        break;
       case DrawerItemType.eventsAndPressRelease:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.eventAndPressReleaseScreen);
+        break;
       case DrawerItemType.testimonial:
         AppRouting.toNamed(NameRoutes.testimonialScreen);
         break;
@@ -167,14 +171,17 @@ class HomeController extends BaseController {
         AppRouting.toNamed(NameRoutes.quizScreen);
         break;
       case DrawerItemType.contactUs:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.contactUsScreen);
+        break;
       case DrawerItemType.settings:
         AppRouting.toNamed(NameRoutes.settingsScreen);
         break;
       case DrawerItemType.onlineTestSeries:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.testSeriesScreen);
+        break;
       case DrawerItemType.overallResult:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.overallResultScreen);
+        break;
       case DrawerItemType.logout:
       // TODO: Handle this case.
     }

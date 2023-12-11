@@ -56,7 +56,11 @@ class AppPages {
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
-    GetPage(name: NameRoutes.moomalpublicationApp, page: () => const MoomalPublicationApp(), transition: Transition.noTransition),
+    GetPage(
+      name: NameRoutes.moomalpublicationApp,
+      page: () => const MoomalPublicationApp(),
+      transition: Transition.noTransition,
+    ),
     GetPage(
       name: NameRoutes.searchScreen,
       page: () => const SearchScreen(),

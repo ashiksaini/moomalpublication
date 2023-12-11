@@ -23,6 +23,7 @@ dependencies:
   dropdown_button2:
   flutter_rating_bar:
   url_launcher:
+  payu_checkoutpro_flutter: ^1.0.4
 
 dev_dependencies:
   flutter_test:
