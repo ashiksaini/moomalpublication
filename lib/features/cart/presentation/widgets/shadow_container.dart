@@ -10,12 +10,14 @@ class ShadowContainer extends StatelessWidget {
     required this.containerChild,
     this.backgroundColor = AppColors.white,
     this.padding = EdgeInsets.zero,
+    this.borderColor = AppColors.black,
   });
 
   final double borderRadius;
   final Widget containerChild;
   final Color backgroundColor;
   final EdgeInsets padding;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class ShadowContainer extends StatelessWidget {
         padding: padding,
         decoration: BoxDecoration(
           color: backgroundColor,
-          border: Border.all(color: AppColors.shadow),
+          border: Border.all(color: borderColor),
           boxShadow: [primaryBoxShadow()],
           borderRadius: BorderRadius.all(
             Radius.circular(scaleRadius(borderRadius, context)),

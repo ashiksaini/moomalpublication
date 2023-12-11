@@ -6,6 +6,7 @@ import 'package:moomalpublication/features/auth/presentation/screens/reset_passw
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
+import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
 import 'package:moomalpublication/features/search/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
@@ -60,13 +61,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.testimonialScreen,
       // page: () => const DetailPageScreen(),
-      // page: () => const CartScreen(),
+      page: () => const CartScreen(),
       // page: () => TestimonialScreen(),
       // page: () => const ContactUsScreen(),
-      page: () => SettingScreen(),
 
       transition: Transition.rightToLeft,
-       transitionDuration: const Duration(milliseconds: 200),
+      transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.productDetailScreen,
@@ -86,5 +86,11 @@ class AppPages {
       transition: Transition.upToDown,
       transitionDuration: const Duration(milliseconds: 200),
     ),
-   ];
+    GetPage(
+      name: NameRoutes.quizScreen,
+      page: () => QuizScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+  ];
 }
