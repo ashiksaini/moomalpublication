@@ -14,15 +14,14 @@ class CustomAppbar extends StatelessWidget {
   final Function? onSuffixIconClick;
   final int? maxLine;
 
-  const CustomAppbar({
-    super.key,
-    required this.title,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.onPrefixIconClick,
-    this.onSuffixIconClick,
-    this.maxLine
-  });
+  const CustomAppbar(
+      {super.key,
+      required this.title,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.onPrefixIconClick,
+      this.onSuffixIconClick,
+      this.maxLine});
 
   @override
   Widget build(BuildContext context) {

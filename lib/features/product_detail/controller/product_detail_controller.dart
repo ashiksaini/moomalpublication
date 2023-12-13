@@ -40,7 +40,8 @@ class ProductDetailController extends BaseController {
   Future<void> _getProductDetails() async {
     if (productId != null) {
       productDetailResponse.value = ApiResponse.loading();
-      productDetailResponse.value = await ProductDetailServices.getProductDetails(productId!);
+      productDetailResponse.value =
+          await ProductDetailServices.getProductDetails(productId!);
 
       if (productDetailResponse.value.data != null) {
         productDetailData.value = productDetailResponse.value.data;
@@ -51,7 +52,8 @@ class ProductDetailController extends BaseController {
   Future<void> _getProductReviews() async {
     if (productId != null) {
       productReviewsResponse.value = ApiResponse.loading();
-      productReviewsResponse.value = await ProductDetailServices.getProductReviews(productId!);
+      productReviewsResponse.value =
+          await ProductDetailServices.getProductReviews(productId!);
 
       if (productReviewsResponse.value.data != null) {
         productReviews.value = productReviewsResponse.value.data!;
@@ -62,7 +64,8 @@ class ProductDetailController extends BaseController {
   Future<void> _getSimilarProducts() async {
     if (productId != null) {
       similarProductResponse.value = ApiResponse.loading();
-      similarProductResponse.value = await ProductDetailServices.getSimilerReviews(productId!);
+      similarProductResponse.value =
+          await ProductDetailServices.getSimilerReviews(productId!);
 
       if (similarProductResponse.value.data != null) {
         similarProducts.value = similarProductResponse.value.data!;
@@ -71,6 +74,7 @@ class ProductDetailController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name));
+    AppRouting.toNamed(NameRoutes.productDetailScreen,
+        argument: SharedData(productId: data.id, productName: data.name));
   }
 }

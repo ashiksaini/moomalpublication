@@ -23,13 +23,15 @@ class CustomTabBar extends StatefulWidget {
     labelStyle,
     unselectedLabelStyle,
   })  : labelStyle = labelStyle ?? CustomTextStyle.textStyle25Bold(context),
-        unselectedLabelStyle = unselectedLabelStyle ?? CustomTextStyle.textStyle25Bold(context);
+        unselectedLabelStyle =
+            unselectedLabelStyle ?? CustomTextStyle.textStyle25Bold(context);
 
   @override
   CustomTabBarState createState() => CustomTabBarState();
 }
 
-class CustomTabBarState extends State<CustomTabBar> with SingleTickerProviderStateMixin {
+class CustomTabBarState extends State<CustomTabBar>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   @override
   void initState() {

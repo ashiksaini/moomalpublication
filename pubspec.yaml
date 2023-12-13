@@ -23,6 +23,7 @@ dependencies:
   dropdown_button2:
   flutter_rating_bar:
   url_launcher:
+  flutter_html: 
 
 dev_dependencies:
   flutter_test:

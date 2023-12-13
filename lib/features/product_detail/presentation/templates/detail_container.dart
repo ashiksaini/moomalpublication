@@ -16,14 +16,19 @@ import 'package:moomalpublication/features/product_detail/presentation/widgets/p
 import 'package:moomalpublication/features/product_detail/presentation/widgets/review_view.dart';
 
 class DetailContainer extends StatelessWidget {
-  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController =
+      Get.find<ProductDetailController>();
   DetailContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () {
-        return (_productDetailController.productDetailResponse.value.isLoading || _productDetailController.productReviewsResponse.value.isLoading || _productDetailController.similarProductResponse.value.isLoading)
+        return (_productDetailController
+                    .productDetailResponse.value.isLoading ||
+                _productDetailController
+                    .productReviewsResponse.value.isLoading ||
+                _productDetailController.similarProductResponse.value.isLoading)
             ? SizedBox(
                 height: screenHeight(context) - scaleHeight(60, context),
                 child: Center(
@@ -46,11 +51,11 @@ class DetailContainer extends StatelessWidget {
             // Book View
             _getBookView(context),
             const VerticalGap(size: 30),
-      
+
             // Book Detail Grid
             const BookTypeGrid(),
             const VerticalGap(size: 50),
-      
+
             // Book Overview
             Padding(
               padding: EdgeInsets.only(left: scaleWidth(15, context)),
@@ -63,24 +68,27 @@ class DetailContainer extends StatelessWidget {
               ),
             ),
             const VerticalGap(size: 8),
-      
+
             // Book Details
             BookDetailTabBar(
-              description: _productDetailController.productDetailData.value?.description,
-              information: _productDetailController.productDetailData.value?.type,
+              description:
+                  _productDetailController.productDetailData.value?.description,
+              information:
+                  _productDetailController.productDetailData.value?.type,
             ),
             const VerticalGap(size: 30),
-      
+
             // Book Overview
             _getReviewsView(context),
             const VerticalGap(size: 30),
-      
+
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
+              padding:
+                  EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
               child: ReviewView(title: "write_a_review".tr),
             ),
             const VerticalGap(size: 30),
-      
+
             SimilarProduct(),
           ],
         ),
@@ -99,16 +107,19 @@ class DetailContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.orangeLight,
         boxShadow: [primaryBoxShadow()],
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(scaleRadius(20, context))),
+        borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(scaleRadius(20, context))),
       ),
       child: Column(
         children: [
           // Book Image
           ClipRRect(
             borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-            child: _productDetailController.productDetailData.value!.images!.isNotEmpty
+            child: _productDetailController
+                    .productDetailData.value!.images!.isNotEmpty
                 ? CachedNetworkImage(
-                    imageUrl: _productDetailController.productDetailData.value!.images!.first.src!,
+                    imageUrl: _productDetailController
+                        .productDetailData.value!.images!.first.src!,
                     height: scaleHeight(300, context),
                     width: scaleWidth(220, context),
                     fit: BoxFit.fill,
@@ -122,7 +133,8 @@ class DetailContainer extends StatelessWidget {
                     child: Center(
                       child: CustomText(
                         text: "no_image_preview_available".tr,
-                        textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
+                        textStyle: CustomTextStyle.textStyle10Bold(context,
+                            color: AppColors.black),
                       ),
                     ),
                   ),

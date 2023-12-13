@@ -73,6 +73,7 @@ class ShopController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name));
+    AppRouting.toNamed(NameRoutes.productDetailScreen,
+        argument: SharedData(productId: data.id, productName: data.name));
   }
 }

@@ -65,7 +65,6 @@ class AppAssets {
   static const String bookPng = "${pathPng}book.png";
   static const String icAdmin = "${pathPng}ic_admin.png";
 
-
   // Animation
   static String loadingAnimation = "${animation}loading.json";
 

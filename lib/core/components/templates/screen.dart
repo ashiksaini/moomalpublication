@@ -70,7 +70,7 @@ class Screen extends StatelessWidget {
                     onSuffixIconClick: onSuffixIconClick,
                     maxLine: 1,
                   ),
-          
+
                 // Screen
                 Expanded(
                   child: Container(

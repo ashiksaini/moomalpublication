@@ -29,7 +29,8 @@ class ReviewView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomText(text: title, textStyle: CustomTextStyle.textStyle20Bold(context)),
+          CustomText(
+              text: title, textStyle: CustomTextStyle.textStyle20Bold(context)),
           SvgPicture.asset(AppAssets.icForwardArrow),
         ],
       ),
