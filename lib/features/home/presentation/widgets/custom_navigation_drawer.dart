@@ -24,8 +24,13 @@ class CustomNavigationDrawer extends Drawer {
             height: scaleHeight(110, context),
             child: DrawerHeader(
               margin: EdgeInsets.zero,
-              padding: EdgeInsets.symmetric(horizontal: scaleWidth(10, context), vertical: scaleHeight(10, context)),
-              child: const CustomDrawerHeader(userImage: AppAssets.icImg, userName: "Ashik Saini", userPhNumber: "9982696197"),
+              padding: EdgeInsets.symmetric(
+                  horizontal: scaleWidth(10, context),
+                  vertical: scaleHeight(10, context)),
+              child: const CustomDrawerHeader(
+                  userImage: AppAssets.icImg,
+                  userName: "Ashik Saini",
+                  userPhNumber: "9982696197"),
             ),
           ),
 
@@ -36,7 +41,8 @@ class CustomNavigationDrawer extends Drawer {
               itemBuilder: (_, index) {
                 return Container(
                   margin: EdgeInsets.only(bottom: scaleHeight(30, context)),
-                  padding: EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
                   child: CustomDrawerItem(
                     drawerItem: _homeController.drawerItems[index],
                     onItemClick: (drawerItemType) {

@@ -46,7 +46,8 @@ class PairBuyBtn extends StatelessWidget {
               ),
               child: CustomText(
                 text: "add_to_cart".tr,
-                textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+                textStyle: CustomTextStyle.textStyle25Bold(context,
+                    color: AppColors.black),
               ),
             )
           ],
@@ -80,7 +81,8 @@ class PairBuyBtn extends StatelessWidget {
               ),
               child: CustomText(
                 text: "go_to_cart".tr,
-                textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+                textStyle: CustomTextStyle.textStyle25Bold(context,
+                    color: AppColors.black),
               ),
             )
           ],
@@ -114,7 +116,8 @@ class PairBuyBtn extends StatelessWidget {
               ),
               child: CustomText(
                 text: "buy_now".tr,
-                textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+                textStyle: CustomTextStyle.textStyle25Bold(context,
+                    color: AppColors.black),
               ),
             )
           ],

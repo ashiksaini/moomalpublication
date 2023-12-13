@@ -118,7 +118,7 @@ class CustomTextStyle {
         color: color,
       );
 
-      static TextStyle textStyle18Medium(
+  static TextStyle textStyle18Medium(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>

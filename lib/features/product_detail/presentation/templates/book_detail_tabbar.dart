@@ -14,7 +14,8 @@ class BookDetailTabBar extends StatefulWidget {
   _BookDetailTabBarState createState() => _BookDetailTabBarState();
 }
 
-class _BookDetailTabBarState extends State<BookDetailTabBar> with SingleTickerProviderStateMixin {
+class _BookDetailTabBarState extends State<BookDetailTabBar>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final TextEditingController colorController = TextEditingController();
 
@@ -59,18 +60,14 @@ class _BookDetailTabBarState extends State<BookDetailTabBar> with SingleTickerPr
               children: [
                 CustomText(
                   text: widget.description ?? "no_description_found".tr,
-                  textStyle: CustomTextStyle.textStyle20Bold(
-                    context,
-                    color: AppColors.black.withOpacity(0.75)
-                  ),
+                  textStyle: CustomTextStyle.textStyle20Bold(context,
+                      color: AppColors.black.withOpacity(0.75)),
                   textAlign: TextAlign.start,
                 ),
                 CustomText(
                   text: widget.information ?? "no_information_found",
-                  textStyle: CustomTextStyle.textStyle20Bold(
-                    context,
-                    color: AppColors.black.withOpacity(0.75)
-                  ),
+                  textStyle: CustomTextStyle.textStyle20Bold(context,
+                      color: AppColors.black.withOpacity(0.75)),
                   textAlign: TextAlign.start,
                 ),
               ],

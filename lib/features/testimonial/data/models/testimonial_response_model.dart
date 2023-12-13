@@ -13,11 +13,13 @@ class TestimonialResponseModel {
     this.spTestimonialClientDesignation,
   });
 
-  factory TestimonialResponseModel.fromJson(Map<String, dynamic> json) => TestimonialResponseModel(
+  factory TestimonialResponseModel.fromJson(Map<String, dynamic> json) =>
+      TestimonialResponseModel(
         id: json["ID"] as int?,
         postTitle: json["post_title"] as String?,
         postContent: json["post_content"] as String?,
         spTestimonialClientName: json["sp-testimonial-client-name"] as String?,
-        spTestimonialClientDesignation: json["sp-testimonial-client-designation"] as String?,
+        spTestimonialClientDesignation:
+            json["sp-testimonial-client-designation"] as String?,
       );
 }

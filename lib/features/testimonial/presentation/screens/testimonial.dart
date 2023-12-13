@@ -12,7 +12,8 @@ import 'package:moomalpublication/routes/routing.dart';
 class TestimonialScreen extends StatelessWidget {
   TestimonialScreen({super.key});
 
-  final TestimonialController _testimonialController = Get.put(TestimonialController());
+  final TestimonialController _testimonialController =
+      Get.put(TestimonialController());
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +37,16 @@ class TestimonialScreen extends StatelessWidget {
                           vertical: scaleHeight(10, context),
                           horizontal: scaleWidth(10, context),
                         ),
-                        child: (_testimonialController.testimonialResponse.value.isLoading)
+                        child: (_testimonialController
+                                .testimonialResponse.value.isLoading)
                             ? customProgressIndicator()
                             : GridView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemCount: _testimonialController.testimonials.length,
-                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                itemCount:
+                                    _testimonialController.testimonials.length,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
                                   childAspectRatio: 0.5,
                                   crossAxisSpacing: scaleWidth(10, context),
@@ -50,7 +54,9 @@ class TestimonialScreen extends StatelessWidget {
                                 ),
                                 itemBuilder: (_, index) {
                                   return StudentGridCard(
-                                    testimonialResponseModel: _testimonialController.testimonials[index],
+                                    testimonialResponseModel:
+                                        _testimonialController
+                                            .testimonials[index],
                                   );
                                 },
                               ),

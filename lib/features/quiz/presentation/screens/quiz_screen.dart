@@ -36,7 +36,6 @@ class _QuizScreenState extends State<QuizScreen>
               tabLength: 2,
               context: context,
             ),
-           
           ],
         ),
       ),
