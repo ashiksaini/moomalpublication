@@ -184,16 +184,17 @@ class CustomTextStyle {
         color: color,
       );
 
-  static textStyle30Bold(
-    BuildContext context, {
-    Color color = AppColors.grey,
-  }) =>
+  static textStyle30Bold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
       TextStyle(
-        fontSize: scaleWidth(30, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
+          fontSize: scaleWidth(30, context),
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
 
   /// Gupter Font
   static TextStyle textStyle18BoldGupter(
@@ -226,4 +227,15 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
+  static TextStyle textStyle18Regular(BuildContext context,
+          {Color color = AppColors.black,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.white}) =>
+      TextStyle(
+          fontSize: scaleWidth(18, context),
+          fontWeight: FontWeight.w400,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
 }
