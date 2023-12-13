@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
-import 'package:moomalpublication/features/quiz/presentation/template/current_affair_quiz_card.dart';
 
 class CustomTabBar extends StatefulWidget {
   final int tabLength;
@@ -46,41 +45,44 @@ class CustomTabBarState extends State<CustomTabBar> with SingleTickerProviderSta
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        TabBar(
-          unselectedLabelColor: widget.unselectedLabelColor,
-          labelColor: widget.labelColor,
-          dividerColor: widget.dividerColor,
-          labelStyle: widget.labelStyle,
-          unselectedLabelStyle: widget.unselectedLabelStyle,
-          indicatorColor: widget.indicatorColor,
-          tabs: const [
-            Tab(
-              text: 'Current affair Quiz',
-            ),
-            Tab(
-              text: 'Economics Quiz',
-            ),
-          ],
-          controller: _tabController,
-          indicatorSize: TabBarIndicatorSize.tab,
-        ),
-        Expanded(
-          child: TabBarView(
-            controller: _tabController,
-            children: [
-              ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (BuildContext context, int index) {
-                    return CurrentAffairQuizCard();
-                  }),
-              Text(""),
+    return Container(
+      height: 500,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TabBar(
+            unselectedLabelColor: widget.unselectedLabelColor,
+            labelColor: widget.labelColor,
+            dividerColor: widget.dividerColor,
+            labelStyle: widget.labelStyle,
+            unselectedLabelStyle: widget.unselectedLabelStyle,
+            indicatorColor: widget.indicatorColor,
+            tabs: const [
+              Tab(
+                text: 'Current affair Quiz',
+              ),
+              Tab(
+                text: 'Economics Quiz',
+              ),
             ],
+            controller: _tabController,
+            indicatorSize: TabBarIndicatorSize.tab,
           ),
-        ),
-      ],
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                // ListView.builder(
+                //     itemCount: 3,
+                //     itemBuilder: (BuildContext context, int index) {
+                //       return CurrentAffairQuizCard();
+                //     }),
+                Text(""),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
