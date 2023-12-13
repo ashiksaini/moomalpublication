@@ -10,11 +10,12 @@ class SettingCard extends StatelessWidget {
   final Color color;
   final Function? onCardTap;
 
-  const SettingCard(
-      {super.key,
-      required this.text,
-      this.color = AppColors.white,
-      this.onCardTap});
+  const SettingCard({
+    super.key,
+    required this.text,
+    this.color = AppColors.white,
+    this.onCardTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +25,21 @@ class SettingCard extends StatelessWidget {
           onCardTap!();
         }
       },
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: scaleWidth(20, context)),
-        child: ShadowContainer(
-            backgroundColor: color,
-            borderRadius: scaleWidth(10, context),
-            containerChild: Center(
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: scaleWidth(14, context)),
-                child: CustomText(
-                  text: text,
-                  textStyle: CustomTextStyle.textStyle22Bold(
-                    context,
-                  ),
-                ),
+      child: ShadowContainer(
+        backgroundColor: color,
+        borderRadius: scaleWidth(10, context),
+        containerChild: Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: scaleWidth(15, context)),
+            child: CustomText(
+              text: text,
+              textStyle: CustomTextStyle.textStyle22Bold(
+                context,
+                color: AppColors.black,
               ),
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }

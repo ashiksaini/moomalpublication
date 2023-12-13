@@ -22,14 +22,15 @@ class ShadowContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          border: Border.all(color: borderColor),
-          boxShadow: [primaryBoxShadow()],
-          borderRadius: BorderRadius.all(
-            Radius.circular(scaleRadius(borderRadius, context)),
-          ),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        border: Border.all(color: borderColor),
+        boxShadow: [primaryBoxShadow()],
+        borderRadius: BorderRadius.all(
+          Radius.circular(scaleRadius(borderRadius, context)),
         ),
-        child: containerChild);
+      ),
+      child: containerChild,
+    );
   }
 }

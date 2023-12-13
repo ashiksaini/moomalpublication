@@ -3,7 +3,6 @@ import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/product_detail/data/models/product_detail/product_detail_data.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_detail_request_data.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
@@ -21,7 +20,7 @@ class ProductDetailServices {
           consumerSecret: "cs_75485d6ac7accec31722bb8028b4be15e6bf86d4",
         ).toJson();
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get("${ApiPaths.productDetail}$productId", queryParameters: query);
-        final parsedResponse = ProductDetailData.fromJson(response.data as Map<String, dynamic>);
+        final parsedResponse = ProductItem.fromJson(response.data as Map<String, dynamic>);
         return ProductDetailResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());
