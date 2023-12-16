@@ -23,7 +23,9 @@ dependencies:
   dropdown_button2:
   flutter_rating_bar:
   url_launcher:
-  flutter_html: 
+  flutter_html:
+  payu_checkoutpro_flutter:
+  crypto:
 
 dev_dependencies:
   flutter_test:

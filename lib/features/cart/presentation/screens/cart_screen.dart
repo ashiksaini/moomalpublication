@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
+import 'package:moomalpublication/core/libs/payu_sdk/payu_checkout_pro.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -77,18 +78,26 @@ class CartScreen extends StatelessWidget {
             text: "₹${_cartController.totals.value?.totalPrice ?? ""}",
             textStyle: CustomTextStyle.textStyle25Bold(context),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(
-              vertical: scaleHeight(10, context),
-              horizontal: scaleWidth(24, context),
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.green,
-              borderRadius: BorderRadius.circular(scaleRadius(10, context)),
-            ),
-            child: CustomText(
-              text: 'place_order'.tr,
-              textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white),
+          GestureDetector(
+            onTap: () {
+              print("object");
+              final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
+              payUCheckoutPro.init();
+              payUCheckoutPro.pay();
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                vertical: scaleHeight(10, context),
+                horizontal: scaleWidth(24, context),
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.green,
+                borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+              ),
+              child: CustomText(
+                text: 'place_order'.tr,
+                textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white),
+              ),
             ),
           )
         ],
