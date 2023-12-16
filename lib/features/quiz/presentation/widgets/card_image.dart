@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class CardImage extends StatelessWidget {

@@ -16,7 +16,7 @@ class MoomalPublication extends StatelessWidget {
       translationsKeys: AppTranslation.translationKeys,
       title: "moomalpublication".tr,
       getPages: AppPages.pages,
-      initialRoute: NameRoutes.eventAndPressReleaseScreen,
+      initialRoute: NameRoutes.splashScreen,
     );
   }
 }

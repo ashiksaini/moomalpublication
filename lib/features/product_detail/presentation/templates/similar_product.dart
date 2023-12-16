@@ -15,7 +15,8 @@ import 'package:moomalpublication/routes/routing.dart';
 class SimilarProduct extends StatelessWidget {
   SimilarProduct({super.key});
 
-  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController =
+      Get.find<ProductDetailController>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +32,13 @@ class SimilarProduct extends StatelessWidget {
                 CustomText(
                   textAlign: TextAlign.left,
                   text: "similar_products".tr,
-                  textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+                  textStyle: CustomTextStyle.textStyle25Bold(context,
+                      color: AppColors.black),
                 ),
                 SvgPicture.asset(
                   AppAssets.icForwardArrow,
-                  colorFilter: const ColorFilter.mode(AppColors.black, BlendMode.srcIn),
+                  colorFilter:
+                      const ColorFilter.mode(AppColors.black, BlendMode.srcIn),
                 )
               ],
             ),
@@ -52,16 +55,21 @@ class SimilarProduct extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 12.0,
             mainAxisSpacing: 15.0,
-            childAspectRatio: _productDetailController.similarProductResponse.value.isLoading ? 0.58 : 0.5,
+            childAspectRatio:
+                _productDetailController.similarProductResponse.value.isLoading
+                    ? 0.58
+                    : 0.5,
           ),
           itemCount: 4,
           itemBuilder: (context, index) {
-            if (_productDetailController.similarProductResponse.value.isLoading) {
+            if (_productDetailController
+                .similarProductResponse.value.isLoading) {
               return const BookItemShimmerSkeleton();
             } else {
               return GestureDetector(
                 onTap: () {
-                  _productDetailController.onItemClick(index, _productDetailController.similarProducts[index]);
+                  _productDetailController.onItemClick(
+                      index, _productDetailController.similarProducts[index]);
                 },
                 child: CardBookItem(
                   item: _productDetailController.similarProducts[index],

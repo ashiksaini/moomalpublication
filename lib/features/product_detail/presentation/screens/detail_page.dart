@@ -9,7 +9,8 @@ import 'package:moomalpublication/features/product_detail/presentation/widgets/p
 import 'package:moomalpublication/routes/routing.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  final ProductDetailController _productDetailController = Get.put(ProductDetailController());
+  final ProductDetailController _productDetailController =
+      Get.put(ProductDetailController());
   ProductDetailScreen({super.key});
 
   @override

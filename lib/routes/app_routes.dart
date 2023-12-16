@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:moomalpublication/features/addresses/presentation/screen/address_screen.dart';
+import 'package:moomalpublication/features/address/presentation/screens/address_screen.dart';
 import 'package:moomalpublication/features/all%20categories/presentation/screens/all_categories.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
@@ -7,7 +7,7 @@ import 'package:moomalpublication/features/auth/presentation/screens/register_sc
 import 'package:moomalpublication/features/auth/presentation/screens/reset_password_on_success_screen.dart';
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/contact_us/presentation/screen/contact_us_screen.dart';
-import 'package:moomalpublication/features/downloads/presentation/screen/download_screen.dart';
+import 'package:moomalpublication/features/downloads/presentation/screens/download_screen.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/detail_event_page.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';

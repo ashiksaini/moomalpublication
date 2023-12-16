@@ -15,11 +15,19 @@ class TestomonialTemplates extends StatelessWidget {
         textAlign: TextAlign.center,
         text: TextSpan(
           children: <TextSpan>[
-            TextSpan(text: "our".tr, style: _getTextStyle(context, AppColors.black)),
-            TextSpan(text: "client".tr, style: _getTextStyle(context, AppColors.orange)),
-            TextSpan(text: "or".tr, style: _getTextStyle(context, AppColors.black)),
-            TextSpan(text: "student".tr, style: _getTextStyle(context, AppColors.orange)),
-            TextSpan(text: "testimonial".tr.toUpperCase(), style: _getTextStyle(context, AppColors.black)),
+            TextSpan(
+                text: "our".tr, style: _getTextStyle(context, AppColors.black)),
+            TextSpan(
+                text: "client".tr,
+                style: _getTextStyle(context, AppColors.orange)),
+            TextSpan(
+                text: "or".tr, style: _getTextStyle(context, AppColors.black)),
+            TextSpan(
+                text: "student".tr,
+                style: _getTextStyle(context, AppColors.orange)),
+            TextSpan(
+                text: "testimonial".tr.toUpperCase(),
+                style: _getTextStyle(context, AppColors.black)),
           ],
         ),
       ),

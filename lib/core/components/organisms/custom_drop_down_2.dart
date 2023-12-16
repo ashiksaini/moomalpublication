@@ -87,12 +87,15 @@ class CustomDropDown2<T> extends StatelessWidget {
                         ),
                         child: CustomText(
                           text: item.title.toString(),
-                          textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.grey),
+                          textStyle: CustomTextStyle.textStyle18Bold(context,
+                              color: AppColors.grey),
                           textAlign: TextAlign.start,
                           maxLines: 1,
                         ),
                       ),
-                      Divider(height: scaleHeight(2, context), thickness: scaleHeight(2, context)),
+                      Divider(
+                          height: scaleHeight(2, context),
+                          thickness: scaleHeight(2, context)),
                     ],
                   );
                 },
