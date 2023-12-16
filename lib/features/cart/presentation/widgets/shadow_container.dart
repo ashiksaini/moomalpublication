@@ -11,18 +11,21 @@ class ShadowContainer extends StatelessWidget {
     this.backgroundColor = AppColors.white,
     this.padding = EdgeInsets.zero,
     this.borderColor = AppColors.black,
+    this.linearGradient,
   });
 
   final double borderRadius;
   final Widget containerChild;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final EdgeInsets padding;
   final Color borderColor;
+  final LinearGradient? linearGradient;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        gradient: linearGradient,
         color: backgroundColor,
         border: Border.all(color: borderColor),
         boxShadow: [primaryBoxShadow()],

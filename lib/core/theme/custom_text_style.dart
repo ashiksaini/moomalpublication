@@ -129,16 +129,17 @@ class CustomTextStyle {
         color: color,
       );
 
-  static TextStyle textStyle20Bold(
-    BuildContext context, {
-    Color color = AppColors.grey,
-  }) =>
+  static TextStyle textStyle20Bold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
       TextStyle(
-        fontSize: scaleWidth(20, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
+          fontSize: scaleWidth(20, context),
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
 
   static TextStyle textStyle20SemiBold(
     BuildContext context, {
@@ -162,16 +163,17 @@ class CustomTextStyle {
         color: color,
       );
 
-  static TextStyle textStyle22Bold(
-    BuildContext context, {
-    Color color = AppColors.grey,
-  }) =>
+  static TextStyle textStyle22Bold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
       TextStyle(
-        fontSize: scaleWidth(22, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
+          fontSize: scaleWidth(22, context),
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
 
   static TextStyle textStyle25Bold(
     BuildContext context, {
@@ -238,4 +240,6 @@ class CustomTextStyle {
           color: color,
           decorationColor: decorationColor,
           decoration: decoration);
+
+  
 }
