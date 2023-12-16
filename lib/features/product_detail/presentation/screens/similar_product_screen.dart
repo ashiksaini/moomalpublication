@@ -13,7 +13,7 @@ class SimilarProductScreen extends StatelessWidget {
   SimilarProductScreen({super.key});
 
   final ProductDetailController _productDetailController =
-      Get.find<ProductDetailController>();
+      Get.put(ProductDetailController());
 
   @override
   Widget build(BuildContext context) {

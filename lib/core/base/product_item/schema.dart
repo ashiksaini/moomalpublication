@@ -12,9 +12,4 @@ class Schema {
             ?.map((e) => Graph.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
-
-  Map<String, dynamic> toFrom() => {
-        '@context': context,
-        '@graph': graph?.map((e) => e.toFrom()).toList(),
-      };
 }

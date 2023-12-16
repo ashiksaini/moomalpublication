@@ -1,5 +1,5 @@
 class Image {
-  int? id;
+  String? id;
   String? dateCreated;
   String? dateCreatedGmt;
   String? dateModified;
@@ -20,7 +20,7 @@ class Image {
   });
 
   factory Image.fromJson(Map<String, dynamic> json) => Image(
-        id: json['id'] as int?,
+        id: json['id']?.toString(),
         dateCreated: json['date_created'] as String?,
         dateCreatedGmt: json['date_created_gmt'] as String?,
         dateModified: json['date_modified'] as String?,
@@ -29,15 +29,4 @@ class Image {
         name: json['name'] as String?,
         alt: json['alt'] as String?,
       );
-
-  Map<String, dynamic> toFrom() => {
-        'id': id,
-        'date_created': dateCreated,
-        'date_created_gmt': dateCreatedGmt,
-        'date_modified': dateModified,
-        'date_modified_gmt': dateModifiedGmt,
-        'src': src,
-        'name': name,
-        'alt': alt,
-      };
 }

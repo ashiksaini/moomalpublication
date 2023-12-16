@@ -72,22 +72,4 @@ class Graph {
             ? null
             : Image.fromJson(json['image'] as Map<String, dynamic>),
       );
-
-  Map<String, dynamic> toFrom() => {
-        '@type': type,
-        '@id': id,
-        'url': url,
-        'name': name,
-        'isPartOf': isPartOf?.toFrom(),
-        'datePublished': datePublished,
-        'dateModified': dateModified,
-        'breadcrumb': breadcrumb?.toFrom(),
-        'inLanguage': inLanguage,
-        'potentialAction': potentialAction?.map((e) => e.toFrom()).toList(),
-        'itemListElement': itemListElement?.map((e) => e.toFrom()).toList(),
-        'description': description,
-        'publisher': publisher?.toFrom(),
-        'logo': logo?.toFrom(),
-        'image': image?.toFrom(),
-      };
 }
