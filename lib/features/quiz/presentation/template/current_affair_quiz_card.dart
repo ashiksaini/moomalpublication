@@ -25,9 +25,10 @@ class CurrentAffairQuizCard extends StatelessWidget {
               horizontal: scaleWidth(14, context)),
           child: Row(
             children: [
-              const CardImage(
+              CardImage(
                 image: AppAssets.bookPng,
                 borderColor: AppColors.blue,
+                height: scaleHeight(130, context),
               ),
               const HorizontalGap(size: 12),
               Flexible(

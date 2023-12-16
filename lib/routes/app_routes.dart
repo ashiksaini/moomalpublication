@@ -8,6 +8,7 @@ import 'package:moomalpublication/features/auth/presentation/screens/reset_passw
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/contact_us/presentation/screen/contact_us_screen.dart';
 import 'package:moomalpublication/features/downloads/presentation/screens/download_screen.dart';
+import 'package:moomalpublication/features/event_press_release/presentation/screen/detail_event_page.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
@@ -154,6 +155,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.overallResultScreen,
       page: () => OverallResultScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.detailEventScreen,
+      page: () => DetailedEventPage(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
