@@ -5,8 +5,6 @@ import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
 import 'package:moomalpublication/features/product_detail/data/services/product_detail_services.dart';
-import 'package:moomalpublication/routes/name_routes.dart';
-import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class ProductDetailController extends BaseController {
@@ -29,8 +27,13 @@ class ProductDetailController extends BaseController {
     super.onInit();
 
     _sharedData = Get.arguments as SharedData;
-    productName.value = _sharedData.productName ?? "";
-    productId = _sharedData.productId;
+
+    _getData();
+  }
+
+  void _getData({String? tempProductName, int? tempProductId}) {
+    productName.value = tempProductName ?? _sharedData.productName ?? "";
+    productId = tempProductId ?? _sharedData.productId;
 
     _getProductDetails();
     _getProductReviews();
@@ -71,6 +74,6 @@ class ProductDetailController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name));
+    _getData(tempProductName: data.name, tempProductId: data.id);
   }
 }

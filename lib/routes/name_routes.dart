@@ -23,4 +23,6 @@ class NameRoutes {
   static const String contactUsScreen = '/contactUsScreen';
   static const String testSeriesScreen = '/testSeriesScreen';
   static const String overallResultScreen = '/overallResultScreen';
+  static const String detailEventScreen = '/detailEventScreen';
+
 }
