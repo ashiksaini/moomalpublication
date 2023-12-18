@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/home/data/constants/drawer_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/drop_down_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
@@ -50,50 +52,17 @@ class HomeController extends BaseController {
   }
 
   void _initDrawerItemList() {
-    final downloadItem = DrawerItem(
-        icon: AppAssets.icDownload,
-        title: "downloads".tr,
-        drawerItemType: DrawerItemType.download);
-    final addressItem = DrawerItem(
-        icon: AppAssets.icAddress,
-        title: "addresses".tr,
-        drawerItemType: DrawerItemType.address);
-    final orderItem = DrawerItem(
-        icon: AppAssets.icOrder,
-        title: "orders".tr,
-        drawerItemType: DrawerItemType.orders);
-    final eventAndPressReleaseItem = DrawerItem(
-        icon: AppAssets.icEventAndPressRelease,
-        title: "event_and_press_release".tr,
-        drawerItemType: DrawerItemType.eventsAndPressRelease);
-    final testimonialItem = DrawerItem(
-        icon: AppAssets.icTestimonial,
-        title: "testimonial".tr,
-        drawerItemType: DrawerItemType.testimonial);
-    final quizItem = DrawerItem(
-        icon: AppAssets.icQuiz,
-        title: "quiz".tr,
-        drawerItemType: DrawerItemType.quiz);
-    final contactUsItem = DrawerItem(
-        icon: AppAssets.icContactUs,
-        title: "contact_us".tr,
-        drawerItemType: DrawerItemType.contactUs);
-    final settingItem = DrawerItem(
-        icon: AppAssets.icSettings,
-        title: "setting".tr,
-        drawerItemType: DrawerItemType.settings);
-    final onlineTestSeriesItem = DrawerItem(
-        icon: AppAssets.icReadingBook,
-        title: "online_test_series".tr,
-        drawerItemType: DrawerItemType.onlineTestSeries);
-    final overallResultItem = DrawerItem(
-        icon: AppAssets.icReport,
-        title: "overall_result".tr,
-        drawerItemType: DrawerItemType.overallResult);
-    final logoutItem = DrawerItem(
-        icon: AppAssets.icLogout,
-        title: "logout".tr,
-        drawerItemType: DrawerItemType.logout);
+    final downloadItem = DrawerItem(icon: AppAssets.icDownload, title: "downloads".tr, drawerItemType: DrawerItemType.download);
+    final addressItem = DrawerItem(icon: AppAssets.icAddress, title: "addresses".tr, drawerItemType: DrawerItemType.address);
+    final orderItem = DrawerItem(icon: AppAssets.icOrder, title: "orders".tr, drawerItemType: DrawerItemType.orders);
+    final eventAndPressReleaseItem = DrawerItem(icon: AppAssets.icEventAndPressRelease, title: "event_and_press_release".tr, drawerItemType: DrawerItemType.eventsAndPressRelease);
+    final testimonialItem = DrawerItem(icon: AppAssets.icTestimonial, title: "testimonial".tr, drawerItemType: DrawerItemType.testimonial);
+    final quizItem = DrawerItem(icon: AppAssets.icQuiz, title: "quiz".tr, drawerItemType: DrawerItemType.quiz);
+    final contactUsItem = DrawerItem(icon: AppAssets.icContactUs, title: "contact_us".tr, drawerItemType: DrawerItemType.contactUs);
+    final settingItem = DrawerItem(icon: AppAssets.icSettings, title: "setting".tr, drawerItemType: DrawerItemType.settings);
+    final onlineTestSeriesItem = DrawerItem(icon: AppAssets.icReadingBook, title: "online_test_series".tr, drawerItemType: DrawerItemType.onlineTestSeries);
+    final overallResultItem = DrawerItem(icon: AppAssets.icReport, title: "overall_result".tr, drawerItemType: DrawerItemType.overallResult);
+    final logoutItem = DrawerItem(icon: AppAssets.icLogout, title: "logout".tr, drawerItemType: DrawerItemType.logout);
 
     drawerItems.addAll([
       downloadItem,
@@ -111,10 +80,8 @@ class HomeController extends BaseController {
   }
 
   void _initExamsList() {
-    final allIndiaExam =
-        DropdownItem(title: "all_india_exam".tr, type: ExamType.allIndiaExam);
-    final rajasthanExam =
-        DropdownItem(title: "rajasthan_exam".tr, type: ExamType.rajasthanExam);
+    final allIndiaExam = DropdownItem(title: "all_india_exam".tr, type: ExamType.allIndiaExam);
+    final rajasthanExam = DropdownItem(title: "rajasthan_exam".tr, type: ExamType.rajasthanExam);
 
     exams.addAll([allIndiaExam, rajasthanExam]);
     selectedExam.value = exams.first;
@@ -122,10 +89,8 @@ class HomeController extends BaseController {
 
   void _initBookTypeList() {
     final gk = DropdownItem(title: "gk".tr, type: BookType.gk);
-    final currentGk =
-        DropdownItem(title: "current_gk".tr, type: BookType.currentGk);
-    final reetExam =
-        DropdownItem(title: "reet_exam".tr, type: BookType.reetExam);
+    final currentGk = DropdownItem(title: "current_gk".tr, type: BookType.currentGk);
+    final reetExam = DropdownItem(title: "reet_exam".tr, type: BookType.reetExam);
 
     books.addAll([gk, currentGk, reetExam]);
     selectedBook.value = books.first;
@@ -141,8 +106,7 @@ class HomeController extends BaseController {
 
   Future<void> _getExploreBooks() async {
     exploreProductResponse.value = ApiResponse.loading();
-    exploreProductResponse.value = await GetProductServices.getProducts(
-        query: _getQueryParams(perPage: 6));
+    exploreProductResponse.value = await GetProductServices.getProducts(query: _getQueryParams(perPage: 6));
 
     if (exploreProductResponse.value.data != null) {
       exploreProductList.addAll(exploreProductResponse.value.data ?? []);
@@ -153,8 +117,7 @@ class HomeController extends BaseController {
 
   Future<void> _getNewArrivalBooks() async {
     newArrivalProductResponse.value = ApiResponse.loading();
-    newArrivalProductResponse.value = await GetProductServices.getProducts(
-        query: _getQueryParams(perPage: 4, orderBy: "date", order: "desc"));
+    newArrivalProductResponse.value = await GetProductServices.getProducts(query: _getQueryParams(perPage: 4, orderBy: "date", order: "desc"));
 
     if (newArrivalProductResponse.value.data != null) {
       newArrivalProductList.addAll(newArrivalProductResponse.value.data ?? []);
@@ -165,9 +128,7 @@ class HomeController extends BaseController {
 
   Future<void> _getBestSellerBooks() async {
     bestSellerProductResponse.value = ApiResponse.loading();
-    bestSellerProductResponse.value = await GetProductServices.getProducts(
-        query:
-            _getQueryParams(perPage: 4, orderBy: "popularity", order: "desc"));
+    bestSellerProductResponse.value = await GetProductServices.getProducts(query: _getQueryParams(perPage: 4, orderBy: "popularity", order: "desc"));
 
     if (bestSellerProductResponse.value.data != null) {
       bestSellerProductList.addAll(bestSellerProductResponse.value.data ?? []);
@@ -176,8 +137,7 @@ class HomeController extends BaseController {
     }
   }
 
-  Map<String, dynamic> _getQueryParams(
-      {int? category, String? orderBy, String? order, int? perPage}) {
+  Map<String, dynamic> _getQueryParams({int? category, String? orderBy, String? order, int? perPage}) {
     return ProductRequestData(
       category: category,
       orderBy: orderBy,
@@ -187,8 +147,24 @@ class HomeController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen,
-        argument: SharedData(productId: data.id, productName: data.name));
+    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name));
+  }
+
+  Future<void> onCartBtnClick(ProductItem item) async {
+    switch (item.cartBtnType.value) {
+      case CartBtnType.addToCart:
+        {
+          final addToCartResponse = await CartServices.addToCart(id: item.id.toString(), quantity: item.quantity.toString());
+          if (addToCartResponse.data != null) {
+            item.cartBtnType.value = CartBtnType.goToCart;
+          }
+        }
+        break;
+
+      case CartBtnType.goToCart:
+        AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
+        break;
+    }
   }
 
   void onDrawerItemClick(DrawerItemType drawerItemType) {

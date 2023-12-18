@@ -68,6 +68,7 @@ class ShopScreen extends StatelessWidget {
                             },
                             child: CardBookItem(
                               item: _shopController.productList[index],
+                              onCartBtnClick: _shopController.onCartBtnClick,
                             ),
                           );
                         }

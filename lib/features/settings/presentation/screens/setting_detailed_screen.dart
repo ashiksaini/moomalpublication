@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -32,7 +32,7 @@ class SettingDetailedScreen extends StatelessWidget {
                     horizontal: scaleWidth(12, context),
                     vertical: scaleHeight(18, context),
                   ),
-                  // child: Html(data: description),
+                  child: Html(data: description),
                 ),
               ),
             ),

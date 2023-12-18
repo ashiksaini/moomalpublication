@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
+import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/product_detail/data/models/product_detail_request_data.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
@@ -17,7 +17,7 @@ class ProductDetailServices {
         .haveInternetConnection
         .value) {
       try {
-        final query = ProductDetailRequestData(
+        final query = KeyRequestData(
           consumerKey: "ck_7c962588077c2edb8d7f342c8ba15fec7e985277",
           consumerSecret: "cs_75485d6ac7accec31722bb8028b4be15e6bf86d4",
         ).toJson();
@@ -41,7 +41,7 @@ class ProductDetailServices {
         .haveInternetConnection
         .value) {
       try {
-        final query = ProductDetailRequestData(
+        final query = KeyRequestData(
           consumerKey: "ck_6fd70bd94149beb477a2a27cf3b55122e126865c",
           consumerSecret: "cs_96a34ed50cf847f554c5be76f57c148e7b6a3262",
         ).toJson();
@@ -69,7 +69,7 @@ class ProductDetailServices {
         .haveInternetConnection
         .value) {
       try {
-        final query = ProductDetailRequestData(
+        final query = KeyRequestData(
           consumerKey: "ck_84ab63d0ace9fb179e45f15af31dafd7cae7da68",
           consumerSecret: "cs_3756d329c7e7122e4f71f305f3fc0c70f216ed0a",
         ).toJson();
