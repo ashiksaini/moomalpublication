@@ -148,7 +148,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.testSeriesScreen,
-      page: () => const TestSeriesScreen(),
+      page: () => TestSeriesScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
