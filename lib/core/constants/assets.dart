@@ -59,6 +59,8 @@ class AppAssets {
   static const String icShopping = "${pathSvg}ic_shopping.svg";
   static const String icFlash = "${pathSvg}ic_flash.svg";
   static const String icArrowRight = "${pathSvg}ic_arrow_right.svg";
+  static const String icList = "${pathSvg}ic_list.svg";
+
 
   // Png
   static const String icLogo1 = "${pathPng}ic_logo_1.png";

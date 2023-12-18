@@ -13,6 +13,9 @@ class AppColors {
   static const Color yellowlighter = Color.fromRGBO(226, 165, 8, 1);
 
   static const Color orange = Color(0xFFE67817);
+  
+
+
   static const Color orangeSkin = Color(0xFFFFE1C6);
 
   static const Color red = Color(0xFFEB5757);
@@ -37,6 +40,8 @@ class AppColors {
   static const Color greenDarker = Color(0xFF249782);
   static const Color pinkDark = Color.fromRGBO(189, 8, 28, 0.52);
   static const Color pinkLighter = Color(0xFFF5D0D9);
+  static const Color skinDark = Color.fromRGBO(230, 120, 23, 0.87);
+
 
 
 
