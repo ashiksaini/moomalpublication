@@ -8,8 +8,8 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/text_fields.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
+class SearchProductScreen extends StatelessWidget {
+  const SearchProductScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,7 @@ class SearchScreen extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
+                  padding: EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
                   child: customTextFormField(
                     context,
                     TextEditingController(),
@@ -67,8 +66,7 @@ class SearchScreen extends StatelessWidget {
           const VerticalGap(size: 67),
           CustomText(
             text: "Search in Moomal Publication",
-            textStyle: CustomTextStyle.textStyle20Bold(context,
-                color: AppColors.black),
+            textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
           ),
           const VerticalGap(size: 10),
           CustomText(

@@ -1,5 +1,5 @@
-class SearchProductServices {
-  SearchProductServices._();
+class SearchTestServices {
+  SearchTestServices._();
 
   // Fu
 }
