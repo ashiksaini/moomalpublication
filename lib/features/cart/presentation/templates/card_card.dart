@@ -107,7 +107,8 @@ class CartCard extends StatelessWidget {
                 },
               )
             : Container(
-                width: screenWidth(context),
+                height: scaleHeight(130, context),
+                width: scaleWidth(100, context),
                 color: AppColors.greyLight,
                 child: Center(
                   child: CustomText(

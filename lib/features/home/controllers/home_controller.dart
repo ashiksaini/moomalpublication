@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/home/data/constants/drawer_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/drop_down_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
@@ -146,6 +148,23 @@ class HomeController extends BaseController {
 
   void onItemClick(int index, ProductItem data) {
     AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name));
+  }
+
+  Future<void> onCartBtnClick(ProductItem item) async {
+    switch (item.cartBtnType.value) {
+      case CartBtnType.addToCart:
+        {
+          final addToCartResponse = await CartServices.addToCart(id: item.id.toString(), quantity: item.quantity.toString());
+          if (addToCartResponse.data != null) {
+            item.cartBtnType.value = CartBtnType.goToCart;
+          }
+        }
+        break;
+
+      case CartBtnType.goToCart:
+        AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
+        break;
+    }
   }
 
   void onDrawerItemClick(DrawerItemType drawerItemType) {

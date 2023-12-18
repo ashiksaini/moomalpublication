@@ -76,7 +76,7 @@ class DashboardBooksView extends StatelessWidget {
             onTap: () {
               _homeController.onItemClick(index, data[index]);
             },
-            child: CardBookItem(item: data[index]),
+            child: CardBookItem(item: data[index], onCartBtnClick: _homeController.onCartBtnClick,),
           );
         }
       },

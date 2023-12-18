@@ -1,10 +1,14 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
+import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
 import 'package:moomalpublication/features/product_detail/data/services/product_detail_services.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class ProductDetailController extends BaseController {
@@ -75,5 +79,22 @@ class ProductDetailController extends BaseController {
 
   void onItemClick(int index, ProductItem data) {
     _getData(tempProductName: data.name, tempProductId: data.id);
+  }
+
+  Future<void> onCartBtnClick(ProductItem item) async {
+    switch (item.cartBtnType.value) {
+      case CartBtnType.addToCart:
+        {
+          final addToCartResponse = await CartServices.addToCart(id: item.id.toString(), quantity: item.quantity.toString());
+          if (addToCartResponse.data != null) {
+            item.cartBtnType.value = CartBtnType.goToCart;
+          }
+        }
+        break;
+
+      case CartBtnType.goToCart:
+        AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
+        break;
+    }
   }
 }

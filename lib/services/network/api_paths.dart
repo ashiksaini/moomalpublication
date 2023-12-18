@@ -11,4 +11,5 @@ class ApiPaths {
   static const String productRelated = 'moomal/v2/related-products/';
   static const String testimonial = 'testimonial/v1/testimonials/';
   static const String cartData = 'wc/store/cart';
+  static const String addToCart = 'wc/store/cart/add-item';
 }
