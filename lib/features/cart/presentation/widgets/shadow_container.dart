@@ -4,12 +4,12 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class ShadowContainer extends StatelessWidget {
-   final double? borderRadius;
+  final double? borderRadius;
   final Widget containerChild;
   final Color? backgroundColor;
   final EdgeInsets padding;
   final EdgeInsets margin;
-  final Color borderColor;
+  final Color? borderColor;
   final LinearGradient? linearGradient;
 
   const ShadowContainer({
@@ -19,7 +19,7 @@ class ShadowContainer extends StatelessWidget {
     this.backgroundColor = AppColors.white,
     this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
-    this.borderColor = AppColors.grey,
+    this.borderColor,
     this.linearGradient,
   });
 
@@ -32,7 +32,9 @@ class ShadowContainer extends StatelessWidget {
         gradient: linearGradient,
         color: backgroundColor,
         boxShadow: [primaryBoxShadow()],
-        borderRadius: BorderRadius.all(Radius.circular(scaleRadius(borderRadius ?? scaleRadius(20, context), context))),
+        borderRadius: BorderRadius.all(Radius.circular(
+          scaleRadius(borderRadius ?? scaleRadius(20, context), context),
+        )),
       ),
       child: containerChild,
     );

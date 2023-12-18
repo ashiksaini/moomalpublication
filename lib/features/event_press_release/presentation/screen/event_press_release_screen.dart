@@ -87,7 +87,8 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                                 child: ListView.builder(
                                   physics: const BouncingScrollPhysics(),
                                   itemCount: 3,
-                                  itemBuilder: (BuildContext context, int index) {
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
                                     return const PressEvent();
                                   },
                                 ),
@@ -97,9 +98,12 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                           ),
                         ),
                       ],
+                      
                     ),
                   ),
+
                 ),
+             
               ],
             ),
           ],

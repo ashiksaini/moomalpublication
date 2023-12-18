@@ -240,6 +240,4 @@ class CustomTextStyle {
           color: color,
           decorationColor: decorationColor,
           decoration: decoration);
-
-  
 }
