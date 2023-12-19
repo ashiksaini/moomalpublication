@@ -54,20 +54,4 @@ class YoastHeadJson {
             ? null
             : Schema.fromJson(json['schema'] as Map<String, dynamic>),
       );
-
-  Map<String, dynamic> toFrom() => {
-        'title': title,
-        'robots': robots?.toFrom(),
-        'canonical': canonical,
-        'og_locale': ogLocale,
-        'og_type': ogType,
-        'og_title': ogTitle,
-        'og_description': ogDescription,
-        'og_url': ogUrl,
-        'og_site_name': ogSiteName,
-        'article_modified_time': articleModifiedTime,
-        'og_image': ogImage?.map((e) => e.toFrom()).toList(),
-        'twitter_card': twitterCard,
-        'schema': schema?.toFrom(),
-      };
 }

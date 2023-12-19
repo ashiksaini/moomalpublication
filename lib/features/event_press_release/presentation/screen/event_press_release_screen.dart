@@ -15,12 +15,10 @@ class EventAndPressReleaseScreen extends StatefulWidget {
   const EventAndPressReleaseScreen({super.key});
 
   @override
-  State<EventAndPressReleaseScreen> createState() =>
-      _EventAndPressReleaseScreenState();
+  State<EventAndPressReleaseScreen> createState() => _EventAndPressReleaseScreenState();
 }
 
-class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
-    with SingleTickerProviderStateMixin {
+class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   @override
   void initState() {
@@ -32,77 +30,61 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            Column(
-              children: [
-                CustomAppbar(
-                  title: "Event And Press Release",
-                  prefixIcon: AppAssets.icBackArrow,
-                  onPrefixIconClick: () => AppRouting.navigateBack(),
-                  maxLine: 1,
+            CustomAppbar(
+              title: "Event And Press Release",
+              prefixIcon: AppAssets.icBackArrow,
+              onPrefixIconClick: () => AppRouting.navigateBack(),
+              maxLine: 1,
+            ),
+            HorizontalGap(size: 20),
+            Container(height: 200, child: YearList()),
+            TabBar(
+              unselectedLabelColor: AppColors.grey,
+              labelColor: AppColors.orange,
+              dividerColor: AppColors.grey,
+              labelStyle: CustomTextStyle.textStyle20Bold(context),
+              unselectedLabelStyle: CustomTextStyle.textStyle20Bold(context),
+              indicatorColor: AppColors.orange,
+              tabs: const [
+                Tab(
+                  text: 'Events',
                 ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        HorizontalGap(size: 20),
-                        Container(
-                            height: 200, child: Expanded(child: YearList())),
-                        HorizontalGap(size: 20),
-                        TabBar(
-                          unselectedLabelColor: AppColors.grey,
-                          labelColor: AppColors.orange,
-                          dividerColor: AppColors.grey,
-                          labelStyle: CustomTextStyle.textStyle20Bold(context),
-                          unselectedLabelStyle:
-                              CustomTextStyle.textStyle20Bold(context),
-                          indicatorColor: AppColors.orange,
-                          tabs: const [
-                            Tab(
-                              text: 'Events',
-                            ),
-                            Tab(
-                              text: 'Press Release',
-                            ),
-                            Tab(
-                              text: 'Media Coverage',
-                            ),
-                          ],
-                          controller: _tabController,
-                          indicatorSize: TabBarIndicatorSize.tab,
-                        ),
-                        Expanded(
-                          child: TabBarView(
-                            controller: _tabController,
-                            children: [
-                              ListView.builder(
-                                itemCount: 3,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return EventAndPressCard(index: index);
-                                },
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: scaleHeight(10, context)),
-                                child: ListView.builder(
-                                  physics: const BouncingScrollPhysics(),
-                                  itemCount: 3,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return const PressEvent();
-                                  },
-                                ),
-                              ),
-                              const MediaCoverage(),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                Tab(
+                  text: 'Press Release',
+                ),
+                Tab(
+                  text: 'Media Coverage',
                 ),
               ],
+              controller: _tabController,
+              indicatorSize: TabBarIndicatorSize.tab,
+            ),
+            HorizontalGap(size: 20),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  ListView.builder(
+                    itemCount: 3,
+                    itemBuilder: (BuildContext context, int index) {
+                      return EventAndPressCard(index: index);
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: 3,
+                      itemBuilder: (BuildContext context, int index) {
+                        return const PressEvent();
+                      },
+                    ),
+                  ),
+                  const MediaCoverage(),
+                ],
+              ),
             ),
           ],
         ),

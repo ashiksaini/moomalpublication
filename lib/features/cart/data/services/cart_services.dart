@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
+import 'package:moomalpublication/api_keys.dart';
+import 'package:moomalpublication/core/base/add_to_cart_request_data.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
@@ -14,13 +16,36 @@ class CartServices {
   static Future<CartDataResponse> getCartProducts({Map<String, dynamic>? query}) async {
     if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
-        
         final query = KeyRequestData(
-          consumerKey: "ck_b8e432c0102bbf03a621c411c4368015e5085a2e",
-          consumerSecret: "cs_e85ca09949a7f17b1945c90c3ded33ab1435ca92",
+          consumerKey: ApiKeys.getCartProductsConsumerKey,
+          consumerSecret: ApiKeys.getCartProductsConsumerSecret,
         ).toJson();
 
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.cartData, queryParameters: query);
+        final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
+
+        return CartDataResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showSnackBar(error.message.toString());
+        return CartDataResponse();
+      }
+    } else {
+      showSnackBar("no_internet_access".tr);
+      return CartDataResponse();
+    }
+  }
+
+  static Future<CartDataResponse> addToCart({String? id, String? quantity}) async {
+    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+      try {
+        final query = KeyRequestData(
+          consumerKey: ApiKeys.addToCartConsumerKey,
+          consumerSecret: ApiKeys.addToCartConsumerSecret,
+        ).toJson();
+
+        final data = AddToCartReqData(id: id, quantity: quantity).toJson();
+
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.addToCart, data: data, queryParameters: query);
         final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
 
         return CartDataResponse.success(parsedResponse);

@@ -13,38 +13,43 @@ import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class CardBookItem extends StatelessWidget {
+  final Function onCartBtnClick;
   final ProductItem item;
 
-  const CardBookItem({super.key, required this.item});
+  const CardBookItem({
+    super.key,
+    required this.item,
+    required this.onCartBtnClick,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
-        border: Border.all(color: AppColors.grey),
-        boxShadow: [primaryBoxShadow()],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Image
-          _getImage(context),
+    return Obx(() {
+      return Container(
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+          border: Border.all(color: AppColors.grey),
+          boxShadow: [primaryBoxShadow()],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Image
+            _getImage(context),
 
-          // Details
-          _getBookDetails(context)
-        ],
-      ),
-    );
+            // Details
+            _getBookDetails(context)
+          ],
+        ),
+      );
+    });
   }
 
   Widget _getImage(BuildContext context) {
     return Container(
       height: scaleHeight(195, context),
-      margin: EdgeInsets.symmetric(
-          horizontal: scaleWidth(5, context),
-          vertical: scaleHeight(5, context)),
+      margin: EdgeInsets.symmetric(horizontal: scaleWidth(5, context), vertical: scaleHeight(5, context)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(scaleRadius(15, context)),
         child: (item.images != null && item.images!.isNotEmpty)
@@ -61,8 +66,7 @@ class CardBookItem extends StatelessWidget {
                 child: Center(
                   child: CustomText(
                     text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context,
-                        color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
                   ),
                 ),
               ),
@@ -100,7 +104,13 @@ class CardBookItem extends StatelessWidget {
             //Add to cart Btn
             Padding(
               padding: EdgeInsets.symmetric(horizontal: scaleWidth(5, context)),
-              child: BtnAddToCart(),
+              child: BtnAddToCart(
+                cartBtnType: item.cartBtnType.value,
+                onClick: () {
+                  item.quantity++;
+                  onCartBtnClick(item);
+                },
+              ),
             ),
           ],
         ),

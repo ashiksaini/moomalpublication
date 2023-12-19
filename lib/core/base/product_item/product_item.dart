@@ -1,3 +1,6 @@
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
+
 import 'attribute.dart';
 import 'category.dart';
 import 'dimensions.dart';
@@ -77,6 +80,8 @@ class ProductItem {
   String? yoastHead;
   YoastHeadJson? yoastHeadJson;
   Links? links;
+  Rx<CartBtnType> cartBtnType = Rx(CartBtnType.addToCart);
+  int quantity = 0;
 
   ProductItem({
     this.id,
@@ -206,13 +211,9 @@ class ProductItem {
         // crossSellIds: json['cross_sell_ids'] as List<dynamic>?,
         parentId: json['parent_id'] as int?,
         purchaseNote: json['purchase_note'] as String?,
-        categories: (json['categories'] as List<dynamic>?)
-            ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        categories: (json['categories'] as List<dynamic>?)?.map((e) => Category.fromJson(e as Map<String, dynamic>)).toList(),
         // tags: json['tags'] as List<dynamic>?,
-        images: (json['images'] as List<dynamic>?)
-            ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        images: (json['images'] as List<dynamic>?)?.map((e) => Image.fromJson(e as Map<String, dynamic>)).toList(),
         // attributes: (json['attributes'] as List<dynamic>?)?.map((e) => Attribute.fromJson(e as Map<String, dynamic>)).toList(),
         // defaultAttributes: json['default_attributes'] as List<dynamic>?,
         // variations: json['variations'] as List<int>?,
@@ -227,77 +228,4 @@ class ProductItem {
         // yoastHeadJson: json['yoast_head_json'] == null ? null : YoastHeadJson.fromJson(json['yoast_head_json'] as Map<String, dynamic>),
         // links: json['_links'] == null ? null : Links.fromJson(json['_links'] as Map<String, dynamic>),
       );
-
-  Map<String, dynamic> toFrom() => {
-        'id': id,
-        'name': name,
-        'slug': slug,
-        'permalink': permalink,
-        'date_created': dateCreated,
-        'date_created_gmt': dateCreatedGmt,
-        'date_modified': dateModified,
-        'date_modified_gmt': dateModifiedGmt,
-        'type': type,
-        'status': status,
-        'featured': featured,
-        'catalog_visibility': catalogVisibility,
-        'description': description,
-        'short_description': shortDescription,
-        'sku': sku,
-        'price': price,
-        'regular_price': regularPrice,
-        'sale_price': salePrice,
-        'date_on_sale_from': dateOnSaleFrom,
-        'date_on_sale_from_gmt': dateOnSaleFromGmt,
-        'date_on_sale_to': dateOnSaleTo,
-        'date_on_sale_to_gmt': dateOnSaleToGmt,
-        'on_sale': onSale,
-        'purchasable': purchasable,
-        'total_sales': totalSales,
-        'virtual': virtual,
-        'downloadable': downloadable,
-        'downloads': downloads,
-        'download_limit': downloadLimit,
-        'download_expiry': downloadExpiry,
-        'external_url': externalUrl,
-        'button_text': buttonText,
-        'tax_status': taxStatus,
-        'tax_class': taxClass,
-        'manage_stock': manageStock,
-        'stock_quantity': stockQuantity,
-        'backorders': backorders,
-        'backorders_allowed': backordersAllowed,
-        'backordered': backordered,
-        'low_stock_amount': lowStockAmount,
-        'sold_individually': soldIndividually,
-        'weight': weight,
-        'dimensions': dimensions?.toFrom(),
-        'shipping_required': shippingRequired,
-        'shipping_taxable': shippingTaxable,
-        'shipping_class': shippingClass,
-        'shipping_class_id': shippingClassId,
-        'reviews_allowed': reviewsAllowed,
-        'average_rating': averageRating,
-        'rating_count': ratingCount,
-        'upsell_ids': upsellIds,
-        'cross_sell_ids': crossSellIds,
-        'parent_id': parentId,
-        'purchase_note': purchaseNote,
-        'categories': categories?.map((e) => e.toFrom()).toList(),
-        'tags': tags,
-        'images': images?.map((e) => e.toFrom()).toList(),
-        'attributes': attributes?.map((e) => e.toFrom()).toList(),
-        'default_attributes': defaultAttributes,
-        'variations': variations,
-        'grouped_products': groupedProducts,
-        'menu_order': menuOrder,
-        'price_html': priceHtml,
-        'related_ids': relatedIds,
-        'meta_data': metaData?.map((e) => e.toFrom()).toList(),
-        'stock_status': stockStatus,
-        'has_options': hasOptions,
-        'yoast_head': yoastHead,
-        'yoast_head_json': yoastHeadJson?.toFrom(),
-        '_links': links?.toFrom(),
-      };
 }
