@@ -47,7 +47,8 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                     child: Column(
                       children: [
                         HorizontalGap(size: 20),
-                        Container(height: 200, child: YearList()),
+                        Container(
+                            height: 200, child: Expanded(child: YearList())),
                         HorizontalGap(size: 20),
                         TabBar(
                           unselectedLabelColor: AppColors.grey,
@@ -98,12 +99,9 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                           ),
                         ),
                       ],
-                      
                     ),
                   ),
-
                 ),
-             
               ],
             ),
           ],

@@ -9,27 +9,56 @@ class YearList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return Container(
-            decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.all(Radius.circular(scaleRadius(10, context))),
-                color: AppColors.orangeLighter.withOpacity(0.9)),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: scaleWidth(18, context),
-                vertical: scaleWidth(6, context),
-              ),
-              child: CustomText(
-                  text: "2016",
-                  textStyle: CustomTextStyle.textStyle20Bold(context,
-                      color: AppColors.black)),
-            ),
-          );
-        });
+    return Row(
+      children: [
+        yearContainer(context: context, yearText: "2016"),
+        yearContainer(context: context, yearText: "2018"),
+        yearContainer(context: context, yearText: "2019"),
+        yearContainer(context: context, yearText: "2021"),
+      ],
+    );
   }
 }
+
+Widget yearContainer(
+    {required BuildContext context, required String yearText}) {
+  return Container(
+    decoration: BoxDecoration(
+        borderRadius:
+            BorderRadius.all(Radius.circular(scaleRadius(10, context))),
+        color: AppColors.orangeLighter.withOpacity(0.9)),
+    child: Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: scaleWidth(18, context),
+        vertical: scaleWidth(6, context),
+      ),
+      child: CustomText(
+          text: yearText,
+          textStyle:
+              CustomTextStyle.textStyle20Bold(context, color: AppColors.black)),
+    ),
+  );
+}
+
+// ListView.builder(
+//         shrinkWrap: true,
+//         scrollDirection: Axis.horizontal,
+//         itemCount: 5,
+//         itemBuilder: (context, index) {
+//           return Container(
+//             decoration: BoxDecoration(
+//                 borderRadius:
+//                     BorderRadius.all(Radius.circular(scaleRadius(10, context))),
+//                 color: AppColors.orangeLighter.withOpacity(0.9)),
+//             child: Padding(
+//               padding: EdgeInsets.symmetric(
+//                 horizontal: scaleWidth(18, context),
+//                 vertical: scaleWidth(6, context),
+//               ),
+//               child: CustomText(
+//                   text: "2016",
+//                   textStyle: CustomTextStyle.textStyle20Bold(context,
+//                       color: AppColors.black)),
+//             ),
+//           );
+//         });
