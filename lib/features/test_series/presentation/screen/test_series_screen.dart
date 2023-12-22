@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
+import 'package:moomalpublication/core/components/organisms/custom_drop_down_2.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/core/utils/horizontal_space.dart';
-import 'package:moomalpublication/features/test_series/presentation/template/drop_down_menu.dart';
-import 'package:moomalpublication/features/test_series/presentation/template/list_card.dart';
+import 'package:moomalpublication/features/test_series/controller/test_series_controller.dart';
 import 'package:moomalpublication/features/test_series/presentation/template/tab_list.dart';
 import 'package:moomalpublication/features/test_series/presentation/widgets/list_grid_row.dart';
-import 'package:moomalpublication/features/test_series/presentation/widgets/marks_row.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class TestSeriesScreen extends StatefulWidget {
@@ -23,6 +20,8 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final TextEditingController colorController = TextEditingController();
+  final TestSeriesController _testSeriesController =
+      Get.put(TestSeriesController());
 
   @override
   void initState() {
@@ -51,18 +50,29 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
               maxLine: 1,
             ),
             Padding(
-              padding: EdgeInsets.only(top: scaleHeight(14, context)),
-              child: const Row(
+              padding: EdgeInsets.only(
+                  top: scaleHeight(14, context),
+                  left: scaleWidth(10, context),
+                  right: scaleWidth(10, context)),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  DropdownMenuExample(
-                    itemList: ['a', 'b', 'c'],
-                    dropDownText: 'All Mock Test',
+                  CustomDropDown2(
+                    borderRadius: 10,
+                    borderColor: AppColors.orange,
+                    items: _testSeriesController.mockTestCategory,
+                    selectedItem:
+                        _testSeriesController.selectedMockTestCategory,
+                    width: screenWidth(context) - scaleWidth(200, context),
                   ),
-                  DropdownMenuExample(
-                    itemList: ['a', 'c', 'd'],
-                    dropDownText: 'Topic Wise Test',
-                  )
+                  CustomDropDown2(
+                    borderRadius: 10,
+                    borderColor: AppColors.orange,
+                    items: _testSeriesController.topicWiseCategory,
+                    selectedItem:
+                        _testSeriesController.selectedTopicWiseCategory,
+                    width: screenWidth(context) - scaleWidth(200, context),
+                  ),
                 ],
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/event_press_release/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/event_press_release/data/models/event_response_model.dart';
+import 'package:moomalpublication/features/event_press_release/data/models/year_model.dart';
 import 'package:moomalpublication/features/event_press_release/data/services/event_service.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -13,10 +14,9 @@ class EventPressController extends BaseController {
   final Rx<EventsResponse> eventResponse = Rx(EventsResponse());
 
   final List<EventsResponseModel> events = [];
+  RxList<Year> yearListData = RxList();
 
-  List<String> years = ["2016", "2017", "2018", "2019"];
   int intialYear = 0;
-  RxList<Map<String, dynamic>> yearList = RxList();
 
   @override
   void onInit() {
@@ -33,8 +33,8 @@ class EventPressController extends BaseController {
 
   Future<void> _getEvents() async {
     eventResponse.value = ApiResponse.loading();
-    eventResponse.value =
-        await EventService.getEvents(query: {'year': years[intialYear]});
+    eventResponse.value = await EventService.getEvents(
+        query: {'year': yearListData[intialYear].year});
 
     if (eventResponse.value.data != null) {
       events.clear();
@@ -45,23 +45,26 @@ class EventPressController extends BaseController {
   }
 
   void generateYearList() {
-    yearList = RxList.generate(
-      years.length,
-      (index) => {'year': years[index], 'hasEvent': false},
-    );
-    yearList[intialYear]["hasEvent"] = !yearList[intialYear]["hasEvent"];
-    onYearClick(currentYear: 0);
+    yearListData.value = [
+      Year(index: 0, year: 2016, clicked: false),
+      Year(index: 1, year: 2017, clicked: false),
+      Year(index: 2, year: 2018, clicked: false),
+      Year(index: 3, year: 2019, clicked: false),
+    ];
+    if (yearListData.isNotEmpty) {
+      intialYear = yearListData[0].index!;
+      yearListData[0].clicked = true;
+    }
   }
 
   void onYearClick({required int currentYear}) {
     if (intialYear != currentYear) {
-      yearList[currentYear]["hasEvent"] = !yearList[currentYear]["hasEvent"];
-      yearList[intialYear]["hasEvent"] = !yearList[intialYear]["hasEvent"];
+      yearListData[currentYear].clicked = !yearListData[currentYear].clicked!;
+    yearListData[intialYear].clicked = !yearListData[intialYear].clicked!;
       intialYear = currentYear;
       _getEvents();
-      yearList.refresh();
+      yearListData.refresh();
     }
   }
 }
-
 

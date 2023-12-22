@@ -20,14 +20,17 @@ class CustomDropDown2<T> extends StatelessWidget {
   final Rx<DropdownItem<T>?> selectedItem;
   final Color color;
   final double? width;
+  final Color borderColor;
+  final double borderRadius;
 
-  const CustomDropDown2({
-    super.key,
-    required this.items,
-    required this.selectedItem,
-    this.color = AppColors.white,
-    this.width,
-  });
+  const CustomDropDown2(
+      {super.key,
+      required this.items,
+      required this.selectedItem,
+      this.color = AppColors.white,
+      this.width,
+      this.borderColor = AppColors.grey,
+      this.borderRadius = 10});
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +41,9 @@ class CustomDropDown2<T> extends StatelessWidget {
             width: width ?? screenWidth(context) / 2.6,
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.circular(scaleRadius(10, context)),
-              border: Border.all(color: AppColors.grey),
+              borderRadius:
+                  BorderRadius.circular(scaleRadius(borderRadius, context)),
+              border: Border.all(color: borderColor),
             ),
             padding: EdgeInsets.symmetric(
               horizontal: scaleWidth(10, context),
@@ -51,7 +55,8 @@ class CustomDropDown2<T> extends StatelessWidget {
                 Expanded(
                   child: CustomText(
                     text: selectedItem.value!.title,
-                    textStyle: CustomTextStyle.textStyle18Bold(context),
+                    textStyle: CustomTextStyle.textStyle18Bold(context,
+                        color: borderColor),
                     textAlign: TextAlign.start,
                     maxLines: 1,
                   ),
@@ -61,6 +66,7 @@ class CustomDropDown2<T> extends StatelessWidget {
                 // DD Icon
                 SvgPicture.asset(
                   AppAssets.icDropDown,
+                  colorFilter: ColorFilter.mode(borderColor, BlendMode.srcIn),
                   height: scaleHeight(20, context),
                   width: scaleWidth(20, context),
                 ),
@@ -117,9 +123,7 @@ class CustomDropDown2<T> extends StatelessWidget {
               boxShadow: [primaryBoxShadow()],
             ),
           ),
-          menuItemStyleData: const MenuItemStyleData(
-            padding: EdgeInsets.zero,
-          ),
+          menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
         ),
       );
     });

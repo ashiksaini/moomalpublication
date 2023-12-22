@@ -13,6 +13,7 @@ class CustomAppbar extends StatelessWidget {
   final Function? onPrefixIconClick;
   final Function? onSuffixIconClick;
   final int? maxLine;
+  final TextAlign? textAlign;
 
   const CustomAppbar(
       {super.key,
@@ -21,7 +22,8 @@ class CustomAppbar extends StatelessWidget {
       this.suffixIcon,
       this.onPrefixIconClick,
       this.onSuffixIconClick,
-      this.maxLine});
+      this.maxLine,
+      this.textAlign = TextAlign.start});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class CustomAppbar extends StatelessWidget {
               maxLines: maxLine,
               textStyle: CustomTextStyle.textStyle25Bold(context,
                   color: AppColors.white),
-              textAlign: TextAlign.start,
+              textAlign: textAlign,
             ),
           ),
           if (suffixIcon != null)

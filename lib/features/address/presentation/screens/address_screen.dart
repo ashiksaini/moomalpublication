@@ -7,6 +7,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class AddressScreen extends StatelessWidget {
   const AddressScreen({super.key});
@@ -17,10 +18,11 @@ class AddressScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const CustomAppbar(
+            CustomAppbar(
               title: "Addresses",
               maxLine: 1,
               prefixIcon: AppAssets.icBackArrow,
+              onPrefixIconClick: () => AppRouting.navigateBack(),
             ),
             Expanded(
               child: SingleChildScrollView(

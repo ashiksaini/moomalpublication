@@ -12,7 +12,6 @@ import 'package:moomalpublication/features/event_press_release/presentation/scre
 import 'package:moomalpublication/features/event_press_release/presentation/screen/press_event.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/template/event_press_template.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/template/year_list.dart';
-import 'package:moomalpublication/features/event_press_release/presentation/widget/year_container.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class EventAndPressReleaseScreen extends StatefulWidget {

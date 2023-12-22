@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
@@ -27,7 +26,7 @@ class YearContainer extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius:
                   BorderRadius.all(Radius.circular(scaleRadius(10, context))),
-              color: _eventPressController.yearList[yearIndex]["hasEvent"]
+              color: _eventPressController.yearListData[yearIndex].clicked!
                   ? AppColors.orange
                   : AppColors.orangeLight),
           child: Padding(
@@ -36,7 +35,7 @@ class YearContainer extends StatelessWidget {
               vertical: scaleWidth(6, context),
             ),
             child: CustomText(
-                text: _eventPressController.yearList[yearIndex]["year"],
+                text: _eventPressController.yearListData[yearIndex].year.toString(),
                 textStyle: CustomTextStyle.textStyle20Bold(context,
                     color: AppColors.black)),
           ),
