@@ -5,7 +5,7 @@ import 'package:moomalpublication/core/base/base_controller.dart';
 
 class InternetConnectivityController extends BaseController {
   final Connectivity _connectivity = Connectivity();
-  final RxBool haveInternetConnection = RxBool(false);
+  final RxBool haveInternetConnection = RxBool(true);
 
   @override
   void onInit() {

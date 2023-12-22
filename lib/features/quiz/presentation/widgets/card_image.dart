@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class CardImage extends StatelessWidget {
@@ -22,16 +23,16 @@ class CardImage extends StatelessWidget {
           Radius.circular(scaleRadius(6, context)),
         ),
       ),
-      // child: SvgPicture.asset(
-      //   image,
-      //   width: scaleWidth(150, context),
-      //   height: scaleHeight(170, context),
-      // ),
-      child: Image.asset(
+      child: SvgPicture.asset(
         image,
-        width: width,
-        height: height,
+        width: scaleWidth(150, context),
+        height: scaleHeight(170, context),
       ),
+      // child: Image.asset(
+      //   image,
+      //   width: width,
+      //   height: height,
+      // ),
     );
   }
 }

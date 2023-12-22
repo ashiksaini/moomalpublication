@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
-import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/features/contact_us/controller/contact_us_controller.dart';
 import 'package:moomalpublication/features/contact_us/presentation/template/contact_card.dart';
+import 'package:moomalpublication/features/contact_us/presentation/widgets/bottom_marker.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class ContactUsScreen extends StatelessWidget {
-  const ContactUsScreen({super.key});
+  ContactUsScreen({super.key});
+
+  final ContactUsController contactUsController =
+      Get.put(ContactUsController());
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +38,22 @@ class ContactUsScreen extends StatelessWidget {
                     ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: 2,
+                        itemCount: contactUsController.address.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: scaleHeight(10, context)),
-                            child: const ContactCard(
-                                contactImage: AppAssets.icEmail,
-                                contactText: "ADDRESS:"),
+                            child: ContactCard(
+                              contactImage:
+                                  contactUsController.address[index].iconName ??
+                                      AppAssets.icAddress,
+                              contactText: contactUsController
+                                      .address[index].addressHeader ??
+                                  '',
+                              contactDescription: contactUsController
+                                      .address[index].addressDescription ??
+                                  '',
+                            ),
                           );
                         }),
                   ],
@@ -49,14 +61,7 @@ class ContactUsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context)),
-            child: CustomText(
-              text: "© 2021 Moomal Publication All rights reserved",
-              textStyle: CustomTextStyle.textStyle20SemiMedium(context,
-                  color: Colors.grey),
-            ),
-          ),
+          const BottomMarker(),
         ],
       )),
     );
