@@ -11,16 +11,12 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class ResetPasswordServices {
   ResetPasswordServices._();
 
-  static Future<ResetPasswordResponse> resetPassword(
-      {Map<String, dynamic>? data}) async {
-    if (getx.Get.find<InternetConnectivityController>()
-        .haveInternetConnection
-        .value) {
+  static Future<ResetPasswordResponse> resetPassword({Map<String, dynamic>? data}) async {
+    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .post(ApiPaths.resetPassword, data: data);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.resetPassword, data: data);
 
-        final parsedResponse = BaseReponse<UserData>.fromJson(
+        final parsedResponse = BaseResponse<UserData>.fromJson(
           response.data! as Map<String, dynamic>,
           (data) => UserData.fromJson(data as Map<String, dynamic>),
         );

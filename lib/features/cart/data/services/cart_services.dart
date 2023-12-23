@@ -2,6 +2,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/api_keys.dart';
 import 'package:moomalpublication/core/base/add_to_cart_request_data.dart';
+import 'package:moomalpublication/core/base/base_response.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
@@ -56,6 +57,33 @@ class CartServices {
     } else {
       showSnackBar("no_internet_access".tr);
       return CartDataResponse();
+    }
+  }
+
+  static Future<CartUpdateItemResponse> updateItem({String? id, String? quantity}) async {
+    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+      try {
+        final query = KeyRequestData(
+          consumerKey: ApiKeys.addToCartConsumerKey,
+          consumerSecret: ApiKeys.addToCartConsumerSecret,
+        ).toJson();
+
+        final data = AddToCartReqData(id: id, quantity: quantity, key: "88052b22c8c2349c0599bd39a654c534").toJson();
+
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.addToCart, data: data, queryParameters: query);
+        final parsedResponse = BaseResponse.fromJson(
+          response.data as Map<String, dynamic>,
+          (data) => CartData.fromJson(data as Map<String, dynamic>),
+        );
+
+        return CartUpdateItemResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showSnackBar(error.message.toString());
+        return CartUpdateItemResponse();
+      }
+    } else {
+      showSnackBar("no_internet_access".tr);
+      return CartUpdateItemResponse();
     }
   }
 }

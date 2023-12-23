@@ -12,14 +12,11 @@ class LoginServices {
   LoginServices._();
 
   static Future<LoginResponse> login({Map<String, dynamic>? data}) async {
-    if (getx.Get.find<InternetConnectivityController>()
-        .haveInternetConnection
-        .value) {
+    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
-        final dio.Response<dynamic> response =
-            await DioClient.dioWithoutAuth!.post(ApiPaths.login, data: data);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.login, data: data);
 
-        final parsedResponse = BaseReponse<LoginResponseData>.fromJson(
+        final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
           response.data! as Map<String, dynamic>,
           (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),
         );

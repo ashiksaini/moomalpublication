@@ -84,8 +84,7 @@ mixin NetworkHandlingMixin {
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
-      print(
-          "*************************************** Response *************************************** ");
+      print("*************************************** Response *************************************** ");
 
       // Print the response status code
       print('Status Code: ${response.statusCode}');
@@ -97,8 +96,7 @@ mixin NetworkHandlingMixin {
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      print(
-          "*************************************** Request *************************************** ");
+      print("*************************************** Request *************************************** ");
 
       // Print the request method (GET, POST, etc.)
       print('Request Method: ${options.method}');
@@ -124,7 +122,7 @@ mixin NetworkHandlingMixin {
   //       final dio.Response<Map<String, dynamic>> response = await dioo
   //           .post(ApiPaths.refreshToken, data: await getRefreshToken());
 
-  //       final parsedResponse = BaseReponse<LoginResponseData>.fromJson(
+  //       final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
   //         response.data!,
   //         (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),
   //       );
