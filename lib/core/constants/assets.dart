@@ -60,6 +60,12 @@ class AppAssets {
   static const String icFlash = "${pathSvg}ic_flash.svg";
   static const String icArrowRight = "${pathSvg}ic_arrow_right.svg";
   static const String icList = "${pathSvg}ic_list.svg";
+  static const String icUserPic = "${pathSvg}profile_picture.svg";
+  static const String icLocation = "${pathSvg}ic_location.svg";
+  static const String icPhoneCall = "${pathSvg}ic_phone_call.svg";
+
+
+
 
 
   // Png
@@ -67,6 +73,7 @@ class AppAssets {
   static const String icImg = "${pathPng}img.png";
   static const String bookPng = "${pathPng}book.png";
   static const String icAdmin = "${pathPng}ic_admin.png";
+
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

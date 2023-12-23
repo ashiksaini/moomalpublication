@@ -142,7 +142,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.contactUsScreen,
-      page: () => const ContactUsScreen(),
+      page: () =>  ContactUsScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),

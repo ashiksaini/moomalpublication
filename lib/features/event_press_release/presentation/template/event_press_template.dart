@@ -19,7 +19,7 @@ class EventAndPressCard extends StatelessWidget {
   final int index;
 
   final EventPressController _eventPressController =
-      Get.put(EventPressController());
+      Get.find<EventPressController>();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,10 @@ class EventAndPressCard extends StatelessWidget {
             child: Row(
               children: [
                 CardImage(
-                  image: AppAssets.bookPng,
+                  image: _eventPressController.events[index].featuredImage ==
+                          'false'
+                      ? AppAssets.icLogo
+                      : _eventPressController.events[index].featuredImage!,
                   borderColor: AppColors.blue,
                   height: scaleHeight(130, context),
                 ),
@@ -49,46 +52,34 @@ class EventAndPressCard extends StatelessWidget {
                   child: Padding(
                     padding:
                         EdgeInsets.symmetric(vertical: scaleWidth(12, context)),
-                    child: Obx(
-                      () => Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                            textAlign: TextAlign.left,
-                            text: "Event Old Book",
-                            maxLines: 4,
-                            textStyle: CustomTextStyle.textStyle22Bold(context,
-                                color: AppColors.black,
-                                decoration: TextDecoration.underline),
-                          ),
-                          const VerticalGap(size: 6),
-                          CustomText(
-                            text:
-                                "Lorem ipsum is placeholder text commonly used in the graphicLorem ipsum is placeholder text commonly used in the graphicLorem Lorem ipsum is placeholder text commonly used in the graphicLorem ipsum is placeholder text commonly used in the graphicLorem",
-                            textStyle: CustomTextStyle.textStyle15Bold(context,
-                                color: AppColors.black),
-                            maxLines: _eventPressController.getReadMore(index)
-                                ? 1000
-                                : 4,
-                            textAlign: TextAlign.start,
-                          ),
-                          const VerticalGap(size: 9),
-                          GestureDetector(
-                            onTap: () {
-                              _eventPressController.readMore(index);
-                            },
-                            child: CustomText(
-                              text: _eventPressController.getReadMore(index)
-                                  ? "Read Less"
-                                  : "Read More",
-                              textStyle: CustomTextStyle.textStyle20SemiMedium(
-                                  context,
-                                  color: AppColors.black),
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
-                        ],
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                          textAlign: TextAlign.left,
+                          text: _eventPressController.events[index].postTitle,
+                          maxLines: 4,
+                          textStyle: CustomTextStyle.textStyle22Bold(context,
+                              color: AppColors.black,
+                              decoration: TextDecoration.underline),
+                        ),
+                        const VerticalGap(size: 6),
+                        CustomText(
+                          text: _eventPressController.events[index].postContent,
+                          textStyle: CustomTextStyle.textStyle15Bold(context,
+                              color: AppColors.black),
+                          maxLines: 4,
+                          textAlign: TextAlign.start,
+                        ),
+                        const VerticalGap(size: 9),
+                        CustomText(
+                          text: "Read More",
+                          textStyle: CustomTextStyle.textStyle20SemiMedium(
+                              context,
+                              color: AppColors.black),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
                     ),
                   ),
                 ),

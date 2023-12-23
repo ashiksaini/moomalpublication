@@ -19,6 +19,7 @@ TextFormField customTextFormField(
   TextInputAction textInputAction = TextInputAction.next,
   bool isPasswordField = false,
   bool isPasswordVisible = false,
+  double? borderRadius = 20,
 }) {
   return TextFormField(
     controller: textEditingController,
@@ -32,27 +33,34 @@ TextFormField customTextFormField(
         onTextChange(value);
       }
     },
-    style: textStyle ?? CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+    style: textStyle ??
+        CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
     obscureText: isPasswordField && !isPasswordVisible,
     decoration: InputDecoration(
       contentPadding: EdgeInsets.only(right: scaleWidth(10, context)),
       fillColor: AppColors.white,
       filled: true,
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+        borderRadius:
+            BorderRadius.circular(scaleRadius(borderRadius!, context)),
         borderSide: const BorderSide(color: AppColors.orangeLight),
       ),
       border: OutlineInputBorder(
         borderSide: const BorderSide(color: AppColors.grey),
-        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+        borderRadius: BorderRadius.circular(scaleRadius(borderRadius, context)),
       ),
       hintText: hint,
-      hintStyle: hintTextStyle ?? CustomTextStyle.textStyle25Bold(context, color: AppColors.black.withOpacity(0.29)),
+      hintStyle: hintTextStyle ??
+          CustomTextStyle.textStyle25Bold(context,
+              color: AppColors.black.withOpacity(0.29)),
       prefixIcon: prefixIcon != null
           ? GestureDetector(
-              onTap: () => onPrefixIconClick != null ? onPrefixIconClick() : null,
+              onTap: () =>
+                  onPrefixIconClick != null ? onPrefixIconClick() : null,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context), vertical: scaleHeight(12, context)),
+                padding: EdgeInsets.symmetric(
+                    horizontal: scaleWidth(16, context),
+                    vertical: scaleHeight(12, context)),
                 child: SvgPicture.asset(
                   prefixIcon,
                   height: scaleHeight(24, context),
@@ -63,9 +71,12 @@ TextFormField customTextFormField(
           : null,
       suffixIcon: suffixIcon != null
           ? GestureDetector(
-              onTap: () => onSuffixIconClick != null ? onSuffixIconClick() : null,
+              onTap: () =>
+                  onSuffixIconClick != null ? onSuffixIconClick() : null,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context), vertical: scaleHeight(12, context)),
+                padding: EdgeInsets.symmetric(
+                    horizontal: scaleWidth(16, context),
+                    vertical: scaleHeight(12, context)),
                 child: SvgPicture.asset(
                   suffixIcon,
                   height: scaleHeight(24, context),

@@ -5,6 +5,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/current_affair_quiz_card.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class QuizScreen extends StatefulWidget {
   QuizScreen({super.key});
@@ -28,16 +29,13 @@ class _QuizScreenState extends State<QuizScreen>
       body: SafeArea(
         child: Column(
           children: [
-            const CustomAppbar(
+            CustomAppbar(
               title: "Our Quiz",
               maxLine: 1,
               prefixIcon: AppAssets.icBackArrow,
+              onPrefixIconClick: () => AppRouting.navigateBack(),
             ),
             const VerticalGap(size: 32),
-            // CustomTabBar(
-            //   tabLength: 2,
-            //   context: context,
-            // ),
             TabBar(
               unselectedLabelColor: AppColors.black,
               labelColor: AppColors.orange,
