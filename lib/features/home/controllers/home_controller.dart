@@ -147,7 +147,7 @@ class HomeController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name));
+    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name, productLink: data.permalink));
   }
 
   Future<void> onCartBtnClick(ProductItem item) async {
@@ -204,5 +204,9 @@ class HomeController extends BaseController {
       case DrawerItemType.logout:
       // TODO: Handle this case.
     }
+  }
+
+  void onLanguageItemClick(DropdownItem<Language> item) {
+    selectedLanguage.value = item;
   }
 }

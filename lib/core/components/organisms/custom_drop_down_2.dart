@@ -18,19 +18,22 @@ import 'package:moomalpublication/features/home/data/models/drop_down_item.dart'
 class CustomDropDown2<T> extends StatelessWidget {
   final List<DropdownItem<T>> items;
   final Rx<DropdownItem<T>?> selectedItem;
+  final Function onItemClick;
   final Color color;
   final double? width;
   final Color borderColor;
   final double borderRadius;
 
-  const CustomDropDown2(
-      {super.key,
-      required this.items,
-      required this.selectedItem,
-      this.color = AppColors.white,
-      this.width,
-      this.borderColor = AppColors.grey,
-      this.borderRadius = 10});
+  const CustomDropDown2({
+    super.key,
+    required this.items,
+    required this.selectedItem,
+    required this.onItemClick,
+    this.color = AppColors.white,
+    this.width,
+    this.borderColor = AppColors.grey,
+    this.borderRadius = 10,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +44,7 @@ class CustomDropDown2<T> extends StatelessWidget {
             width: width ?? screenWidth(context) / 2.6,
             decoration: BoxDecoration(
               color: color,
-              borderRadius:
-                  BorderRadius.circular(scaleRadius(borderRadius, context)),
+              borderRadius: BorderRadius.circular(scaleRadius(borderRadius, context)),
               border: Border.all(color: borderColor),
             ),
             padding: EdgeInsets.symmetric(
@@ -55,8 +57,7 @@ class CustomDropDown2<T> extends StatelessWidget {
                 Expanded(
                   child: CustomText(
                     text: selectedItem.value!.title,
-                    textStyle: CustomTextStyle.textStyle18Bold(context,
-                        color: borderColor),
+                    textStyle: CustomTextStyle.textStyle18Bold(context, color: borderColor),
                     textAlign: TextAlign.start,
                     maxLines: 1,
                   ),
@@ -76,9 +77,6 @@ class CustomDropDown2<T> extends StatelessWidget {
           items: items.map((item) {
             return DropdownMenuItem(
               value: item,
-              onTap: () {
-                selectedItem.value = item;
-              },
               child: StatefulBuilder(
                 builder: (context, menuSetState) {
                   return Column(
@@ -93,24 +91,19 @@ class CustomDropDown2<T> extends StatelessWidget {
                         ),
                         child: CustomText(
                           text: item.title.toString(),
-                          textStyle: CustomTextStyle.textStyle18Bold(context,
-                              color: AppColors.grey),
+                          textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.grey),
                           textAlign: TextAlign.start,
                           maxLines: 1,
                         ),
                       ),
-                      Divider(
-                          height: scaleHeight(2, context),
-                          thickness: scaleHeight(2, context)),
+                      Divider(height: scaleHeight(2, context), thickness: scaleHeight(2, context)),
                     ],
                   );
                 },
               ),
             );
           }).toList(),
-          onChanged: (value) {
-            selectedItem.value = value!;
-          },
+          onChanged: (value) => onItemClick(value),
           dropdownStyleData: DropdownStyleData(
             padding: EdgeInsets.zero,
             scrollPadding: EdgeInsets.zero,

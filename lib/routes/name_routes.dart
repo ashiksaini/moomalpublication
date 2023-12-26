@@ -24,5 +24,4 @@ class NameRoutes {
   static const String testSeriesScreen = '/testSeriesScreen';
   static const String overallResultScreen = '/overallResultScreen';
   static const String detailEventScreen = '/detailEventScreen';
-
 }

@@ -1,8 +1,8 @@
 final Map<String, String> enUS = {
-  // App
+  // App ////////////////////////////////////////////////////////////
   "moomalpublication": "Moomal Publicaiton",
 
-  // Internet
+  // Internet ///////////////////////////////////////////////////////////////
   'bad_request': "Bad Request",
   'forbidden': "Forbidden",
   'page_not_found': "Page Not Found",
@@ -15,11 +15,11 @@ final Map<String, String> enUS = {
   'something_went_wrong': 'Something Went Wrong',
   "no_internet_access": "No Internet Access",
 
-  // Splash
+  // Splash ////////////////////////////////////////////////////////////
   "yourself": "YOURSELF",
   "find_it": "Find it",
 
-  // Login
+  // Login ///////////////////////////////////////////////////////////////////
   "remember_me": "Remember Me",
   "forget_password": "Forget Password?",
   "register": "Register",
@@ -29,23 +29,26 @@ final Map<String, String> enUS = {
   "username_should_not_be_empty": "Username should not be empty",
   "password_should_not_be_empty": "Password should not be empty",
 
-  // Register
+  // Register ///////////////////////////////////////////////////////////////
   "email_address": "Email Address",
   "email_should_not_be_empty": "E-mail should not be empty",
-  "privacy_policy_desc": "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
+  "privacy_policy_desc":
+      "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
   "privacy_policy": " privacy policy.",
 
-  // Forget password
+  // Forget password //////////////////////////////////////////////////////////
   "reset_password": "Reset Password",
   "forget_password_txt": "Forgot your password?",
-  "forget_password_desc": " Please enter your username or email address. You will receive a link to create a new password via email.",
+  "forget_password_desc":
+      " Please enter your username or email address. You will receive a link to create a new password via email.",
   "please_enter_a_valid_email": "Please enter a valid Email",
 
-  // Reset Password On Success
-  "reset_password_on_success_desc": "A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.",
+  // Reset Password On Success ///////////////////////////////////////////////
+  "reset_password_on_success_desc":
+      "A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.",
   "reset_password_on_success": "Password reset email has been sent.",
 
-  // Home Screen
+  // Home Screen ////////////////////////////////////////////////////////////
   "best_seller": "Best Seller",
   "no_image_preview_available": "No Image \nPreview Available",
   "add_to_cart": "Add To Cart",
@@ -67,10 +70,10 @@ final Map<String, String> enUS = {
   "course_type": "Course Type",
   "apply_filter": "Apply Filter",
 
-  // Shop
+  // Shop ////////////////////////////////////////////////////////////
   "shop": "Shop",
 
-  // Product detail
+  // Product detail ////////////////////////////////////////////////////////////
   "by_moomal_publication": "By Moomal Publication",
   "price": "Price: ₹",
   "quantity": "Qty: ",
@@ -86,7 +89,7 @@ final Map<String, String> enUS = {
   "buy_now": "Buy Now",
   "similar_products": "Similar Products",
 
-  // Drawer
+  // Drawer ///////////////////////////////////////////////////////////////////
   "downloads": "Downloads",
   "addresses": "Addresses",
   "orders": "Orders",
@@ -99,13 +102,13 @@ final Map<String, String> enUS = {
   "overall_result": "Overall Result",
   "logout": "Logout",
 
-  // Testimonial
+  // Testimonial //////////////////////////////////////////////////////////////
   "our": "OUR ",
   "client": "CLIENT ",
   "or": "OR ",
   "student": "STUDENT ",
 
-  // Settings
+  // Settings /////////////////////////////////////////////////////////////////
   "shipping_policy": "Shipping Policy",
   "shipping_policy_desc": '''
       <div>
@@ -157,7 +160,7 @@ final Map<String, String> enUS = {
 			</div>
     ''',
 
-  // Cart
+  // Cart /////////////////////////////////////////////////////////////////////
   "my_cart": "My Cart",
   "quantity_txt": "Quantity :",
   "order_details": "Order Details",
@@ -167,8 +170,14 @@ final Map<String, String> enUS = {
   "total_amount": "Total Amount",
   "place_order": "Place Order",
 
-  // Search Screen
+  // Search Screen ////////////////////////////////////////////////////////////
   "search_for_books_and_ebooks": "Search for Books and Ebooks",
   "search_in_moomal_publication": "Search in Moomal Publication",
-  "search_desc": "Find Books, Ebooks for current GK and \nMany more books"
+  "search_desc": "Find Books, Ebooks for current GK and \nMany more books",
+
+  // All categories ///////////////////////////////////////////////////////////
+  "rajasthan_gk": "Rajasthan GK",
+  "exam_review": "Exam Review",
+  "new_books": "New Books",
+  "model_papers": "Model Papers",
 };

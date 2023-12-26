@@ -12,4 +12,11 @@ class ApiKeys {
   // Search books
   static const String searchBookConsumerKey = "ck_a6ffa586894312d0d147810ee915c79dc5e826a5";
   static const String searchBookConsumerSecret = "cs_1339c153c56bfe0dbd0271c0dd064e8d5bcd0b50";
+
+  // Update Cart Item key
+  static const String updateCartItemKey = "88052b22c8c2349c0599bd39a654c534";
+
+  // EBool Category
+  static const String ebookCategoryConsumerKey = "ck_e2f6f01e1cf1ecdaf2afa9fe1e6d79f9e564c3db";
+  static const String ebookCategoryConsumerSecret = "cs_0cc8258ffd6d6b5110f150f4ea8ad04845c6c9cc";
 }

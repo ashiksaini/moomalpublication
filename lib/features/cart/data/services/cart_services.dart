@@ -14,16 +14,21 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class CartServices {
   CartServices._();
 
-  static Future<CartDataResponse> getCartProducts({Map<String, dynamic>? query}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<CartDataResponse> getCartProducts(
+      {Map<String, dynamic>? query}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.getCartProductsConsumerKey,
           consumerSecret: ApiKeys.getCartProductsConsumerSecret,
         ).toJson();
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.cartData, queryParameters: query);
-        final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get(ApiPaths.cartData, queryParameters: query);
+        final parsedResponse =
+            CartData.fromJson(response.data as Map<String, dynamic>);
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
@@ -36,8 +41,11 @@ class CartServices {
     }
   }
 
-  static Future<CartDataResponse> addToCart({String? id, String? quantity}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<CartDataResponse> addToCart(
+      {String? id, String? quantity}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.addToCartConsumerKey,
@@ -46,8 +54,10 @@ class CartServices {
 
         final data = AddToCartReqData(id: id, quantity: quantity).toJson();
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.addToCart, data: data, queryParameters: query);
-        final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .post(ApiPaths.addToCart, data: data, queryParameters: query);
+        final parsedResponse =
+            CartData.fromJson(response.data as Map<String, dynamic>);
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
@@ -60,17 +70,54 @@ class CartServices {
     }
   }
 
-  static Future<CartUpdateItemResponse> updateItem({String? id, String? quantity}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<CartUpdateItemResponse> updateItem(
+      {String? id, String? quantity}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.addToCartConsumerKey,
           consumerSecret: ApiKeys.addToCartConsumerSecret,
         ).toJson();
 
-        final data = AddToCartReqData(id: id, quantity: quantity, key: "88052b22c8c2349c0599bd39a654c534").toJson();
+        final data = AddToCartReqData(
+                id: id, quantity: quantity, key: ApiKeys.updateCartItemKey)
+            .toJson();
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.addToCart, data: data, queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .post(ApiPaths.addToCart, data: data, queryParameters: query);
+        final parsedResponse = BaseResponse.fromJson(
+          response.data as Map<String, dynamic>,
+          (data) => CartData.fromJson(data as Map<String, dynamic>),
+        );
+
+        return CartUpdateItemResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showSnackBar(error.message.toString());
+        return CartUpdateItemResponse();
+      }
+    } else {
+      showSnackBar("no_internet_access".tr);
+      return CartUpdateItemResponse();
+    }
+  }
+
+  static Future<CartUpdateItemResponse> removeItem({String? id}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final query = KeyRequestData(
+          consumerKey: ApiKeys.addToCartConsumerKey,
+          consumerSecret: ApiKeys.addToCartConsumerSecret,
+        ).toJson();
+
+        final data =
+            AddToCartReqData(id: id, key: ApiKeys.updateCartItemKey).toJson();
+
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .post(ApiPaths.removeCartItem, data: data, queryParameters: query);
         final parsedResponse = BaseResponse.fromJson(
           response.data as Map<String, dynamic>,
           (data) => CartData.fromJson(data as Map<String, dynamic>),

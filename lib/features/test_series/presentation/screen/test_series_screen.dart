@@ -16,12 +16,10 @@ class TestSeriesScreen extends StatefulWidget {
   _TestSeriesScreenState createState() => _TestSeriesScreenState();
 }
 
-class _TestSeriesScreenState extends State<TestSeriesScreen>
-    with SingleTickerProviderStateMixin {
+class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final TextEditingController colorController = TextEditingController();
-  final TestSeriesController _testSeriesController =
-      Get.put(TestSeriesController());
+  final TestSeriesController _testSeriesController = Get.put(TestSeriesController());
 
   @override
   void initState() {
@@ -38,6 +36,7 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,29 +49,24 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
               maxLine: 1,
             ),
             Padding(
-              padding: EdgeInsets.only(
-                  top: scaleHeight(14, context),
-                  left: scaleWidth(10, context),
-                  right: scaleWidth(10, context)),
+              padding: EdgeInsets.only(top: scaleHeight(14, context), left: scaleWidth(10, context), right: scaleWidth(10, context)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CustomDropDown2(
-                    borderRadius: 10,
-                    borderColor: AppColors.orange,
-                    items: _testSeriesController.mockTestCategory,
-                    selectedItem:
-                        _testSeriesController.selectedMockTestCategory,
-                    width: screenWidth(context) - scaleWidth(200, context),
-                  ),
-                  CustomDropDown2(
-                    borderRadius: 10,
-                    borderColor: AppColors.orange,
-                    items: _testSeriesController.topicWiseCategory,
-                    selectedItem:
-                        _testSeriesController.selectedTopicWiseCategory,
-                    width: screenWidth(context) - scaleWidth(200, context),
-                  ),
+                  // CustomDropDown2(
+                  //   borderRadius: 10,
+                  //   borderColor: AppColors.orange,
+                  //   items: _testSeriesController.mockTestCategory,
+                  //   selectedItem: _testSeriesController.selectedMockTestCategory,
+                  //   width: screenWidth(context) - scaleWidth(200, context),
+                  // ),
+                  // CustomDropDown2(
+                  //   borderRadius: 10,
+                  //   borderColor: AppColors.orange,
+                  //   items: _testSeriesController.topicWiseCategory,
+                  //   selectedItem: _testSeriesController.selectedTopicWiseCategory,
+                  //   width: screenWidth(context) - scaleWidth(200, context),
+                  // ),
                 ],
               ),
             ),

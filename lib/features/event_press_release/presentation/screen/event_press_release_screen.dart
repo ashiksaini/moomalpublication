@@ -36,6 +36,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Column(
           children: [

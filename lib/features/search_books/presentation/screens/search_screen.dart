@@ -16,7 +16,8 @@ import 'package:moomalpublication/routes/routing.dart';
 class SearchProductScreen extends StatelessWidget {
   SearchProductScreen({super.key});
 
-  final SearchProductController _searchProductController = Get.put(SearchProductController());
+  final SearchProductController _searchProductController =
+      Get.put(SearchProductController());
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,11 @@ class SearchProductScreen extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: _searchProductController.searchedBooks.isNotEmpty || _searchProductController.searchBookResponse.value.isLoading ? _getBooksDataView(context) : _getCenterSearchView(context),
+              child: _searchProductController.searchedBooks.isNotEmpty ||
+                      _searchProductController
+                          .searchBookResponse.value.isLoading
+                  ? _getBooksDataView(context)
+                  : _getCenterSearchView(context),
             ),
           ],
         ),
@@ -82,16 +87,22 @@ class SearchProductScreen extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 12.0,
         mainAxisSpacing: 15.0,
-        childAspectRatio: _searchProductController.searchBookResponse.value.isLoading ? 0.58 : 0.5,
+        childAspectRatio:
+            _searchProductController.searchBookResponse.value.isLoading
+                ? 0.58
+                : 0.5,
       ),
-      itemCount: _searchProductController.searchBookResponse.value.isLoading ? 20 : _searchProductController.searchedBooks.length,
+      itemCount: _searchProductController.searchBookResponse.value.isLoading
+          ? 20
+          : _searchProductController.searchedBooks.length,
       itemBuilder: (context, index) {
         if (_searchProductController.searchBookResponse.value.isLoading) {
           return const BookItemShimmerSkeleton();
         } else {
           return GestureDetector(
             onTap: () {
-              _searchProductController.onItemClick(index, _searchProductController.searchedBooks[index]);
+              _searchProductController.onItemClick(
+                  index, _searchProductController.searchedBooks[index]);
             },
             child: CardBookItem(
               item: _searchProductController.searchedBooks[index],
@@ -116,7 +127,8 @@ class SearchProductScreen extends StatelessWidget {
           const VerticalGap(size: 67),
           CustomText(
             text: "search_in_moomal_publication".tr,
-            textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
+            textStyle: CustomTextStyle.textStyle20Bold(context,
+                color: AppColors.black),
           ),
           const VerticalGap(size: 10),
           CustomText(
