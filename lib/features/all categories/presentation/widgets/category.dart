@@ -10,38 +10,43 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 class CategoryItem extends StatelessWidget {
   final String icon;
   final String title;
+  // final Function onClick;
 
   const CategoryItem({
     super.key,
     required this.icon,
     required this.title,
+    // required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          padding: EdgeInsets.all(scaleRadius(15, context)),
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            shape: BoxShape.circle,
-            border: Border.all(color: AppColors.grey),
-            boxShadow: [primaryBoxShadow()],
+    return GestureDetector(
+      // onTap: () => ,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            padding: EdgeInsets.all(scaleRadius(15, context)),
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.grey),
+              boxShadow: [primaryBoxShadow()],
+            ),
+            child: SvgPicture.asset(
+              icon,
+              height: scaleHeight(48, context),
+              width: scaleWidth(48, context),
+            ),
           ),
-          child: SvgPicture.asset(
-            icon,
-            height: scaleHeight(48, context),
-            width: scaleWidth(48, context),
+          const VerticalGap(size: 10),
+          CustomText(
+            text: title,
+            textStyle: CustomTextStyle.textStyle20Regular(context),
           ),
-        ),
-        const VerticalGap(size: 10),
-        CustomText(
-          text: title,
-          textStyle: CustomTextStyle.textStyle20Regular(context),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
