@@ -124,7 +124,7 @@ mixin NetworkHandlingMixin {
   //       final dio.Response<Map<String, dynamic>> response = await dioo
   //           .post(ApiPaths.refreshToken, data: await getRefreshToken());
 
-  //       final parsedResponse = BaseReponse<LoginResponseData>.fromJson(
+  //       final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
   //         response.data!,
   //         (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),
   //       );

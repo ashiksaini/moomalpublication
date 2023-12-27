@@ -23,16 +23,26 @@ class BtnAddToCart extends StatelessWidget {
     return GestureDetector(
       onTap: () => onClick(),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context), horizontal: scaleWidth(8, context)),
-        decoration: BoxDecoration(color: AppColors.orangeLight, border: Border.all(color: AppColors.pinkLight), borderRadius: BorderRadius.circular(scaleRadius(5, context))),
+        padding: EdgeInsets.symmetric(
+            vertical: scaleHeight(8, context),
+            horizontal: scaleWidth(8, context)),
+        decoration: BoxDecoration(
+            color: AppColors.orangeLight,
+            border: Border.all(color: AppColors.pinkLight),
+            borderRadius: BorderRadius.circular(scaleRadius(5, context))),
         child: Row(
           children: [
             CustomText(
-              text: (cartBtnType == CartBtnType.addToCart) ? "add_to_cart".tr.toUpperCase() : "go_to_cart".tr.toUpperCase(),
-              textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
+              text: (cartBtnType == CartBtnType.addToCart)
+                  ? "add_to_cart".tr.toUpperCase()
+                  : "go_to_cart".tr.toUpperCase(),
+              textStyle: CustomTextStyle.textStyle18Bold(context,
+                  color: AppColors.black),
             ),
             Expanded(child: Container()),
-            SvgPicture.asset((cartBtnType == CartBtnType.addToCart) ? AppAssets.icBookmark : AppAssets.icBookmarkFilled),
+            SvgPicture.asset((cartBtnType == CartBtnType.addToCart)
+                ? AppAssets.icBookmark
+                : AppAssets.icBookmarkFilled),
           ],
         ),
       ),

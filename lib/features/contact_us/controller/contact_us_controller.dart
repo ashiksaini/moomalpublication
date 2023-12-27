@@ -30,4 +30,3 @@ class ContactUsController extends BaseController {
     ];
   }
 }
-

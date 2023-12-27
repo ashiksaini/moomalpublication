@@ -50,12 +50,15 @@ class Totals {
         totalShippingTax: json['total_shipping_tax'] as String?,
         totalPrice: json['total_price'] as String?,
         totalTax: json['total_tax'] as String?,
-        taxLines: (json['tax_lines'] as List<dynamic>?)?.map((e) => e as Map<String, dynamic>).toList(),
+        taxLines: (json['tax_lines'] as List<dynamic>?)
+            ?.map((e) => e as Map<String, dynamic>)
+            .toList(),
         currencyCode: json['currency_code'] as String?,
         currencySymbol: json['currency_symbol'] as String?,
         currencyMinorUnit: json['currency_minor_unit'] as int?,
         currencyDecimalSeparator: json['currency_decimal_separator'] as String?,
-        currencyThousandSeparator: json['currency_thousand_separator'] as String?,
+        currencyThousandSeparator:
+            json['currency_thousand_separator'] as String?,
         currencyPrefix: json['currency_prefix'] as String?,
         currencySuffix: json['currency_suffix'] as String?,
       );

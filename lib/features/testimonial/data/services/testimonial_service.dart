@@ -20,7 +20,7 @@ class TestimonialService {
             await DioClient.dioWithoutAuth!.get(ApiPaths.testimonial);
 
         final parsedResponse =
-            BaseReponse<List<TestimonialResponseModel>>.fromJson(
+            BaseResponse<List<TestimonialResponseModel>>.fromJson(
           response.data! as Map<String, dynamic>,
           (data) => (data as List<dynamic>?)!
               .map(

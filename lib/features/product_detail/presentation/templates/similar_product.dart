@@ -73,7 +73,7 @@ class SimilarProduct extends StatelessWidget {
                 },
                 child: CardBookItem(
                   item: _productDetailController.similarProducts[index],
-                        onCartBtnClick: _productDetailController.onCartBtnClick,
+                  onCartBtnClick: _productDetailController.onCartBtnClick,
                 ),
               );
             }

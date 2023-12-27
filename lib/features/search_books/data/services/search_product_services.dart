@@ -13,7 +13,9 @@ class SearchProductServices {
   SearchProductServices._();
 
   static Future<SearchBooksResponse> getSearchedBook({String? search}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.searchBookConsumerKey,
@@ -22,7 +24,8 @@ class SearchProductServices {
 
         query.addIf(search != null, "search", search);
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.products, queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get(ApiPaths.products, queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) => ProductItem.fromJson(item as Map<String, dynamic>),

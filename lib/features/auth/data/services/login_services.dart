@@ -19,7 +19,7 @@ class LoginServices {
         final dio.Response<dynamic> response =
             await DioClient.dioWithoutAuth!.post(ApiPaths.login, data: data);
 
-        final parsedResponse = BaseReponse<LoginResponseData>.fromJson(
+        final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
           response.data! as Map<String, dynamic>,
           (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),
         );

@@ -64,16 +64,11 @@ class AppAssets {
   static const String icLocation = "${pathSvg}ic_location.svg";
   static const String icPhoneCall = "${pathSvg}ic_phone_call.svg";
 
-
-
-
-
   // Png
   static const String icLogo1 = "${pathPng}ic_logo_1.png";
   static const String icImg = "${pathPng}img.png";
   static const String bookPng = "${pathPng}book.png";
   static const String icAdmin = "${pathPng}ic_admin.png";
-
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

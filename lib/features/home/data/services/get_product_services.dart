@@ -10,14 +10,10 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class GetProductServices {
   GetProductServices._();
 
-  static Future<ProductResponse> getProducts(
-      {Map<String, dynamic>? query}) async {
-    if (getx.Get.find<InternetConnectivityController>()
-        .haveInternetConnection
-        .value) {
+  static Future<ProductResponse> getProducts({Map<String, dynamic>? query}) async {
+    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .get(ApiPaths.products, queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.products, queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) => ProductItem.fromJson(item as Map<String, dynamic>),

@@ -21,6 +21,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +97,8 @@ class CartScreen extends StatelessWidget {
               ),
               child: CustomText(
                 text: 'place_order'.tr,
-                textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white),
+                textStyle: CustomTextStyle.textStyle20Bold(context,
+                    color: AppColors.white),
               ),
             ),
           )

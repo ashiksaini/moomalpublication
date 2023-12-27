@@ -211,9 +211,13 @@ class ProductItem {
         // crossSellIds: json['cross_sell_ids'] as List<dynamic>?,
         parentId: json['parent_id'] as int?,
         purchaseNote: json['purchase_note'] as String?,
-        categories: (json['categories'] as List<dynamic>?)?.map((e) => Category.fromJson(e as Map<String, dynamic>)).toList(),
+        categories: (json['categories'] as List<dynamic>?)
+            ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+            .toList(),
         // tags: json['tags'] as List<dynamic>?,
-        images: (json['images'] as List<dynamic>?)?.map((e) => Image.fromJson(e as Map<String, dynamic>)).toList(),
+        images: (json['images'] as List<dynamic>?)
+            ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
+            .toList(),
         // attributes: (json['attributes'] as List<dynamic>?)?.map((e) => Attribute.fromJson(e as Map<String, dynamic>)).toList(),
         // defaultAttributes: json['default_attributes'] as List<dynamic>?,
         // variations: json['variations'] as List<int>?,

@@ -11,6 +11,7 @@ class NameRoutes {
   static const String productDetailScreen = '/productDetailScreen';
   static const String cartScreen = '/cartScreen';
   static const String allCategoryScreen = '/allCategoryScreen';
+  static const String categoryWiseScreen = '/categoryWiseScreen';
   static const String similarProductScreen = '/similarProductScreen';
   static const String quizScreen = '/quizScreen';
   static const String settingDetailScreen = '/settingDetailScreen';
@@ -24,5 +25,4 @@ class NameRoutes {
   static const String testSeriesScreen = '/testSeriesScreen';
   static const String overallResultScreen = '/overallResultScreen';
   static const String detailEventScreen = '/detailEventScreen';
-
 }

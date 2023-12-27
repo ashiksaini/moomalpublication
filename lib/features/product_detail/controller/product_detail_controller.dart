@@ -10,6 +10,7 @@ import 'package:moomalpublication/features/product_detail/data/services/product_
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ProductDetailController extends BaseController {
   late SharedData _sharedData;
@@ -95,6 +96,12 @@ class ProductDetailController extends BaseController {
       case CartBtnType.goToCart:
         AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
         break;
+    }
+  }
+
+  void shareItem() {
+    if (_sharedData.productLink != null && _sharedData.productLink!.isNotEmpty) {
+      Share.share(_sharedData.productLink!);
     }
   }
 }

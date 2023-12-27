@@ -12,4 +12,7 @@ class ApiPaths {
   static const String cartData = 'wc/store/cart';
   static const String addToCart = 'wc/store/cart/add-item';
   static const String eventRelease = 'event/v1/events-year';
+  static const String updateCartItem = 'wc/store/cart/update-item';
+  static const String removeCartItem = 'wc/store/cart/remove-item';
+  static const String eBookProductCategory = 'wc/v3/products/categories';
 }

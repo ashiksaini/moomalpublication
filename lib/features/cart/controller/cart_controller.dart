@@ -23,7 +23,8 @@ class CartController extends BaseController {
 
     cartDataResponse.value = await CartServices.getCartProducts();
     if (cartDataResponse.value.data != null) {
-      if (cartDataResponse.value.data!.items != null && cartDataResponse.value.data!.items!.isNotEmpty) {
+      if (cartDataResponse.value.data!.items != null &&
+          cartDataResponse.value.data!.items!.isNotEmpty) {
         cartItems.addAll(cartDataResponse.value.data!.items!);
         totals.value = cartDataResponse.value.data!.totals!;
       }

@@ -6,7 +6,8 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
 
 class AddressCard extends StatelessWidget {
-  const AddressCard({super.key,required this.address,required this.addressHeading});
+  const AddressCard(
+      {super.key, required this.address, required this.addressHeading});
   final String addressHeading;
   final String address;
 
