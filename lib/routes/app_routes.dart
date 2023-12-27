@@ -168,7 +168,7 @@ class AppPages {
     GetPage(
       name: NameRoutes.categoryWiseScreen,
       page: () => CategoryWiseScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
   ];

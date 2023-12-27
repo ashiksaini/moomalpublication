@@ -4,8 +4,10 @@ import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/all%20categories/presentation/widgets/category.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class AllCategoriesScreen extends StatelessWidget {
@@ -19,7 +21,7 @@ class AllCategoriesScreen extends StatelessWidget {
         child: Column(
           children: [
             CustomAppbar(
-              title: "All Categories",
+              title: "all_categories".tr,
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),
             ),
@@ -34,11 +36,21 @@ class AllCategoriesScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       CategoryItem(
-                          icon: AppAssets.icReadingBook,
-                          title: "current_gk".tr),
+                        onClick: () => AppRouting.toNamed(
+                          NameRoutes.categoryWiseScreen,
+                          argument: SharedData(categoryWiseAppBarTitle: "current_gk".tr),
+                        ),
+                        icon: AppAssets.icReadingBook,
+                        title: "current_gk".tr,
+                      ),
                       CategoryItem(
-                          icon: AppAssets.icUserboard,
-                          title: "rajasthan_gk".tr),
+                        onClick: () => AppRouting.toNamed(
+                          NameRoutes.categoryWiseScreen,
+                          argument: SharedData(categoryWiseAppBarTitle: "rajasthan_gk".tr),
+                        ),
+                        icon: AppAssets.icUserboard,
+                        title: "rajasthan_gk".tr,
+                      ),
                     ],
                   ),
                   const VerticalGap(size: 50),
@@ -46,9 +58,21 @@ class AllCategoriesScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       CategoryItem(
-                          icon: AppAssets.icClipboard, title: "exam_review".tr),
+                        onClick: () => AppRouting.toNamed(
+                          NameRoutes.categoryWiseScreen,
+                          argument: SharedData(categoryWiseAppBarTitle: "exam_review".tr),
+                        ),
+                        icon: AppAssets.icClipboard,
+                        title: "exam_review".tr,
+                      ),
                       CategoryItem(
-                          icon: AppAssets.icEdit, title: "reet_exam".tr),
+                        onClick: () => AppRouting.toNamed(
+                          NameRoutes.categoryWiseScreen,
+                          argument: SharedData(categoryWiseAppBarTitle: "reet_exam".tr),
+                        ),
+                        icon: AppAssets.icEdit,
+                        title: "reet_exam".tr,
+                      ),
                     ],
                   ),
                   const VerticalGap(size: 50),
@@ -56,9 +80,21 @@ class AllCategoriesScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       CategoryItem(
-                          icon: AppAssets.icOpenBook, title: "new_books".tr),
+                        onClick: () => AppRouting.toNamed(
+                          NameRoutes.categoryWiseScreen,
+                          argument: SharedData(categoryWiseAppBarTitle: "new_books".tr),
+                        ),
+                        icon: AppAssets.icOpenBook,
+                        title: "new_books".tr,
+                      ),
                       CategoryItem(
-                          icon: AppAssets.icReport, title: "model_papers".tr),
+                        onClick: () => AppRouting.toNamed(
+                          NameRoutes.categoryWiseScreen,
+                          argument: SharedData(categoryWiseAppBarTitle: "model_papers".tr),
+                        ),
+                        icon: AppAssets.icReport,
+                        title: "model_papers".tr,
+                      ),
                     ],
                   )
                 ],

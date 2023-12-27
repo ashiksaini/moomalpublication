@@ -176,8 +176,15 @@ final Map<String, String> enUS = {
   "search_desc": "Find Books, Ebooks for current GK and \nMany more books",
 
   // All categories ///////////////////////////////////////////////////////////
+  "all_categories": "All Categories",
   "rajasthan_gk": "Rajasthan GK",
   "exam_review": "Exam Review",
   "new_books": "New Books",
   "model_papers": "Model Papers",
+  "include_out_of_stock_item": "Include out of Stock Item",
+  "filter": "Filter",
+  "sort_by_popularity": "Sort by Popularity",
+  "sort_by_average_rating": "Sort by Average Rating",
+  "sort_by_price_l_to_h": "Sort By Price (Low to High)",
+  "sort_by_price_h_to_l": "Sort By price (High to Low)",
 };
