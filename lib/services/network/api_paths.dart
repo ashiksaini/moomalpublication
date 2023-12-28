@@ -16,4 +16,7 @@ class ApiPaths {
   static const String testSeries = 'online_exam/v1/exams/';
   static const String testSeriesList = 'custom/v1/dashboard';
 
+  static const String updateCartItem = 'wc/store/cart/update-item';
+  static const String removeCartItem = 'wc/store/cart/remove-item';
+  static const String eBookProductCategory = 'wc/v3/products/categories';
 }

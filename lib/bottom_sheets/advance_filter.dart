@@ -50,6 +50,7 @@ class AdvanceFilterBottomSheet extends StatelessWidget {
                 CustomDropDown2(
                   items: _homeController.languages,
                   selectedItem: _homeController.selectedLanguage,
+                  onItemClick: _homeController.onLanguageItemClick,
                   width: screenWidth(context) - scaleWidth(40, context),
                 ),
                 const VerticalGap(size: 15),

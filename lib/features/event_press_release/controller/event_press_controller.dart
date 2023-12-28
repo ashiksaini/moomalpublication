@@ -60,11 +60,10 @@ class EventPressController extends BaseController {
   void onYearClick({required int currentYear}) {
     if (intialYear != currentYear) {
       yearListData[currentYear].clicked = !yearListData[currentYear].clicked!;
-    yearListData[intialYear].clicked = !yearListData[intialYear].clicked!;
+      yearListData[intialYear].clicked = !yearListData[intialYear].clicked!;
       intialYear = currentYear;
       _getEvents();
       yearListData.refresh();
     }
   }
 }
-

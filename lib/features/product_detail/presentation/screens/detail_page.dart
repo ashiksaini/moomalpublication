@@ -27,6 +27,7 @@ class ProductDetailScreen extends StatelessWidget {
                     prefixIcon: AppAssets.icBackArrow,
                     suffixIcon: AppAssets.icShare,
                     onPrefixIconClick: () => AppRouting.navigateBack(),
+                    onSuffixIconClick: () => _productDetailController.shareItem(),
                     title: _productDetailController.productName.value,
                     maxLine: 1,
                   ),

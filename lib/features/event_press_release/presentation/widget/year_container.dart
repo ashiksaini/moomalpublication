@@ -35,7 +35,8 @@ class YearContainer extends StatelessWidget {
               vertical: scaleWidth(6, context),
             ),
             child: CustomText(
-                text: _eventPressController.yearListData[yearIndex].year.toString(),
+                text: _eventPressController.yearListData[yearIndex].year
+                    .toString(),
                 textStyle: CustomTextStyle.textStyle20Bold(context,
                     color: AppColors.black)),
           ),

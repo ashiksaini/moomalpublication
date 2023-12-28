@@ -1,21 +1,24 @@
-class BaseReponse<T> {
+class BaseResponse<T> {
   final String? status;
+  final String? code;
   final String? message;
   final T? data;
 
-  BaseReponse({
+  BaseResponse({
     this.status,
+    this.code,
     this.message,
     this.data,
   });
 
-  factory BaseReponse.fromJson(
+  factory BaseResponse.fromJson(
     Map<String, dynamic> json,
     T Function(dynamic) fromJsonData,
   ) {
-    return BaseReponse(
+    return BaseResponse(
       status: json['status'] as String?,
       message: json['message']?.toString(),
+      code: json['code']?.toString(),
       data: json['data'] != null ? fromJsonData(json['data']) : null,
     );
   }

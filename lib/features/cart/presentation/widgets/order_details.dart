@@ -30,7 +30,8 @@ class OrderDetails extends StatelessWidget {
           // Title
           CustomText(
             text: "order_details".tr,
-            textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
+            textStyle: CustomTextStyle.textStyle20Bold(context,
+                color: AppColors.black),
           ),
 
           Divider(
@@ -84,7 +85,6 @@ class OrderDetails extends StatelessWidget {
             context,
           ),
         ),
-
         CustomText(
           text: "₹$cash",
           textStyle: CustomTextStyle.textStyle20Bold(

@@ -40,8 +40,10 @@ class SplashView extends StatelessWidget {
             FittedBox(
               child: CustomText(
                 text: "yourself".tr,
-                textStyle: CustomTextStyle.textStyle60BoldMontaguSlab(context,
-                    color: AppColors.white,),
+                textStyle: CustomTextStyle.textStyle60BoldMontaguSlab(
+                  context,
+                  color: AppColors.white,
+                ),
               ),
             ),
           ],

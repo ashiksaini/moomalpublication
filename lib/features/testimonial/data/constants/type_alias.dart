@@ -3,4 +3,4 @@ import 'package:moomalpublication/features/testimonial/data/models/testimonial_r
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 typedef TestimonialResponse
-    = ApiResponse<BaseReponse<List<TestimonialResponseModel>>>;
+    = ApiResponse<BaseResponse<List<TestimonialResponseModel>>>;

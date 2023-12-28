@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/testimonial/controllers/testimonial_controller.dart';
 import 'package:moomalpublication/features/testimonial/presentation/templates/student_card.dart';
@@ -18,6 +19,7 @@ class TestimonialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Obx(() {
           return Column(

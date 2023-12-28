@@ -55,7 +55,10 @@ class Item {
         name: json['name'] as String?,
         quantity: json['quantity'] as int?,
         id: json['id'] as int?,
-        quantityLimits: json['quantity_limits'] != null ? QuantityLimits.fromJson(json['quantity_limits'] as Map<String, dynamic>) : null,
+        quantityLimits: json['quantity_limits'] != null
+            ? QuantityLimits.fromJson(
+                json['quantity_limits'] as Map<String, dynamic>)
+            : null,
         shortDescription: json['short_description'] as String?,
         description: json['description'] as String?,
         sku: json['sku'] as String?,
@@ -64,11 +67,19 @@ class Item {
         showBackorderBadge: json['show_backorder_badge'] as bool?,
         soldIndividually: json['sold_individually'] as bool?,
         permalink: json['permalink'] as String?,
-        images: (json['images'] as List<dynamic>?)?.map((item) => Image.fromJson(item as Map<String, dynamic>)).toList(),
+        images: (json['images'] as List<dynamic>?)
+            ?.map((item) => Image.fromJson(item as Map<String, dynamic>))
+            .toList(),
         // variation: (json['variation'] as List<dynamic>?)?.map((item) => Variation.fromJson(item as Map<String, dynamic>)).toList(),
-        itemData: (json['item_data'] as List<dynamic>?)?.map((e) => e as Map<String, dynamic>).toList(),
-        prices: json['prices'] != null ? Prices.fromJson(json['prices'] as Map<String, dynamic>) : null,
-        totals: json['totals'] != null ? Totals.fromJson(json['totals'] as Map<String, dynamic>) : null,
+        itemData: (json['item_data'] as List<dynamic>?)
+            ?.map((e) => e as Map<String, dynamic>)
+            .toList(),
+        prices: json['prices'] != null
+            ? Prices.fromJson(json['prices'] as Map<String, dynamic>)
+            : null,
+        totals: json['totals'] != null
+            ? Totals.fromJson(json['totals'] as Map<String, dynamic>)
+            : null,
         catalogVisibility: json['catalog_visibility'] as String?,
         // extensions: json['extensions'] as Map<String, dynamic>?,
       );

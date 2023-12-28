@@ -26,6 +26,7 @@ dependencies:
   flutter_html:
   payu_checkoutpro_flutter:
   crypto:
+  share_plus: ^7.2.1
 
 dev_dependencies:
   flutter_test:
