@@ -27,11 +27,11 @@ enum Category {
   cat4,
 }
 
-enum MockTest {
-  a,
-  b,
-  c,
-}
+// enum MockTest {
+//   a,
+//   b,
+//   c,
+// }
 
 enum TopicWiseTest {
   a,
