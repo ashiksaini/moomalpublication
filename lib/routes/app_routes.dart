@@ -16,7 +16,9 @@ import 'package:moomalpublication/features/orders/presentation/screen/orders_scr
 import 'package:moomalpublication/features/overall_results/presentation/screen/overall_result_screen.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
+import 'package:moomalpublication/features/quiz/presentation/screens/quiz_detail_screen.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
+import 'package:moomalpublication/features/quiz/presentation/screens/quiz_test_screen.dart';
 import 'package:moomalpublication/features/search_books/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
@@ -149,7 +151,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.testSeriesScreen,
-      page: () => TestSeriesScreen(),
+      page: () => const TestSeriesScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -162,6 +164,18 @@ class AppPages {
     GetPage(
       name: NameRoutes.detailEventScreen,
       page: () => DetailedEventPage(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+     GetPage(
+      name: NameRoutes.quizTestScreen,
+      page: () => const QuizTestScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.quizTestScreen,
+      page: () => const QuizTestScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
