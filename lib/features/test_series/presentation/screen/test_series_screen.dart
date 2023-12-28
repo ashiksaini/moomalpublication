@@ -13,16 +13,18 @@ import 'package:moomalpublication/features/test_series/presentation/widgets/list
 import 'package:moomalpublication/routes/routing.dart';
 
 class TestSeriesScreen extends StatefulWidget {
-  const TestSeriesScreen({super.key});
+  const TestSeriesScreen({Key? key}) : super(key: key);
 
   @override
   State<TestSeriesScreen> createState() => _TestSeriesScreenState();
 }
 
-class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerProviderStateMixin {
+class _TestSeriesScreenState extends State<TestSeriesScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final TextEditingController colorController = TextEditingController();
-  final TestSeriesController _testSeriesController = Get.put(TestSeriesController());
+  final TestSeriesController _testSeriesController =
+      Get.put(TestSeriesController());
 
   @override
   void initState() {
@@ -41,64 +43,76 @@ class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerPr
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CustomAppbar(
-              title: "Test Series",
-              prefixIcon: AppAssets.icBackArrow,
-              suffixIcon: AppAssets.icSearch,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-              maxLine: 1,
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: scaleHeight(14, context), left: scaleWidth(10, context), right: scaleWidth(10, context)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // CustomDropDown2(
-                  //   borderRadius: 10,
-                  //   borderColor: AppColors.orange,
-                  //   items: _testSeriesController.mockTestCategory,
-                  //   selectedItem: _testSeriesController.selectedMockTestCategory,
-                  //   width: screenWidth(context) - scaleWidth(200, context),
-                  // ),
-                  // CustomDropDown2(
-                  //   borderRadius: 10,
-                  //   borderColor: AppColors.orange,
-                  //   items: _testSeriesController.topicWiseCategory,
-                  //   selectedItem: _testSeriesController.selectedTopicWiseCategory,
-                  //   width: screenWidth(context) - scaleWidth(200, context),
-                  // ),
-                ],
-              ),
-            ),
-            const ListGridRow(),
-            TabBar(
-              unselectedLabelColor: AppColors.black,
-              labelColor: AppColors.orange,
-              dividerColor: AppColors.grey,
-              indicatorColor: AppColors.orange,
-              tabs: const [
-                Tab(
-                  text: 'All(5)',
-                ),
-                Tab(
-                  text: 'Full length(5)',
-                ),
-                Tab(
-                  text: 'Sectional(3)',
-                )
-              ],
-              labelStyle: CustomTextStyle.textStyle20Bold(context),
-              controller: _tabController,
-              indicatorSize: TabBarIndicatorSize.tab,
-            ),
-            Expanded(
-              child: Obx(
-                () => (_testSeriesController.testSeriesResponse.value.isLoading)
-                    ? Center(child: customProgressIndicator())
-                    : TabBarView(
+        child: Obx(
+          () => (!_testSeriesController.pageLoaded.value)
+              ? Center(child: customProgressIndicator())
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CustomAppbar(
+                      title: "Test Series",
+                      prefixIcon: AppAssets.icBackArrow,
+                      suffixIcon: AppAssets.icSearch,
+                      onPrefixIconClick: () => AppRouting.navigateBack(),
+                      maxLine: 1,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: scaleHeight(14, context),
+                        left: scaleWidth(10, context),
+                        right: scaleWidth(10, context),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          CustomDropDown2(
+                            borderRadius: 10,
+                            borderColor: AppColors.orange,
+                            items: _testSeriesController.mockTestCategory,
+                            selectedItem:
+                                _testSeriesController.selectedMockTestCategory,
+                            width:
+                                screenWidth(context) - scaleWidth(200, context),
+                            onItemClick:
+                                _testSeriesController.onMockCategoryItemClick,
+                          ),
+                          CustomDropDown2(
+                            borderRadius: 10,
+                            borderColor: AppColors.orange,
+                            items: _testSeriesController.topicWiseCategory,
+                            selectedItem:
+                                _testSeriesController.selectedTopicWiseCategory,
+                            width:
+                                screenWidth(context) - scaleWidth(200, context),
+                            onItemClick:
+                                _testSeriesController.onTopicCategoryItemClick,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const ListGridRow(),
+                    TabBar(
+                      unselectedLabelColor: AppColors.black,
+                      labelColor: AppColors.orange,
+                      dividerColor: AppColors.grey,
+                      indicatorColor: AppColors.orange,
+                      tabs: const [
+                        Tab(
+                          text: 'All(5)',
+                        ),
+                        Tab(
+                          text: 'Full length(5)',
+                        ),
+                        Tab(
+                          text: 'Sectional(3)',
+                        )
+                      ],
+                      labelStyle: CustomTextStyle.textStyle20Bold(context),
+                      controller: _tabController,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                    ),
+                    Expanded(
+                      child: TabBarView(
                         controller: _tabController,
                         children: [
                           TabList(
@@ -112,9 +126,9 @@ class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerPr
                           ),
                         ],
                       ),
-              ),
-            ),
-          ],
+                    ),
+                  ],
+                ),
         ),
       ),
     );

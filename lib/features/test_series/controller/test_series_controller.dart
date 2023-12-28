@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/home/data/constants/drop_down_item_type.dart';
 import 'package:moomalpublication/features/home/data/models/drop_down_item.dart';
 import 'package:moomalpublication/features/test_series/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/test_series/data/models/term_model.dart';
@@ -17,22 +16,21 @@ class TestSeriesController extends BaseController {
 
   final Rx<TestSeriesListResponse> testSeriesListResponse =
       Rx(TestSeriesListResponse());
-  final List<Term> mockTestTermsList = <Term>[];
-  final List<Term> topicWiseTermsList = <Term>[];
 
-  List<DropdownItem<MockTest>> mockTestCategory = [];
-  late Rx<DropdownItem<MockTest>?> selectedMockTestCategory = Rx(null);
+  List<DropdownItem<Term>> mockTestCategory = RxList<DropdownItem<Term>>();
+  late Rx<DropdownItem<Term>?> selectedMockTestCategory =
+      Rx<DropdownItem<Term>?>(null);
 
-  List<DropdownItem<TopicWiseTest>> topicWiseCategory = [];
-  late Rx<DropdownItem<TopicWiseTest>?> selectedTopicWiseCategory = Rx(null);
+  List<DropdownItem<Term>> topicWiseCategory = RxList<DropdownItem<Term>>();
+  late Rx<DropdownItem<Term>?> selectedTopicWiseCategory =
+      Rx<DropdownItem<Term>?>(null);
+
+  RxBool pageLoaded = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    _initCategoriesList();
-    _getTestList();
     _getTestDropDownList();
-    ();
   }
 
   Future<void> _getTestList() async {
@@ -42,6 +40,7 @@ class TestSeriesController extends BaseController {
     if (testSeriesResponse.value.data != null) {
       tests.clear();
       tests.addAll(testSeriesResponse.value.data!);
+      isPageLoaded();
     } else {
       showSnackBar(AppConstants.somethingWentWrong);
     }
@@ -52,16 +51,26 @@ class TestSeriesController extends BaseController {
     testSeriesListResponse.value = await TestSeriesService.getTestList();
 
     if (testSeriesListResponse.value.data != null) {
-      mockTestTermsList.clear();
-      topicWiseTermsList.clear();
-
       for (var item in testSeriesListResponse.value.data!) {
         if (item.mockTestTerms != null) {
-          mockTestTermsList.addAll(item.mockTestTerms!.values);
+          for (var category in item.mockTestTerms!.values) {
+            mockTestCategory
+                .add(DropdownItem(title: category.name ?? "", type: category));
+          }
+          selectedMockTestCategory.value = mockTestCategory.first;
         }
 
         if (item.topicWiseTerms != null) {
-          topicWiseTermsList.addAll(item.topicWiseTerms!.values);
+          for (var category in item.topicWiseTerms!.values) {
+            topicWiseCategory
+                .add(DropdownItem(title: category.name ?? "", type: category));
+          }
+        }
+        if (mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty) {
+          selectedMockTestCategory.value = mockTestCategory.first;
+          selectedTopicWiseCategory.value = topicWiseCategory.first;
+          _getTestList();
+          isPageLoaded();
         }
       }
     } else {
@@ -69,23 +78,24 @@ class TestSeriesController extends BaseController {
     }
   }
 
-  void _initCategoriesList() {
-    final a = DropdownItem(title: "cat1".tr, type: MockTest.a);
-    final b = DropdownItem(title: "cat2".tr, type: MockTest.b);
-    final c = DropdownItem(title: "cat3".tr, type: MockTest.c);
+  void onMockCategoryItemClick(DropdownItem<Term> item) {
+    selectedMockTestCategory.value = item;
+    tests.clear();
+    _getTestList();
+  }
 
-    mockTestCategory.addAll([a, b, c]);
-    selectedMockTestCategory.value = mockTestCategory.first;
-
-    final a1 = DropdownItem(title: "cat1".tr, type: TopicWiseTest.a);
-    final b2 = DropdownItem(title: "cat2".tr, type: TopicWiseTest.b);
-    final c3 = DropdownItem(title: "cat3".tr, type: TopicWiseTest.c);
-
-    topicWiseCategory.addAll([a1, b2, c3]);
-    selectedTopicWiseCategory.value = topicWiseCategory.first;
+  void onTopicCategoryItemClick(DropdownItem<Term> item) {
+    selectedTopicWiseCategory.value = item;
+    tests.clear();
+    _getTestList();
   }
 
   RxBool listOrGrid() {
     return listgrid;
+  }
+
+  void isPageLoaded() {
+    pageLoaded.value =
+        mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty;
   }
 }
