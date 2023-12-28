@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/components/organisms/custom_drop_down_2.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -12,8 +13,10 @@ import 'package:moomalpublication/features/test_series/presentation/widgets/list
 import 'package:moomalpublication/routes/routing.dart';
 
 class TestSeriesScreen extends StatefulWidget {
+  const TestSeriesScreen({super.key});
+
   @override
-  _TestSeriesScreenState createState() => _TestSeriesScreenState();
+  State<TestSeriesScreen> createState() => _TestSeriesScreenState();
 }
 
 class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerProviderStateMixin {
@@ -92,19 +95,23 @@ class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerPr
               indicatorSize: TabBarIndicatorSize.tab,
             ),
             Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: const [
-                  TabList(
-                    entries: ['A', 'B', 'C'],
-                  ),
-                  TabList(
-                    entries: ['A', 'B', 'C'],
-                  ),
-                  TabList(
-                    entries: ['A', 'B', 'C'],
-                  ),
-                ],
+              child: Obx(
+                () => (_testSeriesController.testSeriesResponse.value.isLoading)
+                    ? Center(child: customProgressIndicator())
+                    : TabBarView(
+                        controller: _tabController,
+                        children: [
+                          TabList(
+                            entries: _testSeriesController.tests,
+                          ),
+                          TabList(
+                            entries: _testSeriesController.tests,
+                          ),
+                          TabList(
+                            entries: _testSeriesController.tests,
+                          ),
+                        ],
+                      ),
               ),
             ),
           ],
