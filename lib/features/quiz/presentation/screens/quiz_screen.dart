@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
+import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/current_affair_quiz_card.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -17,6 +21,7 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  final QuizController _quizController = Get.put(QuizController());
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
@@ -55,20 +60,24 @@ class _QuizScreenState extends State<QuizScreen>
               indicatorSize: TabBarIndicatorSize.tab,
             ),
             Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  ListView.builder(
-                      itemCount: 3,
-                      itemBuilder: (BuildContext context, int index) {
-                        return const CurrentAffairQuizCard();
-                      }),
-                  ListView.builder(
-                      itemCount: 3,
-                      itemBuilder: (BuildContext context, int index) {
-                        return const CurrentAffairQuizCard();
-                      }),
-                ],
+              child: Obx(
+                () => (_quizController.quizResponse.value.isLoading)
+                    ? Center(child: customProgressIndicator())
+                    : TabBarView(
+                        controller: _tabController,
+                        children: [
+                          ListView.builder(
+                              itemCount: _quizController.quizList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return CurrentAffairQuizCard(index: index);
+                              }),
+                          ListView.builder(
+                              itemCount: _quizController.quizList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return CurrentAffairQuizCard(index: index);
+                              }),
+                        ],
+                      ),
               ),
             ),
           ],

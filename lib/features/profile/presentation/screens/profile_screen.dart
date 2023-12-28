@@ -4,7 +4,6 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/profile/presentation/template/name_template.dart';
 import 'package:moomalpublication/features/profile/presentation/widgets/cirular_conatiner.dart';
 import 'package:moomalpublication/features/profile/presentation/widgets/profile_picture_card.dart';
-import 'package:moomalpublication/routes/routing.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

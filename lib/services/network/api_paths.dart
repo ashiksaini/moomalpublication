@@ -12,4 +12,8 @@ class ApiPaths {
   static const String cartData = 'wc/store/cart';
   static const String addToCart = 'wc/store/cart/add-item';
   static const String eventRelease = 'event/v1/events-year';
+  static const String quizData = 'qsm/list_quiz';
+  static const String testSeries = 'online_exam/v1/exams/';
+  static const String testSeriesList = 'custom/v1/dashboard';
+
 }

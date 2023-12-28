@@ -21,10 +21,14 @@ class CustomButtonBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomText(
-            text: barText,
-            textStyle: CustomTextStyle.textStyle22Bold(context,
-                color: AppColors.black),
+          Expanded(
+            child: CustomText(
+              text: barText,
+              maxLines: 3,
+              textAlign: TextAlign.start,
+              textStyle: CustomTextStyle.textStyle22Bold(context,
+                  color: AppColors.black),
+            ),
           ),
           if (buttonVisibility)
             Container(
