@@ -1,6 +1,7 @@
 final Map<String, String> enUS = {
   // App ////////////////////////////////////////////////////////////
-  "moomalpublication": "Moomal Publicaiton",
+  "moomalpublication": "Moomal Publication",
+  "delete_account": "Delete Account",
 
   // Internet ///////////////////////////////////////////////////////////////
   'bad_request': "Bad Request",

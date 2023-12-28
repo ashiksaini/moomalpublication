@@ -18,6 +18,7 @@ import 'package:moomalpublication/features/home/data/services/get_product_servic
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 
 class HomeController extends BaseController {
   final GlobalKey<ScaffoldState> globalKey = GlobalKey();
@@ -202,7 +203,12 @@ class HomeController extends BaseController {
         AppRouting.toNamed(NameRoutes.overallResultScreen);
         break;
       case DrawerItemType.logout:
-      // TODO: Handle this case.
+        {
+          SharedPreferencesHelper.clearSharedPrefExcept();
+          AppRouting.offAllNamed(NameRoutes.splashScreen);
+        }
+
+        break;
     }
   }
 

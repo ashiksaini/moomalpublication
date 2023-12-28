@@ -19,4 +19,8 @@ class ApiKeys {
   // EBool Category
   static const String ebookCategoryConsumerKey = "ck_e2f6f01e1cf1ecdaf2afa9fe1e6d79f9e564c3db";
   static const String ebookCategoryConsumerSecret = "cs_0cc8258ffd6d6b5110f150f4ea8ad04845c6c9cc";
+
+  // Delete account
+  static const String deleteAccountConsumerKey = "ck_6003c242b66ba13b095792d15766f26f6d6e5c4f";
+  static const String deleteAccountConsumerSecret = "cs_f1ceebe6091f867735f20c1b7136a76b228e2078";
 }
