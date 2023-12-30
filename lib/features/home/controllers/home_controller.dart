@@ -19,6 +19,7 @@ import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class HomeController extends BaseController {
   final GlobalKey<ScaffoldState> globalKey = GlobalKey();
@@ -38,9 +39,14 @@ class HomeController extends BaseController {
   List<DropdownItem<BookType>> books = [];
   List<DropdownItem<Language>> languages = [];
 
+  RxString userName = RxString("");
+  RxString userAvatar = RxString("");
+
   @override
   void onInit() {
     super.onInit();
+
+    _getUserInfo();
 
     _initDrawerItemList();
     _initExamsList();
@@ -50,6 +56,11 @@ class HomeController extends BaseController {
     _getExploreBooks();
     _getNewArrivalBooks();
     _getBestSellerBooks();
+  }
+
+  Future<void> _getUserInfo() async {
+    userName.value = await SharedPreferencesHelper.getString(SharedPreferenceKeys.username) ?? "";
+    userAvatar.value = await SharedPreferencesHelper.getString(SharedPreferenceKeys.avatarUrl) ?? "";
   }
 
   void _initDrawerItemList() {

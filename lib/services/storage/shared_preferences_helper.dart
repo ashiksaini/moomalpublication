@@ -28,7 +28,7 @@ class SharedPreferencesHelper {
     if (await _preferences.clear() == false) {
       return false;
     }
-    
+
     await _preferences.clear();
     setValue(SharedPreferenceKeys.rememberMe, rememberMe);
 

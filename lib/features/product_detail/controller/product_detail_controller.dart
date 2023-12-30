@@ -48,7 +48,8 @@ class ProductDetailController extends BaseController {
   Future<void> _getProductDetails() async {
     if (productId != null) {
       productDetailResponse.value = ApiResponse.loading();
-      productDetailResponse.value = await ProductDetailServices.getProductDetails(productId!);
+      productDetailResponse.value =
+          await ProductDetailServices.getProductDetails(productId!);
 
       if (productDetailResponse.value.data != null) {
         productDetailData.value = productDetailResponse.value.data;
@@ -59,7 +60,8 @@ class ProductDetailController extends BaseController {
   Future<void> _getProductReviews() async {
     if (productId != null) {
       productReviewsResponse.value = ApiResponse.loading();
-      productReviewsResponse.value = await ProductDetailServices.getProductReviews(productId!);
+      productReviewsResponse.value =
+          await ProductDetailServices.getProductReviews(productId!);
 
       if (productReviewsResponse.value.data != null) {
         productReviews.value = productReviewsResponse.value.data!;
@@ -70,7 +72,8 @@ class ProductDetailController extends BaseController {
   Future<void> _getSimilarProducts() async {
     if (productId != null) {
       similarProductResponse.value = ApiResponse.loading();
-      similarProductResponse.value = await ProductDetailServices.getSimilerReviews(productId!);
+      similarProductResponse.value =
+          await ProductDetailServices.getSimilerReviews(productId!);
 
       if (similarProductResponse.value.data != null) {
         similarProducts.value = similarProductResponse.value.data!;
@@ -86,7 +89,8 @@ class ProductDetailController extends BaseController {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(id: item.id.toString(), quantity: item.quantity.toString());
+          final addToCartResponse = await CartServices.addToCart(
+              id: item.id.toString(), quantity: item.quantity.toString());
           if (addToCartResponse.data != null) {
             item.cartBtnType.value = CartBtnType.goToCart;
           }
@@ -100,7 +104,8 @@ class ProductDetailController extends BaseController {
   }
 
   void shareItem() {
-    if (_sharedData.productLink != null && _sharedData.productLink!.isNotEmpty) {
+    if (_sharedData.productLink != null &&
+        _sharedData.productLink!.isNotEmpty) {
       Share.share(_sharedData.productLink!);
     }
   }

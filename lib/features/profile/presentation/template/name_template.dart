@@ -5,29 +5,31 @@ import 'package:moomalpublication/features/profile/presentation/widgets/name_car
 import 'package:moomalpublication/features/profile/presentation/widgets/submit_button.dart';
 
 class NameTemplate extends StatelessWidget {
-  NameTemplate({super.key});
-  final TextEditingController textEditingController = TextEditingController();
+  final String userName;
+  final String userEmail;
+
+  const NameTemplate({
+    super.key,
+    required this.userName,
+    required this.userEmail,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         NameCardField(
-            context: context,
-            textEditingController: textEditingController,
-            icon: AppAssets.icUser,
-            hintText: 'Full Name'),
+          context: context,
+          icon: AppAssets.icUser,
+          hintText: userName,
+          isReadOnly: true,
+        ),
         NameCardField(
-            context: context,
-            textEditingController: textEditingController,
-            icon: AppAssets.icEmail,
-            hintText: 'designer1@gmail.com'),
-        NameCardField(
-            context: context,
-            textEditingController: textEditingController,
-            icon: AppAssets.icPassword,
-            isPassword: true,
-            hintText: 'Password'),
+          context: context,
+          icon: AppAssets.icEmail,
+          hintText: userEmail,
+          isReadOnly: true,
+        ),
         SizedBox(
           height: scaleHeight(72, context),
         ),

@@ -6,24 +6,17 @@ import 'package:url_launcher/url_launcher.dart';
 class Utility {
   Utility._();
 
-  static Future<void> saveLoginDataToLocal(
-      LoginResponseData data, bool rememberMe, String password) async {
-    await SharedPreferencesHelper.setValue(
-        SharedPreferenceKeys.username, data.username);
-    await SharedPreferencesHelper.setValue(
-        SharedPreferenceKeys.email, data.email);
-    await SharedPreferencesHelper.setValue(
-        SharedPreferenceKeys.role, data.role);
-    await SharedPreferencesHelper.setValue(
-        SharedPreferenceKeys.avatarUrl, data.avatarUrl);
+  static Future<void> saveLoginDataToLocal(LoginResponseData data, bool rememberMe, String password) async {
+    await SharedPreferencesHelper.setValue(SharedPreferenceKeys.username, data.username);
+    await SharedPreferencesHelper.setValue(SharedPreferenceKeys.email, data.email);
+    await SharedPreferencesHelper.setValue(SharedPreferenceKeys.role, data.role);
+    await SharedPreferencesHelper.setValue(SharedPreferenceKeys.avatarUrl, data.avatarUrl);
 
     await SharedPreferencesHelper.setValue(SharedPreferenceKeys.isLogin, true);
-    await SharedPreferencesHelper.setValue(
-        SharedPreferenceKeys.rememberMe, rememberMe);
+    await SharedPreferencesHelper.setValue(SharedPreferenceKeys.rememberMe, rememberMe);
 
     if (rememberMe) {
-      await SharedPreferencesHelper.setValue(
-          SharedPreferenceKeys.password, password);
+      await SharedPreferencesHelper.setValue(SharedPreferenceKeys.password, password);
     } else {
       await SharedPreferencesHelper.remove(SharedPreferenceKeys.password);
     }

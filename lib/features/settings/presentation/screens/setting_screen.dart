@@ -30,7 +30,9 @@ class SettingScreen extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: scaleWidth(15, context), vertical: scaleHeight(24, context)),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: scaleWidth(15, context),
+                      vertical: scaleHeight(24, context)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -51,8 +53,11 @@ class SettingScreen extends StatelessWidget {
                         text: 'cancellation_and_refund_policy'.tr.toUpperCase(),
                         onCardTap: () {
                           _settingController.navigateSettingDetailScreen(
-                            appBarTitle: 'cancellation_and_refund_policy'.tr.toUpperCase(),
-                            description: 'cancellation_and_refund_policy_desc'.tr,
+                            appBarTitle: 'cancellation_and_refund_policy'
+                                .tr
+                                .toUpperCase(),
+                            description:
+                                'cancellation_and_refund_policy_desc'.tr,
                           );
                         },
                       ),
@@ -64,7 +69,8 @@ class SettingScreen extends StatelessWidget {
                         onCardTap: () {
                           _settingController.navigateSettingDetailScreen(
                             appBarTitle: 'privacy_policy'.tr.toUpperCase(),
-                            description: 'cancellation_and_refund_policy_desc'.tr,
+                            description:
+                                'cancellation_and_refund_policy_desc'.tr,
                           );
                         },
                       ),
@@ -75,7 +81,8 @@ class SettingScreen extends StatelessWidget {
                         text: 'terms_and_conditions'.tr.toUpperCase(),
                         onCardTap: () {
                           _settingController.navigateSettingDetailScreen(
-                            appBarTitle: 'terms_and_conditions'.tr.toUpperCase(),
+                            appBarTitle:
+                                'terms_and_conditions'.tr.toUpperCase(),
                             description: 'terms_and_conditions_desc'.tr,
                           );
                         },

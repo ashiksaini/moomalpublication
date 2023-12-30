@@ -166,7 +166,7 @@ class AppPages {
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
-     GetPage(
+    GetPage(
       name: NameRoutes.quizTestScreen,
       page: () => const QuizTestScreen(),
       transition: Transition.leftToRight,

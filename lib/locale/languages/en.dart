@@ -188,4 +188,8 @@ final Map<String, String> enUS = {
   "sort_by_average_rating": "Sort by Average Rating",
   "sort_by_price_l_to_h": "Sort By Price (Low to High)",
   "sort_by_price_h_to_l": "Sort By price (High to Low)",
+
+  // Profile ///////////////////////////////////////////////////////////
+  "my_profile": "My Profile",
+  "user_name": "User Name",
 };

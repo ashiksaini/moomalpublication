@@ -51,7 +51,10 @@ class SearchProductController extends BaseController {
 
   void onItemClick(int index, ProductItem data) {
     AppRouting.toNamed(NameRoutes.productDetailScreen,
-        argument: SharedData(productId: data.id, productName: data.name, productLink: data.permalink));
+        argument: SharedData(
+            productId: data.id,
+            productName: data.name,
+            productLink: data.permalink));
   }
 
   Future<void> onCartBtnClick(ProductItem item) async {

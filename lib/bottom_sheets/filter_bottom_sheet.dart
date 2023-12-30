@@ -36,21 +36,18 @@ class FiltersBottomSheet extends StatelessWidget {
             () => onClick(SortBy.popularity),
           ),
           const VerticalGap(size: 10),
-
           _getSortByView(
             context,
             "sort_by_average_rating".tr,
             () => onClick(SortBy.popularity),
           ),
           const VerticalGap(size: 10),
-          
           _getSortByView(
             context,
             "sort_by_price_l_to_h".tr,
             () => onClick(SortBy.popularity),
           ),
           const VerticalGap(size: 10),
-          
           _getSortByView(
             context,
             "sort_by_price_h_to_l".tr,
