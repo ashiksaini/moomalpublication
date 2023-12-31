@@ -89,6 +89,13 @@ final Map<String, String> enUS = {
   "go_to_cart": "Go To Cart",
   "buy_now": "Buy Now",
   "similar_products": "Similar Products",
+  "categories": "Categories",
+  "sku": "SKU",
+  "not_define": "Not Define",
+  "book": "Book",
+  "ebook": "E Book",
+  "available": "Available",
+  "not_available": "Not Available",
 
   // Drawer ///////////////////////////////////////////////////////////////////
   "downloads": "Downloads",
@@ -192,4 +199,11 @@ final Map<String, String> enUS = {
   // Profile ///////////////////////////////////////////////////////////
   "my_profile": "My Profile",
   "user_name": "User Name",
+
+  // Write Review ///////////////////////////////////////////////////////////
+  "your_rating": "Your Rating",
+  "your_review": "Your Review",
+  "submit": "Submit",
+  "please_write_a_review_first": "Please write a Review first",
+  "review_posted_successfully": "Review Posted Successfully",
 };

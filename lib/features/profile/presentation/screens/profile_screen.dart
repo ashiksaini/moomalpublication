@@ -36,7 +36,8 @@ class ProfileScreen extends StatelessWidget {
                     Positioned(
                       bottom: 0,
                       left: scaleWidth(100, context),
-                      child: ProfilePicture(avatarUrl: _profileController.userAvatar.value),
+                      child: ProfilePicture(
+                          avatarUrl: _profileController.userAvatar.value),
                     ),
                   ],
                 ),

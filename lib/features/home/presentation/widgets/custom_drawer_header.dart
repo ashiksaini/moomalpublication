@@ -40,14 +40,16 @@ class CustomDrawerHeader extends StatelessWidget {
         Expanded(
           child: CustomText(
             text: userName,
-            textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white),
+            textStyle: CustomTextStyle.textStyle20Bold(context,
+                color: AppColors.white),
             textAlign: TextAlign.start,
           ),
         ),
 
         // Edit Btn
         GestureDetector(
-          onTap: () => AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 4),
+          onTap: () => AppRouting.offAllNamed(NameRoutes.moomalpublicationApp,
+              argument: 4),
           child: SvgPicture.asset(
             AppAssets.icEditNavDrawer,
             height: scaleHeight(24, context),

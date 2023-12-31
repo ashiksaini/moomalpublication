@@ -85,7 +85,9 @@ class HomeScreen extends StatelessWidget {
   Widget _getMainAppbar(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-          top: scaleHeight(40, context), bottom: scaleHeight(60, context)),
+        top: scaleHeight(20, context),
+        bottom: scaleHeight(80, context),
+      ),
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(

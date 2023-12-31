@@ -17,7 +17,8 @@ import 'package:moomalpublication/routes/routing.dart';
 class CategoryWiseScreen extends StatelessWidget {
   CategoryWiseScreen({super.key});
 
-  final CategoryWiseController _categoryWiseController = Get.put(CategoryWiseController());
+  final CategoryWiseController _categoryWiseController =
+      Get.put(CategoryWiseController());
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +66,17 @@ class CategoryWiseScreen extends StatelessWidget {
                       side: const BorderSide(color: AppColors.white),
                       checkColor: AppColors.orange,
                       activeColor: AppColors.white,
-                      value: _categoryWiseController.includeOutOfStockItem.value,
-                      onChanged: (value) => _categoryWiseController.canIncludeOutOfStockItem(value),
+                      value:
+                          _categoryWiseController.includeOutOfStockItem.value,
+                      onChanged: (value) => _categoryWiseController
+                          .canIncludeOutOfStockItem(value),
                     ),
                   ),
                   const HorizontalGap(size: 4),
                   CustomText(
                     text: "include_out_of_stock_item".tr,
-                    textStyle: CustomTextStyle.textStyle18Regular(context, color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle18Regular(context,
+                        color: AppColors.black),
                   ),
                 ],
               ),
@@ -94,7 +98,8 @@ class CategoryWiseScreen extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: scaleWidth(4, context)),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: scaleWidth(4, context)),
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     boxShadow: [primaryBoxShadow()],
@@ -104,7 +109,8 @@ class CategoryWiseScreen extends StatelessWidget {
                       SvgPicture.asset(AppAssets.icFilter2),
                       CustomText(
                         text: "filter".tr,
-                        textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
+                        textStyle: CustomTextStyle.textStyle18Bold(context,
+                            color: AppColors.black),
                       )
                     ],
                   ),
@@ -114,7 +120,8 @@ class CategoryWiseScreen extends StatelessWidget {
           ),
         ),
         CustomAppbar(
-          title: _categoryWiseController.sharedData.categoryWiseAppBarTitle ?? "",
+          title:
+              _categoryWiseController.sharedData.categoryWiseAppBarTitle ?? "",
           prefixIcon: AppAssets.icBackArrow,
           onPrefixIconClick: () => AppRouting.navigateBack(),
           suffixIcon: AppAssets.icSearch,

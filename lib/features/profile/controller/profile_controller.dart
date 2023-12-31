@@ -16,8 +16,14 @@ class ProfileController extends BaseController {
   }
 
   Future<void> _getUserInfo() async {
-    userName.value = await SharedPreferencesHelper.getString(SharedPreferenceKeys.username) ?? "";
-    userEmail.value = await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ?? "";
-    userAvatar.value = await SharedPreferencesHelper.getString(SharedPreferenceKeys.avatarUrl) ?? "";
+    userName.value = await SharedPreferencesHelper.getString(
+            SharedPreferenceKeys.username) ??
+        "";
+    userEmail.value =
+        await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ??
+            "";
+    userAvatar.value = await SharedPreferencesHelper.getString(
+            SharedPreferenceKeys.avatarUrl) ??
+        "";
   }
 }

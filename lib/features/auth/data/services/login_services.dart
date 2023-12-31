@@ -15,10 +15,13 @@ class LoginServices {
   LoginServices._();
 
   static Future<LoginResponse> login({Map<String, dynamic>? data}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         await _getAuthToken(data);
-        final dio.Response<dynamic> response = await DioClient.dioWithAuth!.post(ApiPaths.login, data: data);
+        final dio.Response<dynamic> response =
+            await DioClient.dioWithAuth!.post(ApiPaths.login, data: data);
 
         final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
           response.data! as Map<String, dynamic>,
@@ -37,17 +40,21 @@ class LoginServices {
   }
 
   static Future<TokenResponse> _getAuthToken(Map<String, dynamic>? data) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.token, data: data);
+        final dio.Response<dynamic> response =
+            await DioClient.dioWithoutAuth!.post(ApiPaths.token, data: data);
 
         final parsedResponse = TokenResponseData.fromJson(
           response.data! as Map<String, dynamic>,
         );
 
         // Save token to shared pref.
-        await SharedPreferencesHelper.setValue(SharedPreferenceKeys.token, parsedResponse.token);
-        
+        await SharedPreferencesHelper.setValue(
+            SharedPreferenceKeys.token, parsedResponse.token);
+
         // Init dio with auth
         DioClient.initWithAuth();
 

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/bottom_sheets/review_bottom_sheet.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
@@ -9,8 +10,8 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
-import 'package:moomalpublication/features/product_detail/presentation/templates/book_detail_tabbar.dart';
-import 'package:moomalpublication/features/product_detail/presentation/templates/similar_product.dart';
+import 'package:moomalpublication/features/product_detail/presentation/template/book_detail_tabbar.dart';
+import 'package:moomalpublication/features/product_detail/presentation/template/similar_product.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/book_type_grid.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/price_quantity.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/review_view.dart';
@@ -53,7 +54,7 @@ class DetailContainer extends StatelessWidget {
             const VerticalGap(size: 30),
 
             // Book Detail Grid
-            const BookTypeGrid(),
+            BookTypeGrid(),
             const VerticalGap(size: 50),
 
             // Book Overview
@@ -73,8 +74,7 @@ class DetailContainer extends StatelessWidget {
             BookDetailTabBar(
               description:
                   _productDetailController.productDetailData.value?.description,
-              information:
-                  _productDetailController.productDetailData.value?.type,
+              information: "not_available".tr,
             ),
             const VerticalGap(size: 30),
 
@@ -85,7 +85,19 @@ class DetailContainer extends StatelessWidget {
             Padding(
               padding:
                   EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
-              child: ReviewView(title: "write_a_review".tr),
+              child: ReviewView(
+                onClick: () {
+                  showModalBottomSheet<ReviewBottomSheet>(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (_) {
+                        return Wrap(
+                          children: [ReviewBottomSheet()],
+                        );
+                      });
+                },
+                title: "write_a_review".tr,
+              ),
             ),
             const VerticalGap(size: 30),
 
