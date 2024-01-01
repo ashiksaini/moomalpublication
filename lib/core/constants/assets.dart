@@ -64,6 +64,7 @@ class AppAssets {
   static const String icUserPic = "${pathSvg}profile_picture.svg";
   static const String icLocation = "${pathSvg}ic_location.svg";
   static const String icPhoneCall = "${pathSvg}ic_phone_call.svg";
+  static const String icUser1 = "${pathSvg}ic_user1.svg";
 
   // Png
   static const String icLogo1 = "${pathPng}ic_logo_1.png";

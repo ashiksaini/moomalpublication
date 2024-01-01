@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,21 +17,17 @@ import 'package:moomalpublication/features/product_detail/presentation/template/
 import 'package:moomalpublication/features/product_detail/presentation/widgets/book_type_grid.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/price_quantity.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/review_view.dart';
+import 'package:moomalpublication/features/product_detail/presentation/widgets/write_review_view.dart';
 
 class DetailContainer extends StatelessWidget {
-  final ProductDetailController _productDetailController =
-      Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
   DetailContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () {
-        return (_productDetailController
-                    .productDetailResponse.value.isLoading ||
-                _productDetailController
-                    .productReviewsResponse.value.isLoading ||
-                _productDetailController.similarProductResponse.value.isLoading)
+        return (_productDetailController.productDetailResponse.value.isLoading || _productDetailController.productReviewsResponse.value.isLoading || _productDetailController.similarProductResponse.value.isLoading)
             ? SizedBox(
                 height: screenHeight(context) - scaleHeight(60, context),
                 child: Center(
@@ -72,8 +70,7 @@ class DetailContainer extends StatelessWidget {
 
             // Book Details
             BookDetailTabBar(
-              description:
-                  _productDetailController.productDetailData.value?.description,
+              description: _productDetailController.productDetailData.value?.description,
               information: "not_available".tr,
             ),
             const VerticalGap(size: 30),
@@ -83,9 +80,8 @@ class DetailContainer extends StatelessWidget {
             const VerticalGap(size: 30),
 
             Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
-              child: ReviewView(
+              padding: EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
+              child: WriteReviewView(
                 onClick: () {
                   showModalBottomSheet<ReviewBottomSheet>(
                       context: context,
@@ -119,19 +115,16 @@ class DetailContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.orangeLight,
         boxShadow: [primaryBoxShadow()],
-        borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(scaleRadius(20, context))),
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(scaleRadius(20, context))),
       ),
       child: Column(
         children: [
           // Book Image
           ClipRRect(
             borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-            child: _productDetailController
-                    .productDetailData.value!.images!.isNotEmpty
+            child: _productDetailController.productDetailData.value!.images!.isNotEmpty
                 ? CachedNetworkImage(
-                    imageUrl: _productDetailController
-                        .productDetailData.value!.images!.first.src!,
+                    imageUrl: _productDetailController.productDetailData.value!.images!.first.src!,
                     height: scaleHeight(300, context),
                     width: scaleWidth(220, context),
                     fit: BoxFit.fill,
@@ -145,8 +138,7 @@ class DetailContainer extends StatelessWidget {
                     child: Center(
                       child: CustomText(
                         text: "no_image_preview_available".tr,
-                        textStyle: CustomTextStyle.textStyle10Bold(context,
-                            color: AppColors.black),
+                        textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
                       ),
                     ),
                   ),
@@ -200,7 +192,16 @@ class DetailContainer extends StatelessWidget {
                     color: AppColors.black.withOpacity(0.7),
                   ),
                 )
-              : Container(),
+              : ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: min(_productDetailController.productReviews.length, 5),
+                  itemBuilder: (_, index) {
+                    return ReviewView(
+                      productReview: _productDetailController.productReviews[index],
+                    );
+                  },
+                ),
         ],
       ),
     );
