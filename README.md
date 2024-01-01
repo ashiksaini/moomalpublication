@@ -1,4 +1,4 @@
-![plot](./moomal_publication.png){:height="200px" width="300px"}
+![plot](./moomal_publication.png)
 
 # Moomal Publication
 
