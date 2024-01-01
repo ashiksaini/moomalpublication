@@ -35,54 +35,54 @@ project_root/<br />
 │<br />
 ├── [lib/](./lib/)<br />
 │   ├── [bottom_sheets/](./lib/bottom_sheets/)<br />
-│   ├── [core/](./lib/core/)
-│   ├── [features/](./lib/features/)
-│   │   ├── [address/](./lib/features/address/)
-│   │   ├── [auth/](./lib/features/auth/)
-│   │   ├── [all categories/](./lib/features/all%20categories/)
-│   │   ├── [bottom nav bar/](./lib/features/bottom_nav_bar/)
-│   │   ├── [cart/](./lib/features/cart/)
-│   │   ├── [contact us/](./lib/features/contact_us/)
-│   │   ├── [downloads/](./lib/features/downloads/)
-│   │   ├── [ebook/](./lib/features/ebook/)
-│   │   ├── [event_press_release/](./lib/features/event_press_release/)
-│   │   ├── [home/](./lib/features/home/)
-│   │   ├── [moomalpublication_app/](./lib/features/moomalpublication_app/)
-│   │   ├── [orders/](./lib/features/orders/)
-│   │   ├── [overall_results/](./lib/features/overall_results/)
-│   │   ├── [product_details/](./lib/features/product_details/)
-│   │   ├── [profile/](./lib/features/profile/)
-│   │   ├── [quiz/](./lib/features/quiz/)
-│   │   ├── [search_tests/](./lib/features/search_tests/)
-│   │   ├── [search_books/](./lib/features/search_books/)
-│   │   ├── [settings/](./lib/features/settings/)
-│   │   ├── [splash/](./lib/features/splash/)
-│   │   ├── [shop/](./lib/features/shop/)
-│   │   ├── [test_series/](./lib/features/test_series/)
-│   │   └── [testimonial/](./lib/features/testimonial/)
-│   ├── [locale/](./lib/locale/)
-│   ├── [routes/](./lib/routes/)
-│   ├── [services/](./lib/services/)
-│   ├── [api_keys.dart](./lib/api_keys.dart)
-│   ├── [app_config.dart](./lib/app_config.dart)
-│   ├── [app_moomal_publication.dart](./lib/app_moomalpublication.dart)
-│   └── [main.dart](./lib/main.dart)
-├── [pubspec.yaml](./pubspec.yaml)
-└── [README.md](./README.md)
+│   ├── [core/](./lib/core/)<br />
+│   ├── [features/](./lib/features/)<br />
+│   │   ├── [address/](./lib/features/address/)<br />
+│   │   ├── [auth/](./lib/features/auth/)<br />
+│   │   ├── [all categories/](./lib/features/all%20categories/)<br />
+│   │   ├── [bottom nav bar/](./lib/features/bottom_nav_bar/)<br />
+│   │   ├── [cart/](./lib/features/cart/)<br />
+│   │   ├── [contact us/](./lib/features/contact_us/)<br />
+│   │   ├── [downloads/](./lib/features/downloads/)<br />
+│   │   ├── [ebook/](./lib/features/ebook/)<br />
+│   │   ├── [event_press_release/](./lib/features/event_press_release/)<br />
+│   │   ├── [home/](./lib/features/home/)<br />
+│   │   ├── [moomalpublication_app/](./lib/features/moomalpublication_app/)<br />
+│   │   ├── [orders/](./lib/features/orders/)<br />
+│   │   ├── [overall_results/](./lib/features/overall_results/)<br />
+│   │   ├── [product_details/](./lib/features/product_details/)<br />
+│   │   ├── [profile/](./lib/features/profile/)<br />
+│   │   ├── [quiz/](./lib/features/quiz/)<br />
+│   │   ├── [search_tests/](./lib/features/search_tests/)<br />
+│   │   ├── [search_books/](./lib/features/search_books/)<br />
+│   │   ├── [settings/](./lib/features/settings/)<br />
+│   │   ├── [splash/](./lib/features/splash/)<br />
+│   │   ├── [shop/](./lib/features/shop/)<br />
+│   │   ├── [test_series/](./lib/features/test_series/)<br />
+│   │   └── [testimonial/](./lib/features/testimonial/)<br />
+│   ├── [locale/](./lib/locale/)<br />
+│   ├── [routes/](./lib/routes/)<br />
+│   ├── [services/](./lib/services/)<br />
+│   ├── [api_keys.dart](./lib/api_keys.dart)<br />
+│   ├── [app_config.dart](./lib/app_config.dart)<br />
+│   ├── [app_moomal_publication.dart](./lib/app_moomalpublication.dart)<br />
+│   └── [main.dart](./lib/main.dart)<br />
+├── [pubspec.yaml](./pubspec.yaml)<br />
+└── [README.md](./README.md)<br />
 
 
 ###### Every Features Have :-
 
-│ ├── [features/](./lib/features/)
-│ │ ├── [home](./lib/features/home/)
-│ │ │ ├── [controller](./lib/features/home/controller/)
-│ │ │ │ ├── [home_controller.dart](./lib/features/home/controllers/home_controller.dart)
-│ │ │ ├── [data](./lib/features/home/data/)
-│ │ │ │ ├── [constants](./lib/features/home/data/constants/)
-│ │ │ │ ├── [models](./lib/features/home/data/models/)
-│ │ │ │ └── [services](./lib/features/home/data/services/)
-│ │ │ ├── [presentation](./lib/features/home/presentation/)
-│ │ │ │ ├── [screens](./lib/features/home/presentation/screens/)
-│ │ │ │ ├── [templates](./lib/features/home/presentation/template/)
-│ │ │ │ └── [widgets](./lib/features/home/presentation/widgets/)
+│ ├── [features/](./lib/features/)<br />
+│ │ ├── [home](./lib/features/home/)<br />
+│ │ │ ├── [controller](./lib/features/home/controller/)<br />
+│ │ │ │ ├── [home_controller.dart](./lib/features/home/controllers/home_controller.dart)<br />
+│ │ │ ├── [data](./lib/features/home/data/)<br />
+│ │ │ │ ├── [constants](./lib/features/home/data/constants/)<br />
+│ │ │ │ ├── [models](./lib/features/home/data/models/)<br />
+│ │ │ │ └── [services](./lib/features/home/data/services/)<br />
+│ │ │ ├── [presentation](./lib/features/home/presentation/)<br />
+│ │ │ │ ├── [screens](./lib/features/home/presentation/screens/)<br />
+│ │ │ │ ├── [templates](./lib/features/home/presentation/template/)<br />
+│ │ │ │ └── [widgets](./lib/features/home/presentation/widgets/)<br />
 
