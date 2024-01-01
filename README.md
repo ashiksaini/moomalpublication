@@ -31,10 +31,10 @@
 
 #### Project Structure Details :-
 
-project_root/
-│
-├── [lib/](./lib/)
-│   ├── [bottom_sheets/](./lib/bottom_sheets/)
+project_root/<br />
+│<br />
+├── [lib/](./lib/)<br />
+│   ├── [bottom_sheets/](./lib/bottom_sheets/)<br />
 │   ├── [core/](./lib/core/)
 │   ├── [features/](./lib/features/)
 │   │   ├── [address/](./lib/features/address/)
