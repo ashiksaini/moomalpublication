@@ -39,4 +39,8 @@ class ApiKeys {
   // Post Review
   static const String postReviewConsumerKey = "ck_6fa335651dd3e63a9d84ddfbd0ce066563b688d6";
   static const String postReviewConsumerSecret = "cs_ee5c319f00e0f7ad22d41654b4a6094685a9ff2d";
+
+  // Product
+  static const String productConsumerKey = "ck_0d68ec5d46979420eb3fe93eb254632ccf34a8d4";
+  static const String productConsumerSecret = "cs_e2959e16b6e59b584f94b97fa8a731f8d562962c";
 }

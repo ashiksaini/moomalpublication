@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:moomalpublication/core/components/atoms/refersh_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 
@@ -54,10 +55,8 @@ class Screen extends StatelessWidget {
         backgroundColor: screenBg ?? AppColors.white,
         drawer: drawer,
         body: SafeArea(
-          child: RefreshIndicator(
-            backgroundColor: AppColors.white,
-            color: AppColors.orange,
-            onRefresh: () => onRefresh!(),
+          child: CustomRefreshIndicator(
+            onRefreshCallback: () => onRefresh!(),
             child: Column(
               children: [
                 // App bar

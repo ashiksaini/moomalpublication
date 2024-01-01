@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/bottom_sheets/filter_bottom_sheet.dart';
+import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:moomalpublication/core/components/atoms/refersh_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
+import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/all%20categories/controller/category_wise_controller.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -17,8 +22,7 @@ import 'package:moomalpublication/routes/routing.dart';
 class CategoryWiseScreen extends StatelessWidget {
   CategoryWiseScreen({super.key});
 
-  final CategoryWiseController _categoryWiseController =
-      Get.put(CategoryWiseController());
+  final CategoryWiseController _categoryWiseController = Get.put(CategoryWiseController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +33,57 @@ class CategoryWiseScreen extends StatelessWidget {
           return Column(
             children: [
               _getUpperView(context),
+              const VerticalGap(size: 2),
+
+              // Data view
+              _getDataView(context),
+
+              // Load more
+              if (_categoryWiseController.isLoadingMore.value)
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                  child: customProgressIndicator(),
+                ),
             ],
           );
         }),
+      ),
+    );
+  }
+
+  Widget _getDataView(BuildContext context) {
+    return Expanded(
+      child: CustomRefreshIndicator(
+        onRefreshCallback: () => _categoryWiseController.onRefresh(),
+        child: GridView.builder(
+          controller: _categoryWiseController.scrollController,
+          padding: EdgeInsets.symmetric(
+            horizontal: scaleWidth(10, context),
+            vertical: scaleHeight(10, context),
+          ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 12.0,
+            mainAxisSpacing: 15.0,
+            childAspectRatio: _categoryWiseController.productResponse.value.isLoading ? 0.58 : 0.5,
+          ),
+          itemCount: _categoryWiseController.productResponse.value.isLoading ? 20 : _categoryWiseController.productList.length,
+          itemBuilder: (context, index) {
+            if (_categoryWiseController.productResponse.value.isLoading) {
+              return const BookItemShimmerSkeleton();
+            } else {
+              return GestureDetector(
+                onTap: () {
+                  _categoryWiseController.onItemClick(index, _categoryWiseController.productList[index]);
+                },
+                child: CardBookItem(
+                  item: _categoryWiseController.productList[index],
+                  onCartBtnClick: _categoryWiseController.onCartBtnClick,
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
   }
@@ -57,77 +109,84 @@ class CategoryWiseScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // Include out of stock items
-              Row(
-                children: [
-                  SizedBox(
-                    height: scaleHeight(24, context),
-                    width: scaleWidth(24, context),
-                    child: Checkbox(
-                      side: const BorderSide(color: AppColors.white),
-                      checkColor: AppColors.orange,
-                      activeColor: AppColors.white,
-                      value:
-                          _categoryWiseController.includeOutOfStockItem.value,
-                      onChanged: (value) => _categoryWiseController
-                          .canIncludeOutOfStockItem(value),
-                    ),
-                  ),
-                  const HorizontalGap(size: 4),
-                  CustomText(
-                    text: "include_out_of_stock_item".tr,
-                    textStyle: CustomTextStyle.textStyle18Regular(context,
-                        color: AppColors.black),
-                  ),
-                ],
-              ),
+              _getStockStatusView(context),
 
               // Filter btn
-              GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (_) {
-                      return Wrap(
-                        children: [
-                          FiltersBottomSheet(
-                            onClick: _categoryWiseController.onFilterItemClick,
-                          )
-                        ],
-                      );
-                    },
-                  );
-                },
-                child: Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: scaleWidth(4, context)),
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    boxShadow: [primaryBoxShadow()],
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(AppAssets.icFilter2),
-                      CustomText(
-                        text: "filter".tr,
-                        textStyle: CustomTextStyle.textStyle18Bold(context,
-                            color: AppColors.black),
-                      )
-                    ],
-                  ),
-                ),
-              )
+              _getFilterBtn(context)
             ],
           ),
         ),
-        CustomAppbar(
-          title:
-              _categoryWiseController.sharedData.categoryWiseAppBarTitle ?? "",
-          prefixIcon: AppAssets.icBackArrow,
-          onPrefixIconClick: () => AppRouting.navigateBack(),
-          suffixIcon: AppAssets.icSearch,
-          onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
+        _getAppBar(),
+      ],
+    );
+  }
+
+  Row _getStockStatusView(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          height: scaleHeight(24, context),
+          width: scaleWidth(24, context),
+          child: Checkbox(
+            side: const BorderSide(color: AppColors.white),
+            checkColor: AppColors.orange,
+            activeColor: AppColors.white,
+            value: _categoryWiseController.includeOutOfStockItem.value,
+            onChanged: (value) => _categoryWiseController.canIncludeOutOfStockItem(value),
+          ),
+        ),
+        const HorizontalGap(size: 4),
+        CustomText(
+          text: "include_out_of_stock_item".tr,
+          textStyle: CustomTextStyle.textStyle18Regular(context, color: AppColors.black),
         ),
       ],
+    );
+  }
+
+  Widget _getAppBar() {
+    return CustomAppbar(
+      title: _categoryWiseController.sharedData.categoryWiseAppBarTitle ?? "",
+      prefixIcon: AppAssets.icBackArrow,
+      onPrefixIconClick: () => AppRouting.navigateBack(),
+      suffixIcon: AppAssets.icSearch,
+      onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
+    );
+  }
+
+  Widget _getFilterBtn(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          builder: (_) {
+            return Wrap(
+              children: [
+                FiltersBottomSheet(
+                  selectedSortBy: _categoryWiseController.selectedSortBy,
+                  onClick: _categoryWiseController.onFilterItemClick,
+                )
+              ],
+            );
+          },
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: scaleWidth(4, context)),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          boxShadow: [primaryBoxShadow()],
+        ),
+        child: Row(
+          children: [
+            SvgPicture.asset(AppAssets.icFilter2),
+            CustomText(
+              text: "filter".tr,
+              textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
