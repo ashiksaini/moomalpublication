@@ -1,4 +1,5 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:moomalpublication/core/base/product_item/variation.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 
 import 'attribute.dart';
@@ -69,7 +70,7 @@ class ProductItem {
   List<Image>? images;
   List<Attribute>? attributes;
   List<dynamic>? defaultAttributes;
-  List<int>? variations;
+  List<dynamic>? variations;
   List<dynamic>? groupedProducts;
   int? menuOrder;
   String? priceHtml;
@@ -220,7 +221,13 @@ class ProductItem {
             .toList(),
         // attributes: (json['attributes'] as List<dynamic>?)?.map((e) => Attribute.fromJson(e as Map<String, dynamic>)).toList(),
         // defaultAttributes: json['default_attributes'] as List<dynamic>?,
-        // variations: json['variations'] as List<int>?,
+        variations: (json['variations'] as List<dynamic>?)?.map((item) {
+          if (item is int) {
+            return item;
+          } else if (item is Map<String, dynamic>) {
+            return Variation.fromJson(item);
+          }
+        }).toList(),
         // groupedProducts: json['grouped_products'] as List<dynamic>?,
         menuOrder: json['menu_order'] as int?,
         priceHtml: json['price_html'] as String?,

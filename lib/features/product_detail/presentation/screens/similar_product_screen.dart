@@ -60,10 +60,8 @@ class SimilarProductScreen extends StatelessWidget {
                         AppRouting.toNamed(
                           NameRoutes.productDetailScreen,
                           argument: SharedData(
-                              productId: _productDetailController
-                                  .similarProducts[index].id,
-                              productName: _productDetailController
-                                  .similarProducts[index].name),
+                              productItem: _productDetailController
+                                  .similarProducts[index]),
                         );
                       },
                       child: CardBookItem(

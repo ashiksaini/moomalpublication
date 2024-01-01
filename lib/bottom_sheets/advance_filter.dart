@@ -71,7 +71,7 @@ class AdvanceFilterBottomSheet extends StatelessWidget {
               textStyle: CustomTextStyle.textStyle22Bold(context,
                   color: AppColors.white),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -4,7 +4,7 @@ import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
-import 'package:moomalpublication/features/product_detail/presentation/templates/detail_container.dart';
+import 'package:moomalpublication/features/product_detail/presentation/template/detail_container.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/pair_btn.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -27,7 +27,8 @@ class ProductDetailScreen extends StatelessWidget {
                     prefixIcon: AppAssets.icBackArrow,
                     suffixIcon: AppAssets.icShare,
                     onPrefixIconClick: () => AppRouting.navigateBack(),
-                    onSuffixIconClick: () => _productDetailController.shareItem(),
+                    onSuffixIconClick: () =>
+                        _productDetailController.shareItem(),
                     title: _productDetailController.productName.value,
                     maxLine: 1,
                   ),

@@ -8,6 +8,7 @@ TextFormField customTextFormField(
   BuildContext context,
   TextEditingController? textEditingController, {
   String? hint,
+  String? label,
   Function? onTextChange,
   String? prefixIcon,
   String? suffixIcon,
@@ -15,10 +16,12 @@ TextFormField customTextFormField(
   Function? onPrefixIconClick,
   TextStyle? textStyle,
   TextStyle? hintTextStyle,
+  TextStyle? labelTextStyle,
   TextInputType textInputType = TextInputType.text,
   TextInputAction textInputAction = TextInputAction.next,
   bool isPasswordField = false,
   bool isPasswordVisible = false,
+  bool isReadOnly = false,
   double? borderRadius = 20,
 }) {
   return TextFormField(
@@ -28,6 +31,7 @@ TextFormField customTextFormField(
     cursorRadius: Radius.circular(scaleRadius(2, context)),
     keyboardType: textInputType,
     textInputAction: textInputAction,
+    readOnly: isReadOnly,
     onChanged: (value) {
       if (onTextChange != null) {
         onTextChange(value);
@@ -49,6 +53,10 @@ TextFormField customTextFormField(
         borderSide: const BorderSide(color: AppColors.grey),
         borderRadius: BorderRadius.circular(scaleRadius(borderRadius, context)),
       ),
+      labelText: label,
+      labelStyle: labelTextStyle ??
+          CustomTextStyle.textStyle25Bold(context,
+              color: AppColors.black.withOpacity(0.29)),
       hintText: hint,
       hintStyle: hintTextStyle ??
           CustomTextStyle.textStyle25Bold(context,

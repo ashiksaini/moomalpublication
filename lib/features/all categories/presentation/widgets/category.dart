@@ -10,19 +10,19 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 class CategoryItem extends StatelessWidget {
   final String icon;
   final String title;
-  // final Function onClick;
+  final Function onClick;
 
   const CategoryItem({
     super.key,
     required this.icon,
     required this.title,
-    // required this.onClick,
+    required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () => ,
+      onTap: () => onClick(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

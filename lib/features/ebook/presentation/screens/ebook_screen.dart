@@ -29,7 +29,9 @@ class EBookScreen extends StatelessWidget {
                 title: "ebooks".tr,
                 suffixIcon: AppAssets.icSearch,
               ),
-              _ebookController.ebookCategoryResponse.value.isLoading ? _showLoading(context) : _showData(context),
+              _ebookController.ebookCategoryResponse.value.isLoading
+                  ? _showLoading(context)
+                  : _showData(context),
             ],
           );
         }),
@@ -52,7 +54,7 @@ class EBookScreen extends StatelessWidget {
             width: screenWidth(context) - scaleWidth(20, context),
           ),
           const VerticalGap(size: 4),
-          
+
           // Data view
           Expanded(
             child: GridView.builder(
@@ -65,16 +67,22 @@ class EBookScreen extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 12.0,
                 mainAxisSpacing: 15.0,
-                childAspectRatio: _ebookController.ebooksResponse.value.isLoading ? 0.58 : 0.5,
+                childAspectRatio:
+                    _ebookController.ebooksResponse.value.isLoading
+                        ? 0.58
+                        : 0.5,
               ),
-              itemCount: _ebookController.ebooksResponse.value.isLoading ? 20 : _ebookController.ebooks.length,
+              itemCount: _ebookController.ebooksResponse.value.isLoading
+                  ? 20
+                  : _ebookController.ebooks.length,
               itemBuilder: (context, index) {
                 if (_ebookController.ebooksResponse.value.isLoading) {
                   return const BookItemShimmerSkeleton();
                 } else {
                   return GestureDetector(
                     onTap: () {
-                      _ebookController.onItemClick(index, _ebookController.ebooks[index]);
+                      _ebookController.onItemClick(
+                          index, _ebookController.ebooks[index]);
                     },
                     child: CardBookItem(
                       item: _ebookController.ebooks[index],
@@ -85,7 +93,7 @@ class EBookScreen extends StatelessWidget {
               },
             ),
           ),
-            
+
           // Load more
           if (_ebookController.isLoadingMore.value)
             Padding(

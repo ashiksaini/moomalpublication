@@ -12,16 +12,22 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class EBookServices {
   EBookServices._();
 
-  static Future<EBookCategoryResponse> getEBookCategories({Map<String, dynamic>? query}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<EBookCategoryResponse> getEBookCategories(
+      {Map<String, dynamic>? query}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.ebookCategoryConsumerKey,
           consumerSecret: ApiKeys.ebookCategoryConsumerSecret,
         ).toJson();
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.eBookProductCategory, queryParameters: query);
-        final parsedResponse = (response.data as List<dynamic>).map((categoryItem) => EBookCategoryItem.fromJson(categoryItem)).toList();
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get(ApiPaths.eBookProductCategory, queryParameters: query);
+        final parsedResponse = (response.data as List<dynamic>)
+            .map((categoryItem) => EBookCategoryItem.fromJson(categoryItem))
+            .toList();
 
         return EBookCategoryResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
