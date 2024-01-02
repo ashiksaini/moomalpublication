@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
+import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
 import 'package:moomalpublication/features/test_series/presentation/widgets/button_bar.dart';
 import 'package:moomalpublication/features/test_series/presentation/widgets/marks_row.dart';
 
 class ListCard extends StatelessWidget {
-  const ListCard({super.key, required this.barText});
+  const ListCard({super.key, required this.entry});
 
-  final String barText;
+  final TestSeriesResponseModel entry;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +20,13 @@ class ListCard extends StatelessWidget {
           children: [
             // CustomButtonBar(buttonText: 'Start Test', barText: 'GK Test Quiz(Free)',buttonVisibility: false),
             CustomButtonBar(
-              buttonText: 'Start Test',
-              barText: barText,
-              // buttonVisibility: false,
+              buttonText: (entry.freePaid == 'paid') ? 'Buy Now' : 'Start Test',
+              barText: entry.postTitle ?? '',
             ),
-            const MarksRow(),
+            MarksRow(
+              entry: entry,
+              showPrice: (entry.freePaid == 'paid') ? true : false,
+            ),
           ],
         ),
       ),

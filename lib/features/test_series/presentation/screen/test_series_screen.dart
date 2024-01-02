@@ -7,9 +7,10 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/test_series/controller/test_series_controller.dart';
 import 'package:moomalpublication/features/test_series/presentation/template/tab_list.dart';
-import 'package:moomalpublication/features/test_series/presentation/widgets/list_grid_row.dart';
+import 'package:moomalpublication/features/test_series/presentation/widgets/tab_item.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class TestSeriesScreen extends StatefulWidget {
@@ -25,6 +26,8 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
   final TextEditingController colorController = TextEditingController();
   final TestSeriesController _testSeriesController =
       Get.put(TestSeriesController());
+
+  final tabs = <Widget>[];
 
   @override
   void initState() {
@@ -67,7 +70,7 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                         children: [
                           CustomDropDown2(
                             borderRadius: 10,
-                            borderColor: AppColors.orange,
+                            borderColor: AppColors.grey,
                             items: _testSeriesController.mockTestCategory,
                             selectedItem:
                                 _testSeriesController.selectedMockTestCategory,
@@ -78,7 +81,7 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                           ),
                           CustomDropDown2(
                             borderRadius: 10,
-                            borderColor: AppColors.orange,
+                            borderColor: AppColors.grey,
                             items: _testSeriesController.topicWiseCategory,
                             selectedItem:
                                 _testSeriesController.selectedTopicWiseCategory,
@@ -90,41 +93,46 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                         ],
                       ),
                     ),
-                    const ListGridRow(),
+                    const VerticalGap(size: 40),
                     TabBar(
                       unselectedLabelColor: AppColors.black,
                       labelColor: AppColors.orange,
                       dividerColor: AppColors.grey,
                       indicatorColor: AppColors.orange,
-                      tabs: const [
-                        Tab(
-                          text: 'All(5)',
-                        ),
-                        Tab(
-                          text: 'Full length(5)',
-                        ),
-                        Tab(
-                          text: 'Sectional(3)',
-                        )
+                      tabs: [
+                        TabItem(
+                            text: 'All',
+                            length: _testSeriesController.tests.length),
+                        TabItem(
+                            text: 'Full length',
+                            length: _testSeriesController.tests.length),
+                        TabItem(
+                            text: 'Sectional',
+                            length: _testSeriesController.tests.length),
                       ],
                       labelStyle: CustomTextStyle.textStyle20Bold(context),
                       controller: _tabController,
                       indicatorSize: TabBarIndicatorSize.tab,
                     ),
                     Expanded(
-                      child: TabBarView(
-                        controller: _tabController,
-                        children: [
-                          TabList(
-                            entries: _testSeriesController.tests,
-                          ),
-                          TabList(
-                            entries: _testSeriesController.tests,
-                          ),
-                          TabList(
-                            entries: _testSeriesController.tests,
-                          ),
-                        ],
+                      child: Obx(
+                        () => (_testSeriesController
+                                .testSeriesResponse.value.isLoading)
+                            ? Center(child: customProgressIndicator())
+                            : TabBarView(
+                                controller: _tabController,
+                                children: [
+                                  TabList(
+                                    entries: _testSeriesController.tests,
+                                  ),
+                                  TabList(
+                                    entries: _testSeriesController.tests,
+                                  ),
+                                  TabList(
+                                    entries: _testSeriesController.tests,
+                                  ),
+                                ],
+                              ),
                       ),
                     ),
                   ],

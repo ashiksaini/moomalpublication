@@ -26,7 +26,7 @@ class EventAndPressCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         _eventPressController.navigateSettingDetailScreen(
-            appBarTitle: 'Event Old Book');
+            appBarTitle: _eventPressController.events[index].postTitle ?? '');
       },
       child: Padding(
         padding: EdgeInsets.symmetric(

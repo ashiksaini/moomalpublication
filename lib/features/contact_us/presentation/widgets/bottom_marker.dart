@@ -8,12 +8,14 @@ class BottomMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context)),
-      child: CustomText(
-        text: "© 2021 Moomal Publication All rights reserved",
-        textStyle:
-            CustomTextStyle.textStyle20SemiMedium(context, color: Colors.grey),
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context)),
+        child: CustomText(
+          text: "© 2021 Moomal Publication All rights reserved",
+          textStyle: CustomTextStyle.textStyle20SemiMedium(context,
+              color: Colors.grey),
+        ),
       ),
     );
   }
