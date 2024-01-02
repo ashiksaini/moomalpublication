@@ -175,16 +175,17 @@ class CustomTextStyle {
           decorationColor: decorationColor,
           decoration: decoration);
 
-  static TextStyle textStyle25Bold(
-    BuildContext context, {
-    Color color = AppColors.grey,
-  }) =>
+  static TextStyle textStyle25Bold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
       TextStyle(
-        fontSize: scaleWidth(25, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
+          fontSize: scaleWidth(25, context),
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
 
   static textStyle30Bold(BuildContext context,
           {Color color = AppColors.grey,
@@ -224,8 +225,18 @@ class CustomTextStyle {
     Color color = AppColors.white,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(16, context),
+        fontSize: scaleWidth(20, context),
         fontWeight: FontWeight.w300,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+  static TextStyle textStyle16MediumTrio(
+    BuildContext context, {
+    Color color = AppColors.black,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w400,
         fontFamily: AppConstants.calibriFont,
         color: color,
       );

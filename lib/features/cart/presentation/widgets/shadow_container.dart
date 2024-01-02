@@ -19,7 +19,7 @@ class ShadowContainer extends StatelessWidget {
     this.backgroundColor = AppColors.white,
     this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
-    this.borderColor,
+    this.borderColor = Colors.transparent,
     this.linearGradient,
   });
 
@@ -32,6 +32,9 @@ class ShadowContainer extends StatelessWidget {
         gradient: linearGradient,
         color: backgroundColor,
         boxShadow: [primaryBoxShadow()],
+        border: Border.all(
+          color: borderColor!,
+        ),
         borderRadius: BorderRadius.all(Radius.circular(
           scaleRadius(borderRadius ?? scaleRadius(20, context), context),
         )),

@@ -33,9 +33,9 @@ class TestSeriesController extends BaseController {
     _getTestDropDownList();
   }
 
-  Future<void> _getTestList() async {
+  Future<void> _getTestList({required String category}) async {
     testSeriesResponse.value = ApiResponse.loading();
-    testSeriesResponse.value = await TestSeriesService.getTests();
+    testSeriesResponse.value = await TestSeriesService.getTests(query: {'category': category});
 
     if (testSeriesResponse.value.data != null) {
       tests.clear();
@@ -69,8 +69,7 @@ class TestSeriesController extends BaseController {
         if (mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty) {
           selectedMockTestCategory.value = mockTestCategory.first;
           selectedTopicWiseCategory.value = topicWiseCategory.first;
-          _getTestList();
-          isPageLoaded();
+          _getTestList(category: selectedMockTestCategory.value?.title ?? '');
         }
       }
     } else {
@@ -81,13 +80,13 @@ class TestSeriesController extends BaseController {
   void onMockCategoryItemClick(DropdownItem<Term> item) {
     selectedMockTestCategory.value = item;
     tests.clear();
-    _getTestList();
+    _getTestList(category: selectedMockTestCategory.string);
   }
 
   void onTopicCategoryItemClick(DropdownItem<Term> item) {
     selectedTopicWiseCategory.value = item;
     tests.clear();
-    _getTestList();
+    _getTestList(category: selectedTopicWiseCategory.string);
   }
 
   RxBool listOrGrid() {

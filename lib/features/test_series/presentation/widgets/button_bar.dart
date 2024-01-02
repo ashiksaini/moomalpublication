@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -22,12 +23,15 @@ class CustomButtonBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: CustomText(
-              text: barText,
-              maxLines: 3,
-              textAlign: TextAlign.start,
-              textStyle: CustomTextStyle.textStyle22Bold(context,
-                  color: AppColors.black),
+            child: Padding(
+              padding: EdgeInsets.only(right: scaleWidth(10, context)),
+              child: CustomText(
+                text: barText,
+                maxLines: 3,
+                textAlign: TextAlign.start,
+                textStyle: CustomTextStyle.textStyle22Bold(context,
+                    color: AppColors.black),
+              ),
             ),
           ),
           if (buttonVisibility)

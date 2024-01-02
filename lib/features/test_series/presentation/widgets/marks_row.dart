@@ -3,10 +3,12 @@ import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
+import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
 
 class MarksRow extends StatelessWidget {
-  const MarksRow({super.key, this.showPrice = false});
+  const MarksRow({super.key, this.showPrice = false, required this.entry});
   final bool showPrice;
+  final TestSeriesResponseModel entry;
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,10 @@ class MarksRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomText(
-                text: "Questions: 101",
+                text: "Questions: ${entry.questionCount ?? ''}",
                 textStyle: CustomTextStyle.textStyle18Bold(context)),
             CustomText(
-                text: "Max. Marks: 101 ",
+                text: "Max. Marks: ${entry.totalMarks}",
                 textStyle: CustomTextStyle.textStyle18Bold(context)),
           ],
         ),
@@ -29,7 +31,7 @@ class MarksRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomText(
-                text: "Time: 100 Mins",
+                text: "Time: ${entry.maximumTime} Mins",
                 textStyle: CustomTextStyle.textStyle18Bold(context)),
             CustomText(
                 text: "Language: English",
@@ -40,7 +42,7 @@ class MarksRow extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: scaleHeight(8, context)),
             child: CustomText(
-                text: "Price: ₹710",
+                text: "Price: ${entry.price}",
                 textStyle: CustomTextStyle.textStyle18Bold(context)),
           )
       ]),
