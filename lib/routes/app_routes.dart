@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/features/address/presentation/screens/address_screen.dart';
-import 'package:moomalpublication/features/all%20categories/presentation/screens/all_categories.dart';
-import 'package:moomalpublication/features/all%20categories/presentation/screens/category_wise.dart';
+import 'package:moomalpublication/features/all_categories/presentation/screens/all_categories.dart';
+import 'package:moomalpublication/features/all_categories/presentation/screens/category_wise.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
