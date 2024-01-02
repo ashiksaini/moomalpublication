@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
@@ -18,9 +19,8 @@ class ListCard extends StatelessWidget {
         padding: const EdgeInsets.only(left: 8, right: 8),
         child: Column(
           children: [
-            // CustomButtonBar(buttonText: 'Start Test', barText: 'GK Test Quiz(Free)',buttonVisibility: false),
             CustomButtonBar(
-              buttonText: (entry.freePaid == 'paid') ? 'Buy Now' : 'Start Test',
+              buttonText: (entry.freePaid == 'paid') ? 'buy_now'.tr : 'start_test'.tr,
               barText: entry.postTitle ?? '',
             ),
             MarksRow(

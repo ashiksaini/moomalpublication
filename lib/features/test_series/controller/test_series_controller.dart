@@ -14,16 +14,13 @@ class TestSeriesController extends BaseController {
   final Rx<TestSeriesResponse> testSeriesResponse = Rx(TestSeriesResponse());
   final List<TestSeriesResponseModel> tests = [];
 
-  final Rx<TestSeriesListResponse> testSeriesListResponse =
-      Rx(TestSeriesListResponse());
+  final Rx<TestSeriesListResponse> testSeriesListResponse = Rx(TestSeriesListResponse());
 
   List<DropdownItem<Term>> mockTestCategory = RxList<DropdownItem<Term>>();
-  late Rx<DropdownItem<Term>?> selectedMockTestCategory =
-      Rx<DropdownItem<Term>?>(null);
+  late Rx<DropdownItem<Term>?> selectedMockTestCategory = Rx<DropdownItem<Term>?>(null);
 
   List<DropdownItem<Term>> topicWiseCategory = RxList<DropdownItem<Term>>();
-  late Rx<DropdownItem<Term>?> selectedTopicWiseCategory =
-      Rx<DropdownItem<Term>?>(null);
+  late Rx<DropdownItem<Term>?> selectedTopicWiseCategory = Rx<DropdownItem<Term>?>(null);
 
   RxBool pageLoaded = false.obs;
 
@@ -54,18 +51,17 @@ class TestSeriesController extends BaseController {
       for (var item in testSeriesListResponse.value.data!) {
         if (item.mockTestTerms != null) {
           for (var category in item.mockTestTerms!.values) {
-            mockTestCategory
-                .add(DropdownItem(title: category.name ?? "", type: category));
+            mockTestCategory.add(DropdownItem(title: category.name ?? "", type: category));
           }
           selectedMockTestCategory.value = mockTestCategory.first;
         }
 
         if (item.topicWiseTerms != null) {
           for (var category in item.topicWiseTerms!.values) {
-            topicWiseCategory
-                .add(DropdownItem(title: category.name ?? "", type: category));
+            topicWiseCategory.add(DropdownItem(title: category.name ?? "", type: category));
           }
         }
+        
         if (mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty) {
           selectedMockTestCategory.value = mockTestCategory.first;
           selectedTopicWiseCategory.value = topicWiseCategory.first;
@@ -94,7 +90,6 @@ class TestSeriesController extends BaseController {
   }
 
   void isPageLoaded() {
-    pageLoaded.value =
-        mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty;
+    pageLoaded.value = mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty;
   }
 }

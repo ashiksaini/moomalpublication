@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -19,11 +20,13 @@ class MarksRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomText(
-                text: "Questions: ${entry.questionCount ?? ''}",
-                textStyle: CustomTextStyle.textStyle18Bold(context)),
+              text: "${"questions".tr}: ${entry.questionCount ?? ''}",
+              textStyle: CustomTextStyle.textStyle18Bold(context),
+            ),
             CustomText(
-                text: "Max. Marks: ${entry.totalMarks}",
-                textStyle: CustomTextStyle.textStyle18Bold(context)),
+              text: "${"max_marks".tr}: ${entry.totalMarks}",
+              textStyle: CustomTextStyle.textStyle18Bold(context),
+            ),
           ],
         ),
         const VerticalGap(size: 8),
@@ -31,19 +34,24 @@ class MarksRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomText(
-                text: "Time: ${entry.maximumTime} Mins",
-                textStyle: CustomTextStyle.textStyle18Bold(context)),
+              text: "${"time".tr}: ${entry.maximumTime} ${"mins".tr}",
+              textStyle: CustomTextStyle.textStyle18Bold(context),
+            ),
             CustomText(
-                text: "Language: English",
-                textStyle: CustomTextStyle.textStyle18Bold(context)),
+              text: "${"language".tr}: ${"english".tr}",
+              textStyle: CustomTextStyle.textStyle18Bold(context),
+            ),
           ],
         ),
         if (showPrice)
           Padding(
-            padding: EdgeInsets.only(top: scaleHeight(8, context)),
+            padding: EdgeInsets.only(
+              top: scaleHeight(8, context),
+            ),
             child: CustomText(
-                text: "Price: ${entry.price}",
-                textStyle: CustomTextStyle.textStyle18Bold(context)),
+              text: "${"price".tr}: ${entry.price}",
+              textStyle: CustomTextStyle.textStyle18Bold(context),
+            ),
           )
       ]),
     );

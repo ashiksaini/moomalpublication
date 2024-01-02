@@ -20,12 +20,10 @@ class TestSeriesScreen extends StatefulWidget {
   State<TestSeriesScreen> createState() => _TestSeriesScreenState();
 }
 
-class _TestSeriesScreenState extends State<TestSeriesScreen>
-    with SingleTickerProviderStateMixin {
+class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final TextEditingController colorController = TextEditingController();
-  final TestSeriesController _testSeriesController =
-      Get.put(TestSeriesController());
+  final TestSeriesController _testSeriesController = Get.put(TestSeriesController());
 
   final tabs = <Widget>[];
 
@@ -53,9 +51,8 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CustomAppbar(
-                      title: "Test Series",
+                      title: "test_series".tr,
                       prefixIcon: AppAssets.icBackArrow,
-                      suffixIcon: AppAssets.icSearch,
                       onPrefixIconClick: () => AppRouting.navigateBack(),
                       maxLine: 1,
                     ),
@@ -66,49 +63,35 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                         right: scaleWidth(10, context),
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomDropDown2(
-                            borderRadius: 10,
-                            borderColor: AppColors.grey,
+                            borderColor: AppColors.orange,
                             items: _testSeriesController.mockTestCategory,
-                            selectedItem:
-                                _testSeriesController.selectedMockTestCategory,
-                            width:
-                                screenWidth(context) - scaleWidth(200, context),
-                            onItemClick:
-                                _testSeriesController.onMockCategoryItemClick,
+                            selectedItem: _testSeriesController.selectedMockTestCategory,
+                            width: screenWidth(context) / 2.2,
+                            onItemClick: _testSeriesController.onMockCategoryItemClick,
                           ),
                           CustomDropDown2(
-                            borderRadius: 10,
-                            borderColor: AppColors.grey,
+                            borderColor: AppColors.orange,
                             items: _testSeriesController.topicWiseCategory,
-                            selectedItem:
-                                _testSeriesController.selectedTopicWiseCategory,
-                            width:
-                                screenWidth(context) - scaleWidth(200, context),
-                            onItemClick:
-                                _testSeriesController.onTopicCategoryItemClick,
+                            selectedItem: _testSeriesController.selectedTopicWiseCategory,
+                            width: screenWidth(context) / 2.2,
+                            onItemClick: _testSeriesController.onTopicCategoryItemClick,
                           ),
                         ],
                       ),
                     ),
-                    const VerticalGap(size: 40),
+                    const VerticalGap(size: 30),
                     TabBar(
                       unselectedLabelColor: AppColors.black,
                       labelColor: AppColors.orange,
                       dividerColor: AppColors.grey,
                       indicatorColor: AppColors.orange,
                       tabs: [
-                        TabItem(
-                            text: 'All',
-                            length: _testSeriesController.tests.length),
-                        TabItem(
-                            text: 'Full length',
-                            length: _testSeriesController.tests.length),
-                        TabItem(
-                            text: 'Sectional',
-                            length: _testSeriesController.tests.length),
+                        TabItem(text: 'all'.tr, length: _testSeriesController.tests.length),
+                        TabItem(text: 'full_length'.tr, length: _testSeriesController.tests.length),
+                        TabItem(text: 'sectional'.tr, length: _testSeriesController.tests.length),
                       ],
                       labelStyle: CustomTextStyle.textStyle20Bold(context),
                       controller: _tabController,
@@ -116,8 +99,7 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                     ),
                     Expanded(
                       child: Obx(
-                        () => (_testSeriesController
-                                .testSeriesResponse.value.isLoading)
+                        () => (_testSeriesController.testSeriesResponse.value.isLoading)
                             ? Center(child: customProgressIndicator())
                             : TabBarView(
                                 controller: _tabController,
