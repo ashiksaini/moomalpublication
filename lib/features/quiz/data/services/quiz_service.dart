@@ -34,4 +34,28 @@ class QuizService {
       return QuizResponse();
     }
   }
+  static Future<QuizResponse> getTestList() async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final dio.Response<dynamic> response =
+            await DioClient.dioWithoutAuth!.get(ApiPaths.quizData);
+
+        final parsedResponse = (response.data as List<dynamic>?)!
+            .map(
+              (item) =>
+                  QuizResponseModel.fromJson(item as Map<String, dynamic>),
+            )
+            .toList();
+        return QuizResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showSnackBar(error.message.toString());
+        return QuizResponse();
+      }
+    } else {
+      showSnackBar("no_internet_access".tr);
+      return QuizResponse();
+    }
+  }
 }
