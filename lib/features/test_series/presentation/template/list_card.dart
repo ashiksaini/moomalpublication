@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
@@ -13,29 +14,21 @@ class ListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Utility.launchurl(entry.permalink.toString());
-        print(entry.permalink.toString());
-      },
-      child: ShadowContainer(
-        borderRadius: scaleRadius(10, context),
-        containerChild: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Column(
-            children: [
-              // CustomButtonBar(buttonText: 'Start Test', barText: 'GK Test Quiz(Free)',buttonVisibility: false),
-              CustomButtonBar(
-                buttonText:
-                    (entry.freePaid == 'paid') ? 'Buy Now' : 'Start Test',
-                barText: entry.postTitle ?? '',
-              ),
-              MarksRow(
-                entry: entry,
-                showPrice: (entry.freePaid == 'paid') ? true : false,
-              ),
-            ],
-          ),
+    return ShadowContainer(
+      borderRadius: scaleRadius(10, context),
+      containerChild: Padding(
+        padding: const EdgeInsets.only(left: 8, right: 8),
+        child: Column(
+          children: [
+            CustomButtonBar(
+              buttonText: (entry.freePaid == 'paid') ? 'buy_now'.tr : 'start_test'.tr,
+              barText: entry.postTitle ?? '',
+            ),
+            MarksRow(
+              entry: entry,
+              showPrice: (entry.freePaid == 'paid') ? true : false,
+            ),
+          ],
         ),
       ),
     );

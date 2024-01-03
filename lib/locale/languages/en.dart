@@ -50,6 +50,7 @@ final Map<String, String> enUS = {
   "reset_password_on_success": "Password reset email has been sent.",
 
   // Home Screen ////////////////////////////////////////////////////////////
+  "home": "Home",
   "best_seller": "Best Seller",
   "no_image_preview_available": "No Image \nPreview Available",
   "add_to_cart": "Add To Cart",
@@ -169,6 +170,7 @@ final Map<String, String> enUS = {
     ''',
 
   // Cart /////////////////////////////////////////////////////////////////////
+  "cart": "Cart",
   "my_cart": "My Cart",
   "quantity_txt": "Quantity :",
   "order_details": "Order Details",
@@ -197,6 +199,7 @@ final Map<String, String> enUS = {
   "sort_by_price_h_to_l": "Sort By price (High to Low)",
 
   // Profile ///////////////////////////////////////////////////////////
+  "profile": "Profile",
   "my_profile": "My Profile",
   "user_name": "User Name",
 
@@ -206,4 +209,14 @@ final Map<String, String> enUS = {
   "submit": "Submit",
   "please_write_a_review_first": "Please write a Review first",
   "review_posted_successfully": "Review Posted Successfully",
+
+  // Test Series ///////////////////////////////////////////////////////////
+  "all": "All",
+  "full_length": "Full Length",
+  "sectional": "Sectional",
+  "start_test": "Start Test",
+  "questions": "Questions",
+  "max_marks": "Max Marks",
+  "time": "Time",
+  "mins": "Mins",
 };
