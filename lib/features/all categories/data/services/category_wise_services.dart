@@ -1,5 +1,3 @@
 class CategoryWiseServices {
   CategoryWiseServices._();
-
-  
 }

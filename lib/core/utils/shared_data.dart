@@ -1,11 +1,13 @@
+import 'package:moomalpublication/core/base/product_item/product_item.dart';
+
 class SharedData {
-  int? productId;
-  String? productName;
-  String? productLink;
+  ProductItem? productItem;
+  String? categoryWiseAppBarTitle;
+  int? categoryId;
 
   SharedData({
-    this.productId,
-    this.productName,
-    this.productLink,
+    this.productItem,
+    this.categoryWiseAppBarTitle,
+    this.categoryId,
   });
 }

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
 
 class BookTypeGrid extends StatelessWidget {
-  const BookTypeGrid({super.key});
+  BookTypeGrid({super.key});
+
+  final ProductDetailController _productDetailController =
+      Get.find<ProductDetailController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,15 @@ class BookTypeGrid extends StatelessWidget {
           childAspectRatio: 1.5,
         ),
         itemBuilder: (_, index) {
+          if (index == 0) {
+            return _getBookDetailItem(
+              context,
+              "book".tr,
+              _productDetailController.isBookAvailable.value
+                  ? "available".tr
+                  : "not_available".tr,
+            );
+          }
           if (index == 1) {
             return Container(
               decoration: BoxDecoration(
@@ -30,12 +44,29 @@ class BookTypeGrid extends StatelessWidget {
                 boxShadow: [primaryBoxShadow()],
               ),
               child: _getBookDetailItem(
-                  context, "Categorie", "Current GK, New books",
+                  context,
+                  "ebook".tr,
+                  _productDetailController.isEbookAvailable.value
+                      ? "available".tr
+                      : "not_available".tr,
                   textColor: AppColors.black),
             );
           }
-          return _getBookDetailItem(
-              context, "Categorie", "Current GK, New books");
+          if (index == 2) {
+            return _getBookDetailItem(
+              context,
+              "sku".tr,
+              _productDetailController.sku.value,
+            );
+          }
+          if (index == 3) {
+            return _getBookDetailItem(
+              context,
+              "categories".tr,
+              _productDetailController.categories.value,
+            );
+          }
+          return Container();
         },
       ),
     );

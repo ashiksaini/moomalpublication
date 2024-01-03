@@ -24,7 +24,7 @@ class Term {
   });
 
   factory Term.fromJson(Map<String, dynamic> json) {
-   return Term(
+    return Term(
       termId: json["term_id"] as int?,
       name: json["name"] as String?,
       slug: json["slug"] as String?,
@@ -37,5 +37,4 @@ class Term {
       filter: json["filter"] as String?,
     );
   }
-
 }

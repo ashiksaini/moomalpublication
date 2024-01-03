@@ -38,7 +38,8 @@ class ShopController extends BaseController {
     }
 
     isLoadingMore.value = false;
-    productResponse.value = await GetProductServices.getProducts(query: ProductRequestData(perPage: 20, page: _pageNo).toJson());
+    productResponse.value = await GetProductServices.getProducts(
+        query: ProductRequestData(perPage: 20, page: _pageNo).toJson());
     if (productResponse.value.data != null) {
       if (productResponse.value.data!.isEmpty) isLastPage.value = true;
       productList.addAll(productResponse.value.data ?? []);
@@ -61,7 +62,8 @@ class ShopController extends BaseController {
   }
 
   void _scrollListener() {
-    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
       loadMoreData();
     }
   }
@@ -74,14 +76,16 @@ class ShopController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name, productLink: data.permalink));
+    AppRouting.toNamed(NameRoutes.productDetailScreen,
+        argument: SharedData(productItem: data));
   }
 
   Future<void> onCartBtnClick(ProductItem item) async {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(id: item.id.toString(), quantity: item.quantity.toString());
+          final addToCartResponse = await CartServices.addToCart(
+              id: item.id.toString(), quantity: item.quantity.toString());
           if (addToCartResponse.data != null) {
             item.cartBtnType.value = CartBtnType.goToCart;
           }

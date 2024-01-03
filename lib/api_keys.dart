@@ -19,4 +19,28 @@ class ApiKeys {
   // EBool Category
   static const String ebookCategoryConsumerKey = "ck_e2f6f01e1cf1ecdaf2afa9fe1e6d79f9e564c3db";
   static const String ebookCategoryConsumerSecret = "cs_0cc8258ffd6d6b5110f150f4ea8ad04845c6c9cc";
+
+  // Delete account
+  static const String deleteAccountConsumerKey = "ck_6003c242b66ba13b095792d15766f26f6d6e5c4f";
+  static const String deleteAccountConsumerSecret = "cs_f1ceebe6091f867735f20c1b7136a76b228e2078";
+
+  // Product details
+  static const String productDetailConsumerKey = "ck_7c962588077c2edb8d7f342c8ba15fec7e985277";
+  static const String productDetailConsumerSecret = "cs_75485d6ac7accec31722bb8028b4be15e6bf86d4";
+
+  // Product review
+  static const String productReviewConsumerKey = "ck_6fd70bd94149beb477a2a27cf3b55122e126865c";
+  static const String productReviewConsumerSecret = "cs_96a34ed50cf847f554c5be76f57c148e7b6a3262";
+
+  // Similar product
+  static const String similarProductReviewConsumerKey = "ck_84ab63d0ace9fb179e45f15af31dafd7cae7da68";
+  static const String similarProductReviewConsumerSecret = "cs_3756d329c7e7122e4f71f305f3fc0c70f216ed0a";
+
+  // Post Review
+  static const String postReviewConsumerKey = "ck_6fa335651dd3e63a9d84ddfbd0ce066563b688d6";
+  static const String postReviewConsumerSecret = "cs_ee5c319f00e0f7ad22d41654b4a6094685a9ff2d";
+
+  // Product
+  static const String productConsumerKey = "ck_0d68ec5d46979420eb3fe93eb254632ccf34a8d4";
+  static const String productConsumerSecret = "cs_e2959e16b6e59b584f94b97fa8a731f8d562962c";
 }

@@ -7,11 +7,13 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/settings/controller/setting_controller.dart';
 import 'package:moomalpublication/features/settings/presentation/template/setting_card.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 
 class SettingScreen extends StatelessWidget {
   SettingScreen({super.key});
-  final SettingController settingController = Get.put(SettingController());
+  final SettingController _settingController = Get.put(SettingController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class SettingScreen extends StatelessWidget {
                       SettingCard(
                         text: 'shipping_policy'.tr.toUpperCase(),
                         onCardTap: () {
-                          settingController.navigateSettingDetailScreen(
+                          _settingController.navigateSettingDetailScreen(
                             appBarTitle: 'shipping_policy'.tr.toUpperCase(),
                             description: 'shipping_policy_desc'.tr,
                           );
@@ -50,7 +52,7 @@ class SettingScreen extends StatelessWidget {
                       SettingCard(
                         text: 'cancellation_and_refund_policy'.tr.toUpperCase(),
                         onCardTap: () {
-                          settingController.navigateSettingDetailScreen(
+                          _settingController.navigateSettingDetailScreen(
                             appBarTitle: 'cancellation_and_refund_policy'
                                 .tr
                                 .toUpperCase(),
@@ -65,7 +67,7 @@ class SettingScreen extends StatelessWidget {
                       SettingCard(
                         text: 'privacy_policy'.tr.toUpperCase(),
                         onCardTap: () {
-                          settingController.navigateSettingDetailScreen(
+                          _settingController.navigateSettingDetailScreen(
                             appBarTitle: 'privacy_policy'.tr.toUpperCase(),
                             description:
                                 'cancellation_and_refund_policy_desc'.tr,
@@ -78,7 +80,7 @@ class SettingScreen extends StatelessWidget {
                       SettingCard(
                         text: 'terms_and_conditions'.tr.toUpperCase(),
                         onCardTap: () {
-                          settingController.navigateSettingDetailScreen(
+                          _settingController.navigateSettingDetailScreen(
                             appBarTitle:
                                 'terms_and_conditions'.tr.toUpperCase(),
                             description: 'terms_and_conditions_desc'.tr,
@@ -92,10 +94,18 @@ class SettingScreen extends StatelessWidget {
                         text: 'logout'.tr.toUpperCase(),
                         color: AppColors.orange,
                         onCardTap: () {
-                          settingController.navigateSettingDetailScreen(
-                            appBarTitle: 'logout'.tr.toUpperCase(),
-                            description: '',
-                          );
+                          SharedPreferencesHelper.clearSharedPrefExcept();
+                          AppRouting.offAllNamed(NameRoutes.splashScreen);
+                        },
+                      ),
+                      const VerticalGap(size: 20),
+
+                      // Delete Account
+                      SettingCard(
+                        text: 'delete_account'.tr.toUpperCase(),
+                        color: AppColors.red,
+                        onCardTap: () {
+                          _settingController.deleteUserAccount();
                         },
                       ),
                       const VerticalGap(size: 20),

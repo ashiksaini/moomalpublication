@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
-import 'package:moomalpublication/core/components/templates/screen.dart';
+import 'package:moomalpublication/core/components/template/screen.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                 _getGreyBg(context),
                 _getMainAppbar(context),
                 _getMainCategories(context),
-                _getFilterBar(context),
+                // _getFilterBar(context),
               ],
             ),
 
@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getGreyBg(BuildContext context) {
     return Container(
-      height: screenHeight(context) / 2.3,
+      height: screenHeight(context) / 3,
       decoration: BoxDecoration(
         color: AppColors.greyLight,
         borderRadius: BorderRadius.only(
@@ -85,7 +85,9 @@ class HomeScreen extends StatelessWidget {
   Widget _getMainAppbar(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-          top: scaleHeight(40, context), bottom: scaleHeight(60, context)),
+        top: scaleHeight(20, context),
+        bottom: scaleHeight(80, context),
+      ),
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
@@ -106,7 +108,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getMainCategories(BuildContext context) {
     return Positioned(
-      top: scaleHeight(100, context),
+      top: scaleHeight(90, context),
       child: SizedBox(
         width: screenWidth(context),
         child: Row(

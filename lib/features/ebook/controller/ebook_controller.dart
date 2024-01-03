@@ -53,7 +53,8 @@ class EbookController extends BaseController {
   }
 
   void _scrollListener() {
-    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
       loadMoreData();
     }
   }
@@ -64,7 +65,8 @@ class EbookController extends BaseController {
 
     if (ebookCategoryResponse.value.data != null) {
       for (var category in ebookCategoryResponse.value.data!) {
-        ebookCategories.add(DropdownItem(title: category.name ?? "", type: category));
+        ebookCategories
+            .add(DropdownItem(title: category.name ?? "", type: category));
       }
 
       if (ebookCategories.isNotEmpty) {
@@ -94,7 +96,8 @@ class EbookController extends BaseController {
     }
   }
 
-  Map<String, dynamic> _getQueryParams({int? category, String? orderBy, String? order, int? perPage}) {
+  Map<String, dynamic> _getQueryParams(
+      {int? category, String? orderBy, String? order, int? perPage}) {
     return ProductRequestData(
       category: category,
       orderBy: orderBy,
@@ -105,14 +108,16 @@ class EbookController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productId: data.id, productName: data.name, productLink: data.permalink));
+    AppRouting.toNamed(NameRoutes.productDetailScreen,
+        argument: SharedData(productItem: data));
   }
 
   Future<void> onCartBtnClick(ProductItem item) async {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(id: item.id.toString(), quantity: item.quantity.toString());
+          final addToCartResponse = await CartServices.addToCart(
+              id: item.id.toString(), quantity: item.quantity.toString());
           if (addToCartResponse.data != null) {
             item.cartBtnType.value = CartBtnType.goToCart;
           }
