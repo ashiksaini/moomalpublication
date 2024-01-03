@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/features/address/presentation/screens/address_screen.dart';
-import 'package:moomalpublication/features/all%20categories/presentation/screens/all_categories.dart';
-import 'package:moomalpublication/features/all%20categories/presentation/screens/category_wise.dart';
+import 'package:moomalpublication/features/all_categories/presentation/screens/all_categories.dart';
+import 'package:moomalpublication/features/all_categories/presentation/screens/category_wise.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/forget_password_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/login_screen.dart';
 import 'package:moomalpublication/features/auth/presentation/screens/register_screen.dart';
@@ -16,13 +16,13 @@ import 'package:moomalpublication/features/orders/presentation/screen/orders_scr
 import 'package:moomalpublication/features/overall_results/presentation/screen/overall_result_screen.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
+import 'package:moomalpublication/features/quiz/presentation/screens/quiz_detail_screen.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_test_screen.dart';
 import 'package:moomalpublication/features/search_books/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
-import 'package:moomalpublication/features/test_series/presentation/screen/online_test_series_screen.dart';
 import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -152,7 +152,7 @@ class AppPages {
     GetPage(
       name: NameRoutes.testSeriesScreen,
       page: () => const TestSeriesScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
@@ -164,13 +164,13 @@ class AppPages {
     GetPage(
       name: NameRoutes.detailEventScreen,
       page: () => DetailedEventPage(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.quizTestScreen,
       page: () =>  QuizTestScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(

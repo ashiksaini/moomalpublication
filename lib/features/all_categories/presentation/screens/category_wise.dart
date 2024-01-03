@@ -15,7 +15,7 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/all%20categories/controller/category_wise_controller.dart';
+import 'package:moomalpublication/features/all_categories/controller/category_wise_controller.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
