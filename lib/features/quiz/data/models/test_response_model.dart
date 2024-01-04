@@ -18,8 +18,12 @@ class TestQuestionsResponseModel {
         id: json["ID"],
         postTitle: json["post_title"],
         postContent: json["post_content"],
-        questionsAndAnswers: (json["questions_and_answers"] as List<dynamic>?)
-            ?.map((e) => QuestionsAndAnswer.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        questionsAndAnswers: json["questions_and_answers"] == null
+            ? []
+            : List<QuestionsAndAnswer>.from(json["questions_and_answers"]!
+                .map((x) => QuestionsAndAnswer.fromJson(x))),
+        // questionsAndAnswers: (json["questions_and_answers"] as List<dynamic>?)
+        //     ?.map((e) => QuestionsAndAnswer.fromJson(e as Map<String, dynamic>))
+        //     .toList(),
       );
 }

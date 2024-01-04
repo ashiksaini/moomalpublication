@@ -20,17 +20,23 @@ class TestSeriesScreen extends StatefulWidget {
   State<TestSeriesScreen> createState() => _TestSeriesScreenState();
 }
 
-class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerProviderStateMixin {
+class _TestSeriesScreenState extends State<TestSeriesScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final TextEditingController colorController = TextEditingController();
-  final TestSeriesController _testSeriesController = Get.put(TestSeriesController());
+  final TestSeriesController _testSeriesController =
+      Get.put(TestSeriesController());
 
   final tabs = <Widget>[];
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
     super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(() {
+      int selectedIndex = _tabController.index;
+      _testSeriesController.setSelectedTabIndex(selectedIndex: selectedIndex);
+    });
   }
 
   @override
@@ -68,16 +74,20 @@ class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerPr
                           CustomDropDown2(
                             borderColor: AppColors.orange,
                             items: _testSeriesController.mockTestCategory,
-                            selectedItem: _testSeriesController.selectedMockTestCategory,
+                            selectedItem:
+                                _testSeriesController.selectedMockTestCategory,
                             width: screenWidth(context) / 2.2,
-                            onItemClick: _testSeriesController.onMockCategoryItemClick,
+                            onItemClick:
+                                _testSeriesController.onMockCategoryItemClick,
                           ),
                           CustomDropDown2(
                             borderColor: AppColors.orange,
                             items: _testSeriesController.topicWiseCategory,
-                            selectedItem: _testSeriesController.selectedTopicWiseCategory,
+                            selectedItem:
+                                _testSeriesController.selectedTopicWiseCategory,
                             width: screenWidth(context) / 2.2,
-                            onItemClick: _testSeriesController.onTopicCategoryItemClick,
+                            onItemClick:
+                                _testSeriesController.onTopicCategoryItemClick,
                           ),
                         ],
                       ),
@@ -89,9 +99,18 @@ class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerPr
                       dividerColor: AppColors.grey,
                       indicatorColor: AppColors.orange,
                       tabs: [
-                        TabItem(text: 'all'.tr, length: _testSeriesController.tests.length),
-                        TabItem(text: 'full_length'.tr, length: _testSeriesController.tests.length),
-                        TabItem(text: 'sectional'.tr, length: _testSeriesController.tests.length),
+                        TabItem(
+                            text: _testSeriesController.tabBarList[0].tabName ??
+                                '',
+                            length: _testSeriesController.tests.length),
+                        TabItem(
+                            text: _testSeriesController.tabBarList[1].tabName ??
+                                '',
+                            length: _testSeriesController.tests.length),
+                        TabItem(
+                            text: _testSeriesController.tabBarList[2].tabName ??
+                                '',
+                            length: _testSeriesController.tests.length),
                       ],
                       labelStyle: CustomTextStyle.textStyle20Bold(context),
                       controller: _tabController,
@@ -99,7 +118,8 @@ class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerPr
                     ),
                     Expanded(
                       child: Obx(
-                        () => (_testSeriesController.testSeriesResponse.value.isLoading)
+                        () => (_testSeriesController
+                                .testSeriesResponse.value.isLoading)
                             ? Center(child: customProgressIndicator())
                             : TabBarView(
                                 controller: _tabController,

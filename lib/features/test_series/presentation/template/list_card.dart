@@ -23,6 +23,7 @@ class ListCard extends StatelessWidget {
             CustomButtonBar(
               buttonText: (entry.freePaid == 'paid') ? 'buy_now'.tr : 'start_test'.tr,
               barText: entry.postTitle ?? '',
+              permalink: entry.permalink,
             ),
             MarksRow(
               entry: entry,

@@ -25,6 +25,7 @@ import 'package:moomalpublication/features/splash/presentation/screens/splash_sc
 import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/features/quiz/presentation/screens/quiz_detail_screen.dart';
 
 class AppPages {
   AppPages();
@@ -168,7 +169,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.quizTestScreen,
-      page: () =>  QuizTestScreen(),
+      page: () => QuizTestScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

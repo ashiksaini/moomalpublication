@@ -219,4 +219,6 @@ final Map<String, String> enUS = {
   "max_marks": "Max Marks",
   "time": "Time",
   "mins": "Mins",
+  "SUBMIT": "SUBMIT",
+  "RETAKE": "RETAKE",
 };

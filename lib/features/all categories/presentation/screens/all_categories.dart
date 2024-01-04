@@ -7,9 +7,10 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/all%20categories/presentation/widgets/category.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
+import 'package:moomalpublication/features/all_categories/presentation/widgets/category.dart';
+
 
 class AllCategoriesScreen extends StatelessWidget {
   const AllCategoriesScreen({super.key});

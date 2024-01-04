@@ -12,7 +12,7 @@ import 'package:moomalpublication/features/quiz/presentation/template/current_af
 import 'package:moomalpublication/routes/routing.dart';
 
 class QuizScreen extends StatefulWidget {
-  QuizScreen({super.key});
+  const QuizScreen({super.key});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();

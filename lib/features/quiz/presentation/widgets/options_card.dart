@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
@@ -16,17 +17,28 @@ class OptionsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Obx(
-          () => Container(
+    return Obx(
+      () => Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
             decoration: BoxDecoration(
-              color: _quizController.selectedOptions[questionNumber].value == -1
-                  ? AppColors.greyLight
-                  : _quizController.selectedOptions[questionNumber].value ==
-                          optionNumber
-                      ? AppColors.orange
-                      : AppColors.greyLight,
+              color: _quizController.testTaken.isFalse
+                  ? _quizController.selectedOptions[questionNumber].value == -1
+                      ? AppColors.greyLight
+                      : _quizController.selectedOptions[questionNumber].value ==
+                              optionNumber
+                          ? AppColors.orange
+                          : AppColors.greyLight
+                  : _quizController.answerList[questionNumber][optionNumber]
+                              .correctOrNot ==
+                          true
+                      ? AppColors.green
+                      : _quizController.selectedOptions[questionNumber].value ==
+                              optionNumber
+                          ? AppColors.red
+                          : AppColors.greyLight,
               shape: BoxShape.circle,
             ),
             child: Padding(
@@ -36,8 +48,35 @@ class OptionsCard extends StatelessWidget {
                   textStyle: CustomTextStyle.textStyle16MediumTrio(context)),
             ),
           ),
-        ),
-      ],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: scaleWidth(12, context),
+                  vertical: scaleHeight(6, context)),
+              child: CustomText(
+                  textAlign: TextAlign.start,
+                  text: _quizController
+                      .answerList[questionNumber][optionNumber].answer
+                      .toString(),
+                  textStyle: CustomTextStyle.textStyle16MediumTrio(
+                    context,
+                    color: _quizController.testTaken.isFalse
+                        ? AppColors.black
+                        : _quizController
+                                    .answerList[questionNumber][optionNumber]
+                                    .correctOrNot ==
+                                true
+                            ? AppColors.green
+                            : _quizController.selectedOptions[questionNumber]
+                                        .value ==
+                                    optionNumber
+                                ? AppColors.red
+                                : AppColors.black,
+                  )),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -9,3 +9,11 @@ BoxShadow primaryBoxShadow() {
     spreadRadius: 1,
   );
 }
+
+BoxShadow secondaryBoxShadow() {
+  return const BoxShadow(
+    color: AppColors.redBright,
+    blurRadius: 4,
+    offset: Offset(0, 0),
+  );
+}
