@@ -12,7 +12,7 @@ import 'package:moomalpublication/features/quiz/presentation/template/current_af
 import 'package:moomalpublication/routes/routing.dart';
 
 class QuizScreen extends StatefulWidget {
-  QuizScreen({super.key});
+  const QuizScreen({super.key});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -36,7 +36,7 @@ class _QuizScreenState extends State<QuizScreen>
         child: Column(
           children: [
             CustomAppbar(
-              title: "Our Quiz",
+              title: "our_quiz".tr,
               maxLine: 1,
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),
@@ -49,12 +49,12 @@ class _QuizScreenState extends State<QuizScreen>
               labelStyle: CustomTextStyle.textStyle25Bold(context),
               unselectedLabelStyle: CustomTextStyle.textStyle25Bold(context),
               indicatorColor: AppColors.orange,
-              tabs: const [
+              tabs: [
                 Tab(
-                  text: 'Current affair Quiz',
+                  text: 'current_affair_quiz'.tr,
                 ),
                 Tab(
-                  text: 'Economics Quiz',
+                  text: 'economics_quiz'.tr,
                 ),
               ],
               controller: _tabController,

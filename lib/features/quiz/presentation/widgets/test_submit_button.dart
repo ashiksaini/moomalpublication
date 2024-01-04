@@ -14,20 +14,29 @@ class TestSubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ShadowContainer(
-        margin: EdgeInsets.only(
-            top: scaleHeight(30, context), bottom: scaleHeight(20, context)),
-        padding: EdgeInsets.symmetric(
-            vertical: scaleHeight(12, context),
-            horizontal: scaleWidth(25, context)),
-        backgroundColor: AppColors.orange,
-        borderColor: AppColors.white,
-        borderRadius: scaleRadius(6, context),
-        containerChild: Obx(
-          () => CustomText(
-            text: _quizController.submitButton.isTrue ? 'SUBMIT' : 'RETAKE',
-            textStyle: CustomTextStyle.textStyle25Bold(context,
-                color: AppColors.white),
+      child: GestureDetector(
+        onTap: () {
+          _quizController.submitButton.value
+              ? _quizController.checkAnswers()
+              : _quizController.reTakeButton();
+        },
+        child: ShadowContainer(
+          margin: EdgeInsets.only(
+              top: scaleHeight(30, context), bottom: scaleHeight(20, context)),
+          padding: EdgeInsets.symmetric(
+              vertical: scaleHeight(12, context),
+              horizontal: scaleWidth(25, context)),
+          backgroundColor: AppColors.orange,
+          borderColor: AppColors.white,
+          borderRadius: scaleRadius(6, context),
+          containerChild: Obx(
+            () => CustomText(
+              text: _quizController.submitButton.isTrue
+                  ? 'SUBMIT'.tr
+                  : 'RETAKE'.tr,
+              textStyle: CustomTextStyle.textStyle25Bold(context,
+                  color: AppColors.white),
+            ),
           ),
         ),
       ),

@@ -60,7 +60,7 @@ class PhotoDescription extends StatelessWidget {
           const VerticalGap(size: 18),
           GestureDetector(
               onTap: () {
-                _quizController.navigateQuizTestScreen(index: index);
+                _quizController.startTest(index: index);
               },
               child: const StartButton()),
         ],

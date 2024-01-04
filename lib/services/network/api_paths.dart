@@ -20,4 +20,6 @@ class ApiPaths {
   static const String removeCartItem = 'wc/store/cart/remove-item';
   static const String eBookProductCategory = 'wc/v3/products/categories';
   static const String productCategoryWiseBook = 'wc/v3/products/categories';
+  static const String quizTest = 'online_exam/v1/exam/';
+
 }

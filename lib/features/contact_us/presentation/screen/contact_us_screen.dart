@@ -23,7 +23,7 @@ class ContactUsScreen extends StatelessWidget {
           child: Column(
         children: [
           CustomAppbar(
-            title: "Event And Press Release",
+            title: "event_and_press_release".tr,
             prefixIcon: AppAssets.icBackArrow,
             onPrefixIconClick: () => AppRouting.navigateBack(),
             maxLine: 1,

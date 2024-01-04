@@ -20,11 +20,13 @@ class QuestionListCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomText(
-            textAlign: TextAlign.start,
-            text:
-                '${(questionNumberIndex + 1).toString()}. ${_quizController.questionsList[questionNumberIndex]}',
-            textStyle: CustomTextStyle.textStyle15Bold(context),
+          Obx(
+            () => CustomText(
+              textAlign: TextAlign.start,
+              text:
+                  '${(questionNumberIndex + 1).toString()}. ${_quizController.questionsList[questionNumberIndex]}',
+              textStyle: CustomTextStyle.textStyle15Bold(context),
+            ),
           ),
           ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
@@ -33,9 +35,11 @@ class QuestionListCard extends StatelessWidget {
               itemBuilder: (context, optionIndex) {
                 return GestureDetector(
                   onTap: () {
-                    _quizController.selectedOption(
-                        questionNumber: questionNumberIndex,
-                        optionNumber: optionIndex);
+                    _quizController.testTaken.isFalse
+                        ? _quizController.selectedOption(
+                            questionNumber: questionNumberIndex,
+                            optionNumber: optionIndex)
+                        : null;
                   },
                   child: OptionsCard(
                       questionNumber: questionNumberIndex,
