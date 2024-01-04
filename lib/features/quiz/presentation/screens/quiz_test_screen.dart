@@ -12,7 +12,6 @@ import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart'
 import 'package:moomalpublication/features/quiz/data/models/timer_model.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/questions_list_card.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/test_submit_button.dart';
-import 'package:moomalpublication/routes/routing.dart';
 
 class QuizTestScreen extends StatelessWidget {
   QuizTestScreen({super.key});
@@ -53,7 +52,7 @@ class QuizTestScreen extends StatelessWidget {
                                   child: _quizController.submitButton.isTrue
                                       ? CustomText(
                                           text:
-                                              'Timer - ${timerModel.formattedTime(_quizController.counter.value)}',
+                                              '${'timer'.tr} - ${timerModel.formattedTime(_quizController.counter.value)}',
                                           textStyle:
                                               CustomTextStyle.textStyle20Bold(
                                                   context,
@@ -62,7 +61,7 @@ class QuizTestScreen extends StatelessWidget {
                                       : CustomText(
                                           textAlign: TextAlign.start,
                                           text:
-                                              'Thanks for submitting your response! You scored ${_quizController.totalScore} out of ${_quizController.questionsList.length}',
+                                              '${'thanks_for_submitting_your_resposne!_you_scored'.tr} ${_quizController.totalScore} ${'out_of'.tr} ${_quizController.questionsList.length}',
                                           textStyle:
                                               CustomTextStyle.textStyle15Bold(
                                                   context,
