@@ -179,11 +179,14 @@ final Map<String, String> enUS = {
   "shipping_charges": "Shipping Charges",
   "total_amount": "Total Amount",
   "place_order": "Place Order",
+  "no_items_in_cart": "No Items in Cart",
+  "browse_product": "Browse Product",
 
   // Search Screen ////////////////////////////////////////////////////////////
   "search_for_books_and_ebooks": "Search for Books and Ebooks",
   "search_in_moomal_publication": "Search in Moomal Publication",
   "search_desc": "Find Books, Ebooks for current GK and \nMany more books",
+  "oops_no_book_found": "Oops..! No Book Found",
 
   // All categories ///////////////////////////////////////////////////////////
   "all_categories": "All Categories",
