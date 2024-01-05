@@ -29,6 +29,7 @@ final Map<String, String> enUS = {
   "password": "Password",
   "username_should_not_be_empty": "Username should not be empty",
   "password_should_not_be_empty": "Password should not be empty",
+  "invalid_credential": "Invalid Credential",
 
   // Register ///////////////////////////////////////////////////////////////
   "email_address": "Email Address",
