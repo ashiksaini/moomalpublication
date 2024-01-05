@@ -11,6 +11,7 @@ class ShadowContainer extends StatelessWidget {
   final EdgeInsets margin;
   final Color? borderColor;
   final LinearGradient? linearGradient;
+  final BoxShadow? boxShadow;
 
   const ShadowContainer({
     super.key,
@@ -21,6 +22,7 @@ class ShadowContainer extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     this.borderColor = Colors.transparent,
     this.linearGradient,
+    this.boxShadow,
   });
 
   @override
@@ -31,7 +33,7 @@ class ShadowContainer extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: linearGradient,
         color: backgroundColor,
-        boxShadow: [primaryBoxShadow()],
+        boxShadow: [boxShadow ?? primaryBoxShadow()],
         border: Border.all(
           color: borderColor!,
         ),
