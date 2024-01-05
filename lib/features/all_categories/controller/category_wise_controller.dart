@@ -147,7 +147,13 @@ class CategoryWiseController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productItem: data));
+    AppRouting.toNamed(
+      NameRoutes.productDetailScreen,
+      argument: SharedData(
+        productItem: data,
+        backStackRoute: NameRoutes.categoryWiseScreen,
+      ),
+    );
   }
 
   Future<void> onCartBtnClick(ProductItem item) async {

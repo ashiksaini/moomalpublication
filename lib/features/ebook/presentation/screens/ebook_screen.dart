@@ -4,6 +4,7 @@ import 'package:moomalpublication/core/components/atoms/custom_progress_indicato
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
 import 'package:moomalpublication/core/components/organisms/custom_drop_down_2.dart';
+import 'package:moomalpublication/core/components/organisms/empty_product.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -11,6 +12,8 @@ import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/ebook/controller/ebook_controller.dart';
 import 'package:moomalpublication/features/ebook/data/models/e_book_category_item/e_book_category_item.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class EBookScreen extends StatelessWidget {
   EBookScreen({super.key});
@@ -28,10 +31,9 @@ class EBookScreen extends StatelessWidget {
               CustomAppbar(
                 title: "ebooks".tr,
                 suffixIcon: AppAssets.icSearch,
+                onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
               ),
-              _ebookController.ebookCategoryResponse.value.isLoading
-                  ? _showLoading(context)
-                  : _showData(context),
+              _ebookController.ebookCategoryResponse.value.isLoading || _ebookController.ebooksResponse.value.isLoading ? _showLoading(context) : _showData(context),
             ],
           );
         }),
@@ -56,43 +58,45 @@ class EBookScreen extends StatelessWidget {
           const VerticalGap(size: 4),
 
           // Data view
-          Expanded(
-            child: GridView.builder(
-              controller: _ebookController.scrollController,
-              padding: EdgeInsets.symmetric(
-                horizontal: scaleWidth(10, context),
-                vertical: scaleHeight(12, context),
+          if (_ebookController.ebooks.isEmpty) ...{
+            const Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [EmptyProductView()],
               ),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 12.0,
-                mainAxisSpacing: 15.0,
-                childAspectRatio:
-                    _ebookController.ebooksResponse.value.isLoading
-                        ? 0.58
-                        : 0.5,
+            )
+          } else
+            Expanded(
+              child: GridView.builder(
+                controller: _ebookController.scrollController,
+                padding: EdgeInsets.symmetric(
+                  horizontal: scaleWidth(10, context),
+                  vertical: scaleHeight(12, context),
+                ),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 12.0,
+                  mainAxisSpacing: 15.0,
+                  childAspectRatio: _ebookController.ebooksResponse.value.isLoading ? 0.58 : 0.5,
+                ),
+                itemCount: _ebookController.ebooksResponse.value.isLoading ? 20 : _ebookController.ebooks.length,
+                itemBuilder: (context, index) {
+                  if (_ebookController.ebooksResponse.value.isLoading) {
+                    return const BookItemShimmerSkeleton();
+                  } else {
+                    return GestureDetector(
+                      onTap: () {
+                        _ebookController.onItemClick(index, _ebookController.ebooks[index]);
+                      },
+                      child: CardBookItem(
+                        item: _ebookController.ebooks[index],
+                        onCartBtnClick: _ebookController.onCartBtnClick,
+                      ),
+                    );
+                  }
+                },
               ),
-              itemCount: _ebookController.ebooksResponse.value.isLoading
-                  ? 20
-                  : _ebookController.ebooks.length,
-              itemBuilder: (context, index) {
-                if (_ebookController.ebooksResponse.value.isLoading) {
-                  return const BookItemShimmerSkeleton();
-                } else {
-                  return GestureDetector(
-                    onTap: () {
-                      _ebookController.onItemClick(
-                          index, _ebookController.ebooks[index]);
-                    },
-                    child: CardBookItem(
-                      item: _ebookController.ebooks[index],
-                      onCartBtnClick: _ebookController.onCartBtnClick,
-                    ),
-                  );
-                }
-              },
             ),
-          ),
 
           // Load more
           if (_ebookController.isLoadingMore.value)

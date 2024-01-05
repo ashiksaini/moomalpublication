@@ -19,16 +19,19 @@ class LoginServices {
         .haveInternetConnection
         .value) {
       try {
-        await _getAuthToken(data);
-        final dio.Response<dynamic> response =
-            await DioClient.dioWithAuth!.post(ApiPaths.login, data: data);
+        final tokenResponse = await _getAuthToken(data);
+        if (tokenResponse.data != null) {
+          final dio.Response<dynamic> response = await DioClient.dioWithAuth!.post(ApiPaths.login, data: data);
 
-        final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
-          response.data! as Map<String, dynamic>,
-          (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),
-        );
+          final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
+            response.data! as Map<String, dynamic>,
+            (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),
+          );
 
-        return LoginResponse.success(parsedResponse);
+          return LoginResponse.success(parsedResponse);
+        } else {
+          return LoginResponse();
+        }
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());
         return LoginResponse();
@@ -59,8 +62,8 @@ class LoginServices {
         DioClient.initWithAuth();
 
         return TokenResponse.success(parsedResponse);
-      } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+      } on dio.DioException catch (_) {
+        showSnackBar("invalid_credential".tr);
         return TokenResponse();
       }
     } else {

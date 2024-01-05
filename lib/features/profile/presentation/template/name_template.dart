@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
-import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/profile/presentation/widgets/name_card.dart';
-import 'package:moomalpublication/features/profile/presentation/widgets/submit_button.dart';
 
 class NameTemplate extends StatelessWidget {
   final String userName;
@@ -30,10 +28,10 @@ class NameTemplate extends StatelessWidget {
           hintText: userEmail,
           isReadOnly: true,
         ),
-        SizedBox(
-          height: scaleHeight(72, context),
-        ),
-        const SubmitButton(),
+        // SizedBox(
+        //   height: scaleHeight(72, context),
+        // ),
+        // const SubmitButton(),
       ],
     );
   }

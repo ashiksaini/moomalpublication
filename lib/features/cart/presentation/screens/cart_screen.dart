@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
+import 'package:moomalpublication/core/components/organisms/empty_cart_view.dart';
 import 'package:moomalpublication/core/libs/payu_sdk/payu_checkout_pro.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -23,38 +25,57 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Appbar
-            CustomAppbar(title: "my_cart".tr),
+        child: Obx(() {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Appbar
+              CustomAppbar(title: "my_cart".tr),
 
-            // Cart view
-            Expanded(
-              child: Stack(
-                children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _getCartView(context),
-                        const VerticalGap(size: 30),
-                        _getOrderDetailView(context),
-                        const VerticalGap(size: 80),
-                      ],
+              if (_cartController.cartDataResponse.value.isLoading) ...{
+                // Show Loading
+                Expanded(
+                  child: Center(
+                    child: customProgressIndicator(),
+                  ),
+                ),
+              } else if (_cartController.cartItems.isEmpty) ...{
+                // Show Empty View
+                Expanded(
+                  child: Center(
+                    child: EmptyCartView(
+                      title: "no_items_in_cart".tr,
                     ),
                   ),
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: _getPlaceOrderView(context),
+                )
+              } else
+                // Cart view
+                Expanded(
+                  child: Stack(
+                    children: [
+                      SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _getCartView(context),
+                            const VerticalGap(size: 30),
+                            _getOrderDetailView(context),
+                            const VerticalGap(size: 80),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: _getPlaceOrderView(context),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ],
-        ),
+                ),
+            ],
+          );
+        }),
       ),
     );
   }
@@ -81,7 +102,6 @@ class CartScreen extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print("object");
               final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
               payUCheckoutPro.init();
               payUCheckoutPro.pay();
@@ -97,8 +117,7 @@ class CartScreen extends StatelessWidget {
               ),
               child: CustomText(
                 text: 'place_order'.tr,
-                textStyle: CustomTextStyle.textStyle20Bold(context,
-                    color: AppColors.white),
+                textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white),
               ),
             ),
           )
@@ -141,29 +160,3 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
-
-/**
- const VerticalGap(size: 32),
-                      ShadowContainer(
-                        containerChild: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: scaleWidth(20, context), top: scaleWidth(14, context)),
-                              child: CustomText(
-                                text: "Popular Books",
-                                textStyle: CustomTextStyle.textStyle20Bold(
-                                  context,
-                                ),
-                              ),
-                            ),
-                            const CartCard(
-                              addButton: true,
-                            ),
-                            const CartCard(
-                              addButton: true,
-                            ),
-                          ],
-                        ),
-                      ),
- */
