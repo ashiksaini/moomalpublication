@@ -23,7 +23,7 @@ class SimilarProduct extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: () => AppRouting.toNamed(NameRoutes.similarProductScreen),
+          onTap: () => AppRouting.toNamed(NameRoutes.similarProductScreen, argument: _productDetailController.sharedData),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
             child: Row(

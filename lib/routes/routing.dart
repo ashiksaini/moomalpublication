@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppRouting {
@@ -24,8 +25,8 @@ class AppRouting {
   }
 
   // until
-  static void ofNamedUntil(String page, {dynamic argument}) {
-    Get.offNamedUntil<dynamic>(page, (route) => false);
+  static void ofNamedUntil(String page, String removeTill, {dynamic argument}) {
+    Get.offNamedUntil<dynamic>(page, ModalRoute.withName(removeTill), arguments: argument);
   }
 
   // Pop navigation

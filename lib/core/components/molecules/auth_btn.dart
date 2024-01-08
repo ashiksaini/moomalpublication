@@ -30,7 +30,7 @@ class AuthBtn extends StatelessWidget {
                   AppAssets.loadingAnimation,
                   fit: BoxFit.cover,
                   filterQuality: FilterQuality.high,
-                  height: scaleHeight(43, context),
+                  height: scaleHeight(48, context),
                 )
               : Padding(
                   padding:

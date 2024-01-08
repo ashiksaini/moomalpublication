@@ -21,7 +21,7 @@ import 'package:share_plus/share_plus.dart';
 class ProductDetailController extends BaseController {
   TextEditingController writeReviewTextEditingController = TextEditingController();
   late Rx<ProductItem?> productItem = Rx(null);
-  late SharedData _sharedData;
+  late SharedData sharedData;
   late int? productId;
   String name = "";
   String email = "";
@@ -47,8 +47,8 @@ class ProductDetailController extends BaseController {
   void onInit() {
     super.onInit();
 
-    _sharedData = Get.arguments as SharedData;
-    productItem.value = _sharedData.productItem;
+    sharedData = Get.arguments as SharedData;
+    productItem.value = sharedData.productItem;
 
     _getUserInfo();
 
@@ -84,8 +84,8 @@ class ProductDetailController extends BaseController {
   }
 
   void _getData({String? tempProductName, int? tempProductId}) {
-    productName.value = tempProductName ?? _sharedData.productItem?.name ?? "";
-    productId = tempProductId ?? _sharedData.productItem?.id ?? 0;
+    productName.value = tempProductName ?? sharedData.productItem?.name ?? "";
+    productId = tempProductId ?? sharedData.productItem?.id ?? 0;
 
     _getProductDetails();
     _getProductReviews();
@@ -159,8 +159,8 @@ class ProductDetailController extends BaseController {
   }
 
   void shareItem() {
-    if (_sharedData.productItem?.permalink != null && _sharedData.productItem!.permalink!.isNotEmpty) {
-      Share.share(_sharedData.productItem!.permalink!);
+    if (sharedData.productItem?.permalink != null && sharedData.productItem!.permalink!.isNotEmpty) {
+      Share.share(sharedData.productItem!.permalink!);
     }
   }
 
