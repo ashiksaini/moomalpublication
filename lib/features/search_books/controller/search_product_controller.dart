@@ -3,6 +3,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_rx/src/rx_workers/rx_workers.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
@@ -22,8 +23,7 @@ class SearchProductController extends BaseController {
   void onInit() {
     super.onInit();
 
-    debounce(searchedText, (_) => _initDebounce(),
-        time: const Duration(seconds: 1));
+    debounce(searchedText, (_) => _initDebounce(), time: const Duration(seconds: 1));
   }
 
   void _initDebounce() {
@@ -34,8 +34,7 @@ class SearchProductController extends BaseController {
     if (searchedText.value.isNotEmpty) {
       searchBookResponse.value = ApiResponse.loading();
 
-      searchBookResponse.value = await SearchProductServices.getSearchedBook(
-          search: searchedText.string);
+      searchBookResponse.value = await SearchProductServices.getSearchedBook(search: searchedText.string);
       if (searchBookResponse.value.data != null) {
         if (searchBookResponse.value.data!.isNotEmpty) {
           searchedBooks.addAll(searchBookResponse.value.data!);
@@ -64,7 +63,10 @@ class SearchProductController extends BaseController {
       case CartBtnType.addToCart:
         {
           final addToCartResponse = await CartServices.addToCart(
-              id: item.id.toString(), quantity: item.quantity.toString());
+            id: item.id.toString(),
+            quantity: item.quantity.toString(),
+            variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
+          );
           if (addToCartResponse.data != null) {
             item.cartBtnType.value = CartBtnType.goToCart;
           }

@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
@@ -103,7 +104,9 @@ class ProductDetailController extends BaseController {
           for (var variation in productDetailData.value!.variations!) {
             if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
               isEbookAvailable.value = true;
-            } else if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+            }
+
+            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
               isBookAvailable.value = true;
             }
           }
@@ -142,7 +145,11 @@ class ProductDetailController extends BaseController {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(id: item.id.toString(), quantity: item.quantity.toString());
+          final addToCartResponse = await CartServices.addToCart(
+            id: item.id.toString(),
+            quantity: item.quantity.toString(),
+            variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
+          );
           if (addToCartResponse.data != null) {
             item.cartBtnType.value = CartBtnType.goToCart;
           }

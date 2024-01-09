@@ -23,8 +23,8 @@ class AddToCartReqData {
           'variation',
           () => variations!
               .map((variation) => VariationRequestData(
-                    attribute: "",
-                    value: "",
+                    attribute: variation.attribute,
+                    value: variation.value,
                   ).toJson())
               .toList());
     }

@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
@@ -164,6 +165,7 @@ class CategoryWiseController extends BaseController {
           final addToCartResponse = await CartServices.addToCart(
             id: item.id.toString(),
             quantity: item.quantity.toString(),
+            variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
           );
           if (addToCartResponse.data != null) {
             item.cartBtnType.value = CartBtnType.goToCart;

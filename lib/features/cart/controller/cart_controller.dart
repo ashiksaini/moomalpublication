@@ -8,6 +8,7 @@ import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class CartController extends BaseController {
   final Rx<CartDataResponse> cartDataResponse = Rx(ApiResponse());
+  final Rx<CartUpdateItemResponse> cartUpdateDataResponse = Rx(ApiResponse());
   final RxList<Item> cartItems = RxList();
   final Rx<Totals?> totals = Rx(null);
 
@@ -23,10 +24,55 @@ class CartController extends BaseController {
 
     cartDataResponse.value = await CartServices.getCartProducts();
     if (cartDataResponse.value.data != null) {
-      if (cartDataResponse.value.data!.items != null &&
-          cartDataResponse.value.data!.items!.isNotEmpty) {
+      if (cartDataResponse.value.data!.items != null && cartDataResponse.value.data!.items!.isNotEmpty) {
         cartItems.addAll(cartDataResponse.value.data!.items!);
         totals.value = cartDataResponse.value.data!.totals!;
+      }
+    }
+  }
+
+  Future<void> onRefresh() async {
+    cartItems.clear();
+    totals.value = null;
+    _getCartData();
+  }
+
+  Future<void> onDesc(Item cartItem) async {
+    int quantity = cartItem.quantity ?? 0;
+
+    cartUpdateDataResponse.value = await CartServices.updateItem(id: cartItem.id.toString(), quantity: (quantity--).toString());
+    if (cartUpdateDataResponse.value.data != null) {
+      if (cartUpdateDataResponse.value.data!.data != null) {
+        if (cartUpdateDataResponse.value.data!.data!.items != null && cartUpdateDataResponse.value.data!.data!.items!.isNotEmpty) {
+          cartItems.addAll(cartUpdateDataResponse.value.data!.data!.items!);
+          totals.value = cartUpdateDataResponse.value.data!.data!.totals!;
+        }
+      }
+    }
+  }
+
+  Future<void> onInc(Item cartItem) async {
+    int quantity = cartItem.quantity ?? 0;
+
+    cartUpdateDataResponse.value = await CartServices.updateItem(id: cartItem.id.toString(), quantity: (quantity++).toString());
+    if (cartUpdateDataResponse.value.data != null) {
+      if (cartUpdateDataResponse.value.data!.data != null) {
+        if (cartUpdateDataResponse.value.data!.data!.items != null && cartUpdateDataResponse.value.data!.data!.items!.isNotEmpty) {
+          cartItems.addAll(cartUpdateDataResponse.value.data!.data!.items!);
+          totals.value = cartUpdateDataResponse.value.data!.data!.totals!;
+        }
+      }
+    }
+  }
+
+  Future<void> onDeleteItem(Item cartItem) async {
+    cartUpdateDataResponse.value = await CartServices.removeItem(id: cartItem.id.toString());
+    if (cartUpdateDataResponse.value.data != null) {
+      if (cartUpdateDataResponse.value.data!.data != null) {
+        if (cartUpdateDataResponse.value.data!.data!.items != null && cartUpdateDataResponse.value.data!.data!.items!.isNotEmpty) {
+          cartItems.addAll(cartUpdateDataResponse.value.data!.data!.items!);
+          totals.value = cartUpdateDataResponse.value.data!.data!.totals!;
+        }
       }
     }
   }

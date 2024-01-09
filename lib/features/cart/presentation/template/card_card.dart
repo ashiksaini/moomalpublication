@@ -64,9 +64,7 @@ class CartCard extends StatelessWidget {
                         textStyle: CustomTextStyle.textStyle20Bold(context),
                       ),
                       const VerticalGap(size: 10),
-                      if (quantityButton)
-                        QuantityButton(
-                            quantity: cartItem.quantity?.toString() ?? ""),
+                      if (quantityButton) QuantityButton(cartItem: cartItem),
                       if (addButton) const AddButton(),
                     ],
                   ),
@@ -115,8 +113,7 @@ class CartCard extends StatelessWidget {
                 child: Center(
                   child: CustomText(
                     text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context,
-                        color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
                   ),
                 ),
               ),

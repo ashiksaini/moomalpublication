@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
@@ -24,8 +25,16 @@ class GetProductServices {
           for (var variation in element.variations!) {
             if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
               element.isEbookAvailable = true;
-            } else if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+            }
+
+            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
               element.isBookAvailable = true;
+            }
+
+            if ((element.isBookAvailable && element.isEbookAvailable) || element.isEbookAvailable) {
+              element.productVariationType.value = ProductVariation.ebook;
+            } else if (element.isBookAvailable) {
+              element.productVariationType.value = ProductVariation.book;
             }
           }
         }

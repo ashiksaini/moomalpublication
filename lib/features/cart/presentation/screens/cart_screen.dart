@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:moomalpublication/core/components/atoms/refersh_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/components/organisms/empty_cart_view.dart';
 import 'package:moomalpublication/core/libs/payu_sdk/payu_checkout_pro.dart';
@@ -11,7 +12,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
-import 'package:moomalpublication/features/cart/presentation/templates/card_card.dart';
+import 'package:moomalpublication/features/cart/presentation/template/card_card.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/order_details.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 
@@ -26,54 +27,57 @@ class CartScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: Obx(() {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Appbar
-              CustomAppbar(title: "my_cart".tr),
-
-              if (_cartController.cartDataResponse.value.isLoading) ...{
-                // Show Loading
-                Expanded(
-                  child: Center(
-                    child: customProgressIndicator(),
-                  ),
-                ),
-              } else if (_cartController.cartItems.isEmpty) ...{
-                // Show Empty View
-                Expanded(
-                  child: Center(
-                    child: EmptyCartView(
-                      title: "no_items_in_cart".tr,
+          return CustomRefreshIndicator(
+            onRefreshCallback: () => _cartController.onRefresh(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Appbar
+                CustomAppbar(title: "my_cart".tr),
+            
+                if (_cartController.cartDataResponse.value.isLoading) ...{
+                  // Show Loading
+                  Expanded(
+                    child: Center(
+                      child: customProgressIndicator(),
                     ),
                   ),
-                )
-              } else
-                // Cart view
-                Expanded(
-                  child: Stack(
-                    children: [
-                      SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _getCartView(context),
-                            const VerticalGap(size: 30),
-                            _getOrderDetailView(context),
-                            const VerticalGap(size: 80),
-                          ],
+                } else if (_cartController.cartItems.isEmpty) ...{
+                  // Show Empty View
+                  Expanded(
+                    child: Center(
+                      child: EmptyCartView(
+                        title: "no_items_in_cart".tr,
+                      ),
+                    ),
+                  )
+                } else
+                  // Cart view
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _getCartView(context),
+                              const VerticalGap(size: 30),
+                              _getOrderDetailView(context),
+                              const VerticalGap(size: 80),
+                            ],
+                          ),
                         ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: _getPlaceOrderView(context),
-                      ),
-                    ],
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: _getPlaceOrderView(context),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-            ],
+              ],
+            ),
           );
         }),
       ),
