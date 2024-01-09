@@ -48,15 +48,12 @@ class DioClient {
   }
 
   static Future<Map<String, String>> getHeaders({String? authToken}) async {
-    String? _authToken;
-    if (authToken == null) {
-      _authToken = await SharedPreferencesHelper.getString(
-        SharedPreferenceKeys.token,
-      );
-    }
+    authToken ??= await SharedPreferencesHelper.getString(
+      SharedPreferenceKeys.token,
+    );
 
     return {
-      "Authorization": "Bearer ${authToken ?? _authToken}",
+      "Authorization": "Bearer $authToken",
     };
   }
 

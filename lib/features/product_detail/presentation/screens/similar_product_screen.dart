@@ -38,7 +38,7 @@ class SimilarProductScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 12.0,
                   mainAxisSpacing: 15.0,
-                  childAspectRatio: _productDetailController.similarProductResponse.value.isLoading ? 0.58 : 0.5,
+                  childAspectRatio: _productDetailController.similarProductResponse.value.isLoading ? 0.58 : 0.46,
                 ),
                 itemCount: _productDetailController.similarProductResponse.value.isLoading ? 10 : _productDetailController.similarProducts.length,
                 itemBuilder: (context, index) {

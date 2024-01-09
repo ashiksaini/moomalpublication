@@ -67,7 +67,7 @@ class ProductDetailController extends BaseController {
     if (productItem.value != null) {
       if (productItem.value!.categories != null && productItem.value!.categories!.isNotEmpty) {
         for (var category in productItem.value!.categories!) {
-          categories.value += "${category.name},";
+          categories.value += "$category,";
         }
 
         if (categories.isNotEmpty) {
@@ -106,7 +106,7 @@ class ProductDetailController extends BaseController {
               if (variation.attributes?.attributePurchase?.compareTo("ebook") == 0 && variation.stockStatus?.compareTo("instock") == 0) {
                 isEbookAvailable.value = true;
               } else if (variation.attributes?.attributePurchase?.compareTo("book") == 0 && variation.stockStatus?.compareTo("instock") == 0) {
-                isEbookAvailable.value = true;
+                isBookAvailable.value = true;
               }
             }
           }

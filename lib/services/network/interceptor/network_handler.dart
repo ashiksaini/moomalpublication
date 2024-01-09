@@ -94,6 +94,12 @@ mixin NetworkHandlingMixin {
 
       // Print the response data
       print('Response Data: ${response.data}');
+
+      // Response headers
+      print('Response Headers');
+      response.headers.map.forEach((key, value) {
+        print("$key ----> $value");
+      });
     }
   }
 
@@ -111,6 +117,13 @@ mixin NetworkHandlingMixin {
       if (options.data != null) {
         print('Request Data: ${options.data}');
       }
+
+      // Request headers
+      print('Request Headers');
+      options.headers.map((key, value) {
+        print("$key ----> $value");
+        return MapEntry(key, value);
+      });
     }
   }
 

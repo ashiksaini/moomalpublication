@@ -10,6 +10,9 @@ import 'package:moomalpublication/features/cart/data/models/cart_data/cart_data.
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
+import 'package:moomalpublication/services/network/interceptor/network_interceptor.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class CartServices {
   CartServices._();
@@ -23,6 +26,12 @@ class CartServices {
         ).toJson();
 
         final dio.Response<dynamic> response = await DioClient.dioWithAuth!.get(ApiPaths.cartData, queryParameters: query);
+
+        // Save nonce token to local
+        if (response.headers.map.containsKey("nonce")) {
+          _saveNonceTokenToLocal(response.headers.value("nonce"));
+        }
+
         final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
 
         return CartDataResponse.success(parsedResponse);
@@ -40,13 +49,12 @@ class CartServices {
     if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
         final query = KeyRequestData(
-          consumerKey: ApiKeys.addToCartConsumerKey,
           consumerSecret: ApiKeys.addToCartConsumerSecret,
         ).toJson();
 
         final data = AddToCartReqData(id: id, quantity: quantity).toJson();
-
-        final dio.Response<dynamic> response = await DioClient.dioWithAuth!.post(ApiPaths.addToCart, data: data, queryParameters: query);
+        final dio.Dio dioo = await _getDio();
+        final dio.Response<dynamic> response = await dioo.post(ApiPaths.addToCart, data: data, queryParameters: query);
         final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
 
         return CartDataResponse.success(parsedResponse);
@@ -64,13 +72,13 @@ class CartServices {
     if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
         final query = KeyRequestData(
-          consumerKey: ApiKeys.addToCartConsumerKey,
-          consumerSecret: ApiKeys.addToCartConsumerSecret,
+          consumerKey: ApiKeys.updateCartProductsConsumerKey,
+          consumerSecret: ApiKeys.updateCartProductsConsumerSecret,
         ).toJson();
 
         final data = AddToCartReqData(id: id, quantity: quantity, key: ApiKeys.updateCartItemKey).toJson();
-
-        final dio.Response<dynamic> response = await DioClient.dioWithAuth!.post(ApiPaths.addToCart, data: data, queryParameters: query);
+        final dio.Dio dioo = await _getDio();
+        final dio.Response<dynamic> response = await dioo.post(ApiPaths.addToCart, data: data, queryParameters: query);
         final parsedResponse = BaseResponse.fromJson(
           response.data as Map<String, dynamic>,
           (data) => CartData.fromJson(data as Map<String, dynamic>),
@@ -91,13 +99,13 @@ class CartServices {
     if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
         final query = KeyRequestData(
-          consumerKey: ApiKeys.addToCartConsumerKey,
-          consumerSecret: ApiKeys.addToCartConsumerSecret,
+          consumerKey: ApiKeys.deleteCartProductsConsumerKey,
+          consumerSecret: ApiKeys.deleteCartProductsConsumerSecret,
         ).toJson();
 
-        final data = AddToCartReqData(id: id, key: ApiKeys.updateCartItemKey).toJson();
-
-        final dio.Response<dynamic> response = await DioClient.dioWithAuth!.post(ApiPaths.removeCartItem, data: data, queryParameters: query);
+        final data = AddToCartReqData(id: id, key: ApiKeys.deleteCartItemKey).toJson();
+        final dio.Dio dioo = await _getDio();
+        final dio.Response<dynamic> response = await dioo.post(ApiPaths.removeCartItem, data: data, queryParameters: query);
         final parsedResponse = BaseResponse.fromJson(
           response.data as Map<String, dynamic>,
           (data) => CartData.fromJson(data as Map<String, dynamic>),
@@ -112,5 +120,18 @@ class CartServices {
       showSnackBar("no_internet_access".tr);
       return CartUpdateItemResponse();
     }
+  }
+
+  static void _saveNonceTokenToLocal(String? value) async {
+    await SharedPreferencesHelper.setValue(SharedPreferenceKeys.nonce, value);
+  }
+
+  static Future<dio.Dio> _getDio() async {
+    final dio = DioClient.createDio();
+    dio.options.headers = await DioClient.getHeaders();
+    dio.interceptors.add(NetworkInterceptor());
+    dio.options.headers['nonce'] = await SharedPreferencesHelper.getString(SharedPreferenceKeys.nonce) ?? "";
+
+    return dio;
   }
 }
