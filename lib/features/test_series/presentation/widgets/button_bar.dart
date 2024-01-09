@@ -11,11 +11,13 @@ class CustomButtonBar extends StatelessWidget {
       required this.buttonText,
       required this.barText,
       this.buttonVisibility = true,
+      this.textDecoration = TextDecoration.none,
       this.permalink});
   final String buttonText;
   final bool buttonVisibility;
   final String barText;
   final String? permalink;
+  final TextDecoration textDecoration;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class CustomButtonBar extends StatelessWidget {
                 textStyle: CustomTextStyle.textStyle22Bold(
                   context,
                   color: AppColors.black,
+                  decoration: textDecoration,
                 ),
               ),
             ),

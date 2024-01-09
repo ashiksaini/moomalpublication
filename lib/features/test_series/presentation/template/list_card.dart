@@ -16,11 +16,12 @@ class ListCard extends StatelessWidget {
     return ShadowContainer(
       borderRadius: scaleRadius(10, context),
       containerChild: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8),
+        padding: EdgeInsets.symmetric(horizontal: scaleWidth(8, context)),
         child: Column(
           children: [
             CustomButtonBar(
-              buttonText: (entry.freePaid == 'paid') ? 'buy_now'.tr : 'start_test'.tr,
+              buttonText:
+                  (entry.freePaid == 'paid') ? 'buy_now'.tr : 'start_test'.tr,
               barText: entry.postTitle ?? '',
               permalink: entry.permalink,
             ),

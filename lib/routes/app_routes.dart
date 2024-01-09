@@ -157,7 +157,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.overallResultScreen,
-      page: () => const OverallResultScreen(),
+      page: () => OverallResultScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
