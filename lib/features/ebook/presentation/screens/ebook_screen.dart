@@ -31,9 +31,13 @@ class EBookScreen extends StatelessWidget {
               CustomAppbar(
                 title: "ebooks".tr,
                 suffixIcon: AppAssets.icSearch,
-                onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
+                onSuffixIconClick: () =>
+                    AppRouting.toNamed(NameRoutes.searchScreen),
               ),
-              _ebookController.ebookCategoryResponse.value.isLoading || _ebookController.ebooksResponse.value.isLoading ? _showLoading(context) : _showData(context),
+              _ebookController.ebookCategoryResponse.value.isLoading ||
+                      _ebookController.ebooksResponse.value.isLoading
+                  ? _showLoading(context)
+                  : _showData(context),
             ],
           );
         }),
@@ -77,16 +81,22 @@ class EBookScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 12.0,
                   mainAxisSpacing: 15.0,
-                  childAspectRatio: _ebookController.ebooksResponse.value.isLoading ? 0.58 : 0.46,
+                  childAspectRatio:
+                      _ebookController.ebooksResponse.value.isLoading
+                          ? 0.58
+                          : 0.46,
                 ),
-                itemCount: _ebookController.ebooksResponse.value.isLoading ? 20 : _ebookController.ebooks.length,
+                itemCount: _ebookController.ebooksResponse.value.isLoading
+                    ? 20
+                    : _ebookController.ebooks.length,
                 itemBuilder: (context, index) {
                   if (_ebookController.ebooksResponse.value.isLoading) {
                     return const BookItemShimmerSkeleton();
                   } else {
                     return GestureDetector(
                       onTap: () {
-                        _ebookController.onItemClick(index, _ebookController.ebooks[index]);
+                        _ebookController.onItemClick(
+                            index, _ebookController.ebooks[index]);
                       },
                       child: CardBookItem(
                         item: _ebookController.ebooks[index],

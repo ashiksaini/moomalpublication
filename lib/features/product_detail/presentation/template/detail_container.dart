@@ -122,9 +122,9 @@ class DetailContainer extends StatelessWidget {
           // Book Image
           ClipRRect(
             borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-            child: _productDetailController.productDetailData.value!.images!.isNotEmpty
+            child: _productDetailController.productDetailData.value!.featuredImage!.url!.isNotEmpty
                 ? CachedNetworkImage(
-                    imageUrl: _productDetailController.productDetailData.value!.images!.first.src!,
+                    imageUrl: _productDetailController.productDetailData.value!.featuredImage!.url!,
                     height: scaleHeight(300, context),
                     width: scaleWidth(220, context),
                     fit: BoxFit.fill,

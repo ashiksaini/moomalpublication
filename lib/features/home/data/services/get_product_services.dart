@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/core/base/product_item/variation.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
@@ -23,12 +22,10 @@ class GetProductServices {
 
         for (var element in parsedResponse) {
           for (var variation in element.variations!) {
-            if (variation is Variation) {
-              if (variation.attributes?.attributePurchase?.compareTo("ebook") == 0 && variation.stockStatus?.compareTo("instock") == 0) {
-                element.isEbookAvailable = true;
-              } else if (variation.attributes?.attributePurchase?.compareTo("book") == 0 && variation.stockStatus?.compareTo("instock") == 0) {
-                element.isBookAvailable = true;
-              }
+            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+              element.isEbookAvailable = true;
+            } else if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+              element.isBookAvailable = true;
             }
           }
         }

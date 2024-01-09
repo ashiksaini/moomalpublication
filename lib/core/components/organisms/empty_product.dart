@@ -23,7 +23,8 @@ class EmptyProductView extends StatelessWidget {
         const VerticalGap(size: 30),
         CustomText(
           text: "oops_no_book_found".tr,
-          textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
+          textStyle:
+              CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
         ),
       ],
     );

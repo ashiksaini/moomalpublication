@@ -30,13 +30,20 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
       PayUPaymentParamKey.firstName: "Moomal Publication",
       PayUPaymentParamKey.email: "moomalpublication@gmail.com",
       PayUPaymentParamKey.phone: "6350446154",
-      PayUPaymentParamKey.environment: "0", // String - "0" for Production and "1" for Test
-      PayUPaymentParamKey.transactionId: "abc125556dss7982", // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
-      PayUPaymentParamKey.userCredential: "8063907", //  Format: <merchantKey>:<userId> ... UserId is any id/email/phone number to uniquely identify the user.
-      PayUPaymentParamKey.android_surl: "https://www.payumoney.com/mobileapp/payumoney/success.php",
-      PayUPaymentParamKey.android_furl: "https://www.payumoney.com/mobileapp/payumoney/failure.php",
-      PayUPaymentParamKey.ios_surl: "https://www.payumoney.com/mobileapp/payumoney/success.php",
-      PayUPaymentParamKey.ios_furl: "https://www.payumoney.com/mobileapp/payumoney/failure.php",
+      PayUPaymentParamKey.environment:
+          "0", // String - "0" for Production and "1" for Test
+      PayUPaymentParamKey.transactionId:
+          "abc125556dss7982", // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
+      PayUPaymentParamKey.userCredential:
+          "8063907", //  Format: <merchantKey>:<userId> ... UserId is any id/email/phone number to uniquely identify the user.
+      PayUPaymentParamKey.android_surl:
+          "https://www.payumoney.com/mobileapp/payumoney/success.php",
+      PayUPaymentParamKey.android_furl:
+          "https://www.payumoney.com/mobileapp/payumoney/failure.php",
+      PayUPaymentParamKey.ios_surl:
+          "https://www.payumoney.com/mobileapp/payumoney/success.php",
+      PayUPaymentParamKey.ios_furl:
+          "https://www.payumoney.com/mobileapp/payumoney/failure.php",
     };
   }
 

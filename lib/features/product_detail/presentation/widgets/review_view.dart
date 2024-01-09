@@ -23,7 +23,10 @@ class ReviewView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(right: scaleWidth(10, context), top: scaleHeight(10, context), bottom: scaleHeight(10, context)),
+      padding: EdgeInsets.only(
+          right: scaleWidth(10, context),
+          top: scaleHeight(10, context),
+          bottom: scaleHeight(10, context)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -37,12 +40,14 @@ class ReviewView extends StatelessWidget {
                   const HorizontalGap(size: 10),
                   CustomText(
                     text: productReview.author,
-                    textStyle: CustomTextStyle.textStyle15Bold(context, color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle15Bold(context,
+                        color: AppColors.black),
                   ),
                 ],
               ),
               CustomText(
-                text: DateTimeUtils.formatDateTime(productReview.date ?? "", AppConstants.dateTimeFormatter),
+                text: DateTimeUtils.formatDateTime(
+                    productReview.date ?? "", AppConstants.dateTimeFormatter),
                 textStyle: CustomTextStyle.textStyle15Bold(context),
               ),
             ],

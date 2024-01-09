@@ -125,7 +125,8 @@ class CategoryWiseController extends BaseController {
   }
 
   void _scrollListener() {
-    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
       loadMoreData();
     }
   }

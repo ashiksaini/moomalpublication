@@ -225,12 +225,14 @@ final Map<String, String> enUS = {
   "mins": "Mins",
   "SUBMIT": "SUBMIT",
   "RETAKE": "RETAKE",
-  "timer" : "Timer",
-  "thanks_for_submitting_your_resposne!_you_scored":"Thanks for submitting your response! You scored",
-  "out_of":"out of",
-  "current_affair_quiz":"Current affair Quiz",
+  "timer": "Timer",
+  "thanks_for_submitting_your_resposne!_you_scored":
+      "Thanks for submitting your response! You scored",
+  "out_of": "out of",
+  "current_affair_quiz": "Current affair Quiz",
   "economics_quiz": "Economics Quiz",
-  "add":"Add",
-  "©_2021_Moomal_Publication_All_rights_reserved":"© 2021 Moomal Publication All rights reserved",
-  "our_quiz":"Our Quiz"
+  "add": "Add",
+  "©_2021_Moomal_Publication_All_rights_reserved":
+      "© 2021 Moomal Publication All rights reserved",
+  "our_quiz": "Our Quiz"
 };

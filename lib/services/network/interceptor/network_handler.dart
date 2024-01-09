@@ -87,7 +87,8 @@ mixin NetworkHandlingMixin {
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
-      print("*************************************** Response *************************************** ");
+      print(
+          "*************************************** Response *************************************** ");
 
       // Print the response status code
       print('Status Code: ${response.statusCode}');
@@ -105,7 +106,8 @@ mixin NetworkHandlingMixin {
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      print("*************************************** Request *************************************** ");
+      print(
+          "*************************************** Request *************************************** ");
 
       // Print the request method (GET, POST, etc.)
       print('Request Method: ${options.method}');

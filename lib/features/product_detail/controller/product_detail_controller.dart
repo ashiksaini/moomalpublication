@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
-import 'package:moomalpublication/core/base/product_item/variation.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
@@ -102,12 +101,10 @@ class ProductDetailController extends BaseController {
 
         if (productDetailData.value!.variations != null && productDetailData.value!.variations!.isNotEmpty) {
           for (var variation in productDetailData.value!.variations!) {
-            if (variation is Variation) {
-              if (variation.attributes?.attributePurchase?.compareTo("ebook") == 0 && variation.stockStatus?.compareTo("instock") == 0) {
-                isEbookAvailable.value = true;
-              } else if (variation.attributes?.attributePurchase?.compareTo("book") == 0 && variation.stockStatus?.compareTo("instock") == 0) {
-                isBookAvailable.value = true;
-              }
+            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+              isEbookAvailable.value = true;
+            } else if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+              isBookAvailable.value = true;
             }
           }
         }

@@ -10,7 +10,4 @@ enum SortBy {
   priceLToH,
 }
 
-enum ProductVariation {
-  ebook,
-  book
-}
+enum ProductVariation { ebook, book }

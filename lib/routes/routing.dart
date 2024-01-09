@@ -26,7 +26,8 @@ class AppRouting {
 
   // until
   static void ofNamedUntil(String page, String removeTill, {dynamic argument}) {
-    Get.offNamedUntil<dynamic>(page, ModalRoute.withName(removeTill), arguments: argument);
+    Get.offNamedUntil<dynamic>(page, ModalRoute.withName(removeTill),
+        arguments: argument);
   }
 
   // Pop navigation

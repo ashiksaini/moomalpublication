@@ -53,12 +53,14 @@ class CardBookItem extends StatelessWidget {
   Widget _getImage(BuildContext context) {
     return Container(
       height: scaleHeight(195, context),
-      margin: EdgeInsets.symmetric(horizontal: scaleWidth(5, context), vertical: scaleHeight(5, context)),
+      margin: EdgeInsets.symmetric(
+          horizontal: scaleWidth(5, context),
+          vertical: scaleHeight(5, context)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-        child: (item.images != null && item.images!.isNotEmpty)
+        child: (item.featuredImage?.url != null && item.featuredImage!.url!.isNotEmpty)
             ? CachedNetworkImage(
-                imageUrl: item.images!.first.src!,
+                imageUrl: item.featuredImage!.url!,
                 fit: BoxFit.cover,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
@@ -70,7 +72,8 @@ class CardBookItem extends StatelessWidget {
                 child: Center(
                   child: CustomText(
                     text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle10Bold(context,
+                        color: AppColors.black),
                   ),
                 ),
               ),
@@ -99,28 +102,42 @@ class CardBookItem extends StatelessWidget {
                 children: [
                   if (item.isEbookAvailable)
                     GestureDetector(
-                      onTap: () => onBookVariationClick!(item, ProductVariation.ebook),
+                      onTap: () =>
+                          onBookVariationClick!(item, ProductVariation.ebook),
                       child: Row(
                         children: [
                           SvgPicture.asset(
-                            (item.productVariationType.value == ProductVariation.ebook) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                            (item.productVariationType.value ==
+                                    ProductVariation.ebook)
+                                ? AppAssets.icSelectedRadio
+                                : AppAssets.icUnSelectedRadio,
                           ),
                           const HorizontalGap(size: 2),
-                          CustomText(text: 'ebook'.tr, textStyle: CustomTextStyle.textStyle16Bold(context)),
+                          CustomText(
+                              text: 'ebook'.tr,
+                              textStyle:
+                                  CustomTextStyle.textStyle16Bold(context)),
                         ],
                       ),
                     ),
                   if (item.isBookAvailable) ...{
                     const HorizontalGap(size: 10),
                     GestureDetector(
-                      onTap: () => onBookVariationClick!(item, ProductVariation.book),
+                      onTap: () =>
+                          onBookVariationClick!(item, ProductVariation.book),
                       child: Row(
                         children: [
                           SvgPicture.asset(
-                            (item.productVariationType.value == ProductVariation.book) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                            (item.productVariationType.value ==
+                                    ProductVariation.book)
+                                ? AppAssets.icSelectedRadio
+                                : AppAssets.icUnSelectedRadio,
                           ),
                           const HorizontalGap(size: 2),
-                          CustomText(text: 'book'.tr, textStyle: CustomTextStyle.textStyle16Bold(context)),
+                          CustomText(
+                              text: 'book'.tr,
+                              textStyle:
+                                  CustomTextStyle.textStyle16Bold(context)),
                         ],
                       ),
                     ),

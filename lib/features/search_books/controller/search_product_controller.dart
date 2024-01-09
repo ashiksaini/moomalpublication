@@ -22,7 +22,8 @@ class SearchProductController extends BaseController {
   void onInit() {
     super.onInit();
 
-    debounce(searchedText, (_) => _initDebounce(), time: const Duration(seconds: 1));
+    debounce(searchedText, (_) => _initDebounce(),
+        time: const Duration(seconds: 1));
   }
 
   void _initDebounce() {
@@ -33,7 +34,8 @@ class SearchProductController extends BaseController {
     if (searchedText.value.isNotEmpty) {
       searchBookResponse.value = ApiResponse.loading();
 
-      searchBookResponse.value = await SearchProductServices.getSearchedBook(search: searchedText.string);
+      searchBookResponse.value = await SearchProductServices.getSearchedBook(
+          search: searchedText.string);
       if (searchBookResponse.value.data != null) {
         if (searchBookResponse.value.data!.isNotEmpty) {
           searchedBooks.addAll(searchBookResponse.value.data!);
@@ -61,7 +63,8 @@ class SearchProductController extends BaseController {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(id: item.id.toString(), quantity: item.quantity.toString());
+          final addToCartResponse = await CartServices.addToCart(
+              id: item.id.toString(), quantity: item.quantity.toString());
           if (addToCartResponse.data != null) {
             item.cartBtnType.value = CartBtnType.goToCart;
           }

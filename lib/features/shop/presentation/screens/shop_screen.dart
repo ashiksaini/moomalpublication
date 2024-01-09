@@ -32,7 +32,8 @@ class ShopScreen extends StatelessWidget {
                   CustomAppbar(
                     title: "shop".tr,
                     suffixIcon: AppAssets.icSearch,
-                    onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
+                    onSuffixIconClick: () =>
+                        AppRouting.toNamed(NameRoutes.searchScreen),
                   ),
 
                   // Data view
@@ -47,16 +48,22 @@ class ShopScreen extends StatelessWidget {
                         crossAxisCount: 2,
                         crossAxisSpacing: 12.0,
                         mainAxisSpacing: 15.0,
-                        childAspectRatio: _shopController.productResponse.value.isLoading ? 0.58 : 0.46,
+                        childAspectRatio:
+                            _shopController.productResponse.value.isLoading
+                                ? 0.58
+                                : 0.46,
                       ),
-                      itemCount: _shopController.productResponse.value.isLoading ? 20 : _shopController.productList.length,
+                      itemCount: _shopController.productResponse.value.isLoading
+                          ? 20
+                          : _shopController.productList.length,
                       itemBuilder: (context, index) {
                         if (_shopController.productResponse.value.isLoading) {
                           return const BookItemShimmerSkeleton();
                         } else {
                           return GestureDetector(
                             onTap: () {
-                              _shopController.onItemClick(index, _shopController.productList[index]);
+                              _shopController.onItemClick(
+                                  index, _shopController.productList[index]);
                             },
                             child: CardBookItem(
                               item: _shopController.productList[index],
@@ -71,7 +78,8 @@ class ShopScreen extends StatelessWidget {
                   // Load more
                   if (_shopController.isLoadingMore.value)
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                      padding: EdgeInsets.symmetric(
+                          vertical: scaleHeight(10, context)),
                       child: customProgressIndicator(),
                     ),
                 ],
