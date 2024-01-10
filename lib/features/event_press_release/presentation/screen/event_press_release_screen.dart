@@ -47,7 +47,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
               maxLine: 1,
             ),
             const HorizontalGap(size: 20),
-            SizedBox(height: 60, child: YearList()),
+            SizedBox(height: scaleHeight(60, context), child: const YearList()),
             TabBar(
               unselectedLabelColor: AppColors.grey,
               labelColor: AppColors.orange,
@@ -55,15 +55,18 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
               labelStyle: CustomTextStyle.textStyle20Bold(context),
               unselectedLabelStyle: CustomTextStyle.textStyle20Bold(context),
               indicatorColor: AppColors.orange,
-              tabs: const [
+              tabs: [
                 Tab(
                   text: 'Events',
+                  height: scaleHeight(50, context),
                 ),
                 Tab(
-                  text: 'Press Release',
+                  text: '  Press\nRelease',
+                  height: scaleHeight(50, context),
                 ),
                 Tab(
-                  text: 'Media Coverage',
+                  text: '  Media\nCoverage',
+                  height: scaleHeight(50, context),
                 ),
               ],
               controller: _tabController,

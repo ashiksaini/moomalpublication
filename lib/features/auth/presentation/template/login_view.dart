@@ -155,8 +155,9 @@ class LoginView extends StatelessWidget {
       child: AuthBtn(
         title: "login".tr,
         onClick: () {
-          if (!_loginController.loginResponse.value.isLoading)
+          if (!_loginController.loginResponse.value.isLoading) {
             _loginController.onLogin();
+          }
         },
         isLoadingVisible: _loginController.loginResponse.value.isLoading,
       ),

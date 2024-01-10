@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/features/splash/presentation/templates/splash_view.dart';
+import 'package:moomalpublication/features/splash/presentation/template/splash_view.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
