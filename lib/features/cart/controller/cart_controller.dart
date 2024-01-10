@@ -40,7 +40,7 @@ class CartController extends BaseController {
   Future<void> onDesc(Item cartItem) async {
     int quantity = cartItem.quantity ?? 0;
 
-    cartUpdateDataResponse.value = await CartServices.updateItem(id: cartItem.id.toString(), quantity: (quantity--).toString());
+    cartUpdateDataResponse.value = await CartServices.updateItem(id: cartItem.id.toString(), quantity: (--quantity).toString());
     if (cartUpdateDataResponse.value.data != null) {
       if (cartUpdateDataResponse.value.data!.data != null) {
         if (cartUpdateDataResponse.value.data!.data!.items != null && cartUpdateDataResponse.value.data!.data!.items!.isNotEmpty) {
@@ -54,7 +54,7 @@ class CartController extends BaseController {
   Future<void> onInc(Item cartItem) async {
     int quantity = cartItem.quantity ?? 0;
 
-    cartUpdateDataResponse.value = await CartServices.updateItem(id: cartItem.id.toString(), quantity: (quantity++).toString());
+    cartUpdateDataResponse.value = await CartServices.updateItem(id: cartItem.id.toString(), quantity: (++quantity).toString());
     if (cartUpdateDataResponse.value.data != null) {
       if (cartUpdateDataResponse.value.data!.data != null) {
         if (cartUpdateDataResponse.value.data!.data!.items != null && cartUpdateDataResponse.value.data!.data!.items!.isNotEmpty) {

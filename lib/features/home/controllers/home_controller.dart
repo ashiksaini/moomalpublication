@@ -171,7 +171,12 @@ class HomeController extends BaseController {
             final addToCartResponse = await CartServices.addToCart(
               id: item.id.toString(),
               quantity: item.quantity.toString(),
-              variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
+              variations: [
+                VariationRequestData(
+                  attribute: "Purchase",
+                  value: (item.productVariationType.value == ProductVariation.ebook) ? _getVariationValue(item, item.productVariationType.value) : _getVariationValue(item, item.productVariationType.value),
+                ),
+              ],
             );
             if (addToCartResponse.data != null) {
               item.cartBtnType.value = CartBtnType.goToCart;
@@ -186,6 +191,24 @@ class HomeController extends BaseController {
         AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
         break;
     }
+  }
+
+  String _getVariationValue(ProductItem item, ProductVariation value) {
+    if (value == ProductVariation.ebook) {
+      for (var element in item.variations!) {
+        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0) {
+          return element.attributes!.attributePurchase!;
+        }
+      }
+    } else {
+      for (var element in item.variations!) {
+        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0) {
+          return element.attributes!.attributePurchase!;
+        }
+      }
+    }
+
+    return "";
   }
 
   Future<void> onProductVariationClick(
