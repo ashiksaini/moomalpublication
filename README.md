@@ -9,7 +9,15 @@
 - Dev Tools : 2.28.3
 
 #### Installation and Run project :-
-- 
+```flutter clean```
+
+```flutter pub get```
+
+```flutter pub upgrade```
+
+```flutter pub upgrade --major-versions```
+
+```pod install --repo-update```
 
 #### Dependencies Details :-
 
