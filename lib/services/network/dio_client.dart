@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:moomalpublication/app_config.dart';
+import 'package:moomalpublication/config/app_config.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 import 'interceptor/network_interceptor.dart';

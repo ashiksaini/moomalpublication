@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:moomalpublication/app_config.dart';
+import 'package:moomalpublication/config/app_config.dart';
 import 'package:moomalpublication/app_moomalpublication.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';

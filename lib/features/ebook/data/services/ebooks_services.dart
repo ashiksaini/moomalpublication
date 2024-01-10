@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/api_keys.dart';
+import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/ebook/data/constants/type_alias.dart';

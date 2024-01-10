@@ -34,7 +34,7 @@ class CartScreen extends StatelessWidget {
               children: [
                 // Appbar
                 CustomAppbar(title: "my_cart".tr),
-            
+
                 if (_cartController.cartDataResponse.value.isLoading) ...{
                   // Show Loading
                   Expanded(
@@ -45,10 +45,11 @@ class CartScreen extends StatelessWidget {
                 } else if (_cartController.cartItems.isEmpty) ...{
                   // Show Empty View
                   Expanded(
-                    child: Center(
-                      child: EmptyCartView(
-                        title: "no_items_in_cart".tr,
-                      ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        EmptyCartView(title: "no_items_in_cart".tr),
+                      ],
                     ),
                   )
                 } else
@@ -108,7 +109,7 @@ class CartScreen extends StatelessWidget {
             onTap: () {
               final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
               payUCheckoutPro.init();
-              payUCheckoutPro.pay();
+              payUCheckoutPro.pay(_cartController.totals.value?.totalPrice);
             },
             child: Container(
               padding: EdgeInsets.symmetric(
@@ -121,8 +122,7 @@ class CartScreen extends StatelessWidget {
               ),
               child: CustomText(
                 text: 'place_order'.tr,
-                textStyle: CustomTextStyle.textStyle20Bold(context,
-                    color: AppColors.white),
+                textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white),
               ),
             ),
           )

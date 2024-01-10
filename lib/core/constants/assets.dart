@@ -74,4 +74,6 @@ class AppAssets {
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";
+  static String failedAnimation = "${animation}failed.json";
+  static String successAnimation = "${animation}success.json";
 }

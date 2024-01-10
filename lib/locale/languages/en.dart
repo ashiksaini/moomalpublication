@@ -184,6 +184,7 @@ final Map<String, String> enUS = {
   "place_order": "Place Order",
   "no_items_in_cart": "No Items in Cart",
   "browse_product": "Browse Product",
+  "quantity_cannot_exceed_the_limit": "Quantity cannot exceed 9999",
 
   // Search Screen ////////////////////////////////////////////////////////////
   "search_for_books_and_ebooks": "Search for Books and Ebooks",
@@ -236,5 +237,11 @@ final Map<String, String> enUS = {
   "add": "Add",
   "©_2021_Moomal_Publication_All_rights_reserved":
       "© 2021 Moomal Publication All rights reserved",
-  "our_quiz": "Our Quiz"
+  "our_quiz": "Our Quiz",
+
+  // Payment ///////////////////////////////////////////////////////////
+  "payment_error": "Payment Error",
+  "payment_cancel": "Payment Cancel",
+  "payment_failed": "Payment Failed",
+  "payment_success": "Payment Success",
 };

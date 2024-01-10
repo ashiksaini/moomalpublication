@@ -1,4 +1,4 @@
-import 'package:moomalpublication/api_keys.dart';
+import 'package:moomalpublication/config/api_keys.dart';
 
 class ProductRequestData {
   int? category;

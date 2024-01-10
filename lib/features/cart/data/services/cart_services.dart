@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/api_keys.dart';
+import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/add_to_cart_request_data.dart';
-import 'package:moomalpublication/core/base/base_response.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
@@ -69,7 +68,7 @@ class CartServices {
     }
   }
 
-  static Future<CartUpdateItemResponse> updateItem({String? id, String? quantity}) async {
+  static Future<CartDataResponse> updateItem({String? id, String? quantity, String? key}) async {
     if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
         final query = KeyRequestData(
@@ -77,26 +76,23 @@ class CartServices {
           consumerSecret: ApiKeys.updateCartProductsConsumerSecret,
         ).toJson();
 
-        final data = AddToCartReqData(id: id, quantity: quantity, key: ApiKeys.updateCartItemKey).toJson();
+        final data = AddToCartReqData(id: id, quantity: quantity, key: key).toJson();
         final dio.Dio dioo = await _getDio();
         final dio.Response<dynamic> response = await dioo.post(ApiPaths.updateCartItem, data: data, queryParameters: query);
-        final parsedResponse = BaseResponse.fromJson(
-          response.data as Map<String, dynamic>,
-          (data) => CartData.fromJson(data as Map<String, dynamic>),
-        );
+        final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
 
-        return CartUpdateItemResponse.success(parsedResponse);
+        return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());
-        return CartUpdateItemResponse();
+        return CartDataResponse();
       }
     } else {
       showSnackBar("no_internet_access".tr);
-      return CartUpdateItemResponse();
+      return CartDataResponse();
     }
   }
 
-  static Future<CartUpdateItemResponse> removeItem({String? id}) async {
+  static Future<CartDataResponse> removeItem({String? id, String? key}) async {
     if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
       try {
         final query = KeyRequestData(
@@ -104,22 +100,19 @@ class CartServices {
           consumerSecret: ApiKeys.deleteCartProductsConsumerSecret,
         ).toJson();
 
-        final data = AddToCartReqData(id: id, key: ApiKeys.deleteCartItemKey).toJson();
+        final data = AddToCartReqData(id: id, key: key).toJson();
         final dio.Dio dioo = await _getDio();
         final dio.Response<dynamic> response = await dioo.post(ApiPaths.removeCartItem, data: data, queryParameters: query);
-        final parsedResponse = BaseResponse.fromJson(
-          response.data as Map<String, dynamic>,
-          (data) => CartData.fromJson(data as Map<String, dynamic>),
-        );
+        final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
 
-        return CartUpdateItemResponse.success(parsedResponse);
+        return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());
-        return CartUpdateItemResponse();
+        return CartDataResponse();
       }
     } else {
       showSnackBar("no_internet_access".tr);
-      return CartUpdateItemResponse();
+      return CartDataResponse();
     }
   }
 
