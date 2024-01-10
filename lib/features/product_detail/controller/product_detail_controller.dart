@@ -31,8 +31,6 @@ class ProductDetailController extends BaseController {
   RxString productName = RxString("");
   RxString categories = RxString("");
   RxString sku = RxString("");
-  RxBool isEbookAvailable = RxBool(false);
-  RxBool isBookAvailable = RxBool(false);
   Rx<ProductDetailResponse> productDetailResponse = Rx(ApiResponse());
   Rx<SimilarProductResponse> similarProductResponse = Rx(ApiResponse());
   Rx<ProductReviewsResponse> productReviewsResponse = Rx(ApiResponse());
@@ -103,16 +101,29 @@ class ProductDetailController extends BaseController {
         if (productDetailData.value!.variations != null && productDetailData.value!.variations!.isNotEmpty) {
           for (var variation in productDetailData.value!.variations!) {
             if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
-              isEbookAvailable.value = true;
+              productDetailData.value?.isEbookAvailable = true;
             }
 
             if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
-              isBookAvailable.value = true;
+              productDetailData.value?.isBookAvailable = true;
+            }
+
+            if ((productDetailData.value!.isBookAvailable && productDetailData.value!.isEbookAvailable) || productDetailData.value!.isEbookAvailable) {
+              productDetailData.value!.productVariationType.value = ProductVariation.ebook;
+            } else if (productDetailData.value!.isBookAvailable) {
+              productDetailData.value!.productVariationType.value = ProductVariation.book;
             }
           }
         }
       }
     }
+  }
+
+  Future<void> onProductVariationClick(
+    ProductItem item,
+    ProductVariation variation,
+  ) async {
+    item.productVariationType.value = variation;
   }
 
   Future<void> _getProductReviews() async {
@@ -145,13 +156,17 @@ class ProductDetailController extends BaseController {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(
-            id: item.id.toString(),
-            quantity: item.quantity.toString(),
-            variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
-          );
-          if (addToCartResponse.data != null) {
-            item.cartBtnType.value = CartBtnType.goToCart;
+          if (item.isBookAvailable || item.isEbookAvailable) {
+            final addToCartResponse = await CartServices.addToCart(
+              id: item.id.toString(),
+              quantity: selectedQuantity.string,
+              variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
+            );
+            if (addToCartResponse.data != null) {
+              item.cartBtnType.value = CartBtnType.goToCart;
+            }
+          } else {
+            showSnackBar("this_product_is_out_of_stock".tr);
           }
         }
         break;
@@ -196,5 +211,20 @@ class ProductDetailController extends BaseController {
       "reviewer_email": email,
       "rating": rating.toInt(),
     };
+  }
+
+  Future<void> buyNow() async {
+    if (productDetailData.value!.isBookAvailable || productDetailData.value!.isEbookAvailable) {
+      final addToCartResponse = await CartServices.addToCart(
+        id: productDetailData.value!.id.toString(),
+        quantity: selectedQuantity.string,
+        variations: [VariationRequestData(attribute: "Purchase", value: (productDetailData.value!.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
+      );
+      if (addToCartResponse.data != null) {
+        AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
+      }
+    } else {
+      showSnackBar("this_product_is_out_of_stock".tr);
+    }
   }
 }

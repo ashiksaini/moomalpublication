@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -10,8 +9,7 @@ import 'package:moomalpublication/features/product_detail/controller/product_det
 class BookTypeGrid extends StatelessWidget {
   BookTypeGrid({super.key});
 
-  final ProductDetailController _productDetailController =
-      Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +30,16 @@ class BookTypeGrid extends StatelessWidget {
             return _getBookDetailItem(
               context,
               "book".tr,
-              _productDetailController.isBookAvailable.value
-                  ? "available".tr
-                  : "not_available".tr,
+              _productDetailController.productDetailData.value!.isBookAvailable ? "available".tr : "not_available".tr,
+              textColor: AppColors.black,
             );
           }
           if (index == 1) {
-            return Container(
-              decoration: BoxDecoration(
-                color: AppColors.cyan,
-                boxShadow: [primaryBoxShadow()],
-              ),
-              child: _getBookDetailItem(
-                  context,
-                  "ebook".tr,
-                  _productDetailController.isEbookAvailable.value
-                      ? "available".tr
-                      : "not_available".tr,
-                  textColor: AppColors.black),
+            return _getBookDetailItem(
+              context,
+              "ebook".tr,
+              _productDetailController.productDetailData.value!.isEbookAvailable ? "available".tr : "not_available".tr,
+              textColor: AppColors.black,
             );
           }
           if (index == 2) {
@@ -72,8 +62,7 @@ class BookTypeGrid extends StatelessWidget {
     );
   }
 
-  Widget _getBookDetailItem(BuildContext context, String title, String subtitle,
-      {Color textColor = AppColors.grey}) {
+  Widget _getBookDetailItem(BuildContext context, String title, String subtitle, {Color textColor = AppColors.grey}) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.grey),
@@ -88,16 +77,14 @@ class BookTypeGrid extends StatelessWidget {
           // Title
           CustomText(
             text: title,
-            textStyle:
-                CustomTextStyle.textStyle20Bold(context, color: textColor),
+            textStyle: CustomTextStyle.textStyle20Bold(context, color: textColor),
           ),
 
           // SubTitle
           CustomText(
             maxLines: 2,
             text: subtitle,
-            textStyle:
-                CustomTextStyle.textStyle20Bold(context, color: textColor),
+            textStyle: CustomTextStyle.textStyle20Bold(context, color: textColor),
           ),
         ],
       ),

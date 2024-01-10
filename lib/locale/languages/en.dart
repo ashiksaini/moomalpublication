@@ -2,6 +2,7 @@ final Map<String, String> enUS = {
   // App ////////////////////////////////////////////////////////////
   "moomalpublication": "Moomal Publication",
   "delete_account": "Delete Account",
+  "this_product_is_out_of_stock": "This Product is Out of Stock",
 
   // Internet ///////////////////////////////////////////////////////////////
   'bad_request': "Bad Request",
@@ -98,6 +99,7 @@ final Map<String, String> enUS = {
   "ebook": "E Book",
   "available": "Available",
   "not_available": "Not Available",
+  "ebook_quantity_cannot_be_more_than_one": "E Book quantity cannot be more than 1",
 
   // Drawer ///////////////////////////////////////////////////////////////////
   "downloads": "Downloads",

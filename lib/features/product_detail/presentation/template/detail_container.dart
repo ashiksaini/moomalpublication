@@ -2,14 +2,18 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/bottom_sheets/review_bottom_sheet.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
 import 'package:moomalpublication/features/product_detail/presentation/template/book_detail_tabbar.dart';
@@ -158,10 +162,53 @@ class DetailContainer extends StatelessWidget {
             text: "by_moomal_publication".tr,
             textStyle: CustomTextStyle.textStyle20Bold(context),
           ),
-          const VerticalGap(size: 30),
+          const VerticalGap(size: 10),
+
+          // Variation view
+          _getVariationView(context),
+          const VerticalGap(size: 20),
 
           // Price Quantity View
           PriceQuantity(),
+        ],
+      ),
+    );
+  }
+
+  Widget _getVariationView(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: scaleHeight(5, context)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (_productDetailController.productDetailData.value!.isEbookAvailable)
+            GestureDetector(
+              onTap: () => _productDetailController.onProductVariationClick(_productDetailController.productDetailData.value!, ProductVariation.ebook),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    (_productDetailController.productDetailData.value!.productVariationType.value == ProductVariation.ebook) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                  ),
+                  const HorizontalGap(size: 2),
+                  CustomText(text: 'ebook'.tr, textStyle: CustomTextStyle.textStyle20Bold(context)),
+                ],
+              ),
+            ),
+          if (_productDetailController.productDetailData.value!.isBookAvailable) ...{
+            const HorizontalGap(size: 10),
+            GestureDetector(
+              onTap: () => _productDetailController.onProductVariationClick(_productDetailController.productDetailData.value!, ProductVariation.book),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    (_productDetailController.productDetailData.value!.productVariationType.value == ProductVariation.book) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                  ),
+                  const HorizontalGap(size: 2),
+                  CustomText(text: 'book'.tr, textStyle: CustomTextStyle.textStyle20Bold(context)),
+                ],
+              ),
+            ),
+          }
         ],
       ),
     );

@@ -167,13 +167,17 @@ class HomeController extends BaseController {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(
-            id: item.id.toString(),
-            quantity: item.quantity.toString(),
-            variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
-          );
-          if (addToCartResponse.data != null) {
-            item.cartBtnType.value = CartBtnType.goToCart;
+          if (item.isBookAvailable || item.isEbookAvailable) {
+            final addToCartResponse = await CartServices.addToCart(
+              id: item.id.toString(),
+              quantity: item.quantity.toString(),
+              variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
+            );
+            if (addToCartResponse.data != null) {
+              item.cartBtnType.value = CartBtnType.goToCart;
+            }
+          } else {
+            showSnackBar("this_product_is_out_of_stock".tr);
           }
         }
         break;
@@ -237,5 +241,15 @@ class HomeController extends BaseController {
 
   void onLanguageItemClick(DropdownItem<Language> item) {
     selectedLanguage.value = item;
+  }
+
+  Future<void> onRefresh() async {
+    exploreProductList.clear();
+    newArrivalProductList.clear();
+    bestSellerProductList.clear();
+    
+    _getExploreBooks();
+    _getNewArrivalBooks();
+    _getBestSellerBooks();
   }
 }

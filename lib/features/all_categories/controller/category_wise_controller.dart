@@ -126,8 +126,7 @@ class CategoryWiseController extends BaseController {
   }
 
   void _scrollListener() {
-    if (scrollController.position.pixels ==
-        scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
       loadMoreData();
     }
   }
@@ -162,13 +161,17 @@ class CategoryWiseController extends BaseController {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(
-            id: item.id.toString(),
-            quantity: item.quantity.toString(),
-            variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
-          );
-          if (addToCartResponse.data != null) {
-            item.cartBtnType.value = CartBtnType.goToCart;
+          if (item.isBookAvailable || item.isEbookAvailable) {
+            final addToCartResponse = await CartServices.addToCart(
+              id: item.id.toString(),
+              quantity: item.quantity.toString(),
+              variations: [VariationRequestData(attribute: "Purchase", value: (item.productVariationType.value == ProductVariation.ebook) ? "ebook" : "book")],
+            );
+            if (addToCartResponse.data != null) {
+              item.cartBtnType.value = CartBtnType.goToCart;
+            }
+          } else {
+            showSnackBar("this_product_is_out_of_stock".tr);
           }
         }
         break;

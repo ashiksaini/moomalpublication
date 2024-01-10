@@ -87,8 +87,8 @@ class EBookScreen extends StatelessWidget {
                   mainAxisSpacing: 15.0,
                   childAspectRatio:
                       _ebookController.ebooksResponse.value.isLoading
-                          ? 0.58
-                          : 0.46,
+                          ? 0.52
+                          : 0.44,
                 ),
                 itemCount: _ebookController.ebooksResponse.value.isLoading
                     ? 20

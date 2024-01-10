@@ -53,9 +53,7 @@ class CardBookItem extends StatelessWidget {
   Widget _getImage(BuildContext context) {
     return Container(
       height: scaleHeight(195, context),
-      margin: EdgeInsets.symmetric(
-          horizontal: scaleWidth(5, context),
-          vertical: scaleHeight(5, context)),
+      margin: EdgeInsets.symmetric(horizontal: scaleWidth(5, context), vertical: scaleHeight(5, context)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(scaleRadius(15, context)),
         child: (item.featuredImage?.url != null && item.featuredImage!.url!.isNotEmpty)
@@ -72,8 +70,7 @@ class CardBookItem extends StatelessWidget {
                 child: Center(
                   child: CustomText(
                     text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context,
-                        color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
                   ),
                 ),
               ),
@@ -95,56 +92,11 @@ class CardBookItem extends StatelessWidget {
             // Title
             _getBookTitle(context),
 
+            // Title
+            _getBookPrice(context),
+
             // Variation selection
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: scaleHeight(5, context)),
-              child: Row(
-                children: [
-                  if (item.isEbookAvailable)
-                    GestureDetector(
-                      onTap: () =>
-                          onBookVariationClick!(item, ProductVariation.ebook),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            (item.productVariationType.value ==
-                                    ProductVariation.ebook)
-                                ? AppAssets.icSelectedRadio
-                                : AppAssets.icUnSelectedRadio,
-                          ),
-                          const HorizontalGap(size: 2),
-                          CustomText(
-                              text: 'ebook'.tr,
-                              textStyle:
-                                  CustomTextStyle.textStyle16Bold(context)),
-                        ],
-                      ),
-                    ),
-                  if (item.isBookAvailable) ...{
-                    const HorizontalGap(size: 10),
-                    GestureDetector(
-                      onTap: () =>
-                          onBookVariationClick!(item, ProductVariation.book),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            (item.productVariationType.value ==
-                                    ProductVariation.book)
-                                ? AppAssets.icSelectedRadio
-                                : AppAssets.icUnSelectedRadio,
-                          ),
-                          const HorizontalGap(size: 2),
-                          CustomText(
-                              text: 'book'.tr,
-                              textStyle:
-                                  CustomTextStyle.textStyle16Bold(context)),
-                        ],
-                      ),
-                    ),
-                  }
-                ],
-              ),
-            ),
+            _getVariationView(context),
 
             // Stars
             ((item.ratingCount ?? 0) > 0)
@@ -175,6 +127,44 @@ class CardBookItem extends StatelessWidget {
     );
   }
 
+  Widget _getVariationView(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: scaleHeight(5, context)),
+      child: Row(
+        children: [
+          if (item.isEbookAvailable)
+            GestureDetector(
+              onTap: () => onBookVariationClick!(item, ProductVariation.ebook),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    (item.productVariationType.value == ProductVariation.ebook) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                  ),
+                  const HorizontalGap(size: 2),
+                  CustomText(text: 'ebook'.tr, textStyle: CustomTextStyle.textStyle16Bold(context)),
+                ],
+              ),
+            ),
+          if (item.isBookAvailable) ...{
+            const HorizontalGap(size: 10),
+            GestureDetector(
+              onTap: () => onBookVariationClick!(item, ProductVariation.book),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    (item.productVariationType.value == ProductVariation.book) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                  ),
+                  const HorizontalGap(size: 2),
+                  CustomText(text: 'book'.tr, textStyle: CustomTextStyle.textStyle16Bold(context)),
+                ],
+              ),
+            ),
+          }
+        ],
+      ),
+    );
+  }
+
   Expanded _getStars(BuildContext context) {
     return Expanded(
       child: ListView.builder(
@@ -196,12 +186,20 @@ class CardBookItem extends StatelessWidget {
     );
   }
 
-  CustomText _getBookTitle(BuildContext context) {
+  Widget _getBookTitle(BuildContext context) {
     return CustomText(
       text: item.name,
       textStyle: CustomTextStyle.textStyle16Bold(context),
       textAlign: TextAlign.start,
       maxLines: 2,
+    );
+  }
+
+  Widget _getBookPrice(BuildContext context) {
+    return CustomText(
+      text: "${"price".tr} ${item.price}",
+      textStyle: CustomTextStyle.textStyle16Bold(context, color: AppColors.black),
+      textAlign: TextAlign.start,
     );
   }
 }

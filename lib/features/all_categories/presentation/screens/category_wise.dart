@@ -69,8 +69,8 @@ class CategoryWiseScreen extends StatelessWidget {
             mainAxisSpacing: 15.0,
             childAspectRatio:
                 _categoryWiseController.productResponse.value.isLoading
-                    ? 0.58
-                    : 0.46,
+                    ? 0.52
+                    : 0.44,
           ),
           itemCount: _categoryWiseController.productResponse.value.isLoading
               ? 20
