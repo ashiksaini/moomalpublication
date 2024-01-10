@@ -20,16 +20,22 @@ class CurrentAffairQuizCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String date = DateTimeUtils.formatDate(date: _quizController.quizList[index].lastActivity!, formatType: AppConstants.dateFormatter); // ask where to use this
+    String date = DateTimeUtils.formatDate(
+        date: _quizController.quizList[index].lastActivity!,
+        formatType: AppConstants.dateFormatter); // ask where to use this
     return GestureDetector(
       onTap: () {
         _quizController.navigateQuizDetailScreen(index: index);
       },
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: scaleHeight(16, context), horizontal: scaleWidth(8, context)),
+        padding: EdgeInsets.symmetric(
+            vertical: scaleHeight(16, context),
+            horizontal: scaleWidth(8, context)),
         child: ShadowContainer(
           containerChild: Padding(
-            padding: EdgeInsets.symmetric(vertical: scaleHeight(16, context), horizontal: scaleWidth(14, context)),
+            padding: EdgeInsets.symmetric(
+                vertical: scaleHeight(16, context),
+                horizontal: scaleWidth(14, context)),
             child: Row(
               children: [
                 CardImage(
@@ -40,7 +46,8 @@ class CurrentAffairQuizCard extends StatelessWidget {
                 const HorizontalGap(size: 12),
                 Flexible(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: scaleWidth(12, context)),
+                    padding:
+                        EdgeInsets.symmetric(vertical: scaleWidth(12, context)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -48,7 +55,8 @@ class CurrentAffairQuizCard extends StatelessWidget {
                           textAlign: TextAlign.left,
                           text: _quizController.quizList[index].quizName,
                           maxLines: 4,
-                          textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
+                          textStyle: CustomTextStyle.textStyle20Bold(context,
+                              color: AppColors.black),
                         ),
                         const VerticalGap(size: 8),
                         Row(
@@ -60,7 +68,9 @@ class CurrentAffairQuizCard extends StatelessWidget {
                               child: CustomText(
                                 textAlign: TextAlign.start,
                                 text: "Admin, $date",
-                                textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.greyLight),
+                                textStyle: CustomTextStyle.textStyle20Bold(
+                                    context,
+                                    color: AppColors.greyLight),
                                 maxLines: 2,
                               ),
                             ),
@@ -68,13 +78,17 @@ class CurrentAffairQuizCard extends StatelessWidget {
                         ),
                         const VerticalGap(size: 20),
                         CustomText(
-                          text: "Quiz Views: ${_quizController.quizList[index].quizViews}",
-                          textStyle: CustomTextStyle.textStyle15Bold(context, color: AppColors.black),
+                          text:
+                              "Quiz Views: ${_quizController.quizList[index].quizViews}",
+                          textStyle: CustomTextStyle.textStyle15Bold(context,
+                              color: AppColors.black),
                           textAlign: TextAlign.start,
                         ),
                         CustomText(
-                          text: "Quiz Taken: ${_quizController.quizList[index].quizTaken}",
-                          textStyle: CustomTextStyle.textStyle15Bold(context, color: AppColors.black),
+                          text:
+                              "Quiz Taken: ${_quizController.quizList[index].quizTaken}",
+                          textStyle: CustomTextStyle.textStyle15Bold(context,
+                              color: AppColors.black),
                           textAlign: TextAlign.start,
                         ),
                         // const VerticalGap(size: 9),

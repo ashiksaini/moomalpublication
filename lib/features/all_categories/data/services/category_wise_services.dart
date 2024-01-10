@@ -1,3 +1,0 @@
-class CategoryWiseServices {
-  CategoryWiseServices._();
-}

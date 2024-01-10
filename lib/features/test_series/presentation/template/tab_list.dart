@@ -10,7 +10,9 @@ class TabList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: EdgeInsets.symmetric(vertical: scaleWidth(26, context), horizontal: scaleWidth(15, context)),
+      padding: EdgeInsets.symmetric(
+          vertical: scaleWidth(26, context),
+          horizontal: scaleWidth(15, context)),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(

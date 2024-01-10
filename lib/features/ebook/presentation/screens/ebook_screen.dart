@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
+import 'package:moomalpublication/core/components/atoms/refersh_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
 import 'package:moomalpublication/core/components/organisms/custom_drop_down_2.dart';
@@ -26,15 +27,22 @@ class EBookScreen extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: Obx(() {
-          return Column(
-            children: [
-              CustomAppbar(
-                title: "ebooks".tr,
-                suffixIcon: AppAssets.icSearch,
-                onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
-              ),
-              _ebookController.ebookCategoryResponse.value.isLoading || _ebookController.ebooksResponse.value.isLoading ? _showLoading(context) : _showData(context),
-            ],
+          return CustomRefreshIndicator(
+            onRefreshCallback: () => _ebookController.onRefresh(),
+            child: Column(
+              children: [
+                CustomAppbar(
+                  title: "ebooks".tr,
+                  suffixIcon: AppAssets.icSearch,
+                  onSuffixIconClick: () =>
+                      AppRouting.toNamed(NameRoutes.searchScreen),
+                ),
+                _ebookController.ebookCategoryResponse.value.isLoading ||
+                        _ebookController.ebooksResponse.value.isLoading
+                    ? _showLoading(context)
+                    : _showData(context),
+              ],
+            ),
           );
         }),
       ),
@@ -77,16 +85,22 @@ class EBookScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 12.0,
                   mainAxisSpacing: 15.0,
-                  childAspectRatio: _ebookController.ebooksResponse.value.isLoading ? 0.58 : 0.5,
+                  childAspectRatio:
+                      _ebookController.ebooksResponse.value.isLoading
+                          ? 0.52
+                          : 0.44,
                 ),
-                itemCount: _ebookController.ebooksResponse.value.isLoading ? 20 : _ebookController.ebooks.length,
+                itemCount: _ebookController.ebooksResponse.value.isLoading
+                    ? 20
+                    : _ebookController.ebooks.length,
                 itemBuilder: (context, index) {
                   if (_ebookController.ebooksResponse.value.isLoading) {
                     return const BookItemShimmerSkeleton();
                   } else {
                     return GestureDetector(
                       onTap: () {
-                        _ebookController.onItemClick(index, _ebookController.ebooks[index]);
+                        _ebookController.onItemClick(
+                            index, _ebookController.ebooks[index]);
                       },
                       child: CardBookItem(
                         item: _ebookController.ebooks[index],

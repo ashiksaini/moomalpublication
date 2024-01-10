@@ -13,7 +13,8 @@ import 'package:moomalpublication/features/product_detail/presentation/widgets/r
 class ReviewBottomSheet extends StatelessWidget {
   ReviewBottomSheet({super.key});
 
-  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController =
+      Get.find<ProductDetailController>();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,8 @@ class ReviewBottomSheet extends StatelessWidget {
       children: [
         CustomText(
           text: "your_rating".tr,
-          textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
+          textStyle:
+              CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
           textAlign: TextAlign.start,
         ),
         const VerticalGap(size: 10),
@@ -73,14 +75,16 @@ class ReviewBottomSheet extends StatelessWidget {
       children: [
         CustomText(
           text: "your_review".tr,
-          textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
+          textStyle:
+              CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
           textAlign: TextAlign.start,
         ),
         const VerticalGap(size: 10),
         SizedBox(
           height: scaleHeight(150, context),
           child: TextFormField(
-            controller: _productDetailController.writeReviewTextEditingController,
+            controller:
+                _productDetailController.writeReviewTextEditingController,
             maxLines: 10,
             keyboardType: TextInputType.multiline,
             cursorColor: AppColors.orange,
@@ -111,16 +115,17 @@ class ReviewBottomSheet extends StatelessWidget {
         color: AppColors.orange,
         child: _productDetailController.postReviewResponse.value.isLoading
             ? Center(
-              child: LottieBuilder.asset(
+                child: LottieBuilder.asset(
                   AppAssets.loadingAnimation,
                   fit: BoxFit.cover,
                   filterQuality: FilterQuality.high,
                   height: scaleHeight(44, context),
                 ),
-            )
+              )
             : CustomText(
                 text: "submit".tr,
-                textStyle: CustomTextStyle.textStyle22Bold(context, color: AppColors.white),
+                textStyle: CustomTextStyle.textStyle22Bold(context,
+                    color: AppColors.white),
               ).paddingSymmetric(vertical: scaleHeight(8, context)),
       ),
     );

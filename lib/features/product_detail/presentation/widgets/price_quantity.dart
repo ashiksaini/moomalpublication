@@ -4,16 +4,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
 
 class PriceQuantity extends StatelessWidget {
-  final ProductDetailController _productDetailController =
-      Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
 
   PriceQuantity({super.key});
 
@@ -45,8 +46,7 @@ class PriceQuantity extends StatelessWidget {
         boxShadow: [primaryBoxShadow()],
       ),
       child: CustomText(
-        text:
-            "${"price".tr}${_productDetailController.productDetailData.value!.price ?? ""}",
+        text: "${"price".tr}${_productDetailController.productDetailData.value!.price ?? ""}",
         textStyle: CustomTextStyle.textStyle25Bold(
           context,
           color: AppColors.black,
@@ -81,8 +81,7 @@ class PriceQuantity extends StatelessWidget {
           children: [
             // Quantity Txt
             CustomText(
-              text:
-                  "${"quantity".tr}${_productDetailController.selectedQuantity}",
+              text: "${"quantity".tr}${_productDetailController.selectedQuantity}",
               textStyle: CustomTextStyle.textStyle25Bold(
                 context,
                 color: AppColors.black,
@@ -94,8 +93,7 @@ class PriceQuantity extends StatelessWidget {
             // DropDown icon
             SvgPicture.asset(
               AppAssets.icDropDown,
-              colorFilter:
-                  const ColorFilter.mode(AppColors.black, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(AppColors.black, BlendMode.srcIn),
               height: scaleHeight(18, context),
               width: scaleWidth(18, context),
             ),
@@ -105,12 +103,15 @@ class PriceQuantity extends StatelessWidget {
           return DropdownMenuItem(
             value: item,
             onTap: () {
-              _productDetailController.selectedQuantity.value = item;
+              if (_productDetailController.productDetailData.value!.productVariationType.value == ProductVariation.ebook) {
+                showSnackBar("ebook_quantity_cannot_be_more_than_one".tr);
+              } else {
+                _productDetailController.selectedQuantity.value = item;
+              }
             },
             child: StatefulBuilder(
               builder: (context, menuSetState) {
-                final isSelected =
-                    _productDetailController.selectedQuantity.value == item;
+                final isSelected = _productDetailController.selectedQuantity.value == item;
                 return Column(
                   children: [
                     Container(
@@ -125,19 +126,13 @@ class PriceQuantity extends StatelessWidget {
                         children: [
                           CustomText(
                             text: item.toString(),
-                            textStyle: CustomTextStyle.textStyle25Bold(context,
-                                color: AppColors.black),
+                            textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
                           ),
-                          if (isSelected)
-                            SvgPicture.asset(AppAssets.icSelectedRadio)
-                          else
-                            SvgPicture.asset(AppAssets.icUnSelectedRadio)
+                          if (isSelected) SvgPicture.asset(AppAssets.icSelectedRadio) else SvgPicture.asset(AppAssets.icUnSelectedRadio)
                         ],
                       ),
                     ),
-                    Divider(
-                        height: scaleHeight(2, context),
-                        thickness: scaleHeight(2, context)),
+                    Divider(height: scaleHeight(2, context), thickness: scaleHeight(2, context)),
                   ],
                 );
               },
@@ -145,7 +140,9 @@ class PriceQuantity extends StatelessWidget {
           );
         }).toList(),
         onChanged: (value) {
-          _productDetailController.selectedQuantity.value = value ?? 1;
+          if (_productDetailController.productDetailData.value!.productVariationType.value != ProductVariation.ebook) {
+            _productDetailController.selectedQuantity.value = value ?? 1;
+          }
         },
         dropdownStyleData: DropdownStyleData(
           padding: EdgeInsets.zero,

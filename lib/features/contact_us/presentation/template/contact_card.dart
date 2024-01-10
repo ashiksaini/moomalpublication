@@ -9,11 +9,7 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 
 class ContactCard extends StatelessWidget {
-  const ContactCard(
-      {super.key,
-      required this.contactImage,
-      required this.contactText,
-      required this.contactDescription});
+  const ContactCard({super.key, required this.contactImage, required this.contactText, required this.contactDescription});
 
   final String contactImage;
   final String contactText;
@@ -26,6 +22,7 @@ class ContactCard extends StatelessWidget {
         padding: EdgeInsets.all(scaleWidth(12, context)),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -36,19 +33,22 @@ class ContactCard extends StatelessWidget {
                 ),
                 const HorizontalGap(size: 6),
                 CustomText(
-                    text: '$contactText:',
-                    textStyle: CustomTextStyle.textStyle22Bold(context,
-                        color: AppColors.orange,
-                        decoration: TextDecoration.underline,
-                        decorationColor: AppColors.orange))
+                  text: '$contactText:',
+                  textStyle: CustomTextStyle.textStyle22Bold(
+                    context,
+                    color: AppColors.orange,
+                    decoration: TextDecoration.underline,
+                    decorationColor: AppColors.orange,
+                  ),
+                )
               ],
             ),
             const VerticalGap(size: 10),
-            CustomText(
-                textAlign: TextAlign.start,
-                text: contactDescription,
-                textStyle: CustomTextStyle.textStyle22Bold(context,
-                    color: AppColors.black))
+            SelectableText(
+              contactDescription,
+              textAlign: TextAlign.start,
+              style: CustomTextStyle.textStyle22Bold(context, color: AppColors.black),
+            )
           ],
         ),
       ),

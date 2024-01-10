@@ -80,7 +80,8 @@ class FiltersBottomSheet extends StatelessWidget {
     );
   }
 
-  Widget _getSortByView(BuildContext context, String title, Function onClick, bool isSelectedSortBy) {
+  Widget _getSortByView(BuildContext context, String title, Function onClick,
+      bool isSelectedSortBy) {
     return GestureDetector(
       onTap: () => onClick(),
       child: CustomText(

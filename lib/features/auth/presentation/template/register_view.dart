@@ -50,8 +50,9 @@ class RegisterView extends StatelessWidget {
             AuthBtn(
               title: "register".tr,
               onClick: () {
-                if (!_registerController.userRegisterResponse.value.isLoading)
+                if (!_registerController.userRegisterResponse.value.isLoading) {
                   _registerController.onRegister();
+                }
               },
               isLoadingVisible:
                   _registerController.userRegisterResponse.value.isLoading,

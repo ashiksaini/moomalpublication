@@ -57,7 +57,7 @@ class CustomDropDown2<T> extends StatelessWidget {
                 // Title
                 Expanded(
                   child: CustomText(
-                    text: selectedItem.value!.title,
+                    text: selectedItem.value?.title ?? "",
                     textStyle: CustomTextStyle.textStyle18Bold(context,
                         color: borderColor),
                     textAlign: TextAlign.start,

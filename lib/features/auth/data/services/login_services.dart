@@ -21,7 +21,8 @@ class LoginServices {
       try {
         final tokenResponse = await _getAuthToken(data);
         if (tokenResponse.data != null) {
-          final dio.Response<dynamic> response = await DioClient.dioWithAuth!.post(ApiPaths.login, data: data);
+          final dio.Response<dynamic> response =
+              await DioClient.dioWithAuth!.post(ApiPaths.login, data: data);
 
           final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
             response.data! as Map<String, dynamic>,

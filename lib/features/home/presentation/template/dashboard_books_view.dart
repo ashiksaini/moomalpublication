@@ -65,7 +65,7 @@ class DashboardBooksView extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 12.0,
         mainAxisSpacing: 15.0,
-        childAspectRatio: isLoading ? 0.58 : 0.5,
+        childAspectRatio: isLoading ? 0.52 : 0.44,
       ),
       itemCount: isLoading ? loadingItemCount : data.length,
       itemBuilder: (context, index) {
@@ -79,6 +79,7 @@ class DashboardBooksView extends StatelessWidget {
             child: CardBookItem(
               item: data[index],
               onCartBtnClick: _homeController.onCartBtnClick,
+              onBookVariationClick: _homeController.onProductVariationClick,
             ),
           );
         }

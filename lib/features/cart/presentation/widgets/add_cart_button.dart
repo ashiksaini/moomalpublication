@@ -27,9 +27,9 @@ class AddButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SvgPicture.asset(
-                          AppAssets.icCartAdd,
-                          width: scaleWidth(22, context),
-                        ),
+              AppAssets.icCartAdd,
+              width: scaleWidth(22, context),
+            ),
             const HorizontalGap(size: 10),
             CustomText(
               textAlign: TextAlign.end,

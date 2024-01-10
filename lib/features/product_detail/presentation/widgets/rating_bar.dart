@@ -33,7 +33,8 @@ class StarRatingBar extends StatelessWidget {
         empty: _image(AppAssets.icBorderedStar),
       ),
       itemPadding: EdgeInsets.symmetric(horizontal: scaleWidth(1, context)),
-      onRatingUpdate: (rating) => onRatingUpdate != null ? onRatingUpdate!(rating) : null,
+      onRatingUpdate: (rating) =>
+          onRatingUpdate != null ? onRatingUpdate!(rating) : null,
     );
   }
 }

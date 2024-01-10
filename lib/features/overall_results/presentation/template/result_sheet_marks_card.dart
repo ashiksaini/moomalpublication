@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/overall_results/presentation/widgets/sheet_marks_row.dart';

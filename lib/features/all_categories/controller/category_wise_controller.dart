@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
@@ -160,12 +161,22 @@ class CategoryWiseController extends BaseController {
     switch (item.cartBtnType.value) {
       case CartBtnType.addToCart:
         {
-          final addToCartResponse = await CartServices.addToCart(
-            id: item.id.toString(),
-            quantity: item.quantity.toString(),
-          );
-          if (addToCartResponse.data != null) {
-            item.cartBtnType.value = CartBtnType.goToCart;
+          if (item.isBookAvailable || item.isEbookAvailable) {
+            final addToCartResponse = await CartServices.addToCart(
+              id: item.id.toString(),
+              quantity: item.quantity.toString(),
+              variations: [
+                VariationRequestData(
+                  attribute: "Purchase",
+                  value: (item.productVariationType.value == ProductVariation.ebook) ? _getVariationValue(item, item.productVariationType.value) : _getVariationValue(item, item.productVariationType.value),
+                ),
+              ],
+            );
+            if (addToCartResponse.data != null) {
+              item.cartBtnType.value = CartBtnType.goToCart;
+            }
+          } else {
+            showSnackBar("this_product_is_out_of_stock".tr);
           }
         }
         break;
@@ -174,5 +185,23 @@ class CategoryWiseController extends BaseController {
         AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
         break;
     }
+  }
+
+  String _getVariationValue(ProductItem item, ProductVariation value) {
+    if (value == ProductVariation.ebook) {
+      for (var element in item.variations!) {
+        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0) {
+          return element.attributes!.attributePurchase!;
+        }
+      }
+    } else {
+      for (var element in item.variations!) {
+        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0) {
+          return element.attributes!.attributePurchase!;
+        }
+      }
+    }
+
+    return "";
   }
 }

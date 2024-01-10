@@ -2,6 +2,7 @@ final Map<String, String> enUS = {
   // App ////////////////////////////////////////////////////////////
   "moomalpublication": "Moomal Publication",
   "delete_account": "Delete Account",
+  "this_product_is_out_of_stock": "This Product is Out of Stock",
 
   // Internet ///////////////////////////////////////////////////////////////
   'bad_request': "Bad Request",
@@ -98,6 +99,7 @@ final Map<String, String> enUS = {
   "ebook": "E Book",
   "available": "Available",
   "not_available": "Not Available",
+  "ebook_quantity_cannot_be_more_than_one": "E Book quantity cannot be more than 1",
 
   // Drawer ///////////////////////////////////////////////////////////////////
   "downloads": "Downloads",
@@ -182,6 +184,7 @@ final Map<String, String> enUS = {
   "place_order": "Place Order",
   "no_items_in_cart": "No Items in Cart",
   "browse_product": "Browse Product",
+  "quantity_cannot_exceed_the_limit": "Quantity cannot exceed 9999",
 
   // Search Screen ////////////////////////////////////////////////////////////
   "search_for_books_and_ebooks": "Search for Books and Ebooks",
@@ -225,12 +228,20 @@ final Map<String, String> enUS = {
   "mins": "Mins",
   "SUBMIT": "SUBMIT",
   "RETAKE": "RETAKE",
-  "timer" : "Timer",
-  "thanks_for_submitting_your_resposne!_you_scored":"Thanks for submitting your response! You scored",
-  "out_of":"out of",
-  "current_affair_quiz":"Current affair Quiz",
+  "timer": "Timer",
+  "thanks_for_submitting_your_resposne!_you_scored":
+      "Thanks for submitting your response! You scored",
+  "out_of": "out of",
+  "current_affair_quiz": "Current affair Quiz",
   "economics_quiz": "Economics Quiz",
-  "add":"Add",
-  "©_2021_Moomal_Publication_All_rights_reserved":"© 2021 Moomal Publication All rights reserved",
-  "our_quiz":"Our Quiz"
+  "add": "Add",
+  "©_2021_Moomal_Publication_All_rights_reserved":
+      "© 2021 Moomal Publication All rights reserved",
+  "our_quiz": "Our Quiz",
+
+  // Payment ///////////////////////////////////////////////////////////
+  "payment_error": "Payment Error",
+  "payment_cancel": "Payment Cancel",
+  "payment_failed": "Payment Failed",
+  "payment_success": "Payment Success",
 };
