@@ -146,36 +146,35 @@ class QuizController extends BaseController {
   }
 }
 
-
 // RxList<RxList<Options>> optionsList = <RxList<Options>>[].obs;
-  // void _initializeOptions() {
-  //   selectedOptions = List<int>.generate(questionsList.length, (index) => -1);
+// void _initializeOptions() {
+//   selectedOptions = List<int>.generate(questionsList.length, (index) => -1);
 
-  //   for (int i = 0; i < questionsList.length; i++) {
-  //     RxList<Options> options = <Options>[].obs;
-  //     for (int j = 0; j < optionsName.length; j++) {
-  //       options.add(Options(name: optionsName[j]));
-  //     }
-  //     optionsList.add(options);
-  //   }
-  // }
+//   for (int i = 0; i < questionsList.length; i++) {
+//     RxList<Options> options = <Options>[].obs;
+//     for (int j = 0; j < optionsName.length; j++) {
+//       options.add(Options(name: optionsName[j]));
+//     }
+//     optionsList.add(options);
+//   }
+// }
 
-  // void selectedOption(
-  //     {required int questionNumber, required int optionNumber}) {
-  //   if (selectedOptions[questionNumber] == optionNumber) {
-  //     optionsList[questionNumber][optionNumber].unSelectedOption();
-  //     selectedOptions[questionNumber] = -1;
-  //     optionsList.refresh();
-  //     return;
-  //   } else if (selectedOptions[questionNumber] != -1) {
-  //     optionsList[questionNumber][selectedOptions[questionNumber]]
-  //         .unSelectedOption();
-  //     selectedOptions[questionNumber] = -1;
-  //   }
-  //   selectedOptions[questionNumber] = optionNumber;
-  //   optionsList[questionNumber][optionNumber].selectedOption();
-  //   optionsList.refresh();
-  // }
+// void selectedOption(
+//     {required int questionNumber, required int optionNumber}) {
+//   if (selectedOptions[questionNumber] == optionNumber) {
+//     optionsList[questionNumber][optionNumber].unSelectedOption();
+//     selectedOptions[questionNumber] = -1;
+//     optionsList.refresh();
+//     return;
+//   } else if (selectedOptions[questionNumber] != -1) {
+//     optionsList[questionNumber][selectedOptions[questionNumber]]
+//         .unSelectedOption();
+//     selectedOptions[questionNumber] = -1;
+//   }
+//   selectedOptions[questionNumber] = optionNumber;
+//   optionsList[questionNumber][optionNumber].selectedOption();
+//   optionsList.refresh();
+// }
 // class Options {
 //   Options(
 //       {required this.name,
@@ -197,6 +196,3 @@ class QuizController extends BaseController {
 //     selected = true;
 //   }
 // }
-
-
-

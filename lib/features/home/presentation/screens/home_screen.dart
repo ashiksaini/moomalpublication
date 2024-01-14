@@ -25,6 +25,7 @@ class HomeScreen extends StatelessWidget {
         isAppbarVisible: false,
         scaffoldKey: _homeController.globalKey,
         drawer: CustomNavigationDrawer(),
+        onRefresh: () => _homeController.onRefresh(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

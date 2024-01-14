@@ -1,10 +1,13 @@
 import 'package:dio/dio.dart' as dio;
+// import 'package:get/get.dart' as getx;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-// import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 
 mixin NetworkHandlingMixin {
   Future<void> handleErrorResponse(
@@ -19,14 +22,11 @@ mixin NetworkHandlingMixin {
         break;
 
       case 401:
-        // await handleUnauthorized(error, handler);
+        await handleUnauthorized(error, handler);
         break;
 
       case 403:
-        {
-          showSnackBar(AppConstants.forbidden);
-          handler.next(error);
-        }
+        await handleUnauthorized(error, handler);
         break;
 
       case 404:
@@ -62,28 +62,38 @@ mixin NetworkHandlingMixin {
     }
   }
 
-  // Future<void> handleUnauthorized(
-  //   dio.DioException error,
-  //   dio.ErrorInterceptorHandler handler,
-  // ) async {
-  //     final LoginResponse loginResponse = await getNewAccessToken();
-  //     if (loginResponse.data != null &&
-  //         loginResponse.data!.statusCode == AppConstants.successGetStatusCode) {
-  //       final String newAccessToken = loginResponse.data!.data!.access!;
-  //       final String newRefreshToken = loginResponse.data!.data!.refresh!;
-  //       Utility.saveLoginDataToLocal(newAccessToken, newRefreshToken);
-  //       DioClient.initWithAuth();
-  //       return handler
-  //           .resolve(await _retry(error.requestOptions, newAccessToken));
-  //     } else if (loginResponse.data == null ||
-  //         loginResponse.data!.statusCode ==
-  //             AppConstants.unauthorized401StatusCode) {
-  //       SharedPreferencesHelper.clearSharedPref();
-  //       AppRouting.offAllNamed(NameRoutes.splashScreen);
-  //       return handler.next(error);
-  //     }
-  //     return handler.next(error);
-  // }
+  Future<void> handleUnauthorized(
+    dio.DioException error,
+    dio.ErrorInterceptorHandler handler,
+  ) async {
+    SharedPreferencesHelper.clearSharedPref();
+    AppRouting.offAllNamed(NameRoutes.splashScreen);
+
+    /** 
+     * Retry the previous request
+      if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+        try {
+          final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.token, data: data);
+
+          final parsedResponse = TokenResponseData.fromJson(
+            response.data! as Map<String, dynamic>,
+          );
+
+          // Save token to shared pref.
+          await SharedPreferencesHelper.setValue(SharedPreferenceKeys.token, parsedResponse.token);
+
+          // Init dio with auth
+          DioClient.initWithAuth();
+
+          return handler.resolve(await _retry(error.requestOptions, parsedResponse.token ?? ""));
+        } on dio.DioException catch (_) {
+          return handler.next(error);
+        }
+      } else {
+        return handler.next(error);
+      }
+    */
+  }
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
@@ -94,6 +104,12 @@ mixin NetworkHandlingMixin {
 
       // Print the response data
       print('Response Data: ${response.data}');
+
+      // Response headers
+      print('Response Headers');
+      response.headers.map.forEach((key, value) {
+        print("$key ----> $value");
+      });
     }
   }
 
@@ -111,40 +127,15 @@ mixin NetworkHandlingMixin {
       if (options.data != null) {
         print('Request Data: ${options.data}');
       }
+
+      // Request headers
+      print('Request Headers');
+      options.headers.map((key, value) {
+        print("$key ----> $value");
+        return MapEntry(key, value);
+      });
     }
   }
-
-  // Future<LoginResponse> getNewAccessToken() async {
-  //   if (getx.Get.find<InternetConnectivityController>()
-  //           .connectivityResult
-  //           .value !=
-  //       ConnectivityResult.none) {
-  //     try {
-  //       final dio.Dio dioo = DioClient.createDio();
-  //       // dioo.options.headers = await DioClient.getHeaders(authToken: authToken);
-  //       final dio.Response<Map<String, dynamic>> response = await dioo
-  //           .post(ApiPaths.refreshToken, data: await getRefreshToken());
-
-  //       final parsedResponse = BaseResponse<LoginResponseData>.fromJson(
-  //         response.data!,
-  //         (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),
-  //       );
-  //       return LoginResponse.success(parsedResponse);
-  //     } catch (error) {
-  //       return LoginResponse();
-  //     }
-  //   } else {
-  //     showSnackBar(AppConstants.noInternetAccess);
-  //     return LoginResponse();
-  //   }
-  // }
-
-  // Future<Map<String, dynamic>> getRefreshToken() async {
-  //   final String? token = await SharedPreferencesHelper.getString(
-  //     SharedPreferenceKeys.refreshToken,
-  //   );
-  //   return {'refresh': token};
-  // }
 
   Future<Response<dynamic>> _retry(
     RequestOptions requestOptions,

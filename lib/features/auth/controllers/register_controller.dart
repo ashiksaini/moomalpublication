@@ -6,6 +6,7 @@ import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/auth/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/auth/data/services/register_services.dart';
 import 'package:moomalpublication/routes/routing.dart';
+import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class RegisterController extends BaseController {
@@ -35,7 +36,7 @@ class RegisterController extends BaseController {
   }
 
   void onPrivacyPolicyClick() {
-    Utility.launchurl("https://moomalpublication.com/privacy-policy/");
+    Utility.launchurl(ApiPaths.privacyPolicy);
   }
 
   void _navigateToLoginScreen() {

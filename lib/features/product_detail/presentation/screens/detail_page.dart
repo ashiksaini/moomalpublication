@@ -9,8 +9,7 @@ import 'package:moomalpublication/features/product_detail/presentation/widgets/p
 import 'package:moomalpublication/routes/routing.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  final ProductDetailController _productDetailController =
-      Get.put(ProductDetailController());
+  final ProductDetailController _productDetailController = Get.put(ProductDetailController());
   ProductDetailScreen({super.key});
 
   @override
@@ -27,20 +26,21 @@ class ProductDetailScreen extends StatelessWidget {
                     prefixIcon: AppAssets.icBackArrow,
                     suffixIcon: AppAssets.icShare,
                     onPrefixIconClick: () => AppRouting.navigateBack(),
-                    onSuffixIconClick: () =>
-                        _productDetailController.shareItem(),
+                    onSuffixIconClick: () => _productDetailController.shareItem(),
                     title: _productDetailController.productName.value,
                     maxLine: 1,
                   ),
                   Expanded(child: DetailContainer())
                 ],
               ),
-              const Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: PairBuyBtn(),
-              ),
+              if (_productDetailController.productDetailData.value != null)
+                if (_productDetailController.productDetailData.value!.isBookAvailable || _productDetailController.productDetailData.value!.isEbookAvailable)
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: PairBuyBtn(),
+                  ),
             ],
           ),
         ),

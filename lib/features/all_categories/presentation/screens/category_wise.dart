@@ -22,7 +22,8 @@ import 'package:moomalpublication/routes/routing.dart';
 class CategoryWiseScreen extends StatelessWidget {
   CategoryWiseScreen({super.key});
 
-  final CategoryWiseController _categoryWiseController = Get.put(CategoryWiseController());
+  final CategoryWiseController _categoryWiseController =
+      Get.put(CategoryWiseController());
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,8 @@ class CategoryWiseScreen extends StatelessWidget {
               // Load more
               if (_categoryWiseController.isLoadingMore.value)
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                  padding:
+                      EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
                   child: customProgressIndicator(),
                 ),
             ],
@@ -65,16 +67,22 @@ class CategoryWiseScreen extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 12.0,
             mainAxisSpacing: 15.0,
-            childAspectRatio: _categoryWiseController.productResponse.value.isLoading ? 0.58 : 0.5,
+            childAspectRatio:
+                _categoryWiseController.productResponse.value.isLoading
+                    ? 0.52
+                    : 0.44,
           ),
-          itemCount: _categoryWiseController.productResponse.value.isLoading ? 20 : _categoryWiseController.productList.length,
+          itemCount: _categoryWiseController.productResponse.value.isLoading
+              ? 20
+              : _categoryWiseController.productList.length,
           itemBuilder: (context, index) {
             if (_categoryWiseController.productResponse.value.isLoading) {
               return const BookItemShimmerSkeleton();
             } else {
               return GestureDetector(
                 onTap: () {
-                  _categoryWiseController.onItemClick(index, _categoryWiseController.productList[index]);
+                  _categoryWiseController.onItemClick(
+                      index, _categoryWiseController.productList[index]);
                 },
                 child: CardBookItem(
                   item: _categoryWiseController.productList[index],
@@ -132,13 +140,15 @@ class CategoryWiseScreen extends StatelessWidget {
             checkColor: AppColors.orange,
             activeColor: AppColors.white,
             value: _categoryWiseController.includeOutOfStockItem.value,
-            onChanged: (value) => _categoryWiseController.canIncludeOutOfStockItem(value),
+            onChanged: (value) =>
+                _categoryWiseController.canIncludeOutOfStockItem(value),
           ),
         ),
         const HorizontalGap(size: 4),
         CustomText(
           text: "include_out_of_stock_item".tr,
-          textStyle: CustomTextStyle.textStyle18Regular(context, color: AppColors.black),
+          textStyle: CustomTextStyle.textStyle18Regular(context,
+              color: AppColors.black),
         ),
       ],
     );
@@ -182,7 +192,8 @@ class CategoryWiseScreen extends StatelessWidget {
             SvgPicture.asset(AppAssets.icFilter2),
             CustomText(
               text: "filter".tr,
-              textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
+              textStyle: CustomTextStyle.textStyle18Bold(context,
+                  color: AppColors.black),
             )
           ],
         ),

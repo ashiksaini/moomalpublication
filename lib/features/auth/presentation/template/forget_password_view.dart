@@ -43,8 +43,9 @@ class ForgetPasswordView extends StatelessWidget {
               title: "reset_password".tr,
               onClick: () {
                 if (!_forgetPasswordController
-                    .resetPasswordResponse.value.isLoading)
+                    .resetPasswordResponse.value.isLoading) {
                   _forgetPasswordController.onResetPasswordClick();
+                }
               },
               isLoadingVisible: _forgetPasswordController
                   .resetPasswordResponse.value.isLoading,

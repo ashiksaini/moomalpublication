@@ -27,13 +27,4 @@ class Variation {
         salePrice: json['sale_price'] as String?,
         stockStatus: json['stock_status'] as String?,
       );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'attributes': attributes?.toJson(),
-        'price': price,
-        'regular_price': regularPrice,
-        'sale_price': salePrice,
-        'stock_status': stockStatus,
-      };
 }

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/api_keys.dart';
+import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
@@ -15,14 +15,18 @@ class ProductDetailServices {
   ProductDetailServices._();
 
   static Future<ProductDetailResponse> getProductDetails(int productId) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.productDetailConsumerKey,
           consumerSecret: ApiKeys.productDetailConsumerSecret,
         ).toJson();
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get("${ApiPaths.productDetail}$productId", queryParameters: query);
-        final parsedResponse = ProductItem.fromJson(response.data as Map<String, dynamic>);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get("${ApiPaths.productDetail}$productId", queryParameters: query);
+        final parsedResponse =
+            ProductItem.fromJson(response.data as Map<String, dynamic>);
         return ProductDetailResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());
@@ -35,13 +39,17 @@ class ProductDetailServices {
   }
 
   static Future<ProductReviewsResponse> getProductReviews(int productId) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.productReviewConsumerKey,
           consumerSecret: ApiKeys.productReviewConsumerSecret,
         ).toJson();
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get("${ApiPaths.productReviews}$productId", queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get("${ApiPaths.productReviews}$productId",
+                queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) => ProductReview.fromJson(item as Map<String, dynamic>),
@@ -59,13 +67,17 @@ class ProductDetailServices {
   }
 
   static Future<SimilarProductResponse> getSimilarReviews(int productId) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.similarProductReviewConsumerKey,
           consumerSecret: ApiKeys.similarProductReviewConsumerSecret,
         ).toJson();
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get("${ApiPaths.productRelated}$productId", queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get("${ApiPaths.productRelated}$productId",
+                queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) => ProductItem.fromJson(item as Map<String, dynamic>),
@@ -82,16 +94,22 @@ class ProductDetailServices {
     }
   }
 
-  static Future<ReviewPostResponse> postReview(Map<String, dynamic> data) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<ReviewPostResponse> postReview(
+      Map<String, dynamic> data) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.postReviewConsumerKey,
           consumerSecret: ApiKeys.postReviewConsumerSecret,
         ).toJson();
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.productReviewPost, queryParameters: query, data: data);
-        final parsedResponse = ReviewPostResponseData.fromJson(response.data as Map<String, dynamic>);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .post(ApiPaths.productReviewPost,
+                queryParameters: query, data: data);
+        final parsedResponse = ReviewPostResponseData.fromJson(
+            response.data as Map<String, dynamic>);
         return ReviewPostResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());

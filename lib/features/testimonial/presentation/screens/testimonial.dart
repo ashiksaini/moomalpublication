@@ -6,7 +6,7 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/testimonial/controllers/testimonial_controller.dart';
-import 'package:moomalpublication/features/testimonial/presentation/templates/student_card.dart';
+import 'package:moomalpublication/features/testimonial/presentation/template/student_card.dart';
 import 'package:moomalpublication/features/testimonial/presentation/widgets/testimonial_text.dart';
 import 'package:moomalpublication/routes/routing.dart';
 

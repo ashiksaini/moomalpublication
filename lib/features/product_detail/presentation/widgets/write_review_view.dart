@@ -10,7 +10,8 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 class WriteReviewView extends StatelessWidget {
   final String title;
   final Function onClick;
-  const WriteReviewView({super.key, required this.title, required this.onClick});
+  const WriteReviewView(
+      {super.key, required this.title, required this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,9 @@ class WriteReviewView extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomText(text: title, textStyle: CustomTextStyle.textStyle20Bold(context)),
+            CustomText(
+                text: title,
+                textStyle: CustomTextStyle.textStyle20Bold(context)),
             SvgPicture.asset(AppAssets.icForwardArrow),
           ],
         ),
