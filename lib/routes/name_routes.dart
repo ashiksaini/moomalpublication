@@ -27,4 +27,6 @@ class NameRoutes {
   static const String detailEventScreen = '/detailEventScreen';
   static const String quizTestDetailScreen = '/quizTestDetailScreen';
   static const String quizTestScreen = '/quizTestScreen';
+  static const String onlineTestSeriesScreen = '/onlineTestSeriesScreen';
+
 }

@@ -105,20 +105,26 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                             indicatorColor: AppColors.orange,
                             tabs: [
                               TabItem(
-                                  text: _testSeriesController
-                                          .tabBarList[0].tabName ??
-                                      '',
-                                  length: _testSeriesController.tests.length),
+                                text: _testSeriesController
+                                        .tabBarList[0].tabName ??
+                                    '',
+                                length: _testSeriesController
+                                    .tabBarList[0].testList!.length,
+                              ),
                               TabItem(
-                                  text: _testSeriesController
-                                          .tabBarList[1].tabName ??
-                                      '',
-                                  length: _testSeriesController.tests.length),
+                                text: _testSeriesController
+                                        .tabBarList[1].tabName ??
+                                    '',
+                                length: _testSeriesController
+                                    .tabBarList[1].testList!.length,
+                              ),
                               TabItem(
-                                  text: _testSeriesController
-                                          .tabBarList[2].tabName ??
-                                      '',
-                                  length: _testSeriesController.tests.length),
+                                text: _testSeriesController
+                                        .tabBarList[2].tabName ??
+                                    '',
+                                length: _testSeriesController
+                                    .tabBarList[2].testList!.length,
+                              ),
                             ],
                             labelStyle:
                                 CustomTextStyle.textStyle20Bold(context),
@@ -134,14 +140,15 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                                       controller: _tabController,
                                       children: [
                                         TabList(
-                                            entries:
-                                                _testSeriesController.tests),
+                                          entries: _testSeriesController
+                                              .tabBarList[0].testList!,
+                                        ),
                                         TabList(
-                                            entries:
-                                                _testSeriesController.tests),
+                                            entries: _testSeriesController
+                                                .tabBarList[1].testList!),
                                         TabList(
-                                            entries:
-                                                _testSeriesController.tests),
+                                            entries: _testSeriesController
+                                                .tabBarList[2].testList!),
                                       ],
                                     ),
                             ),

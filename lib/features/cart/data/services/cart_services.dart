@@ -24,7 +24,8 @@ class CartServices {
 
         final dio.Response<dynamic> response = await DioClient.dioWithAuth!.get(ApiPaths.cartData, queryParameters: query);
         final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
-
+       
+      
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());

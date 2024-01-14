@@ -13,8 +13,13 @@ import 'package:moomalpublication/services/network/api_reponse.dart';
 class TestSeriesController extends BaseController {
   RxBool listgrid = RxBool(false);
   final Rx<TestSeriesResponse> testSeriesResponse = Rx(TestSeriesResponse());
-  final RxList<TestSeriesResponseModel> tests =
-      RxList<TestSeriesResponseModel>();
+
+  // final RxList<TestSeriesResponseModel> testsAll =
+  //     RxList<TestSeriesResponseModel>();
+  // final RxList<TestSeriesResponseModel> testsFullLength =
+  //     RxList<TestSeriesResponseModel>();
+  // final RxList<TestSeriesResponseModel> testsSectional =
+  //     RxList<TestSeriesResponseModel>();
 
   final Rx<TestSeriesListResponse> testSeriesListResponse =
       Rx(TestSeriesListResponse());
@@ -29,7 +34,7 @@ class TestSeriesController extends BaseController {
 
   RxBool pageLoaded = false.obs;
   List<TabBarModel> tabBarList = [];
-  RxInt slectedIndexOfTab = 0.obs;
+  RxInt selectedIndexOfTab = 0.obs;
 
   @override
   void onInit() {
@@ -39,14 +44,16 @@ class TestSeriesController extends BaseController {
   }
 
   Future<void> _getTestList(
-      {required String typeCategory, required int category}) async {
+      {required String typeCategory,
+      required int category,
+      required RxList<TestSeriesResponseModel> testList}) async {
     testSeriesResponse.value = ApiResponse.loading();
     testSeriesResponse.value =
         await TestSeriesService.getTests(query: {'category': category});
 
     if (testSeriesResponse.value.data != null) {
-      tests.clear();
-      tests.addAll(testSeriesResponse.value.data!);
+      testList.clear();
+      testList.addAll(testSeriesResponse.value.data!);
       isPageLoaded();
     } else {
       showSnackBar(AppConstants.somethingWentWrong);
@@ -77,9 +84,18 @@ class TestSeriesController extends BaseController {
         if (mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty) {
           selectedMockTestCategory.value = mockTestCategory.first;
           selectedTopicWiseCategory.value = topicWiseCategory.first;
-          _getTestList(
-              typeCategory: selectedMockTestCategory.value?.title ?? '',
-              category: tabBarList[slectedIndexOfTab.value].tabId ?? 0);
+          final typeCategory = selectedMockTestCategory.value?.title ?? '';
+
+          for (int i = 0; i < tabBarList.length; i++) {
+            final selectedTab = tabBarList[i];
+            final category = selectedTab.tabId ?? i;
+            final testList = selectedTab.testList;
+
+            _getTestList(
+                typeCategory: typeCategory,
+                category: category,
+                testList: testList!);
+          }
         }
       }
     } else {
@@ -92,32 +108,37 @@ class TestSeriesController extends BaseController {
       TabBarModel(
         tabName: 'all'.tr,
         tabId: 12,
+        testList: RxList<TestSeriesResponseModel>(),
       ),
       TabBarModel(
         tabName: 'full_length'.tr,
         tabId: 58,
+        testList: RxList<TestSeriesResponseModel>(),
       ),
       TabBarModel(
         tabName: 'sectional'.tr,
         tabId: 56,
+        testList: RxList<TestSeriesResponseModel>(),
       )
     ]);
   }
 
   void onMockCategoryItemClick(DropdownItem<Term> item) {
     selectedMockTestCategory.value = item;
-    tests.clear();
+    tabBarList[selectedIndexOfTab.value].testList!.clear();
     _getTestList(
         typeCategory: selectedMockTestCategory.string,
-        category: tabBarList[slectedIndexOfTab.value].tabId ?? 0);
+        category: tabBarList[selectedIndexOfTab.value].tabId ?? 0,
+        testList: tabBarList[selectedIndexOfTab.value].testList!);
   }
 
   void onTopicCategoryItemClick(DropdownItem<Term> item) {
     selectedTopicWiseCategory.value = item;
-    tests.clear();
+    tabBarList[selectedIndexOfTab.value].testList!.clear();
     _getTestList(
         typeCategory: selectedTopicWiseCategory.string,
-        category: tabBarList[slectedIndexOfTab.value].tabId ?? 0);
+        category: tabBarList[selectedIndexOfTab.value].tabId ?? 0,
+        testList: tabBarList[selectedIndexOfTab.value].testList!);
   }
 
   RxBool listOrGrid() {
@@ -130,9 +151,10 @@ class TestSeriesController extends BaseController {
   }
 
   void setSelectedTabIndex({required int selectedIndex}) {
-    slectedIndexOfTab.value = selectedIndex;
+    selectedIndexOfTab.value = selectedIndex;
     _getTestList(
         typeCategory: selectedMockTestCategory.value?.title ?? '',
-        category: tabBarList[slectedIndexOfTab.value].tabId ?? 0);
+        category: tabBarList[selectedIndex].tabId ?? 0,
+        testList: tabBarList[selectedIndex].testList!);
   }
 }

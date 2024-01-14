@@ -13,7 +13,9 @@ import 'package:moomalpublication/features/event_press_release/presentation/scre
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
-import 'package:moomalpublication/features/overall_results/presentation/screen/overall_result_screen.dart';
+import 'package:moomalpublication/features/overall_results_and_online_test_series/presentation/screen/online_exam.dart';
+import 'package:moomalpublication/features/overall_results_and_online_test_series/presentation/screen/overall_result_screen.dart';
+import 'package:moomalpublication/features/pdfViewer/screen.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
@@ -115,7 +117,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.quizScreen,
-      page: () => QuizScreen(),
+      page: () => const QuizScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -133,7 +135,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.orderScreen,
-      page: () => const OrdersScreen(),
+      page: () => OrdersScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -157,7 +159,14 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.overallResultScreen,
-      page: () => OverallResultScreen(),
+      // page: () => OverallResultScreen(),
+      page: () => PdfViewerScreen(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.onlineTestSeriesScreen,
+      page: () => OnlineExamScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
