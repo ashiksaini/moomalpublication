@@ -24,7 +24,7 @@ class MainCategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => onClick(),
       child: Container(
-        height: scaleHeight(145, context),
+        height: scaleHeight(154, context),
         width: scaleWidth(100, context),
         padding: EdgeInsets.only(
           top: scaleHeight(12, context),
@@ -44,12 +44,14 @@ class MainCategoryCard extends StatelessWidget {
               height: scaleHeight(48, context),
               width: scaleWidth(48, context),
             ),
-            const VerticalGap(size: 15),
-            CustomText(
-              text: title,
-              textStyle: CustomTextStyle.textStyle25Bold(
-                context,
-                color: AppColors.black,
+            const VerticalGap(size: 10),
+            FittedBox(
+              child: CustomText(
+                text: title,
+                textStyle: CustomTextStyle.textStyle25Bold(
+                  context,
+                  color: AppColors.black,
+                ),
               ),
             ),
           ],
