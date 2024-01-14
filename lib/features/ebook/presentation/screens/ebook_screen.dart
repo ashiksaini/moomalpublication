@@ -67,10 +67,14 @@ class EBookScreen extends StatelessWidget {
 
           // Data view
           if (_ebookController.ebooks.isEmpty) ...{
-            const Expanded(
+            Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [EmptyProductView()],
+                children: [
+                  EmptyProductView(
+                    title: "oops_no_book_found".tr,
+                  )
+                ],
               ),
             )
           } else

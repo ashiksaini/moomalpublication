@@ -234,10 +234,14 @@ final Map<String, String> enUS = {
   "out_of": "out of",
   "current_affair_quiz": "Current affair Quiz",
   "economics_quiz": "Economics Quiz",
-  "add": "Add",
-  "©_2021_Moomal_Publication_All_rights_reserved":
-      "© 2021 Moomal Publication All rights reserved",
-  "our_quiz": "Our Quiz",
+  "add":"Add",
+  "©_2021_Moomal_Publication_All_rights_reserved":"© 2021 Moomal Publication All rights reserved",
+  "our_quiz":"Our Quiz",
+  "oops_no_quiz_found":"Oops..! No Quiz Found",
+  "overall_performace":"Overall Performance",
+  "online_exam":"Online Exam",
+  "reattempt":"Reattempt",
+  
 
   // Payment ///////////////////////////////////////////////////////////
   "payment_error": "Payment Error",

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/features/overall_results/controller/overall_result_controller.dart';
 
 class SheetMarksRow extends StatelessWidget {
-  SheetMarksRow({super.key});
-  final OverallResultController overallResultController =
-      Get.find<OverallResultController>();
+  const SheetMarksRow({super.key, required this.overallDataList});
+  final List<String> overallDataList;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,18 +16,22 @@ class SheetMarksRow extends StatelessWidget {
         padding: EdgeInsets.zero,
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: overallResultController.overallPerformance.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        itemCount: overallDataList.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 6,
-          crossAxisSpacing: scaleWidth(10, context),
-          mainAxisSpacing: scaleHeight(10, context),
+          childAspectRatio: 1.6,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
         ),
         itemBuilder: (_, index) {
-          return CustomText(
-            textAlign: TextAlign.start,
-            text: "${overallResultController.overallPerformance[index]} : 23",
-            textStyle: CustomTextStyle.textStyle18Bold(context),
+          return Container(
+            color: Colors.amber,
+            child: CustomText(
+              // maxLines: 1,
+              textAlign: TextAlign.start,
+              text: "${overallDataList[index]} : 23",
+              textStyle: CustomTextStyle.textStyle18Bold(context),
+            ),
           );
         },
       ),

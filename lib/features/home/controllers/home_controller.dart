@@ -247,7 +247,7 @@ class HomeController extends BaseController {
         AppRouting.toNamed(NameRoutes.settingsScreen);
         break;
       case DrawerItemType.onlineTestSeries:
-        AppRouting.toNamed(NameRoutes.testSeriesScreen);
+        AppRouting.toNamed(NameRoutes.onlineTestSeriesScreen);
         break;
       case DrawerItemType.overallResult:
         AppRouting.toNamed(NameRoutes.overallResultScreen);
