@@ -47,21 +47,24 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: scaleHeight(60, context),
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 6.0,
+    return Wrap(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 6.0,
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Row(
-        children: _buildNavItems(),
-      ),
+          child: Row(
+            children: _buildNavItems(),
+          ),
+        ),
+      ],
     );
   }
 

@@ -23,7 +23,7 @@ class BookTypeGrid extends StatelessWidget {
         itemCount: 4,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 1.5,
+          childAspectRatio: 1.4,
         ),
         itemBuilder: (_, index) {
           if (index == 0) {
@@ -62,7 +62,12 @@ class BookTypeGrid extends StatelessWidget {
     );
   }
 
-  Widget _getBookDetailItem(BuildContext context, String title, String subtitle, {Color textColor = AppColors.grey}) {
+  Widget _getBookDetailItem(
+    BuildContext context,
+    String title,
+    String subtitle, {
+    Color textColor = AppColors.grey,
+  }) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.grey),
