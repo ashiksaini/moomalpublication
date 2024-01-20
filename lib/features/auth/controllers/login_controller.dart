@@ -28,11 +28,8 @@ class LoginController extends BaseController {
       loginResponse.value = await LoginServices.login(data: _getCredential());
 
       if (loginResponse.value.data != null) {
-        if (loginResponse.value.data!.status!
-                .compareTo(AppConstants.successfulResponse) ==
-            0) {
-          await Utility.saveLoginDataToLocal(loginResponse.value.data!.data!,
-              rememberMe.value, passwordTextEditingController.text);
+        if (loginResponse.value.data!.status!.compareTo(AppConstants.successfulResponse) == 0) {
+          await Utility.saveLoginDataToLocal(loginResponse.value.data!.data!, rememberMe.value, passwordTextEditingController.text);
           _navigateToHomeScreen();
         } else {
           showSnackBar(loginResponse.value.data!.message.toString());
@@ -55,16 +52,9 @@ class LoginController extends BaseController {
   }
 
   void _checkForRememberMe() async {
-    if (await SharedPreferencesHelper.getBool(
-        SharedPreferenceKeys.rememberMe)) {
-      usernameTextEditingController.text =
-          await SharedPreferencesHelper.getString(
-                  SharedPreferenceKeys.username) ??
-              "";
-      passwordTextEditingController.text =
-          await SharedPreferencesHelper.getString(
-                  SharedPreferenceKeys.password) ??
-              "";
+    if (await SharedPreferencesHelper.getBool(SharedPreferenceKeys.rememberMe)) {
+      usernameTextEditingController.text = await SharedPreferencesHelper.getString(SharedPreferenceKeys.username) ?? "";
+      passwordTextEditingController.text = await SharedPreferencesHelper.getString(SharedPreferenceKeys.password) ?? "";
     }
   }
 }

@@ -66,7 +66,7 @@ mixin NetworkHandlingMixin {
     dio.DioException error,
     dio.ErrorInterceptorHandler handler,
   ) async {
-    SharedPreferencesHelper.clearSharedPref();
+    SharedPreferencesHelper.clearSharedPrefExcept();
     AppRouting.offAllNamed(NameRoutes.splashScreen);
 
     /** 
