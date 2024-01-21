@@ -8,7 +8,7 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 
 class EmptyProductView extends StatelessWidget {
-  const EmptyProductView({super.key,required this.title});
+  const EmptyProductView({super.key, required this.title});
   final String title;
 
   @override
@@ -23,8 +23,7 @@ class EmptyProductView extends StatelessWidget {
         const VerticalGap(size: 30),
         CustomText(
           text: title,
-          textStyle:
-              CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
+          textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.black),
         ),
       ],
     );

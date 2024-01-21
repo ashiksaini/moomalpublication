@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 
 BoxShadow primaryBoxShadow() {
-  return BoxShadow(
+  return const BoxShadow(
     color: AppColors.shadow,
     offset: Offset(0, 4),
     blurRadius: 4,

@@ -97,7 +97,8 @@ mixin NetworkHandlingMixin {
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
-      print("*************************************** Response *************************************** ");
+      print(
+          "*************************************** Response *************************************** ");
 
       // Print the response status code
       print('Status Code: ${response.statusCode}');
@@ -108,14 +109,17 @@ mixin NetworkHandlingMixin {
       // Response headers
       print('Response Headers');
       response.headers.map.forEach((key, value) {
-        print("$key ----> $value");
+        if (kDebugMode) {
+          print("$key ----> $value");
+        }
       });
     }
   }
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      print("*************************************** Request *************************************** ");
+      print(
+          "*************************************** Request *************************************** ");
 
       // Print the request method (GET, POST, etc.)
       print('Request Method: ${options.method}');
@@ -131,7 +135,9 @@ mixin NetworkHandlingMixin {
       // Request headers
       print('Request Headers');
       options.headers.map((key, value) {
-        print("$key ----> $value");
+        if (kDebugMode) {
+          print("$key ----> $value");
+        }
         return MapEntry(key, value);
       });
     }

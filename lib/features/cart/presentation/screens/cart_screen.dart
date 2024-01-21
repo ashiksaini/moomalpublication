@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/atoms/refersh_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/components/organisms/empty_cart_view.dart';
-import 'package:moomalpublication/core/libs/payu_sdk/payu_checkout_pro.dart';
+import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -106,24 +107,33 @@ class CartScreen extends StatelessWidget {
             textStyle: CustomTextStyle.textStyle25Bold(context),
           ),
           GestureDetector(
-            onTap: () {
-              final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
-              payUCheckoutPro.init();
-              payUCheckoutPro.pay(_cartController.totals.value?.totalPrice);
-            },
+            onTap: () => _cartController.cartCheckout(),
             child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: scaleHeight(10, context),
-                horizontal: scaleWidth(24, context),
-              ),
               decoration: BoxDecoration(
                 color: AppColors.green,
                 borderRadius: BorderRadius.circular(scaleRadius(10, context)),
               ),
-              child: CustomText(
-                text: 'place_order'.tr,
-                textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white),
-              ),
+              child: _cartController.cartCheckoutResponse.value.isLoading
+                  ? Container(
+                      height: scaleWidth(45, context),
+                      padding: EdgeInsets.symmetric(horizontal: scaleWidth(45, context)),
+                      child: LottieBuilder.asset(
+                        AppAssets.loadingAnimation,
+                        fit: BoxFit.cover,
+                        filterQuality: FilterQuality.high,
+                        height: scaleWidth(45, context),
+                      ),
+                    )
+                  : Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: scaleHeight(10, context),
+                        horizontal: scaleWidth(24, context),
+                      ),
+                      child: CustomText(
+                        text: 'place_order'.tr,
+                        textStyle: CustomTextStyle.textStyle20Bold(context, color: AppColors.white),
+                      ),
+                    ),
             ),
           )
         ],

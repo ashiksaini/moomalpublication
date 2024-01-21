@@ -14,8 +14,8 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     _checkoutProFlutter = PayUCheckoutProFlutter(this);
   }
 
-  Future<void> pay(String? totalPrice) async {
-    final payUPaymentParams = _getPayUPaymentParams(totalPrice ?? "1.0");
+  Future<void> pay(String? totalPrice, String? orderId) async {
+    final payUPaymentParams = _getPayUPaymentParams(totalPrice ?? "1.0", orderId ?? Utility.generateTransactionId());
     final payUCheckoutProConfig = _getPayUCheckoutProConfig();
 
     _checkoutProFlutter.openCheckoutScreen(
@@ -24,7 +24,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     );
   }
 
-  Map<String, dynamic> _getPayUPaymentParams(String amount) {
+  Map<String, dynamic> _getPayUPaymentParams(String amount, String orderId) {
     return {
       PayUPaymentParamKey.key: PayuPaymentConfig.key,
       PayUPaymentParamKey.amount: amount,
@@ -32,9 +32,9 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
       PayUPaymentParamKey.firstName: PayuPaymentConfig.merchantName,
       PayUPaymentParamKey.email: PayuPaymentConfig.email,
       PayUPaymentParamKey.phone: PayuPaymentConfig.phNumber,
-      PayUPaymentParamKey.environment: PayuPaymentConfig.env, 
-      PayUPaymentParamKey.transactionId: Utility.generateTransactionId(), // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
-      PayUPaymentParamKey.userCredential: PayuPaymentConfig.userCredential, 
+      PayUPaymentParamKey.environment: PayuPaymentConfig.env,
+      PayUPaymentParamKey.transactionId: orderId, // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
+      PayUPaymentParamKey.userCredential: PayuPaymentConfig.userCredential,
       PayUPaymentParamKey.android_surl: "https://www.payumoney.com/mobileapp/payumoney/success.php",
       PayUPaymentParamKey.android_furl: "https://www.payumoney.com/mobileapp/payumoney/failure.php",
       PayUPaymentParamKey.ios_surl: "https://www.payumoney.com/mobileapp/payumoney/success.php",

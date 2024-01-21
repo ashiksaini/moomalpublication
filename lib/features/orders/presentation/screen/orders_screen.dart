@@ -23,7 +23,7 @@ class OrdersScreen extends StatelessWidget {
               title: 'orders'.tr,
               maxLine: 1,
             ),
-             Expanded(
+            Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [OrderCard()],

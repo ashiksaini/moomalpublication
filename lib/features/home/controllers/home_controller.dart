@@ -270,7 +270,7 @@ class HomeController extends BaseController {
     exploreProductList.clear();
     newArrivalProductList.clear();
     bestSellerProductList.clear();
-    
+
     _getExploreBooks();
     _getNewArrivalBooks();
     _getBestSellerBooks();
