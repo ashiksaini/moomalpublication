@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class CardImage extends StatelessWidget {
