@@ -14,7 +14,8 @@ import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
 
 class PriceQuantity extends StatelessWidget {
-  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController =
+      Get.find<ProductDetailController>();
 
   PriceQuantity({super.key});
 
@@ -77,7 +78,8 @@ class PriceQuantity extends StatelessWidget {
           children: [
             // Quantity Txt
             CustomText(
-              text: "${"quantity".tr}${_productDetailController.selectedQuantity}",
+              text:
+                  "${"quantity".tr}${_productDetailController.selectedQuantity}",
               textStyle: CustomTextStyle.textStyle25Bold(
                 context,
                 color: AppColors.black,
@@ -89,7 +91,8 @@ class PriceQuantity extends StatelessWidget {
             // DropDown icon
             SvgPicture.asset(
               AppAssets.icDropDown,
-              colorFilter: const ColorFilter.mode(AppColors.black, BlendMode.srcIn),
+              colorFilter:
+                  const ColorFilter.mode(AppColors.black, BlendMode.srcIn),
               height: scaleHeight(18, context),
               width: scaleWidth(18, context),
             ),
@@ -99,7 +102,9 @@ class PriceQuantity extends StatelessWidget {
           return DropdownMenuItem(
             value: item,
             onTap: () {
-              if (_productDetailController.productDetailData.value!.productVariationType.value == ProductVariation.ebook) {
+              if (_productDetailController
+                      .productDetailData.value!.productVariationType.value ==
+                  ProductVariation.ebook) {
                 showSnackBar("ebook_quantity_cannot_be_more_than_one".tr);
               } else {
                 _productDetailController.selectedQuantity.value = item;
@@ -107,7 +112,8 @@ class PriceQuantity extends StatelessWidget {
             },
             child: StatefulBuilder(
               builder: (context, menuSetState) {
-                final isSelected = _productDetailController.selectedQuantity.value == item;
+                final isSelected =
+                    _productDetailController.selectedQuantity.value == item;
                 return Column(
                   children: [
                     Container(
@@ -122,13 +128,19 @@ class PriceQuantity extends StatelessWidget {
                         children: [
                           CustomText(
                             text: item.toString(),
-                            textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+                            textStyle: CustomTextStyle.textStyle25Bold(context,
+                                color: AppColors.black),
                           ),
-                          if (isSelected) SvgPicture.asset(AppAssets.icSelectedRadio) else SvgPicture.asset(AppAssets.icUnSelectedRadio)
+                          if (isSelected)
+                            SvgPicture.asset(AppAssets.icSelectedRadio)
+                          else
+                            SvgPicture.asset(AppAssets.icUnSelectedRadio)
                         ],
                       ),
                     ),
-                    Divider(height: scaleHeight(2, context), thickness: scaleHeight(2, context)),
+                    Divider(
+                        height: scaleHeight(2, context),
+                        thickness: scaleHeight(2, context)),
                   ],
                 );
               },
@@ -136,7 +148,9 @@ class PriceQuantity extends StatelessWidget {
           );
         }).toList(),
         onChanged: (value) {
-          if (_productDetailController.productDetailData.value!.productVariationType.value != ProductVariation.ebook) {
+          if (_productDetailController
+                  .productDetailData.value!.productVariationType.value !=
+              ProductVariation.ebook) {
             _productDetailController.selectedQuantity.value = value ?? 1;
           }
         },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -30,7 +31,8 @@ class PressEventCard extends StatelessWidget {
         containerChild: Padding(
           padding: EdgeInsets.symmetric(vertical: scaleHeight(16, context)),
           child: CustomText(
-              text: "CENTRAL ECONOMIC REVIEW 2022-23 & CENTRAL BUDGET 2023-24",
+              text:
+                  "central_economic_review_2022_23_&_central_budget_2023_24".tr,
               textStyle: CustomTextStyle.textStyle20Regular(context,
                   color: AppColors.black)),
         ),

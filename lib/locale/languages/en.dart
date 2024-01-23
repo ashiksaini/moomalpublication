@@ -96,7 +96,8 @@ final Map<String, String> enUS = {
   "ebook": "E Book",
   "available": "Available",
   "not_available": "Not Available",
-  "ebook_quantity_cannot_be_more_than_one": "E Book quantity cannot be more than 1",
+  "ebook_quantity_cannot_be_more_than_one":
+      "E Book quantity cannot be more than 1",
 
   // Drawer ///////////////////////////////////////////////////////////////////
   "downloads": "Downloads",
@@ -206,6 +207,7 @@ final Map<String, String> enUS = {
   "profile": "Profile",
   "my_profile": "My Profile",
   "user_name": "User Name",
+  
 
   // Write Review ///////////////////////////////////////////////////////////
   "your_rating": "Your Rating",
@@ -228,10 +230,10 @@ final Map<String, String> enUS = {
   "timer": "Timer",
   "thanks_for_submitting_your_resposne!_you_scored": "Thanks for submitting your response! You scored",
   "out_of": "out of",
-  "current_affair_quiz": "Current affair Quiz",
-  "economics_quiz": "Economics Quiz",
   "add": "Add",
   "©_2021_Moomal_Publication_All_rights_reserved": "© 2021 Moomal Publication All rights reserved",
+  "current_affair_quiz": "Current\naffair\nQuiz",
+  "economics_quiz": "Economics \nQuiz",
   "our_quiz": "Our Quiz",
   "oops_no_quiz_found": "Oops..! No Quiz Found",
   "overall_performace": "Overall Performance",
@@ -243,4 +245,49 @@ final Map<String, String> enUS = {
   "payment_cancel": "Payment Cancel",
   "payment_failed": "Payment Failed",
   "payment_success": "Payment Success",
+
+  //Address
+
+  "the_following_addresses_will_be_used_on_the_checkout_page_by_default":
+      "The following addresses will be used on the checkout page by default. ",
+  "billing_address": "BILLING ADDRESS:",
+  "you_have_not_set_up_this_type_of_address_yet":
+      "You have not set up this type of address yet.",
+  "shipping_address": "SHIPPING ADDRESS:",
+
+  // Download
+  "my_downloads": "My Downloads",
+  "delete": "Delete",
+
+  //Event And Press Release
+  "events": "Events",
+  "media_books": "MEDIA BOOKS",
+  "media_videos": "MEDIA VIDEOS",
+  "read_more": "Read More",
+  "central_economic_review_2022_23_&_central_budget_2023_24":
+      "CENTRAL ECONOMIC REVIEW 2022-23 & CENTRAL BUDGET 2023-24",
+
+  // Order
+  "title": "Title",
+  "name": "Name",
+  "date_paid": "Date Paid",
+  "price_no": "Price",
+
+  // Online Test Series and Overall Result
+  "score": "Score",
+  "rank": "Rank",
+  "total": "Total",
+  "correct": "Correct",
+  "incorrect": "Incorrect",
+  "skipped": "Skipped",
+  "action": "Action",
+  "order_id": "Order ID",
+  "purchased_on": "Purchased On",
+
+  // Quiz
+  "admin":"Admin",
+  "quiz_views":"Quiz Views",
+  "quiz_taken":"Quiz Taken",
+  "start_quiz":"Start Quiz",
+  "no_test_available":"No Test Available",
 };

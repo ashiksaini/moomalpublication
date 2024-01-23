@@ -56,25 +56,29 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   @override
   onError(Map? response) {
-    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_error".tr);
+    showLottieDialog(
+        Get.context!, AppAssets.failedAnimation, "payment_error".tr);
     throw UnimplementedError();
   }
 
   @override
   onPaymentCancel(Map? response) {
-    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
+    showLottieDialog(
+        Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
     throw UnimplementedError();
   }
 
   @override
   onPaymentFailure(response) {
-    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_failed".tr);
+    showLottieDialog(
+        Get.context!, AppAssets.failedAnimation, "payment_failed".tr);
     throw UnimplementedError();
   }
 
   @override
   onPaymentSuccess(response) {
-    showLottieDialog(Get.context!, AppAssets.successAnimation, "payment_success".tr);
+    showLottieDialog(
+        Get.context!, AppAssets.successAnimation, "payment_success".tr);
     throw UnimplementedError();
   }
 }

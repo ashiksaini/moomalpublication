@@ -37,21 +37,23 @@ class PhotoDescription extends StatelessWidget {
           ),
           const VerticalGap(size: 18),
           CustomText(
-            text: "Name: ${_quizController.quizList[index].quizName}",
+            text: "${'name'.tr}: ${_quizController.quizList[index].quizName}",
             textStyle: CustomTextStyle.textStyle15Bold(
               context,
             ),
             textAlign: TextAlign.start,
           ),
           CustomText(
-            text: "Quiz Views: ${_quizController.quizList[index].quizViews}",
+            text:
+                "${'quiz_views'.tr}: ${_quizController.quizList[index].quizViews}",
             textStyle: CustomTextStyle.textStyle15Bold(
               context,
             ),
             textAlign: TextAlign.start,
           ),
           CustomText(
-            text: "Quiz Taken: ${_quizController.quizList[index].quizTaken}",
+            text:
+                "${'quiz_taken'.tr}: ${_quizController.quizList[index].quizTaken}",
             textStyle: CustomTextStyle.textStyle15Bold(
               context,
             ),

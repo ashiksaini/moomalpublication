@@ -7,8 +7,9 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
-import 'package:moomalpublication/features/downloads/presentation/widgets/delete.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class DownloadCard extends StatelessWidget {
   const DownloadCard({super.key});
@@ -26,35 +27,40 @@ class DownloadCard extends StatelessWidget {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 20),
-                child: ShadowContainer(
-                    backgroundColor: AppColors.orangeLighter.withOpacity(0.9),
-                    containerChild: Padding(
-                      padding: const EdgeInsets.all(6),
-                      child: Row(
-                        children: [
-                          CardImage(
-                            image: AppAssets.bookPng,
-                            borderColor: AppColors.grey,
-                            height: scaleHeight(140, context),
-                          ),
-                          const HorizontalGap(size: 16),
-                          Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomText(
-                                    textAlign: TextAlign.start,
-                                    text: "Current Affairs 1 Liner",
-                                    textStyle: CustomTextStyle.textStyle25Bold(
-                                        context)),
-                                const VerticalGap(size: 30),
-                                const DeleteButton()
-                              ],
+                child: GestureDetector(
+                  onTap: () {
+                    AppRouting.toNamed(NameRoutes.pdfScreen);
+                  },
+                  child: ShadowContainer(
+                      backgroundColor: AppColors.orangeLighter.withOpacity(0.9),
+                      containerChild: Padding(
+                        padding: const EdgeInsets.all(6),
+                        child: Row(
+                          children: [
+                            const CardImage(
+                              image: AppAssets.bookPng,
+                              borderColor: AppColors.grey,
                             ),
-                          )
-                        ],
-                      ),
-                    )),
+                            const HorizontalGap(size: 16),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomText(
+                                      textAlign: TextAlign.start,
+                                      text: "Current Affairs 1 Liner",
+                                      textStyle:
+                                          CustomTextStyle.textStyle25Bold(
+                                              context)),
+                                  const VerticalGap(size: 30),
+                                  // const DeleteButton()
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )),
+                ),
               );
             }));
   }

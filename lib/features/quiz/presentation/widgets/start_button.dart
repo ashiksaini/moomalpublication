@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -21,7 +22,7 @@ class StartButton extends StatelessWidget {
             vertical: scaleHeight(4, context),
             horizontal: scaleWidth(8, context)),
         child: CustomText(
-            text: "Start Quiz",
+            text: "start_quiz".tr,
             textStyle: CustomTextStyle.textStyle18Regular(context,
                 decoration: TextDecoration.underline, color: Colors.white)),
       ),

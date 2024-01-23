@@ -51,7 +51,7 @@ class ShopScreen extends StatelessWidget {
                         childAspectRatio:
                             _shopController.productResponse.value.isLoading
                                 ? 0.52
-                                : 0.44,
+                                : 0.42,
                       ),
                       itemCount: _shopController.productResponse.value.isLoading
                           ? 20

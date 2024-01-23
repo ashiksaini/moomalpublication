@@ -65,7 +65,7 @@ class DashboardBooksView extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 12.0,
         mainAxisSpacing: 15.0,
-        childAspectRatio: isLoading ? 0.52 : 0.44,
+        childAspectRatio: isLoading ? 0.52 : 0.42,
       ),
       itemCount: isLoading ? loadingItemCount : data.length,
       itemBuilder: (context, index) {
