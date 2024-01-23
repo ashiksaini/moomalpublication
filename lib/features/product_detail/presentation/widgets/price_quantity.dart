@@ -45,8 +45,7 @@ class PriceQuantity extends StatelessWidget {
         boxShadow: [primaryBoxShadow()],
       ),
       child: CustomText(
-        text:
-            "${"price".tr}${_productDetailController.productDetailData.value!.price ?? ""}",
+        text: "${"price".tr}${_bookPrice()}",
         textStyle: CustomTextStyle.textStyle25Bold(
           context,
           color: AppColors.black,
@@ -168,5 +167,19 @@ class PriceQuantity extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _bookPrice() {
+    for (var variation in _productDetailController.productDetailData.value?.variations ?? []) {
+      if (_productDetailController.productDetailData.value?.productVariationType.value == ProductVariation.ebook && variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.price ?? "";
+      }
+
+      if (_productDetailController.productDetailData.value?.productVariationType.value == ProductVariation.book && variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.price ?? "";
+      }
+    }
+
+    return _productDetailController.productDetailData.value?.price ?? "";
   }
 }

@@ -66,7 +66,7 @@ mixin NetworkHandlingMixin {
     dio.DioException error,
     dio.ErrorInterceptorHandler handler,
   ) async {
-    SharedPreferencesHelper.clearSharedPref();
+    SharedPreferencesHelper.clearSharedPrefExcept();
     AppRouting.offAllNamed(NameRoutes.splashScreen);
 
     /** 
@@ -109,7 +109,9 @@ mixin NetworkHandlingMixin {
       // Response headers
       print('Response Headers');
       response.headers.map.forEach((key, value) {
-        print("$key ----> $value");
+        if (kDebugMode) {
+          print("$key ----> $value");
+        }
       });
     }
   }
@@ -133,7 +135,9 @@ mixin NetworkHandlingMixin {
       // Request headers
       print('Request Headers');
       options.headers.map((key, value) {
-        print("$key ----> $value");
+        if (kDebugMode) {
+          print("$key ----> $value");
+        }
         return MapEntry(key, value);
       });
     }

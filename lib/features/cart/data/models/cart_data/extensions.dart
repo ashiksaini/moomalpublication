@@ -2,7 +2,7 @@ class Extensions {
   Extensions();
 
   factory Extensions.fromJson(Map<String, dynamic> json) {
-    throw UnimplementedError('Extensions.fromJson($json) is not implemented');
+    return Extensions();
   }
 
   Map<String, dynamic> toJson() {

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/core/libs/payu_sdk/payu_checkout_pro.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/item.dart';
@@ -9,6 +10,8 @@ import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class CartController extends BaseController {
   final Rx<CartDataResponse> cartDataResponse = Rx(ApiResponse());
+  final Rx<CartCheckoutResponse> cartCheckoutResponse = Rx(ApiResponse());
+
   final RxList<Item> cartItems = RxList();
   final Rx<Totals?> totals = Rx(null);
 
@@ -88,6 +91,17 @@ class CartController extends BaseController {
         cartItems.value = cartDataResponse.value.data!.items!;
         totals.value = cartDataResponse.value.data!.totals!;
       }
+    }
+  }
+
+  void cartCheckout() async {
+    cartCheckoutResponse.value = ApiResponse.loading();
+
+    cartCheckoutResponse.value = await CartServices.checkout();
+    if (cartCheckoutResponse.value.data != null) {
+      final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
+      payUCheckoutPro.init();
+      payUCheckoutPro.pay(totals.value?.totalPrice, cartCheckoutResponse.value.data!.orderKey);
     }
   }
 }

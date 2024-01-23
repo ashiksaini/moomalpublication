@@ -16,7 +16,7 @@ class PaginationDataViewer<T> extends StatefulWidget {
   final Widget Function(T) itemBuilder;
   final bool isLastPage;
 
-  const PaginationDataViewer({
+  const PaginationDataViewer({super.key, 
     required this.dataList,
     required this.onLoadMore,
     required this.itemBuilder,
