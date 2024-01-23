@@ -9,7 +9,11 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 
 class ContactCard extends StatelessWidget {
-  const ContactCard({super.key, required this.contactImage, required this.contactText, required this.contactDescription});
+  const ContactCard(
+      {super.key,
+      required this.contactImage,
+      required this.contactText,
+      required this.contactDescription});
 
   final String contactImage;
   final String contactText;
@@ -47,7 +51,8 @@ class ContactCard extends StatelessWidget {
             SelectableText(
               contactDescription,
               textAlign: TextAlign.start,
-              style: CustomTextStyle.textStyle22Bold(context, color: AppColors.black),
+              style: CustomTextStyle.textStyle22Bold(context,
+                  color: AppColors.black),
             )
           ],
         ),

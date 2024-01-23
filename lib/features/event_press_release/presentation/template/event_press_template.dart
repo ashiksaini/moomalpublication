@@ -45,7 +45,8 @@ class EventAndPressCard extends StatelessWidget {
                       ? AppAssets.icLogo
                       : _eventPressController.events[index].featuredImage!,
                   borderColor: AppColors.blue,
-                  height: scaleHeight(130, context),
+                  // height: scaleHeight(130, context),
+                  assetsImage: false,
                 ),
                 const HorizontalGap(size: 12),
                 Flexible(
@@ -73,7 +74,7 @@ class EventAndPressCard extends StatelessWidget {
                         ),
                         const VerticalGap(size: 9),
                         CustomText(
-                          text: "Read More",
+                          text: "read_more".tr,
                           textStyle: CustomTextStyle.textStyle20SemiMedium(
                               context,
                               color: AppColors.black),

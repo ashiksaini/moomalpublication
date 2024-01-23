@@ -5,6 +5,7 @@ import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/current_affair_quiz_card.dart';
@@ -40,20 +41,22 @@ class _QuizScreenState extends State<QuizScreen>
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),
             ),
-            const VerticalGap(size: 32),
+          const VerticalGap(size: 22),
             TabBar(
               unselectedLabelColor: AppColors.black,
               labelColor: AppColors.orange,
               dividerColor: AppColors.grey,
-              labelStyle: CustomTextStyle.textStyle25Bold(context),
-              unselectedLabelStyle: CustomTextStyle.textStyle25Bold(context),
+              labelStyle: CustomTextStyle.textStyle22Bold(context),
+              unselectedLabelStyle: CustomTextStyle.textStyle22Bold(context),
               indicatorColor: AppColors.orange,
               tabs: [
                 Tab(
-                  text: 'current_affair_quiz'.tr,
+                  text: 'Current Affair\nQuiz',
+                  height: scaleHeight(80, context),
                 ),
                 Tab(
-                  text: 'economics_quiz'.tr,
+                  text: 'Economics \n Quiz',
+                  height: scaleHeight(80, context),
                 ),
               ],
               controller: _tabController,

@@ -8,12 +8,13 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 
 class EmptyProductView extends StatelessWidget {
-  const EmptyProductView({super.key,required this.title});
+  const EmptyProductView({super.key, required this.title});
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         SvgPicture.asset(
           AppAssets.icSearchScreenBg,

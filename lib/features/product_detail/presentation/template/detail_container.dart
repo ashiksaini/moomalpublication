@@ -24,14 +24,19 @@ import 'package:moomalpublication/features/product_detail/presentation/widgets/r
 import 'package:moomalpublication/features/product_detail/presentation/widgets/write_review_view.dart';
 
 class DetailContainer extends StatelessWidget {
-  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController =
+      Get.find<ProductDetailController>();
   DetailContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () {
-        return (_productDetailController.productDetailResponse.value.isLoading || _productDetailController.productReviewsResponse.value.isLoading || _productDetailController.similarProductResponse.value.isLoading)
+        return (_productDetailController
+                    .productDetailResponse.value.isLoading ||
+                _productDetailController
+                    .productReviewsResponse.value.isLoading ||
+                _productDetailController.similarProductResponse.value.isLoading)
             ? SizedBox(
                 height: screenHeight(context) - scaleHeight(60, context),
                 child: Center(
@@ -74,7 +79,8 @@ class DetailContainer extends StatelessWidget {
 
             // Book Details
             BookDetailTabBar(
-              description: _productDetailController.productDetailData.value?.description,
+              description:
+                  _productDetailController.productDetailData.value?.description,
               information: "not_available".tr,
             ),
             const VerticalGap(size: 30),
@@ -84,7 +90,8 @@ class DetailContainer extends StatelessWidget {
             const VerticalGap(size: 30),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
+              padding:
+                  EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
               child: WriteReviewView(
                 onClick: () {
                   showModalBottomSheet<ReviewBottomSheet>(
@@ -119,16 +126,19 @@ class DetailContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.orangeLight,
         boxShadow: [primaryBoxShadow()],
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(scaleRadius(20, context))),
+        borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(scaleRadius(20, context))),
       ),
       child: Column(
         children: [
           // Book Image
           ClipRRect(
             borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-            child: _productDetailController.productDetailData.value!.featuredImage!.url!.isNotEmpty
+            child: _productDetailController
+                    .productDetailData.value!.featuredImage!.url!.isNotEmpty
                 ? CachedNetworkImage(
-                    imageUrl: _productDetailController.productDetailData.value!.featuredImage!.url!,
+                    imageUrl: _productDetailController
+                        .productDetailData.value!.featuredImage!.url!,
                     height: scaleHeight(300, context),
                     width: scaleWidth(220, context),
                     fit: BoxFit.fill,
@@ -142,7 +152,8 @@ class DetailContainer extends StatelessWidget {
                     child: Center(
                       child: CustomText(
                         text: "no_image_preview_available".tr,
-                        textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
+                        textStyle: CustomTextStyle.textStyle10Bold(context,
+                            color: AppColors.black),
                       ),
                     ),
                   ),
@@ -181,30 +192,48 @@ class DetailContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (_productDetailController.productDetailData.value!.isEbookAvailable)
+          if (_productDetailController
+              .productDetailData.value!.isEbookAvailable)
             GestureDetector(
-              onTap: () => _productDetailController.onProductVariationClick(_productDetailController.productDetailData.value!, ProductVariation.ebook),
+              onTap: () => _productDetailController.onProductVariationClick(
+                  _productDetailController.productDetailData.value!,
+                  ProductVariation.ebook),
               child: Row(
                 children: [
                   SvgPicture.asset(
-                    (_productDetailController.productDetailData.value!.productVariationType.value == ProductVariation.ebook) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                    (_productDetailController.productDetailData.value!
+                                .productVariationType.value ==
+                            ProductVariation.ebook)
+                        ? AppAssets.icSelectedRadio
+                        : AppAssets.icUnSelectedRadio,
                   ),
                   const HorizontalGap(size: 2),
-                  CustomText(text: 'ebook'.tr, textStyle: CustomTextStyle.textStyle20Bold(context)),
+                  CustomText(
+                      text: 'ebook'.tr,
+                      textStyle: CustomTextStyle.textStyle20Bold(context)),
                 ],
               ),
             ),
-          if (_productDetailController.productDetailData.value!.isBookAvailable) ...{
+          if (_productDetailController
+              .productDetailData.value!.isBookAvailable) ...{
             const HorizontalGap(size: 10),
             GestureDetector(
-              onTap: () => _productDetailController.onProductVariationClick(_productDetailController.productDetailData.value!, ProductVariation.book),
+              onTap: () => _productDetailController.onProductVariationClick(
+                  _productDetailController.productDetailData.value!,
+                  ProductVariation.book),
               child: Row(
                 children: [
                   SvgPicture.asset(
-                    (_productDetailController.productDetailData.value!.productVariationType.value == ProductVariation.book) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                    (_productDetailController.productDetailData.value!
+                                .productVariationType.value ==
+                            ProductVariation.book)
+                        ? AppAssets.icSelectedRadio
+                        : AppAssets.icUnSelectedRadio,
                   ),
                   const HorizontalGap(size: 2),
-                  CustomText(text: 'book'.tr, textStyle: CustomTextStyle.textStyle20Bold(context)),
+                  CustomText(
+                      text: 'book'.tr,
+                      textStyle: CustomTextStyle.textStyle20Bold(context)),
                 ],
               ),
             ),
@@ -242,10 +271,12 @@ class DetailContainer extends StatelessWidget {
               : ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: min(_productDetailController.productReviews.length, 5),
+                  itemCount:
+                      min(_productDetailController.productReviews.length, 5),
                   itemBuilder: (_, index) {
                     return ReviewView(
-                      productReview: _productDetailController.productReviews[index],
+                      productReview:
+                          _productDetailController.productReviews[index],
                     );
                   },
                 ),

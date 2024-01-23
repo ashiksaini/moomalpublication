@@ -9,7 +9,8 @@ import 'package:moomalpublication/features/product_detail/controller/product_det
 class BookTypeGrid extends StatelessWidget {
   BookTypeGrid({super.key});
 
-  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController =
+      Get.find<ProductDetailController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +24,16 @@ class BookTypeGrid extends StatelessWidget {
         itemCount: 4,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 1.4,
+          childAspectRatio: 1.2,
         ),
         itemBuilder: (_, index) {
           if (index == 0) {
             return _getBookDetailItem(
               context,
               "book".tr,
-              _productDetailController.productDetailData.value!.isBookAvailable ? "available".tr : "not_available".tr,
+              _productDetailController.productDetailData.value!.isBookAvailable
+                  ? "available".tr
+                  : "not_available".tr,
               textColor: AppColors.black,
             );
           }
@@ -38,7 +41,9 @@ class BookTypeGrid extends StatelessWidget {
             return _getBookDetailItem(
               context,
               "ebook".tr,
-              _productDetailController.productDetailData.value!.isEbookAvailable ? "available".tr : "not_available".tr,
+              _productDetailController.productDetailData.value!.isEbookAvailable
+                  ? "available".tr
+                  : "not_available".tr,
               textColor: AppColors.black,
             );
           }
@@ -82,14 +87,16 @@ class BookTypeGrid extends StatelessWidget {
           // Title
           CustomText(
             text: title,
-            textStyle: CustomTextStyle.textStyle20Bold(context, color: textColor),
+            textStyle:
+                CustomTextStyle.textStyle20Bold(context, color: textColor),
           ),
 
           // SubTitle
           CustomText(
             maxLines: 2,
             text: subtitle,
-            textStyle: CustomTextStyle.textStyle20Bold(context, color: textColor),
+            textStyle:
+                CustomTextStyle.textStyle20Bold(context, color: textColor),
           ),
         ],
       ),

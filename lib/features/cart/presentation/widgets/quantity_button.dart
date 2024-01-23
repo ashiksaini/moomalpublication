@@ -22,7 +22,8 @@ class QuantityButton extends StatelessWidget {
         CustomText(
           text: "quantity_txt".tr,
           maxLines: 5,
-          textStyle: CustomTextStyle.textStyle20SemiBold(context, color: AppColors.black),
+          textStyle: CustomTextStyle.textStyle20SemiBold(context,
+              color: AppColors.black),
         ),
         quantityIncDecButton(context)
       ],
@@ -50,7 +51,8 @@ class QuantityButton extends StatelessWidget {
           color: AppColors.white,
           border: Border.all(color: AppColors.grey.withOpacity(0.5)),
           boxShadow: [primaryBoxShadow()],
-          borderRadius: BorderRadius.all(Radius.circular(scaleWidth(5, context))),
+          borderRadius:
+              BorderRadius.all(Radius.circular(scaleWidth(5, context))),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -68,7 +70,9 @@ class QuantityButton extends StatelessWidget {
 
   Widget _getIncDescView(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(scaleRadius(5, context)), boxShadow: [primaryBoxShadow()]),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(scaleRadius(5, context)),
+          boxShadow: [primaryBoxShadow()]),
       child: Row(
         children: [
           GestureDetector(
@@ -97,7 +101,8 @@ class QuantityButton extends StatelessWidget {
             ),
             child: CustomText(
               text: cartItem.quantity.toString(),
-              textStyle: CustomTextStyle.textStyle20SemiBold(context, color: AppColors.black),
+              textStyle: CustomTextStyle.textStyle20SemiBold(context,
+                  color: AppColors.black),
               maxLines: 1,
             ),
           ),

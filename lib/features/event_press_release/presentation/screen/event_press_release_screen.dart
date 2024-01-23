@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
+import 'package:moomalpublication/core/components/organisms/empty_product.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -41,13 +42,13 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
         child: Column(
           children: [
             CustomAppbar(
-              title: "Event And Press Release",
+              title: "event_and_press_release".tr,
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),
               maxLine: 1,
             ),
             const HorizontalGap(size: 20),
-            SizedBox(height: scaleHeight(60, context), child: const YearList()),
+            SizedBox(height: scaleHeight(90, context), child: const YearList()),
             TabBar(
               unselectedLabelColor: AppColors.grey,
               labelColor: AppColors.orange,
@@ -57,16 +58,16 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
               indicatorColor: AppColors.orange,
               tabs: [
                 Tab(
-                  text: 'Events',
-                  height: scaleHeight(50, context),
+                  text: 'events'.tr,
+                  height: scaleHeight(60, context),
                 ),
                 Tab(
                   text: '  Press\nRelease',
-                  height: scaleHeight(50, context),
+                  height: scaleHeight(60, context),
                 ),
                 Tab(
                   text: '  Media\nCoverage',
-                  height: scaleHeight(50, context),
+                  height: scaleHeight(60, context),
                 ),
               ],
               controller: _tabController,
@@ -80,12 +81,20 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                     : TabBarView(
                         controller: _tabController,
                         children: [
-                          ListView.builder(
-                            itemCount: _eventPressController.events.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return EventAndPressCard(index: index);
-                            },
-                          ),
+                          _eventPressController.events.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount:
+                                      _eventPressController.events.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return EventAndPressCard(index: index);
+                                  },
+                                )
+                              :  Center(
+                                  child: EmptyProductView(
+                                    title: 'not_available'.tr,
+                                  ),
+                                ),
                           Padding(
                             padding: EdgeInsets.symmetric(
                                 vertical: scaleHeight(10, context)),

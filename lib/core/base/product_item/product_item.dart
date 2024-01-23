@@ -57,8 +57,13 @@ class ProductItem {
         permalink: json['permalink'] as String?,
         categories: json['categories'] as List<dynamic>?,
         tags: json['tags'] as List<dynamic>?,
-        featuredImage: json['featured_image'] == null ? null : FeaturedImage.fromJson(json['featured_image'] as Map<String, dynamic>),
-        variations: (json['variations'] as List<dynamic>?)?.map((e) => Variation.fromJson(e as Map<String, dynamic>)).toList(),
+        featuredImage: json['featured_image'] == null
+            ? null
+            : FeaturedImage.fromJson(
+                json['featured_image'] as Map<String, dynamic>),
+        variations: (json['variations'] as List<dynamic>?)
+            ?.map((e) => Variation.fromJson(e as Map<String, dynamic>))
+            .toList(),
         ratingCount: json['rating_count'] as int?,
       );
 }

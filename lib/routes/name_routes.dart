@@ -28,5 +28,5 @@ class NameRoutes {
   static const String quizTestDetailScreen = '/quizTestDetailScreen';
   static const String quizTestScreen = '/quizTestScreen';
   static const String onlineTestSeriesScreen = '/onlineTestSeriesScreen';
-
+  static const String pdfScreen = '/pdfScreen';
 }

@@ -24,8 +24,7 @@ class BtnAddToCart extends StatelessWidget {
       onTap: () => onClick(),
       child: Container(
         padding: EdgeInsets.symmetric(
-          vertical: scaleHeight(8, context),
-          horizontal: scaleWidth(5, context),
+          vertical: scaleHeight(5, context),
         ),
         decoration: BoxDecoration(
           color: AppColors.orangeLight,
@@ -35,14 +34,20 @@ class BtnAddToCart extends StatelessWidget {
           ),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CustomText(
-              text: (cartBtnType == CartBtnType.addToCart) ? "add_to_cart".tr.toUpperCase() : "go_to_cart".tr.toUpperCase(),
-              textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black),
+              text: (cartBtnType == CartBtnType.addToCart)
+                  ? "add_to_cart".tr.toUpperCase()
+                  : "go_to_cart".tr.toUpperCase(),
+              textStyle: CustomTextStyle.textStyle18Bold(context,
+                  color: AppColors.black),
             ),
-            const Spacer(),
+            // const Spacer(),
             SvgPicture.asset(
-              (cartBtnType == CartBtnType.addToCart) ? AppAssets.icBookmark : AppAssets.icBookmarkFilled,
+              (cartBtnType == CartBtnType.addToCart)
+                  ? AppAssets.icBookmark
+                  : AppAssets.icBookmarkFilled,
             ),
           ],
         ),

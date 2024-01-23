@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -20,7 +21,7 @@ class AddressScreen extends StatelessWidget {
         child: Column(
           children: [
             CustomAppbar(
-              title: "Addresses",
+              title: "addresses".tr,
               maxLine: 1,
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),
@@ -37,13 +38,14 @@ class AddressScreen extends StatelessWidget {
                       CustomText(
                           textAlign: TextAlign.start,
                           text:
-                              "The following addresses will be used on the checkout page by default. ",
+                              "the_following_addresses_will_be_used_on_the_checkout_page_by_default"
+                                  .tr,
                           textStyle: CustomTextStyle.textStyle25Bold(context,
                               color: AppColors.black)),
                       const VerticalGap(size: 20),
                       CustomText(
                           textAlign: TextAlign.start,
-                          text: "BILLING ADDRESS:",
+                          text: "billing_address".tr,
                           textStyle: CustomTextStyle.textStyle30Bold(
                             context,
                             color: AppColors.black,
@@ -52,7 +54,8 @@ class AddressScreen extends StatelessWidget {
                       const VerticalGap(size: 10),
                       CustomText(
                           textAlign: TextAlign.start,
-                          text: "You have not set up this type of address yet.",
+                          text:
+                              "you_have_not_set_up_this_type_of_address_yet".tr,
                           textStyle: CustomTextStyle.textStyle25Bold(context,
                               color: AppColors.black)),
                       const VerticalGap(size: 10),
@@ -60,7 +63,7 @@ class AddressScreen extends StatelessWidget {
                       const VerticalGap(size: 20),
                       CustomText(
                           textAlign: TextAlign.start,
-                          text: "SHIPPING ADDRESS:",
+                          text: "shipping_address".tr,
                           textStyle: CustomTextStyle.textStyle30Bold(
                             context,
                             color: AppColors.black,
@@ -69,7 +72,8 @@ class AddressScreen extends StatelessWidget {
                       const VerticalGap(size: 10),
                       CustomText(
                           textAlign: TextAlign.start,
-                          text: "You have not set up this type of address yet.",
+                          text:
+                              "you_have_not_set_up_this_type_of_address_yet".tr,
                           textStyle: CustomTextStyle.textStyle25Bold(context,
                               color: AppColors.black)),
                       const VerticalGap(size: 10),

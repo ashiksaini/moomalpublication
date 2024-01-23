@@ -32,13 +32,18 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
       PayUPaymentParamKey.firstName: PayuPaymentConfig.merchantName,
       PayUPaymentParamKey.email: PayuPaymentConfig.email,
       PayUPaymentParamKey.phone: PayuPaymentConfig.phNumber,
-      PayUPaymentParamKey.environment: PayuPaymentConfig.env, 
-      PayUPaymentParamKey.transactionId: Utility.generateTransactionId(), // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
-      PayUPaymentParamKey.userCredential: PayuPaymentConfig.userCredential, 
-      PayUPaymentParamKey.android_surl: "https://www.payumoney.com/mobileapp/payumoney/success.php",
-      PayUPaymentParamKey.android_furl: "https://www.payumoney.com/mobileapp/payumoney/failure.php",
-      PayUPaymentParamKey.ios_surl: "https://www.payumoney.com/mobileapp/payumoney/success.php",
-      PayUPaymentParamKey.ios_furl: "https://www.payumoney.com/mobileapp/payumoney/failure.php",
+      PayUPaymentParamKey.environment: PayuPaymentConfig.env,
+      PayUPaymentParamKey.transactionId: Utility
+          .generateTransactionId(), // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
+      PayUPaymentParamKey.userCredential: PayuPaymentConfig.userCredential,
+      PayUPaymentParamKey.android_surl:
+          "https://www.payumoney.com/mobileapp/payumoney/success.php",
+      PayUPaymentParamKey.android_furl:
+          "https://www.payumoney.com/mobileapp/payumoney/failure.php",
+      PayUPaymentParamKey.ios_surl:
+          "https://www.payumoney.com/mobileapp/payumoney/success.php",
+      PayUPaymentParamKey.ios_furl:
+          "https://www.payumoney.com/mobileapp/payumoney/failure.php",
     };
   }
 
@@ -56,25 +61,29 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   @override
   onError(Map? response) {
-    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_error".tr);
+    showLottieDialog(
+        Get.context!, AppAssets.failedAnimation, "payment_error".tr);
     throw UnimplementedError();
   }
 
   @override
   onPaymentCancel(Map? response) {
-    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
+    showLottieDialog(
+        Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
     throw UnimplementedError();
   }
 
   @override
   onPaymentFailure(response) {
-    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_failed".tr);
+    showLottieDialog(
+        Get.context!, AppAssets.failedAnimation, "payment_failed".tr);
     throw UnimplementedError();
   }
 
   @override
   onPaymentSuccess(response) {
-    showLottieDialog(Get.context!, AppAssets.successAnimation, "payment_success".tr);
+    showLottieDialog(
+        Get.context!, AppAssets.successAnimation, "payment_success".tr);
     throw UnimplementedError();
   }
 }

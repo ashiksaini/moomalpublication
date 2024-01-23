@@ -59,7 +59,7 @@ class SimilarProduct extends StatelessWidget {
             childAspectRatio:
                 _productDetailController.similarProductResponse.value.isLoading
                     ? 0.52
-                    : 0.44,
+                    : 0.42,
           ),
           itemCount: 4,
           itemBuilder: (context, index) {

@@ -24,7 +24,8 @@ class CartController extends BaseController {
 
     cartDataResponse.value = await CartServices.getCartProducts();
     if (cartDataResponse.value.data != null) {
-      if (cartDataResponse.value.data!.items != null && cartDataResponse.value.data!.items!.isNotEmpty) {
+      if (cartDataResponse.value.data!.items != null &&
+          cartDataResponse.value.data!.items!.isNotEmpty) {
         cartItems.addAll(cartDataResponse.value.data!.items!);
         totals.value = cartDataResponse.value.data!.totals!;
       }
@@ -44,9 +45,13 @@ class CartController extends BaseController {
     if (quantity == 0) {
       onDeleteItem(cartItem);
     } else {
-      cartDataResponse.value = await CartServices.updateItem(id: cartItem.id.toString(), quantity: quantity.toString(), key: cartItem.key);
+      cartDataResponse.value = await CartServices.updateItem(
+          id: cartItem.id.toString(),
+          quantity: quantity.toString(),
+          key: cartItem.key);
       if (cartDataResponse.value.data != null) {
-        if (cartDataResponse.value.data!.items != null && cartDataResponse.value.data!.items!.isNotEmpty) {
+        if (cartDataResponse.value.data!.items != null &&
+            cartDataResponse.value.data!.items!.isNotEmpty) {
           cartItems.value = cartDataResponse.value.data!.items!;
           totals.value = cartDataResponse.value.data!.totals!;
         }
@@ -61,9 +66,13 @@ class CartController extends BaseController {
     if (quantity == 9999) {
       showSnackBar("quantity_cannot_exceed_the_limit".tr);
     } else {
-      cartDataResponse.value = await CartServices.updateItem(id: cartItem.id.toString(), quantity: quantity.toString(), key: cartItem.key);
+      cartDataResponse.value = await CartServices.updateItem(
+          id: cartItem.id.toString(),
+          quantity: quantity.toString(),
+          key: cartItem.key);
       if (cartDataResponse.value.data != null) {
-        if (cartDataResponse.value.data!.items != null && cartDataResponse.value.data!.items!.isNotEmpty) {
+        if (cartDataResponse.value.data!.items != null &&
+            cartDataResponse.value.data!.items!.isNotEmpty) {
           cartItems.value = cartDataResponse.value.data!.items!;
           totals.value = cartDataResponse.value.data!.totals!;
         }
@@ -72,7 +81,8 @@ class CartController extends BaseController {
   }
 
   Future<void> onDeleteItem(Item cartItem) async {
-    cartDataResponse.value = await CartServices.removeItem(id: cartItem.id.toString(), key: cartItem.key);
+    cartDataResponse.value = await CartServices.removeItem(
+        id: cartItem.id.toString(), key: cartItem.key);
     if (cartDataResponse.value.data != null) {
       if (cartDataResponse.value.data!.items != null) {
         cartItems.value = cartDataResponse.value.data!.items!;

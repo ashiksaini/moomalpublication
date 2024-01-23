@@ -53,10 +53,13 @@ class CardBookItem extends StatelessWidget {
   Widget _getImage(BuildContext context) {
     return Container(
       height: scaleHeight(195, context),
-      margin: EdgeInsets.symmetric(horizontal: scaleWidth(5, context), vertical: scaleHeight(5, context)),
+      margin: EdgeInsets.symmetric(
+          horizontal: scaleWidth(5, context),
+          vertical: scaleHeight(5, context)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-        child: (item.featuredImage?.url != null && item.featuredImage!.url!.isNotEmpty)
+        child: (item.featuredImage?.url != null &&
+                item.featuredImage!.url!.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: item.featuredImage!.url!,
                 fit: BoxFit.cover,
@@ -70,7 +73,8 @@ class CardBookItem extends StatelessWidget {
                 child: Center(
                   child: CustomText(
                     text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle10Bold(context,
+                        color: AppColors.black),
                   ),
                 ),
               ),
@@ -138,10 +142,14 @@ class CardBookItem extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset(
-                    (item.productVariationType.value == ProductVariation.ebook) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                    (item.productVariationType.value == ProductVariation.ebook)
+                        ? AppAssets.icSelectedRadio
+                        : AppAssets.icUnSelectedRadio,
                   ),
                   const HorizontalGap(size: 2),
-                  CustomText(text: 'ebook'.tr, textStyle: CustomTextStyle.textStyle16Bold(context)),
+                  CustomText(
+                      text: 'ebook'.tr,
+                      textStyle: CustomTextStyle.textStyle16Bold(context)),
                 ],
               ),
             ),
@@ -152,10 +160,14 @@ class CardBookItem extends StatelessWidget {
               child: Row(
                 children: [
                   SvgPicture.asset(
-                    (item.productVariationType.value == ProductVariation.book) ? AppAssets.icSelectedRadio : AppAssets.icUnSelectedRadio,
+                    (item.productVariationType.value == ProductVariation.book)
+                        ? AppAssets.icSelectedRadio
+                        : AppAssets.icUnSelectedRadio,
                   ),
                   const HorizontalGap(size: 2),
-                  CustomText(text: 'book'.tr, textStyle: CustomTextStyle.textStyle16Bold(context)),
+                  CustomText(
+                      text: 'book'.tr,
+                      textStyle: CustomTextStyle.textStyle16Bold(context)),
                 ],
               ),
             ),
@@ -198,7 +210,8 @@ class CardBookItem extends StatelessWidget {
   Widget _getBookPrice(BuildContext context) {
     return CustomText(
       text: "${"price".tr} ${item.price}",
-      textStyle: CustomTextStyle.textStyle16Bold(context, color: AppColors.black),
+      textStyle:
+          CustomTextStyle.textStyle16Bold(context, color: AppColors.black),
       textAlign: TextAlign.start,
     );
   }

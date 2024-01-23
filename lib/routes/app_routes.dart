@@ -159,8 +159,8 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.overallResultScreen,
-      // page: () => OverallResultScreen(),
-      page: () => PdfViewerScreen(),
+      page: () => OverallResultScreen(),
+      // page: () => PdfViewerScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -192,6 +192,12 @@ class AppPages {
       name: NameRoutes.categoryWiseScreen,
       page: () => CategoryWiseScreen(),
       transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.pdfScreen,
+      page: () => const PdfViewerScreen(),
+      transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
   ];

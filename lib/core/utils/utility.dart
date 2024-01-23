@@ -45,14 +45,16 @@ class Utility {
     const int maxTransactionIdLength = 25;
 
     // Allowed characters in the transaction ID
-    const String allowedCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const String allowedCharacters =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     // Generate a random transaction ID
     String transactionId = '';
     Random random = Random();
 
     while (transactionId.length < maxTransactionIdLength) {
-      transactionId += allowedCharacters[random.nextInt(allowedCharacters.length)];
+      transactionId +=
+          allowedCharacters[random.nextInt(allowedCharacters.length)];
     }
 
     return transactionId;

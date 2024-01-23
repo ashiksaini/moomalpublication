@@ -8,11 +8,13 @@ class CardImage extends StatelessWidget {
       required this.image,
       required this.borderColor,
       this.height,
-      this.width});
+      this.width,
+      this.assetsImage = true});
   final String image;
   final Color borderColor;
   final double? height;
   final double? width;
+  final bool assetsImage;
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +25,17 @@ class CardImage extends StatelessWidget {
           Radius.circular(scaleRadius(6, context)),
         ),
       ),
-      child: SvgPicture.asset(
-        image,
-        width: scaleWidth(150, context),
-        height: scaleHeight(170, context),
-      ),
-      // child: Image.asset(
-      //   image,
-      //   width: width,
-      //   height: height,
-      // ),
+      child: assetsImage
+          ? Image.asset(
+              image,
+              width: width ?? scaleWidth(150, context),
+              height: height ?? scaleHeight(170, context),
+            )
+          : Image.network(
+              image,
+              width: width ?? scaleWidth(150, context),
+              height: height ?? scaleHeight(170, context),
+            ),
     );
   }
 }

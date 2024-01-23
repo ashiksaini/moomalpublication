@@ -54,7 +54,8 @@ class EbookController extends BaseController {
   }
 
   void _scrollListener() {
-    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
       loadMoreData();
     }
   }
@@ -65,7 +66,8 @@ class EbookController extends BaseController {
 
     if (ebookCategoryResponse.value.data != null) {
       for (var category in ebookCategoryResponse.value.data!) {
-        ebookCategories.add(DropdownItem(title: category.name ?? "", type: category));
+        ebookCategories
+            .add(DropdownItem(title: category.name ?? "", type: category));
       }
 
       if (ebookCategories.isNotEmpty) {
@@ -95,7 +97,8 @@ class EbookController extends BaseController {
     }
   }
 
-  Map<String, dynamic> _getQueryParams({int? category, String? orderBy, String? order, int? perPage}) {
+  Map<String, dynamic> _getQueryParams(
+      {int? category, String? orderBy, String? order, int? perPage}) {
     return ProductRequestData(
       category: category,
       orderBy: orderBy,
@@ -106,7 +109,8 @@ class EbookController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productItem: data));
+    AppRouting.toNamed(NameRoutes.productDetailScreen,
+        argument: SharedData(productItem: data));
   }
 
   Future<void> onCartBtnClick(ProductItem item) async {
@@ -120,7 +124,12 @@ class EbookController extends BaseController {
               variations: [
                 VariationRequestData(
                   attribute: "Purchase",
-                  value: (item.productVariationType.value == ProductVariation.ebook) ? _getVariationValue(item, item.productVariationType.value) : _getVariationValue(item, item.productVariationType.value),
+                  value: (item.productVariationType.value ==
+                          ProductVariation.ebook)
+                      ? _getVariationValue(
+                          item, item.productVariationType.value)
+                      : _getVariationValue(
+                          item, item.productVariationType.value),
                 ),
               ],
             );
@@ -142,13 +151,19 @@ class EbookController extends BaseController {
   String _getVariationValue(ProductItem item, ProductVariation value) {
     if (value == ProductVariation.ebook) {
       for (var element in item.variations!) {
-        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0) {
+        if (element.attributes?.attributePurchase
+                ?.toLowerCase()
+                .compareTo("ebook") ==
+            0) {
           return element.attributes!.attributePurchase!;
         }
       }
     } else {
       for (var element in item.variations!) {
-        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0) {
+        if (element.attributes?.attributePurchase
+                ?.toLowerCase()
+                .compareTo("book") ==
+            0) {
           return element.attributes!.attributePurchase!;
         }
       }

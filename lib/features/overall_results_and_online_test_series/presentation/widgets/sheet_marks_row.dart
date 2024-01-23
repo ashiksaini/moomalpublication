@@ -19,19 +19,16 @@ class SheetMarksRow extends StatelessWidget {
         itemCount: overallDataList.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 1.6,
+          childAspectRatio: 2.6,
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
         itemBuilder: (_, index) {
-          return Container(
-            color: Colors.amber,
-            child: CustomText(
-              // maxLines: 1,
-              textAlign: TextAlign.start,
-              text: "${overallDataList[index]} : 23",
-              textStyle: CustomTextStyle.textStyle18Bold(context),
-            ),
+          return CustomText(
+            // maxLines: 1,
+            textAlign: TextAlign.start,
+            text: "${overallDataList[index]} : 23",
+            textStyle: CustomTextStyle.textStyle18Bold(context),
           );
         },
       ),
