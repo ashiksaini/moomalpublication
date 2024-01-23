@@ -65,7 +65,7 @@ class _BookDetailTabBarState extends State<BookDetailTabBar>
                   textAlign: TextAlign.start,
                 ),
                 CustomText(
-                  text: widget.information ?? "no_information_found",
+                  text: widget.information ?? "no_information_found".tr,
                   textStyle: CustomTextStyle.textStyle20Bold(context,
                       color: AppColors.black.withOpacity(0.75)),
                   textAlign: TextAlign.start,

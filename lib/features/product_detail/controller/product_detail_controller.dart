@@ -19,7 +19,8 @@ import 'package:moomalpublication/services/storage/shared_preferences_keys.dart'
 import 'package:share_plus/share_plus.dart';
 
 class ProductDetailController extends BaseController {
-  TextEditingController writeReviewTextEditingController = TextEditingController();
+  TextEditingController writeReviewTextEditingController =
+      TextEditingController();
   late Rx<ProductItem?> productItem = Rx(null);
   late SharedData sharedData;
   late int? productId;
@@ -57,19 +58,25 @@ class ProductDetailController extends BaseController {
   }
 
   Future<void> _getUserInfo() async {
-    name = await SharedPreferencesHelper.getString(SharedPreferenceKeys.username) ?? "";
-    email = await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ?? "";
+    name = await SharedPreferencesHelper.getString(
+            SharedPreferenceKeys.username) ??
+        "";
+    email =
+        await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ??
+            "";
   }
 
   void _getCategories() {
     if (productItem.value != null) {
-      if (productItem.value!.categories != null && productItem.value!.categories!.isNotEmpty) {
+      if (productItem.value!.categories != null &&
+          productItem.value!.categories!.isNotEmpty) {
         for (var category in productItem.value!.categories!) {
           categories.value += "$category,";
         }
 
         if (categories.isNotEmpty) {
-          categories.value = categories.value.substring(0, categories.value.length - 1);
+          categories.value =
+              categories.value.substring(0, categories.value.length - 1);
         } else {
           categories.value = "not_define".tr;
         }
@@ -78,7 +85,9 @@ class ProductDetailController extends BaseController {
   }
 
   void _getSKU() {
-    sku.value = productItem.value?.sku?.isNotNullAndEmpty == true ? "not_define".tr : productItem.value?.sku ?? "not_define".tr;
+    sku.value = productItem.value?.sku?.isNotNullAndEmpty == true
+        ? "not_define".tr
+        : productItem.value?.sku ?? "not_define".tr;
   }
 
   void _getData({String? tempProductName, int? tempProductId}) {
@@ -93,25 +102,41 @@ class ProductDetailController extends BaseController {
   Future<void> _getProductDetails() async {
     if (productId != null) {
       productDetailResponse.value = ApiResponse.loading();
-      productDetailResponse.value = await ProductDetailServices.getProductDetails(productId!);
+      productDetailResponse.value =
+          await ProductDetailServices.getProductDetails(productId!);
 
       if (productDetailResponse.value.data != null) {
         productDetailData.value = productDetailResponse.value.data;
 
-        if (productDetailData.value!.variations != null && productDetailData.value!.variations!.isNotEmpty) {
+        if (productDetailData.value!.variations != null &&
+            productDetailData.value!.variations!.isNotEmpty) {
           for (var variation in productDetailData.value!.variations!) {
-            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+            if (variation.attributes?.attributePurchase
+                        ?.toLowerCase()
+                        .compareTo("ebook") ==
+                    0 &&
+                variation.stockStatus?.toLowerCase().compareTo("instock") ==
+                    0) {
               productDetailData.value?.isEbookAvailable = true;
             }
 
-            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+            if (variation.attributes?.attributePurchase
+                        ?.toLowerCase()
+                        .compareTo("book") ==
+                    0 &&
+                variation.stockStatus?.toLowerCase().compareTo("instock") ==
+                    0) {
               productDetailData.value?.isBookAvailable = true;
             }
 
-            if ((productDetailData.value!.isBookAvailable && productDetailData.value!.isEbookAvailable) || productDetailData.value!.isEbookAvailable) {
-              productDetailData.value!.productVariationType.value = ProductVariation.ebook;
+            if ((productDetailData.value!.isBookAvailable &&
+                    productDetailData.value!.isEbookAvailable) ||
+                productDetailData.value!.isEbookAvailable) {
+              productDetailData.value!.productVariationType.value =
+                  ProductVariation.ebook;
             } else if (productDetailData.value!.isBookAvailable) {
-              productDetailData.value!.productVariationType.value = ProductVariation.book;
+              productDetailData.value!.productVariationType.value =
+                  ProductVariation.book;
             }
           }
         }
@@ -129,7 +154,8 @@ class ProductDetailController extends BaseController {
   Future<void> _getProductReviews() async {
     if (productId != null) {
       productReviewsResponse.value = ApiResponse.loading();
-      productReviewsResponse.value = await ProductDetailServices.getProductReviews(productId!);
+      productReviewsResponse.value =
+          await ProductDetailServices.getProductReviews(productId!);
 
       if (productReviewsResponse.value.data != null) {
         productReviews.value = productReviewsResponse.value.data!;
@@ -140,7 +166,8 @@ class ProductDetailController extends BaseController {
   Future<void> _getSimilarProducts() async {
     if (productId != null) {
       similarProductResponse.value = ApiResponse.loading();
-      similarProductResponse.value = await ProductDetailServices.getSimilarReviews(productId!);
+      similarProductResponse.value =
+          await ProductDetailServices.getSimilarReviews(productId!);
 
       if (similarProductResponse.value.data != null) {
         similarProducts.value = similarProductResponse.value.data!;
@@ -163,7 +190,12 @@ class ProductDetailController extends BaseController {
               variations: [
                 VariationRequestData(
                   attribute: "Purchase",
-                  value: (productDetailData.value!.productVariationType.value == ProductVariation.ebook) ? _getVariationValue(productDetailData.value!.productVariationType.value) : _getVariationValue(productDetailData.value!.productVariationType.value),
+                  value: (productDetailData.value!.productVariationType.value ==
+                          ProductVariation.ebook)
+                      ? _getVariationValue(
+                          productDetailData.value!.productVariationType.value)
+                      : _getVariationValue(
+                          productDetailData.value!.productVariationType.value),
                 ),
               ],
             );
@@ -183,7 +215,8 @@ class ProductDetailController extends BaseController {
   }
 
   void shareItem() {
-    if (sharedData.productItem?.permalink != null && sharedData.productItem!.permalink!.isNotEmpty) {
+    if (sharedData.productItem?.permalink != null &&
+        sharedData.productItem!.permalink!.isNotEmpty) {
       Share.share(sharedData.productItem!.permalink!);
     }
   }
@@ -203,7 +236,8 @@ class ProductDetailController extends BaseController {
 
       if (postReviewResponse.value.data != null) {
         showSnackBar("review_posted_successfully".tr);
-        Future.delayed(const Duration(seconds: 2), () => AppRouting.navigateBack());
+        Future.delayed(
+            const Duration(seconds: 2), () => AppRouting.navigateBack());
       }
     }
   }
@@ -219,14 +253,20 @@ class ProductDetailController extends BaseController {
   }
 
   Future<void> buyNow() async {
-    if (productDetailData.value!.isBookAvailable || productDetailData.value!.isEbookAvailable) {
+    if (productDetailData.value!.isBookAvailable ||
+        productDetailData.value!.isEbookAvailable) {
       final addToCartResponse = await CartServices.addToCart(
         id: productDetailData.value!.id.toString(),
         quantity: selectedQuantity.string,
         variations: [
           VariationRequestData(
             attribute: "Purchase",
-            value: (productDetailData.value!.productVariationType.value == ProductVariation.ebook) ? _getVariationValue(productDetailData.value!.productVariationType.value) : _getVariationValue(productDetailData.value!.productVariationType.value),
+            value: (productDetailData.value!.productVariationType.value ==
+                    ProductVariation.ebook)
+                ? _getVariationValue(
+                    productDetailData.value!.productVariationType.value)
+                : _getVariationValue(
+                    productDetailData.value!.productVariationType.value),
           ),
         ],
       );
@@ -241,13 +281,19 @@ class ProductDetailController extends BaseController {
   String _getVariationValue(ProductVariation value) {
     if (value == ProductVariation.ebook) {
       for (var element in productDetailData.value!.variations!) {
-        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0) {
+        if (element.attributes?.attributePurchase
+                ?.toLowerCase()
+                .compareTo("ebook") ==
+            0) {
           return element.attributes!.attributePurchase!;
         }
       }
     } else {
       for (var element in productDetailData.value!.variations!) {
-        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0) {
+        if (element.attributes?.attributePurchase
+                ?.toLowerCase()
+                .compareTo("book") ==
+            0) {
           return element.attributes!.attributePurchase!;
         }
       }

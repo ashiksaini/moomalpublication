@@ -11,10 +11,14 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class GetProductServices {
   GetProductServices._();
 
-  static Future<ProductResponse> getProducts({Map<String, dynamic>? query}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<ProductResponse> getProducts(
+      {Map<String, dynamic>? query}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.products, queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get(ApiPaths.products, queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) => ProductItem.fromJson(item as Map<String, dynamic>),
@@ -23,15 +27,26 @@ class GetProductServices {
 
         for (var element in parsedResponse) {
           for (var variation in element.variations!) {
-            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+            if (variation.attributes?.attributePurchase
+                        ?.toLowerCase()
+                        .compareTo("ebook") ==
+                    0 &&
+                variation.stockStatus?.toLowerCase().compareTo("instock") ==
+                    0) {
               element.isEbookAvailable = true;
             }
 
-            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+            if (variation.attributes?.attributePurchase
+                        ?.toLowerCase()
+                        .compareTo("book") ==
+                    0 &&
+                variation.stockStatus?.toLowerCase().compareTo("instock") ==
+                    0) {
               element.isBookAvailable = true;
             }
 
-            if ((element.isBookAvailable && element.isEbookAvailable) || element.isEbookAvailable) {
+            if ((element.isBookAvailable && element.isEbookAvailable) ||
+                element.isEbookAvailable) {
               element.productVariationType.value = ProductVariation.ebook;
             } else if (element.isBookAvailable) {
               element.productVariationType.value = ProductVariation.book;

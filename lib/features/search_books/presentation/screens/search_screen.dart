@@ -90,7 +90,7 @@ class SearchProductScreen extends StatelessWidget {
         childAspectRatio:
             _searchProductController.searchBookResponse.value.isLoading
                 ? 0.52
-                : 0.44,
+                : 0.42,
       ),
       itemCount: _searchProductController.searchBookResponse.value.isLoading
           ? 20

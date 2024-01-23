@@ -32,7 +32,8 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+                    borderRadius:
+                        BorderRadius.circular(scaleRadius(15, context)),
                   ),
                   height: scaleHeight(15, context),
                 ),
@@ -40,7 +41,8 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+                    borderRadius:
+                        BorderRadius.circular(scaleRadius(15, context)),
                   ),
                   height: scaleHeight(15, context),
                   width: scaleWidth(100, context),
@@ -49,7 +51,8 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+                    borderRadius:
+                        BorderRadius.circular(scaleRadius(15, context)),
                   ),
                   height: scaleHeight(20, context),
                   width: scaleWidth(70, context),
@@ -58,7 +61,8 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+                    borderRadius:
+                        BorderRadius.circular(scaleRadius(15, context)),
                   ),
                   height: scaleHeight(20, context),
                 ),
@@ -68,7 +72,8 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColors.white,
-                      borderRadius: BorderRadius.circular(scaleRadius(5, context)),
+                      borderRadius:
+                          BorderRadius.circular(scaleRadius(5, context)),
                     ),
                     height: scaleHeight(30, context),
                     width: scaleWidth(120, context),

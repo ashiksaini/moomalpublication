@@ -38,7 +38,8 @@ class ShopController extends BaseController {
     }
 
     isLoadingMore.value = false;
-    productResponse.value = await GetProductServices.getProducts(query: ProductRequestData(perPage: 20, page: _pageNo).toJson());
+    productResponse.value = await GetProductServices.getProducts(
+        query: ProductRequestData(perPage: 20, page: _pageNo).toJson());
     if (productResponse.value.data != null) {
       if (productResponse.value.data!.isEmpty) isLastPage.value = true;
       productList.addAll(productResponse.value.data ?? []);
@@ -61,7 +62,8 @@ class ShopController extends BaseController {
   }
 
   void _scrollListener() {
-    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
       loadMoreData();
     }
   }
@@ -74,7 +76,8 @@ class ShopController extends BaseController {
   }
 
   void onItemClick(int index, ProductItem data) {
-    AppRouting.toNamed(NameRoutes.productDetailScreen, argument: SharedData(productItem: data));
+    AppRouting.toNamed(NameRoutes.productDetailScreen,
+        argument: SharedData(productItem: data));
   }
 
   Future<void> onCartBtnClick(ProductItem item) async {
@@ -88,7 +91,12 @@ class ShopController extends BaseController {
               variations: [
                 VariationRequestData(
                   attribute: "Purchase",
-                  value: (item.productVariationType.value == ProductVariation.ebook) ? _getVariationValue(item, item.productVariationType.value) : _getVariationValue(item, item.productVariationType.value),
+                  value: (item.productVariationType.value ==
+                          ProductVariation.ebook)
+                      ? _getVariationValue(
+                          item, item.productVariationType.value)
+                      : _getVariationValue(
+                          item, item.productVariationType.value),
                 ),
               ],
             );
@@ -110,13 +118,19 @@ class ShopController extends BaseController {
   String _getVariationValue(ProductItem item, ProductVariation value) {
     if (value == ProductVariation.ebook) {
       for (var element in item.variations!) {
-        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0) {
+        if (element.attributes?.attributePurchase
+                ?.toLowerCase()
+                .compareTo("ebook") ==
+            0) {
           return element.attributes!.attributePurchase!;
         }
       }
     } else {
       for (var element in item.variations!) {
-        if (element.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0) {
+        if (element.attributes?.attributePurchase
+                ?.toLowerCase()
+                .compareTo("book") ==
+            0) {
           return element.attributes!.attributePurchase!;
         }
       }

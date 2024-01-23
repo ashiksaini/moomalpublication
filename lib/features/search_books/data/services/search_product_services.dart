@@ -14,7 +14,9 @@ class SearchProductServices {
   SearchProductServices._();
 
   static Future<SearchBooksResponse> getSearchedBook({String? search}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.searchBookConsumerKey,
@@ -23,7 +25,8 @@ class SearchProductServices {
 
         query.addIf(search != null, "search", search);
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.products, queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get(ApiPaths.products, queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) => ProductItem.fromJson(item as Map<String, dynamic>),
@@ -32,15 +35,26 @@ class SearchProductServices {
 
         for (var element in parsedResponse) {
           for (var variation in element.variations!) {
-            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+            if (variation.attributes?.attributePurchase
+                        ?.toLowerCase()
+                        .compareTo("ebook") ==
+                    0 &&
+                variation.stockStatus?.toLowerCase().compareTo("instock") ==
+                    0) {
               element.isEbookAvailable = true;
             }
 
-            if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+            if (variation.attributes?.attributePurchase
+                        ?.toLowerCase()
+                        .compareTo("book") ==
+                    0 &&
+                variation.stockStatus?.toLowerCase().compareTo("instock") ==
+                    0) {
               element.isBookAvailable = true;
             }
 
-            if ((element.isBookAvailable && element.isEbookAvailable) || element.isEbookAvailable) {
+            if ((element.isBookAvailable && element.isEbookAvailable) ||
+                element.isEbookAvailable) {
               element.productVariationType.value = ProductVariation.ebook;
             } else if (element.isBookAvailable) {
               element.productVariationType.value = ProductVariation.book;

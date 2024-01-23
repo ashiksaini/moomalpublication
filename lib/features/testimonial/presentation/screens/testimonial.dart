@@ -30,19 +30,21 @@ class TestimonialScreen extends StatelessWidget {
                 onPrefixIconClick: () => AppRouting.navigateBack(),
               ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const TestomonialTemplates(),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: scaleHeight(10, context),
-                          horizontal: scaleWidth(10, context),
-                        ),
-                        child: (_testimonialController
-                                .testimonialResponse.value.isLoading)
-                            ? customProgressIndicator()
-                            : GridView.builder(
+                child: (_testimonialController
+                        .testimonialResponse.value.isLoading)
+                    ? Center(child: customProgressIndicator())
+                    : SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const TestomonialTemplates(),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                right: scaleHeight(10, context),
+                                left: scaleHeight(10, context),
+                                top: scaleWidth(10, context),
+                                bottom: scaleWidth(30, context),
+                              ),
+                              child: GridView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount:
@@ -50,7 +52,7 @@ class TestimonialScreen extends StatelessWidget {
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
-                                  childAspectRatio: 0.5,
+                                  childAspectRatio: 0.40,
                                   crossAxisSpacing: scaleWidth(10, context),
                                   mainAxisSpacing: scaleHeight(30, context),
                                 ),
@@ -62,10 +64,10 @@ class TestimonialScreen extends StatelessWidget {
                                   );
                                 },
                               ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
-                ),
               ),
             ],
           );

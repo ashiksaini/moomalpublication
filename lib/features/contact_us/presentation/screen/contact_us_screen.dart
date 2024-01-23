@@ -12,7 +12,8 @@ import 'package:moomalpublication/routes/routing.dart';
 class ContactUsScreen extends StatelessWidget {
   ContactUsScreen({super.key});
 
-  final ContactUsController contactUsController = Get.put(ContactUsController());
+  final ContactUsController contactUsController =
+      Get.put(ContactUsController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,9 @@ class ContactUsScreen extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context), horizontal: scaleWidth(16, context)),
+                padding: EdgeInsets.symmetric(
+                    vertical: scaleHeight(10, context),
+                    horizontal: scaleWidth(16, context)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -40,11 +43,18 @@ class ContactUsScreen extends StatelessWidget {
                         itemCount: contactUsController.address.length,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                            padding: EdgeInsets.symmetric(
+                                vertical: scaleHeight(10, context)),
                             child: ContactCard(
-                              contactImage: contactUsController.address[index].iconName ?? AppAssets.icAddress,
-                              contactText: contactUsController.address[index].addressHeader ?? '',
-                              contactDescription: contactUsController.address[index].addressDescription ?? '',
+                              contactImage:
+                                  contactUsController.address[index].iconName ??
+                                      AppAssets.icAddress,
+                              contactText: contactUsController
+                                      .address[index].addressHeader ??
+                                  '',
+                              contactDescription: contactUsController
+                                      .address[index].addressDescription ??
+                                  '',
                             ),
                           );
                         }),

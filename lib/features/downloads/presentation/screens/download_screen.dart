@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -16,7 +17,7 @@ class DownloadScreen extends StatelessWidget {
         child: Column(
           children: [
             CustomAppbar(
-              title: "My Downloads",
+              title: "my_downloads".tr,
               maxLine: 1,
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),

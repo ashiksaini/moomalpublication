@@ -67,7 +67,7 @@ class CurrentAffairQuizCard extends StatelessWidget {
                             Flexible(
                               child: CustomText(
                                 textAlign: TextAlign.start,
-                                text: "Admin, $date",
+                                text: "${'admin'.tr}, $date",
                                 textStyle: CustomTextStyle.textStyle20Bold(
                                     context,
                                     color: AppColors.greyLight),
@@ -79,14 +79,14 @@ class CurrentAffairQuizCard extends StatelessWidget {
                         const VerticalGap(size: 20),
                         CustomText(
                           text:
-                              "Quiz Views: ${_quizController.quizList[index].quizViews}",
+                              "${'quiz_views'.tr}: ${_quizController.quizList[index].quizViews}",
                           textStyle: CustomTextStyle.textStyle15Bold(context,
                               color: AppColors.black),
                           textAlign: TextAlign.start,
                         ),
                         CustomText(
                           text:
-                              "Quiz Taken: ${_quizController.quizList[index].quizTaken}",
+                              "${'quiz_taken'.tr}: ${_quizController.quizList[index].quizTaken}",
                           textStyle: CustomTextStyle.textStyle15Bold(context,
                               color: AppColors.black),
                           textAlign: TextAlign.start,

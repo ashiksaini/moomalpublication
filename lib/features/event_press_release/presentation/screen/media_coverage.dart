@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -24,7 +25,7 @@ class MediaCoverage extends StatelessWidget {
                       left: scaleWidth(20, context),
                     ),
                     child: CustomText(
-                        text: "MEDIA BOOKS",
+                        text: "media_books".tr,
                         textStyle: CustomTextStyle.textStyle20Bold(context,
                             color: AppColors.black,
                             decoration: TextDecoration.underline)),
@@ -66,7 +67,7 @@ class MediaCoverage extends StatelessWidget {
                         left: scaleWidth(20, context),
                         bottom: scaleHeight(12, context)),
                     child: CustomText(
-                        text: "MEDIA VIDEOS",
+                        text: "media_videos".tr,
                         textStyle: CustomTextStyle.textStyle20Bold(context,
                             color: AppColors.black,
                             decoration: TextDecoration.underline)),

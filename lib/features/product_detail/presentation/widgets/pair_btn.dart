@@ -12,14 +12,19 @@ import 'package:moomalpublication/features/product_detail/controller/product_det
 
 class PairBuyBtn extends StatelessWidget {
   PairBuyBtn({super.key});
-  final ProductDetailController _productDetailController = Get.find<ProductDetailController>();
+  final ProductDetailController _productDetailController =
+      Get.find<ProductDetailController>();
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
       return Row(
         children: [
-          (_productDetailController.productDetailData.value?.cartBtnType.value == CartBtnType.addToCart) ? _getLeftBtn(context) : _getLeftBtn2(context),
+          (_productDetailController
+                      .productDetailData.value?.cartBtnType.value ==
+                  CartBtnType.addToCart)
+              ? _getLeftBtn(context)
+              : _getLeftBtn2(context),
           _getRightBtn(context),
         ],
       );
@@ -29,7 +34,8 @@ class PairBuyBtn extends StatelessWidget {
   Widget _getLeftBtn(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: () => _productDetailController.onCartBtnClick(_productDetailController.productDetailData.value!),
+        onTap: () => _productDetailController
+            .onCartBtnClick(_productDetailController.productDetailData.value!),
         child: Container(
           decoration: const BoxDecoration(color: AppColors.yellow),
           child: Row(
@@ -45,15 +51,19 @@ class PairBuyBtn extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(AppAssets.icShopping),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scaleHeight(10, context),
-                  bottom: scaleHeight(10, context),
-                  left: scaleWidth(10, context),
-                ),
-                child: CustomText(
-                  text: "add_to_cart".tr,
-                  textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: scaleHeight(10, context),
+                    bottom: scaleHeight(10, context),
+                    left: scaleWidth(10, context),
+                  ),
+                  child: CustomText(
+                    maxLines: 1,
+                    text: "add_to_cart".tr,
+                    textStyle: CustomTextStyle.textStyle25Bold(context,
+                        color: AppColors.black),
+                  ),
                 ),
               )
             ],
@@ -66,7 +76,8 @@ class PairBuyBtn extends StatelessWidget {
   Widget _getLeftBtn2(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: () => _productDetailController.onCartBtnClick(_productDetailController.productDetailData.value!),
+        onTap: () => _productDetailController
+            .onCartBtnClick(_productDetailController.productDetailData.value!),
         child: Container(
           decoration: const BoxDecoration(color: AppColors.yellow),
           child: Row(
@@ -82,15 +93,19 @@ class PairBuyBtn extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(AppAssets.icArrowRight),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scaleHeight(10, context),
-                  bottom: scaleHeight(10, context),
-                  left: scaleWidth(10, context),
-                ),
-                child: CustomText(
-                  text: "go_to_cart".tr,
-                  textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: scaleHeight(10, context),
+                    bottom: scaleHeight(10, context),
+                    left: scaleWidth(10, context),
+                  ),
+                  child: CustomText(
+                    maxLines: 1,
+                    text: "go_to_cart".tr,
+                    textStyle: CustomTextStyle.textStyle25Bold(context,
+                        color: AppColors.black),
+                  ),
                 ),
               )
             ],
@@ -119,15 +134,19 @@ class PairBuyBtn extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(AppAssets.icShopping),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scaleHeight(10, context),
-                  bottom: scaleHeight(10, context),
-                  left: scaleWidth(10, context),
-                ),
-                child: CustomText(
-                  text: "buy_now".tr,
-                  textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: scaleHeight(10, context),
+                    bottom: scaleHeight(10, context),
+                    left: scaleWidth(10, context),
+                  ),
+                  child: CustomText(
+                    maxLines: 1,
+                    text: "buy_now".tr,
+                    textStyle: CustomTextStyle.textStyle25Bold(context,
+                        color: AppColors.black),
+                  ),
                 ),
               )
             ],

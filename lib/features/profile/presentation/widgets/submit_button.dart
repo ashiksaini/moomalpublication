@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -23,7 +24,7 @@ class SubmitButton extends StatelessWidget {
             vertical: scaleWidth(8, context),
           ),
           child: CustomText(
-              text: "Submit",
+              text: "submit".tr,
               textStyle: CustomTextStyle.textStyle22Bold(context,
                   color: AppColors.white))),
     );
