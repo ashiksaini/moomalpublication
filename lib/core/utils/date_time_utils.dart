@@ -13,7 +13,7 @@ class DateTimeUtils {
     }
   }
 
-  static String formatDateTime(String inputDateString, String outputFormat) {
+  static String formatDateTime({required String inputDateString, required String outputFormat}) {
     try {
       DateTime dateTime = DateTime.parse(inputDateString);
       String formattedDate = DateFormat(outputFormat).format(dateTime);

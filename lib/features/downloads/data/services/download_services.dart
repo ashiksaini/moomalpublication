@@ -18,7 +18,6 @@ class DownloadService {
       try {
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
             .get(ApiPaths.download, queryParameters: query);
-        print(response);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) =>

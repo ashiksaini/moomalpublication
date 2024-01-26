@@ -47,7 +47,8 @@ class ReviewView extends StatelessWidget {
               ),
               CustomText(
                 text: DateTimeUtils.formatDateTime(
-                    productReview.date ?? "", AppConstants.dateTimeFormatter),
+                    inputDateString: productReview.date ?? "",
+                    outputFormat: AppConstants.dateTimeFormatter),
                 textStyle: CustomTextStyle.textStyle15Bold(context),
               ),
             ],
