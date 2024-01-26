@@ -31,7 +31,7 @@ class SearchProductServices {
             .toList();
 
         for (var element in parsedResponse) {
-          for (var variation in element.variations!) {
+          for (var variation in element.variations ?? []) {
             if (variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
               element.isEbookAvailable = true;
             }

@@ -26,7 +26,7 @@ class GetProductServices {
             .toList();
 
         for (var element in parsedResponse) {
-          for (var variation in element.variations!) {
+          for (var variation in element.variations ?? []) {
             if (variation.attributes?.attributePurchase
                         ?.toLowerCase()
                         .compareTo("ebook") ==
