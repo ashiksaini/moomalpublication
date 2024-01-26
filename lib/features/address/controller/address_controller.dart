@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/address/data/address_model.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class AdressController extends BaseController {
   RxList<AddressTextEditingController> billingAddressList = RxList();
@@ -164,7 +165,7 @@ class AdressController extends BaseController {
     phoneNumberIndex = billingAddressList.length - 2;
   }
 
-  void onSubmitBillingButton() {
+  void onSubmitBillingButton({required BuildContext context}) {
     billingAllFieldsFilled.value = true;
     for (var addressController in billingAddressList) {
       final trimmedText = addressController.controller.text.trim();
@@ -190,6 +191,7 @@ class AdressController extends BaseController {
           billingFormData[addressController.name] = trimmedText;
         }
         showSnackBar("Done".tr);
+        Navigator.pop(context);
       }
     } else {
       showSnackBar("please_fill_all_required_fields".tr);
@@ -197,7 +199,7 @@ class AdressController extends BaseController {
     billingAddressList.refresh();
   }
 
-  void onSubmitShippingButton() {
+  void onSubmitShippingButton({required BuildContext context}) {
     shippingAllFieldsFilled.value = true;
     for (var addressController in shippingAddressList) {
       final trimmedText = addressController.controller.text.trim();
@@ -216,6 +218,7 @@ class AdressController extends BaseController {
         shippingFormData[addressController.name] = trimmedText;
       }
       showSnackBar("Done".tr);
+      Navigator.pop(context);
     } else {
       showSnackBar("please_fill_all_required_fields".tr);
     }

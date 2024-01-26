@@ -63,6 +63,6 @@ class AddressBottomSheet {
       ),
     ).paddingOnly(top: scaleHeight(10, context));
     return CommonBottomSheet()
-        .commonbottomSheet(context, addressBottomSheet, isDismissible: true);
+        .commonbottomSheet(context, addressBottomSheet, isDismissible: false);
   }
 }

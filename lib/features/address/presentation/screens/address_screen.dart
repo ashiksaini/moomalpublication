@@ -54,7 +54,8 @@ class AddressScreen extends StatelessWidget {
                               context: context,
                               headerText: "billing_address".tr,
                               addressList: controller.billingAddressList,
-                              onSubmitButton: controller.onSubmitBillingButton);
+                              onSubmitButton: () => controller
+                                  .onSubmitBillingButton(context: context));
                         },
                       ),
                       AddressCard(
@@ -66,8 +67,8 @@ class AddressScreen extends StatelessWidget {
                               context: context,
                               headerText: "shipping_address".tr,
                               addressList: controller.shippingAddressList,
-                              onSubmitButton:
-                                  controller.onSubmitShippingButton);
+                              onSubmitButton: () => controller
+                                  .onSubmitShippingButton(context: context));
                         },
                       ),
                     ],
