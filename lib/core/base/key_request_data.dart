@@ -9,10 +9,12 @@ class KeyRequestData {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    if (consumerKey != null)
+    if (consumerKey != null) {
       data.putIfAbsent('consumer_key', () => consumerKey);
-    if (consumerSecret != null)
+    }
+    if (consumerSecret != null) {
       data.putIfAbsent('consumer_secret', () => consumerSecret);
+    }
     return data;
   }
 }

@@ -41,7 +41,7 @@ class _QuizScreenState extends State<QuizScreen>
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),
             ),
-          const VerticalGap(size: 22),
+            const VerticalGap(size: 22),
             TabBar(
               unselectedLabelColor: AppColors.black,
               labelColor: AppColors.orange,

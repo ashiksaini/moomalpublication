@@ -38,6 +38,8 @@ class SharedPreferencesHelper {
   /// Delete All
   static Future<bool> clearSharedPref() async {
     bool rememberMe = await getBool(SharedPreferenceKeys.rememberMe);
+    String userName = await getString(SharedPreferenceKeys.username) ?? "";
+    String password = await getString(SharedPreferenceKeys.password) ?? "";
 
     if (await _preferences.clear() == false) {
       return false;
@@ -45,6 +47,8 @@ class SharedPreferencesHelper {
 
     await _preferences.clear();
     setValue(SharedPreferenceKeys.rememberMe, rememberMe);
+    setValue(SharedPreferenceKeys.username, userName);
+    setValue(SharedPreferenceKeys.password, password);
 
     return true;
   }

@@ -7,7 +7,7 @@ import 'package:moomalpublication/features/downloads/presentation/template/downl
 import 'package:moomalpublication/routes/routing.dart';
 
 class DownloadScreen extends StatelessWidget {
-  const DownloadScreen({super.key});
+  DownloadScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class DownloadScreen extends StatelessWidget {
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),
             ),
-            const Expanded(
+            Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [DownloadCard()],

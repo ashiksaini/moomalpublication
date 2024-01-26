@@ -7,6 +7,7 @@ import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/cart_data.dart';
+import 'package:moomalpublication/features/cart/data/models/checkout/checkout.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
@@ -137,6 +138,28 @@ class CartServices {
     } else {
       showSnackBar("no_internet_access".tr);
       return CartDataResponse();
+    }
+  }
+
+  static Future<CartCheckoutResponse> checkout() async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final dio.Dio dioo = await _getDio();
+        final dio.Response<dynamic> response =
+            await dioo.get(ApiPaths.checkout);
+        final parsedResponse =
+            Checkout.fromJson(response.data as Map<String, dynamic>);
+
+        return CartCheckoutResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showSnackBar(error.message.toString());
+        return CartCheckoutResponse();
+      }
+    } else {
+      showSnackBar("no_internet_access".tr);
+      return CartCheckoutResponse();
     }
   }
 

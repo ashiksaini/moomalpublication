@@ -210,7 +210,6 @@ final Map<String, String> enUS = {
   "profile": "Profile",
   "my_profile": "My Profile",
   "user_name": "User Name",
-  
 
   // Write Review ///////////////////////////////////////////////////////////
   "your_rating": "Your Rating",
@@ -234,11 +233,11 @@ final Map<String, String> enUS = {
   "thanks_for_submitting_your_resposne!_you_scored":
       "Thanks for submitting your response! You scored",
   "out_of": "out of",
-  "current_affair_quiz": "Current\naffair\nQuiz",
-  "economics_quiz": "Economics \n Quiz",
   "add": "Add",
   "©_2021_Moomal_Publication_All_rights_reserved":
       "© 2021 Moomal Publication All rights reserved",
+  "current_affair_quiz": "Current\naffair\nQuiz",
+  "economics_quiz": "Economics \nQuiz",
   "our_quiz": "Our Quiz",
   "oops_no_quiz_found": "Oops..! No Quiz Found",
   "overall_performace": "Overall Performance",
@@ -290,9 +289,9 @@ final Map<String, String> enUS = {
   "purchased_on": "Purchased On",
 
   // Quiz
-  "admin":"Admin",
-  "quiz_views":"Quiz Views",
-  "quiz_taken":"Quiz Taken",
-  "start_quiz":"Start Quiz",
-  "no_test_available":"No Test Available",
+  "admin": "Admin",
+  "quiz_views": "Quiz Views",
+  "quiz_taken": "Quiz Taken",
+  "start_quiz": "Start Quiz",
+  "no_test_available": "No Test Available",
 };

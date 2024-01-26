@@ -17,6 +17,5 @@ void main() {
 
   DioClient.init();
 
-
   runApp(const MoomalPublication());
 }

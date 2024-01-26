@@ -90,7 +90,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                                     return EventAndPressCard(index: index);
                                   },
                                 )
-                              :  Center(
+                              : Center(
                                   child: EmptyProductView(
                                     title: 'not_available'.tr,
                                   ),
