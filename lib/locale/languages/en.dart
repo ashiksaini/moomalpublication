@@ -254,10 +254,30 @@ final Map<String, String> enUS = {
 
   "the_following_addresses_will_be_used_on_the_checkout_page_by_default":
       "The following addresses will be used on the checkout page by default. ",
-  "billing_address": "BILLING ADDRESS:",
+  "billing_address": "BILLING ADDRESS",
   "you_have_not_set_up_this_type_of_address_yet":
       "You have not set up this type of address yet.",
-  "shipping_address": "SHIPPING ADDRESS:",
+  "shipping_address": "SHIPPING ADDRESS",
+  'first_name': 'First Name',
+  'enter_first_name': 'Enter First Name',
+  'last_name': 'Last Name',
+  'enter_last_name': 'Enter Last Name',
+  'company_name': 'Company Name',
+  'enter_company_name': 'Enter Company Name',
+  'street_address': 'Street Address',
+  'enter_street_address': 'Enter Street Address',
+  'town_city': 'Town/City',
+  'enter_town_city': 'Enter Town/City',
+  'state': 'State',
+  'enter_state': 'Enter State',
+  'pin_code': 'Pin Code',
+  'enter_pin_code': 'Enter Pin Code',
+  'phone': 'Phone',
+  'enter_phone': 'Enter Phone',
+  'enter_email_address': 'Enter Email Address',
+  'save_address':'Save Address',
+  'please_fill_all_required_fields':"please fill all required filed",
+  'please_enter_a_valid_number':"please enter a valid number",
 
   // Download
   "my_downloads": "My Downloads",

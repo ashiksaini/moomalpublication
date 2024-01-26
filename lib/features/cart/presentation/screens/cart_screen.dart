@@ -106,26 +106,25 @@ class CartScreen extends StatelessWidget {
             text: "₹${_cartController.totals.value?.totalPrice ?? ""}",
             textStyle: CustomTextStyle.textStyle25Bold(context),
           ),
-          GestureDetector(
-            onTap: () => _cartController.cartCheckout(),
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.green,
-                borderRadius: BorderRadius.circular(scaleRadius(10, context)),
-              ),
-              child: _cartController.cartCheckoutResponse.value.isLoading
-                  ? Container(
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.green,
+              borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+            ),
+            child: _cartController.cartCheckoutResponse.value.isLoading
+                ? Container(
+                    height: scaleWidth(45, context),
+                    padding: EdgeInsets.symmetric(horizontal: scaleWidth(45, context)),
+                    child: LottieBuilder.asset(
+                      AppAssets.loadingAnimation,
+                      fit: BoxFit.cover,
+                      filterQuality: FilterQuality.high,
                       height: scaleWidth(45, context),
-                      padding: EdgeInsets.symmetric(
-                          horizontal: scaleWidth(45, context)),
-                      child: LottieBuilder.asset(
-                        AppAssets.loadingAnimation,
-                        fit: BoxFit.cover,
-                        filterQuality: FilterQuality.high,
-                        height: scaleWidth(45, context),
-                      ),
-                    )
-                  : Padding(
+                    ),
+                  )
+                : GestureDetector(
+                  onTap: () => _cartController.cartCheckout(),
+                  child: Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: scaleHeight(10, context),
                         horizontal: scaleWidth(24, context),
@@ -136,7 +135,7 @@ class CartScreen extends StatelessWidget {
                             color: AppColors.white),
                       ),
                     ),
-            ),
+                ),
           )
         ],
       ),

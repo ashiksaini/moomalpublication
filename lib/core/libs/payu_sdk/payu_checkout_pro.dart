@@ -4,14 +4,17 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/libs/payu_sdk/hash_sevices.dart';
 import 'package:moomalpublication/core/utils/dialogs.dart';
 import 'package:moomalpublication/core/utils/utility.dart';
+import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:payu_checkoutpro_flutter/PayUConstantKeys.dart';
 import 'package:payu_checkoutpro_flutter/payu_checkoutpro_flutter.dart';
 
 class PayUCheckoutPro implements PayUCheckoutProProtocol {
   late PayUCheckoutProFlutter _checkoutProFlutter;
+  late Function _callBack;
 
-  void init() {
+  void init({Function? callBack}) {
     _checkoutProFlutter = PayUCheckoutProFlutter(this);
+    _callBack = callBack!;
   }
 
   Future<void> pay(String? totalPrice, String? orderId) async {
@@ -57,34 +60,36 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
   @override
   generateHash(Map response) {
     _checkoutProFlutter.hashGenerated(hash: HashService.generateHash(response));
+    CustomLogger.logger.d(response.toString());
     throw UnimplementedError();
   }
 
   @override
   onError(Map? response) {
-    showLottieDialog(
-        Get.context!, AppAssets.failedAnimation, "payment_error".tr);
+    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_error".tr);
+    CustomLogger.logger.e(response.toString());
     throw UnimplementedError();
   }
 
   @override
   onPaymentCancel(Map? response) {
-    showLottieDialog(
-        Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
+    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
+    CustomLogger.logger.w(response.toString());
     throw UnimplementedError();
   }
 
   @override
   onPaymentFailure(response) {
-    showLottieDialog(
-        Get.context!, AppAssets.failedAnimation, "payment_failed".tr);
+    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_failed".tr);
+    CustomLogger.logger.e(response.toString());
     throw UnimplementedError();
   }
 
   @override
   onPaymentSuccess(response) {
-    showLottieDialog(
-        Get.context!, AppAssets.successAnimation, "payment_success".tr);
+    showLottieDialog(Get.context!, AppAssets.successAnimation, "payment_success".tr);
+    CustomLogger.logger.d(response.toString());
+    _callBack();
     throw UnimplementedError();
   }
 }

@@ -6,6 +6,7 @@ import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
+import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 
@@ -97,49 +98,22 @@ mixin NetworkHandlingMixin {
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
-      print(
-          "*************************************** Response *************************************** ");
-
-      // Print the response status code
-      print('Status Code: ${response.statusCode}');
-
-      // Print the response data
-      print('Response Data: ${response.data}');
-
-      // Response headers
-      print('Response Headers');
-      response.headers.map.forEach((key, value) {
-        if (kDebugMode) {
-          print("$key ----> $value");
-        }
-      });
+      CustomLogger.logger.w("*************************************** Response ***************************************\n"
+          "Status Code: ${response.statusCode}\n"
+          "Response Data: ${response.data}\n"
+          "Response Headers:\n"
+          "${response.headers.map.entries.map((entry) => "${entry.key} ----> ${entry.value}").join('\n')}");
     }
   }
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      print(
-          "*************************************** Request *************************************** ");
-
-      // Print the request method (GET, POST, etc.)
-      print('Request Method: ${options.method}');
-
-      // Print the request URL
-      print('Request URL: ${options.uri}');
-
-      // Print the request data if it's available (e.g., for POST requests)
-      if (options.data != null) {
-        print('Request Data: ${options.data}');
-      }
-
-      // Request headers
-      print('Request Headers');
-      options.headers.map((key, value) {
-        if (kDebugMode) {
-          print("$key ----> $value");
-        }
-        return MapEntry(key, value);
-      });
+      CustomLogger.logger.w("*************************************** Request ***************************************\n"
+          "Request Method: ${options.method}\n"
+          "Request URL: ${options.uri}\n"
+          "Request Data: ${options.data ?? 'No data'}\n"
+          "Request Headers:\n"
+          "${options.headers.entries.map((entry) => "${entry.key} ----> ${entry.value}").join('\n')}");
     }
   }
 

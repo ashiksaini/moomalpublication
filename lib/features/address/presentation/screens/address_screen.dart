@@ -6,12 +6,15 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
+import 'package:moomalpublication/features/address/controller/address_controller.dart';
+import 'package:moomalpublication/features/address/presentation/template/address_bottom_sheet.dart';
+import 'package:moomalpublication/features/address/presentation/widgets/address_card.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class AddressScreen extends StatelessWidget {
-  const AddressScreen({super.key});
+  AddressScreen({super.key});
+  final AdressController controller =
+      Get.put<AdressController>(AdressController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class AddressScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      vertical: scaleHeight(46, context),
+                      vertical: scaleHeight(36, context),
                       horizontal: scaleWidth(10, context)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,42 +45,31 @@ class AddressScreen extends StatelessWidget {
                                   .tr,
                           textStyle: CustomTextStyle.textStyle25Bold(context,
                               color: AppColors.black)),
-                      const VerticalGap(size: 20),
-                      CustomText(
-                          textAlign: TextAlign.start,
-                          text: "billing_address".tr,
-                          textStyle: CustomTextStyle.textStyle30Bold(
-                            context,
-                            color: AppColors.black,
-                            decoration: TextDecoration.underline,
-                          )),
-                      const VerticalGap(size: 10),
-                      CustomText(
-                          textAlign: TextAlign.start,
-                          text:
-                              "you_have_not_set_up_this_type_of_address_yet".tr,
-                          textStyle: CustomTextStyle.textStyle25Bold(context,
-                              color: AppColors.black)),
-                      const VerticalGap(size: 10),
-                      const AddButton(),
-                      const VerticalGap(size: 20),
-                      CustomText(
-                          textAlign: TextAlign.start,
-                          text: "shipping_address".tr,
-                          textStyle: CustomTextStyle.textStyle30Bold(
-                            context,
-                            color: AppColors.black,
-                            decoration: TextDecoration.underline,
-                          )),
-                      const VerticalGap(size: 10),
-                      CustomText(
-                          textAlign: TextAlign.start,
-                          text:
-                              "you_have_not_set_up_this_type_of_address_yet".tr,
-                          textStyle: CustomTextStyle.textStyle25Bold(context,
-                              color: AppColors.black)),
-                      const VerticalGap(size: 10),
-                      const AddButton()
+                      AddressCard(
+                        address:
+                            "you_have_not_set_up_this_type_of_address_yet".tr,
+                        addressHeading: "billing_address".tr,
+                        onTap: () {
+                          AddressBottomSheet().bottomSheet(
+                              context: context,
+                              headerText: "billing_address".tr,
+                              addressList: controller.billingAddressList,
+                              onSubmitButton: controller.onSubmitBillingButton);
+                        },
+                      ),
+                      AddressCard(
+                        address:
+                            "you_have_not_set_up_this_type_of_address_yet".tr,
+                        addressHeading: "shipping_address".tr,
+                        onTap: () {
+                          AddressBottomSheet().bottomSheet(
+                              context: context,
+                              headerText: "shipping_address".tr,
+                              addressList: controller.shippingAddressList,
+                              onSubmitButton:
+                                  controller.onSubmitShippingButton);
+                        },
+                      ),
                     ],
                   ),
                 ),

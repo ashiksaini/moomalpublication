@@ -6,6 +6,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/date_time_utils.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/downloads/data/model/download_response_model/download_response_model.dart';
 import 'package:moomalpublication/features/orders/presentation/template/text_card.dart';
@@ -33,7 +34,10 @@ class DownloadCard extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: GestureDetector(
                     onTap: () {
-                      AppRouting.toNamed(NameRoutes.pdfScreen);
+                      AppRouting.toNamed(NameRoutes.pdfScreen,
+                          argument: SharedData(
+                              productName: downloadList[index].productName,
+                              productURL: downloadList[index].downloadUrl));
                     },
                     child: ShadowContainer(
                         backgroundColor:

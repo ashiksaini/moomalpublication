@@ -154,7 +154,7 @@ class CardBookItem extends StatelessWidget {
               ),
             ),
           if (item.isBookAvailable) ...{
-            const HorizontalGap(size: 10),
+            if (item.isEbookAvailable) const HorizontalGap(size: 10),
             GestureDetector(
               onTap: () => onBookVariationClick!(item, ProductVariation.book),
               child: Row(
