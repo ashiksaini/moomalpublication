@@ -7,10 +7,16 @@ class SharedData {
   int? categoryId;
   String backStackRoute;
 
+  String? productName;
+  String? productURL;
+
   SharedData({
     this.productItem,
     this.categoryWiseAppBarTitle,
     this.categoryId,
     this.backStackRoute = NameRoutes.moomalpublicationApp,
+
+    this.productName,
+    this.productURL,
   });
 }
