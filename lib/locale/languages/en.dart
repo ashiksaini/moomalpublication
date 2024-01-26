@@ -208,7 +208,6 @@ final Map<String, String> enUS = {
   "my_profile": "My Profile",
   "user_name": "User Name",
   
-
   // Write Review ///////////////////////////////////////////////////////////
   "your_rating": "Your Rating",
   "your_review": "Your Review",
@@ -217,6 +216,8 @@ final Map<String, String> enUS = {
   "review_posted_successfully": "Review Posted Successfully",
 
   // Test Series ///////////////////////////////////////////////////////////
+  "mock_test_category": "Select Mock Test Category",
+  "topicwise_category": "Select Topicwise Category",
   "all": "All",
   "full_length": "Full Length",
   "sectional": "Sectional",

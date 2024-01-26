@@ -3,4 +3,4 @@ import 'package:moomalpublication/features/test_series/data/models/test_series_r
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 typedef TestSeriesResponse = ApiResponse<List<TestSeriesResponseModel>>;
-typedef TestSeriesListResponse = ApiResponse<List<TestSeriesListResponseModel>>;
+typedef TestSeriesListResponse = ApiResponse<TestSeriesListResponseModel>;

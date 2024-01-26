@@ -100,6 +100,7 @@ mixin NetworkHandlingMixin {
     if (kDebugMode) {
       CustomLogger.logger.w("*************************************** Response ***************************************\n"
           "Status Code: ${response.statusCode}\n"
+          "Url: ${response.requestOptions.uri}\n"
           "Response Data: ${response.data}\n"
           "Response Headers:\n"
           "${response.headers.map.entries.map((entry) => "${entry.key} ----> ${entry.value}").join('\n')}");
