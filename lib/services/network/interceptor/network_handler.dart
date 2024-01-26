@@ -19,47 +19,80 @@ mixin NetworkHandlingMixin {
 
     switch (statusCode) {
       case 400:
-        showSnackBar(AppConstants.badRequest);
+        {
+          showSnackBar(AppConstants.badRequest);
+          handler.next(error);
+        }
         break;
 
       case 401:
-        await handleUnauthorized(error, handler);
+        {
+          await handleUnauthorized(error, handler);
+          handler.next(error);
+        }
         break;
 
       case 403:
-        await handleUnauthorized(error, handler);
+        {
+          await handleUnauthorized(error, handler);
+          handler.next(error);
+        }
         break;
 
       case 404:
-        showSnackBar(AppConstants.pageNotFound);
+        {
+          showSnackBar(AppConstants.pageNotFound);
+          handler.next(error);
+        }
         break;
 
       case 405:
-        showSnackBar(AppConstants.methodNotAllowed);
+        {
+          showSnackBar(AppConstants.methodNotAllowed);
+          handler.next(error);
+        }
         break;
 
       case 408:
-        showSnackBar(AppConstants.requestTimeout);
+        {
+          showSnackBar(AppConstants.requestTimeout);
+          handler.next(error);
+        }
         break;
 
       case 500:
-        showSnackBar(AppConstants.internalServerError);
+        {
+          showSnackBar(AppConstants.internalServerError);
+          handler.next(error);
+        }
         break;
 
       case 502:
-        showSnackBar(AppConstants.badGateway);
+        {
+          showSnackBar(AppConstants.badGateway);
+          handler.next(error);
+        }
         break;
 
       case 503:
-        showSnackBar(AppConstants.serviceUnavailable);
+        {
+          showSnackBar(AppConstants.serviceUnavailable);
+          handler.next(error);
+        }
         break;
 
       case 504:
-        showSnackBar(AppConstants.gatewayTimeout);
+        {
+          showSnackBar(AppConstants.gatewayTimeout);
+          handler.next(error);
+        }
         break;
 
       default:
-        showSnackBar(AppConstants.somethingWentWrong);
+        {
+          showSnackBar(AppConstants.somethingWentWrong);
+          handler.next(error);
+        }
     }
   }
 

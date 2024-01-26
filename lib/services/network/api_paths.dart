@@ -25,4 +25,5 @@ class ApiPaths {
   static const String orders = 'wc/v3/orders';
   static const String privacyPolicy = 'https://moomalpublication.com/privacy-policy/';
   static const String checkout = 'wc/store/checkout';
+  static const String deleteAccount = 'wc/v3/customers';
 }
