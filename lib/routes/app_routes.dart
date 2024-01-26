@@ -15,7 +15,7 @@ import 'package:moomalpublication/features/moomalpublication_app/moomalpublicati
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
 import 'package:moomalpublication/features/overall_results_and_online_test_series/presentation/screen/online_exam.dart';
 import 'package:moomalpublication/features/overall_results_and_online_test_series/presentation/screen/overall_result_screen.dart';
-import 'package:moomalpublication/features/pdfViewer/screen.dart';
+import 'package:moomalpublication/features/pdf_viewer/pdf_viewer_screen.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_screen.dart';
@@ -196,8 +196,8 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.pdfScreen,
-      page: () => const PdfViewerScreen(),
-      transition: Transition.leftToRight,
+      page: () => PdfViewerScreen(),
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
   ];
