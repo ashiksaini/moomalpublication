@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/features/downloads/data/controller/download_controller.dart';
 import 'package:moomalpublication/features/downloads/presentation/template/download_card.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class DownloadScreen extends StatelessWidget {
-  const DownloadScreen({super.key});
+  DownloadScreen({super.key});
+  final DownloadController downloadController = Get.put(DownloadController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +25,19 @@ class DownloadScreen extends StatelessWidget {
               prefixIcon: AppAssets.icBackArrow,
               onPrefixIconClick: () => AppRouting.navigateBack(),
             ),
-            const Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [DownloadCard()],
-                ),
+            Obx(
+              () => Expanded(
+                child: downloadController.downloadSeriesResponse.value.isLoading
+                    ? Center(child: customProgressIndicator())
+                    : SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            DownloadCard(
+                              downloadList: downloadController.downloadList,
+                            )
+                          ],
+                        ),
+                      ),
               ),
             ),
           ],

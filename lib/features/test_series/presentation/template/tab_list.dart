@@ -14,7 +14,7 @@ class TabList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (entries.isEmpty)
-        ?  Center(
+        ? Center(
             child: EmptyProductView(
               title: 'no_test_available'.tr,
             ),

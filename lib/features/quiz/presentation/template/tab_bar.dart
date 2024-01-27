@@ -47,7 +47,7 @@ class CustomTabBarState extends State<CustomTabBar>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 500,
       child: Column(
         mainAxisSize: MainAxisSize.min,

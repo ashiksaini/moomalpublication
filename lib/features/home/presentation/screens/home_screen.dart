@@ -14,7 +14,8 @@ import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class HomeScreen extends StatelessWidget {
-  final HomeController _homeController = Get.put(HomeController(), permanent: true);
+  final HomeController _homeController =
+      Get.put(HomeController(), permanent: true);
 
   HomeScreen({super.key});
 
