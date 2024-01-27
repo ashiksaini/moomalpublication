@@ -20,12 +20,9 @@ class TestSeriesScreen extends StatefulWidget {
   State<TestSeriesScreen> createState() => _TestSeriesScreenState();
 }
 
-class _TestSeriesScreenState extends State<TestSeriesScreen>
-    with SingleTickerProviderStateMixin {
+class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final TextEditingController colorController = TextEditingController();
-  final TestSeriesController _testSeriesController =
-      Get.put(TestSeriesController());
+  final TestSeriesController _testSeriesController = Get.put(TestSeriesController());
 
   final tabs = <Widget>[];
 
@@ -33,10 +30,6 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    _tabController.addListener(() {
-      int selectedIndex = _tabController.index;
-      _testSeriesController.setSelectedTabIndex(selectedIndex: selectedIndex);
-    });
   }
 
   @override
@@ -61,7 +54,7 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
             ),
             Expanded(
               child: Obx(
-                () => (!_testSeriesController.pageLoaded.value)
+                () => (_testSeriesController.testSeriesListResponse.value.isLoading)
                     ? Center(child: customProgressIndicator())
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,21 +71,16 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                                 CustomDropDown2(
                                   borderColor: AppColors.orange,
                                   items: _testSeriesController.mockTestCategory,
-                                  selectedItem: _testSeriesController
-                                      .selectedMockTestCategory,
+                                  selectedItem: _testSeriesController.selectedMockTestCategory,
                                   width: screenWidth(context) / 2.2,
-                                  onItemClick: _testSeriesController
-                                      .onMockCategoryItemClick,
+                                  onItemClick: _testSeriesController.onMockCategoryItemClick,
                                 ),
                                 CustomDropDown2(
                                   borderColor: AppColors.orange,
-                                  items:
-                                      _testSeriesController.topicWiseCategory,
-                                  selectedItem: _testSeriesController
-                                      .selectedTopicWiseCategory,
+                                  items: _testSeriesController.topicWiseCategory,
+                                  selectedItem: _testSeriesController.selectedTopicWiseCategory,
                                   width: screenWidth(context) / 2.2,
-                                  onItemClick: _testSeriesController
-                                      .onTopicCategoryItemClick,
+                                  onItemClick: _testSeriesController.onTopicCategoryItemClick,
                                 ),
                               ],
                             ),
@@ -105,52 +93,34 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                             indicatorColor: AppColors.orange,
                             tabs: [
                               TabItem(
-                                text: _testSeriesController
-                                        .tabBarList[0].tabName ??
-                                    '',
-                                length: _testSeriesController
-                                    .tabBarList[0].testList!.length,
+                                text: _testSeriesController.tabBarList[0].tabName ?? '',
+                                length: _testSeriesController.testsAll.length,
                               ),
                               TabItem(
-                                text: _testSeriesController
-                                        .tabBarList[1].tabName ??
-                                    '',
-                                length: _testSeriesController
-                                    .tabBarList[1].testList!.length,
+                                text: _testSeriesController.tabBarList[1].tabName ?? '',
+                                length: _testSeriesController.testsFullLength.length,
                               ),
                               TabItem(
-                                text: _testSeriesController
-                                        .tabBarList[2].tabName ??
-                                    '',
-                                length: _testSeriesController
-                                    .tabBarList[2].testList!.length,
+                                text: _testSeriesController.tabBarList[2].tabName ?? '',
+                                length: _testSeriesController.testsSectional.length,
                               ),
                             ],
-                            labelStyle:
-                                CustomTextStyle.textStyle20Bold(context),
+                            labelStyle: CustomTextStyle.textStyle20Bold(context),
                             controller: _tabController,
                             indicatorSize: TabBarIndicatorSize.tab,
                           ),
                           Expanded(
                             child: Obx(
-                              () => (_testSeriesController
-                                      .testSeriesResponse.value.isLoading)
+                              () => (_testSeriesController.testSeriesResponse.value.isLoading)
                                   ? Center(child: customProgressIndicator())
                                   : TabBarView(
-                                      controller: _tabController,
-                                      children: [
-                                        TabList(
-                                          entries: _testSeriesController
-                                              .tabBarList[0].testList!,
-                                        ),
-                                        TabList(
-                                            entries: _testSeriesController
-                                                .tabBarList[1].testList!),
-                                        TabList(
-                                            entries: _testSeriesController
-                                                .tabBarList[2].testList!),
-                                      ],
-                                    ),
+                                    controller: _tabController,
+                                    children: [
+                                      TabList(entries: _testSeriesController.testsAll, onRefresh: _testSeriesController.onRefresh,),
+                                      TabList(entries: _testSeriesController.testsFullLength, onRefresh: _testSeriesController.onRefresh,),
+                                      TabList(entries: _testSeriesController.testsSectional, onRefresh: _testSeriesController.onRefresh,),
+                                    ],
+                                  ),
                             ),
                           ),
                         ],

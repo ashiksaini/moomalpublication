@@ -9,8 +9,7 @@ class AppConstants {
 
   static String successfulResponse = "success";
   static String failedResponse = "failed";
-  static const String emailRegExPattern =
-      r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
+  static const String emailRegExPattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
 
   static String badRequest = 'bad_request'.tr;
   static String forbidden = 'forbidden'.tr;
@@ -22,6 +21,9 @@ class AppConstants {
   static String serviceUnavailable = 'service_unavailable'.tr;
   static String gatewayTimeout = 'gateway_timeout'.tr;
   static String somethingWentWrong = 'something_went_wrong'.tr;
+
+  static String fullLength = "Full Length";
+  static String sectional = "Sectional";
 
   static int currentGKCategoryId = 19;
   static int rajasthanGKCategoryId = 33;

@@ -49,7 +49,7 @@ class MarksRow extends StatelessWidget {
               top: scaleHeight(8, context),
             ),
             child: CustomText(
-              text: "${"price".tr}: ${entry.price}",
+              text: "${"price".tr} ${entry.price}",
               textStyle: CustomTextStyle.textStyle18Bold(context),
             ),
           )
