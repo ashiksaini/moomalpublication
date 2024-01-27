@@ -170,12 +170,27 @@ class PriceQuantity extends StatelessWidget {
   }
 
   String _bookPrice() {
-    for (var variation in _productDetailController.productDetailData.value?.variations ?? []) {
-      if (_productDetailController.productDetailData.value?.productVariationType.value == ProductVariation.ebook && variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+    for (var variation
+        in _productDetailController.productDetailData.value?.variations ?? []) {
+      if (_productDetailController
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.ebook &&
+          variation.attributes?.attributePurchase
+                  ?.toLowerCase()
+                  .compareTo("ebook") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
         return variation.price ?? "";
       }
 
-      if (_productDetailController.productDetailData.value?.productVariationType.value == ProductVariation.book && variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+      if (_productDetailController
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.book &&
+          variation.attributes?.attributePurchase
+                  ?.toLowerCase()
+                  .compareTo("book") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
         return variation.price ?? "";
       }
     }

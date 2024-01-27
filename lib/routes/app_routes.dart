@@ -123,13 +123,13 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.downloadScreen,
-      page: () => const DownloadScreen(),
+      page: () => DownloadScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.addressesScreen,
-      page: () => const AddressScreen(),
+      page: () =>  AddressScreen(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 200),
     ),

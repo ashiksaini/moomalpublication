@@ -29,7 +29,9 @@ class ProductRequestData {
     if (order != null) data.putIfAbsent('order', () => order);
     if (perPage != null) data.putIfAbsent('per_page', () => perPage);
     if (page != null) data.putIfAbsent('page', () => page);
-    if (stockStatus != null) data.putIfAbsent('stock_status', () => stockStatus);
+    if (stockStatus != null) {
+      data.putIfAbsent('stock_status', () => stockStatus);
+    }
     data.putIfAbsent('consumer_key', () => ApiKeys.productConsumerKey);
     data.putIfAbsent('consumer_secret', () => ApiKeys.productConsumerSecret);
 

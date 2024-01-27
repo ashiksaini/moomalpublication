@@ -210,18 +210,29 @@ class CardBookItem extends StatelessWidget {
   Widget _getBookPrice(BuildContext context) {
     return CustomText(
       text: "${"price".tr} ${_bookPrice()}",
-      textStyle: CustomTextStyle.textStyle16Bold(context, color: AppColors.black),
+      textStyle:
+          CustomTextStyle.textStyle16Bold(context, color: AppColors.black),
       textAlign: TextAlign.start,
     );
   }
 
   String _bookPrice() {
     for (var variation in item.variations ?? []) {
-      if (item.productVariationType.value == ProductVariation.ebook && variation.attributes?.attributePurchase?.toLowerCase().compareTo("ebook") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+      if (item.productVariationType.value == ProductVariation.ebook &&
+          variation.attributes?.attributePurchase
+                  ?.toLowerCase()
+                  .compareTo("ebook") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
         return variation.price ?? "";
       }
 
-      if (item.productVariationType.value == ProductVariation.book && variation.attributes?.attributePurchase?.toLowerCase().compareTo("book") == 0 && variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+      if (item.productVariationType.value == ProductVariation.book &&
+          variation.attributes?.attributePurchase
+                  ?.toLowerCase()
+                  .compareTo("book") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
         return variation.price ?? "";
       }
     }

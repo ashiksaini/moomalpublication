@@ -22,6 +22,8 @@ class ApiPaths {
   static const String productCategoryWiseBook = 'wc/v3/products/categories';
   static const String quizTest = 'online_exam/v1/exam/';
   static const String orders = 'wc/v3/orders';
-  static const String privacyPolicy = 'https://moomalpublication.com/privacy-policy/';
+  static const String privacyPolicy =
+      'https://moomalpublication.com/privacy-policy/';
   static const String checkout = 'wc/store/checkout';
+  static const String download ='moomal/v2/user-downloads';
 }

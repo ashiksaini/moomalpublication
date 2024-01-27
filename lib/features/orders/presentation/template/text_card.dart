@@ -29,4 +29,3 @@ class TextCard extends StatelessWidget {
     );
   }
 }
-

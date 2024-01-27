@@ -35,17 +35,20 @@ final Map<String, String> enUS = {
   // Register ///////////////////////////////////////////////////////////////
   "email_address": "Email Address",
   "email_should_not_be_empty": "E-mail should not be empty",
-  "privacy_policy_desc": "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
+  "privacy_policy_desc":
+      "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
   "privacy_policy": " privacy policy.",
 
   // Forget password //////////////////////////////////////////////////////////
   "reset_password": "Reset Password",
   "forget_password_txt": "Forgot your password?",
-  "forget_password_desc": " Please enter your username or email address. You will receive a link to create a new password via email.",
+  "forget_password_desc":
+      " Please enter your username or email address. You will receive a link to create a new password via email.",
   "please_enter_a_valid_email": "Please enter a valid Email",
 
   // Reset Password On Success ///////////////////////////////////////////////
-  "reset_password_on_success_desc": "A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.",
+  "reset_password_on_success_desc":
+      "A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.",
   "reset_password_on_success": "Password reset email has been sent.",
 
   // Home Screen ////////////////////////////////////////////////////////////
@@ -207,7 +210,6 @@ final Map<String, String> enUS = {
   "profile": "Profile",
   "my_profile": "My Profile",
   "user_name": "User Name",
-  
 
   // Write Review ///////////////////////////////////////////////////////////
   "your_rating": "Your Rating",
@@ -228,10 +230,12 @@ final Map<String, String> enUS = {
   "SUBMIT": "SUBMIT",
   "RETAKE": "RETAKE",
   "timer": "Timer",
-  "thanks_for_submitting_your_resposne!_you_scored": "Thanks for submitting your response! You scored",
+  "thanks_for_submitting_your_resposne!_you_scored":
+      "Thanks for submitting your response! You scored",
   "out_of": "out of",
   "add": "Add",
-  "©_2021_Moomal_Publication_All_rights_reserved": "© 2021 Moomal Publication All rights reserved",
+  "©_2021_Moomal_Publication_All_rights_reserved":
+      "© 2021 Moomal Publication All rights reserved",
   "current_affair_quiz": "Current\naffair\nQuiz",
   "economics_quiz": "Economics \nQuiz",
   "our_quiz": "Our Quiz",
@@ -250,10 +254,30 @@ final Map<String, String> enUS = {
 
   "the_following_addresses_will_be_used_on_the_checkout_page_by_default":
       "The following addresses will be used on the checkout page by default. ",
-  "billing_address": "BILLING ADDRESS:",
+  "billing_address": "BILLING ADDRESS",
   "you_have_not_set_up_this_type_of_address_yet":
       "You have not set up this type of address yet.",
-  "shipping_address": "SHIPPING ADDRESS:",
+  "shipping_address": "SHIPPING ADDRESS",
+  'first_name': 'First Name',
+  'enter_first_name': 'Enter First Name',
+  'last_name': 'Last Name',
+  'enter_last_name': 'Enter Last Name',
+  'company_name': 'Company Name',
+  'enter_company_name': 'Enter Company Name',
+  'street_address': 'Street Address',
+  'enter_street_address': 'Enter Street Address',
+  'town_city': 'Town/City',
+  'enter_town_city': 'Enter Town/City',
+  'state': 'State',
+  'enter_state': 'Enter State',
+  'pin_code': 'Pin Code',
+  'enter_pin_code': 'Enter Pin Code',
+  'phone': 'Phone',
+  'enter_phone': 'Enter Phone',
+  'enter_email_address': 'Enter Email Address',
+  'save_address':'Save Address',
+  'please_fill_all_required_fields':"please fill all required filed",
+  'please_enter_a_valid_number':"please enter a valid number",
 
   // Download
   "my_downloads": "My Downloads",
@@ -285,9 +309,9 @@ final Map<String, String> enUS = {
   "purchased_on": "Purchased On",
 
   // Quiz
-  "admin":"Admin",
-  "quiz_views":"Quiz Views",
-  "quiz_taken":"Quiz Taken",
-  "start_quiz":"Start Quiz",
-  "no_test_available":"No Test Available",
+  "admin": "Admin",
+  "quiz_views": "Quiz Views",
+  "quiz_taken": "Quiz Taken",
+  "start_quiz": "Start Quiz",
+  "no_test_available": "No Test Available",
 };
