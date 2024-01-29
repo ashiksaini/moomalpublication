@@ -40,7 +40,7 @@ class YearContainer extends StatelessWidget {
                 textStyle: CustomTextStyle.textStyle20Bold(context,
                     color: AppColors.black)),
           ),
-        ),
+        ).paddingSymmetric(horizontal: scaleWidth(5, context)),
       ),
     );
   }
