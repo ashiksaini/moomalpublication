@@ -48,7 +48,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
               maxLine: 1,
             ),
             const HorizontalGap(size: 20),
-            SizedBox(height: scaleHeight(90, context), child: const YearList()),
+            SizedBox(height: scaleHeight(90, context), child:  YearList()),
             TabBar(
               unselectedLabelColor: AppColors.grey,
               labelColor: AppColors.orange,
