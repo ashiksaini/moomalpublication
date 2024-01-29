@@ -29,6 +29,7 @@ dependencies:
   crypto: ^3.0.3
   share_plus: ^7.2.1
   path_provider: ^2.1.2
+  upgrader: ^9.0.0
   syncfusion_flutter_pdfviewer: ^24.1.47
   syncfusion_flutter_core: ^24.1.47
   

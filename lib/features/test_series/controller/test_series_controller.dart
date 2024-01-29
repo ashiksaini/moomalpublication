@@ -120,6 +120,8 @@ class TestSeriesController extends BaseController {
   }
 
   void onRefresh() {
+    _setDefaultMockCategoryValue();
+    _setDefaultTopicWiseCategoryValue();
     _clearList();
     _getTestList();
   }
