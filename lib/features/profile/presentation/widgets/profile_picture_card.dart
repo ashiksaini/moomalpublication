@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
 
 class ProfilePicture extends StatelessWidget {
   final String avatarUrl;
@@ -15,9 +16,12 @@ class ProfilePicture extends StatelessWidget {
         SvgPicture.asset(AppAssets.icUserPic),
         Positioned.fill(
             child: Center(
-          child: CachedNetworkImage(
-            imageUrl: avatarUrl,
-            fit: BoxFit.cover,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(scaleRadius(100, context)),
+            child: CachedNetworkImage(
+              imageUrl: avatarUrl,
+              fit: BoxFit.cover,
+            ),
           ),
         )),
       ],

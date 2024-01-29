@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
+import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/home/data/models/drop_down_item.dart';
 import 'package:moomalpublication/features/test_series/data/constants/type_alias.dart';
@@ -11,99 +12,32 @@ import 'package:moomalpublication/features/test_series/data/services/test_series
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class TestSeriesController extends BaseController {
-  RxBool listgrid = RxBool(false);
+  List<TabBarModel> tabBarList = [];
+
   final Rx<TestSeriesResponse> testSeriesResponse = Rx(TestSeriesResponse());
+  final Rx<TestSeriesListResponse> testSeriesListResponse = Rx(TestSeriesListResponse());
 
-  // final RxList<TestSeriesResponseModel> testsAll =
-  //     RxList<TestSeriesResponseModel>();
-  // final RxList<TestSeriesResponseModel> testsFullLength =
-  //     RxList<TestSeriesResponseModel>();
-  // final RxList<TestSeriesResponseModel> testsSectional =
-  //     RxList<TestSeriesResponseModel>();
-
-  final Rx<TestSeriesListResponse> testSeriesListResponse =
-      Rx(TestSeriesListResponse());
+  final RxList<TestSeriesResponseModel> testsAll = RxList<TestSeriesResponseModel>();
+  final RxList<TestSeriesResponseModel> testsFullLength = RxList<TestSeriesResponseModel>();
+  final RxList<TestSeriesResponseModel> testsSectional = RxList<TestSeriesResponseModel>();
 
   List<DropdownItem<Term>> mockTestCategory = RxList<DropdownItem<Term>>();
-  late Rx<DropdownItem<Term>?> selectedMockTestCategory =
-      Rx<DropdownItem<Term>?>(null);
+  late Rx<DropdownItem<Term>?> selectedMockTestCategory = Rx<DropdownItem<Term>?>(null);
 
   List<DropdownItem<Term>> topicWiseCategory = RxList<DropdownItem<Term>>();
-  late Rx<DropdownItem<Term>?> selectedTopicWiseCategory =
-      Rx<DropdownItem<Term>?>(null);
-
-  RxBool pageLoaded = false.obs;
-  List<TabBarModel> tabBarList = [];
-  RxInt selectedIndexOfTab = 0.obs;
+  late Rx<DropdownItem<Term>?> selectedTopicWiseCategory = Rx<DropdownItem<Term>?>(null);
 
   @override
   void onInit() {
     super.onInit();
-    tabBarListGenerate();
+    _setDefaultMockCategoryValue();
+    _setDefaultTopicWiseCategoryValue();
+    _tabBarListGenerate();
     _getTestDropDownList();
+    _getTestList();
   }
 
-  Future<void> _getTestList(
-      {required String typeCategory,
-      required int category,
-      required RxList<TestSeriesResponseModel> testList}) async {
-    testSeriesResponse.value = ApiResponse.loading();
-    testSeriesResponse.value =
-        await TestSeriesService.getTests(query: {'category': category});
-
-    if (testSeriesResponse.value.data != null) {
-      testList.clear();
-      testList.addAll(testSeriesResponse.value.data!);
-      isPageLoaded();
-    } else {
-      showSnackBar(AppConstants.somethingWentWrong);
-    }
-  }
-
-  Future<void> _getTestDropDownList() async {
-    testSeriesListResponse.value = ApiResponse.loading();
-    testSeriesListResponse.value = await TestSeriesService.getTestList();
-
-    if (testSeriesListResponse.value.data != null) {
-      for (var item in testSeriesListResponse.value.data!) {
-        if (item.mockTestTerms != null) {
-          for (var category in item.mockTestTerms!.values) {
-            mockTestCategory
-                .add(DropdownItem(title: category.name ?? "", type: category));
-          }
-          selectedMockTestCategory.value = mockTestCategory.first;
-        }
-
-        if (item.topicWiseTerms != null) {
-          for (var category in item.topicWiseTerms!.values) {
-            topicWiseCategory
-                .add(DropdownItem(title: category.name ?? "", type: category));
-          }
-        }
-
-        if (mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty) {
-          selectedMockTestCategory.value = mockTestCategory.first;
-          selectedTopicWiseCategory.value = topicWiseCategory.first;
-          final typeCategory = selectedMockTestCategory.value?.title ?? '';
-
-          for (int i = 0; i < tabBarList.length; i++) {
-            final selectedTab = tabBarList[i];
-            final category = selectedTab.tabId ?? i;
-            final testList = selectedTab.testList;
-
-            _getTestList(
-                typeCategory: typeCategory,
-                category: category,
-                testList: testList!);
-          }
-        }
-      }
-    } else {
-      showSnackBar(AppConstants.somethingWentWrong);
-    }
-  }
-
-  void tabBarListGenerate() {
+  void _tabBarListGenerate() {
     tabBarList.addAll([
       TabBarModel(
         tabName: 'all'.tr,
@@ -123,38 +57,88 @@ class TestSeriesController extends BaseController {
     ]);
   }
 
+  Future<void> _getTestDropDownList() async {
+    testSeriesListResponse.value = ApiResponse.loading();
+    testSeriesListResponse.value = await TestSeriesService.getTestList();
+
+    if (testSeriesListResponse.value.data != null) {
+      if (testSeriesListResponse.value.data!.mockTestTerms != null) {
+        for (var category in testSeriesListResponse.value.data!.mockTestTerms!.values) {
+          mockTestCategory.add(DropdownItem(title: category.name ?? "", type: category));
+        }
+      }
+
+      if (testSeriesListResponse.value.data!.topicWiseTerms != null) {
+        for (var category in testSeriesListResponse.value.data!.topicWiseTerms!.values) {
+          topicWiseCategory.add(DropdownItem(title: category.name ?? "", type: category));
+        }
+      }
+    } else {
+      showSnackBar(AppConstants.somethingWentWrong);
+    }
+  }
+
+  Future<void> _getTestList({int? category}) async {
+    testSeriesResponse.value = ApiResponse.loading();
+    testSeriesResponse.value = await TestSeriesService.getTests(query: _getQueryParams(category));
+
+    if (testSeriesResponse.value.data != null && testSeriesResponse.value.data!.isNotEmpty) {
+      for (var test in testSeriesResponse.value.data!) {
+        testsAll.add(test);
+
+        if (test.testTypeTerms!.isNotEmpty) {
+          if (test.testTypeTerms!.containsWithIgnoreCases(AppConstants.sectional)) {
+            testsSectional.add(test);
+          } else if (test.testTypeTerms!.containsWithIgnoreCases(AppConstants.fullLength)) {
+            testsFullLength.add(test);
+          }
+        }
+      }
+    } else {
+      showSnackBar(AppConstants.somethingWentWrong);
+    }
+  }
+
   void onMockCategoryItemClick(DropdownItem<Term> item) {
     selectedMockTestCategory.value = item;
-    tabBarList[selectedIndexOfTab.value].testList!.clear();
-    _getTestList(
-        typeCategory: selectedMockTestCategory.string,
-        category: tabBarList[selectedIndexOfTab.value].tabId ?? 0,
-        testList: tabBarList[selectedIndexOfTab.value].testList!);
+    _setDefaultTopicWiseCategoryValue();
+    _clearList();
+    _getTestList(category: selectedMockTestCategory.value?.type.termId ?? 0);
   }
 
   void onTopicCategoryItemClick(DropdownItem<Term> item) {
     selectedTopicWiseCategory.value = item;
-    tabBarList[selectedIndexOfTab.value].testList!.clear();
-    _getTestList(
-        typeCategory: selectedTopicWiseCategory.string,
-        category: tabBarList[selectedIndexOfTab.value].tabId ?? 0,
-        testList: tabBarList[selectedIndexOfTab.value].testList!);
+    _setDefaultMockCategoryValue();
+    _clearList();
+    _getTestList(category: selectedTopicWiseCategory.value?.type.termId ?? 0);
   }
 
-  RxBool listOrGrid() {
-    return listgrid;
+  void _clearList() {
+    testsAll.clear();
+    testsFullLength.clear();
+    testsSectional.clear();
   }
 
-  void isPageLoaded() {
-    pageLoaded.value =
-        mockTestCategory.isNotEmpty && topicWiseCategory.isNotEmpty;
+  void onRefresh() {
+    _clearList();
+    _getTestList();
   }
 
-  void setSelectedTabIndex({required int selectedIndex}) {
-    selectedIndexOfTab.value = selectedIndex;
-    _getTestList(
-        typeCategory: selectedMockTestCategory.value?.title ?? '',
-        category: tabBarList[selectedIndex].tabId ?? 0,
-        testList: tabBarList[selectedIndex].testList!);
+  Map<String, dynamic>? _getQueryParams(int? category) {
+    if (category == null) {
+      return null;
+    }
+
+    Map<String, dynamic> query = {};
+    query.putIfAbsent('category', () => category);
+    return query;
+  }
+
+  void _setDefaultMockCategoryValue() {
+    selectedMockTestCategory.value = DropdownItem(title: "mock_test_category".tr, type: Term());
+  }
+
+  void _setDefaultTopicWiseCategoryValue() {
+    selectedTopicWiseCategory.value = DropdownItem(title: "topicwise_category".tr, type: Term());
   }
 }
