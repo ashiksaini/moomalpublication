@@ -17,6 +17,7 @@ class EventPressController extends BaseController {
   RxList<Year> yearListData = RxList();
 
   int intialYear = 0;
+  int numberOfYear = 5;
 
   @override
   void onInit() {
@@ -45,12 +46,12 @@ class EventPressController extends BaseController {
   }
 
   void generateYearList() {
-    yearListData.value = [
-      Year(index: 0, year: 2016, clicked: false),
-      Year(index: 1, year: 2017, clicked: false),
-      Year(index: 2, year: 2018, clicked: false),
-      Year(index: 3, year: 2019, clicked: false),
-    ];
+    final currentYear = DateTime.now().year;
+    yearListData.addAll(List.generate(
+      numberOfYear,
+      (index) => Year(index: index, year: currentYear - index, clicked: false),
+    ));
+
     if (yearListData.isNotEmpty) {
       intialYear = yearListData[0].index!;
       yearListData[0].clicked = true;
