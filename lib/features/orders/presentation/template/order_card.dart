@@ -48,7 +48,6 @@ class OrderCard extends StatelessWidget {
                             CardImage(
                               image: listItem.image!.src.toString(),
                               borderColor: AppColors.grey,
-                              assetsImage: false,
                             ),
                             const HorizontalGap(size: 16),
                             Flexible(

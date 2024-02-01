@@ -11,58 +11,57 @@ import 'package:moomalpublication/features/address/presentation/widgets/add.dart
 import 'package:moomalpublication/features/address/presentation/widgets/fill_address_card.dart';
 
 class AddressBottomSheet {
-  Future<dynamic> bottomSheet(
-      {required BuildContext context,
-      required String headerText,
-      required RxList<AddressTextEditingController> addressList,
-      required Function onSubmitButton}) {
+  Future<dynamic> bottomSheet({
+    required BuildContext context,
+    required String headerText,
+    required RxList<AddressTextEditingController> addressList,
+    required Function onSubmitButton,
+  }) {
     Widget addressBottomSheet = SizedBox(
-      height: scaleHeight(560, context),
-      child: ScrollConfiguration(
-        behavior: NoGlowBehavior(),
-        child: SingleChildScrollView(
-          reverse: true,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomText(
+      child: SafeArea(
+        child: ScrollConfiguration(
+          behavior: NoGlowBehavior(),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
                   textAlign: TextAlign.start,
                   text: headerText,
-                  textStyle: CustomTextStyle.textStyle25Bold(context,
-                      color: AppColors.black)),
-              Obx(
-                () => ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: addressList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return FillAddressCard(
-                            keyboardType: addressList[index].keyboardType,
-                            optional: addressList[index].optional,
-                            headingText: addressList[index].name,
-                            hintText: addressList[index].hint,
-                            textEditingController:
-                                addressList[index].controller,
-                            error: addressList[index].error!.value)
-                        .paddingOnly(bottom: scaleHeight(10, context));
-                  },
-                ).paddingOnly(top: scaleHeight(12, context)),
-              ),
-              Center(
-                      child: CustomOrangeButton(
-                          onTapButton: () {
-                            onSubmitButton();
-                          },
-                          buttonText: "save_address".tr))
-                  .paddingSymmetric(vertical: scaleHeight(10, context)),
-            ],
-          ).paddingAll(
-            scaleWidth(10, context),
+                  textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+                ),
+                Obx(
+                  () => ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: addressList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return FillAddressCard(
+                        keyboardType: addressList[index].keyboardType,
+                        optional: addressList[index].optional,
+                        headingText: addressList[index].name,
+                        hintText: addressList[index].hint,
+                        textEditingController: addressList[index].controller,
+                        error: addressList[index].error!.value,
+                      ).paddingOnly(bottom: scaleHeight(10, context));
+                    },
+                  ).paddingOnly(top: scaleHeight(12, context)),
+                ),
+                Center(
+                        child: CustomOrangeButton(
+                            onTapButton: () {
+                              onSubmitButton();
+                            },
+                            buttonText: "save_address".tr))
+                    .paddingSymmetric(vertical: scaleHeight(10, context)),
+              ],
+            ).paddingAll(
+              scaleWidth(10, context),
+            ),
           ),
         ),
       ),
     ).paddingOnly(top: scaleHeight(10, context));
-    return CommonBottomSheet()
-        .commonbottomSheet(context, addressBottomSheet, isDismissible: false);
+    return CommonBottomSheet().commonbottomSheet(context, addressBottomSheet, isDismissible: true);
   }
 }

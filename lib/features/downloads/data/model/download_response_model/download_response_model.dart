@@ -2,7 +2,7 @@ class DownloadResponseModel {
   int? orderId;
   String? productName;
   String? downloadUrl;
-  dynamic imageUrl;
+  String? imageUrl;
   String? dateOfPurchase;
 
   DownloadResponseModel({
@@ -14,11 +14,16 @@ class DownloadResponseModel {
   });
 
   factory DownloadResponseModel.fromJson(Map<String, dynamic> json) {
+    String val = "";
+    if (json['image_url'] != null && json['image_url'] is String) {
+      val = json['image_url'];
+    }
+
     return DownloadResponseModel(
       orderId: json['order_id'] as int?,
       productName: json['product_name'] as String?,
       downloadUrl: json['download_url'] as String?,
-      imageUrl: json['image_url'] as dynamic,
+      imageUrl: val,
       dateOfPurchase: json['date_of_purchase'] as String?,
     );
   }

@@ -4,7 +4,7 @@ import 'package:moomalpublication/core/components/atoms/custom_progress_indicato
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/features/downloads/data/controller/download_controller.dart';
+import 'package:moomalpublication/features/downloads/controller/download_controller.dart';
 import 'package:moomalpublication/features/downloads/presentation/template/download_card.dart';
 import 'package:moomalpublication/routes/routing.dart';
 

@@ -11,11 +11,16 @@ class EventsResponseModel {
     this.featuredImage,
   });
   factory EventsResponseModel.fromJson(Map<String, dynamic> json) {
+    String val = "";
+    if (json['featured_image'] != null && json['featured_image'] is String) {
+      val = json['featured_image'];
+    }
+
     return EventsResponseModel(
       id: json['ID'] as int?,
       postTitle: json['post_title'] as String?,
       postContent: json['post_content'] as String?,
-      featuredImage: json['featured_image']?.toString(),
+      featuredImage: val,
     );
   }
 }
