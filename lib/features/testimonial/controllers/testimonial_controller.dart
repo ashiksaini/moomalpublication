@@ -22,8 +22,11 @@ class TestimonialController extends BaseController {
     testimonialResponse.value = await TestimonialService.getTestimonials();
 
     if (testimonialResponse.value.data != null) {
-      if (testimonialResponse.value.data!.status!.compareTo(AppConstants.successfulResponse) == 0) {
-        if (testimonialResponse.value.data!.data != null && testimonialResponse.value.data!.data!.isNotEmpty) {
+      if (testimonialResponse.value.data!.status!
+              .compareTo(AppConstants.successfulResponse) ==
+          0) {
+        if (testimonialResponse.value.data!.data != null &&
+            testimonialResponse.value.data!.data!.isNotEmpty) {
           testimonials.addAll(testimonialResponse.value.data!.data!);
         }
       } else {

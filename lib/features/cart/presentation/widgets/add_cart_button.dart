@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -25,20 +26,16 @@ class AddButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-                child: SvgPicture.asset(
+            SvgPicture.asset(
               AppAssets.icCartAdd,
               width: scaleWidth(22, context),
-            )),
+            ),
             const HorizontalGap(size: 10),
-            Container(
-              // color: Colors.amber,
-              child: CustomText(
-                textAlign: TextAlign.end,
-                text: "Add",
-                textStyle: CustomTextStyle.textStyle18Bold(context,
-                    color: AppColors.black),
-              ),
+            CustomText(
+              textAlign: TextAlign.end,
+              text: 'add'.tr,
+              textStyle: CustomTextStyle.textStyle18Bold(context,
+                  color: AppColors.black),
             ),
           ],
         ),

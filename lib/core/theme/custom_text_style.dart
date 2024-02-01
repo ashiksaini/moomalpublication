@@ -85,7 +85,7 @@ class CustomTextStyle {
         color: color,
       );
 
-      static textStyle15Regular(
+  static textStyle15Regular(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -117,27 +117,29 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
-  static TextStyle textStyle18Medium(
-    BuildContext context, {
-    Color color = AppColors.black,
-  }) =>
-      TextStyle(
-        fontSize: scaleWidth(18, context),
-        fontWeight: FontWeight.w400,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
 
-  static TextStyle textStyle20Bold(
+  static TextStyle textStyle18Medium(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(20, context),
-        fontWeight: FontWeight.w700,
+        fontSize: scaleWidth(18, context),
+        fontWeight: FontWeight.w500,
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
+
+  static TextStyle textStyle20Bold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
+      TextStyle(
+          fontSize: scaleWidth(20, context),
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
 
   static TextStyle textStyle20SemiBold(
     BuildContext context, {
@@ -161,47 +163,41 @@ class CustomTextStyle {
         color: color,
       );
 
-  static TextStyle textStyle22Bold(
-    BuildContext context, {
-    Color color = AppColors.grey,
-  }) =>
-      TextStyle(
-        fontSize: scaleWidth(22, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
-  static TextStyle textStyle22BoldUnderline(
-    BuildContext context, {
-    Color color = AppColors.orange,
-  }) =>
+  static TextStyle textStyle22Bold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
       TextStyle(
           fontSize: scaleWidth(22, context),
           fontWeight: FontWeight.w700,
           fontFamily: AppConstants.calibriFont,
           color: color,
-          decoration: TextDecoration.underline);
-  static TextStyle textStyle25Bold(
-    BuildContext context, {
-    Color color = AppColors.grey,
-  }) =>
-      TextStyle(
-        fontSize: scaleWidth(25, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
+          decorationColor: decorationColor,
+          decoration: decoration);
 
-  static textStyle30Bold(
-    BuildContext context, {
-    Color color = AppColors.grey,
-  }) =>
+  static TextStyle textStyle25Bold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
       TextStyle(
-        fontSize: scaleWidth(30, context),
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
+          fontSize: scaleWidth(25, context),
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
+
+  static textStyle30Bold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
+      TextStyle(
+          fontSize: scaleWidth(30, context),
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
 
   /// Gupter Font
   static TextStyle textStyle18BoldGupter(
@@ -224,4 +220,35 @@ class CustomTextStyle {
         fontFamily: AppConstants.gupterFont,
         color: color,
       );
+  static TextStyle textStyle20SemiMedium(
+    BuildContext context, {
+    Color color = AppColors.white,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(20, context),
+        fontWeight: FontWeight.w300,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+  static TextStyle textStyle16MediumTrio(
+    BuildContext context, {
+    Color color = AppColors.black,
+  }) =>
+      TextStyle(
+        fontSize: scaleWidth(16, context),
+        fontWeight: FontWeight.w400,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
+  static TextStyle textStyle18Regular(BuildContext context,
+          {Color color = AppColors.black,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.white}) =>
+      TextStyle(
+          fontSize: scaleWidth(18, context),
+          fontWeight: FontWeight.w400,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
 }

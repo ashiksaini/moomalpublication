@@ -4,31 +4,44 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class ShadowContainer extends StatelessWidget {
+  final double? borderRadius;
+  final Widget containerChild;
+  final Color? backgroundColor;
+  final EdgeInsets padding;
+  final EdgeInsets margin;
+  final Color? borderColor;
+  final LinearGradient? linearGradient;
+  final BoxShadow? boxShadow;
+
   const ShadowContainer({
     super.key,
-    this.borderRadius = 20,
     required this.containerChild,
+    this.borderRadius,
     this.backgroundColor = AppColors.white,
     this.padding = EdgeInsets.zero,
+    this.margin = EdgeInsets.zero,
+    this.borderColor = Colors.transparent,
+    this.linearGradient,
+    this.boxShadow,
   });
-
-  final double borderRadius;
-  final Widget containerChild;
-  final Color backgroundColor;
-  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: padding,
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          border: Border.all(color: AppColors.shadow),
-          boxShadow: [primaryBoxShadow()],
-          borderRadius: BorderRadius.all(
-            Radius.circular(scaleRadius(borderRadius, context)),
-          ),
+      padding: padding,
+      margin: margin,
+      decoration: BoxDecoration(
+        gradient: linearGradient,
+        color: backgroundColor,
+        boxShadow: [boxShadow ?? primaryBoxShadow()],
+        border: Border.all(
+          color: borderColor!,
         ),
-        child: containerChild);
+        borderRadius: BorderRadius.all(Radius.circular(
+          scaleRadius(borderRadius ?? scaleRadius(20, context), context),
+        )),
+      ),
+      child: containerChild,
+    );
   }
 }

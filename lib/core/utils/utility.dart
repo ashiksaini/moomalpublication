@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:moomalpublication/features/auth/data/models/login_response_data.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
@@ -36,5 +38,25 @@ class Utility {
     } catch (e) {
       throw 'Could not launch $url';
     }
+  }
+
+  static String generateTransactionId() {
+    // Maximum length of the transaction ID
+    const int maxTransactionIdLength = 25;
+
+    // Allowed characters in the transaction ID
+    const String allowedCharacters =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    // Generate a random transaction ID
+    String transactionId = '';
+    Random random = Random();
+
+    while (transactionId.length < maxTransactionIdLength) {
+      transactionId +=
+          allowedCharacters[random.nextInt(allowedCharacters.length)];
+    }
+
+    return transactionId;
   }
 }

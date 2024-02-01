@@ -30,14 +30,17 @@ class CustomDrawerItem extends StatelessWidget {
               drawerItem.icon,
               height: scaleHeight(20, context),
               width: scaleWidth(20, context),
-              colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+              colorFilter:
+                  const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
             ),
             const HorizontalGap(size: 10),
-        
+
             // Name
             Padding(
               padding: EdgeInsets.only(top: scaleHeight(4, context)),
-              child: CustomText(text: drawerItem.title, textStyle: CustomTextStyle.textStyle18Bold(context)),
+              child: CustomText(
+                  text: drawerItem.title,
+                  textStyle: CustomTextStyle.textStyle18Bold(context)),
             )
           ],
         ),

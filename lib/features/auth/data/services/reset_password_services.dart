@@ -20,7 +20,7 @@ class ResetPasswordServices {
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
             .post(ApiPaths.resetPassword, data: data);
 
-        final parsedResponse = BaseReponse<UserData>.fromJson(
+        final parsedResponse = BaseResponse<UserData>.fromJson(
           response.data! as Map<String, dynamic>,
           (data) => UserData.fromJson(data as Map<String, dynamic>),
         );

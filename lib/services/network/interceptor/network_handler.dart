@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart' as dio;
+// import 'package:get/get.dart' as getx;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-// import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
+import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 
 mixin NetworkHandlingMixin {
   Future<void> handleErrorResponse(
@@ -15,135 +19,137 @@ mixin NetworkHandlingMixin {
 
     switch (statusCode) {
       case 400:
-        showSnackBar(AppConstants.badRequest);
+        {
+          showSnackBar(AppConstants.badRequest);
+          handler.next(error);
+        }
         break;
 
       case 401:
-        // await handleUnauthorized(error, handler);
+        {
+          await handleUnauthorized(error, handler);
+          handler.next(error);
+        }
         break;
 
       case 403:
-        showSnackBar(AppConstants.forbidden);
+        {
+          await handleUnauthorized(error, handler);
+          handler.next(error);
+        }
         break;
 
       case 404:
-        showSnackBar(AppConstants.pageNotFound);
+        {
+          showSnackBar(AppConstants.pageNotFound);
+          handler.next(error);
+        }
         break;
 
       case 405:
-        showSnackBar(AppConstants.methodNotAllowed);
+        {
+          showSnackBar(AppConstants.methodNotAllowed);
+          handler.next(error);
+        }
         break;
 
       case 408:
-        showSnackBar(AppConstants.requestTimeout);
+        {
+          showSnackBar(AppConstants.requestTimeout);
+          handler.next(error);
+        }
         break;
 
       case 500:
-        showSnackBar(AppConstants.internalServerError);
+        {
+          showSnackBar(AppConstants.internalServerError);
+          handler.next(error);
+        }
         break;
 
       case 502:
-        showSnackBar(AppConstants.badGateway);
+        {
+          showSnackBar(AppConstants.badGateway);
+          handler.next(error);
+        }
         break;
 
       case 503:
-        showSnackBar(AppConstants.serviceUnavailable);
+        {
+          showSnackBar(AppConstants.serviceUnavailable);
+          handler.next(error);
+        }
         break;
 
       case 504:
-        showSnackBar(AppConstants.gatewayTimeout);
+        {
+          showSnackBar(AppConstants.gatewayTimeout);
+          handler.next(error);
+        }
         break;
 
       default:
-        showSnackBar(AppConstants.somethingWentWrong);
+        {
+          showSnackBar(AppConstants.somethingWentWrong);
+          handler.next(error);
+        }
     }
   }
 
-  // Future<void> handleUnauthorized(
-  //   dio.DioException error,
-  //   dio.ErrorInterceptorHandler handler,
-  // ) async {
-  //     final LoginResponse loginResponse = await getNewAccessToken();
-  //     if (loginResponse.data != null &&
-  //         loginResponse.data!.statusCode == AppConstants.successGetStatusCode) {
-  //       final String newAccessToken = loginResponse.data!.data!.access!;
-  //       final String newRefreshToken = loginResponse.data!.data!.refresh!;
-  //       Utility.saveLoginDataToLocal(newAccessToken, newRefreshToken);
-  //       DioClient.initWithAuth();
-  //       return handler
-  //           .resolve(await _retry(error.requestOptions, newAccessToken));
-  //     } else if (loginResponse.data == null ||
-  //         loginResponse.data!.statusCode ==
-  //             AppConstants.unauthorized401StatusCode) {
-  //       SharedPreferencesHelper.clearSharedPref();
-  //       AppRouting.offAllNamed(NameRoutes.splashScreen);
-  //       return handler.next(error);
-  //     }
-  //     return handler.next(error);
-  // }
+  Future<void> handleUnauthorized(
+    dio.DioException error,
+    dio.ErrorInterceptorHandler handler,
+  ) async {
+    SharedPreferencesHelper.clearSharedPrefExcept();
+    AppRouting.offAllNamed(NameRoutes.splashScreen);
+
+    /** 
+     * Retry the previous request
+      if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+        try {
+          final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.post(ApiPaths.token, data: data);
+
+          final parsedResponse = TokenResponseData.fromJson(
+            response.data! as Map<String, dynamic>,
+          );
+
+          // Save token to shared pref.
+          await SharedPreferencesHelper.setValue(SharedPreferenceKeys.token, parsedResponse.token);
+
+          // Init dio with auth
+          DioClient.initWithAuth();
+
+          return handler.resolve(await _retry(error.requestOptions, parsedResponse.token ?? ""));
+        } on dio.DioException catch (_) {
+          return handler.next(error);
+        }
+      } else {
+        return handler.next(error);
+      }
+    */
+  }
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
-      print(
-          "*************************************** Response *************************************** ");
-
-      // Print the response status code
-      print('Status Code: ${response.statusCode}');
-
-      // Print the response data
-      print('Response Data: ${response.data}');
+      CustomLogger.logger.w("*************************************** Response ***************************************\n"
+          "Status Code: ${response.statusCode}\n"
+          "Url: ${response.requestOptions.uri}\n"
+          "Response Data: ${response.data}\n"
+          "Response Headers:\n"
+          "${response.headers.map.entries.map((entry) => "${entry.key} ----> ${entry.value}").join('\n')}");
     }
   }
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      print(
-          "*************************************** Request *************************************** ");
-
-      // Print the request method (GET, POST, etc.)
-      print('Request Method: ${options.method}');
-
-      // Print the request URL
-      print('Request URL: ${options.uri}');
-
-      // Print the request data if it's available (e.g., for POST requests)
-      if (options.data != null) {
-        print('Request Data: ${options.data}');
-      }
+      CustomLogger.logger.w("*************************************** Request ***************************************\n"
+          "Request Method: ${options.method}\n"
+          "Request URL: ${options.uri}\n"
+          "Request Data: ${options.data ?? 'No data'}\n"
+          "Request Headers:\n"
+          "${options.headers.entries.map((entry) => "${entry.key} ----> ${entry.value}").join('\n')}");
     }
   }
-
-  // Future<LoginResponse> getNewAccessToken() async {
-  //   if (getx.Get.find<InternetConnectivityController>()
-  //           .connectivityResult
-  //           .value !=
-  //       ConnectivityResult.none) {
-  //     try {
-  //       final dio.Dio dioo = DioClient.createDio();
-  //       // dioo.options.headers = await DioClient.getHeaders(authToken: authToken);
-  //       final dio.Response<Map<String, dynamic>> response = await dioo
-  //           .post(ApiPaths.refreshToken, data: await getRefreshToken());
-
-  //       final parsedResponse = BaseReponse<LoginResponseData>.fromJson(
-  //         response.data!,
-  //         (data) => LoginResponseData.fromJson(data as Map<String, dynamic>),
-  //       );
-  //       return LoginResponse.success(parsedResponse);
-  //     } catch (error) {
-  //       return LoginResponse();
-  //     }
-  //   } else {
-  //     showSnackBar(AppConstants.noInternetAccess);
-  //     return LoginResponse();
-  //   }
-  // }
-
-  // Future<Map<String, dynamic>> getRefreshToken() async {
-  //   final String? token = await SharedPreferencesHelper.getString(
-  //     SharedPreferenceKeys.refreshToken,
-  //   );
-  //   return {'refresh': token};
-  // }
 
   Future<Response<dynamic>> _retry(
     RequestOptions requestOptions,

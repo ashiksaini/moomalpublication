@@ -12,15 +12,20 @@ class TestimonialService {
   TestimonialService._();
 
   static Future<TestimonialResponse> getTestimonials() async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.testimonial);
+        final dio.Response<dynamic> response =
+            await DioClient.dioWithoutAuth!.get(ApiPaths.testimonial);
 
-        final parsedResponse = BaseReponse<List<TestimonialResponseModel>>.fromJson(
+        final parsedResponse =
+            BaseResponse<List<TestimonialResponseModel>>.fromJson(
           response.data! as Map<String, dynamic>,
           (data) => (data as List<dynamic>?)!
               .map(
-                (item) => TestimonialResponseModel.fromJson(item as Map<String, dynamic>),
+                (item) => TestimonialResponseModel.fromJson(
+                    item as Map<String, dynamic>),
               )
               .toList(),
         );

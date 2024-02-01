@@ -5,17 +5,27 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class StarRatingBar extends StatelessWidget {
+  final bool ignoreGesture;
   final double itemSize;
-  const StarRatingBar({super.key, required this.itemSize});
+  final double? initialRating;
+  final Function? onRatingUpdate;
+
+  const StarRatingBar({
+    super.key,
+    this.initialRating,
+    this.ignoreGesture = false,
+    this.onRatingUpdate,
+    required this.itemSize,
+  });
 
   @override
   Widget build(BuildContext context) {
     return RatingBar(
       glow: false,
-      initialRating: 3,
+      initialRating: initialRating ?? 0,
       itemSize: scaleWidth(itemSize, context),
       direction: Axis.horizontal,
-      allowHalfRating: true,
+      ignoreGestures: ignoreGesture,
       itemCount: 5,
       ratingWidget: RatingWidget(
         full: _image(AppAssets.icStar),
@@ -23,9 +33,8 @@ class StarRatingBar extends StatelessWidget {
         empty: _image(AppAssets.icBorderedStar),
       ),
       itemPadding: EdgeInsets.symmetric(horizontal: scaleWidth(1, context)),
-      onRatingUpdate: (rating) {
-        print(rating);
-      },
+      onRatingUpdate: (rating) =>
+          onRatingUpdate != null ? onRatingUpdate!(rating) : null,
     );
   }
 }

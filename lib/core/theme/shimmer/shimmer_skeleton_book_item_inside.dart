@@ -58,6 +58,15 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                   width: scaleWidth(70, context),
                 ),
                 const VerticalGap(size: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    borderRadius:
+                        BorderRadius.circular(scaleRadius(15, context)),
+                  ),
+                  height: scaleHeight(20, context),
+                ),
+                const VerticalGap(size: 10),
                 Align(
                   alignment: Alignment.center,
                   child: Container(

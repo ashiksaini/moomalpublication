@@ -1,16 +1,13 @@
-enum Environment {
-  staging,
-  uat,
-  production,
+enum CartBtnType {
+  addToCart,
+  goToCart,
 }
 
-enum FromPage {
-  writeReview,
+enum SortBy {
+  popularity,
+  averageRating,
+  priceHToL,
+  priceLToH,
 }
 
-enum LoginPageState {
-  enterEmail,
-  loginWithEmail,
-  enterOtp,
-  changePassword,
-}
+enum ProductVariation { ebook, book }

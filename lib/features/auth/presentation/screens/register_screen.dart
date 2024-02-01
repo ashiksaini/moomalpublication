@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
-import 'package:moomalpublication/features/auth/presentation/templates/register_view.dart';
+import 'package:moomalpublication/features/auth/presentation/template/register_view.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});

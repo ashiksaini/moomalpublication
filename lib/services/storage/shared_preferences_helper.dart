@@ -1,3 +1,4 @@
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesHelper {
@@ -21,11 +22,34 @@ class SharedPreferencesHelper {
   }
 
   /// Delete All
-  static Future<bool> clearSharedPref() async {
+  static Future<bool> clearSharedPrefExcept() async {
+    bool rememberMe = await getBool(SharedPreferenceKeys.rememberMe);
+
     if (await _preferences.clear() == false) {
       return false;
     }
+
     await _preferences.clear();
+    setValue(SharedPreferenceKeys.rememberMe, rememberMe);
+
+    return true;
+  }
+
+  /// Delete All
+  static Future<bool> clearSharedPref() async {
+    bool rememberMe = await getBool(SharedPreferenceKeys.rememberMe);
+    String userName = await getString(SharedPreferenceKeys.username) ?? "";
+    String password = await getString(SharedPreferenceKeys.password) ?? "";
+
+    if (await _preferences.clear() == false) {
+      return false;
+    }
+
+    await _preferences.clear();
+    setValue(SharedPreferenceKeys.rememberMe, rememberMe);
+    setValue(SharedPreferenceKeys.username, userName);
+    setValue(SharedPreferenceKeys.password, password);
+
     return true;
   }
 

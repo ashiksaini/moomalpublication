@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
-import 'package:moomalpublication/core/components/templates/screen.dart';
+import 'package:moomalpublication/core/components/template/screen.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/home/controllers/home_controller.dart';
-import 'package:moomalpublication/features/home/presentation/templates/dashboard_books_view.dart';
+import 'package:moomalpublication/features/home/presentation/template/dashboard_books_view.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/custom_filter_bar.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/custom_navigation_drawer.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/main_category_card.dart';
@@ -14,7 +14,8 @@ import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class HomeScreen extends StatelessWidget {
-  final HomeController _homeController = Get.put(HomeController());
+  final HomeController _homeController =
+      Get.put(HomeController(), permanent: true);
 
   HomeScreen({super.key});
 
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
         isAppbarVisible: false,
         scaffoldKey: _homeController.globalKey,
         drawer: CustomNavigationDrawer(),
+        onRefresh: () => _homeController.onRefresh(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                 _getGreyBg(context),
                 _getMainAppbar(context),
                 _getMainCategories(context),
-                _getFilterBar(context),
+                // _getFilterBar(context),
               ],
             ),
 
@@ -71,7 +73,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getGreyBg(BuildContext context) {
     return Container(
-      height: screenHeight(context) / 2.3,
+      height: screenHeight(context) / 3,
       decoration: BoxDecoration(
         color: AppColors.greyLight,
         borderRadius: BorderRadius.only(
@@ -85,7 +87,9 @@ class HomeScreen extends StatelessWidget {
   Widget _getMainAppbar(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-          top: scaleHeight(40, context), bottom: scaleHeight(60, context)),
+        top: scaleHeight(20, context),
+        bottom: scaleHeight(80, context),
+      ),
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
@@ -97,7 +101,8 @@ class HomeScreen extends StatelessWidget {
         title: "moomalpublication".tr,
         prefixIcon: AppAssets.icHamburger,
         suffixIcon: AppAssets.icSearch,
-        onPrefixIconClick: () => _homeController.globalKey.currentState!.openDrawer(),
+        onPrefixIconClick: () =>
+            _homeController.globalKey.currentState!.openDrawer(),
         onSuffixIconClick: () => AppRouting.toNamed(NameRoutes.searchScreen),
       ),
     );
@@ -105,15 +110,29 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getMainCategories(BuildContext context) {
     return Positioned(
-      top: scaleHeight(100, context),
+      top: scaleHeight(90, context),
       child: SizedBox(
         width: screenWidth(context),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            MainCategoryCard(icon: AppAssets.icGrid, title: "category".tr),
-            MainCategoryCard(icon: AppAssets.icBook, title: "ebooks".tr),
-            MainCategoryCard(icon: AppAssets.icReport, title: "test_series".tr),
+            MainCategoryCard(
+              icon: AppAssets.icGrid,
+              title: "category".tr,
+              onClick: () => AppRouting.toNamed(NameRoutes.allCategoryScreen),
+            ),
+            MainCategoryCard(
+              icon: AppAssets.icBook,
+              title: "ebooks".tr,
+              onClick: () => AppRouting.offAllNamed(
+                  NameRoutes.moomalpublicationApp,
+                  argument: 2),
+            ),
+            MainCategoryCard(
+              icon: AppAssets.icReport,
+              title: "test_series".tr,
+              onClick: () => AppRouting.toNamed(NameRoutes.testSeriesScreen),
+            ),
           ],
         ),
       ),
@@ -125,7 +144,7 @@ class HomeScreen extends StatelessWidget {
       bottom: scaleHeight(30, context),
       left: scaleWidth(12, context),
       right: scaleWidth(12, context),
-      child: const CustomFilterBar(),
+      child: CustomFilterBar(),
     );
   }
 }

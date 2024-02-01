@@ -5,38 +5,49 @@ import 'package:moomalpublication/core/components/atoms/custom_progress_indicato
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/btn_add_to_cart.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:moomalpublication/core/utils/horizontal_space.dart';
 
 class CardBookItem extends StatelessWidget {
+  final Function onCartBtnClick;
+  final Function? onBookVariationClick;
   final ProductItem item;
 
-  const CardBookItem({super.key, required this.item});
+  const CardBookItem({
+    super.key,
+    required this.item,
+    required this.onCartBtnClick,
+    this.onBookVariationClick,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
-        border: Border.all(color: AppColors.grey),
-        boxShadow: [primaryBoxShadow()],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Image
-          _getImage(context),
+    return Obx(() {
+      return Container(
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+          border: Border.all(color: AppColors.grey),
+          boxShadow: [primaryBoxShadow()],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Image
+            _getImage(context),
 
-          // Details
-          _getBookDetails(context)
-        ],
-      ),
-    );
+            // Details
+            _getBookDetails(context)
+          ],
+        ),
+      );
+    });
   }
 
   Widget _getImage(BuildContext context) {
@@ -47,9 +58,10 @@ class CardBookItem extends StatelessWidget {
           vertical: scaleHeight(5, context)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(scaleRadius(15, context)),
-        child: (item.images!.isNotEmpty)
+        child: (item.featuredImage?.url != null &&
+                item.featuredImage!.url!.isNotEmpty)
             ? CachedNetworkImage(
-                imageUrl: item.images!.first.src!,
+                imageUrl: item.featuredImage!.url!,
                 fit: BoxFit.cover,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
@@ -83,7 +95,12 @@ class CardBookItem extends StatelessWidget {
           children: [
             // Title
             _getBookTitle(context),
-            Expanded(child: Container()),
+
+            // Title
+            _getBookPrice(context),
+
+            // Variation selection
+            _getVariationView(context),
 
             // Stars
             ((item.ratingCount ?? 0) > 0)
@@ -95,15 +112,67 @@ class CardBookItem extends StatelessWidget {
                       color: AppColors.grey,
                     ),
                   ),
-            Expanded(child: Container()),
+            const Spacer(),
 
             //Add to cart Btn
             Padding(
               padding: EdgeInsets.symmetric(horizontal: scaleWidth(5, context)),
-              child: BtnAddToCart(),
+              child: BtnAddToCart(
+                cartBtnType: item.cartBtnType.value,
+                onClick: () {
+                  item.quantity++;
+                  onCartBtnClick(item);
+                },
+              ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _getVariationView(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: scaleHeight(5, context)),
+      child: Row(
+        children: [
+          if (item.isEbookAvailable)
+            GestureDetector(
+              onTap: () => onBookVariationClick!(item, ProductVariation.ebook),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    (item.productVariationType.value == ProductVariation.ebook)
+                        ? AppAssets.icSelectedRadio
+                        : AppAssets.icUnSelectedRadio,
+                  ),
+                  const HorizontalGap(size: 2),
+                  CustomText(
+                      text: 'ebook'.tr,
+                      textStyle: CustomTextStyle.textStyle16Bold(context)),
+                ],
+              ),
+            ),
+          if (item.isBookAvailable) ...{
+            if (item.isEbookAvailable) const HorizontalGap(size: 10),
+            GestureDetector(
+              onTap: () => onBookVariationClick!(item, ProductVariation.book),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    (item.productVariationType.value == ProductVariation.book)
+                        ? AppAssets.icSelectedRadio
+                        : AppAssets.icUnSelectedRadio,
+                  ),
+                  const HorizontalGap(size: 2),
+                  CustomText(
+                      text: 'book'.tr,
+                      textStyle: CustomTextStyle.textStyle16Bold(context)),
+                ],
+              ),
+            ),
+          }
+        ],
       ),
     );
   }
@@ -129,12 +198,45 @@ class CardBookItem extends StatelessWidget {
     );
   }
 
-  CustomText _getBookTitle(BuildContext context) {
+  Widget _getBookTitle(BuildContext context) {
     return CustomText(
       text: item.name,
       textStyle: CustomTextStyle.textStyle16Bold(context),
       textAlign: TextAlign.start,
       maxLines: 2,
     );
+  }
+
+  Widget _getBookPrice(BuildContext context) {
+    return CustomText(
+      text: "${"price".tr} ${_bookPrice()}",
+      textStyle:
+          CustomTextStyle.textStyle16Bold(context, color: AppColors.black),
+      textAlign: TextAlign.start,
+    );
+  }
+
+  String _bookPrice() {
+    for (var variation in item.variations ?? []) {
+      if (item.productVariationType.value == ProductVariation.ebook &&
+          variation.attributes?.attributePurchase
+                  ?.toLowerCase()
+                  .compareTo("ebook") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.price ?? "";
+      }
+
+      if (item.productVariationType.value == ProductVariation.book &&
+          variation.attributes?.attributePurchase
+                  ?.toLowerCase()
+                  .compareTo("book") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.price ?? "";
+      }
+    }
+
+    return item.price ?? "";
   }
 }

@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
+import 'package:moomalpublication/config/api_keys.dart';
+import 'package:moomalpublication/core/base/key_request_data.dart';
+import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/product_detail/data/models/product_detail/product_detail_data.dart';
-import 'package:moomalpublication/features/product_detail/data/models/product_detail_request_data.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
+import 'package:moomalpublication/features/product_detail/data/models/review_post_response/review_post_response_data.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
@@ -13,14 +15,18 @@ class ProductDetailServices {
   ProductDetailServices._();
 
   static Future<ProductDetailResponse> getProductDetails(int productId) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final query = ProductDetailRequestData(
-          consumerKey: "ck_7c962588077c2edb8d7f342c8ba15fec7e985277",
-          consumerSecret: "cs_75485d6ac7accec31722bb8028b4be15e6bf86d4",
+        final query = KeyRequestData(
+          consumerKey: ApiKeys.productDetailConsumerKey,
+          consumerSecret: ApiKeys.productDetailConsumerSecret,
         ).toJson();
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get("${ApiPaths.productDetail}$productId", queryParameters: query);
-        final parsedResponse = ProductDetailData.fromJson(response.data as Map<String, dynamic>);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get("${ApiPaths.productDetail}$productId", queryParameters: query);
+        final parsedResponse =
+            ProductItem.fromJson(response.data as Map<String, dynamic>);
         return ProductDetailResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());
@@ -33,13 +39,17 @@ class ProductDetailServices {
   }
 
   static Future<ProductReviewsResponse> getProductReviews(int productId) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final query = ProductDetailRequestData(
-          consumerKey: "ck_6fd70bd94149beb477a2a27cf3b55122e126865c",
-          consumerSecret: "cs_96a34ed50cf847f554c5be76f57c148e7b6a3262",
+        final query = KeyRequestData(
+          consumerKey: ApiKeys.productReviewConsumerKey,
+          consumerSecret: ApiKeys.productReviewConsumerSecret,
         ).toJson();
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get("${ApiPaths.productReviews}$productId", queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get("${ApiPaths.productReviews}$productId",
+                queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) => ProductReview.fromJson(item as Map<String, dynamic>),
@@ -56,17 +66,21 @@ class ProductDetailServices {
     }
   }
 
-  static Future<SimilarProductResponse> getSimilerReviews(int productId) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<SimilarProductResponse> getSimilarReviews(int productId) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final query = ProductDetailRequestData(
-          consumerKey: "ck_84ab63d0ace9fb179e45f15af31dafd7cae7da68",
-          consumerSecret: "cs_3756d329c7e7122e4f71f305f3fc0c70f216ed0a",
+        final query = KeyRequestData(
+          consumerKey: ApiKeys.similarProductReviewConsumerKey,
+          consumerSecret: ApiKeys.similarProductReviewConsumerSecret,
         ).toJson();
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get("${ApiPaths.productRelated}$productId", queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get("${ApiPaths.productRelated}$productId",
+                queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
-              (item) => ProductDetailData.fromJson(item as Map<String, dynamic>),
+              (item) => ProductItem.fromJson(item as Map<String, dynamic>),
             )
             .toList();
         return SimilarProductResponse.success(parsedResponse);
@@ -77,6 +91,33 @@ class ProductDetailServices {
     } else {
       showSnackBar("no_internet_access".tr);
       return SimilarProductResponse();
+    }
+  }
+
+  static Future<ReviewPostResponse> postReview(
+      Map<String, dynamic> data) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final query = KeyRequestData(
+          consumerKey: ApiKeys.postReviewConsumerKey,
+          consumerSecret: ApiKeys.postReviewConsumerSecret,
+        ).toJson();
+
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .post(ApiPaths.productReviewPost,
+                queryParameters: query, data: data);
+        final parsedResponse = ReviewPostResponseData.fromJson(
+            response.data as Map<String, dynamic>);
+        return ReviewPostResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showSnackBar(error.message.toString());
+        return ReviewPostResponse();
+      }
+    } else {
+      showSnackBar("no_internet_access".tr);
+      return ReviewPostResponse();
     }
   }
 }

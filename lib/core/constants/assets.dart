@@ -9,6 +9,7 @@ class AppAssets {
   static const String icLogo = "${pathSvg}ic_logo.svg";
   static const String icStar = "${pathSvg}ic_star.svg";
   static const String icBookmark = "${pathSvg}ic_bookmark.svg";
+  static const String icBookmarkFilled = "${pathSvg}ic_bookmark_filled.svg";
   static const String icUser = "${pathSvg}ic_user.svg";
   static const String icPassword = "${pathSvg}ic_password.svg";
   static const String icSearch = "${pathSvg}ic_search.svg";
@@ -28,6 +29,7 @@ class AppAssets {
   static const String icEditNavDrawer = "${pathSvg}ic_edit_nav_drawer.svg";
   static const String icDropDown = "${pathSvg}ic_drop_down.svg";
   static const String icFilter = "${pathSvg}ic_filter.svg";
+  static const String icFilter2 = "${pathSvg}ic_filter2.svg";
   static const String icHome = "${pathSvg}ic_home.svg";
   static const String icShop = "${pathSvg}ic_shop.svg";
   static const String icEBook = "${pathSvg}ic_ebook.svg";
@@ -43,12 +45,6 @@ class AppAssets {
   static const String icForwardArrow = "${pathSvg}ic_arrow_forward.svg";
   static const String icBorderedStar = "${pathSvg}ic_bordered_star.svg";
   static const String icCartAdd = "${pathSvg}cart_add.svg";
-  static const String icLocation = "${pathSvg}icLocation.svg";
-  static const String icPhone = "${pathSvg}icPhone.svg";
-  static const String icFaceBook = "${pathSvg}icFacebook.svg";
-  static const String icYoutube = "${pathSvg}icYoutube.svg";
-  static const String icTwitter = "${pathSvg}icTwitter.svg";
-
   static const String icSelectedRadio = "${pathSvg}ic_selected_radio.svg";
   static const String icUnSelectedRadio = "${pathSvg}ic_unselected_radio.svg";
   static const String icDownload = "${pathSvg}ic_download.svg";
@@ -61,14 +57,23 @@ class AppAssets {
   static const String icSettings = "${pathSvg}ic_settings.svg";
   static const String icLogout = "${pathSvg}ic_logout.svg";
   static const String icTestimonialUser = "${pathSvg}ic_testimonial_user.svg";
+  static const String icShopping = "${pathSvg}ic_shopping.svg";
+  static const String icFlash = "${pathSvg}ic_flash.svg";
+  static const String icArrowRight = "${pathSvg}ic_arrow_right.svg";
+  static const String icList = "${pathSvg}ic_list.svg";
+  static const String icUserPic = "${pathSvg}profile_picture.svg";
+  static const String icLocation = "${pathSvg}ic_location.svg";
+  static const String icPhoneCall = "${pathSvg}ic_phone_call.svg";
+  static const String icUser1 = "${pathSvg}ic_user1.svg";
+  static const String icBox = "${pathSvg}ic_box.svg";
 
   // Png
   static const String icLogo1 = "${pathPng}ic_logo_1.png";
-  static const String icImg = "${pathPng}img.png";
   static const String bookPng = "${pathPng}book.png";
+  static const String icAdmin = "${pathPng}ic_admin.png";
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";
-
-  static const String studentProfile = "${pathPng}student_profile.png";
+  static String failedAnimation = "${animation}failed.json";
+  static String successAnimation = "${animation}success.json";
 }

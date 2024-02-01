@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:moomalpublication/app_config.dart';
+import 'package:moomalpublication/config/app_config.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 import 'interceptor/network_interceptor.dart';
 
 class DioClient {
@@ -46,15 +48,12 @@ class DioClient {
   }
 
   static Future<Map<String, String>> getHeaders({String? authToken}) async {
-    String? _authToken;
-    if (authToken == null) {
-      // _authToken = await SharedPreferencesHelper.getString(
-      //   SharedPreferenceKeys.accessToken,
-      // );
-    }
+    authToken ??= await SharedPreferencesHelper.getString(
+      SharedPreferenceKeys.token,
+    );
 
     return {
-      "Authorization": "Bearer ${authToken ?? _authToken}",
+      "Authorization": "Bearer $authToken",
     };
   }
 
