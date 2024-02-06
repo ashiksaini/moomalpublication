@@ -20,7 +20,6 @@ class CommonBottomSheet {
           return WillPopScope(
               child: Padding(
                 padding: MediaQuery.of(context).viewInsets,
-                
                 child: insideComponent,
               ),
               onWillPop: () async {

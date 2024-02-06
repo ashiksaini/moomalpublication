@@ -37,81 +37,84 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              title: "event_and_press_release".tr,
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-              maxLine: 1,
-            ),
-            const HorizontalGap(size: 20),
-            SizedBox(height: scaleHeight(90, context), child:  YearList()),
-            TabBar(
-              unselectedLabelColor: AppColors.grey,
-              labelColor: AppColors.orange,
-              dividerColor: AppColors.grey,
-              labelStyle: CustomTextStyle.textStyle20Bold(context),
-              unselectedLabelStyle: CustomTextStyle.textStyle20Bold(context),
-              indicatorColor: AppColors.orange,
-              tabs: [
-                Tab(
-                  text: 'events'.tr,
-                  height: scaleHeight(60, context),
-                ),
-                Tab(
-                  text: '  Press\nRelease',
-                  height: scaleHeight(60, context),
-                ),
-                Tab(
-                  text: '  Media\nCoverage',
-                  height: scaleHeight(60, context),
-                ),
-              ],
-              controller: _tabController,
-              indicatorSize: TabBarIndicatorSize.tab,
-            ),
-            const HorizontalGap(size: 20),
-            Obx(
-              () => Expanded(
-                child: (_eventPressController.eventResponse.value.isLoading)
-                    ? Center(child: customProgressIndicator())
-                    : TabBarView(
-                        controller: _tabController,
-                        children: [
-                          _eventPressController.events.isNotEmpty
-                              ? ListView.builder(
-                                  itemCount:
-                                      _eventPressController.events.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return EventAndPressCard(index: index);
-                                  },
-                                )
-                              : Center(
-                                  child: EmptyProductView(
-                                    title: 'not_available'.tr,
-                                  ),
-                                ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: scaleHeight(10, context)),
-                            child: ListView.builder(
-                              physics: const BouncingScrollPhysics(),
-                              itemCount: 3,
-                              itemBuilder: (BuildContext context, int index) {
-                                return const PressEvent();
-                              },
-                            ),
-                          ),
-                          const MediaCoverage(),
-                        ],
-                      ),
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                title: "event_and_press_release".tr,
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
+                maxLine: 1,
               ),
-            ),
-          ],
+              const HorizontalGap(size: 20),
+              SizedBox(height: scaleHeight(90, context), child: YearList()),
+              TabBar(
+                unselectedLabelColor: AppColors.grey,
+                labelColor: AppColors.orange,
+                dividerColor: AppColors.grey,
+                labelStyle: CustomTextStyle.textStyle20Bold(context),
+                unselectedLabelStyle: CustomTextStyle.textStyle20Bold(context),
+                indicatorColor: AppColors.orange,
+                tabs: [
+                  Tab(
+                    text: 'events'.tr,
+                    height: scaleHeight(60, context),
+                  ),
+                  Tab(
+                    text: '  Press\nRelease',
+                    height: scaleHeight(60, context),
+                  ),
+                  Tab(
+                    text: '  Media\nCoverage',
+                    height: scaleHeight(60, context),
+                  ),
+                ],
+                controller: _tabController,
+                indicatorSize: TabBarIndicatorSize.tab,
+              ),
+              const HorizontalGap(size: 20),
+              Obx(
+                () => Expanded(
+                  child: (_eventPressController.eventResponse.value.isLoading)
+                      ? Center(child: customProgressIndicator())
+                      : TabBarView(
+                          controller: _tabController,
+                          children: [
+                            _eventPressController.events.isNotEmpty
+                                ? ListView.builder(
+                                    itemCount:
+                                        _eventPressController.events.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return EventAndPressCard(index: index);
+                                    },
+                                  )
+                                : Center(
+                                    child: EmptyProductView(
+                                      title: 'not_available'.tr,
+                                    ),
+                                  ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: scaleHeight(10, context)),
+                              child: ListView.builder(
+                                physics: const BouncingScrollPhysics(),
+                                itemCount: 3,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return const PressEvent();
+                                },
+                              ),
+                            ),
+                            const MediaCoverage(),
+                          ],
+                        ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

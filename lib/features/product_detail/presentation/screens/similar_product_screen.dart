@@ -20,60 +20,63 @@ class SimilarProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              title: "similar_products".tr,
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-            ),
-            Expanded(
-              child: GridView.builder(
-                padding: EdgeInsets.symmetric(
-                  horizontal: scaleWidth(10, context),
-                  vertical: scaleHeight(10, context),
-                ),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 12.0,
-                  mainAxisSpacing: 15.0,
-                  childAspectRatio: _productDetailController
-                          .similarProductResponse.value.isLoading
-                      ? 0.52
-                      : 0.42,
-                ),
-                itemCount: _productDetailController
-                        .similarProductResponse.value.isLoading
-                    ? 10
-                    : _productDetailController.similarProducts.length,
-                itemBuilder: (context, index) {
-                  if (_productDetailController
-                      .similarProductResponse.value.isLoading) {
-                    return const BookItemShimmerSkeleton();
-                  } else {
-                    return GestureDetector(
-                      onTap: () {
-                        AppRouting.ofNamedUntil(
-                          NameRoutes.productDetailScreen,
-                          _productDetailController.sharedData.backStackRoute,
-                          argument: SharedData(
-                            productItem:
-                                _productDetailController.similarProducts[index],
-                          ),
-                        );
-                      },
-                      child: CardBookItem(
-                        item: _productDetailController.similarProducts[index],
-                        onCartBtnClick: _productDetailController.onCartBtnClick,
-                      ),
-                    );
-                  }
-                },
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                title: "similar_products".tr,
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
               ),
-            ),
-          ],
+              Expanded(
+                child: GridView.builder(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: scaleWidth(10, context),
+                    vertical: scaleHeight(10, context),
+                  ),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 12.0,
+                    mainAxisSpacing: 15.0,
+                    childAspectRatio: _productDetailController
+                            .similarProductResponse.value.isLoading
+                        ? 0.52
+                        : 0.42,
+                  ),
+                  itemCount: _productDetailController
+                          .similarProductResponse.value.isLoading
+                      ? 10
+                      : _productDetailController.similarProducts.length,
+                  itemBuilder: (context, index) {
+                    if (_productDetailController
+                        .similarProductResponse.value.isLoading) {
+                      return const BookItemShimmerSkeleton();
+                    } else {
+                      return GestureDetector(
+                        onTap: () {
+                          AppRouting.ofNamedUntil(
+                            NameRoutes.productDetailScreen,
+                            _productDetailController.sharedData.backStackRoute,
+                            argument: SharedData(
+                              productItem:
+                                  _productDetailController.similarProducts[index],
+                            ),
+                          );
+                        },
+                        child: CardBookItem(
+                          item: _productDetailController.similarProducts[index],
+                          onCartBtnClick: _productDetailController.onCartBtnClick,
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -28,7 +28,8 @@ class AddressBottomSheet {
                 CustomText(
                   textAlign: TextAlign.start,
                   text: headerText,
-                  textStyle: CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
+                  textStyle: CustomTextStyle.textStyle25Bold(context,
+                      color: AppColors.black),
                 ),
                 Obx(
                   () => ListView.builder(
@@ -62,6 +63,7 @@ class AddressBottomSheet {
         ),
       ),
     ).paddingOnly(top: scaleHeight(10, context));
-    return CommonBottomSheet().commonbottomSheet(context, addressBottomSheet, isDismissible: true);
+    return CommonBottomSheet()
+        .commonbottomSheet(context, addressBottomSheet, isDismissible: true);
   }
 }

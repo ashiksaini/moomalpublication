@@ -15,32 +15,35 @@ class DownloadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              title: "my_downloads".tr,
-              maxLine: 1,
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-            ),
-            Obx(
-              () => Expanded(
-                child: downloadController.downloadSeriesResponse.value.isLoading
-                    ? Center(child: customProgressIndicator())
-                    : SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            DownloadCard(
-                              downloadList: downloadController.downloadList,
-                            )
-                          ],
-                        ),
-                      ),
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                title: "my_downloads".tr,
+                maxLine: 1,
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
               ),
-            ),
-          ],
+              Obx(
+                () => Expanded(
+                  child: downloadController.downloadSeriesResponse.value.isLoading
+                      ? Center(child: customProgressIndicator())
+                      : SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              DownloadCard(
+                                downloadList: downloadController.downloadList,
+                              )
+                            ],
+                          ),
+                        ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

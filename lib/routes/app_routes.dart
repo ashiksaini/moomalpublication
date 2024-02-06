@@ -129,7 +129,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.addressesScreen,
-      page: () =>  AddressScreen(),
+      page: () => AddressScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

@@ -19,57 +19,60 @@ class TestimonialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
         child: Obx(() {
-          return Column(
-            children: [
-              CustomAppbar(
-                title: "testimonial".tr,
-                prefixIcon: AppAssets.icBackArrow,
-                onPrefixIconClick: () => AppRouting.navigateBack(),
-              ),
-              Expanded(
-                child: (_testimonialController
-                        .testimonialResponse.value.isLoading)
-                    ? Center(child: customProgressIndicator())
-                    : SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            const TestomonialTemplates(),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                right: scaleHeight(10, context),
-                                left: scaleHeight(10, context),
-                                top: scaleWidth(10, context),
-                                bottom: scaleWidth(30, context),
-                              ),
-                              child: GridView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount:
-                                    _testimonialController.testimonials.length,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: 0.40,
-                                  crossAxisSpacing: scaleWidth(10, context),
-                                  mainAxisSpacing: scaleHeight(30, context),
+          return Container(
+          color: AppColors.white,
+            child: Column(
+              children: [
+                CustomAppbar(
+                  title: "testimonial".tr,
+                  prefixIcon: AppAssets.icBackArrow,
+                  onPrefixIconClick: () => AppRouting.navigateBack(),
+                ),
+                Expanded(
+                  child: (_testimonialController
+                          .testimonialResponse.value.isLoading)
+                      ? Center(child: customProgressIndicator())
+                      : SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              const TestomonialTemplates(),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  right: scaleHeight(10, context),
+                                  left: scaleHeight(10, context),
+                                  top: scaleWidth(10, context),
+                                  bottom: scaleWidth(30, context),
                                 ),
-                                itemBuilder: (_, index) {
-                                  return StudentGridCard(
-                                    testimonialResponseModel:
-                                        _testimonialController
-                                            .testimonials[index],
-                                  );
-                                },
+                                child: GridView.builder(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount:
+                                      _testimonialController.testimonials.length,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio: 0.40,
+                                    crossAxisSpacing: scaleWidth(10, context),
+                                    mainAxisSpacing: scaleHeight(30, context),
+                                  ),
+                                  itemBuilder: (_, index) {
+                                    return StudentGridCard(
+                                      testimonialResponseModel:
+                                          _testimonialController
+                                              .testimonials[index],
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-              ),
-            ],
+                ),
+              ],
+            ),
           );
         }),
       ),

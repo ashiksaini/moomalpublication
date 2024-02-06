@@ -13,7 +13,9 @@ class SettingsServices {
   SettingsServices._();
 
   static Future<DeleteAccountResponse> deleteAccount() async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
         final query = KeyRequestData(
           consumerKey: ApiKeys.deleteAccountConsumerKey,
@@ -21,7 +23,8 @@ class SettingsServices {
         ).toJson();
         query.putIfAbsent("force", () => true);
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.delete(ApiPaths.deleteAccount, queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .delete(ApiPaths.deleteAccount, queryParameters: query);
         final parsedResponse = BaseResponse.fromJson(
           response.data as Map<String, dynamic>,
           (data) => null,

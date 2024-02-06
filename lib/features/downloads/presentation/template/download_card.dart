@@ -20,7 +20,9 @@ class DownloadCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(vertical: scaleHeight(30, context), horizontal: scaleWidth(8, context)),
+        padding: EdgeInsets.symmetric(
+            vertical: scaleHeight(30, context),
+            horizontal: scaleWidth(8, context)),
         child: Obx(
           () => ListView.builder(
               shrinkWrap: true,
@@ -31,10 +33,14 @@ class DownloadCard extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: GestureDetector(
                     onTap: () {
-                      AppRouting.toNamed(NameRoutes.pdfScreen, argument: SharedData(productName: downloadList[index].productName, productURL: downloadList[index].downloadUrl));
+                      AppRouting.toNamed(NameRoutes.pdfScreen,
+                          argument: SharedData(
+                              productName: downloadList[index].productName,
+                              productURL: downloadList[index].downloadUrl));
                     },
                     child: ShadowContainer(
-                        backgroundColor: AppColors.orangeLighter.withOpacity(0.9),
+                        backgroundColor:
+                            AppColors.orangeLighter.withOpacity(0.9),
                         containerChild: Padding(
                           padding: const EdgeInsets.all(6),
                           child: Row(
@@ -48,12 +54,19 @@ class DownloadCard extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    TextCard(name: 'name'.tr, subject: downloadList[index].productName ?? ''),
+                                    TextCard(
+                                        name: 'name'.tr,
+                                        subject:
+                                            downloadList[index].productName ??
+                                                ''),
                                     TextCard(
                                       name: 'date_paid'.tr,
                                       subject: DateTimeUtils.formatDateTime(
-                                        inputDateString: downloadList[index].dateOfPurchase ?? '2024-01-19 07:44:59', // ask
-                                        outputFormat: AppConstants.dateFormatter,
+                                        inputDateString: downloadList[index]
+                                                .dateOfPurchase ??
+                                            '2024-01-19 07:44:59', // ask
+                                        outputFormat:
+                                            AppConstants.dateFormatter,
                                       ),
                                     ),
                                   ],

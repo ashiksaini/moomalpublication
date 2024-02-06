@@ -17,29 +17,37 @@ class EventAndPressCard extends StatelessWidget {
   });
   final int index;
 
-  final EventPressController _eventPressController = Get.find<EventPressController>();
+  final EventPressController _eventPressController =
+      Get.find<EventPressController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _eventPressController.navigateSettingDetailScreen(appBarTitle: _eventPressController.events[index].postTitle ?? '');
+        _eventPressController.navigateSettingDetailScreen(
+            appBarTitle: _eventPressController.events[index].postTitle ?? '');
       },
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: scaleHeight(16, context), horizontal: scaleWidth(8, context)),
+        padding: EdgeInsets.symmetric(
+            vertical: scaleHeight(16, context),
+            horizontal: scaleWidth(8, context)),
         child: ShadowContainer(
           containerChild: Padding(
-            padding: EdgeInsets.symmetric(vertical: scaleHeight(16, context), horizontal: scaleWidth(14, context)),
+            padding: EdgeInsets.symmetric(
+                vertical: scaleHeight(16, context),
+                horizontal: scaleWidth(14, context)),
             child: Row(
               children: [
                 CardImage(
-                  image: _eventPressController.events[index].featuredImage ?? "",
+                  image:
+                      _eventPressController.events[index].featuredImage ?? "",
                   borderColor: AppColors.blue,
                 ),
                 const HorizontalGap(size: 12),
                 Flexible(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: scaleWidth(12, context)),
+                    padding:
+                        EdgeInsets.symmetric(vertical: scaleWidth(12, context)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -47,19 +55,24 @@ class EventAndPressCard extends StatelessWidget {
                           textAlign: TextAlign.left,
                           text: _eventPressController.events[index].postTitle,
                           maxLines: 4,
-                          textStyle: CustomTextStyle.textStyle22Bold(context, color: AppColors.black, decoration: TextDecoration.underline),
+                          textStyle: CustomTextStyle.textStyle22Bold(context,
+                              color: AppColors.black,
+                              decoration: TextDecoration.underline),
                         ),
                         const VerticalGap(size: 6),
                         CustomText(
                           text: _eventPressController.events[index].postContent,
-                          textStyle: CustomTextStyle.textStyle15Bold(context, color: AppColors.black),
+                          textStyle: CustomTextStyle.textStyle15Bold(context,
+                              color: AppColors.black),
                           maxLines: 4,
                           textAlign: TextAlign.start,
                         ),
                         const VerticalGap(size: 9),
                         CustomText(
                           text: "read_more".tr,
-                          textStyle: CustomTextStyle.textStyle20SemiMedium(context, color: AppColors.black),
+                          textStyle: CustomTextStyle.textStyle20SemiMedium(
+                              context,
+                              color: AppColors.black),
                           textAlign: TextAlign.start,
                         ),
                       ],

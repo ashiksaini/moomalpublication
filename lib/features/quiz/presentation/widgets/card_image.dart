@@ -45,7 +45,8 @@ class CardImage extends StatelessWidget {
                 child: Center(
                   child: CustomText(
                     text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context, color: AppColors.black),
+                    textStyle: CustomTextStyle.textStyle10Bold(context,
+                        color: AppColors.black),
                   ),
                 ),
               ),

@@ -52,7 +52,7 @@ class Screen extends StatelessWidget {
       ),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: screenBg ?? AppColors.white,
+        backgroundColor: AppColors.black,
         drawer: drawer,
         body: SafeArea(
           child: CustomRefreshIndicator(

@@ -23,55 +23,59 @@ class SearchProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return Scaffold(
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: scaleHeight(100, context),
-                  decoration: BoxDecoration(
-                    color: AppColors.black,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(scaleRadius(20, context)),
-                      bottomRight: Radius.circular(scaleRadius(20, context)),
+        backgroundColor: AppColors.black,
+        body: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: scaleHeight(100, context),
+                    decoration: BoxDecoration(
+                      color: AppColors.black,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(scaleRadius(20, context)),
+                        bottomRight: Radius.circular(scaleRadius(20, context)),
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 10,
-                  left: 0,
-                  right: 0,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: scaleWidth(10, context),
+                  Positioned(
+                    bottom: 10,
+                    left: 0,
+                    right: 0,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: scaleWidth(10, context),
+                      ),
+                      child: customTextFormField(
+                        context,
+                        _searchProductController.textEditingController,
+                        prefixIcon: AppAssets.icBackSmall,
+                        onPrefixIconClick: () => AppRouting.navigateBack(),
+                        suffixIcon: AppAssets.icClose,
+                        onSuffixIconClick: () {
+                          _searchProductController.textEditingController.clear();
+                          _searchProductController.searchedBooks.clear();
+                        },
+                        hint: "search_for_books_and_ebooks".tr,
+                        hintTextStyle: CustomTextStyle.textStyle15Bold(context),
+                        onTextChange: _searchProductController.onTextChanged,
+                        textInputAction: TextInputAction.done,
+                      ),
                     ),
-                    child: customTextFormField(
-                      context,
-                      _searchProductController.textEditingController,
-                      prefixIcon: AppAssets.icBackSmall,
-                      onPrefixIconClick: () => AppRouting.navigateBack(),
-                      suffixIcon: AppAssets.icClose,
-                      onSuffixIconClick: () {
-                        _searchProductController.textEditingController.clear();
-                        _searchProductController.searchedBooks.clear();
-                      },
-                      hint: "search_for_books_and_ebooks".tr,
-                      hintTextStyle: CustomTextStyle.textStyle15Bold(context),
-                      onTextChange: _searchProductController.onTextChanged,
-                      textInputAction: TextInputAction.done,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Expanded(
-              child: _searchProductController.searchedBooks.isNotEmpty ||
-                      _searchProductController
-                          .searchBookResponse.value.isLoading
-                  ? _getBooksDataView(context)
-                  : _getCenterSearchView(context),
-            ),
-          ],
+                  )
+                ],
+              ),
+              Expanded(
+                child: _searchProductController.searchedBooks.isNotEmpty ||
+                        _searchProductController
+                            .searchBookResponse.value.isLoading
+                    ? _getBooksDataView(context)
+                    : _getCenterSearchView(context),
+              ),
+            ],
+          ),
         ),
       );
     });

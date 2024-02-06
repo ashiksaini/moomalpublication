@@ -131,7 +131,8 @@ mixin NetworkHandlingMixin {
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
-      CustomLogger.logger.w("*************************************** Response ***************************************\n"
+      CustomLogger.logger.w(
+          "*************************************** Response ***************************************\n"
           "Status Code: ${response.statusCode}\n"
           "Url: ${response.requestOptions.uri}\n"
           "Response Data: ${response.data}\n"
@@ -142,7 +143,8 @@ mixin NetworkHandlingMixin {
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      CustomLogger.logger.w("*************************************** Request ***************************************\n"
+      CustomLogger.logger.w(
+          "*************************************** Request ***************************************\n"
           "Request Method: ${options.method}\n"
           "Request URL: ${options.uri}\n"
           "Request Data: ${options.data ?? 'No data'}\n"

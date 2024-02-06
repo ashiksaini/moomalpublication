@@ -16,42 +16,46 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Obx(() {
-            return Column(
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: scaleHeight(280, context),
-                    ),
-                    const CircularContainer(),
-                    CustomAppbar(
-                      title: "my_profile".tr,
-                      maxLine: 1,
-                      textAlign: TextAlign.center,
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      left: scaleWidth(100, context),
-                      child: ProfilePicture(
-                          avatarUrl: _profileController.userAvatar.value),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: scaleWidth(16, context),
-                    vertical: scaleHeight(56, context),
+            return Container(
+              height: screenHeight(context),
+          color: AppColors.white,
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        height: scaleHeight(280, context),
+                      ),
+                      const CircularContainer(),
+                      CustomAppbar(
+                        title: "my_profile".tr,
+                        maxLine: 1,
+                        textAlign: TextAlign.center,
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        left: scaleWidth(100, context),
+                        child: ProfilePicture(
+                            avatarUrl: _profileController.userAvatar.value),
+                      ),
+                    ],
                   ),
-                  child: NameTemplate(
-                    userName: _profileController.userName.value,
-                    userEmail: _profileController.userEmail.value,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: scaleWidth(16, context),
+                      vertical: scaleHeight(56, context),
+                    ),
+                    child: NameTemplate(
+                      userName: _profileController.userName.value,
+                      userEmail: _profileController.userEmail.value,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           }),
         ),
