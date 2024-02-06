@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
-import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/date_time_utils.dart';
@@ -46,16 +45,10 @@ class DownloadCard extends StatelessWidget {
                           padding: const EdgeInsets.all(6),
                           child: Row(
                             children: [
-                              downloadList[index].imageUrl == false
-                                  ? const CardImage(
-                                      image: AppAssets.bookPng,
-                                      borderColor: AppColors.grey,
-                                    )
-                                  : CardImage(
-                                      assetsImage: false,
-                                      image: downloadList[index].imageUrl,
-                                      borderColor: AppColors.grey,
-                                    ),
+                              CardImage(
+                                image: downloadList[index].imageUrl ?? "",
+                                borderColor: AppColors.grey,
+                              ),
                               const HorizontalGap(size: 16),
                               Flexible(
                                 child: Column(

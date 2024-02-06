@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -40,13 +39,9 @@ class EventAndPressCard extends StatelessWidget {
             child: Row(
               children: [
                 CardImage(
-                  image: _eventPressController.events[index].featuredImage ==
-                          'false'
-                      ? AppAssets.icLogo
-                      : _eventPressController.events[index].featuredImage!,
+                  image:
+                      _eventPressController.events[index].featuredImage ?? "",
                   borderColor: AppColors.blue,
-                  // height: scaleHeight(130, context),
-                  assetsImage: false,
                 ),
                 const HorizontalGap(size: 12),
                 Flexible(

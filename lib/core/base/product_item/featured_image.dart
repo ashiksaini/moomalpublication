@@ -4,8 +4,15 @@ class FeaturedImage {
 
   FeaturedImage({this.url, this.alt});
 
-  factory FeaturedImage.fromJson(Map<String, dynamic> json) => FeaturedImage(
-        url: json['url'] as String?,
-        alt: json['alt'] as String?,
-      );
+  factory FeaturedImage.fromJson(Map<String, dynamic> json) {
+    String val = "";
+    if (json['url'] != null && json['url'] is String) {
+      val = json['url'];
+    }
+
+    return FeaturedImage(
+      url: val,
+      alt: json['alt'] as String?,
+    );
+  }
 }

@@ -24,7 +24,6 @@ class DownloadService {
                   DownloadResponseModel.fromJson(item as Map<String, dynamic>),
             )
             .toList();
-        print(parsedResponse);
         return DownloadResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());

@@ -21,16 +21,18 @@ class PriceQuantity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Price View
-        _getPriceView(context),
+    return Obx(() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // Price View
+          _getPriceView(context),
 
-        // Quantity view
-        _getQuantityView(context),
-      ],
-    );
+          // Quantity view
+          _getQuantityView(context),
+        ],
+      );
+    });
   }
 
   Widget _getPriceView(BuildContext context) {

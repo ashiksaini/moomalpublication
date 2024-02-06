@@ -18,31 +18,34 @@ class QuizDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     int index = args[0]['index'];
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              title: _quizController.quizList[index].quizName ?? '',
-              maxLine: 1,
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: scaleHeight(30, context),
-                      horizontal: scaleWidth(30, context)),
-                  child: ShadowContainer(
-                    containerChild: PhotoDescription(
-                      index: index,
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                title: _quizController.quizList[index].quizName ?? '',
+                maxLine: 1,
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: scaleHeight(30, context),
+                        horizontal: scaleWidth(30, context)),
+                    child: ShadowContainer(
+                      containerChild: PhotoDescription(
+                        index: index,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

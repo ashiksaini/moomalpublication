@@ -19,64 +19,67 @@ class AddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              title: "addresses".tr,
-              maxLine: 1,
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: scaleHeight(36, context),
-                      horizontal: scaleWidth(10, context)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                          textAlign: TextAlign.start,
-                          text:
-                              "the_following_addresses_will_be_used_on_the_checkout_page_by_default"
-                                  .tr,
-                          textStyle: CustomTextStyle.textStyle25Bold(context,
-                              color: AppColors.black)),
-                      AddressCard(
-                        address:
-                            "you_have_not_set_up_this_type_of_address_yet".tr,
-                        addressHeading: "billing_address".tr,
-                        onTap: () {
-                          AddressBottomSheet().bottomSheet(
-                              context: context,
-                              headerText: "billing_address".tr,
-                              addressList: controller.billingAddressList,
-                              onSubmitButton: () => controller
-                                  .onSubmitBillingButton(context: context));
-                        },
-                      ),
-                      AddressCard(
-                        address:
-                            "you_have_not_set_up_this_type_of_address_yet".tr,
-                        addressHeading: "shipping_address".tr,
-                        onTap: () {
-                          AddressBottomSheet().bottomSheet(
-                              context: context,
-                              headerText: "shipping_address".tr,
-                              addressList: controller.shippingAddressList,
-                              onSubmitButton: () => controller
-                                  .onSubmitShippingButton(context: context));
-                        },
-                      ),
-                    ],
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                title: "addresses".tr,
+                maxLine: 1,
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: scaleHeight(36, context),
+                        horizontal: scaleWidth(10, context)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                            textAlign: TextAlign.start,
+                            text:
+                                "the_following_addresses_will_be_used_on_the_checkout_page_by_default"
+                                    .tr,
+                            textStyle: CustomTextStyle.textStyle25Bold(context,
+                                color: AppColors.black)),
+                        AddressCard(
+                          address:
+                              "you_have_not_set_up_this_type_of_address_yet".tr,
+                          addressHeading: "billing_address".tr,
+                          onTap: () {
+                            AddressBottomSheet().bottomSheet(
+                                context: context,
+                                headerText: "billing_address".tr,
+                                addressList: controller.billingAddressList,
+                                onSubmitButton: () => controller
+                                    .onSubmitBillingButton(context: context));
+                          },
+                        ),
+                        AddressCard(
+                          address:
+                              "you_have_not_set_up_this_type_of_address_yet".tr,
+                          addressHeading: "shipping_address".tr,
+                          onTap: () {
+                            AddressBottomSheet().bottomSheet(
+                                context: context,
+                                headerText: "shipping_address".tr,
+                                addressList: controller.shippingAddressList,
+                                onSubmitButton: () => controller
+                                    .onSubmitShippingButton(context: context));
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

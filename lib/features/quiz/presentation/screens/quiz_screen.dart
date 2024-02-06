@@ -31,59 +31,62 @@ class _QuizScreenState extends State<QuizScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              title: "our_quiz".tr,
-              maxLine: 1,
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-            ),
-            const VerticalGap(size: 22),
-            TabBar(
-              unselectedLabelColor: AppColors.black,
-              labelColor: AppColors.orange,
-              dividerColor: AppColors.grey,
-              labelStyle: CustomTextStyle.textStyle22Bold(context),
-              unselectedLabelStyle: CustomTextStyle.textStyle22Bold(context),
-              indicatorColor: AppColors.orange,
-              tabs: [
-                Tab(
-                  text: 'Current Affair\nQuiz',
-                  height: scaleHeight(80, context),
-                ),
-                Tab(
-                  text: 'Economics \n Quiz',
-                  height: scaleHeight(80, context),
-                ),
-              ],
-              controller: _tabController,
-              indicatorSize: TabBarIndicatorSize.tab,
-            ),
-            Expanded(
-              child: Obx(
-                () => (_quizController.quizResponse.value.isLoading)
-                    ? Center(child: customProgressIndicator())
-                    : TabBarView(
-                        controller: _tabController,
-                        children: [
-                          ListView.builder(
-                              itemCount: _quizController.quizList.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return CurrentAffairQuizCard(index: index);
-                              }),
-                          ListView.builder(
-                              itemCount: _quizController.quizList.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return CurrentAffairQuizCard(index: index);
-                              }),
-                        ],
-                      ),
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                title: "our_quiz".tr,
+                maxLine: 1,
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
               ),
-            ),
-          ],
+              const VerticalGap(size: 22),
+              TabBar(
+                unselectedLabelColor: AppColors.black,
+                labelColor: AppColors.orange,
+                dividerColor: AppColors.grey,
+                labelStyle: CustomTextStyle.textStyle22Bold(context),
+                unselectedLabelStyle: CustomTextStyle.textStyle22Bold(context),
+                indicatorColor: AppColors.orange,
+                tabs: [
+                  Tab(
+                    text: 'Current Affair\nQuiz',
+                    height: scaleHeight(80, context),
+                  ),
+                  Tab(
+                    text: 'Economics \n Quiz',
+                    height: scaleHeight(80, context),
+                  ),
+                ],
+                controller: _tabController,
+                indicatorSize: TabBarIndicatorSize.tab,
+              ),
+              Expanded(
+                child: Obx(
+                  () => (_quizController.quizResponse.value.isLoading)
+                      ? Center(child: customProgressIndicator())
+                      : TabBarView(
+                          controller: _tabController,
+                          children: [
+                            ListView.builder(
+                                itemCount: _quizController.quizList.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return CurrentAffairQuizCard(index: index);
+                                }),
+                            ListView.builder(
+                                itemCount: _quizController.quizList.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return CurrentAffairQuizCard(index: index);
+                                }),
+                          ],
+                        ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

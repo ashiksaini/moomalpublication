@@ -28,25 +28,28 @@ class CategoryWiseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
         child: Obx(() {
-          return Column(
-            children: [
-              _getUpperView(context),
-              const VerticalGap(size: 2),
-
-              // Data view
-              _getDataView(context),
-
-              // Load more
-              if (_categoryWiseController.isLoadingMore.value)
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
-                  child: customProgressIndicator(),
-                ),
-            ],
+          return Container(
+          color: AppColors.white,
+            child: Column(
+              children: [
+                _getUpperView(context),
+                const VerticalGap(size: 2),
+            
+                // Data view
+                _getDataView(context),
+            
+                // Load more
+                if (_categoryWiseController.isLoadingMore.value)
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                    child: customProgressIndicator(),
+                  ),
+              ],
+            ),
           );
         }),
       ),

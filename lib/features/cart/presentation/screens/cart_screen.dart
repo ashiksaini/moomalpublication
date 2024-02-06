@@ -25,60 +25,63 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
         child: Obx(() {
           return CustomRefreshIndicator(
             onRefreshCallback: () => _cartController.onRefresh(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Appbar
-                CustomAppbar(title: "my_cart".tr),
+            child: Container(
+              color: AppColors.white,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Appbar
+                  CustomAppbar(title: "my_cart".tr),
 
-                if (_cartController.cartDataResponse.value.isLoading) ...{
-                  // Show Loading
-                  Expanded(
-                    child: Center(
-                      child: customProgressIndicator(),
+                  if (_cartController.cartDataResponse.value.isLoading) ...{
+                    // Show Loading
+                    Expanded(
+                      child: Center(
+                        child: customProgressIndicator(),
+                      ),
                     ),
-                  ),
-                } else if (_cartController.cartItems.isEmpty) ...{
-                  // Show Empty View
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        EmptyCartView(title: "no_items_in_cart".tr),
-                      ],
-                    ),
-                  )
-                } else
-                  // Cart view
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _getCartView(context),
-                              const VerticalGap(size: 30),
-                              _getOrderDetailView(context),
-                              const VerticalGap(size: 80),
-                            ],
+                  } else if (_cartController.cartItems.isEmpty) ...{
+                    // Show Empty View
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          EmptyCartView(title: "no_items_in_cart".tr),
+                        ],
+                      ),
+                    )
+                  } else
+                    // Cart view
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _getCartView(context),
+                                const VerticalGap(size: 30),
+                                _getOrderDetailView(context),
+                                const VerticalGap(size: 80),
+                              ],
+                            ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: _getPlaceOrderView(context),
-                        ),
-                      ],
+                          Positioned(
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: _getPlaceOrderView(context),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
           );
         }),
@@ -114,7 +117,8 @@ class CartScreen extends StatelessWidget {
             child: _cartController.cartCheckoutResponse.value.isLoading
                 ? Container(
                     height: scaleWidth(45, context),
-                    padding: EdgeInsets.symmetric(horizontal: scaleWidth(45, context)),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: scaleWidth(45, context)),
                     child: LottieBuilder.asset(
                       AppAssets.loadingAnimation,
                       fit: BoxFit.cover,
@@ -123,8 +127,8 @@ class CartScreen extends StatelessWidget {
                     ),
                   )
                 : GestureDetector(
-                  onTap: () => _cartController.cartCheckout(),
-                  child: Padding(
+                    onTap: () => _cartController.cartCheckout(),
+                    child: Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: scaleHeight(10, context),
                         horizontal: scaleWidth(24, context),
@@ -135,7 +139,7 @@ class CartScreen extends StatelessWidget {
                             color: AppColors.white),
                       ),
                     ),
-                ),
+                  ),
           )
         ],
       ),

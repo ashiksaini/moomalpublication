@@ -35,7 +35,7 @@ class AppPages {
     GetPage(
       name: NameRoutes.splashScreen,
       page: () => const SplashScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
@@ -100,7 +100,7 @@ class AppPages {
     GetPage(
       name: NameRoutes.testimonialScreen,
       page: () => TestimonialScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
@@ -118,37 +118,37 @@ class AppPages {
     GetPage(
       name: NameRoutes.quizScreen,
       page: () => const QuizScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.downloadScreen,
       page: () => DownloadScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.addressesScreen,
-      page: () =>  AddressScreen(),
-      transition: Transition.leftToRight,
+      page: () => AddressScreen(),
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.orderScreen,
       page: () => OrdersScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.eventAndPressReleaseScreen,
       page: () => const EventAndPressReleaseScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.contactUsScreen,
       page: () => ContactUsScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
@@ -161,13 +161,13 @@ class AppPages {
       name: NameRoutes.overallResultScreen,
       page: () => OverallResultScreen(),
       // page: () => PdfViewerScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.onlineTestSeriesScreen,
       page: () => OnlineExamScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
@@ -185,7 +185,7 @@ class AppPages {
     GetPage(
       name: NameRoutes.quizTestDetailScreen,
       page: () => QuizDetailScreen(),
-      transition: Transition.leftToRight,
+      transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(

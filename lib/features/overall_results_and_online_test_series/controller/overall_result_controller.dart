@@ -1,16 +1,33 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/features/overall_results_and_online_test_series/data/constants/type_alias.dart';
+import 'package:moomalpublication/features/overall_results_and_online_test_series/data/models/result.dart';
+import 'package:moomalpublication/features/overall_results_and_online_test_series/data/services/result_services.dart';
+import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class OverallResultController extends BaseController {
-  List<String> examName = ['Punit Test 1', 'Gk Test Quiz', 'Punit Test 2'];
-  List<String> onlineExam = ["order_id".tr, "action".tr, "purchased_on".tr];
-  List<String> overallPerformance = [
-    "score".tr,
-    "rank".tr,
-    "total".tr,
-    "correct".tr,
-    "incorrect".tr,
-    "skipped".tr,
-    "action".tr,
-  ];
+  
+  Rx<OverallResultResponse> overallResultResponse = Rx(ApiResponse());
+  RxList<Result> overallPerformance = RxList();
+  bool isOverallResult = false;
+
+  OverallResultController(this.isOverallResult);
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    if(isOverallResult) {
+      _getOverallResults();
+    }
+  }
+  
+  void _getOverallResults() async {
+    overallResultResponse.value = ApiResponse.loading();
+    overallResultResponse.value = await ResultServices.getOverallResult();
+
+    if (overallResultResponse.value.data != null) {
+      overallPerformance.addAll(overallResultResponse.value.data ?? []);
+    }
+  }
 }

@@ -22,67 +22,71 @@ class ShopScreen extends StatelessWidget {
     return Obx(
       () {
         return Scaffold(
-          backgroundColor: AppColors.white,
+          backgroundColor: AppColors.black,
           body: SafeArea(
             child: CustomRefreshIndicator(
               onRefreshCallback: () => _shopController.onRefresh(),
-              child: Column(
-                children: [
-                  // Appbar
-                  CustomAppbar(
-                    title: "shop".tr,
-                    suffixIcon: AppAssets.icSearch,
-                    onSuffixIconClick: () =>
-                        AppRouting.toNamed(NameRoutes.searchScreen),
-                  ),
+              child: Container(
+                color: AppColors.white,
+                child: Column(
+                  children: [
+                    // Appbar
+                    CustomAppbar(
+                      title: "shop".tr,
+                      suffixIcon: AppAssets.icSearch,
+                      onSuffixIconClick: () =>
+                          AppRouting.toNamed(NameRoutes.searchScreen),
+                    ),
 
-                  // Data view
-                  Expanded(
-                    child: GridView.builder(
-                      controller: _shopController.scrollController,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: scaleWidth(10, context),
-                        vertical: scaleHeight(10, context),
-                      ),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12.0,
-                        mainAxisSpacing: 15.0,
-                        childAspectRatio:
+                    // Data view
+                    Expanded(
+                      child: GridView.builder(
+                        controller: _shopController.scrollController,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: scaleWidth(10, context),
+                          vertical: scaleHeight(10, context),
+                        ),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 12.0,
+                          mainAxisSpacing: 15.0,
+                          childAspectRatio:
+                              _shopController.productResponse.value.isLoading
+                                  ? 0.52
+                                  : 0.42,
+                        ),
+                        itemCount:
                             _shopController.productResponse.value.isLoading
-                                ? 0.52
-                                : 0.42,
+                                ? 20
+                                : _shopController.productList.length,
+                        itemBuilder: (context, index) {
+                          if (_shopController.productResponse.value.isLoading) {
+                            return const BookItemShimmerSkeleton();
+                          } else {
+                            return GestureDetector(
+                              onTap: () {
+                                _shopController.onItemClick(
+                                    index, _shopController.productList[index]);
+                              },
+                              child: CardBookItem(
+                                item: _shopController.productList[index],
+                                onCartBtnClick: _shopController.onCartBtnClick,
+                              ),
+                            );
+                          }
+                        },
                       ),
-                      itemCount: _shopController.productResponse.value.isLoading
-                          ? 20
-                          : _shopController.productList.length,
-                      itemBuilder: (context, index) {
-                        if (_shopController.productResponse.value.isLoading) {
-                          return const BookItemShimmerSkeleton();
-                        } else {
-                          return GestureDetector(
-                            onTap: () {
-                              _shopController.onItemClick(
-                                  index, _shopController.productList[index]);
-                            },
-                            child: CardBookItem(
-                              item: _shopController.productList[index],
-                              onCartBtnClick: _shopController.onCartBtnClick,
-                            ),
-                          );
-                        }
-                      },
                     ),
-                  ),
 
-                  // Load more
-                  if (_shopController.isLoadingMore.value)
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: scaleHeight(10, context)),
-                      child: customProgressIndicator(),
-                    ),
-                ],
+                    // Load more
+                    if (_shopController.isLoadingMore.value)
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: scaleHeight(10, context)),
+                        child: customProgressIndicator(),
+                      ),
+                  ],
+                ),
               ),
             ),
           ),

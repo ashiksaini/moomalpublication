@@ -5,7 +5,8 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class CustomOrangeButton extends StatelessWidget {
-  const CustomOrangeButton({super.key, required this.onTapButton, required this.buttonText});
+  const CustomOrangeButton(
+      {super.key, required this.onTapButton, required this.buttonText});
   final Function onTapButton;
   final String buttonText;
   @override

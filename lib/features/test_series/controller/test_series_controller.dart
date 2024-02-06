@@ -15,17 +15,23 @@ class TestSeriesController extends BaseController {
   List<TabBarModel> tabBarList = [];
 
   final Rx<TestSeriesResponse> testSeriesResponse = Rx(TestSeriesResponse());
-  final Rx<TestSeriesListResponse> testSeriesListResponse = Rx(TestSeriesListResponse());
+  final Rx<TestSeriesListResponse> testSeriesListResponse =
+      Rx(TestSeriesListResponse());
 
-  final RxList<TestSeriesResponseModel> testsAll = RxList<TestSeriesResponseModel>();
-  final RxList<TestSeriesResponseModel> testsFullLength = RxList<TestSeriesResponseModel>();
-  final RxList<TestSeriesResponseModel> testsSectional = RxList<TestSeriesResponseModel>();
+  final RxList<TestSeriesResponseModel> testsAll =
+      RxList<TestSeriesResponseModel>();
+  final RxList<TestSeriesResponseModel> testsFullLength =
+      RxList<TestSeriesResponseModel>();
+  final RxList<TestSeriesResponseModel> testsSectional =
+      RxList<TestSeriesResponseModel>();
 
   List<DropdownItem<Term>> mockTestCategory = RxList<DropdownItem<Term>>();
-  late Rx<DropdownItem<Term>?> selectedMockTestCategory = Rx<DropdownItem<Term>?>(null);
+  late Rx<DropdownItem<Term>?> selectedMockTestCategory =
+      Rx<DropdownItem<Term>?>(null);
 
   List<DropdownItem<Term>> topicWiseCategory = RxList<DropdownItem<Term>>();
-  late Rx<DropdownItem<Term>?> selectedTopicWiseCategory = Rx<DropdownItem<Term>?>(null);
+  late Rx<DropdownItem<Term>?> selectedTopicWiseCategory =
+      Rx<DropdownItem<Term>?>(null);
 
   @override
   void onInit() {
@@ -63,14 +69,18 @@ class TestSeriesController extends BaseController {
 
     if (testSeriesListResponse.value.data != null) {
       if (testSeriesListResponse.value.data!.mockTestTerms != null) {
-        for (var category in testSeriesListResponse.value.data!.mockTestTerms!.values) {
-          mockTestCategory.add(DropdownItem(title: category.name ?? "", type: category));
+        for (var category
+            in testSeriesListResponse.value.data!.mockTestTerms!.values) {
+          mockTestCategory
+              .add(DropdownItem(title: category.name ?? "", type: category));
         }
       }
 
       if (testSeriesListResponse.value.data!.topicWiseTerms != null) {
-        for (var category in testSeriesListResponse.value.data!.topicWiseTerms!.values) {
-          topicWiseCategory.add(DropdownItem(title: category.name ?? "", type: category));
+        for (var category
+            in testSeriesListResponse.value.data!.topicWiseTerms!.values) {
+          topicWiseCategory
+              .add(DropdownItem(title: category.name ?? "", type: category));
         }
       }
     } else {
@@ -80,16 +90,20 @@ class TestSeriesController extends BaseController {
 
   Future<void> _getTestList({int? category}) async {
     testSeriesResponse.value = ApiResponse.loading();
-    testSeriesResponse.value = await TestSeriesService.getTests(query: _getQueryParams(category));
+    testSeriesResponse.value =
+        await TestSeriesService.getTests(query: _getQueryParams(category));
 
-    if (testSeriesResponse.value.data != null && testSeriesResponse.value.data!.isNotEmpty) {
+    if (testSeriesResponse.value.data != null &&
+        testSeriesResponse.value.data!.isNotEmpty) {
       for (var test in testSeriesResponse.value.data!) {
         testsAll.add(test);
 
         if (test.testTypeTerms!.isNotEmpty) {
-          if (test.testTypeTerms!.containsWithIgnoreCases(AppConstants.sectional)) {
+          if (test.testTypeTerms!
+              .containsWithIgnoreCases(AppConstants.sectional)) {
             testsSectional.add(test);
-          } else if (test.testTypeTerms!.containsWithIgnoreCases(AppConstants.fullLength)) {
+          } else if (test.testTypeTerms!
+              .containsWithIgnoreCases(AppConstants.fullLength)) {
             testsFullLength.add(test);
           }
         }
@@ -120,6 +134,8 @@ class TestSeriesController extends BaseController {
   }
 
   void onRefresh() {
+    _setDefaultMockCategoryValue();
+    _setDefaultTopicWiseCategoryValue();
     _clearList();
     _getTestList();
   }
@@ -135,10 +151,12 @@ class TestSeriesController extends BaseController {
   }
 
   void _setDefaultMockCategoryValue() {
-    selectedMockTestCategory.value = DropdownItem(title: "mock_test_category".tr, type: Term());
+    selectedMockTestCategory.value =
+        DropdownItem(title: "mock_test_category".tr, type: Term());
   }
 
   void _setDefaultTopicWiseCategoryValue() {
-    selectedTopicWiseCategory.value = DropdownItem(title: "topicwise_category".tr, type: Term());
+    selectedTopicWiseCategory.value =
+        DropdownItem(title: "topicwise_category".tr, type: Term());
   }
 }

@@ -24,24 +24,27 @@ class EBookScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
         child: Obx(() {
           return CustomRefreshIndicator(
             onRefreshCallback: () => _ebookController.onRefresh(),
-            child: Column(
-              children: [
-                CustomAppbar(
-                  title: "ebooks".tr,
-                  suffixIcon: AppAssets.icSearch,
-                  onSuffixIconClick: () =>
-                      AppRouting.toNamed(NameRoutes.searchScreen),
-                ),
-                _ebookController.ebookCategoryResponse.value.isLoading ||
-                        _ebookController.ebooksResponse.value.isLoading
-                    ? _showLoading(context)
-                    : _showData(context),
-              ],
+            child: Container(
+          color: AppColors.white,
+              child: Column(
+                children: [
+                  CustomAppbar(
+                    title: "ebooks".tr,
+                    suffixIcon: AppAssets.icSearch,
+                    onSuffixIconClick: () =>
+                        AppRouting.toNamed(NameRoutes.searchScreen),
+                  ),
+                  _ebookController.ebookCategoryResponse.value.isLoading ||
+                          _ebookController.ebooksResponse.value.isLoading
+                      ? _showLoading(context)
+                      : _showData(context),
+                ],
+              ),
             ),
           );
         }),
