@@ -23,7 +23,7 @@ class TestimonialScreen extends StatelessWidget {
       body: SafeArea(
         child: Obx(() {
           return Container(
-          color: AppColors.white,
+            color: AppColors.white,
             child: Column(
               children: [
                 CustomAppbar(
@@ -49,8 +49,8 @@ class TestimonialScreen extends StatelessWidget {
                                 child: GridView.builder(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
-                                  itemCount:
-                                      _testimonialController.testimonials.length,
+                                  itemCount: _testimonialController
+                                      .testimonials.length,
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,

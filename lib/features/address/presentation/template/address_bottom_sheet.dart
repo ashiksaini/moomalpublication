@@ -6,7 +6,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
-import 'package:moomalpublication/features/address/data/address_model.dart';
+import 'package:moomalpublication/features/address/data/models/address_model.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/fill_address_card.dart';
 
@@ -18,6 +18,7 @@ class AddressBottomSheet {
     required Function onSubmitButton,
   }) {
     Widget addressBottomSheet = SizedBox(
+      height: screenHeight(context) / 1.3,
       child: SafeArea(
         child: ScrollConfiguration(
           behavior: NoGlowBehavior(),

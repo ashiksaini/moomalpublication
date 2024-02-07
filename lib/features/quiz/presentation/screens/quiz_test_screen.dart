@@ -73,7 +73,8 @@ class QuizTestScreen extends StatelessWidget {
                                   ),
                                 ),
                                 ListView.builder(
-                                    physics: const NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemCount:
                                         _quizController.questionsList.length,

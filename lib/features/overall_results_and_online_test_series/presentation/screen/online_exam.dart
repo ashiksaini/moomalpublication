@@ -40,11 +40,12 @@ class OnlineExamScreen extends StatelessWidget {
                         : overallResultController.overallPerformance.isEmpty
                             ? EmptyProductView(title: "no_test_result_found".tr)
                             : SingleChildScrollView(
-                            child: TestDataCard(
-                              title: 'online_exam'.tr,
-                              data: overallResultController.overallPerformance,
-                            ),
-                          ),
+                                child: TestDataCard(
+                                  title: 'online_exam'.tr,
+                                  data: overallResultController
+                                      .overallPerformance,
+                                ),
+                              ),
                   );
                 },
               ),

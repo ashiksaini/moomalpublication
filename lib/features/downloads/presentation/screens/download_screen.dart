@@ -29,7 +29,8 @@ class DownloadScreen extends StatelessWidget {
               ),
               Obx(
                 () => Expanded(
-                  child: downloadController.downloadSeriesResponse.value.isLoading
+                  child: downloadController
+                          .downloadSeriesResponse.value.isLoading
                       ? Center(child: customProgressIndicator())
                       : SingleChildScrollView(
                           child: Column(

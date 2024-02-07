@@ -32,20 +32,20 @@ class CategoryWiseScreen extends StatelessWidget {
       body: SafeArea(
         child: Obx(() {
           return Container(
-          color: AppColors.white,
+            color: AppColors.white,
             child: Column(
               children: [
                 _getUpperView(context),
                 const VerticalGap(size: 2),
-            
+
                 // Data view
                 _getDataView(context),
-            
+
                 // Load more
                 if (_categoryWiseController.isLoadingMore.value)
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                    padding: EdgeInsets.symmetric(
+                        vertical: scaleHeight(10, context)),
                     child: customProgressIndicator(),
                   ),
               ],

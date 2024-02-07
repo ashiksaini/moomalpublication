@@ -22,7 +22,6 @@ class FillAddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(error);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

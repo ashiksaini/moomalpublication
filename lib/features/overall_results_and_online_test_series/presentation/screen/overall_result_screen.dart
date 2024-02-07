@@ -40,8 +40,8 @@ class OverallResultScreen extends StatelessWidget {
                             : SingleChildScrollView(
                                 child: TestDataCard(
                                   title: 'overall_performace'.tr,
-                                  data:
-                                      overallResultController.overallPerformance,
+                                  data: overallResultController
+                                      .overallPerformance,
                                 ),
                               ),
                   );
