@@ -1,12 +1,20 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/core/base/billing_address.dart';
+import 'package:moomalpublication/core/base/shipping_address.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/features/address/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/address/data/models/address_model.dart';
+import 'package:moomalpublication/features/address/data/services/address_services.dart';
+import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class AdressController extends BaseController {
   RxList<AddressTextEditingController> billingAddressList = RxList();
   RxList<AddressTextEditingController> shippingAddressList = RxList();
+  Rx<AddressDataResponse> addressDataResponse = Rx(ApiResponse());
+  Rx<BillingAddress?> billingAddress = Rx(null);
+  Rx<ShippingAddress?> shippingAddress = Rx(null);
   RxBool shippingAllFieldsFilled = RxBool(true);
   RxBool billingAllFieldsFilled = RxBool(true);
   Map<String, String> billingFormData = {};
@@ -16,9 +24,21 @@ class AdressController extends BaseController {
 
   @override
   void onInit() {
+    super.onInit();
     shippingAddressFiled();
     billingAddressFiled();
-    super.onInit();
+    
+    _getAddress();
+  }
+
+  Future<void> _getAddress() async {
+    addressDataResponse.value = ApiResponse.loading();
+    addressDataResponse.value = await AddressServices.getAddress();
+
+    if (addressDataResponse.value.data != null) {
+      billingAddress.value = addressDataResponse.value.data!.billing;
+      shippingAddress.value = addressDataResponse.value.data!.shipping;
+    }
   }
 
   void shippingAddressFiled() {

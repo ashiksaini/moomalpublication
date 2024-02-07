@@ -28,6 +28,6 @@ class ApiPaths {
   static const String checkout = 'wc/store/checkout';
   static const String deleteAccount = 'wc/v3/customers';
   static const String download = 'moomal/v2/user-downloads';
-  static const String overAllResult = 'myplugin/v1/overall-result/1';
-  static const String address = 'wc/v3/customers/1';
+  static const String overAllResult = 'myplugin/v1/overall-result/';
+  static const String address = 'wc/v3/customers/4';
 }

@@ -18,6 +18,7 @@ class AddressBottomSheet {
     required Function onSubmitButton,
   }) {
     Widget addressBottomSheet = SizedBox(
+      height: screenHeight(context) / 1.3,
       child: SafeArea(
         child: ScrollConfiguration(
           behavior: NoGlowBehavior(),

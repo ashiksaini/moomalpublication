@@ -280,6 +280,7 @@ final Map<String, String> enUS = {
   'save_address': 'Save Address',
   'please_fill_all_required_fields': "please fill all required filed",
   'please_enter_a_valid_number': "please enter a valid number",
+  "update": "Update",
 
   // Download
   "my_downloads": "My Downloads",

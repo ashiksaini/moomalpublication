@@ -1,7 +1,5 @@
-import 'billing.dart';
-import 'links.dart';
-import 'meta_datum.dart';
-import 'shipping.dart';
+import 'package:moomalpublication/core/base/billing_address.dart';
+import 'package:moomalpublication/core/base/shipping_address.dart';
 
 class AddressData {
   int? id;
@@ -14,12 +12,10 @@ class AddressData {
   String? lastName;
   String? role;
   String? username;
-  Billing? billing;
-  Shipping? shipping;
+  BillingAddress? billing;
+  ShippingAddress? shipping;
   bool? isPayingCustomer;
   String? avatarUrl;
-  List<MetaDatum>? metaData;
-  Links? links;
 
   AddressData({
     this.id,
@@ -36,8 +32,6 @@ class AddressData {
     this.shipping,
     this.isPayingCustomer,
     this.avatarUrl,
-    this.metaData,
-    this.links,
   });
 
   factory AddressData.fromJson(Map<String, dynamic> json) => AddressData(
@@ -53,36 +47,11 @@ class AddressData {
         username: json['username'] as String?,
         billing: json['billing'] == null
             ? null
-            : Billing.fromJson(json['billing'] as Map<String, dynamic>),
+            : BillingAddress.fromJson(json['billing'] as Map<String, dynamic>),
         shipping: json['shipping'] == null
             ? null
-            : Shipping.fromJson(json['shipping'] as Map<String, dynamic>),
+            : ShippingAddress.fromJson(json['shipping'] as Map<String, dynamic>),
         isPayingCustomer: json['is_paying_customer'] as bool?,
         avatarUrl: json['avatar_url'] as String?,
-        metaData: (json['meta_data'] as List<dynamic>?)
-            ?.map((e) => MetaDatum.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        links: json['_links'] == null
-            ? null
-            : Links.fromJson(json['_links'] as Map<String, dynamic>),
       );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'date_created': dateCreated,
-        'date_created_gmt': dateCreatedGmt,
-        'date_modified': dateModified,
-        'date_modified_gmt': dateModifiedGmt,
-        'email': email,
-        'first_name': firstName,
-        'last_name': lastName,
-        'role': role,
-        'username': username,
-        'billing': billing?.toJson(),
-        'shipping': shipping?.toJson(),
-        'is_paying_customer': isPayingCustomer,
-        'avatar_url': avatarUrl,
-        'meta_data': metaData?.map((e) => e.toJson()).toList(),
-        '_links': links?.toJson(),
-      };
 }
