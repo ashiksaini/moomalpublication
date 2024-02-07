@@ -17,9 +17,9 @@ class DetailedEventPage extends StatelessWidget {
       backgroundColor: AppColors.black,
       body: SafeArea(
           child: Container(
-          color: AppColors.white,
-            child: Stack(
-                    children: [
+        color: AppColors.white,
+        child: Stack(
+          children: [
             Column(
               children: [
                 CustomAppbar(
@@ -31,9 +31,9 @@ class DetailedEventPage extends StatelessWidget {
                 const HorizontalGap(size: 20),
               ],
             ),
-                    ],
-                  ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 }

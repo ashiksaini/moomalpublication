@@ -47,7 +47,7 @@ class AllCategoriesScreen extends StatelessWidget {
                             categoryId: AppConstants.currentGKCategoryId,
                           ),
                         ),
-          
+
                         // Rajasthan GK
                         _getCategoryItem(
                           "rajasthan_gk".tr,
@@ -72,7 +72,7 @@ class AllCategoriesScreen extends StatelessWidget {
                             categoryId: AppConstants.examReviewCategoryId,
                           ),
                         ),
-          
+
                         // Reet Exam
                         _getCategoryItem(
                           "reet_exam".tr,
@@ -97,7 +97,7 @@ class AllCategoriesScreen extends StatelessWidget {
                             categoryId: AppConstants.newBookCategoryId,
                           ),
                         ),
-          
+
                         // New Books
                         _getCategoryItem(
                           "model_papers".tr,

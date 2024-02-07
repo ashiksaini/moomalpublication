@@ -6,7 +6,6 @@ import 'package:moomalpublication/features/overall_results_and_online_test_serie
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class OverallResultController extends BaseController {
-  
   Rx<OverallResultResponse> overallResultResponse = Rx(ApiResponse());
   RxList<Result> overallPerformance = RxList();
   bool isOverallResult = false;
@@ -17,11 +16,11 @@ class OverallResultController extends BaseController {
   void onInit() {
     super.onInit();
 
-    if(isOverallResult) {
+    if (isOverallResult) {
       _getOverallResults();
     }
   }
-  
+
   void _getOverallResults() async {
     overallResultResponse.value = ApiResponse.loading();
     overallResultResponse.value = await ResultServices.getOverallResult();

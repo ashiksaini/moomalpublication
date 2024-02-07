@@ -21,9 +21,9 @@ class ContactUsScreen extends StatelessWidget {
       backgroundColor: AppColors.black,
       body: SafeArea(
           child: Container(
-          color: AppColors.white,
-            child: Column(
-                    children: [
+        color: AppColors.white,
+        child: Column(
+          children: [
             CustomAppbar(
               title: "contact_us".tr,
               prefixIcon: AppAssets.icBackArrow,
@@ -48,9 +48,9 @@ class ContactUsScreen extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   vertical: scaleHeight(10, context)),
                               child: ContactCard(
-                                contactImage:
-                                    contactUsController.address[index].iconName ??
-                                        AppAssets.icAddress,
+                                contactImage: contactUsController
+                                        .address[index].iconName ??
+                                    AppAssets.icAddress,
                                 contactText: contactUsController
                                         .address[index].addressHeader ??
                                     '',
@@ -66,9 +66,9 @@ class ContactUsScreen extends StatelessWidget {
               ),
             ),
             const BottomMarker(),
-                    ],
-                  ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 }

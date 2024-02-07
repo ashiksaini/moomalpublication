@@ -47,7 +47,8 @@ class SheetMarksRow extends StatelessWidget {
             case 5:
               return _getScoreView(
                   context, "skipped".tr, testResult.skipped.toString());
-            default: return Container();
+            default:
+              return Container();
           }
         },
       ),

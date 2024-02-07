@@ -71,11 +71,13 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                                 right: scaleWidth(10, context),
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   CustomDropDown2(
                                     borderColor: AppColors.orange,
-                                    items: _testSeriesController.mockTestCategory,
+                                    items:
+                                        _testSeriesController.mockTestCategory,
                                     selectedItem: _testSeriesController
                                         .selectedMockTestCategory,
                                     width: screenWidth(context) / 2.2,
@@ -119,8 +121,8 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                                   text: _testSeriesController
                                           .tabBarList[2].tabName ??
                                       '',
-                                  length:
-                                      _testSeriesController.testsSectional.length,
+                                  length: _testSeriesController
+                                      .testsSectional.length,
                                 ),
                               ],
                               labelStyle:

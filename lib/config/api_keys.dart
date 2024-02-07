@@ -76,4 +76,10 @@ class ApiKeys {
       "ck_095bd577668a846cda231f0941c7981d430759a7";
   static const String orderConsumerSecret =
       "cs_0e0f1736ccfc3b4c5d9f2dc658e03cf4e6db17f8";
+
+  // Address APi key
+  static const String addressDataConsumerKey =
+      "ck_48165835470bf5835058798d6f9f1049cbbf0c08";
+  static const String addressDataConsumerSecret =
+      "cs_da6bd805deb37ba90d916c4807e027f9a0f4a830";
 }

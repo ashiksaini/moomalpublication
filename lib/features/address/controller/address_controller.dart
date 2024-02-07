@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/address/data/address_model.dart';
+import 'package:moomalpublication/features/address/data/models/address_model.dart';
 
 class AdressController extends BaseController {
   RxList<AddressTextEditingController> billingAddressList = RxList();

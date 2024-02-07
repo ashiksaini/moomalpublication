@@ -23,7 +23,7 @@ class SettingScreen extends StatelessWidget {
       body: SafeArea(
         child: Obx(() {
           return Container(
-          color: AppColors.white,
+            color: AppColors.white,
             child: Stack(
               children: [
                 Column(
@@ -46,7 +46,8 @@ class SettingScreen extends StatelessWidget {
                               SettingCard(
                                 text: 'shipping_policy'.tr.toUpperCase(),
                                 onCardTap: () {
-                                  _settingController.navigateSettingDetailScreen(
+                                  _settingController
+                                      .navigateSettingDetailScreen(
                                     appBarTitle:
                                         'shipping_policy'.tr.toUpperCase(),
                                     description: 'shipping_policy_desc'.tr,
@@ -54,43 +55,49 @@ class SettingScreen extends StatelessWidget {
                                 },
                               ),
                               const VerticalGap(size: 20),
-            
+
                               // Cancellation and refund policy
                               SettingCard(
                                 text: 'cancellation_and_refund_policy'
                                     .tr
                                     .toUpperCase(),
                                 onCardTap: () {
-                                  _settingController.navigateSettingDetailScreen(
-                                    appBarTitle: 'cancellation_and_refund_policy'
-                                        .tr
-                                        .toUpperCase(),
+                                  _settingController
+                                      .navigateSettingDetailScreen(
+                                    appBarTitle:
+                                        'cancellation_and_refund_policy'
+                                            .tr
+                                            .toUpperCase(),
                                     description:
-                                        'cancellation_and_refund_policy_desc'.tr,
+                                        'cancellation_and_refund_policy_desc'
+                                            .tr,
                                   );
                                 },
                               ),
                               const VerticalGap(size: 20),
-            
+
                               // Privacy Policy
                               SettingCard(
                                 text: 'privacy_policy'.tr.toUpperCase(),
                                 onCardTap: () {
-                                  _settingController.navigateSettingDetailScreen(
+                                  _settingController
+                                      .navigateSettingDetailScreen(
                                     appBarTitle:
                                         'privacy_policy'.tr.toUpperCase(),
                                     description:
-                                        'cancellation_and_refund_policy_desc'.tr,
+                                        'cancellation_and_refund_policy_desc'
+                                            .tr,
                                   );
                                 },
                               ),
                               const VerticalGap(size: 20),
-            
+
                               // Terms and condition
                               SettingCard(
                                 text: 'terms_and_conditions'.tr.toUpperCase(),
                                 onCardTap: () {
-                                  _settingController.navigateSettingDetailScreen(
+                                  _settingController
+                                      .navigateSettingDetailScreen(
                                     appBarTitle:
                                         'terms_and_conditions'.tr.toUpperCase(),
                                     description: 'terms_and_conditions_desc'.tr,
@@ -98,18 +105,20 @@ class SettingScreen extends StatelessWidget {
                                 },
                               ),
                               const VerticalGap(size: 20),
-            
+
                               // Logout
                               SettingCard(
                                 text: 'logout'.tr.toUpperCase(),
                                 color: AppColors.orange,
                                 onCardTap: () {
-                                  SharedPreferencesHelper.clearSharedPrefExcept();
-                                  AppRouting.offAllNamed(NameRoutes.splashScreen);
+                                  SharedPreferencesHelper
+                                      .clearSharedPrefExcept();
+                                  AppRouting.offAllNamed(
+                                      NameRoutes.splashScreen);
                                 },
                               ),
                               const VerticalGap(size: 20),
-            
+
                               // Delete Account
                               SettingCard(
                                 text: 'delete_account'.tr.toUpperCase(),
@@ -126,7 +135,8 @@ class SettingScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                if (_settingController.deleteAccountResponse.value.isLoading) ...{
+                if (_settingController
+                    .deleteAccountResponse.value.isLoading) ...{
                   const OverlayLoading(),
                 }
               ],

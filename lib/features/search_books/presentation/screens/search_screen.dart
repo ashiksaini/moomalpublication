@@ -55,7 +55,8 @@ class SearchProductScreen extends StatelessWidget {
                         onPrefixIconClick: () => AppRouting.navigateBack(),
                         suffixIcon: AppAssets.icClose,
                         onSuffixIconClick: () {
-                          _searchProductController.textEditingController.clear();
+                          _searchProductController.textEditingController
+                              .clear();
                           _searchProductController.searchedBooks.clear();
                         },
                         hint: "search_for_books_and_ebooks".tr,

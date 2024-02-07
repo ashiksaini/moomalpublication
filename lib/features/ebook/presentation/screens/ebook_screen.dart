@@ -30,7 +30,7 @@ class EBookScreen extends StatelessWidget {
           return CustomRefreshIndicator(
             onRefreshCallback: () => _ebookController.onRefresh(),
             child: Container(
-          color: AppColors.white,
+              color: AppColors.white,
               child: Column(
                 children: [
                   CustomAppbar(

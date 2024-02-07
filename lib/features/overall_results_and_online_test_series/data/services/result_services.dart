@@ -15,9 +15,11 @@ class ResultServices {
         .haveInternetConnection
         .value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithAuth!
-            .get(ApiPaths.overAllResult);
-        final parsedResponse = (response.data as List<dynamic>?)?.map((e) => Result.fromJson(e as Map<String, dynamic>)).toList();
+        final dio.Response<dynamic> response =
+            await DioClient.dioWithAuth!.get(ApiPaths.overAllResult);
+        final parsedResponse = (response.data as List<dynamic>?)
+            ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
+            .toList();
         return OverallResultResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());

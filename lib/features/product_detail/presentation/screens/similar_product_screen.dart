@@ -61,14 +61,15 @@ class SimilarProductScreen extends StatelessWidget {
                             NameRoutes.productDetailScreen,
                             _productDetailController.sharedData.backStackRoute,
                             argument: SharedData(
-                              productItem:
-                                  _productDetailController.similarProducts[index],
+                              productItem: _productDetailController
+                                  .similarProducts[index],
                             ),
                           );
                         },
                         child: CardBookItem(
                           item: _productDetailController.similarProducts[index],
-                          onCartBtnClick: _productDetailController.onCartBtnClick,
+                          onCartBtnClick:
+                              _productDetailController.onCartBtnClick,
                         ),
                       );
                     }

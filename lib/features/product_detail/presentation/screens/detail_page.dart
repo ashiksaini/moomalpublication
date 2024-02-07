@@ -20,7 +20,7 @@ class ProductDetailScreen extends StatelessWidget {
         backgroundColor: AppColors.black,
         body: SafeArea(
           child: Container(
-          color: AppColors.white,
+            color: AppColors.white,
             child: Stack(
               children: [
                 Column(

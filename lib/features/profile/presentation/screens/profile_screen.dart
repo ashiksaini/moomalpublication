@@ -22,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
           child: Obx(() {
             return Container(
               height: screenHeight(context),
-          color: AppColors.white,
+              color: AppColors.white,
               child: Column(
                 children: [
                   Stack(

@@ -27,7 +27,7 @@ class Result {
         correct: json['correct'] as int?,
         incorrect: json['incorrect'] as int?,
         skipped: json['skipped'] as int?,
-        action: json['action']?.toString(),
+        action: json['action']?.toString().trim(),
       );
 
   Map<String, dynamic> toJson() => {
