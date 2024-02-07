@@ -32,60 +32,68 @@ class AddressScreen extends StatelessWidget {
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => AppRouting.navigateBack(),
               ),
-              Obx(() {
-                return Expanded(
-                  child: controller.addressDataResponse.value.isLoading
-                      ? Center(child: customProgressIndicator())
-                      : SingleChildScrollView(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
+              Obx(
+                () {
+                  return Expanded(
+                    child: controller.addressDataResponse.value.isLoading
+                        ? Center(child: customProgressIndicator())
+                        : SingleChildScrollView(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
                                 vertical: scaleHeight(36, context),
-                                horizontal: scaleWidth(10, context)),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomText(
-                                    textAlign: TextAlign.start,
-                                    text:
-                                        "the_following_addresses_will_be_used_on_the_checkout_page_by_default"
-                                            .tr,
-                                    textStyle: CustomTextStyle.textStyle25Bold(
-                                        context,
-                                        color: AppColors.black)),
-                                AddressCard(
-                                  address: controller.billingAddress.value,
-                                  addressHeading: "billing_address".tr,
-                                  onTap: () {
-                                    AddressBottomSheet().bottomSheet(
+                                horizontal: scaleWidth(10, context),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomText(
+                                      textAlign: TextAlign.start,
+                                      text:
+                                          "the_following_addresses_will_be_used_on_the_checkout_page_by_default"
+                                              .tr,
+                                      textStyle:
+                                          CustomTextStyle.textStyle25Bold(
+                                              context,
+                                              color: AppColors.black)),
+                                  AddressCard(
+                                    address: controller.billingAddress.value,
+                                    addressHeading: "billing_address".tr,
+                                    onTap: () {
+                                      AddressBottomSheet().bottomSheet(
                                         context: context,
                                         headerText: "billing_address".tr,
                                         addressList:
                                             controller.billingAddressList,
                                         onSubmitButton: () =>
                                             controller.onSubmitBillingButton(
-                                                context: context));
-                                  },
-                                ),
-                                AddressCard(
-                                  address: controller.shippingAddress.value,
-                                  addressHeading: "shipping_address".tr,
-                                  onTap: () {
-                                    AddressBottomSheet().bottomSheet(
+                                          context: context,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  AddressCard(
+                                    address: controller.shippingAddress.value,
+                                    addressHeading: "shipping_address".tr,
+                                    onTap: () {
+                                      AddressBottomSheet().bottomSheet(
                                         context: context,
                                         headerText: "shipping_address".tr,
                                         addressList:
                                             controller.shippingAddressList,
                                         onSubmitButton: () =>
                                             controller.onSubmitShippingButton(
-                                                context: context));
-                                  },
-                                ),
-                              ],
+                                          context: context,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                );
-              }),
+                  );
+                },
+              ),
             ],
           ),
         ),

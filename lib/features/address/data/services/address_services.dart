@@ -49,9 +49,9 @@ class AddressServices {
         ).toJson();
         
         final dio.Response<dynamic> response =
-            await DioClient.dioWithAuth!.put(ApiPaths.address, queryParameters: query, data: address);
+            await DioClient.dioWithoutAuth!.put(ApiPaths.address, queryParameters: query, data: address);
 
-        final parsedResponse = AddressData.fromJson(response as Map<String, dynamic>);
+        final parsedResponse = AddressData.fromJson(response.data as Map<String, dynamic>);
 
         return AddressDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {

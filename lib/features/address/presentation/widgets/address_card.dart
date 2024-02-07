@@ -28,7 +28,7 @@ class AddressCard extends StatelessWidget {
 
       if (billingAddress.firstName?.isNotEmpty == true) {
         addressValue =
-            "${billingAddress.firstName} ${billingAddress.lastName}\n${billingAddress.address1}, ${billingAddress.address2}, ${billingAddress.postcode}\n${billingAddress.phone}";
+            "${billingAddress.firstName} ${billingAddress.lastName}\n${billingAddress.address1}, ${billingAddress.city}, ${billingAddress.state}-${billingAddress.postcode}\n${billingAddress.phone}";
       } else {
         addressValue = null;
       }
@@ -37,7 +37,7 @@ class AddressCard extends StatelessWidget {
 
       if (shippingAddress.firstName?.isNotEmpty == true) {
         addressValue =
-            "${shippingAddress.firstName} ${shippingAddress.lastName}\n${shippingAddress.address1}, ${shippingAddress.address2}, ${shippingAddress.postcode}\n${shippingAddress.phone}";
+            "${shippingAddress.firstName} ${shippingAddress.lastName}\n${shippingAddress.address1}, ${shippingAddress.city} ,${shippingAddress.state}-${shippingAddress.postcode}";
       } else {
         addressValue = null;
       }
