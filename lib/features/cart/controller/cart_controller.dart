@@ -6,6 +6,8 @@ import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/item.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/totals.dart';
 import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class CartController extends BaseController {
@@ -99,10 +101,15 @@ class CartController extends BaseController {
 
     cartCheckoutResponse.value = await CartServices.checkout();
     if (cartCheckoutResponse.value.data != null) {
-      final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
-      payUCheckoutPro.init(callBack: () => onRefresh());
-      payUCheckoutPro.pay(
-          totals.value?.totalPrice, cartCheckoutResponse.value.data!.orderKey);
+      if (cartCheckoutResponse.value.data!.billingAddress?.firstName?.isEmpty == true || cartCheckoutResponse.value.data!.shippingAddress?.firstName?.isEmpty == true) {
+        showSnackBar("please_add_address_first".tr);
+        AppRouting.toNamed(NameRoutes.addressesScreen);
+      } else {
+        final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
+        payUCheckoutPro.init(callBack: () => onRefresh());
+        payUCheckoutPro.pay(
+            totals.value?.totalPrice, cartCheckoutResponse.value.data!.orderKey);
+      }
     }
   }
 }

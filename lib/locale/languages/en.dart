@@ -186,6 +186,7 @@ final Map<String, String> enUS = {
   "no_items_in_cart": "No Items in Cart",
   "browse_product": "Browse Product",
   "quantity_cannot_exceed_the_limit": "Quantity cannot exceed 9999",
+  "please_add_address_first": "Please add Address first",
 
   // Search Screen ////////////////////////////////////////////////////////////
   "search_for_books_and_ebooks": "Search for Books and Ebooks",
@@ -253,7 +254,6 @@ final Map<String, String> enUS = {
   "payment_success": "Payment Success",
 
   //Address
-
   "the_following_addresses_will_be_used_on_the_checkout_page_by_default":
       "The following addresses will be used on the checkout page by default. ",
   "billing_address": "BILLING ADDRESS",

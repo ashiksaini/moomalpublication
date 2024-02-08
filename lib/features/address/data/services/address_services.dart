@@ -22,7 +22,7 @@ class AddressServices {
           consumerSecret: ApiKeys.addressDataConsumerSecret,
         ).toJson();
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+        final dio.Response<dynamic> response = await DioClient.dioWithAuth!
             .get(ApiPaths.address, queryParameters: query);
 
         final parsedResponse =
@@ -50,7 +50,7 @@ class AddressServices {
           consumerSecret: ApiKeys.addressDataConsumerSecret,
         ).toJson();
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+        final dio.Response<dynamic> response = await DioClient.dioWithAuth!
             .put(ApiPaths.address, queryParameters: query, data: address);
 
         final parsedResponse =

@@ -25,8 +25,8 @@ class GetOrderService {
           query['consumer'] = id;
         }
 
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .get(ApiPaths.orders, queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithAuth!
+            .get(ApiPaths.orders);
         final parsedResponse = (response.data as List<dynamic>)
             .map((categoryItem) => OrderResponseModel.fromJson(categoryItem))
             .toList();
