@@ -50,7 +50,8 @@ class AddressData {
             : BillingAddress.fromJson(json['billing'] as Map<String, dynamic>),
         shipping: json['shipping'] == null
             ? null
-            : ShippingAddress.fromJson(json['shipping'] as Map<String, dynamic>),
+            : ShippingAddress.fromJson(
+                json['shipping'] as Map<String, dynamic>),
         isPayingCustomer: json['is_paying_customer'] as bool?,
         avatarUrl: json['avatar_url'] as String?,
       );

@@ -37,7 +37,7 @@ class ShippingAddress {
       postcode: json['postcode'] as String?,
       country: json['country'] as String?,
       phone: json['phone'] as String?,
-      email:  json['email'] as String?,
+      email: json['email'] as String?,
     );
   }
 }
