@@ -4,6 +4,7 @@ import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
 import 'package:moomalpublication/features/event_press_release/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/event_press_release/data/models/event_response_model.dart';
+import 'package:moomalpublication/features/event_press_release/data/models/press_event_response_model.dart';
 import 'package:moomalpublication/features/event_press_release/data/models/year_model.dart';
 import 'package:moomalpublication/features/event_press_release/data/services/event_service.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -12,8 +13,13 @@ import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class EventPressController extends BaseController {
   final Rx<EventsResponse> eventResponse = Rx(EventsResponse());
+  final Rx<PressReleaseResponse> pressReleaseResponse =
+      Rx(PressReleaseResponse());
 
-  final List<EventsResponseModel> events = [];
+  final RxList<EventsResponseModel> events = RxList<EventsResponseModel>();
+  final RxList<PressEventResponseModel> pressReleaseList =
+      RxList<PressEventResponseModel>();
+
   RxList<Year> yearListData = RxList();
 
   int intialYear = 0;
@@ -24,6 +30,7 @@ class EventPressController extends BaseController {
     super.onInit();
     generateYearList();
     _getEvents();
+    _getPressRelease();
   }
 
   void navigateSettingDetailScreen({required String appBarTitle}) {
@@ -40,6 +47,19 @@ class EventPressController extends BaseController {
     if (eventResponse.value.data != null) {
       events.clear();
       events.addAll(eventResponse.value.data!);
+    } else {
+      showSnackBar(AppConstants.somethingWentWrong);
+    }
+  }
+
+  Future<void> _getPressRelease() async {
+    pressReleaseResponse.value = ApiResponse.loading();
+    pressReleaseResponse.value = await EventService.getPressRelease(
+        query: {'year': yearListData[intialYear].year});
+
+    if (pressReleaseResponse.value.data != null) {
+      pressReleaseList.clear();
+      pressReleaseList.addAll(pressReleaseResponse.value.data!);
     } else {
       showSnackBar(AppConstants.somethingWentWrong);
     }
@@ -64,6 +84,7 @@ class EventPressController extends BaseController {
       yearListData[intialYear].clicked = !yearListData[intialYear].clicked!;
       intialYear = currentYear;
       _getEvents();
+      _getPressRelease();
       yearListData.refresh();
     }
   }

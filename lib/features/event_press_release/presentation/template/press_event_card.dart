@@ -5,10 +5,15 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
+import 'package:moomalpublication/features/event_press_release/controller/event_press_controller.dart';
 
 class PressEventCard extends StatelessWidget {
-  const PressEventCard({super.key, this.withGradient = false});
+  PressEventCard({super.key, this.withGradient = false, required this.index});
   final bool withGradient;
+  final int index;
+  final EventPressController _eventPressController =
+      Get.find<EventPressController>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,8 +36,8 @@ class PressEventCard extends StatelessWidget {
         containerChild: Padding(
           padding: EdgeInsets.symmetric(vertical: scaleHeight(16, context)),
           child: CustomText(
-              text:
-                  "central_economic_review_2022_23_&_central_budget_2023_24".tr,
+              text: _eventPressController.pressReleaseList[index].postContent,
+              // "central_economic_review_2022_23_&_central_budget_2023_24".tr,
               textStyle: CustomTextStyle.textStyle20Regular(context,
                   color: AppColors.black)),
         ),

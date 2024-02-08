@@ -21,11 +21,12 @@ class AddressServices {
           consumerKey: ApiKeys.addressDataConsumerKey,
           consumerSecret: ApiKeys.addressDataConsumerSecret,
         ).toJson();
-        
-        final dio.Response<dynamic> response =
-            await DioClient.dioWithoutAuth!.get(ApiPaths.address, queryParameters: query);
 
-        final parsedResponse = AddressData.fromJson(response.data as Map<String, dynamic>);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get(ApiPaths.address, queryParameters: query);
+
+        final parsedResponse =
+            AddressData.fromJson(response.data as Map<String, dynamic>);
 
         return AddressDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
@@ -38,7 +39,8 @@ class AddressServices {
     }
   }
 
-  static Future<AddressDataResponse> upsertAddress(Map<String, dynamic> address) async {
+  static Future<AddressDataResponse> upsertAddress(
+      Map<String, dynamic> address) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
@@ -47,11 +49,12 @@ class AddressServices {
           consumerKey: ApiKeys.addressDataConsumerKey,
           consumerSecret: ApiKeys.addressDataConsumerSecret,
         ).toJson();
-        
-        final dio.Response<dynamic> response =
-            await DioClient.dioWithoutAuth!.put(ApiPaths.address, queryParameters: query, data: address);
 
-        final parsedResponse = AddressData.fromJson(response.data as Map<String, dynamic>);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .put(ApiPaths.address, queryParameters: query, data: address);
+
+        final parsedResponse =
+            AddressData.fromJson(response.data as Map<String, dynamic>);
 
         return AddressDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {

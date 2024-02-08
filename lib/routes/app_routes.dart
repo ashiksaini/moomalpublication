@@ -159,14 +159,14 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.overallResultScreen,
-      page: () => OverallResultScreen(),
+      page: () => const OverallResultScreen(),
       // page: () => PdfViewerScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.onlineTestSeriesScreen,
-      page: () => OnlineExamScreen(),
+      page: () => const OnlineExamScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

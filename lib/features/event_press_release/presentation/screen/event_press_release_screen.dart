@@ -100,13 +100,22 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                             Padding(
                               padding: EdgeInsets.symmetric(
                                   vertical: scaleHeight(10, context)),
-                              child: ListView.builder(
-                                physics: const BouncingScrollPhysics(),
-                                itemCount: 3,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return const PressEvent();
-                                },
-                              ),
+                              child: _eventPressController
+                                      .pressReleaseList.isNotEmpty
+                                  ? ListView.builder(
+                                      physics: const BouncingScrollPhysics(),
+                                      itemCount: _eventPressController
+                                          .pressReleaseList.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return PressEvent(index: index);
+                                      },
+                                    )
+                                  : Center(
+                                      child: EmptyProductView(
+                                        title: 'not_available'.tr,
+                                      ),
+                                    ),
                             ),
                             const MediaCoverage(),
                           ],

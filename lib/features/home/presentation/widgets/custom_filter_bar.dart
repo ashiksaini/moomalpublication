@@ -34,6 +34,7 @@ class CustomFilterBar extends StatelessWidget {
         GestureDetector(
             onTap: () {
               showModalBottomSheet(
+                  isScrollControlled: true,
                   context: context,
                   builder: (_) {
                     return Wrap(

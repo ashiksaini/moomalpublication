@@ -73,7 +73,7 @@ class CustomTabBarState extends State<CustomTabBar>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: [
+              children: const [
                 // ListView.builder(
                 //     itemCount: 3,
                 //     itemBuilder: (BuildContext context, int index) {

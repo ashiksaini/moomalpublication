@@ -19,31 +19,35 @@ class ReviewBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return Container(
-        width: screenWidth(context),
-        padding: EdgeInsets.symmetric(
-          vertical: scaleHeight(14, context),
-          horizontal: scaleWidth(14, context),
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(scaleRadius(10, context)),
-            topRight: Radius.circular(scaleRadius(10, context)),
+      return Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Container(
+          width: screenWidth(context),
+          padding: EdgeInsets.symmetric(
+            vertical: scaleHeight(14, context),
+            horizontal: scaleWidth(14, context),
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /// Rating
-            _getRatingView(context),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(scaleRadius(10, context)),
+              topRight: Radius.circular(scaleRadius(10, context)),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /// Rating
+              _getRatingView(context),
 
-            /// Review
-            _getWriteReview(context),
+              /// Review
+              _getWriteReview(context),
 
-            /// Submit Btn
-            _getSubmitBtn(context),
-          ],
+              /// Submit Btn
+              _getSubmitBtn(context),
+            ],
+          ),
         ),
       );
     });

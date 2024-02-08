@@ -30,4 +30,5 @@ class ApiPaths {
   static const String download = 'moomal/v2/user-downloads';
   static const String overAllResult = 'myplugin/v1/overall-result/';
   static const String address = 'wc/v3/customers/4';
+  static const String pressRelease = 'press/v1/press-year/';
 }

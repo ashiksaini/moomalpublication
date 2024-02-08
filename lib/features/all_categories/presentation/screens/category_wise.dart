@@ -171,6 +171,7 @@ class CategoryWiseScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
+          isScrollControlled: true,
           context: context,
           builder: (_) {
             return Wrap(
