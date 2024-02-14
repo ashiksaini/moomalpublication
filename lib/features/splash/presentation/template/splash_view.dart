@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -21,8 +22,8 @@ class SplashView extends StatelessWidget {
         child: Column(
           children: [
             // Logo
-            Image.asset(
-              AppAssets.icLogo1,
+            SvgPicture.asset(
+              AppAssets.icLogo,
               height: scaleHeight(195, context),
               width: scaleWidth(195, context),
             ),

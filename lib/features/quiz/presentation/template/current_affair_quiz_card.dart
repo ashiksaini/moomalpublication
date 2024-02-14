@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
@@ -39,7 +40,7 @@ class CurrentAffairQuizCard extends StatelessWidget {
             child: Row(
               children: [
                 CardImage(
-                  image: AppAssets.bookPng,
+                  image: AppAssets.bookImg,
                   borderColor: AppColors.blue,
                   height: scaleHeight(130, context),
                 ),
@@ -62,7 +63,7 @@ class CurrentAffairQuizCard extends StatelessWidget {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(AppAssets.icAdmin),
+                            SvgPicture.asset(AppAssets.icUser1),
                             const HorizontalGap(size: 8),
                             Flexible(
                               child: CustomText(

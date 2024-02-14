@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/molecules/auth_btn.dart';
@@ -62,8 +63,8 @@ class LoginView extends StatelessWidget {
   }
 
   Widget _getLogo(BuildContext context) {
-    return Image.asset(
-      AppAssets.icLogo1,
+    return SvgPicture.asset(
+      AppAssets.icLogo,
       height: scaleHeight(195, context),
       width: scaleWidth(195, context),
     );

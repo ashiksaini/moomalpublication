@@ -31,7 +31,7 @@ class PhotoDescription extends StatelessWidget {
         children: [
           const Center(
             child: CardImage(
-              image: AppAssets.bookPng,
+              image: AppAssets.bookImg,
               borderColor: AppColors.orange,
             ),
           ),

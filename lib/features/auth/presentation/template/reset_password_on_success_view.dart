@@ -42,8 +42,8 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
   }
 
   Widget _getLogo(BuildContext context) {
-    return Image.asset(
-      AppAssets.icLogo1,
+    return SvgPicture.asset(
+      AppAssets.icLogo,
       height: scaleHeight(195, context),
       width: scaleWidth(195, context),
     );
