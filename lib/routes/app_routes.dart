@@ -81,7 +81,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.cartScreen,
-      page: () => CartScreen(),
+      page: () => const CartScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

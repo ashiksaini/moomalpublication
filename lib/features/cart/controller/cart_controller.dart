@@ -31,6 +31,8 @@ class CartController extends BaseController {
     if (cartDataResponse.value.data != null) {
       if (cartDataResponse.value.data!.items != null &&
           cartDataResponse.value.data!.items!.isNotEmpty) {
+        cartItems.clear();
+        totals.value = null;
         cartItems.addAll(cartDataResponse.value.data!.items!);
         totals.value = cartDataResponse.value.data!.totals!;
       }
@@ -38,8 +40,6 @@ class CartController extends BaseController {
   }
 
   Future<void> onRefresh() async {
-    cartItems.clear();
-    totals.value = null;
     _getCartData();
   }
 
@@ -101,14 +101,18 @@ class CartController extends BaseController {
 
     cartCheckoutResponse.value = await CartServices.checkout();
     if (cartCheckoutResponse.value.data != null) {
-      if (cartCheckoutResponse.value.data!.billingAddress?.firstName?.isEmpty == true || cartCheckoutResponse.value.data!.shippingAddress?.firstName?.isEmpty == true) {
+      if (cartCheckoutResponse.value.data!.billingAddress?.firstName?.isEmpty ==
+              true ||
+          cartCheckoutResponse
+                  .value.data!.shippingAddress?.firstName?.isEmpty ==
+              true) {
         showSnackBar("please_add_address_first".tr);
         AppRouting.toNamed(NameRoutes.addressesScreen);
       } else {
         final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
         payUCheckoutPro.init(callBack: () => onRefresh());
-        payUCheckoutPro.pay(
-            totals.value?.totalPrice, cartCheckoutResponse.value.data!.orderKey);
+        payUCheckoutPro.pay(totals.value?.totalPrice,
+            cartCheckoutResponse.value.data!.orderKey);
       }
     }
   }

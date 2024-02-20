@@ -17,10 +17,21 @@ import 'package:moomalpublication/features/cart/presentation/template/card_card.
 import 'package:moomalpublication/features/cart/presentation/widgets/order_details.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 
-class CartScreen extends StatelessWidget {
-  CartScreen({super.key});
+class CartScreen extends StatefulWidget {
+  const CartScreen({super.key});
 
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
   final CartController _cartController = Get.put(CartController());
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _cartController.onRefresh();
+  }
 
   @override
   Widget build(BuildContext context) {

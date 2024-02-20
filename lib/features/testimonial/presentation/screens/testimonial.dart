@@ -53,8 +53,8 @@ class TestimonialScreen extends StatelessWidget {
                                       .testimonials.length,
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio: 0.40,
+                                    crossAxisCount: 1,
+                                    childAspectRatio: 1.4,
                                     crossAxisSpacing: scaleWidth(10, context),
                                     mainAxisSpacing: scaleHeight(30, context),
                                   ),

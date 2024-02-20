@@ -45,21 +45,27 @@ class StudentGridCard extends StatelessWidget {
                     children: [
                       CustomText(
                         text: testimonialResponseModel.spTestimonialClientName,
-                        textStyle: CustomTextStyle.textStyle18Bold(context,
-                            color: AppColors.black),
+                        textStyle: CustomTextStyle.textStyle18Bold(
+                          context,
+                          color: AppColors.black,
+                        ),
                       ),
                       CustomText(
                         text:
                             "[${testimonialResponseModel.spTestimonialClientDesignation}]",
-                        textStyle: CustomTextStyle.textStyle15Bold(context,
-                            color: AppColors.black),
+                        textStyle: CustomTextStyle.textStyle15Bold(
+                          context,
+                          color: AppColors.black,
+                        ),
                       ),
                       const VerticalGap(size: 20),
                       CustomText(
                         text: testimonialResponseModel.postContent,
-                        textStyle: CustomTextStyle.textStyle15Regular(context,
-                            color: AppColors.black),
-                        maxLines: 9,
+                        textStyle: CustomTextStyle.textStyle15Regular(
+                          context,
+                          color: AppColors.black,
+                        ),
+                        maxLines: 5,
                       ),
                     ],
                   ),
