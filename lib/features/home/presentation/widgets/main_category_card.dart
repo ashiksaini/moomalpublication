@@ -24,8 +24,8 @@ class MainCategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => onClick(),
       child: Container(
-        height: 150.v,
-        width: 110.h,
+        height: 160.adaptSize,
+        width: 120.adaptSize,
         padding: EdgeInsets.only(
           top: 12.v,
           left: 5.h,

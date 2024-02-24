@@ -38,11 +38,13 @@ class SplashView extends StatelessWidget {
             const VerticalGap(size: 10),
 
             // Yourselft
-            CustomText(
-              text: "yourself".tr,
-              textStyle: CustomTextStyle.textStyle60BoldMontaguSlab(
-                context,
-                color: AppColors.white,
+            FittedBox(
+              child: CustomText(
+                text: "yourself".tr,
+                textStyle: CustomTextStyle.textStyle60BoldMontaguSlab(
+                  context,
+                  color: AppColors.white,
+                ),
               ),
             ),
           ],
