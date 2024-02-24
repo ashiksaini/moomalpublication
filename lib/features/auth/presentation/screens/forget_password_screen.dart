@@ -19,7 +19,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             width: screenWidth(context),
             child: Stack(
               children: [
-                _bg(),
+                _bg(context),
                 ForgetPasswordView(),
               ],
             ),
@@ -29,10 +29,12 @@ class ForgetPasswordScreen extends StatelessWidget {
     );
   }
 
-  Widget _bg() {
+  Widget _bg(BuildContext context) {
     return SvgPicture.asset(
       AppAssets.bgAuth,
-      fit: BoxFit.fill,
+      height: screenHeight(context),
+      width: screenWidth(context),
+      fit: BoxFit.cover,
     );
   }
 }
