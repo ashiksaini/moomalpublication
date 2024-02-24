@@ -23,7 +23,7 @@ class ContactCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShadowContainer(
       containerChild: Padding(
-        padding: EdgeInsets.all(scaleWidth(12, context)),
+        padding: EdgeInsets.all(12.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,8 +32,8 @@ class ContactCard extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   contactImage,
-                  height: scaleHeight(25, context),
-                  width: scaleHeight(25, context),
+                  height: 25.v,
+                  width: 25.v,
                 ),
                 const HorizontalGap(size: 6),
                 CustomText(

@@ -23,9 +23,6 @@ void main() {
   CustomLogger.init();
 
   runApp(
-    DevicePreview(
-      enabled: kDebugMode,
-      builder: (context) => const MoomalPublication(),
-    ),
+    const MoomalPublication(),
   );
 }

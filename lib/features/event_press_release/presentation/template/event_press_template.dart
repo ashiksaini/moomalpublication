@@ -29,13 +29,13 @@ class EventAndPressCard extends StatelessWidget {
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: scaleHeight(16, context),
-            horizontal: scaleWidth(8, context)),
+            vertical: 16.v,
+            horizontal: 8.h),
         child: ShadowContainer(
           containerChild: Padding(
             padding: EdgeInsets.symmetric(
-                vertical: scaleHeight(16, context),
-                horizontal: scaleWidth(14, context)),
+                vertical: 16.v,
+                horizontal: 14.h),
             child: Row(
               children: [
                 CardImage(
@@ -47,7 +47,7 @@ class EventAndPressCard extends StatelessWidget {
                 Flexible(
                   child: Padding(
                     padding:
-                        EdgeInsets.symmetric(vertical: scaleWidth(12, context)),
+                        EdgeInsets.symmetric(vertical: 12.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

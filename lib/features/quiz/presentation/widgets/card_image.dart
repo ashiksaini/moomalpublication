@@ -23,14 +23,14 @@ class CardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: scaleHeight(170, context),
-      width: scaleWidth(150, context),
+      height: 170.v,
+      width: 150.h,
       margin: EdgeInsets.symmetric(
-        horizontal: scaleWidth(5, context),
-        vertical: scaleHeight(5, context),
+        horizontal: 5.h,
+        vertical: 5.v,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+        borderRadius: BorderRadius.circular(15.r),
         child: (image.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: image,
@@ -40,7 +40,7 @@ class CardImage extends StatelessWidget {
                 },
               )
             : Container(
-                width: screenWidth(context),
+                width: SizeUtils.width,
                 color: AppColors.greyLight,
                 child: Center(
                   child: CustomText(

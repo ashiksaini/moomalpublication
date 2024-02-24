@@ -32,10 +32,10 @@ class CartCard extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(
-            left: scaleWidth(20, context),
-            right: scaleWidth(1, context),
-            top: scaleWidth(20, context),
-            bottom: scaleWidth(20, context),
+            left: 20.h,
+            right: 1.h,
+            top: 20.h,
+            bottom: 20.h,
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,8 +47,8 @@ class CartCard extends StatelessWidget {
               Flexible(
                 child: Padding(
                   padding: EdgeInsets.only(
-                    left: scaleWidth(20, context),
-                    right: scaleWidth(12, context),
+                    left: 20.h,
+                    right: 12.h,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,8 +75,8 @@ class CartCard extends StatelessWidget {
         ),
         if (isLast)
           Container(
-            width: screenWidth(context),
-            height: scaleHeight(1, context),
+            width: SizeUtils.width,
+            height: 1.v,
             color: AppColors.greyLight,
           )
       ],
@@ -86,29 +86,29 @@ class CartCard extends StatelessWidget {
   Widget bookConatiner({required BuildContext context}) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: scaleWidth(10, context),
-        vertical: scaleHeight(15, context),
+        horizontal: 10.h,
+        vertical: 15.v,
       ),
       decoration: BoxDecoration(
         color: AppColors.greyLight,
-        borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+        borderRadius: BorderRadius.circular(10.r),
         boxShadow: [primaryBoxShadow()],
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+        borderRadius: BorderRadius.circular(10.r),
         child: cartItem.images!.isNotEmpty
             ? CachedNetworkImage(
                 imageUrl: cartItem.images!.first.src!,
-                height: scaleHeight(130, context),
-                width: scaleWidth(100, context),
+                height: 130.v,
+                width: 100.h,
                 fit: BoxFit.fill,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },
               )
             : Container(
-                height: scaleHeight(130, context),
-                width: scaleWidth(100, context),
+                height: 130.v,
+                width: 100.h,
                 color: AppColors.greyLight,
                 child: Center(
                   child: CustomText(

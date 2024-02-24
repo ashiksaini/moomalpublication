@@ -8,12 +8,12 @@ class CircularContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: scaleHeight(220, context),
+      height: 220.v,
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(scaleHeight(220, context)),
-          bottomRight: Radius.circular(scaleHeight(220, context)),
+          bottomLeft: Radius.circular(220.v),
+          bottomRight: Radius.circular(220.v),
         ),
       ),
     );

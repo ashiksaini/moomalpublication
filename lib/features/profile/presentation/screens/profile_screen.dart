@@ -21,14 +21,14 @@ class ProfileScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Obx(() {
             return Container(
-              height: screenHeight(context),
+              height: SizeUtils.height,
               color: AppColors.white,
               child: Column(
                 children: [
                   Stack(
                     children: [
                       Container(
-                        height: scaleHeight(280, context),
+                        height: 280.v,
                       ),
                       const CircularContainer(),
                       CustomAppbar(
@@ -38,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       Positioned(
                         bottom: 0,
-                        left: scaleWidth(100, context),
+                        left: 120.h,
                         child: ProfilePicture(
                             avatarUrl: _profileController.userAvatar.value),
                       ),
@@ -46,8 +46,8 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: scaleWidth(16, context),
-                      vertical: scaleHeight(56, context),
+                      horizontal: 16.h,
+                      vertical: 56.v,
                     ),
                     child: NameTemplate(
                       userName: _profileController.userName.value,

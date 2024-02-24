@@ -17,14 +17,14 @@ class ResultSheetMarksCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShadowContainer(
-      borderRadius: scaleRadius(10, context),
+      borderRadius: 10.r,
       containerChild: Padding(
-        padding: EdgeInsets.symmetric(horizontal: scaleWidth(8, context)),
+        padding: EdgeInsets.symmetric(horizontal: 8.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(scaleWidth(8, context)),
+              padding: EdgeInsets.all(8.h),
               child: CustomButtonBar(
                 buttonText: 'reattempt'.tr,
                 barText: testResult.testSeries ?? "",

@@ -14,13 +14,13 @@ class DeleteButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.orange,
         borderRadius: BorderRadius.all(
-          Radius.circular(scaleRadius(10, context)),
+          Radius.circular(10.r),
         ),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: scaleHeight(4, context),
-            horizontal: scaleWidth(19, context)),
+            vertical: 4.v,
+            horizontal: 19.h),
         child: CustomText(
             text: "delete".tr,
             textStyle:

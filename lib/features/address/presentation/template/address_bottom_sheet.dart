@@ -18,7 +18,7 @@ class AddressBottomSheet {
     required Function onSubmitButton,
   }) {
     Widget addressBottomSheet = SizedBox(
-      height: screenHeight(context) / 1.3,
+      height: SizeUtils.height / 1.3,
       child: SafeArea(
         child: ScrollConfiguration(
           behavior: NoGlowBehavior(),
@@ -45,9 +45,9 @@ class AddressBottomSheet {
                         hintText: addressList[index].hint,
                         textEditingController: addressList[index].controller,
                         error: addressList[index].error!.value,
-                      ).paddingOnly(bottom: scaleHeight(10, context));
+                      ).paddingOnly(bottom: 10.v);
                     },
-                  ).paddingOnly(top: scaleHeight(12, context)),
+                  ).paddingOnly(top: 12.v),
                 ),
                 Center(
                         child: CustomOrangeButton(
@@ -55,15 +55,15 @@ class AddressBottomSheet {
                               onSubmitButton();
                             },
                             buttonText: "save_address".tr))
-                    .paddingSymmetric(vertical: scaleHeight(10, context)),
+                    .paddingSymmetric(vertical: 10.v),
               ],
             ).paddingAll(
-              scaleWidth(10, context),
+              10.h,
             ),
           ),
         ),
       ),
-    ).paddingOnly(top: scaleHeight(10, context));
+    ).paddingOnly(top: 10.v);
     return CommonBottomSheet()
         .commonbottomSheet(context, addressBottomSheet, isDismissible: true);
   }

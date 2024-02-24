@@ -41,10 +41,10 @@ class TestimonialScreen extends StatelessWidget {
                               const TestomonialTemplates(),
                               Padding(
                                 padding: EdgeInsets.only(
-                                  right: scaleHeight(10, context),
-                                  left: scaleHeight(10, context),
-                                  top: scaleWidth(10, context),
-                                  bottom: scaleWidth(30, context),
+                                  right: 10.v,
+                                  left: 10.v,
+                                  top: 10.h,
+                                  bottom: 30.h,
                                 ),
                                 child: GridView.builder(
                                   shrinkWrap: true,
@@ -55,8 +55,8 @@ class TestimonialScreen extends StatelessWidget {
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 1,
                                     childAspectRatio: 1.4,
-                                    crossAxisSpacing: scaleWidth(10, context),
-                                    mainAxisSpacing: scaleHeight(30, context),
+                                    crossAxisSpacing: 10.h,
+                                    mainAxisSpacing: 30.v,
                                   ),
                                   itemBuilder: (_, index) {
                                     return StudentGridCard(

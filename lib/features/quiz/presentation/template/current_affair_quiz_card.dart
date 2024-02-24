@@ -30,25 +30,25 @@ class CurrentAffairQuizCard extends StatelessWidget {
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: scaleHeight(16, context),
-            horizontal: scaleWidth(8, context)),
+            vertical: 16.v,
+            horizontal: 8.h),
         child: ShadowContainer(
           containerChild: Padding(
             padding: EdgeInsets.symmetric(
-                vertical: scaleHeight(16, context),
-                horizontal: scaleWidth(14, context)),
+                vertical: 16.v,
+                horizontal: 14.h),
             child: Row(
               children: [
                 CardImage(
                   image: AppAssets.bookImg,
                   borderColor: AppColors.blue,
-                  height: scaleHeight(130, context),
+                  height: 130.v,
                 ),
                 const HorizontalGap(size: 12),
                 Flexible(
                   child: Padding(
                     padding:
-                        EdgeInsets.symmetric(vertical: scaleWidth(12, context)),
+                        EdgeInsets.symmetric(vertical: 12.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

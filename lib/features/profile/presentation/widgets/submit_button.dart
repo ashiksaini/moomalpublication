@@ -12,16 +12,16 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: screenWidth(context),
+      width: SizeUtils.width,
       decoration: BoxDecoration(
         color: AppColors.orange,
         boxShadow: [primaryBoxShadow()],
         borderRadius:
-            BorderRadius.all(Radius.circular(scaleWidth(10, context))),
+            BorderRadius.all(Radius.circular(10.h)),
       ),
       child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: scaleWidth(8, context),
+            vertical: 8.h,
           ),
           child: CustomText(
               text: "submit".tr,

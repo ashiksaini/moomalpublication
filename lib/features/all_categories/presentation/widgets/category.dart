@@ -27,7 +27,7 @@ class CategoryItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(scaleRadius(15, context)),
+            padding: EdgeInsets.all(15.r),
             decoration: BoxDecoration(
               color: AppColors.white,
               shape: BoxShape.circle,
@@ -36,8 +36,8 @@ class CategoryItem extends StatelessWidget {
             ),
             child: SvgPicture.asset(
               icon,
-              height: scaleHeight(48, context),
-              width: scaleWidth(48, context),
+              height: 48.v,
+              width: 48.h,
             ),
           ),
           const VerticalGap(size: 10),

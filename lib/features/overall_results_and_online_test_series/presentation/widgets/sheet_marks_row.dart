@@ -14,8 +14,8 @@ class SheetMarksRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          vertical: scaleHeight(8, context),
-          horizontal: scaleWidth(8, context)),
+          vertical: 8.v,
+          horizontal: 8.h),
       child: GridView.builder(
         padding: EdgeInsets.zero,
         shrinkWrap: true,

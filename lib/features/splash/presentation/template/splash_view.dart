@@ -17,15 +17,15 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: scaleHeight(180, context)),
+      padding: EdgeInsets.only(top: 180.v),
       child: Center(
         child: Column(
           children: [
             // Logo
             SvgPicture.asset(
               AppAssets.icLogo,
-              height: scaleHeight(195, context),
-              width: scaleWidth(195, context),
+              height: 195.v,
+              width: 195.h,
             ),
             const VerticalGap(size: 80),
 
@@ -38,13 +38,11 @@ class SplashView extends StatelessWidget {
             const VerticalGap(size: 10),
 
             // Yourselft
-            FittedBox(
-              child: CustomText(
-                text: "yourself".tr,
-                textStyle: CustomTextStyle.textStyle60BoldMontaguSlab(
-                  context,
-                  color: AppColors.white,
-                ),
+            CustomText(
+              text: "yourself".tr,
+              textStyle: CustomTextStyle.textStyle60BoldMontaguSlab(
+                context,
+                color: AppColors.white,
               ),
             ),
           ],

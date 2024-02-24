@@ -26,11 +26,11 @@ class CustomDrawerHeader extends StatelessWidget {
       children: [
         // User Profile Image
         ClipRRect(
-          borderRadius: BorderRadius.circular(scaleRadius(28, context)),
+          borderRadius: BorderRadius.circular(28.r),
           child: CachedNetworkImage(
             imageUrl: userImage,
-            height: scaleHeight(56, context),
-            width: scaleWidth(56, context),
+            height: 56.v,
+            width: 56.h,
             fit: BoxFit.cover,
           ),
         ),
@@ -52,8 +52,8 @@ class CustomDrawerHeader extends StatelessWidget {
               argument: 4),
           child: SvgPicture.asset(
             AppAssets.icEditNavDrawer,
-            height: scaleHeight(24, context),
-            width: scaleWidth(24, context),
+            height: 24.v,
+            width: 24.h,
           ),
         )
       ],

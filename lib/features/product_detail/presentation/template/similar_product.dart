@@ -26,7 +26,7 @@ class SimilarProduct extends StatelessWidget {
           onTap: () => AppRouting.toNamed(NameRoutes.similarProductScreen,
               argument: _productDetailController.sharedData),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
+            padding: EdgeInsets.symmetric(horizontal: 15.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,17 +49,14 @@ class SimilarProduct extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.symmetric(
-            horizontal: scaleWidth(10, context),
-            vertical: scaleHeight(10, context),
+            horizontal: 10.h,
+            vertical: 10.v,
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 12.0,
-            mainAxisSpacing: 15.0,
-            childAspectRatio:
-                _productDetailController.similarProductResponse.value.isLoading
-                    ? 0.52
-                    : 0.42,
+            crossAxisSpacing: 12.0.h,
+            mainAxisSpacing: 15.0.v,
+            childAspectRatio: 0.52.v,
           ),
           itemCount: 4,
           itemBuilder: (context, index) {

@@ -18,8 +18,8 @@ class EmptyProductView extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AppAssets.icSearchScreenBg,
-          height: scaleHeight(190, context),
-          width: scaleWidth(200, context),
+          height: 190.v,
+          width: 200.h,
         ),
         const VerticalGap(size: 30),
         CustomText(

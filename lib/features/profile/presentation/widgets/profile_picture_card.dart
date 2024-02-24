@@ -17,7 +17,7 @@ class ProfilePicture extends StatelessWidget {
         Positioned.fill(
             child: Center(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(scaleRadius(100, context)),
+            borderRadius: BorderRadius.circular(100.r),
             child: CachedNetworkImage(
               imageUrl: avatarUrl,
               fit: BoxFit.cover,

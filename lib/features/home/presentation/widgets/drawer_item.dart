@@ -28,8 +28,8 @@ class CustomDrawerItem extends StatelessWidget {
             // Icon
             SvgPicture.asset(
               drawerItem.icon,
-              height: scaleHeight(20, context),
-              width: scaleWidth(20, context),
+              height: 20.v,
+              width: 20.h,
               colorFilter:
                   const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
             ),
@@ -37,7 +37,7 @@ class CustomDrawerItem extends StatelessWidget {
 
             // Name
             Padding(
-              padding: EdgeInsets.only(top: scaleHeight(4, context)),
+              padding: EdgeInsets.only(top: 4.v),
               child: CustomText(
                   text: drawerItem.title,
                   textStyle: CustomTextStyle.textStyle18Bold(context)),

@@ -11,7 +11,7 @@ class BottomMarker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: scaleWidth(16, context)),
+        padding: EdgeInsets.symmetric(horizontal: 16.h),
         child: CustomText(
           text: "©_2021_Moomal_Publication_All_rights_reserved".tr,
           textStyle: CustomTextStyle.textStyle20SemiMedium(context,

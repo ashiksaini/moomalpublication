@@ -20,8 +20,8 @@ class TestDataCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: scaleWidth(14, context),
-        vertical: scaleHeight(15, context),
+        horizontal: 14.h,
+        vertical: 15.v,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,7 +42,7 @@ class TestDataCard extends StatelessWidget {
             itemBuilder: (context, index) {
               return Padding(
                 padding:
-                    EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
+                    EdgeInsets.symmetric(vertical: 10.v),
                 child: ResultSheetMarksCard(testResult: data[index]),
               );
             },

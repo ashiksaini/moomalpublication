@@ -73,12 +73,12 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getGreyBg(BuildContext context) {
     return Container(
-      height: screenHeight(context) / 3,
+      height: SizeUtils.height / 3.4,
       decoration: BoxDecoration(
         color: AppColors.greyLight,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(scaleRadius(20, context)),
-          bottomRight: Radius.circular(scaleRadius(20, context)),
+          bottomLeft: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
         ),
       ),
     );
@@ -87,14 +87,14 @@ class HomeScreen extends StatelessWidget {
   Widget _getMainAppbar(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-        top: scaleHeight(20, context),
-        bottom: scaleHeight(80, context),
+        top: 20.v,
+        bottom: 100.v,
       ),
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(scaleRadius(20, context)),
-          bottomRight: Radius.circular(scaleRadius(20, context)),
+          bottomLeft: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
         ),
       ),
       child: CustomAppbar(
@@ -110,9 +110,9 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getMainCategories(BuildContext context) {
     return Positioned(
-      top: scaleHeight(90, context),
+      top: 90.v,
       child: SizedBox(
-        width: screenWidth(context),
+        width: SizeUtils.width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -141,9 +141,9 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getFilterBar(BuildContext context) {
     return Positioned(
-      bottom: scaleHeight(30, context),
-      left: scaleWidth(12, context),
-      right: scaleWidth(12, context),
+      bottom: 30.v,
+      left: 12.h,
+      right: 12.h,
       child: CustomFilterBar(),
     );
   }

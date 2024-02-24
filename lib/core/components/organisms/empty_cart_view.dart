@@ -37,7 +37,7 @@ class EmptyCartView extends StatelessWidget {
             argument: 1,
           ),
         ).paddingSymmetric(
-          horizontal: scaleWidth(40, context),
+          horizontal: 40.h,
         ),
       ],
     );

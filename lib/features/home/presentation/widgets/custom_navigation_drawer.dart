@@ -14,18 +14,19 @@ class CustomNavigationDrawer extends Drawer {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: SizeUtils.width / 1.8,
       backgroundColor: AppColors.black,
       shape: const RoundedRectangleBorder(),
       child: Column(
         children: [
           // Header
           SizedBox(
-            height: scaleHeight(110, context),
+            height: 110.v,
             child: DrawerHeader(
               margin: EdgeInsets.zero,
               padding: EdgeInsets.symmetric(
-                  horizontal: scaleWidth(10, context),
-                  vertical: scaleHeight(10, context)),
+                  horizontal: 10.h,
+                  vertical: 10.v),
               child: CustomDrawerHeader(
                 userImage: _homeController.userAvatar.value,
                 userName: _homeController.userName.value,
@@ -39,9 +40,9 @@ class CustomNavigationDrawer extends Drawer {
               itemCount: _homeController.drawerItems.length,
               itemBuilder: (_, index) {
                 return Container(
-                  margin: EdgeInsets.only(bottom: scaleHeight(30, context)),
+                  margin: EdgeInsets.only(bottom: 30.v),
                   padding:
-                      EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
+                      EdgeInsets.symmetric(horizontal: 10.h),
                   child: CustomDrawerItem(
                     drawerItem: _homeController.drawerItems[index],
                     onItemClick: (drawerItemType) {

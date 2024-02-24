@@ -11,8 +11,8 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox(
-        height: screenHeight(context),
-        width: screenWidth(context),
+        height: SizeUtils.height,
+        width: SizeUtils.width,
         child: Stack(
           children: [
             _bg(context),
@@ -26,8 +26,8 @@ class SplashScreen extends StatelessWidget {
   Widget _bg(BuildContext context) {
     return SvgPicture.asset(
       AppAssets.bgAuth,
-      height: screenHeight(context),
-      width: screenWidth(context),
+      height: SizeUtils.height,
+      width: SizeUtils.width,
       fit: BoxFit.cover,
     );
   }

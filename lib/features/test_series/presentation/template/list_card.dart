@@ -14,9 +14,9 @@ class ListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShadowContainer(
-      borderRadius: scaleRadius(10, context),
+      borderRadius: 10.r,
       containerChild: Padding(
-        padding: EdgeInsets.symmetric(horizontal: scaleWidth(8, context)),
+        padding: EdgeInsets.symmetric(horizontal: 8.h),
         child: Column(
           children: [
             CustomButtonBar(

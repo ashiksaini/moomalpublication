@@ -22,13 +22,13 @@ class CustomButtonBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(14, context)),
+      padding: EdgeInsets.symmetric(vertical: 14.v),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(right: scaleWidth(10, context)),
+              padding: EdgeInsets.only(right: 10.h),
               child: CustomText(
                 text: barText,
                 maxLines: 3,
@@ -50,12 +50,12 @@ class CustomButtonBar extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColors.skinDark,
                   border: Border.all(color: AppColors.skinDark),
-                  borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+                  borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    vertical: scaleHeight(6, context),
-                    horizontal: scaleWidth(25, context),
+                    vertical: 6.v,
+                    horizontal: 25.h,
                   ),
                   child: CustomText(
                     text: buttonText,

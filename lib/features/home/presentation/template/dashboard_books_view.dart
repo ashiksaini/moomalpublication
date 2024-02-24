@@ -43,7 +43,7 @@ class DashboardBooksView extends StatelessWidget {
 
   Widget _getTitle(BuildContext context, String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: scaleWidth(20, context)),
+      padding: EdgeInsets.symmetric(horizontal: 20.h),
       child: CustomText(
         text: title,
         textStyle:
@@ -56,16 +56,16 @@ class DashboardBooksView extends StatelessWidget {
       bool isLoading, List<ProductItem> data) {
     return GridView.builder(
       padding: EdgeInsets.symmetric(
-        horizontal: scaleWidth(10, context),
-        vertical: scaleHeight(10, context),
+        horizontal: 10.h,
+        vertical: 10.v,
       ),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 12.0,
-        mainAxisSpacing: 15.0,
-        childAspectRatio: isLoading ? 0.52 : 0.42,
+        crossAxisSpacing: 12.0.h,
+        mainAxisSpacing: 15.0.v,
+        childAspectRatio: 0.52.v,
       ),
       itemCount: isLoading ? loadingItemCount : data.length,
       itemBuilder: (context, index) {

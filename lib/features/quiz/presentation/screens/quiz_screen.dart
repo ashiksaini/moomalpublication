@@ -54,11 +54,11 @@ class _QuizScreenState extends State<QuizScreen>
                 tabs: [
                   Tab(
                     text: 'Current Affair\nQuiz',
-                    height: scaleHeight(80, context),
+                    height: 80.v,
                   ),
                   Tab(
                     text: 'Economics \n Quiz',
-                    height: scaleHeight(80, context),
+                    height: 80.v,
                   ),
                 ],
                 controller: _tabController,

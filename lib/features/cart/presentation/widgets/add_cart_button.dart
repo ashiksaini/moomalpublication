@@ -17,7 +17,7 @@ class AddButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.yellowlighter,
         borderRadius: BorderRadius.all(
-          Radius.circular(scaleRadius(5, context)),
+          Radius.circular(5.r),
         ),
       ),
       child: Padding(
@@ -28,7 +28,7 @@ class AddButton extends StatelessWidget {
           children: [
             SvgPicture.asset(
               AppAssets.icCartAdd,
-              width: scaleWidth(22, context),
+              width: 22.h,
             ),
             const HorizontalGap(size: 10),
             CustomText(

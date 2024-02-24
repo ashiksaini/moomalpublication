@@ -34,17 +34,14 @@ class SimilarProductScreen extends StatelessWidget {
               Expanded(
                 child: GridView.builder(
                   padding: EdgeInsets.symmetric(
-                    horizontal: scaleWidth(10, context),
-                    vertical: scaleHeight(10, context),
+                    horizontal: 10.h,
+                    vertical: 10.v,
                   ),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 12.0,
-                    mainAxisSpacing: 15.0,
-                    childAspectRatio: _productDetailController
-                            .similarProductResponse.value.isLoading
-                        ? 0.52
-                        : 0.42,
+                    crossAxisSpacing: 12.0.h,
+                    mainAxisSpacing: 15.0.v,
+                    childAspectRatio: 0.52.v,
                   ),
                   itemCount: _productDetailController
                           .similarProductResponse.value.isLoading

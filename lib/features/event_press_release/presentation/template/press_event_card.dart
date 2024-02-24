@@ -18,8 +18,8 @@ class PressEventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: scaleWidth(20, context),
-          vertical: scaleHeight(10, context)),
+          horizontal: 20.h,
+          vertical: 10.v),
       child: ShadowContainer(
         backgroundColor: withGradient ? null : AppColors.pinkLighter,
         borderColor: withGradient ? AppColors.greendark : AppColors.pinkDark,
@@ -34,7 +34,7 @@ class PressEventCard extends StatelessWidget {
               )
             : null,
         containerChild: Padding(
-          padding: EdgeInsets.symmetric(vertical: scaleHeight(16, context)),
+          padding: EdgeInsets.symmetric(vertical: 16.v),
           child: CustomText(
               text: _eventPressController.pressReleaseList[index].postContent,
               // "central_economic_review_2022_23_&_central_budget_2023_24".tr,

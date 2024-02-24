@@ -22,9 +22,9 @@ class PhotoDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: scaleHeight(12, context),
-          left: scaleHeight(10, context),
-          right: scaleHeight(10, context),
+          top: 12.v,
+          left: 10.v,
+          right: 10.v,
           bottom: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

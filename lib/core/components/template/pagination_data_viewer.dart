@@ -72,7 +72,7 @@ class _PaginationDataViewerState<T> extends State<PaginationDataViewer<T>> {
 
   Widget _buildLoadingIndicator() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(5, context)),
+      padding: EdgeInsets.symmetric(vertical: 5.v),
       child: customProgressIndicator(),
     );
   }

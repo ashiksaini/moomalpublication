@@ -24,25 +24,25 @@ class MainCategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => onClick(),
       child: Container(
-        height: scaleHeight(154, context),
-        width: scaleWidth(100, context),
+        height: 150.v,
+        width: 110.h,
         padding: EdgeInsets.only(
-          top: scaleHeight(12, context),
-          left: scaleWidth(5, context),
-          right: scaleWidth(5, context),
-          bottom: scaleWidth(5, context),
+          top: 12.v,
+          left: 5.h,
+          right: 5.h,
+          bottom: 5.h,
         ),
         decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+          borderRadius: BorderRadius.circular(10.r),
           boxShadow: [primaryBoxShadow()],
         ),
         child: Column(
           children: [
             SvgPicture.asset(
               icon,
-              height: scaleHeight(48, context),
-              width: scaleWidth(48, context),
+              height: 48.v,
+              width: 48.h,
             ),
             const VerticalGap(size: 10),
             FittedBox(

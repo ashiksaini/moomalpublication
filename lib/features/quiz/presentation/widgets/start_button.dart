@@ -14,13 +14,13 @@ class StartButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.orange,
         borderRadius: BorderRadius.all(
-          Radius.circular(scaleRadius(6, context)),
+          Radius.circular(6.r),
         ),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: scaleHeight(4, context),
-            horizontal: scaleWidth(8, context)),
+            vertical: 4.v,
+            horizontal: 8.h),
         child: CustomText(
             text: "start_quiz".tr,
             textStyle: CustomTextStyle.textStyle18Regular(context,

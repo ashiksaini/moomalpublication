@@ -45,7 +45,7 @@ class CategoryWiseScreen extends StatelessWidget {
                 if (_categoryWiseController.isLoadingMore.value)
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: scaleHeight(10, context)),
+                        vertical: 10.v),
                     child: customProgressIndicator(),
                   ),
               ],
@@ -63,17 +63,14 @@ class CategoryWiseScreen extends StatelessWidget {
         child: GridView.builder(
           controller: _categoryWiseController.scrollController,
           padding: EdgeInsets.symmetric(
-            horizontal: scaleWidth(10, context),
-            vertical: scaleHeight(10, context),
+            horizontal: 10.h,
+            vertical: 10.v,
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12.0,
             mainAxisSpacing: 15.0,
-            childAspectRatio:
-                _categoryWiseController.productResponse.value.isLoading
-                    ? 0.52
-                    : 0.42,
+            childAspectRatio: 0.52.v,
           ),
           itemCount: _categoryWiseController.productResponse.value.isLoading
               ? 20
@@ -103,16 +100,16 @@ class CategoryWiseScreen extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: scaleHeight(110, context),
+          height: 110.v,
           padding: EdgeInsets.symmetric(
-            horizontal: scaleWidth(12, context),
-            vertical: scaleHeight(15, context),
+            horizontal: 12.h,
+            vertical: 15.v,
           ),
           decoration: BoxDecoration(
               color: AppColors.greyLight,
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(scaleRadius(10, context)),
-                bottomRight: Radius.circular(scaleRadius(10, context)),
+                bottomLeft: Radius.circular(10.r),
+                bottomRight: Radius.circular(10.r),
               ),
               boxShadow: [primaryBoxShadow()]),
           child: Row(
@@ -136,8 +133,8 @@ class CategoryWiseScreen extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          height: scaleHeight(24, context),
-          width: scaleWidth(24, context),
+          height: 24.v,
+          width: 24.h,
           child: Checkbox(
             side: const BorderSide(color: AppColors.white),
             checkColor: AppColors.orange,
@@ -186,7 +183,7 @@ class CategoryWiseScreen extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: scaleWidth(4, context)),
+        padding: EdgeInsets.symmetric(horizontal: 4.h),
         decoration: BoxDecoration(
           color: AppColors.white,
           boxShadow: [primaryBoxShadow()],

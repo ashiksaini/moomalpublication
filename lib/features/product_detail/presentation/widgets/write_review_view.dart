@@ -19,15 +19,15 @@ class WriteReviewView extends StatelessWidget {
       onTap: () => onClick(),
       child: Container(
         padding: EdgeInsets.only(
-          top: scaleHeight(10, context),
-          bottom: scaleHeight(10, context),
-          left: scaleWidth(14, context),
-          right: scaleWidth(8, context),
+          top: 10.v,
+          bottom: 10.v,
+          left: 14.h,
+          right: 8.h,
         ),
         decoration: BoxDecoration(
           color: AppColors.white,
           border: Border.all(color: AppColors.grey),
-          borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+          borderRadius: BorderRadius.circular(10.r),
           boxShadow: [primaryBoxShadow()],
         ),
         child: Row(

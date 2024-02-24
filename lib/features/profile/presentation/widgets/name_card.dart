@@ -26,9 +26,9 @@ class NameCardField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: scaleHeight(18, context)),
+      padding: EdgeInsets.only(bottom: 18.v),
       child: ShadowContainer(
-        borderRadius: scaleRadius(10, context),
+        borderRadius: 10.r,
         containerChild: customTextFormField(
           context,
           textEditingController,
