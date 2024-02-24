@@ -10,6 +10,7 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/ebook/controller/ebook_controller.dart';
 import 'package:moomalpublication/features/ebook/data/models/e_book_category_item/e_book_category_item.dart';
@@ -92,7 +93,7 @@ class EBookScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 12.0,
                   mainAxisSpacing: 15.0,
-                  childAspectRatio: 0.52.v,
+                  childAspectRatio: Utility.getChildAspectRation(context),
                 ),
                 itemCount: _ebookController.ebooksResponse.value.isLoading
                     ? 20

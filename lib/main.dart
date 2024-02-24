@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/config/app_config.dart';
 import 'package:moomalpublication/app_moomalpublication.dart';
@@ -20,7 +21,13 @@ void main() {
 
   CustomLogger.init();
 
-  runApp(
-    const MoomalPublication()
+  Future.wait([
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]),
+  ]).then(
+    (value) {
+      runApp(const MoomalPublication());
+    },
   );
 }

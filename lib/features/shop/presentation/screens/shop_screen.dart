@@ -8,6 +8,7 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/shop/controller/shop_controller.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -50,7 +51,7 @@ class ShopScreen extends StatelessWidget {
                           crossAxisCount: 2,
                           crossAxisSpacing: 12.0.h,
                           mainAxisSpacing: 15.0.v,
-                          childAspectRatio: 0.52.v,
+                          childAspectRatio: Utility.getChildAspectRation(context),
                         ),
                         itemCount:
                             _shopController.productResponse.value.isLoading

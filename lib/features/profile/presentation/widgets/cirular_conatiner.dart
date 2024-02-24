@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class CircularContainer extends StatelessWidget {
@@ -8,13 +11,22 @@ class CircularContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220.v,
+      height: SizeUtils.height / 4,
+      width: SizeUtils.width,
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(220.v),
-          bottomRight: Radius.circular(220.v),
+          bottomLeft: Radius.circular(250.v),
+          bottomRight: Radius.circular(250.v),
         ),
+      ),
+      child: CustomText(
+        text: 'my_profile'.tr,
+        textStyle: CustomTextStyle.textStyle25Bold(
+          context,
+          color: AppColors.white,
+        ),
+        textAlign: TextAlign.center,
       ),
     );
   }

@@ -14,6 +14,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/all_categories/controller/category_wise_controller.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -70,7 +71,7 @@ class CategoryWiseScreen extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 12.0,
             mainAxisSpacing: 15.0,
-            childAspectRatio: 0.52.v,
+            childAspectRatio: Utility.getChildAspectRation(context),
           ),
           itemCount: _categoryWiseController.productResponse.value.isLoading
               ? 20

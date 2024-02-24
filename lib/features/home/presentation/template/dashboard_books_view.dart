@@ -6,6 +6,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/features/home/controllers/home_controller.dart';
@@ -65,7 +66,7 @@ class DashboardBooksView extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 12.0.h,
         mainAxisSpacing: 15.0.v,
-        childAspectRatio: 0.52.v,
+        childAspectRatio: Utility.getChildAspectRation(context),
       ),
       itemCount: isLoading ? loadingItemCount : data.length,
       itemBuilder: (context, index) {

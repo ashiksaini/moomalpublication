@@ -114,25 +114,35 @@ class HomeScreen extends StatelessWidget {
       child: SizedBox(
         width: SizeUtils.width,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            MainCategoryCard(
-              icon: AppAssets.icGrid,
-              title: "category".tr,
-              onClick: () => AppRouting.toNamed(NameRoutes.allCategoryScreen),
+            SizedBox(width: 20.h,),
+            Expanded(
+              child: MainCategoryCard(
+                icon: AppAssets.icGrid,
+                title: "category".tr,
+                onClick: () => AppRouting.toNamed(NameRoutes.allCategoryScreen),
+              ),
             ),
-            MainCategoryCard(
-              icon: AppAssets.icBook,
-              title: "ebooks".tr,
-              onClick: () => AppRouting.offAllNamed(
-                  NameRoutes.moomalpublicationApp,
-                  argument: 2),
+            SizedBox(width: 20.h,),
+            Expanded(
+              child: MainCategoryCard(
+                icon: AppAssets.icBook,
+                title: "ebooks".tr,
+                onClick: () => AppRouting.offAllNamed(
+                    NameRoutes.moomalpublicationApp,
+                    argument: 2),
+              ),
             ),
-            MainCategoryCard(
-              icon: AppAssets.icReport,
-              title: "test_series".tr,
-              onClick: () => AppRouting.toNamed(NameRoutes.testSeriesScreen),
+            SizedBox(width: 20.h,),
+            Expanded(
+              child: MainCategoryCard(
+                icon: AppAssets.icReport,
+                title: "test_series".tr,
+                onClick: () => AppRouting.toNamed(NameRoutes.testSeriesScreen),
+              ),
             ),
+            SizedBox(width: 20.h,),
           ],
         ),
       ),

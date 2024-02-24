@@ -25,11 +25,10 @@ class MainCategoryCard extends StatelessWidget {
       onTap: () => onClick(),
       child: Container(
         height: 160.adaptSize,
-        width: 120.adaptSize,
         padding: EdgeInsets.only(
           top: 12.v,
-          left: 5.h,
-          right: 5.h,
+          left: 10.h,
+          right: 10.h,
           bottom: 5.h,
         ),
         decoration: BoxDecoration(
@@ -45,13 +44,11 @@ class MainCategoryCard extends StatelessWidget {
               width: 48.h,
             ),
             const VerticalGap(size: 10),
-            FittedBox(
-              child: CustomText(
-                text: title,
-                textStyle: CustomTextStyle.textStyle25Bold(
-                  context,
-                  color: AppColors.black,
-                ),
+            CustomText(
+              text: title,
+              textStyle: CustomTextStyle.textStyle25Bold(
+                context,
+                color: AppColors.black,
               ),
             ),
           ],
