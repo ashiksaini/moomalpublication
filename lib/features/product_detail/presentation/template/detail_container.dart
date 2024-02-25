@@ -139,9 +139,9 @@ class DetailContainer extends StatelessWidget {
                 ? CachedNetworkImage(
                     imageUrl: _productDetailController
                         .productDetailData.value!.featuredImage!.url!,
-                    height: 300.v,
-                    width: 220.h,
-                    fit: BoxFit.fill,
+                    height: 300.adaptSize,
+                    width: 220.adaptSize,
+                    fit: BoxFit.contain,
                     placeholder: (context, url) {
                       return Center(child: customProgressIndicator());
                     },

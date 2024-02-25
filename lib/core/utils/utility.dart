@@ -63,10 +63,11 @@ class Utility {
   }
 
   static double getChildAspectRation(BuildContext context) {
-    if (MediaQuery.of(context).size.height < 950 && MediaQuery.of(context).size.height > 900) {
-      return 0.7.v;
-    } else {
+    // print(MediaQuery.of(context).size.height);
+    // if (MediaQuery.of(context).size.height < 950 && MediaQuery.of(context).size.height > 900) {
+    //   return 0.7.v;
+    // } else {
       return 0.52.v;
-    }
+    // }
   }
 }

@@ -23,8 +23,8 @@ class CardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 170.v,
-      width: 150.h,
+      height: 170.adaptSize,
+      width: 150.adaptSize,
       margin: EdgeInsets.symmetric(
         horizontal: 5.h,
         vertical: 5.v,
@@ -34,7 +34,7 @@ class CardImage extends StatelessWidget {
         child: (image.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: image,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },

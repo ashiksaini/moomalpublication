@@ -99,9 +99,9 @@ class CartCard extends StatelessWidget {
         child: cartItem.images!.isNotEmpty
             ? CachedNetworkImage(
                 imageUrl: cartItem.images!.first.src!,
-                height: 130.v,
-                width: 100.h,
-                fit: BoxFit.fill,
+                height: 130.adaptSize,
+                width: 100.adaptSize,
+                fit: BoxFit.contain,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },

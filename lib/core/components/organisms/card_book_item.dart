@@ -52,8 +52,8 @@ class CardBookItem extends StatelessWidget {
 
   Widget _getImage(BuildContext context) {
     return Container(
-      height: 195.v,
-      width: 200.h,
+      height: 195.adaptSize,
+      width: 200.adaptSize,
       margin: EdgeInsets.symmetric(
           horizontal: 5.h,
           vertical: 5.v),

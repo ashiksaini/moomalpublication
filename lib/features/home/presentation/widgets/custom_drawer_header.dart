@@ -29,9 +29,9 @@ class CustomDrawerHeader extends StatelessWidget {
           borderRadius: BorderRadius.circular(28.r),
           child: CachedNetworkImage(
             imageUrl: userImage,
-            height: 56.v,
-            width: 56.h,
-            fit: BoxFit.cover,
+            height: 56.adaptSize,
+            width: 56.adaptSize,
+            fit: BoxFit.contain,
           ),
         ),
         const HorizontalGap(size: 10),

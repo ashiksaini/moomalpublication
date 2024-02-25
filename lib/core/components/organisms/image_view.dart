@@ -24,7 +24,7 @@ class ImageView extends StatelessWidget {
         child: (image != null && image!.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: image!,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },
