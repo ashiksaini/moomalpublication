@@ -27,8 +27,8 @@ TextFormField customTextFormField(
   return TextFormField(
     controller: textEditingController,
     cursorColor: AppColors.orange,
-    cursorWidth: scaleWidth(2, context),
-    cursorRadius: Radius.circular(scaleRadius(2, context)),
+    cursorWidth: 2.h,
+    cursorRadius: Radius.circular(2.r),
     keyboardType: textInputType,
     textInputAction: textInputAction,
     readOnly: isReadOnly,
@@ -41,17 +41,17 @@ TextFormField customTextFormField(
         CustomTextStyle.textStyle25Bold(context, color: AppColors.black),
     obscureText: isPasswordField && !isPasswordVisible,
     decoration: InputDecoration(
-      contentPadding: EdgeInsets.only(right: scaleWidth(10, context)),
+      contentPadding: EdgeInsets.only(right: 10.h),
       fillColor: AppColors.white,
       filled: true,
       focusedBorder: OutlineInputBorder(
         borderRadius:
-            BorderRadius.circular(scaleRadius(borderRadius!, context)),
+            BorderRadius.circular(borderRadius!.r),
         borderSide: const BorderSide(color: AppColors.orangeLight),
       ),
       border: OutlineInputBorder(
         borderSide: const BorderSide(color: AppColors.grey),
-        borderRadius: BorderRadius.circular(scaleRadius(borderRadius, context)),
+        borderRadius: BorderRadius.circular(borderRadius.r),
       ),
       labelText: label,
       labelStyle: labelTextStyle ??
@@ -67,12 +67,12 @@ TextFormField customTextFormField(
                   onPrefixIconClick != null ? onPrefixIconClick() : null,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: scaleWidth(16, context),
-                    vertical: scaleHeight(12, context)),
+                    horizontal: 16.h,
+                    vertical: 12.v),
                 child: SvgPicture.asset(
                   prefixIcon,
-                  height: scaleHeight(24, context),
-                  width: scaleWidth(24, context),
+                  height: 24.v,
+                  width: 24.h,
                 ),
               ),
             )
@@ -83,12 +83,12 @@ TextFormField customTextFormField(
                   onSuffixIconClick != null ? onSuffixIconClick() : null,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: scaleWidth(16, context),
-                    vertical: scaleHeight(12, context)),
+                    horizontal: 16.h,
+                    vertical: 12.v),
                 child: SvgPicture.asset(
                   suffixIcon,
-                  height: scaleHeight(24, context),
-                  width: scaleWidth(24, context),
+                  height: 24.v,
+                  width: 24.h,
                 ),
               ),
             )

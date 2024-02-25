@@ -21,16 +21,16 @@ class FiltersBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: screenWidth(context),
+      width: SizeUtils.width,
       padding: EdgeInsets.symmetric(
-        vertical: scaleHeight(14, context),
-        horizontal: scaleWidth(14, context),
+        vertical: 14.v,
+        horizontal: 14.h,
       ),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(scaleRadius(10, context)),
-          topRight: Radius.circular(scaleRadius(10, context)),
+          topLeft: Radius.circular(10.r),
+          topRight: Radius.circular(10.r),
         ),
       ),
       child: Column(

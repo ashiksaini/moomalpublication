@@ -17,10 +17,21 @@ import 'package:moomalpublication/features/cart/presentation/template/card_card.
 import 'package:moomalpublication/features/cart/presentation/widgets/order_details.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 
-class CartScreen extends StatelessWidget {
-  CartScreen({super.key});
+class CartScreen extends StatefulWidget {
+  const CartScreen({super.key});
 
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
   final CartController _cartController = Get.put(CartController());
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _cartController.onRefresh();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,12 +102,12 @@ class CartScreen extends StatelessWidget {
 
   Widget _getPlaceOrderView(BuildContext context) {
     return Container(
-      width: screenWidth(context),
+      width: SizeUtils.width,
       padding: EdgeInsets.only(
-        left: scaleWidth(15, context),
-        right: scaleWidth(10, context),
-        top: scaleHeight(10, context),
-        bottom: scaleHeight(10, context),
+        left: 15.h,
+        right: 10.h,
+        top: 10.v,
+        bottom: 10.v,
       ),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -112,26 +123,26 @@ class CartScreen extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: AppColors.green,
-              borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             child: _cartController.cartCheckoutResponse.value.isLoading
                 ? Container(
-                    height: scaleWidth(45, context),
+                    height: 45.h,
                     padding: EdgeInsets.symmetric(
-                        horizontal: scaleWidth(45, context)),
+                        horizontal: 45.h),
                     child: LottieBuilder.asset(
                       AppAssets.loadingAnimation,
                       fit: BoxFit.cover,
                       filterQuality: FilterQuality.high,
-                      height: scaleWidth(45, context),
+                      height: 45.h,
                     ),
                   )
                 : GestureDetector(
                     onTap: () => _cartController.cartCheckout(),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: scaleHeight(10, context),
-                        horizontal: scaleWidth(24, context),
+                        vertical: 10.v,
+                        horizontal: 24.h,
                       ),
                       child: CustomText(
                         text: 'place_order'.tr,
@@ -149,8 +160,8 @@ class CartScreen extends StatelessWidget {
   Widget _getOrderDetailView(BuildContext context) {
     return ShadowContainer(
       margin: EdgeInsets.symmetric(
-        horizontal: scaleWidth(10, context),
-        vertical: scaleHeight(10, context),
+        horizontal: 10.h,
+        vertical: 10.v,
       ),
       containerChild: OrderDetails(
         totals: _cartController.totals.value!,
@@ -162,8 +173,8 @@ class CartScreen extends StatelessWidget {
   Widget _getCartView(BuildContext context) {
     return ShadowContainer(
       margin: EdgeInsets.symmetric(
-        horizontal: scaleWidth(10, context),
-        vertical: scaleHeight(10, context),
+        horizontal: 10.h,
+        vertical: 10.v,
       ),
       containerChild: ListView.builder(
         shrinkWrap: true,

@@ -8,23 +8,25 @@ import 'package:moomalpublication/features/orders/data/models/order_response_mod
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class GetOrderService {
   GetOrderService._();
 
-  static Future<OrderResponse> getOrders({String? id}) async {
+  static Future<OrderResponse> getOrders() async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
       try {
+        final userId =
+            await SharedPreferencesHelper.getInt(SharedPreferenceKeys.userId);
         final query = KeyRequestData(
           consumerKey: ApiKeys.orderConsumerKey,
           consumerSecret: ApiKeys.orderConsumerSecret,
         ).toJson();
-        if (id != null) {
-          query['consumer'] = id;
-        }
-
+        query['customer'] = userId;
+      
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
             .get(ApiPaths.orders, queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>)

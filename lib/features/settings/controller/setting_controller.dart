@@ -29,7 +29,7 @@ class SettingController extends BaseController {
     deleteAccountResponse.value = await SettingsServices.deleteAccount();
 
     if (deleteAccountResponse.value.data != null) {
-      showSnackBar(deleteAccountResponse.value.data?.message ?? "");
+      showSnackBar('account_deleted_successfully'.tr);
       SharedPreferencesHelper.clearSharedPref();
       AppRouting.offAllNamed(NameRoutes.splashScreen);
     }

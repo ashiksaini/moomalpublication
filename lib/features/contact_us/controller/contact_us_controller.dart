@@ -13,11 +13,11 @@ class ContactUsController extends BaseController {
 
   void generateAddressList() {
     address = [
-      Address(
-          iconName: AppAssets.icLocation,
-          addressHeader: 'ADDRESS',
-          addressDescription:
-              '50, Agrasen Nagar, Near Mahesh Nagar Phatak, Jaipur, (Rajasthan) 302015'),
+      // Address(
+      //     iconName: AppAssets.icLocation,
+      //     addressHeader: 'ADDRESS',
+      //     addressDescription:
+      //         '50, Agrasen Nagar, Near Mahesh Nagar Phatak, Jaipur, (Rajasthan) 302015'),
       Address(
           iconName: AppAssets.icEmail,
           addressHeader: 'EMAIL',

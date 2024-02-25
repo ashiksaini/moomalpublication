@@ -105,10 +105,10 @@ class HomeController extends BaseController {
         icon: AppAssets.icReadingBook,
         title: "online_test_series".tr,
         drawerItemType: DrawerItemType.onlineTestSeries);
-    final overallResultItem = DrawerItem(
-        icon: AppAssets.icReport,
-        title: "overall_result".tr,
-        drawerItemType: DrawerItemType.overallResult);
+    // final overallResultItem = DrawerItem(
+    //     icon: AppAssets.icReport,
+    //     title: "overall_result".tr,
+    //     drawerItemType: DrawerItemType.overallResult);
     final logoutItem = DrawerItem(
         icon: AppAssets.icLogout,
         title: "logout".tr,
@@ -124,7 +124,7 @@ class HomeController extends BaseController {
       contactUsItem,
       settingItem,
       onlineTestSeriesItem,
-      overallResultItem,
+      // overallResultItem,
       logoutItem,
     ]);
   }

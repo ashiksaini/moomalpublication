@@ -40,8 +40,8 @@ class AddressScreen extends StatelessWidget {
                         : SingleChildScrollView(
                             child: Padding(
                               padding: EdgeInsets.symmetric(
-                                vertical: scaleHeight(36, context),
-                                horizontal: scaleWidth(10, context),
+                                vertical: 36.v,
+                                horizontal: 10.h,
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -8,6 +8,8 @@ import 'package:moomalpublication/features/address/data/models/address_data/addr
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class AddressServices {
   AddressServices._();
@@ -17,13 +19,15 @@ class AddressServices {
         .haveInternetConnection
         .value) {
       try {
+        final userId =
+            await SharedPreferencesHelper.getInt(SharedPreferenceKeys.userId);
         final query = KeyRequestData(
           consumerKey: ApiKeys.addressDataConsumerKey,
           consumerSecret: ApiKeys.addressDataConsumerSecret,
         ).toJson();
 
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .get(ApiPaths.address, queryParameters: query);
+            .get("${ApiPaths.address}$userId", queryParameters: query);
 
         final parsedResponse =
             AddressData.fromJson(response.data as Map<String, dynamic>);
@@ -45,13 +49,16 @@ class AddressServices {
         .haveInternetConnection
         .value) {
       try {
+        final userId =
+            await SharedPreferencesHelper.getInt(SharedPreferenceKeys.userId);
         final query = KeyRequestData(
           consumerKey: ApiKeys.addressDataConsumerKey,
           consumerSecret: ApiKeys.addressDataConsumerSecret,
         ).toJson();
 
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .put(ApiPaths.address, queryParameters: query, data: address);
+            .put("${ApiPaths.address}$userId",
+                queryParameters: query, data: address);
 
         final parsedResponse =
             AddressData.fromJson(response.data as Map<String, dynamic>);

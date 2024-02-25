@@ -24,13 +24,13 @@ class BtnAddToCart extends StatelessWidget {
       onTap: () => onClick(),
       child: Container(
         padding: EdgeInsets.symmetric(
-          vertical: scaleHeight(5, context),
+          vertical: 5.v,
         ),
         decoration: BoxDecoration(
           color: AppColors.orangeLight,
           border: Border.all(color: AppColors.pinkLight),
           borderRadius: BorderRadius.circular(
-            scaleRadius(5, context),
+            5.r,
           ),
         ),
         child: Row(

@@ -35,14 +35,14 @@ class CustomDropDown1<T> extends StatelessWidget {
       return DropdownButtonHideUnderline(
         child: DropdownButton2<DropdownItem<T>>(
           customButton: Container(
-            width: width ?? screenWidth(context) / 2.6,
+            width: width ?? SizeUtils.width / 2.6,
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+              borderRadius: BorderRadius.circular(10.r),
             ),
             padding: EdgeInsets.symmetric(
-              horizontal: scaleWidth(10, context),
-              vertical: scaleHeight(10, context),
+              horizontal: 10.h,
+              vertical: 10.v,
             ),
             child: Row(
               children: [
@@ -60,8 +60,8 @@ class CustomDropDown1<T> extends StatelessWidget {
                 // DD Icon
                 SvgPicture.asset(
                   AppAssets.icDropDown,
-                  height: scaleHeight(20, context),
-                  width: scaleWidth(20, context),
+                  height: 20.v,
+                  width: 20.h,
                 ),
               ],
             ),
@@ -79,10 +79,10 @@ class CustomDropDown1<T> extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.only(
-                          left: scaleWidth(15, context),
-                          right: scaleWidth(10, context),
-                          top: scaleHeight(8, context),
-                          bottom: scaleHeight(7, context),
+                          left: 15.h,
+                          right: 10.h,
+                          top: 8.v,
+                          bottom: 7.v,
                         ),
                         child: CustomText(
                           text: item.title.toString(),
@@ -93,8 +93,8 @@ class CustomDropDown1<T> extends StatelessWidget {
                         ),
                       ),
                       Divider(
-                          height: scaleHeight(2, context),
-                          thickness: scaleHeight(2, context)),
+                          height: 2.v,
+                          thickness: 2.v),
                     ],
                   );
                 },
@@ -107,12 +107,12 @@ class CustomDropDown1<T> extends StatelessWidget {
           dropdownStyleData: DropdownStyleData(
             padding: EdgeInsets.zero,
             scrollPadding: EdgeInsets.zero,
-            maxHeight: scaleHeight(250, context),
-            width: (width ?? screenWidth(context)),
+            maxHeight: 250.v,
+            width: (width ?? width),
             offset: const Offset(0, 0),
             decoration: BoxDecoration(
               color: AppColors.white,
-              borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+              borderRadius: BorderRadius.circular(10.r),
               boxShadow: [primaryBoxShadow()],
             ),
           ),

@@ -3,6 +3,9 @@ final Map<String, String> enUS = {
   "moomalpublication": "Moomal Publication",
   "delete_account": "Delete Account",
   "this_product_is_out_of_stock": "This Product is Out of Stock",
+  "account_deleted_successfully": "Account Deleted Successfully",
+  "no_item_downloaded": "No Item Downloaded",
+  "no_item_ordered": "No Item Ordered",
 
   // Internet ///////////////////////////////////////////////////////////////
   'bad_request': "Bad Request",
@@ -186,6 +189,7 @@ final Map<String, String> enUS = {
   "no_items_in_cart": "No Items in Cart",
   "browse_product": "Browse Product",
   "quantity_cannot_exceed_the_limit": "Quantity cannot exceed 9999",
+  "please_add_address_first": "Please add Address first",
 
   // Search Screen ////////////////////////////////////////////////////////////
   "search_for_books_and_ebooks": "Search for Books and Ebooks",
@@ -238,8 +242,8 @@ final Map<String, String> enUS = {
   "add": "Add",
   "©_2021_Moomal_Publication_All_rights_reserved":
       "© 2021 Moomal Publication All rights reserved",
-  "current_affair_quiz": "Current\naffair\nQuiz",
-  "economics_quiz": "Economics \nQuiz",
+  "current_affair_quiz": "Current Affair\nQuiz",
+  "economics_quiz": "Economics\nQuiz",
   "our_quiz": "Our Quiz",
   "oops_no_quiz_found": "Oops..! No Quiz Found",
   "overall_performace": "Overall Performance",
@@ -253,7 +257,6 @@ final Map<String, String> enUS = {
   "payment_success": "Payment Success",
 
   //Address
-
   "the_following_addresses_will_be_used_on_the_checkout_page_by_default":
       "The following addresses will be used on the checkout page by default. ",
   "billing_address": "BILLING ADDRESS",

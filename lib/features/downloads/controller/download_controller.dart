@@ -9,21 +9,18 @@ import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class DownloadController extends BaseController {
   final Rx<DownloadResponse> downloadSeriesResponse = Rx(DownloadResponse());
-
   RxList<DownloadResponseModel> downloadList = RxList();
 
   @override
   void onInit() {
     super.onInit();
-    _getTestDownload(userid: 1);
+    _getTestDownload();
   }
 
-  Future<void> _getTestDownload({
-    required int userid,
-  }) async {
+  Future<void> _getTestDownload() async {
     downloadSeriesResponse.value = ApiResponse.loading();
     downloadSeriesResponse.value =
-        await DownloadService.getDownloadList(query: {'user_id': userid});
+        await DownloadService.getDownloadList();
 
     if (downloadSeriesResponse.value.data != null) {
       downloadList.clear();

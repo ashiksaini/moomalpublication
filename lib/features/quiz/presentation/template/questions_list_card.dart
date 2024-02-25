@@ -16,7 +16,7 @@ class QuestionListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: scaleHeight(28, context)),
+      padding: EdgeInsets.only(top: 28.v),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

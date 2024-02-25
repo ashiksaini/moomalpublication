@@ -19,9 +19,9 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: scaleWidth(24, context),
-        right: scaleWidth(24, context),
-        top: scaleHeight(80, context),
+        left: 24.h,
+        right: 24.h,
+        top: 80.v,
       ),
       child: Column(
         children: [
@@ -42,24 +42,24 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
   }
 
   Widget _getLogo(BuildContext context) {
-    return Image.asset(
-      AppAssets.icLogo1,
-      height: scaleHeight(195, context),
-      width: scaleWidth(195, context),
+    return SvgPicture.asset(
+      AppAssets.icLogo,
+      height: 195.v,
+      width: 195.h,
     );
   }
 
   Widget _getResetPasswordOnSuccessText(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: scaleWidth(10, context),
-        vertical: scaleHeight(20, context),
+        horizontal: 10.h,
+        vertical: 20.v,
       ),
       decoration: BoxDecoration(
         color: AppColors.white,
         border: Border.all(color: AppColors.grey),
         borderRadius: BorderRadius.circular(
-          scaleRadius(20, context),
+          20.r,
         ),
       ),
       child: Row(

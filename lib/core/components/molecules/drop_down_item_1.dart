@@ -14,8 +14,8 @@ class DropDownItem1 extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(color: AppColors.white),
       padding: EdgeInsets.symmetric(
-        vertical: scaleHeight(10, context),
-        horizontal: scaleWidth(30, context),
+        vertical: 10.v,
+        horizontal: 30.h,
       ),
       child: CustomText(
           text: title, textStyle: CustomTextStyle.textStyle18Bold(context)),

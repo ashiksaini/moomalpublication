@@ -8,7 +8,7 @@ class TabItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: scaleHeight(2, context)),
+      padding: EdgeInsets.only(bottom: 2.v),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -38,8 +38,8 @@ class PriceQuantity extends StatelessWidget {
   Widget _getPriceView(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: scaleHeight(8, context),
-        horizontal: scaleWidth(15, context),
+        vertical: 8.v,
+        horizontal: 15.h,
       ),
       decoration: BoxDecoration(
         color: AppColors.orangeLight,
@@ -59,8 +59,8 @@ class PriceQuantity extends StatelessWidget {
   Widget _getQuantityView(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: scaleHeight(7, context),
-        horizontal: scaleWidth(15, context),
+        vertical: 7.v,
+        horizontal: 15.h,
       ),
       decoration: BoxDecoration(
         color: AppColors.orangeLight,
@@ -95,8 +95,8 @@ class PriceQuantity extends StatelessWidget {
               AppAssets.icDropDown,
               colorFilter:
                   const ColorFilter.mode(AppColors.black, BlendMode.srcIn),
-              height: scaleHeight(18, context),
-              width: scaleWidth(18, context),
+              height: 18.v,
+              width: 18.h,
             ),
           ],
         ),
@@ -120,10 +120,10 @@ class PriceQuantity extends StatelessWidget {
                   children: [
                     Container(
                       padding: EdgeInsets.only(
-                        left: scaleWidth(15, context),
-                        right: scaleWidth(10, context),
-                        top: scaleHeight(8, context),
-                        bottom: scaleHeight(8, context),
+                        left: 15.h,
+                        right: 10.h,
+                        top: 8.v,
+                        bottom: 8.v,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,8 +141,8 @@ class PriceQuantity extends StatelessWidget {
                       ),
                     ),
                     Divider(
-                        height: scaleHeight(2, context),
-                        thickness: scaleHeight(2, context)),
+                        height: 2.v,
+                        thickness: 2.v),
                   ],
                 );
               },
@@ -159,12 +159,12 @@ class PriceQuantity extends StatelessWidget {
         dropdownStyleData: DropdownStyleData(
           padding: EdgeInsets.zero,
           scrollPadding: EdgeInsets.zero,
-          maxHeight: scaleHeight(250, context),
-          width: scaleWidth(150, context),
+          maxHeight: 250.v,
+          width: 150.h,
           offset: const Offset(-20, 0),
         ),
         menuItemStyleData: MenuItemStyleData(
-          height: scaleHeight(53, context),
+          height: 53.v,
           padding: EdgeInsets.zero,
         ),
       ),

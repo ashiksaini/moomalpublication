@@ -30,8 +30,8 @@ class AllCategoriesScreen extends StatelessWidget {
               ),
               SingleChildScrollView(
                 padding: EdgeInsets.symmetric(
-                  vertical: scaleHeight(50, context),
-                  horizontal: scaleWidth(24, context),
+                  vertical: 50.v,
+                  horizontal: 24.h,
                 ),
                 child: Column(
                   children: [

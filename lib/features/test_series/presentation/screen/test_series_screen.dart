@@ -66,9 +66,9 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                           children: [
                             Padding(
                               padding: EdgeInsets.only(
-                                top: scaleHeight(14, context),
-                                left: scaleWidth(10, context),
-                                right: scaleWidth(10, context),
+                                top: 14.v,
+                                left: 10.h,
+                                right: 10.h,
                               ),
                               child: Row(
                                 mainAxisAlignment:
@@ -80,7 +80,7 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                                         _testSeriesController.mockTestCategory,
                                     selectedItem: _testSeriesController
                                         .selectedMockTestCategory,
-                                    width: screenWidth(context) / 2.2,
+                                    width: SizeUtils.width / 2.2,
                                     onItemClick: _testSeriesController
                                         .onMockCategoryItemClick,
                                   ),
@@ -90,7 +90,7 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                                         _testSeriesController.topicWiseCategory,
                                     selectedItem: _testSeriesController
                                         .selectedTopicWiseCategory,
-                                    width: screenWidth(context) / 2.2,
+                                    width: SizeUtils.width / 2.2,
                                     onItemClick: _testSeriesController
                                         .onTopicCategoryItemClick,
                                   ),

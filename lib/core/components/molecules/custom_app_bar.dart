@@ -35,8 +35,8 @@
 //       ),
 //       child: Padding(
 //         padding: EdgeInsets.symmetric(
-//           horizontal: scaleWidth(16, context),
-//           vertical: scaleHeight(18, context),
+//           horizontal: 16.h,
+//           vertical: 18.v,
 //         ),
 //         child: Row(
 //           children: [

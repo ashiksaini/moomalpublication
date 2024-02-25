@@ -50,7 +50,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     return Wrap(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
+          padding: EdgeInsets.symmetric(vertical: 8.v),
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [

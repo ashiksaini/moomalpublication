@@ -9,6 +9,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/theme/text_fields.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/search_books/controller/search_product_controller.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -31,12 +32,12 @@ class SearchProductScreen extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    height: scaleHeight(100, context),
+                    height: 100.v,
                     decoration: BoxDecoration(
                       color: AppColors.black,
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(scaleRadius(20, context)),
-                        bottomRight: Radius.circular(scaleRadius(20, context)),
+                        bottomLeft: Radius.circular(20.r),
+                        bottomRight: Radius.circular(20.r),
                       ),
                     ),
                   ),
@@ -46,7 +47,7 @@ class SearchProductScreen extends StatelessWidget {
                     right: 0,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: scaleWidth(10, context),
+                        horizontal: 10.h,
                       ),
                       child: customTextFormField(
                         context,
@@ -85,17 +86,14 @@ class SearchProductScreen extends StatelessWidget {
   Widget _getBooksDataView(BuildContext context) {
     return GridView.builder(
       padding: EdgeInsets.symmetric(
-        horizontal: scaleWidth(10, context),
-        vertical: scaleHeight(10, context),
+        horizontal: 10.h,
+        vertical: 10.v,
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 12.0,
-        mainAxisSpacing: 15.0,
-        childAspectRatio:
-            _searchProductController.searchBookResponse.value.isLoading
-                ? 0.52
-                : 0.42,
+        crossAxisSpacing: 12.0.h,
+        mainAxisSpacing: 15.0.v,
+        childAspectRatio: Utility.getChildAspectRation(context),
       ),
       itemCount: _searchProductController.searchBookResponse.value.isLoading
           ? 20
@@ -121,13 +119,13 @@ class SearchProductScreen extends StatelessWidget {
 
   Widget _getCenterSearchView(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: scaleHeight(150, context)),
+      margin: EdgeInsets.only(top: 150.v),
       child: Column(
         children: [
           SvgPicture.asset(
             AppAssets.icSearchScreenBg,
-            height: scaleHeight(190, context),
-            width: scaleWidth(200, context),
+            height: 190.v,
+            width: 200.h,
           ),
           const VerticalGap(size: 67),
           CustomText(

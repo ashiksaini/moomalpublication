@@ -20,8 +20,8 @@ class OrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.symmetric(
-            vertical: scaleHeight(30, context),
-            horizontal: scaleWidth(8, context)),
+            vertical: 30.v,
+            horizontal: 8.h),
         child: Obx(
           () => ListView.builder(
               shrinkWrap: true,
@@ -40,8 +40,8 @@ class OrderCard extends StatelessWidget {
                       backgroundColor: AppColors.orangeLighter.withOpacity(0.9),
                       containerChild: Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: scaleWidth(6, context),
-                            vertical: scaleHeight(8, context)),
+                            horizontal: 6.h,
+                            vertical: 8.v),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

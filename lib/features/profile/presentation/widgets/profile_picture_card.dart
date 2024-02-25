@@ -14,16 +14,22 @@ class ProfilePicture extends StatelessWidget {
     return Stack(
       children: [
         SvgPicture.asset(AppAssets.icUserPic),
-        Positioned.fill(
-            child: Center(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(scaleRadius(100, context)),
-            child: CachedNetworkImage(
-              imageUrl: avatarUrl,
-              fit: BoxFit.cover,
+        Positioned(
+          left: 0.h,
+          bottom: 0.v,
+          right: 0.h,
+          top: 0.v,
+          child: Padding(
+            padding: EdgeInsets.all(20.r),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100.r),
+              child: CachedNetworkImage(
+                imageUrl: avatarUrl,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
-        )),
+        ),
       ],
     );
   }

@@ -7,6 +7,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -34,17 +35,14 @@ class SimilarProductScreen extends StatelessWidget {
               Expanded(
                 child: GridView.builder(
                   padding: EdgeInsets.symmetric(
-                    horizontal: scaleWidth(10, context),
-                    vertical: scaleHeight(10, context),
+                    horizontal: 10.h,
+                    vertical: 10.v,
                   ),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 12.0,
-                    mainAxisSpacing: 15.0,
-                    childAspectRatio: _productDetailController
-                            .similarProductResponse.value.isLoading
-                        ? 0.52
-                        : 0.42,
+                    crossAxisSpacing: 12.0.h,
+                    mainAxisSpacing: 15.0.v,
+                    childAspectRatio: Utility.getChildAspectRation(context),
                   ),
                   itemCount: _productDetailController
                           .similarProductResponse.value.isLoading

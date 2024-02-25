@@ -32,7 +32,7 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
       HomeScreen(),
       ShopScreen(),
       EBookScreen(),
-      CartScreen(),
+      const CartScreen(),
       ProfileScreen(),
     ];
   }

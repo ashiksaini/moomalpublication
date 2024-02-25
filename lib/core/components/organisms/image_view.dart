@@ -17,20 +17,20 @@ class ImageView extends StatelessWidget {
     return Container(
       height: height,
       margin: EdgeInsets.symmetric(
-          horizontal: scaleWidth(5, context),
-          vertical: scaleHeight(5, context)),
+          horizontal: 5.h,
+          vertical: 5.v),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+        borderRadius: BorderRadius.circular(15.r),
         child: (image != null && image!.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: image!,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },
               )
             : Container(
-                width: screenWidth(context),
+                width: SizeUtils.width,
                 color: AppColors.greyLight,
                 child: Center(
                   child: CustomText(

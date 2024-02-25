@@ -11,7 +11,7 @@ class TextCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: scaleHeight(8, context)),
+      padding: EdgeInsets.only(bottom: 8.v),
       child: RichText(
         text: TextSpan(
           text: "$name : ",

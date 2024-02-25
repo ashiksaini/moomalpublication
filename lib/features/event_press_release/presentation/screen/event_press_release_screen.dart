@@ -50,7 +50,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                 maxLine: 1,
               ),
               const HorizontalGap(size: 20),
-              SizedBox(height: scaleHeight(90, context), child: YearList()),
+              SizedBox(height: 90.v, child: YearList()),
               TabBar(
                 unselectedLabelColor: AppColors.grey,
                 labelColor: AppColors.orange,
@@ -61,15 +61,15 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                 tabs: [
                   Tab(
                     text: 'events'.tr,
-                    height: scaleHeight(60, context),
+                    height: 60.v,
                   ),
                   Tab(
                     text: '  Press\nRelease',
-                    height: scaleHeight(60, context),
+                    height: 60.v,
                   ),
                   Tab(
                     text: '  Media\nCoverage',
-                    height: scaleHeight(60, context),
+                    height: 60.v,
                   ),
                 ],
                 controller: _tabController,
@@ -99,7 +99,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                                   ),
                             Padding(
                               padding: EdgeInsets.symmetric(
-                                  vertical: scaleHeight(10, context)),
+                                  vertical: 10.v),
                               child: _eventPressController
                                       .pressReleaseList.isNotEmpty
                                   ? ListView.builder(

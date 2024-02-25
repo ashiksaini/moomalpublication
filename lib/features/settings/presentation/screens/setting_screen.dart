@@ -37,8 +37,8 @@ class SettingScreen extends StatelessWidget {
                       child: SingleChildScrollView(
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: scaleWidth(15, context),
-                              vertical: scaleHeight(24, context)),
+                              horizontal: 15.h,
+                              vertical: 24.v),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

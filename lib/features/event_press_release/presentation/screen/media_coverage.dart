@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -12,7 +13,7 @@ class MediaCoverage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(24, context)),
+      padding: EdgeInsets.symmetric(vertical: 24.v),
       child: Column(
         children: [
           Expanded(
@@ -22,7 +23,7 @@ class MediaCoverage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                      left: scaleWidth(20, context),
+                      left: 20.h,
                     ),
                     child: CustomText(
                         text: "media_books".tr,
@@ -32,8 +33,8 @@ class MediaCoverage extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: scaleWidth(10, context),
-                        vertical: scaleHeight(20, context)),
+                        horizontal: 10.h,
+                        vertical: 20.v),
                     child: GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -50,13 +51,13 @@ class MediaCoverage extends StatelessWidget {
                           color: AppColors.orangeSkin,
                           // child: SvgPicture.asset(
                           //   image,
-                          //   width: scaleWidth(184, context),
-                          //   height: scaleHeight(245, context),
+                          //   width: 184.h,
+                          //   height: 245.v,
                           // ),
-                          child: Image.asset(
-                            AppAssets.bookPng,
-                            width: scaleWidth(245, context),
-                            height: scaleHeight(245, context),
+                          child: SvgPicture.asset(
+                            AppAssets.bookImg,
+                            width: 245.h,
+                            height: 245.v,
                           ),
                         );
                       },
@@ -64,18 +65,18 @@ class MediaCoverage extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: scaleWidth(20, context),
-                        bottom: scaleHeight(12, context)),
+                        left: 20.h,
+                        bottom: 12.v),
                     child: CustomText(
                         text: "media_videos".tr,
                         textStyle: CustomTextStyle.textStyle20Bold(context,
                             color: AppColors.black,
                             decoration: TextDecoration.underline)),
                   ),
-                  Image.asset(
-                    AppAssets.bookPng,
-                    width: scaleWidth(245, context),
-                    height: scaleHeight(245, context),
+                  SvgPicture.asset(
+                    AppAssets.bookImg,
+                    width: 245.h,
+                    height: 245.v,
                   ),
                 ],
               ),
