@@ -31,13 +31,13 @@ class OrdersScreen extends StatelessWidget {
                 () => Expanded(
                   child: orderController.orderResponse.value.isLoading
                       ? Center(child: customProgressIndicator())
-                      : orderController.showBrowseProduct.value
+                      : orderController.ordersList.isNotEmpty
                           ? SingleChildScrollView(
                               child: Column(
                                 children: [OrderCard()],
                               ),
                             )
-                          : Center(child: EmptyCartView(title: "title".tr)),
+                          : Center(child: EmptyCartView(title: "no_item_ordered".tr)),
                 ),
               ),
             ],

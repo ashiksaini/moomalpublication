@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
+import 'package:moomalpublication/core/components/organisms/empty_cart_view.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/features/downloads/controller/download_controller.dart';
@@ -29,18 +30,21 @@ class DownloadScreen extends StatelessWidget {
               ),
               Obx(
                 () => Expanded(
-                  child: downloadController
-                          .downloadSeriesResponse.value.isLoading
-                      ? Center(child: customProgressIndicator())
-                      : SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              DownloadCard(
-                                downloadList: downloadController.downloadList,
-                              )
-                            ],
-                          ),
-                        ),
+                  child:
+                      downloadController.downloadSeriesResponse.value.isLoading
+                          ? Center(child: customProgressIndicator())
+                          : downloadController.downloadList.isEmpty
+                              ? Center(child: EmptyCartView(title: "no_item_downloaded".tr))
+                              : SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      DownloadCard(
+                                        downloadList:
+                                            downloadController.downloadList,
+                                      )
+                                    ],
+                                  ),
+                                ),
                 ),
               ),
             ],

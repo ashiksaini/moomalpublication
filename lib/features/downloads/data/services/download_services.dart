@@ -6,16 +6,20 @@ import 'package:moomalpublication/features/downloads/data/model/download_respons
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class DownloadService {
   DownloadService._();
 
-  static Future<DownloadResponse> getDownloadList(
-      {Map<String, dynamic>? query}) async {
+  static Future<DownloadResponse> getDownloadList() async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
       try {
+        final userId =
+            await SharedPreferencesHelper.getInt(SharedPreferenceKeys.userId);
+        final query = {'user_id': userId};
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
             .get(ApiPaths.download, queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!

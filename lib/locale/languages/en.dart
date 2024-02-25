@@ -4,6 +4,8 @@ final Map<String, String> enUS = {
   "delete_account": "Delete Account",
   "this_product_is_out_of_stock": "This Product is Out of Stock",
   "account_deleted_successfully": "Account Deleted Successfully",
+  "no_item_downloaded": "No Item Downloaded",
+  "no_item_ordered": "No Item Ordered",
 
   // Internet ///////////////////////////////////////////////////////////////
   'bad_request': "Bad Request",

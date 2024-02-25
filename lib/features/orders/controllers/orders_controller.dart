@@ -21,7 +21,6 @@ class OrderController extends BaseController {
     orderResponse.value = await GetOrderService.getOrders();
     if (orderResponse.value.data != null) {
       ordersList.value = orderResponse.value.data!;
-
       showBrowseProduct.value = true;
     } else {
       showBrowseProduct.value = false;
