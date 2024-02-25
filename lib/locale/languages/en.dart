@@ -3,6 +3,7 @@ final Map<String, String> enUS = {
   "moomalpublication": "Moomal Publication",
   "delete_account": "Delete Account",
   "this_product_is_out_of_stock": "This Product is Out of Stock",
+  "account_deleted_successfully": "Account Deleted Successfully",
 
   // Internet ///////////////////////////////////////////////////////////////
   'bad_request': "Bad Request",
@@ -239,8 +240,8 @@ final Map<String, String> enUS = {
   "add": "Add",
   "©_2021_Moomal_Publication_All_rights_reserved":
       "© 2021 Moomal Publication All rights reserved",
-  "current_affair_quiz": "Current\naffair\nQuiz",
-  "economics_quiz": "Economics \nQuiz",
+  "current_affair_quiz": "Current Affair\nQuiz",
+  "economics_quiz": "Economics\nQuiz",
   "our_quiz": "Our Quiz",
   "oops_no_quiz_found": "Oops..! No Quiz Found",
   "overall_performace": "Overall Performance",

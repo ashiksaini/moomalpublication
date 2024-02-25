@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -22,49 +21,45 @@ class PhotoDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: 12.v,
-          left: 10.v,
-          right: 10.v,
-          bottom: 20),
+        top: 12.v,
+        left: 10.h,
+        right: 10.h,
+        bottom: 20.v,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Center(
             child: CardImage(
-              image: AppAssets.bookImg,
+              image: "",
               borderColor: AppColors.orange,
             ),
           ),
-          const VerticalGap(size: 18),
+          VerticalGap(size: 18.v),
           CustomText(
             text: "${'name'.tr}: ${_quizController.quizList[index].quizName}",
-            textStyle: CustomTextStyle.textStyle15Bold(
-              context,
-            ),
+            textStyle: CustomTextStyle.textStyle15Bold(context),
             textAlign: TextAlign.start,
           ),
           CustomText(
             text:
                 "${'quiz_views'.tr}: ${_quizController.quizList[index].quizViews}",
-            textStyle: CustomTextStyle.textStyle15Bold(
-              context,
-            ),
+            textStyle: CustomTextStyle.textStyle15Bold(context),
             textAlign: TextAlign.start,
           ),
           CustomText(
             text:
                 "${'quiz_taken'.tr}: ${_quizController.quizList[index].quizTaken}",
-            textStyle: CustomTextStyle.textStyle15Bold(
-              context,
-            ),
+            textStyle: CustomTextStyle.textStyle15Bold(context),
             textAlign: TextAlign.start,
           ),
-          const VerticalGap(size: 18),
+          VerticalGap(size: 18.v),
           GestureDetector(
-              onTap: () {
-                _quizController.startTest(index: index);
-              },
-              child: const StartButton()),
+            onTap: () {
+              _quizController.startTest(index: index);
+            },
+            child: const StartButton(),
+          ),
         ],
       ),
     );

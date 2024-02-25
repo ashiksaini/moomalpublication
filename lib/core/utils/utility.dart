@@ -14,6 +14,7 @@ class Utility {
       LoginResponseData data, bool rememberMe, String password) async {
     await SharedPreferencesHelper.setValue(
         SharedPreferenceKeys.username, data.username);
+        await SharedPreferencesHelper.setValue(SharedPreferenceKeys.userId, data.id);
     await SharedPreferencesHelper.setValue(
         SharedPreferenceKeys.email, data.email);
     await SharedPreferencesHelper.setValue(
@@ -67,7 +68,7 @@ class Utility {
     // if (MediaQuery.of(context).size.height < 950 && MediaQuery.of(context).size.height > 900) {
     //   return 0.7.v;
     // } else {
-      return 0.52.v;
+    return 0.52.v;
     // }
   }
 }

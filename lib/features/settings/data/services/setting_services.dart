@@ -8,6 +8,8 @@ import 'package:moomalpublication/features/settings/data/constant/type_alias.dar
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class SettingsServices {
   SettingsServices._();
@@ -17,6 +19,8 @@ class SettingsServices {
         .haveInternetConnection
         .value) {
       try {
+        final userId =
+            await SharedPreferencesHelper.getInt(SharedPreferenceKeys.userId);
         final query = KeyRequestData(
           consumerKey: ApiKeys.deleteAccountConsumerKey,
           consumerSecret: ApiKeys.deleteAccountConsumerSecret,
@@ -24,7 +28,7 @@ class SettingsServices {
         query.putIfAbsent("force", () => true);
 
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .delete(ApiPaths.deleteAccount, queryParameters: query);
+            .delete("${ApiPaths.deleteAccount}$userId", queryParameters: query);
         final parsedResponse = BaseResponse.fromJson(
           response.data as Map<String, dynamic>,
           (data) => null,

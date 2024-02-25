@@ -13,18 +13,21 @@ class StartButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.orange,
-        borderRadius: BorderRadius.all(
-          Radius.circular(6.r),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(6.r)),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: 4.v,
-            horizontal: 8.h),
+          vertical: 4.v,
+          horizontal: 8.h,
+        ),
         child: CustomText(
-            text: "start_quiz".tr,
-            textStyle: CustomTextStyle.textStyle18Regular(context,
-                decoration: TextDecoration.underline, color: Colors.white)),
+          text: "start_quiz".tr,
+          textStyle: CustomTextStyle.textStyle18Regular(
+            context,
+            decoration: TextDecoration.underline,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }

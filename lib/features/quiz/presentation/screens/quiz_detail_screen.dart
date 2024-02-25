@@ -34,8 +34,9 @@ class QuizDetailScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                        vertical: 30.v,
-                        horizontal: 30.h),
+                      vertical: 30.v,
+                      horizontal: 30.h,
+                    ),
                     child: ShadowContainer(
                       containerChild: PhotoDescription(
                         index: index,
