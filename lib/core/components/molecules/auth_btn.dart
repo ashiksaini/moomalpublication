@@ -30,11 +30,11 @@ class AuthBtn extends StatelessWidget {
                   AppAssets.loadingAnimation,
                   fit: BoxFit.cover,
                   filterQuality: FilterQuality.high,
-                  height: scaleHeight(48, context),
+                  height: 48.v,
                 )
               : Padding(
                   padding:
-                      EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
+                      EdgeInsets.symmetric(vertical: 8.v),
                   child: CustomText(
                     text: title,
                     textStyle: CustomTextStyle.textStyle25Bold(

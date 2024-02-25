@@ -19,31 +19,35 @@ class ReviewBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return Container(
-        width: screenWidth(context),
-        padding: EdgeInsets.symmetric(
-          vertical: scaleHeight(14, context),
-          horizontal: scaleWidth(14, context),
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(scaleRadius(10, context)),
-            topRight: Radius.circular(scaleRadius(10, context)),
+      return Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Container(
+          width: SizeUtils.width,
+          padding: EdgeInsets.symmetric(
+            vertical: 14.v,
+            horizontal: 14.h,
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /// Rating
-            _getRatingView(context),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10.r),
+              topRight: Radius.circular(10.r),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /// Rating
+              _getRatingView(context),
 
-            /// Review
-            _getWriteReview(context),
+              /// Review
+              _getWriteReview(context),
 
-            /// Submit Btn
-            _getSubmitBtn(context),
-          ],
+              /// Submit Btn
+              _getSubmitBtn(context),
+            ],
+          ),
         ),
       );
     });
@@ -81,22 +85,22 @@ class ReviewBottomSheet extends StatelessWidget {
         ),
         const VerticalGap(size: 10),
         SizedBox(
-          height: scaleHeight(150, context),
+          height: 150.v,
           child: TextFormField(
             controller:
                 _productDetailController.writeReviewTextEditingController,
             maxLines: 10,
             keyboardType: TextInputType.multiline,
             cursorColor: AppColors.orange,
-            cursorWidth: scaleWidth(2, context),
-            cursorRadius: Radius.circular(scaleRadius(2, context)),
+            cursorWidth: 2.h,
+            cursorRadius: Radius.circular(2.r),
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderSide: const BorderSide(color: AppColors.grey),
-                borderRadius: BorderRadius.circular(scaleRadius(4, context)),
+                borderRadius: BorderRadius.circular(4.r),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(scaleRadius(4, context)),
+                borderRadius: BorderRadius.circular(4.r),
                 borderSide: const BorderSide(color: AppColors.orangeDark),
               ),
             ),
@@ -111,7 +115,7 @@ class ReviewBottomSheet extends StatelessWidget {
     return GestureDetector(
       onTap: () => _productDetailController.onReviewSubmit(),
       child: Container(
-        width: screenWidth(context),
+        width: SizeUtils.width,
         color: AppColors.orange,
         child: _productDetailController.postReviewResponse.value.isLoading
             ? Center(
@@ -119,14 +123,14 @@ class ReviewBottomSheet extends StatelessWidget {
                   AppAssets.loadingAnimation,
                   fit: BoxFit.cover,
                   filterQuality: FilterQuality.high,
-                  height: scaleHeight(44, context),
+                  height: 44.v,
                 ),
               )
             : CustomText(
                 text: "submit".tr,
                 textStyle: CustomTextStyle.textStyle22Bold(context,
                     color: AppColors.white),
-              ).paddingSymmetric(vertical: scaleHeight(8, context)),
+              ).paddingSymmetric(vertical: 8.v),
       ),
     );
   }

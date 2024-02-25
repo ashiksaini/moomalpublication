@@ -1,37 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
+import 'package:moomalpublication/core/components/organisms/empty_product.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/features/overall_results_and_online_test_series/controller/overall_result_controller.dart';
 import 'package:moomalpublication/features/overall_results_and_online_test_series/presentation/template/test_data_card.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class OverallResultScreen extends StatelessWidget {
-  OverallResultScreen({super.key});
-  final OverallResultController overallResultController =
-      Get.put(OverallResultController());
+  const OverallResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomAppbar(
-              title: "online_test_series".tr,
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-              maxLine: 1,
-            ),
-            Expanded(
-                child: SingleChildScrollView(
-                    child: TestDataCard(
-              title: 'overall_performace'.tr,
-              examName: overallResultController.examName,
-              testData: overallResultController.overallPerformance,
-            ))),
-          ],
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomAppbar(
+                title: "online_test_series".tr,
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
+                maxLine: 1,
+              ),
+              GetX(
+                init: OverallResultController(true),
+                builder: (overallResultController) {
+                  return Expanded(
+                    child: overallResultController
+                            .overallResultResponse.value.isLoading
+                        ? Center(child: customProgressIndicator())
+                        : overallResultController.overallPerformance.isEmpty
+                            ? EmptyProductView(title: "no_test_result_found".tr)
+                            : SingleChildScrollView(
+                                child: TestDataCard(
+                                  title: 'overall_performace'.tr,
+                                  data: overallResultController
+                                      .overallPerformance,
+                                ),
+                              ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

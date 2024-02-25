@@ -20,9 +20,11 @@ class TestSeriesScreen extends StatefulWidget {
   State<TestSeriesScreen> createState() => _TestSeriesScreenState();
 }
 
-class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerProviderStateMixin {
+class _TestSeriesScreenState extends State<TestSeriesScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final TestSeriesController _testSeriesController = Get.put(TestSeriesController());
+  final TestSeriesController _testSeriesController =
+      Get.put(TestSeriesController());
 
   final tabs = <Widget>[];
 
@@ -41,93 +43,129 @@ class _TestSeriesScreenState extends State<TestSeriesScreen> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CustomAppbar(
-              title: "test_series".tr.replaceAll('\n', ' '),
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-              maxLine: 1,
-            ),
-            Expanded(
-              child: Obx(
-                () => (_testSeriesController.testSeriesListResponse.value.isLoading)
-                    ? Center(child: customProgressIndicator())
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: scaleHeight(14, context),
-                              left: scaleWidth(10, context),
-                              right: scaleWidth(10, context),
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CustomAppbar(
+                title: "test_series".tr.replaceAll('\n', ' '),
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
+                maxLine: 1,
+              ),
+              Expanded(
+                child: Obx(
+                  () => (_testSeriesController
+                          .testSeriesListResponse.value.isLoading)
+                      ? Center(child: customProgressIndicator())
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 14.v,
+                                left: 10.h,
+                                right: 10.h,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CustomDropDown2(
+                                    borderColor: AppColors.orange,
+                                    items:
+                                        _testSeriesController.mockTestCategory,
+                                    selectedItem: _testSeriesController
+                                        .selectedMockTestCategory,
+                                    width: SizeUtils.width / 2.2,
+                                    onItemClick: _testSeriesController
+                                        .onMockCategoryItemClick,
+                                  ),
+                                  CustomDropDown2(
+                                    borderColor: AppColors.orange,
+                                    items:
+                                        _testSeriesController.topicWiseCategory,
+                                    selectedItem: _testSeriesController
+                                        .selectedTopicWiseCategory,
+                                    width: SizeUtils.width / 2.2,
+                                    onItemClick: _testSeriesController
+                                        .onTopicCategoryItemClick,
+                                  ),
+                                ],
+                              ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                CustomDropDown2(
-                                  borderColor: AppColors.orange,
-                                  items: _testSeriesController.mockTestCategory,
-                                  selectedItem: _testSeriesController.selectedMockTestCategory,
-                                  width: screenWidth(context) / 2.2,
-                                  onItemClick: _testSeriesController.onMockCategoryItemClick,
+                            const VerticalGap(size: 30),
+                            TabBar(
+                              unselectedLabelColor: AppColors.black,
+                              labelColor: AppColors.orange,
+                              dividerColor: AppColors.grey,
+                              indicatorColor: AppColors.orange,
+                              tabs: [
+                                TabItem(
+                                  text: _testSeriesController
+                                          .tabBarList[0].tabName ??
+                                      '',
+                                  length: _testSeriesController.testsAll.length,
                                 ),
-                                CustomDropDown2(
-                                  borderColor: AppColors.orange,
-                                  items: _testSeriesController.topicWiseCategory,
-                                  selectedItem: _testSeriesController.selectedTopicWiseCategory,
-                                  width: screenWidth(context) / 2.2,
-                                  onItemClick: _testSeriesController.onTopicCategoryItemClick,
+                                TabItem(
+                                  text: _testSeriesController
+                                          .tabBarList[1].tabName ??
+                                      '',
+                                  length: _testSeriesController
+                                      .testsFullLength.length,
+                                ),
+                                TabItem(
+                                  text: _testSeriesController
+                                          .tabBarList[2].tabName ??
+                                      '',
+                                  length: _testSeriesController
+                                      .testsSectional.length,
                                 ),
                               ],
+                              labelStyle:
+                                  CustomTextStyle.textStyle20Bold(context),
+                              controller: _tabController,
+                              indicatorSize: TabBarIndicatorSize.tab,
                             ),
-                          ),
-                          const VerticalGap(size: 30),
-                          TabBar(
-                            unselectedLabelColor: AppColors.black,
-                            labelColor: AppColors.orange,
-                            dividerColor: AppColors.grey,
-                            indicatorColor: AppColors.orange,
-                            tabs: [
-                              TabItem(
-                                text: _testSeriesController.tabBarList[0].tabName ?? '',
-                                length: _testSeriesController.testsAll.length,
+                            Expanded(
+                              child: Obx(
+                                () => (_testSeriesController
+                                        .testSeriesResponse.value.isLoading)
+                                    ? Center(child: customProgressIndicator())
+                                    : TabBarView(
+                                        controller: _tabController,
+                                        children: [
+                                          TabList(
+                                            entries:
+                                                _testSeriesController.testsAll,
+                                            onRefresh:
+                                                _testSeriesController.onRefresh,
+                                          ),
+                                          TabList(
+                                            entries: _testSeriesController
+                                                .testsFullLength,
+                                            onRefresh:
+                                                _testSeriesController.onRefresh,
+                                          ),
+                                          TabList(
+                                            entries: _testSeriesController
+                                                .testsSectional,
+                                            onRefresh:
+                                                _testSeriesController.onRefresh,
+                                          ),
+                                        ],
+                                      ),
                               ),
-                              TabItem(
-                                text: _testSeriesController.tabBarList[1].tabName ?? '',
-                                length: _testSeriesController.testsFullLength.length,
-                              ),
-                              TabItem(
-                                text: _testSeriesController.tabBarList[2].tabName ?? '',
-                                length: _testSeriesController.testsSectional.length,
-                              ),
-                            ],
-                            labelStyle: CustomTextStyle.textStyle20Bold(context),
-                            controller: _tabController,
-                            indicatorSize: TabBarIndicatorSize.tab,
-                          ),
-                          Expanded(
-                            child: Obx(
-                              () => (_testSeriesController.testSeriesResponse.value.isLoading)
-                                  ? Center(child: customProgressIndicator())
-                                  : TabBarView(
-                                    controller: _tabController,
-                                    children: [
-                                      TabList(entries: _testSeriesController.testsAll, onRefresh: _testSeriesController.onRefresh,),
-                                      TabList(entries: _testSeriesController.testsFullLength, onRefresh: _testSeriesController.onRefresh,),
-                                      TabList(entries: _testSeriesController.testsSectional, onRefresh: _testSeriesController.onRefresh,),
-                                    ],
-                                  ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

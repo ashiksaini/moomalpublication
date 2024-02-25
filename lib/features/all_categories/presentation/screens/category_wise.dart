@@ -14,6 +14,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/all_categories/controller/category_wise_controller.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -28,25 +29,28 @@ class CategoryWiseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
         child: Obx(() {
-          return Column(
-            children: [
-              _getUpperView(context),
-              const VerticalGap(size: 2),
+          return Container(
+            color: AppColors.white,
+            child: Column(
+              children: [
+                _getUpperView(context),
+                const VerticalGap(size: 2),
 
-              // Data view
-              _getDataView(context),
+                // Data view
+                _getDataView(context),
 
-              // Load more
-              if (_categoryWiseController.isLoadingMore.value)
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: scaleHeight(10, context)),
-                  child: customProgressIndicator(),
-                ),
-            ],
+                // Load more
+                if (_categoryWiseController.isLoadingMore.value)
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: 10.v),
+                    child: customProgressIndicator(),
+                  ),
+              ],
+            ),
           );
         }),
       ),
@@ -60,17 +64,14 @@ class CategoryWiseScreen extends StatelessWidget {
         child: GridView.builder(
           controller: _categoryWiseController.scrollController,
           padding: EdgeInsets.symmetric(
-            horizontal: scaleWidth(10, context),
-            vertical: scaleHeight(10, context),
+            horizontal: 10.h,
+            vertical: 10.v,
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12.0,
             mainAxisSpacing: 15.0,
-            childAspectRatio:
-                _categoryWiseController.productResponse.value.isLoading
-                    ? 0.52
-                    : 0.42,
+            childAspectRatio: Utility.getChildAspectRation(context),
           ),
           itemCount: _categoryWiseController.productResponse.value.isLoading
               ? 20
@@ -100,16 +101,16 @@ class CategoryWiseScreen extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: scaleHeight(110, context),
+          height: 110.v,
           padding: EdgeInsets.symmetric(
-            horizontal: scaleWidth(12, context),
-            vertical: scaleHeight(15, context),
+            horizontal: 12.h,
+            vertical: 15.v,
           ),
           decoration: BoxDecoration(
               color: AppColors.greyLight,
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(scaleRadius(10, context)),
-                bottomRight: Radius.circular(scaleRadius(10, context)),
+                bottomLeft: Radius.circular(10.r),
+                bottomRight: Radius.circular(10.r),
               ),
               boxShadow: [primaryBoxShadow()]),
           child: Row(
@@ -133,8 +134,8 @@ class CategoryWiseScreen extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          height: scaleHeight(24, context),
-          width: scaleWidth(24, context),
+          height: 24.v,
+          width: 24.h,
           child: Checkbox(
             side: const BorderSide(color: AppColors.white),
             checkColor: AppColors.orange,
@@ -168,6 +169,7 @@ class CategoryWiseScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
+          isScrollControlled: true,
           context: context,
           builder: (_) {
             return Wrap(
@@ -182,7 +184,7 @@ class CategoryWiseScreen extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: scaleWidth(4, context)),
+        padding: EdgeInsets.symmetric(horizontal: 4.h),
         decoration: BoxDecoration(
           color: AppColors.white,
           boxShadow: [primaryBoxShadow()],

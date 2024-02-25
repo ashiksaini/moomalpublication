@@ -14,7 +14,7 @@ class MarksRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
+      padding: EdgeInsets.symmetric(vertical: 8.v),
       child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +46,7 @@ class MarksRow extends StatelessWidget {
         if (showPrice)
           Padding(
             padding: EdgeInsets.only(
-              top: scaleHeight(8, context),
+              top: 8.v,
             ),
             child: CustomText(
               text: "${"price".tr} ${entry.price}",

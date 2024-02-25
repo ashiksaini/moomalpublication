@@ -21,8 +21,8 @@ class OrderDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: scaleWidth(12, context),
-        vertical: scaleWidth(10, context),
+        horizontal: 12.h,
+        vertical: 10.h,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,8 +35,8 @@ class OrderDetails extends StatelessWidget {
           ),
 
           Divider(
-            height: scaleWidth(2, context),
-            thickness: scaleWidth(1, context),
+            height: 2.h,
+            thickness: 1.h,
           ),
           const VerticalGap(size: 20),
 
@@ -55,8 +55,8 @@ class OrderDetails extends StatelessWidget {
           const VerticalGap(size: 20),
 
           Divider(
-            height: scaleWidth(2, context),
-            thickness: scaleWidth(1, context),
+            height: 2.h,
+            thickness: 1.h,
           ),
           const VerticalGap(size: 8),
 

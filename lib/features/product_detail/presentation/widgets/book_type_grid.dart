@@ -16,7 +16,7 @@ class BookTypeGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: scaleWidth(15, context),
+        horizontal: 15.h,
       ),
       child: GridView.builder(
         shrinkWrap: true,
@@ -24,7 +24,7 @@ class BookTypeGrid extends StatelessWidget {
         itemCount: 4,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 1.2,
+          childAspectRatio: 1.5,
         ),
         itemBuilder: (_, index) {
           if (index == 0) {
@@ -78,8 +78,8 @@ class BookTypeGrid extends StatelessWidget {
         border: Border.all(color: AppColors.grey),
       ),
       padding: EdgeInsets.symmetric(
-        vertical: scaleHeight(15, context),
-        horizontal: scaleWidth(15, context),
+        vertical: 15.v,
+        horizontal: 15.h,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -25,14 +25,14 @@ class YearContainer extends StatelessWidget {
         () => Container(
           decoration: BoxDecoration(
               borderRadius:
-                  BorderRadius.all(Radius.circular(scaleRadius(10, context))),
+                  BorderRadius.all(Radius.circular(10.r)),
               color: _eventPressController.yearListData[yearIndex].clicked!
                   ? AppColors.orange
                   : AppColors.orangeLight),
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: scaleWidth(18, context),
-              vertical: scaleWidth(6, context),
+              horizontal: 18.h,
+              vertical: 6.h,
             ),
             child: CustomText(
                 text: _eventPressController.yearListData[yearIndex].year
@@ -40,7 +40,7 @@ class YearContainer extends StatelessWidget {
                 textStyle: CustomTextStyle.textStyle20Bold(context,
                     color: AppColors.black)),
           ),
-        ).paddingSymmetric(horizontal: scaleWidth(5, context)),
+        ).paddingSymmetric(horizontal: 5.h),
       ),
     );
   }

@@ -38,7 +38,7 @@ class ShadowContainer extends StatelessWidget {
           color: borderColor!,
         ),
         borderRadius: BorderRadius.all(Radius.circular(
-          scaleRadius(borderRadius ?? scaleRadius(20, context), context),
+          borderRadius?.r ?? 20.r,
         )),
       ),
       child: containerChild,

@@ -27,10 +27,10 @@ class SettingCard extends StatelessWidget {
       },
       child: ShadowContainer(
         backgroundColor: color,
-        borderRadius: scaleWidth(10, context),
+        borderRadius: 10.h,
         containerChild: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: scaleWidth(15, context)),
+            padding: EdgeInsets.symmetric(vertical: 15.h),
             child: CustomText(
               text: text,
               textStyle: CustomTextStyle.textStyle22Bold(

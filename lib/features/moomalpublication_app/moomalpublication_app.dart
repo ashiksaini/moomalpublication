@@ -32,7 +32,7 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
       HomeScreen(),
       ShopScreen(),
       EBookScreen(),
-      CartScreen(),
+      const CartScreen(),
       ProfileScreen(),
     ];
   }
@@ -46,7 +46,7 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: _pages[_selectedIndex],
       bottomNavigationBar: CustomBottomNavBar(
         selectedIndex: _selectedIndex,

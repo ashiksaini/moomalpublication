@@ -21,10 +21,10 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
           // Book Detail
           Padding(
             padding: EdgeInsets.only(
-              left: scaleWidth(15, context),
-              right: scaleWidth(15, context),
-              bottom: scaleHeight(10, context),
-              top: scaleHeight(5, context),
+              left: 15.h,
+              right: 15.h,
+              bottom: 10.v,
+              top: 5.v,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,38 +33,38 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius:
-                        BorderRadius.circular(scaleRadius(15, context)),
+                        BorderRadius.circular(15.r),
                   ),
-                  height: scaleHeight(15, context),
+                  height: 15.v,
                 ),
                 const VerticalGap(size: 4),
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius:
-                        BorderRadius.circular(scaleRadius(15, context)),
+                        BorderRadius.circular(15.r),
                   ),
-                  height: scaleHeight(15, context),
-                  width: scaleWidth(100, context),
+                  height: 15.v,
+                  width: 100.h,
                 ),
                 const VerticalGap(size: 10),
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius:
-                        BorderRadius.circular(scaleRadius(15, context)),
+                        BorderRadius.circular(15.r),
                   ),
-                  height: scaleHeight(20, context),
-                  width: scaleWidth(70, context),
+                  height: 20.v,
+                  width: 70.h,
                 ),
                 const VerticalGap(size: 10),
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius:
-                        BorderRadius.circular(scaleRadius(15, context)),
+                        BorderRadius.circular(15.r),
                   ),
-                  height: scaleHeight(20, context),
+                  height: 20.v,
                 ),
                 const VerticalGap(size: 10),
                 Align(
@@ -73,10 +73,10 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.white,
                       borderRadius:
-                          BorderRadius.circular(scaleRadius(5, context)),
+                          BorderRadius.circular(5.r),
                     ),
-                    height: scaleHeight(30, context),
-                    width: scaleWidth(120, context),
+                    height: 30.v,
+                    width: 120.h,
                   ),
                 ),
               ],
@@ -89,14 +89,14 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
 
   Widget _imageView(BuildContext context) {
     return Container(
-      height: scaleHeight(150, context),
+      height: 150.v,
       margin: EdgeInsets.symmetric(
-        horizontal: scaleWidth(5, context),
-        vertical: scaleHeight(5, context),
+        horizontal: 5.h,
+        vertical: 5.v,
       ),
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+        borderRadius: BorderRadius.circular(15.r),
       ),
     );
   }

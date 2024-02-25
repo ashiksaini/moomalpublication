@@ -42,7 +42,7 @@ class OptionsCard extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             child: Padding(
-              padding: EdgeInsets.all(scaleWidth(6, context)),
+              padding: EdgeInsets.all(6.h),
               child: CustomText(
                   text: _quizController.optionsName[optionNumber],
                   textStyle: CustomTextStyle.textStyle16MediumTrio(context)),
@@ -51,8 +51,8 @@ class OptionsCard extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: scaleWidth(12, context),
-                  vertical: scaleHeight(6, context)),
+                  horizontal: 12.h,
+                  vertical: 6.v),
               child: CustomText(
                   textAlign: TextAlign.start,
                   text: _quizController

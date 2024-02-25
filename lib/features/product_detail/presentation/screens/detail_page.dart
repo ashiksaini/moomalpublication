@@ -17,36 +17,39 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return Scaffold(
-        backgroundColor: AppColors.white,
+        backgroundColor: AppColors.black,
         body: SafeArea(
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  CustomAppbar(
-                    prefixIcon: AppAssets.icBackArrow,
-                    suffixIcon: AppAssets.icShare,
-                    onPrefixIconClick: () => AppRouting.navigateBack(),
-                    onSuffixIconClick: () =>
-                        _productDetailController.shareItem(),
-                    title: _productDetailController.productName.value,
-                    maxLine: 1,
-                  ),
-                  Expanded(child: DetailContainer())
-                ],
-              ),
-              if (_productDetailController.productDetailData.value != null)
-                if (_productDetailController
-                        .productDetailData.value!.isBookAvailable ||
-                    _productDetailController
-                        .productDetailData.value!.isEbookAvailable)
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: PairBuyBtn(),
-                  ),
-            ],
+          child: Container(
+            color: AppColors.white,
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    CustomAppbar(
+                      prefixIcon: AppAssets.icBackArrow,
+                      suffixIcon: AppAssets.icShare,
+                      onPrefixIconClick: () => AppRouting.navigateBack(),
+                      onSuffixIconClick: () =>
+                          _productDetailController.shareItem(),
+                      title: _productDetailController.productName.value,
+                      maxLine: 1,
+                    ),
+                    Expanded(child: DetailContainer())
+                  ],
+                ),
+                if (_productDetailController.productDetailData.value != null)
+                  if (_productDetailController
+                          .productDetailData.value!.isBookAvailable ||
+                      _productDetailController
+                          .productDetailData.value!.isEbookAvailable)
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: PairBuyBtn(),
+                    ),
+              ],
+            ),
           ),
         ),
       );

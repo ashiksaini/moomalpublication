@@ -5,7 +5,8 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class CustomOrangeButton extends StatelessWidget {
-  const CustomOrangeButton({super.key, required this.onTapButton, required this.buttonText});
+  const CustomOrangeButton(
+      {super.key, required this.onTapButton, required this.buttonText});
   final Function onTapButton;
   final String buttonText;
   @override
@@ -18,13 +19,13 @@ class CustomOrangeButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.orange,
           borderRadius: BorderRadius.all(
-            Radius.circular(scaleRadius(10, context)),
+            Radius.circular(10.r),
           ),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-              vertical: scaleHeight(4, context),
-              horizontal: scaleWidth(24, context)),
+              vertical: 4.v,
+              horizontal: 24.h),
           child: CustomText(
               text: buttonText,
               textStyle: CustomTextStyle.textStyle25Bold(context,

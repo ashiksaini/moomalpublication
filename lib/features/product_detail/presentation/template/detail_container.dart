@@ -38,7 +38,7 @@ class DetailContainer extends StatelessWidget {
                     .productReviewsResponse.value.isLoading ||
                 _productDetailController.similarProductResponse.value.isLoading)
             ? SizedBox(
-                height: screenHeight(context) - scaleHeight(60, context),
+                height: SizeUtils.height - 60.v,
                 child: Center(
                   child: customProgressIndicator(),
                 ),
@@ -51,7 +51,7 @@ class DetailContainer extends StatelessWidget {
   Widget _getBookDetailView(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.only(bottom: scaleHeight(50, context)),
+        padding: EdgeInsets.only(bottom: 50.v),
         color: AppColors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +66,7 @@ class DetailContainer extends StatelessWidget {
 
             // Book Overview
             Padding(
-              padding: EdgeInsets.only(left: scaleWidth(15, context)),
+              padding: EdgeInsets.only(left: 15.h),
               child: CustomText(
                 text: "book_overview".tr,
                 textStyle: CustomTextStyle.textStyle25Bold(
@@ -91,7 +91,7 @@ class DetailContainer extends StatelessWidget {
 
             Padding(
               padding:
-                  EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
+                  EdgeInsets.symmetric(horizontal: 15.h),
               child: WriteReviewView(
                 onClick: () {
                   showModalBottomSheet<ReviewBottomSheet>(
@@ -118,36 +118,36 @@ class DetailContainer extends StatelessWidget {
   Widget _getBookView(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-        top: scaleHeight(36, context),
-        bottom: scaleHeight(34, context),
-        left: scaleWidth(40, context),
-        right: scaleWidth(40, context),
+        top: 36.v,
+        bottom: 34.v,
+        left: 40.h,
+        right: 40.h,
       ),
       decoration: BoxDecoration(
         color: AppColors.orangeLight,
         boxShadow: [primaryBoxShadow()],
         borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(scaleRadius(20, context))),
+            bottom: Radius.circular(20.r)),
       ),
       child: Column(
         children: [
           // Book Image
           ClipRRect(
-            borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+            borderRadius: BorderRadius.circular(15.r),
             child: _productDetailController
                     .productDetailData.value!.featuredImage!.url!.isNotEmpty
                 ? CachedNetworkImage(
                     imageUrl: _productDetailController
                         .productDetailData.value!.featuredImage!.url!,
-                    height: scaleHeight(300, context),
-                    width: scaleWidth(220, context),
-                    fit: BoxFit.fill,
+                    height: 300.adaptSize,
+                    width: 220.adaptSize,
+                    fit: BoxFit.contain,
                     placeholder: (context, url) {
                       return Center(child: customProgressIndicator());
                     },
                   )
                 : Container(
-                    width: screenWidth(context),
+                    width: SizeUtils.width,
                     color: AppColors.greyLight,
                     child: Center(
                       child: CustomText(
@@ -188,7 +188,7 @@ class DetailContainer extends StatelessWidget {
 
   Widget _getVariationView(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(5, context)),
+      padding: EdgeInsets.symmetric(vertical: 5.v),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -245,7 +245,7 @@ class DetailContainer extends StatelessWidget {
 
   Widget _getReviewsView(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: scaleWidth(15, context)),
+      padding: EdgeInsets.only(left: 15.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -22,13 +22,13 @@ class TestSubmitButton extends StatelessWidget {
         },
         child: ShadowContainer(
           margin: EdgeInsets.only(
-              top: scaleHeight(30, context), bottom: scaleHeight(20, context)),
+              top: 30.v, bottom: 20.v),
           padding: EdgeInsets.symmetric(
-              vertical: scaleHeight(12, context),
-              horizontal: scaleWidth(25, context)),
+              vertical: 12.v,
+              horizontal: 25.h),
           backgroundColor: AppColors.orange,
           borderColor: AppColors.white,
-          borderRadius: scaleRadius(6, context),
+          borderRadius: 6.r,
           containerChild: Obx(
             () => CustomText(
               text: _quizController.submitButton.isTrue

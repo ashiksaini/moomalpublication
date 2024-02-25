@@ -14,22 +14,25 @@ class DetailedEventPage extends StatelessWidget {
   Widget build(BuildContext context) {
     String appBarTitle = args[0]['appBarTitle'];
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-          child: Stack(
-        children: [
-          Column(
-            children: [
-              CustomAppbar(
-                title: appBarTitle,
-                prefixIcon: AppAssets.icBackArrow,
-                onPrefixIconClick: () => AppRouting.navigateBack(),
-                maxLine: 1,
-              ),
-              const HorizontalGap(size: 20),
-            ],
-          ),
-        ],
+          child: Container(
+        color: AppColors.white,
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                CustomAppbar(
+                  title: appBarTitle,
+                  prefixIcon: AppAssets.icBackArrow,
+                  onPrefixIconClick: () => AppRouting.navigateBack(),
+                  maxLine: 1,
+                ),
+                const HorizontalGap(size: 20),
+              ],
+            ),
+          ],
+        ),
       )),
     );
   }

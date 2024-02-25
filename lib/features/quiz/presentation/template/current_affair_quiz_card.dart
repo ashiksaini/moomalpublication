@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
@@ -21,33 +22,36 @@ class CurrentAffairQuizCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String date = DateTimeUtils.formatDate(
-        date: _quizController.quizList[index].lastActivity!,
-        formatType: AppConstants.dateFormatter); // ask where to use this
+      date: _quizController.quizList[index].lastActivity!,
+      formatType: AppConstants.dateFormatter,
+    );
+
     return GestureDetector(
       onTap: () {
         _quizController.navigateQuizDetailScreen(index: index);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: scaleHeight(16, context),
-            horizontal: scaleWidth(8, context)),
+          vertical: 16.v,
+          horizontal: 8.h,
+        ),
         child: ShadowContainer(
           containerChild: Padding(
             padding: EdgeInsets.symmetric(
-                vertical: scaleHeight(16, context),
-                horizontal: scaleWidth(14, context)),
+              vertical: 16.v,
+              horizontal: 14.h,
+            ),
             child: Row(
               children: [
                 CardImage(
-                  image: AppAssets.bookPng,
+                  image: "",
                   borderColor: AppColors.blue,
-                  height: scaleHeight(130, context),
+                  height: 130.v,
                 ),
-                const HorizontalGap(size: 12),
+                HorizontalGap(size: 12.h),
                 Flexible(
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: scaleWidth(12, context)),
+                    padding: EdgeInsets.symmetric(vertical: 12.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -55,45 +59,49 @@ class CurrentAffairQuizCard extends StatelessWidget {
                           textAlign: TextAlign.left,
                           text: _quizController.quizList[index].quizName,
                           maxLines: 4,
-                          textStyle: CustomTextStyle.textStyle20Bold(context,
-                              color: AppColors.black),
+                          textStyle: CustomTextStyle.textStyle20Bold(
+                            context,
+                            color: AppColors.black,
+                          ),
                         ),
-                        const VerticalGap(size: 8),
+                        VerticalGap(size: 8.h),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(AppAssets.icAdmin),
-                            const HorizontalGap(size: 8),
+                            SvgPicture.asset(AppAssets.icUser1),
+                            HorizontalGap(size: 8.h),
                             Flexible(
                               child: CustomText(
                                 textAlign: TextAlign.start,
                                 text: "${'admin'.tr}, $date",
                                 textStyle: CustomTextStyle.textStyle20Bold(
-                                    context,
-                                    color: AppColors.greyLight),
+                                  context,
+                                  color: AppColors.greyLight,
+                                ),
                                 maxLines: 2,
                               ),
                             ),
                           ],
                         ),
-                        const VerticalGap(size: 20),
+                        VerticalGap(size: 20.h),
                         CustomText(
                           text:
                               "${'quiz_views'.tr}: ${_quizController.quizList[index].quizViews}",
-                          textStyle: CustomTextStyle.textStyle15Bold(context,
-                              color: AppColors.black),
+                          textStyle: CustomTextStyle.textStyle15Bold(
+                            context,
+                            color: AppColors.black,
+                          ),
                           textAlign: TextAlign.start,
                         ),
                         CustomText(
                           text:
                               "${'quiz_taken'.tr}: ${_quizController.quizList[index].quizTaken}",
-                          textStyle: CustomTextStyle.textStyle15Bold(context,
-                              color: AppColors.black),
+                          textStyle: CustomTextStyle.textStyle15Bold(
+                            context,
+                            color: AppColors.black,
+                          ),
                           textAlign: TextAlign.start,
                         ),
-                        // const VerticalGap(size: 9),
-                        // if (quatintyButton) const QuantityButton(),
-                        // if (addButton) const AddButton(),
                       ],
                     ),
                   ),

@@ -16,12 +16,12 @@ class AdvanceFilterBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: screenWidth(context),
+      width: SizeUtils.width,
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(scaleRadius(10, context)),
-          topRight: Radius.circular(scaleRadius(10, context)),
+          topLeft: Radius.circular(10.r),
+          topRight: Radius.circular(10.r),
         ),
       ),
       child: Column(
@@ -29,8 +29,8 @@ class AdvanceFilterBottomSheet extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
-              vertical: scaleHeight(14, context),
-              horizontal: scaleWidth(14, context),
+              vertical: 14.v,
+              horizontal: 14.h,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +51,7 @@ class AdvanceFilterBottomSheet extends StatelessWidget {
                   items: _homeController.languages,
                   selectedItem: _homeController.selectedLanguage,
                   onItemClick: _homeController.onLanguageItemClick,
-                  width: screenWidth(context) - scaleWidth(40, context),
+                  width: SizeUtils.width - 40.h,
                 ),
                 const VerticalGap(size: 15),
                 CustomText(
@@ -63,8 +63,8 @@ class AdvanceFilterBottomSheet extends StatelessWidget {
             ),
           ),
           Container(
-            width: screenWidth(context),
-            padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
+            width: SizeUtils.width,
+            padding: EdgeInsets.symmetric(vertical: 8.v),
             color: AppColors.orange,
             child: CustomText(
               text: "apply_filter".tr,

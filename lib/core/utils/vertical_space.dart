@@ -9,7 +9,7 @@ class VerticalGap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: scaleHeight(size, context),
+      height: size.v,
     );
   }
 }

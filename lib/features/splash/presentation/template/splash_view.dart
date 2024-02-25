@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -16,15 +17,15 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: scaleHeight(180, context)),
+      padding: EdgeInsets.only(top: 180.v),
       child: Center(
         child: Column(
           children: [
             // Logo
-            Image.asset(
-              AppAssets.icLogo1,
-              height: scaleHeight(195, context),
-              width: scaleWidth(195, context),
+            SvgPicture.asset(
+              AppAssets.icLogo,
+              height: 195.v,
+              width: 195.h,
             ),
             const VerticalGap(size: 80),
 

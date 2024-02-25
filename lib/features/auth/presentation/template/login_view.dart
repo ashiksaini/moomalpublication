@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/molecules/auth_btn.dart';
@@ -24,9 +25,9 @@ class LoginView extends StatelessWidget {
     return Obx(() {
       return Container(
         padding: EdgeInsets.only(
-          left: scaleWidth(24, context),
-          right: scaleWidth(24, context),
-          top: scaleHeight(100, context),
+          left: 24.h,
+          right: 24.h,
+          top: 100.v,
         ),
         child: Column(
           children: [
@@ -62,10 +63,10 @@ class LoginView extends StatelessWidget {
   }
 
   Widget _getLogo(BuildContext context) {
-    return Image.asset(
-      AppAssets.icLogo1,
-      height: scaleHeight(195, context),
-      width: scaleWidth(195, context),
+    return SvgPicture.asset(
+      AppAssets.icLogo,
+      height: 195.v,
+      width: 195.h,
     );
   }
 
@@ -73,7 +74,7 @@ class LoginView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [primaryBoxShadow()],
-        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: customTextFormField(
         context,
@@ -88,7 +89,7 @@ class LoginView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [primaryBoxShadow()],
-        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: customTextFormField(
         context,
@@ -112,8 +113,8 @@ class LoginView extends StatelessWidget {
         Row(
           children: [
             SizedBox(
-              height: scaleHeight(24, context),
-              width: scaleWidth(24, context),
+              height: 24.v,
+              width: 24.h,
               child: Checkbox(
                 side: const BorderSide(color: AppColors.white),
                 checkColor: AppColors.orange,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/profile/controller/profile_controller.dart';
@@ -16,35 +15,40 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Obx(() {
-            return Column(
+        child: Obx(() {
+          return Container(
+            height: SizeUtils.height,
+            color: AppColors.white,
+            child: Column(
               children: [
                 Stack(
                   children: [
-                    Container(
-                      height: scaleHeight(280, context),
-                    ),
-                    const CircularContainer(),
-                    CustomAppbar(
-                      title: "my_profile".tr,
-                      maxLine: 1,
-                      textAlign: TextAlign.center,
+                    Column(
+                      children: [
+                        const CircularContainer(),
+                        Container(height: 100.v,)
+                      ],
                     ),
                     Positioned(
-                      bottom: 0,
-                      left: scaleWidth(100, context),
-                      child: ProfilePicture(
-                          avatarUrl: _profileController.userAvatar.value),
+                      top: 120.v,
+                      left: 0.h,
+                      right: 0.h,
+                      bottom: 0.v,
+                      child: Center(
+                        child: ProfilePicture(
+                            avatarUrl: _profileController.userAvatar.value,
+                          ),
+                      ),
                     ),
+                    
                   ],
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: scaleWidth(16, context),
-                    vertical: scaleHeight(56, context),
+                    horizontal: 16.h,
+                    vertical: 56.v,
                   ),
                   child: NameTemplate(
                     userName: _profileController.userName.value,
@@ -52,9 +56,9 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
               ],
-            );
-          }),
-        ),
+            ),
+          );
+        }),
       ),
     );
   }

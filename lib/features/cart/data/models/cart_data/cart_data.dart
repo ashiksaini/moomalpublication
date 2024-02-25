@@ -1,7 +1,8 @@
-import 'billing_address.dart';
+import 'package:moomalpublication/core/base/billing_address.dart';
+import 'package:moomalpublication/core/base/shipping_address.dart';
+
 import 'extensions.dart';
 import 'item.dart';
-import 'shipping_address.dart';
 import 'shipping_rate.dart';
 import 'totals.dart';
 

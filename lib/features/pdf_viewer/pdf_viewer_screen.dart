@@ -16,26 +16,29 @@ class PdfViewerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              title: _sharedData?.productName ?? "",
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-              maxLine: 1,
-            ),
-            Expanded(
-              child: SfPdfViewerTheme(
-                data: SfPdfViewerThemeData(
-                  progressBarColor: AppColors.orange,
-                  backgroundColor: AppColors.greyLight,
-                ),
-                child: SfPdfViewer.network(_sharedData?.productURL ?? ""),
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                title: _sharedData?.productName ?? "",
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
+                maxLine: 1,
               ),
-            ),
-          ],
+              Expanded(
+                child: SfPdfViewerTheme(
+                  data: SfPdfViewerThemeData(
+                    progressBarColor: AppColors.orange,
+                    backgroundColor: AppColors.greyLight,
+                  ),
+                  child: SfPdfViewer.network(_sharedData?.productURL ?? ""),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

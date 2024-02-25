@@ -42,8 +42,8 @@ class PairBuyBtn extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
-                  vertical: scaleHeight(7, context),
-                  horizontal: scaleWidth(5, context),
+                  vertical: 7.v,
+                  horizontal: 5.h,
                 ),
                 decoration: BoxDecoration(
                   color: AppColors.yellow,
@@ -54,9 +54,8 @@ class PairBuyBtn extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
-                    top: scaleHeight(10, context),
-                    bottom: scaleHeight(10, context),
-                    left: scaleWidth(10, context),
+                    top: 10.v,
+                    bottom: 10.v,
                   ),
                   child: CustomText(
                     maxLines: 1,
@@ -84,8 +83,8 @@ class PairBuyBtn extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
-                  vertical: scaleHeight(7, context),
-                  horizontal: scaleWidth(5, context),
+                  vertical: 7.v,
+                  horizontal: 5.h,
                 ),
                 decoration: BoxDecoration(
                   color: AppColors.yellow,
@@ -96,9 +95,8 @@ class PairBuyBtn extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
-                    top: scaleHeight(10, context),
-                    bottom: scaleHeight(10, context),
-                    left: scaleWidth(10, context),
+                    top: 10.v,
+                    bottom: 10.v,
                   ),
                   child: CustomText(
                     maxLines: 1,
@@ -125,8 +123,8 @@ class PairBuyBtn extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.symmetric(
-                  vertical: scaleHeight(7, context),
-                  horizontal: scaleWidth(5, context),
+                  vertical: 7.v,
+                  horizontal: 5.h,
                 ),
                 decoration: BoxDecoration(
                   color: AppColors.orangeDark,
@@ -137,9 +135,8 @@ class PairBuyBtn extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
-                    top: scaleHeight(10, context),
-                    bottom: scaleHeight(10, context),
-                    left: scaleWidth(10, context),
+                    top: 10.v,
+                    bottom: 10.v,
                   ),
                   child: CustomText(
                     maxLines: 1,

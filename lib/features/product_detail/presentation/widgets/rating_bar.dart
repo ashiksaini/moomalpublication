@@ -23,7 +23,7 @@ class StarRatingBar extends StatelessWidget {
     return RatingBar(
       glow: false,
       initialRating: initialRating ?? 0,
-      itemSize: scaleWidth(itemSize, context),
+      itemSize: itemSize.h,
       direction: Axis.horizontal,
       ignoreGestures: ignoreGesture,
       itemCount: 5,
@@ -32,7 +32,7 @@ class StarRatingBar extends StatelessWidget {
         half: _image(AppAssets.icBorderedStar),
         empty: _image(AppAssets.icBorderedStar),
       ),
-      itemPadding: EdgeInsets.symmetric(horizontal: scaleWidth(1, context)),
+      itemPadding: EdgeInsets.symmetric(horizontal: 1.h),
       onRatingUpdate: (rating) =>
           onRatingUpdate != null ? onRatingUpdate!(rating) : null,
     );

@@ -10,7 +10,7 @@ class TestomonialTemplates extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(30, context)),
+      padding: EdgeInsets.symmetric(vertical: 30.v),
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
@@ -37,7 +37,7 @@ class TestomonialTemplates extends StatelessWidget {
   TextStyle _getTextStyle(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: scaleWidth(25, context),
+      fontSize: 25.fSize,
       fontWeight: FontWeight.w700,
       fontFamily: AppConstants.calibriFont,
       shadows: [

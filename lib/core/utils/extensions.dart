@@ -1,7 +1,8 @@
 /// String extensions
 extension StringExtension on String? {
   bool get isNotNullAndEmpty => this != null && this!.isEmpty;
-  bool compareWithIgnoreCase(String value) => this!.toLowerCase().compareTo(value.toLowerCase()) == 0;
+  bool compareWithIgnoreCase(String value) =>
+      this!.toLowerCase().compareTo(value.toLowerCase()) == 0;
 }
 
 /// List extensions

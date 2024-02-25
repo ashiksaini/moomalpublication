@@ -29,13 +29,13 @@ class CustomAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-          vertical: scaleHeight(12, context),
-          horizontal: scaleWidth(15, context)),
+          vertical: 12.v,
+          horizontal: 15.h),
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(scaleRadius(20, context)),
-          bottomRight: Radius.circular(scaleRadius(20, context)),
+          bottomLeft: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
         ),
       ),
       child: Row(
@@ -45,8 +45,8 @@ class CustomAppbar extends StatelessWidget {
               onTap: () => onPrefixIconClick!(),
               child: SvgPicture.asset(
                 prefixIcon!,
-                height: scaleHeight(24, context),
-                width: scaleWidth(24, context),
+                height: 24.v,
+                width: 24.h,
               ),
             ),
             const HorizontalGap(size: 12),
@@ -65,8 +65,8 @@ class CustomAppbar extends StatelessWidget {
               onTap: () => onSuffixIconClick!(),
               child: SvgPicture.asset(
                 suffixIcon!,
-                height: scaleHeight(24, context),
-                width: scaleWidth(24, context),
+                height: 24.v,
+                width: 24.h,
               ),
             ),
         ],

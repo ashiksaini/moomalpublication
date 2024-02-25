@@ -32,7 +32,7 @@ class CardBookItem extends StatelessWidget {
       return Container(
         decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+          borderRadius: BorderRadius.circular(20.r),
           border: Border.all(color: AppColors.grey),
           boxShadow: [primaryBoxShadow()],
         ),
@@ -52,23 +52,24 @@ class CardBookItem extends StatelessWidget {
 
   Widget _getImage(BuildContext context) {
     return Container(
-      height: scaleHeight(195, context),
+      height: 195.adaptSize,
+      width: 200.adaptSize,
       margin: EdgeInsets.symmetric(
-          horizontal: scaleWidth(5, context),
-          vertical: scaleHeight(5, context)),
+          horizontal: 5.h,
+          vertical: 5.v),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(scaleRadius(15, context)),
+        borderRadius: BorderRadius.circular(15.r),
         child: (item.featuredImage?.url != null &&
                 item.featuredImage!.url!.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: item.featuredImage!.url!,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },
               )
             : Container(
-                width: screenWidth(context),
+                width: SizeUtils.width,
                 color: AppColors.greyLight,
                 child: Center(
                   child: CustomText(
@@ -86,9 +87,9 @@ class CardBookItem extends StatelessWidget {
     return Expanded(
       child: Container(
         padding: EdgeInsets.only(
-          left: scaleWidth(10, context),
-          right: scaleWidth(10, context),
-          bottom: scaleHeight(10, context),
+          left: 10.h,
+          right: 10.h,
+          bottom: 10.v,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +117,7 @@ class CardBookItem extends StatelessWidget {
 
             //Add to cart Btn
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: scaleWidth(5, context)),
+              padding: EdgeInsets.symmetric(horizontal: 5.h),
               child: BtnAddToCart(
                 cartBtnType: item.cartBtnType.value,
                 onClick: () {
@@ -133,7 +134,7 @@ class CardBookItem extends StatelessWidget {
 
   Widget _getVariationView(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: scaleHeight(5, context)),
+      padding: EdgeInsets.symmetric(vertical: 5.v),
       child: Row(
         children: [
           if (item.isEbookAvailable)
@@ -186,11 +187,11 @@ class CardBookItem extends StatelessWidget {
         itemCount: item.ratingCount,
         itemBuilder: (_, index) {
           return Container(
-            margin: EdgeInsets.only(right: scaleWidth(2, context)),
+            margin: EdgeInsets.only(right: 2.h),
             child: SvgPicture.asset(
               AppAssets.icStar,
-              height: scaleHeight(12, context),
-              width: scaleWidth(12, context),
+              height: 12.v,
+              width: 12.h,
             ),
           );
         },

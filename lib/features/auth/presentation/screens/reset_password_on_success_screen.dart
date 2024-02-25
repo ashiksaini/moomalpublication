@@ -15,11 +15,11 @@ class ResetPasswordOnSuccessScreen extends StatelessWidget {
         behavior: NoGlowBehavior(),
         child: SingleChildScrollView(
           child: SizedBox(
-            height: screenHeight(context),
-            width: screenWidth(context),
+      height: SizeUtils.height,
+            width: SizeUtils.width,
             child: Stack(
               children: [
-                _bg(),
+                _bg(context),
                 ResetPasswordOnSuccessView(),
               ],
             ),
@@ -29,10 +29,12 @@ class ResetPasswordOnSuccessScreen extends StatelessWidget {
     );
   }
 
-  Widget _bg() {
+  Widget _bg(BuildContext context) {
     return SvgPicture.asset(
       AppAssets.bgAuth,
-      fit: BoxFit.fill,
+      height: SizeUtils.height,
+      width: SizeUtils.width,
+      fit: BoxFit.cover,
     );
   }
 }

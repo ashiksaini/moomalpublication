@@ -20,21 +20,21 @@ class TabList extends StatelessWidget {
             ),
           )
         : CustomRefreshIndicator(
-          onRefreshCallback: () => onRefresh(),
-          child: ListView.builder(
+            onRefreshCallback: () => onRefresh(),
+            child: ListView.builder(
               padding: EdgeInsets.symmetric(
-                  vertical: scaleWidth(26, context),
-                  horizontal: scaleWidth(15, context)),
+                  vertical: 26.h,
+                  horizontal: 15.h),
               itemCount: entries.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: EdgeInsets.only(bottom: scaleHeight(20, context)),
+                  padding: EdgeInsets.only(bottom: 20.v),
                   child: ListCard(
                     entry: entries[index],
                   ),
                 );
               },
             ),
-        );
+          );
   }
 }

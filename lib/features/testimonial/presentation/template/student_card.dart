@@ -21,45 +21,51 @@ class StudentGridCard extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         children: [
           Padding(
-            padding: EdgeInsets.only(top: scaleWidth(24, context)),
+            padding: EdgeInsets.only(top: 24.h),
             child: Container(
               decoration: BoxDecoration(
                 color: AppColors.white,
-                borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+                borderRadius: BorderRadius.circular(10.r),
                 boxShadow: [primaryBoxShadow()],
               ),
               child: Container(
                 decoration: BoxDecoration(
                   color: AppColors.lightblue.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+                  borderRadius: BorderRadius.circular(10.r),
                   border: Border.all(color: AppColors.grey),
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(
-                    top: scaleHeight(40, context),
-                    left: scaleWidth(5, context),
-                    right: scaleWidth(5, context),
-                    bottom: scaleHeight(10, context),
+                    top: 40.v,
+                    left: 5.h,
+                    right: 5.h,
+                    bottom: 10.v,
                   ),
                   child: Column(
                     children: [
                       CustomText(
                         text: testimonialResponseModel.spTestimonialClientName,
-                        textStyle: CustomTextStyle.textStyle18Bold(context,
-                            color: AppColors.black),
+                        textStyle: CustomTextStyle.textStyle18Bold(
+                          context,
+                          color: AppColors.black,
+                        ),
                       ),
                       CustomText(
                         text:
                             "[${testimonialResponseModel.spTestimonialClientDesignation}]",
-                        textStyle: CustomTextStyle.textStyle15Bold(context,
-                            color: AppColors.black),
+                        textStyle: CustomTextStyle.textStyle15Bold(
+                          context,
+                          color: AppColors.black,
+                        ),
                       ),
                       const VerticalGap(size: 20),
                       CustomText(
                         text: testimonialResponseModel.postContent,
-                        textStyle: CustomTextStyle.textStyle15Regular(context,
-                            color: AppColors.black),
-                        maxLines: 9,
+                        textStyle: CustomTextStyle.textStyle15Regular(
+                          context,
+                          color: AppColors.black,
+                        ),
+                        maxLines: 5,
                       ),
                     ],
                   ),
@@ -74,8 +80,8 @@ class StudentGridCard extends StatelessWidget {
                   boxShadow: [primaryBoxShadow()], shape: BoxShape.circle),
               child: SvgPicture.asset(
                 AppAssets.icTestimonialUser,
-                width: scaleWidth(60, context),
-                height: scaleHeight(60, context),
+                width: 60.h,
+                height: 60.v,
                 fit: BoxFit.fill,
               ),
             ),

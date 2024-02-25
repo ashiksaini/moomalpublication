@@ -15,30 +15,33 @@ class OrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-              title: 'orders'.tr,
-              maxLine: 1,
-            ),
-            Obx(
-              () => Expanded(
-                child: orderController.orderResponse.value.isLoading
-                    ? Center(child: customProgressIndicator())
-                    : orderController.showBrowseProduct.value
-                        ? SingleChildScrollView(
-                            child: Column(
-                              children: [OrderCard()],
-                            ),
-                          )
-                        : Center(child: EmptyCartView(title: "title".tr)),
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
+                title: 'orders'.tr,
+                maxLine: 1,
               ),
-            ),
-          ],
+              Obx(
+                () => Expanded(
+                  child: orderController.orderResponse.value.isLoading
+                      ? Center(child: customProgressIndicator())
+                      : orderController.ordersList.isNotEmpty
+                          ? SingleChildScrollView(
+                              child: Column(
+                                children: [OrderCard()],
+                              ),
+                            )
+                          : Center(child: EmptyCartView(title: "no_item_ordered".tr)),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

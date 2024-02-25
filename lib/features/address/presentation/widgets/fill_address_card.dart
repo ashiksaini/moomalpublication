@@ -22,7 +22,6 @@ class FillAddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(error);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -47,7 +46,7 @@ class FillAddressCard extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: scaleHeight(2, context),
+          height: 2.v,
         ),
         TextField(
           textInputAction: TextInputAction.next,
@@ -55,11 +54,11 @@ class FillAddressCard extends StatelessWidget {
           controller: textEditingController,
           decoration: InputDecoration(
             contentPadding:
-                EdgeInsets.symmetric(horizontal: scaleWidth(12, context)),
+                EdgeInsets.symmetric(horizontal: 12.h),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                  color: AppColors.black, width: scaleWidth(1.5, context)),
+                  color: AppColors.black, width: 1.5.h),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

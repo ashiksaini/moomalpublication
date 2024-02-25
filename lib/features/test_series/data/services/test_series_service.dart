@@ -11,14 +11,19 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class TestSeriesService {
   TestSeriesService._();
 
-  static Future<TestSeriesResponse> getTests({Map<String, dynamic>? query}) async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+  static Future<TestSeriesResponse> getTests(
+      {Map<String, dynamic>? query}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.testSeries, queryParameters: query);
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .get(ApiPaths.testSeries, queryParameters: query);
 
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
-              (item) => TestSeriesResponseModel.fromJson(item as Map<String, dynamic>),
+              (item) => TestSeriesResponseModel.fromJson(
+                  item as Map<String, dynamic>),
             )
             .toList();
         return TestSeriesResponse.success(parsedResponse);
@@ -33,11 +38,15 @@ class TestSeriesService {
   }
 
   static Future<TestSeriesListResponse> getTestList() async {
-    if (getx.Get.find<InternetConnectivityController>().haveInternetConnection.value) {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!.get(ApiPaths.testSeriesList);
+        final dio.Response<dynamic> response =
+            await DioClient.dioWithoutAuth!.get(ApiPaths.testSeriesList);
 
-        final parsedResponse = TestSeriesListResponseModel.fromJson(response.data);
+        final parsedResponse =
+            TestSeriesListResponseModel.fromJson(response.data);
         return TestSeriesListResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showSnackBar(error.message.toString());

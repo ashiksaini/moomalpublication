@@ -22,18 +22,19 @@ class CustomFilterBar extends StatelessWidget {
         CustomDropDown1<ExamType>(
           items: _homeController.exams,
           selectedItem: _homeController.selectedExam,
-          width: screenWidth(context) / 2.4,
+          width: SizeUtils.width / 2.4,
         ),
         const HorizontalGap(size: 4),
         CustomDropDown1<BookType>(
           items: _homeController.books,
           selectedItem: _homeController.selectedBook,
-          width: screenWidth(context) / 2.9,
+          width: SizeUtils.width / 2.9,
         ),
         const HorizontalGap(size: 4),
         GestureDetector(
             onTap: () {
               showModalBottomSheet(
+                  isScrollControlled: true,
                   context: context,
                   builder: (_) {
                     return Wrap(

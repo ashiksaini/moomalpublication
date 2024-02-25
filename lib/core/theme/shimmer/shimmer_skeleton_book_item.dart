@@ -12,7 +12,7 @@ class BookItemShimmerSkeleton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+        borderRadius: BorderRadius.circular(20.r),
         border: Border.all(color: AppColors.grey),
         boxShadow: [primaryBoxShadow()],
       ),

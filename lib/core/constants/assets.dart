@@ -3,7 +3,6 @@ class AppAssets {
 
   // BASE PATHS
   static const String pathSvg = 'assets/svgs/';
-  static const String pathPng = 'assets/pngs/';
   static const String animation = 'assets/animation/';
 
   static const String icLogo = "${pathSvg}ic_logo.svg";
@@ -66,11 +65,6 @@ class AppAssets {
   static const String icPhoneCall = "${pathSvg}ic_phone_call.svg";
   static const String icUser1 = "${pathSvg}ic_user1.svg";
   static const String icBox = "${pathSvg}ic_box.svg";
-
-  // Png
-  static const String icLogo1 = "${pathPng}ic_logo_1.png";
-  static const String bookPng = "${pathPng}book.png";
-  static const String icAdmin = "${pathPng}ic_admin.png";
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

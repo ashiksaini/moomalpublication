@@ -81,7 +81,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.cartScreen,
-      page: () => CartScreen(),
+      page: () => const CartScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -129,7 +129,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.addressesScreen,
-      page: () =>  AddressScreen(),
+      page: () => AddressScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -159,14 +159,14 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.overallResultScreen,
-      page: () => OverallResultScreen(),
+      page: () => const OverallResultScreen(),
       // page: () => PdfViewerScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
       name: NameRoutes.onlineTestSeriesScreen,
-      page: () => OnlineExamScreen(),
+      page: () => const OnlineExamScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

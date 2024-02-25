@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/molecules/auth_btn.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
@@ -21,9 +22,9 @@ class ForgetPasswordView extends StatelessWidget {
     return Obx(() {
       return Padding(
         padding: EdgeInsets.only(
-          left: scaleWidth(24, context),
-          right: scaleWidth(24, context),
-          top: scaleHeight(80, context),
+          left: 24.h,
+          right: 24.h,
+          top: 80.v,
         ),
         child: Column(
           children: [
@@ -57,10 +58,10 @@ class ForgetPasswordView extends StatelessWidget {
   }
 
   Widget _getLogo(BuildContext context) {
-    return Image.asset(
-      AppAssets.icLogo1,
-      height: scaleHeight(195, context),
-      width: scaleWidth(195, context),
+    return SvgPicture.asset(
+      AppAssets.icLogo,
+      height: 195.v,
+      width: 195.h,
     );
   }
 
@@ -72,7 +73,7 @@ class ForgetPasswordView extends StatelessWidget {
           style: TextStyle(
             color: AppColors.black.withOpacity(0.70),
             fontFamily: AppConstants.calibriFont,
-            fontSize: scaleWidth(18, context),
+            fontSize: 18.fSize,
             fontWeight: FontWeight.w700,
             height: 1.2,
             decoration: TextDecoration.underline,
@@ -84,7 +85,7 @@ class ForgetPasswordView extends StatelessWidget {
           style: TextStyle(
             color: AppColors.white,
             fontFamily: AppConstants.calibriFont,
-            fontSize: scaleWidth(18, context),
+            fontSize: 18.fSize,
             height: 1.2,
             fontWeight: FontWeight.w700,
           ),
@@ -97,7 +98,7 @@ class ForgetPasswordView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [primaryBoxShadow()],
-        borderRadius: BorderRadius.circular(scaleRadius(20, context)),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: customTextFormField(
         context,

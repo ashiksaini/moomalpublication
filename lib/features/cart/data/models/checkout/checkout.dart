@@ -1,6 +1,6 @@
-import 'package:moomalpublication/features/cart/data/models/cart_data/billing_address.dart';
+import 'package:moomalpublication/core/base/billing_address.dart';
+import 'package:moomalpublication/core/base/shipping_address.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/extensions.dart';
-import 'package:moomalpublication/features/cart/data/models/cart_data/shipping_address.dart';
 import 'payment_result.dart';
 
 class Checkout {

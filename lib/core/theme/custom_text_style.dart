@@ -12,7 +12,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(60, context),
+        fontSize: 60.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.montaguSlabFont,
         color: color,
@@ -24,7 +24,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(40, context),
+        fontSize: 40.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.minaFont,
         color: color,
@@ -36,7 +36,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(10, context),
+        fontSize: 10.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -47,7 +47,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(12, context),
+        fontSize: 12.fSize,
         fontWeight: FontWeight.w400,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -58,7 +58,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(12, context),
+        fontSize: 12.fSize,
         fontWeight: FontWeight.w500,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -68,7 +68,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(15, context),
+        fontSize: 15.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -79,7 +79,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(15, context),
+        fontSize: 15.fSize,
         fontWeight: FontWeight.w500,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -90,7 +90,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(15, context),
+        fontSize: 15.fSize,
         fontWeight: FontWeight.w400,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -101,7 +101,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(16, context),
+        fontSize: 16.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -112,7 +112,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(18, context),
+        fontSize: 18.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -123,7 +123,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(18, context),
+        fontSize: 18.fSize,
         fontWeight: FontWeight.w500,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -134,7 +134,7 @@ class CustomTextStyle {
           TextDecoration decoration = TextDecoration.none,
           Color decorationColor = AppColors.black}) =>
       TextStyle(
-          fontSize: scaleWidth(20, context),
+          fontSize: 20.fSize,
           fontWeight: FontWeight.w700,
           fontFamily: AppConstants.calibriFont,
           color: color,
@@ -146,7 +146,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(20, context),
+        fontSize: 20.fSize,
         fontWeight: FontWeight.w600,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -157,7 +157,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(20, context),
+        fontSize: 20.fSize,
         fontWeight: FontWeight.w400,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -168,7 +168,7 @@ class CustomTextStyle {
           TextDecoration decoration = TextDecoration.none,
           Color decorationColor = AppColors.black}) =>
       TextStyle(
-          fontSize: scaleWidth(22, context),
+          fontSize: 22.fSize,
           fontWeight: FontWeight.w700,
           fontFamily: AppConstants.calibriFont,
           color: color,
@@ -180,7 +180,7 @@ class CustomTextStyle {
           TextDecoration decoration = TextDecoration.none,
           Color decorationColor = AppColors.black}) =>
       TextStyle(
-          fontSize: scaleWidth(25, context),
+          fontSize: 25.fSize,
           fontWeight: FontWeight.w700,
           fontFamily: AppConstants.calibriFont,
           color: color,
@@ -192,7 +192,7 @@ class CustomTextStyle {
           TextDecoration decoration = TextDecoration.none,
           Color decorationColor = AppColors.black}) =>
       TextStyle(
-          fontSize: scaleWidth(30, context),
+          fontSize: 30.fSize,
           fontWeight: FontWeight.w700,
           fontFamily: AppConstants.calibriFont,
           color: color,
@@ -205,7 +205,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(16, context),
+        fontSize: 16.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.gupterFont,
         color: color,
@@ -215,7 +215,7 @@ class CustomTextStyle {
     Color color = AppColors.grey,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(16, context),
+        fontSize: 16.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.gupterFont,
         color: color,
@@ -225,7 +225,7 @@ class CustomTextStyle {
     Color color = AppColors.white,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(20, context),
+        fontSize: 20.fSize,
         fontWeight: FontWeight.w300,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -235,7 +235,7 @@ class CustomTextStyle {
     Color color = AppColors.black,
   }) =>
       TextStyle(
-        fontSize: scaleWidth(16, context),
+        fontSize: 16.fSize,
         fontWeight: FontWeight.w400,
         fontFamily: AppConstants.calibriFont,
         color: color,
@@ -245,7 +245,7 @@ class CustomTextStyle {
           TextDecoration decoration = TextDecoration.none,
           Color decorationColor = AppColors.white}) =>
       TextStyle(
-          fontSize: scaleWidth(18, context),
+          fontSize: 18.fSize,
           fontWeight: FontWeight.w400,
           fontFamily: AppConstants.calibriFont,
           color: color,

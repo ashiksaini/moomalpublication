@@ -50,7 +50,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     return Wrap(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(vertical: scaleHeight(8, context)),
+          padding: EdgeInsets.symmetric(vertical: 8.v),
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [
@@ -84,9 +84,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               children: [
                 SvgPicture.asset(
                   navItem.icon,
-                  color: widget.selectedIndex == index
-                      ? selectedColor
-                      : unselectedColor,
+                  colorFilter: widget.selectedIndex == index
+                      ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
+                      : ColorFilter.mode(unselectedColor, BlendMode.srcIn),
                 ),
                 const VerticalGap(size: 2),
                 CustomText(

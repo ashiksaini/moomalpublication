@@ -10,18 +10,18 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 void showLottieDialog(BuildContext context, String animation, String title) {
   Get.dialog(Dialog(
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+      borderRadius: BorderRadius.circular(10.r),
     ),
     child: Container(
-      height: scaleHeight(290, context),
-      width: scaleWidth(200, context),
+      height: 290.v,
+      width: 200.h,
       padding: EdgeInsets.symmetric(
-        vertical: scaleHeight(10, context),
-        horizontal: scaleWidth(10, context),
+        vertical: 10.v,
+        horizontal: 10.h,
       ),
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(scaleRadius(10, context)),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,7 +29,7 @@ void showLottieDialog(BuildContext context, String animation, String title) {
           LottieBuilder.asset(
             animation,
             fit: BoxFit.contain,
-            height: scaleHeight(200, context),
+            height: 200.v,
           ),
           const VerticalGap(size: 20),
           CustomText(

@@ -52,12 +52,12 @@ class QuantityButton extends StatelessWidget {
           border: Border.all(color: AppColors.grey.withOpacity(0.5)),
           boxShadow: [primaryBoxShadow()],
           borderRadius:
-              BorderRadius.all(Radius.circular(scaleWidth(5, context))),
+              BorderRadius.all(Radius.circular(5.h)),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: scaleWidth(2, context),
-            horizontal: scaleWidth(8, context),
+            vertical: 2.h,
+            horizontal: 8.h,
           ),
           child: const Icon(
             Icons.delete,
@@ -71,27 +71,27 @@ class QuantityButton extends StatelessWidget {
   Widget _getIncDescView(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(scaleRadius(5, context)),
+          borderRadius: BorderRadius.circular(5.r),
           boxShadow: [primaryBoxShadow()]),
       child: Row(
         children: [
           GestureDetector(
             onTap: () => _cartController.onDesc(cartItem),
             child: Container(
-              padding: EdgeInsets.all(scaleWidth(2, context)),
+              padding: EdgeInsets.all(2.h),
               decoration: BoxDecoration(
                 color: AppColors.greyLight,
                 border: Border.all(color: AppColors.grey.withOpacity(0.5)),
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(scaleRadius(5, context)),
-                  bottomLeft: Radius.circular(scaleRadius(5, context)),
+                  topLeft: Radius.circular(5.r),
+                  bottomLeft: Radius.circular(5.r),
                 ),
               ),
               child: const Icon(Icons.remove),
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: scaleWidth(10, context)),
+            padding: EdgeInsets.symmetric(horizontal: 10.h),
             decoration: BoxDecoration(
               color: AppColors.white,
               border: Border(
@@ -109,13 +109,13 @@ class QuantityButton extends StatelessWidget {
           GestureDetector(
             onTap: () => _cartController.onInc(cartItem),
             child: Container(
-              padding: EdgeInsets.all(scaleWidth(2, context)),
+              padding: EdgeInsets.all(2.h),
               decoration: BoxDecoration(
                 color: AppColors.greyLight,
                 border: Border.all(color: AppColors.grey.withOpacity(0.5)),
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(scaleRadius(5, context)),
-                  bottomRight: Radius.circular(scaleRadius(5, context)),
+                  topRight: Radius.circular(5.r),
+                  bottomRight: Radius.circular(5.r),
                 ),
               ),
               child: const Icon(Icons.add),

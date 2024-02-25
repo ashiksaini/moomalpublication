@@ -52,9 +52,9 @@ class _BookDetailTabBarState extends State<BookDetailTabBar>
           indicatorSize: TabBarIndicatorSize.tab,
         ),
         ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: screenHeight(context) * 0.1),
+          constraints: BoxConstraints(maxHeight: SizeUtils.height * 0.1),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: scaleWidth(15, context)),
+            padding: EdgeInsets.symmetric(horizontal: 15.h),
             child: TabBarView(
               controller: _tabController,
               children: [

@@ -18,10 +18,9 @@ class OrderController extends BaseController {
 
   void getOrders() async {
     orderResponse.value = ApiResponse.loading();
-    orderResponse.value = await GetOrderService.getOrders(id: '8686');
+    orderResponse.value = await GetOrderService.getOrders();
     if (orderResponse.value.data != null) {
       ordersList.value = orderResponse.value.data!;
-
       showBrowseProduct.value = true;
     } else {
       showBrowseProduct.value = false;

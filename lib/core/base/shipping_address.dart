@@ -9,6 +9,7 @@ class ShippingAddress {
   String? postcode;
   String? country;
   String? phone;
+  String? email;
 
   ShippingAddress({
     this.firstName,
@@ -21,6 +22,7 @@ class ShippingAddress {
     this.postcode,
     this.country,
     this.phone,
+    this.email,
   });
 
   factory ShippingAddress.fromJson(Map<String, dynamic> json) {
@@ -35,6 +37,7 @@ class ShippingAddress {
       postcode: json['postcode'] as String?,
       country: json['country'] as String?,
       phone: json['phone'] as String?,
+      email: json['email'] as String?,
     );
   }
 }

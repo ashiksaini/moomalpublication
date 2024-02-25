@@ -17,28 +17,31 @@ class SettingDetailedScreen extends StatelessWidget {
     String appBarTitle = args[0]['appBarTitle'];
     String description = args[1]['description'];
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Column(
-          children: [
-            CustomAppbar(
-              title: appBarTitle,
-              prefixIcon: AppAssets.icBackArrow,
-              onPrefixIconClick: () => AppRouting.navigateBack(),
-              maxLine: 1,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: scaleWidth(12, context),
-                    vertical: scaleHeight(18, context),
+        child: Container(
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CustomAppbar(
+                title: appBarTitle,
+                prefixIcon: AppAssets.icBackArrow,
+                onPrefixIconClick: () => AppRouting.navigateBack(),
+                maxLine: 1,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 12.h,
+                      vertical: 18.v,
+                    ),
+                    child: Html(data: description),
                   ),
-                  child: Html(data: description),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

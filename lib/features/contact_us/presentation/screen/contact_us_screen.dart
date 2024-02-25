@@ -18,53 +18,56 @@ class ContactUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       body: SafeArea(
-          child: Column(
-        children: [
-          CustomAppbar(
-            title: "contact_us".tr,
-            prefixIcon: AppAssets.icBackArrow,
-            onPrefixIconClick: () => AppRouting.navigateBack(),
-            maxLine: 1,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: scaleHeight(10, context),
-                    horizontal: scaleWidth(16, context)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: contactUsController.address.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: scaleHeight(10, context)),
-                            child: ContactCard(
-                              contactImage:
-                                  contactUsController.address[index].iconName ??
-                                      AppAssets.icAddress,
-                              contactText: contactUsController
-                                      .address[index].addressHeader ??
-                                  '',
-                              contactDescription: contactUsController
-                                      .address[index].addressDescription ??
-                                  '',
-                            ),
-                          );
-                        }),
-                  ],
+          child: Container(
+        color: AppColors.white,
+        child: Column(
+          children: [
+            CustomAppbar(
+              title: "contact_us".tr,
+              prefixIcon: AppAssets.icBackArrow,
+              onPrefixIconClick: () => AppRouting.navigateBack(),
+              maxLine: 1,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10.v,
+                      horizontal: 16.h),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: contactUsController.address.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10.v),
+                              child: ContactCard(
+                                contactImage: contactUsController
+                                        .address[index].iconName ??
+                                    AppAssets.icAddress,
+                                contactText: contactUsController
+                                        .address[index].addressHeader ??
+                                    '',
+                                contactDescription: contactUsController
+                                        .address[index].addressDescription ??
+                                    '',
+                              ),
+                            );
+                          }),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          const BottomMarker(),
-        ],
+            const BottomMarker(),
+          ],
+        ),
       )),
     );
   }
