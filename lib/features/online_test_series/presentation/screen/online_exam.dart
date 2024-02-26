@@ -5,12 +5,12 @@ import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/components/organisms/empty_product.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/features/overall_results_and_online_test_series/controller/overall_result_controller.dart';
-import 'package:moomalpublication/features/overall_results_and_online_test_series/presentation/template/test_data_card.dart';
+import 'package:moomalpublication/features/online_test_series/controller/overall_result_controller.dart';
+import 'package:moomalpublication/features/online_test_series/presentation/template/test_data_card.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
-class OverallResultScreen extends StatelessWidget {
-  const OverallResultScreen({super.key});
+class OnlineExamScreen extends StatelessWidget {
+  const OnlineExamScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +34,14 @@ class OverallResultScreen extends StatelessWidget {
                   return Expanded(
                     child: overallResultController
                             .overallResultResponse.value.isLoading
-                        ? Center(child: customProgressIndicator())
+                        ? Center(
+                            child: customProgressIndicator(),
+                          )
                         : overallResultController.overallPerformance.isEmpty
-                            ? EmptyProductView(title: "no_test_result_found".tr)
+                            ? Center(child: EmptyProductView(title: "no_test_result_found".tr))
                             : SingleChildScrollView(
                                 child: TestDataCard(
-                                  title: 'overall_performace'.tr,
+                                  title: 'online_exam'.tr,
                                   data: overallResultController
                                       .overallPerformance,
                                 ),

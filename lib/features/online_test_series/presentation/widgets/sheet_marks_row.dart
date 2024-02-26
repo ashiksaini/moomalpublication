@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/features/overall_results_and_online_test_series/data/models/result.dart';
+import 'package:moomalpublication/features/online_test_series/data/models/result.dart';
 
 class SheetMarksRow extends StatelessWidget {
   final Result testResult;

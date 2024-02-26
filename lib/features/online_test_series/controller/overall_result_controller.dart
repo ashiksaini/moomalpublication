@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
-import 'package:moomalpublication/features/overall_results_and_online_test_series/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/overall_results_and_online_test_series/data/models/result.dart';
-import 'package:moomalpublication/features/overall_results_and_online_test_series/data/services/result_services.dart';
+import 'package:moomalpublication/features/online_test_series/data/constants/type_alias.dart';
+import 'package:moomalpublication/features/online_test_series/data/models/result.dart';
+import 'package:moomalpublication/features/online_test_series/data/services/result_services.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class OverallResultController extends BaseController {
