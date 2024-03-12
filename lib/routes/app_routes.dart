@@ -13,8 +13,8 @@ import 'package:moomalpublication/features/event_press_release/presentation/scre
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
-import 'package:moomalpublication/features/overall_results_and_online_test_series/presentation/screen/online_exam.dart';
-import 'package:moomalpublication/features/overall_results_and_online_test_series/presentation/screen/overall_result_screen.dart';
+import 'package:moomalpublication/features/online_test_series/presentation/screen/online_exam.dart';
+import 'package:moomalpublication/features/online_test_series/presentation/screen/overall_result_screen.dart';
 import 'package:moomalpublication/features/pdf_viewer/pdf_viewer_screen.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/detail_page.dart';
 import 'package:moomalpublication/features/product_detail/presentation/screens/similar_product_screen.dart';
