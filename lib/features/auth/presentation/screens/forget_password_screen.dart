@@ -14,27 +14,35 @@ class ForgetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: ScrollConfiguration(
-          behavior: NoGlowBehavior(),
-          child: SingleChildScrollView(
-            child: SizedBox(
-              height: SizeUtils.height,
-              width: SizeUtils.width,
-              child: Stack(
-                children: [
-                  _bg(context),
-                  CustomAppbar(
+      body: SizedBox(
+        height: SizeUtils.height,
+        width: SizeUtils.width,
+        child: Stack(
+          children: [
+            _bg(context),
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 50.v),
+                  child: CustomAppbar(
                     title: "forget_password".tr.replaceFirst("?", ""),
                     bgColor: Colors.transparent,
                     prefixIcon: AppAssets.icBackArrow,
                     onPrefixIconClick: () => AppRouting.navigateBack(),
                   ),
-                  ForgetPasswordView(),
-                ],
-              ),
-            ),
-          ),
+                ),
+                
+                Expanded(
+                  child: ScrollConfiguration(
+                    behavior: NoGlowBehavior(),
+                    child: SingleChildScrollView(
+                      child: ForgetPasswordView(),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );

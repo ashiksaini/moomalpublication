@@ -24,7 +24,7 @@ class ForgetPasswordView extends StatelessWidget {
         padding: EdgeInsets.only(
           left: 24.h,
           right: 24.h,
-          top: 80.v,
+          top: 5.v,
         ),
         child: Column(
           children: [

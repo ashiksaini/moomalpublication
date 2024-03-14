@@ -14,28 +14,31 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: ScrollConfiguration(
-          behavior: NoGlowBehavior(),
-          child: SingleChildScrollView(
-            child: SizedBox(
-              height: SizeUtils.height,
-              width: SizeUtils.width,
-              child: Stack(
-                children: [
-                  _bg(context),
-                  CustomAppbar(
+      body: SizedBox(
+        height: SizeUtils.height,
+        width: SizeUtils.width,
+        child: Stack(
+          children: [
+            _bg(context),
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 50.v),
+                  child: CustomAppbar(
                     title: "register".tr,
                     bgColor: Colors.transparent,
                     prefixIcon: AppAssets.icBackArrow,
                     onPrefixIconClick: () => AppRouting.navigateBack(),
                   ),
-
-                  RegisterView(),
-                ],
-              ),
-            ),
-          ),
+                ),
+                Expanded(
+                  child: ScrollConfiguration(
+                    behavior: NoGlowBehavior(),
+                    child: SingleChildScrollView(child: RegisterView())),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );
