@@ -10,8 +10,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
 
 class PriceQuantity extends StatelessWidget {
   final ProductDetailController _productDetailController =
@@ -107,7 +106,7 @@ class PriceQuantity extends StatelessWidget {
               if (_productDetailController
                       .productDetailData.value!.productVariationType.value ==
                   ProductVariation.ebook) {
-                showSnackBar("ebook_quantity_cannot_be_more_than_one".tr);
+                showToast("ebook_quantity_cannot_be_more_than_one".tr);
               } else {
                 _productDetailController.selectedQuantity.value = item;
               }

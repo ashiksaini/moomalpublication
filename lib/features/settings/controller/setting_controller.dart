@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/settings/data/constant/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/settings/data/constant/type_alias.dart';
 import 'package:moomalpublication/features/settings/data/services/setting_services.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -29,7 +28,7 @@ class SettingController extends BaseController {
     deleteAccountResponse.value = await SettingsServices.deleteAccount();
 
     if (deleteAccountResponse.value.data != null) {
-      showSnackBar('account_deleted_successfully'.tr);
+      showToast('account_deleted_successfully'.tr);
       SharedPreferencesHelper.clearSharedPref();
       AppRouting.offAllNamed(NameRoutes.splashScreen);
     }

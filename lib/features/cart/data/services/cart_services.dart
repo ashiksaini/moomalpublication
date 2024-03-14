@@ -4,8 +4,7 @@ import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/add_to_cart_request_data.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/cart_data.dart';
 import 'package:moomalpublication/features/cart/data/models/checkout/checkout.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
@@ -42,11 +41,11 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return CartDataResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return CartDataResponse();
     }
   }
@@ -74,11 +73,11 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return CartDataResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return CartDataResponse();
     }
   }
@@ -104,11 +103,11 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return CartDataResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return CartDataResponse();
     }
   }
@@ -132,11 +131,11 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return CartDataResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return CartDataResponse();
     }
   }
@@ -154,11 +153,11 @@ class CartServices {
 
         return CartCheckoutResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return CartCheckoutResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return CartCheckoutResponse();
     }
   }

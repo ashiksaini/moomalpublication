@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
 
 class BaseController extends GetxController {
   final TextEditingController usernameTextEditingController =
@@ -16,12 +16,12 @@ class BaseController extends GetxController {
 
   bool isCredentialValid() {
     if (usernameTextEditingController.text.isEmpty) {
-      showSnackBar("username_should_not_be_empty".tr);
+      showToast("username_should_not_be_empty".tr);
       return false;
     }
 
     if (passwordTextEditingController.text.isEmpty) {
-      showSnackBar("password_should_not_be_empty".tr);
+      showToast("password_should_not_be_empty".tr);
       return false;
     }
 
@@ -30,11 +30,11 @@ class BaseController extends GetxController {
 
   bool isValidEmail() {
     if (emailTextEditingController.text.isEmpty) {
-      showSnackBar("email_should_not_be_empty".tr);
+      showToast("email_should_not_be_empty".tr);
       return false;
     } else if (!emailTextEditingController.text
         .contains(RegExp(AppConstants.emailRegExPattern))) {
-      showSnackBar("please_enter_a_valid_email".tr);
+      showToast("please_enter_a_valid_email".tr);
       return false;
     }
 

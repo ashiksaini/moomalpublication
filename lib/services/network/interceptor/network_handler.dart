@@ -3,8 +3,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
@@ -20,7 +19,7 @@ mixin NetworkHandlingMixin {
     switch (statusCode) {
       case 400:
         {
-          showSnackBar(AppConstants.badRequest);
+          showToast(AppConstants.badRequest);
           handler.next(error);
         }
         break;
@@ -41,56 +40,56 @@ mixin NetworkHandlingMixin {
 
       case 404:
         {
-          showSnackBar(AppConstants.pageNotFound);
+          showToast(AppConstants.pageNotFound);
           handler.next(error);
         }
         break;
 
       case 405:
         {
-          showSnackBar(AppConstants.methodNotAllowed);
+          showToast(AppConstants.methodNotAllowed);
           handler.next(error);
         }
         break;
 
       case 408:
         {
-          showSnackBar(AppConstants.requestTimeout);
+          showToast(AppConstants.requestTimeout);
           handler.next(error);
         }
         break;
 
       case 500:
         {
-          showSnackBar(AppConstants.internalServerError);
+          showToast(AppConstants.internalServerError);
           handler.next(error);
         }
         break;
 
       case 502:
         {
-          showSnackBar(AppConstants.badGateway);
+          showToast(AppConstants.badGateway);
           handler.next(error);
         }
         break;
 
       case 503:
         {
-          showSnackBar(AppConstants.serviceUnavailable);
+          showToast(AppConstants.serviceUnavailable);
           handler.next(error);
         }
         break;
 
       case 504:
         {
-          showSnackBar(AppConstants.gatewayTimeout);
+          showToast(AppConstants.gatewayTimeout);
           handler.next(error);
         }
         break;
 
       default:
         {
-          showSnackBar(AppConstants.somethingWentWrong);
+          showToast(AppConstants.somethingWentWrong);
           handler.next(error);
         }
     }

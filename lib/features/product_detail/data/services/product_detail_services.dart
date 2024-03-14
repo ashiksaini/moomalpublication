@@ -3,8 +3,7 @@ import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
 import 'package:moomalpublication/features/product_detail/data/models/review_post_response/review_post_response_data.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
@@ -29,11 +28,11 @@ class ProductDetailServices {
             ProductItem.fromJson(response.data as Map<String, dynamic>);
         return ProductDetailResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return ProductDetailResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return ProductDetailResponse();
     }
   }
@@ -57,11 +56,11 @@ class ProductDetailServices {
             .toList();
         return ProductReviewsResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return ProductReviewsResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return ProductReviewsResponse();
     }
   }
@@ -85,11 +84,11 @@ class ProductDetailServices {
             .toList();
         return SimilarProductResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return SimilarProductResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return SimilarProductResponse();
     }
   }
@@ -112,11 +111,11 @@ class ProductDetailServices {
             response.data as Map<String, dynamic>);
         return ReviewPostResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return ReviewPostResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return ReviewPostResponse();
     }
   }

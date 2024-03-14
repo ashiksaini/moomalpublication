@@ -6,8 +6,7 @@ import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
 import 'package:moomalpublication/features/product_detail/data/services/product_detail_services.dart';
@@ -203,7 +202,7 @@ class ProductDetailController extends BaseController {
               item.cartBtnType.value = CartBtnType.goToCart;
             }
           } else {
-            showSnackBar("this_product_is_out_of_stock".tr);
+            showToast("this_product_is_out_of_stock".tr);
           }
         }
         break;
@@ -227,7 +226,7 @@ class ProductDetailController extends BaseController {
 
   Future<void> onReviewSubmit() async {
     if (writeReviewTextEditingController.text.isEmpty) {
-      showSnackBar("please_write_a_review_first".tr);
+      showToast("please_write_a_review_first".tr);
     } else {
       final data = _getReview();
 
@@ -235,7 +234,7 @@ class ProductDetailController extends BaseController {
       postReviewResponse.value = await ProductDetailServices.postReview(data);
 
       if (postReviewResponse.value.data != null) {
-        showSnackBar("review_posted_successfully".tr);
+        showToast("review_posted_successfully".tr);
         Future.delayed(
             const Duration(seconds: 2), () => AppRouting.navigateBack());
       }
@@ -274,7 +273,7 @@ class ProductDetailController extends BaseController {
         AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
       }
     } else {
-      showSnackBar("this_product_is_out_of_stock".tr);
+      showToast("this_product_is_out_of_stock".tr);
     }
   }
 
