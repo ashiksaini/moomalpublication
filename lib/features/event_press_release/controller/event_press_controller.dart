@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/event_press_release/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/event_press_release/data/models/event_response_model.dart';
 import 'package:moomalpublication/features/event_press_release/data/models/press_event_response_model.dart';
@@ -48,7 +48,7 @@ class EventPressController extends BaseController {
       events.clear();
       events.addAll(eventResponse.value.data!);
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -61,7 +61,7 @@ class EventPressController extends BaseController {
       pressReleaseList.clear();
       pressReleaseList.addAll(pressReleaseResponse.value.data!);
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 

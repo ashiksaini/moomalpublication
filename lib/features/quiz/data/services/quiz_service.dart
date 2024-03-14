@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/data/models/quiz_response_model.dart';
 import 'package:moomalpublication/features/quiz/data/models/test_response_model.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
@@ -27,11 +26,11 @@ class QuizService {
             .toList();
         return QuizResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return QuizResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return QuizResponse();
     }
   }
@@ -48,11 +47,11 @@ class QuizService {
             response.data as Map<String, dynamic>);
         return TestResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return TestResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return TestResponse();
     }
   }

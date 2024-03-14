@@ -6,8 +6,7 @@ import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/ebook/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/ebook/data/models/e_book_category_item/e_book_category_item.dart';
 import 'package:moomalpublication/features/ebook/data/services/ebooks_services.dart';
@@ -93,7 +92,7 @@ class EbookController extends BaseController {
     if (ebooksResponse.value.data != null) {
       ebooks.addAll(ebooksResponse.value.data ?? []);
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -137,7 +136,7 @@ class EbookController extends BaseController {
               item.cartBtnType.value = CartBtnType.goToCart;
             }
           } else {
-            showSnackBar("this_product_is_out_of_stock".tr);
+            showToast("this_product_is_out_of_stock".tr);
           }
         }
         break;

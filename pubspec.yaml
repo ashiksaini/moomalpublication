@@ -33,6 +33,7 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^24.1.47
   syncfusion_flutter_core: ^24.1.47
   device_preview: ^1.1.0
+  fluttertoast: ^8.2.4
   
 dev_dependencies:
   flutter_test:
@@ -52,6 +53,13 @@ flutter:
         - asset: assets/fonts/calibri/calibri-regular.ttf
         - weight: 400
         - asset: assets/fonts/calibri/calibri-bold.ttf
+        - weight: 700
+
+    - family: Caladea
+      fonts:
+        - asset: assets/fonts/caladea/Caladea-Regular.ttf
+        - weight: 400
+        - asset: assets/fonts/caladea/Caladea-Bold.ttf
         - weight: 700
 
     - family: Gupter

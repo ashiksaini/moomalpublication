@@ -2,8 +2,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/extensions.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/home/data/models/drop_down_item.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/home/data/models/drop_down_item.dart';
 import 'package:moomalpublication/features/test_series/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/test_series/data/models/tab_bar_model.dart';
 import 'package:moomalpublication/features/test_series/data/models/term_model.dart';
@@ -84,7 +83,7 @@ class TestSeriesController extends BaseController {
         }
       }
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -109,7 +108,7 @@ class TestSeriesController extends BaseController {
         }
       }
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 

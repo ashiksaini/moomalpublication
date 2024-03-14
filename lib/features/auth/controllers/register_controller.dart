@@ -1,8 +1,7 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/core/utils/utility.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/auth/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/auth/data/services/register_services.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -23,14 +22,14 @@ class RegisterController extends BaseController {
         if (userRegisterResponse.value.data!.status!
                 .compareTo(AppConstants.successfulResponse) ==
             0) {
-          showSnackBar(userRegisterResponse.value.data!.message.toString());
+          showToast(userRegisterResponse.value.data!.message.toString());
           Future.delayed(
               const Duration(seconds: 4), () => _navigateToLoginScreen());
         } else {
-          showSnackBar(userRegisterResponse.value.data!.message.toString());
+          showToast(userRegisterResponse.value.data!.message.toString());
         }
       } else {
-        showSnackBar(AppConstants.somethingWentWrong);
+        showToast(AppConstants.somethingWentWrong);
       }
     }
   }

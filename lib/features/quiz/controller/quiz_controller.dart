@@ -2,8 +2,7 @@ import 'dart:async';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/data/models/answer_model.dart';
 import 'package:moomalpublication/features/quiz/data/models/quiz_response_model.dart';
 import 'package:moomalpublication/features/quiz/data/services/quiz_service.dart';
@@ -30,7 +29,7 @@ class QuizController extends BaseController {
       quizList.clear();
       quizList.addAll(quizResponse.value.data!);
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -91,7 +90,7 @@ class QuizController extends BaseController {
       }
       _initializeOptions();
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 

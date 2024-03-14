@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/test_series/data/constants/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/test_series/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/test_series/data/models/test_series_list_response_model.dart';
 import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
@@ -28,11 +27,11 @@ class TestSeriesService {
             .toList();
         return TestSeriesResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return TestSeriesResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return TestSeriesResponse();
     }
   }
@@ -49,11 +48,11 @@ class TestSeriesService {
             TestSeriesListResponseModel.fromJson(response.data);
         return TestSeriesListResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showSnackBar(error.message.toString());
+        showToast(error.message.toString());
         return TestSeriesListResponse();
       }
     } else {
-      showSnackBar("no_internet_access".tr);
+      showToast("no_internet_access".tr);
       return TestSeriesListResponse();
     }
   }

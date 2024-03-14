@@ -6,6 +6,6 @@ class ResetPasswordOnSuccessController extends BaseController {
   void onInit() {
     super.onInit();
 
-    Future.delayed(const Duration(seconds: 3), () => AppRouting.navigateBack());
+    Future.delayed(const Duration(seconds: 5), () => AppRouting.navigateBack());
   }
 }

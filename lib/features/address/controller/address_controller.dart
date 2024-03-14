@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/billing_address.dart';
 import 'package:moomalpublication/core/base/shipping_address.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/address/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/address/data/models/address_model.dart';
 import 'package:moomalpublication/features/address/data/services/address_services.dart';
@@ -200,10 +200,10 @@ class AdressController extends BaseController {
     if (billingAllFieldsFilled.value) {
       if (!isItValidEmail(
           email: billingAddressList[emailIndex].controller.value.text)) {
-        showSnackBar("please_enter_a_valid_email".tr);
+        showToast("please_enter_a_valid_email".tr);
       } else if (!isItValidPhone(
           phone: billingAddressList[phoneNumberIndex].controller.value.text)) {
-        showSnackBar("please_enter_a_valid_number".tr);
+        showToast("please_enter_a_valid_number".tr);
       } else {
         final data = getAddressData(
           firstName: billingAddressList[0].controller.text.trim(),
@@ -222,7 +222,7 @@ class AdressController extends BaseController {
         Navigator.pop(context);
       }
     } else {
-      showSnackBar("please_fill_all_required_fields".tr);
+      showToast("please_fill_all_required_fields".tr);
     }
     billingAddressList.refresh();
   }
@@ -256,7 +256,7 @@ class AdressController extends BaseController {
 
       Navigator.pop(context);
     } else {
-      showSnackBar("please_fill_all_required_fields".tr);
+      showToast("please_fill_all_required_fields".tr);
     }
     shippingAddressList.refresh();
   }

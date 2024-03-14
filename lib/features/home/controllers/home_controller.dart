@@ -6,8 +6,7 @@ import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
-import 'package:moomalpublication/core/utils/snackbar.dart';
-import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
+import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/home/data/constants/drawer_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/drop_down_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
@@ -166,7 +165,7 @@ class HomeController extends BaseController {
     if (exploreProductResponse.value.data != null) {
       exploreProductList.addAll(exploreProductResponse.value.data ?? []);
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -178,7 +177,7 @@ class HomeController extends BaseController {
     if (newArrivalProductResponse.value.data != null) {
       newArrivalProductList.addAll(newArrivalProductResponse.value.data ?? []);
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -191,7 +190,7 @@ class HomeController extends BaseController {
     if (bestSellerProductResponse.value.data != null) {
       bestSellerProductList.addAll(bestSellerProductResponse.value.data ?? []);
     } else {
-      showSnackBar(AppConstants.somethingWentWrong);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -234,7 +233,7 @@ class HomeController extends BaseController {
               item.cartBtnType.value = CartBtnType.goToCart;
             }
           } else {
-            showSnackBar("this_product_is_out_of_stock".tr);
+            showToast("this_product_is_out_of_stock".tr);
           }
         }
         break;
