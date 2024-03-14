@@ -13,6 +13,9 @@ class MoomalPublication extends StatefulWidget {
 }
 
 class _MoomalPublicationState extends State<MoomalPublication> {
+
+  GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   @override
   void initState() {
     super.initState();
@@ -22,6 +25,7 @@ class _MoomalPublicationState extends State<MoomalPublication> {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) => GetMaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         locale: Get.deviceLocale,
         fallbackLocale: const Locale('en', 'US'),

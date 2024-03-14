@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 class AppConstants {
   AppConstants._();
   static String calibriFont = 'Calibri';
+  static String caladeaFont = 'Caladea';
   static String gupterFont = 'Gupter';
   static String montaguSlabFont = 'MontaguSlab';
   static String minaFont = 'Mina';

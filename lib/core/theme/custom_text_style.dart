@@ -6,6 +6,18 @@ import '../theme/colors.dart';
 class CustomTextStyle {
   CustomTextStyle._();
 
+  /// Caladea
+  static textStyle18BoldCaladea(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: 18.fSize,
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.caladeaFont,
+        color: color,
+      );
+
   /// Montagu Slab Font
   static TextStyle textStyle60BoldMontaguSlab(
     BuildContext context, {
@@ -63,7 +75,8 @@ class CustomTextStyle {
         fontFamily: AppConstants.calibriFont,
         color: color,
       );
-  static TextStyle textStyle15Bold(
+
+  static textStyle15Bold(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -96,7 +109,7 @@ class CustomTextStyle {
         color: color,
       );
 
-  static TextStyle textStyle16Bold(
+  static textStyle16Bold(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -107,7 +120,7 @@ class CustomTextStyle {
         color: color,
       );
 
-  static TextStyle textStyle18Bold(
+  static textStyle18Bold(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -118,7 +131,7 @@ class CustomTextStyle {
         color: color,
       );
 
-  static TextStyle textStyle18Medium(
+  static textStyle18Medium(
     BuildContext context, {
     Color color = AppColors.grey,
   }) =>
@@ -129,7 +142,7 @@ class CustomTextStyle {
         color: color,
       );
 
-  static TextStyle textStyle20Bold(BuildContext context,
+  static textStyle20Bold(BuildContext context,
           {Color color = AppColors.grey,
           TextDecoration decoration = TextDecoration.none,
           Color decorationColor = AppColors.black}) =>
@@ -139,7 +152,7 @@ class CustomTextStyle {
           fontFamily: AppConstants.calibriFont,
           color: color,
           decorationColor: decorationColor,
-          decoration: decoration);
+          decoration: decoration,);
 
   static TextStyle textStyle20SemiBold(
     BuildContext context, {

@@ -56,7 +56,7 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
         vertical: 20.v,
       ),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: AppColors.green,
         border: Border.all(color: AppColors.grey),
         borderRadius: BorderRadius.circular(
           20.r,
@@ -64,12 +64,14 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SvgPicture.asset(AppAssets.icTick),
+          SvgPicture.asset(AppAssets.icTick, color: AppColors.white,),
           const HorizontalGap(size: 4),
           CustomText(
             text: "reset_password_on_success".tr,
-            textStyle: CustomTextStyle.textStyle18Bold(context,
-                color: AppColors.black),
+            textStyle: CustomTextStyle.textStyle18BoldCaladea(
+              context,
+              color: AppColors.white,
+            ),
           )
         ],
       ),
@@ -80,7 +82,7 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
     return CustomText(
       text: "reset_password_on_success_desc".tr,
       textStyle:
-          CustomTextStyle.textStyle18Bold(context, color: AppColors.white),
+          CustomTextStyle.textStyle18BoldCaladea(context, color: AppColors.white),
       textAlign: TextAlign.start,
     );
   }

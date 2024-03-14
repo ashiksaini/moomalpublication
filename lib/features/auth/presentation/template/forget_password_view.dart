@@ -71,20 +71,20 @@ class ForgetPasswordView extends StatelessWidget {
         TextSpan(
           text: "forget_password_txt".tr,
           style: TextStyle(
-            color: AppColors.black.withOpacity(0.70),
-            fontFamily: AppConstants.calibriFont,
+            color: AppColors.white,
+            fontFamily: AppConstants.caladeaFont,
             fontSize: 18.fSize,
             fontWeight: FontWeight.w700,
             height: 1.2,
             decoration: TextDecoration.underline,
-            decorationColor: AppColors.black.withOpacity(0.70),
+            decorationColor: AppColors.white,
           ),
         ),
         TextSpan(
           text: "forget_password_desc".tr,
           style: TextStyle(
             color: AppColors.white,
-            fontFamily: AppConstants.calibriFont,
+            fontFamily: AppConstants.caladeaFont,
             fontSize: 18.fSize,
             height: 1.2,
             fontWeight: FontWeight.w700,

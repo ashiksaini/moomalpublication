@@ -2,6 +2,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/snackbar.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/auth/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/auth/data/services/login_services.dart';
@@ -38,7 +39,7 @@ class LoginController extends BaseController {
           showSnackBar(loginResponse.value.data!.message.toString());
         }
       } else {
-        showSnackBar(AppConstants.somethingWentWrong);
+        CustomToast.showToast(AppConstants.somethingWentWrong);
       }
     }
   }

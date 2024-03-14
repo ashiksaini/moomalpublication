@@ -14,6 +14,7 @@ class CustomAppbar extends StatelessWidget {
   final Function? onSuffixIconClick;
   final int? maxLine;
   final TextAlign? textAlign;
+  final Color? bgColor;
 
   const CustomAppbar(
       {super.key,
@@ -23,6 +24,7 @@ class CustomAppbar extends StatelessWidget {
       this.onPrefixIconClick,
       this.onSuffixIconClick,
       this.maxLine,
+      this.bgColor,
       this.textAlign = TextAlign.start});
 
   @override
@@ -32,7 +34,7 @@ class CustomAppbar extends StatelessWidget {
           vertical: 12.v,
           horizontal: 15.h),
       decoration: BoxDecoration(
-        color: AppColors.black,
+        color: bgColor ?? AppColors.black,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20.r),
           bottomRight: Radius.circular(20.r),
