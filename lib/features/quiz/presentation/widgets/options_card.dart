@@ -50,9 +50,7 @@ class OptionsCard extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 12.h,
-                  vertical: 6.v),
+              padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 6.v),
               child: CustomText(
                   textAlign: TextAlign.start,
                   text: _quizController

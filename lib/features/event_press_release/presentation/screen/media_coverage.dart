@@ -32,9 +32,8 @@ class MediaCoverage extends StatelessWidget {
                             decoration: TextDecoration.underline)),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10.h,
-                        vertical: 20.v),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.h, vertical: 20.v),
                     child: GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -64,9 +63,7 @@ class MediaCoverage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
-                        left: 20.h,
-                        bottom: 12.v),
+                    padding: EdgeInsets.only(left: 20.h, bottom: 12.v),
                     child: CustomText(
                         text: "media_videos".tr,
                         textStyle: CustomTextStyle.textStyle20Bold(context,

@@ -147,12 +147,13 @@ class CustomTextStyle {
           TextDecoration decoration = TextDecoration.none,
           Color decorationColor = AppColors.black}) =>
       TextStyle(
-          fontSize: 20.fSize,
-          fontWeight: FontWeight.w700,
-          fontFamily: AppConstants.calibriFont,
-          color: color,
-          decorationColor: decorationColor,
-          decoration: decoration,);
+        fontSize: 20.fSize,
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+        decorationColor: decorationColor,
+        decoration: decoration,
+      );
 
   static TextStyle textStyle20SemiBold(
     BuildContext context, {
@@ -264,4 +265,48 @@ class CustomTextStyle {
           color: color,
           decorationColor: decorationColor,
           decoration: decoration);
+  static TextStyle textStyle36Bold(BuildContext context,
+          {Color color = AppColors.black,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.white}) =>
+      TextStyle(
+          fontSize: 36.fSize,
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
+  static TextStyle textStyle24Bold(BuildContext context,
+          {Color color = AppColors.black,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.white}) =>
+      TextStyle(
+          fontSize: 24.fSize,
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
+  static textStyle14Bold(
+    BuildContext context, {
+    Color color = AppColors.grey,
+    TextDecoration decoration = TextDecoration.none,
+  }) =>
+      TextStyle(
+          fontSize: 14.fSize,
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decoration: decoration,
+          decorationColor: AppColors.white);
+  static textStyle19Bold(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: 19.fSize,
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
 }

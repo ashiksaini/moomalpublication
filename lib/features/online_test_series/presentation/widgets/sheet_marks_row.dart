@@ -13,9 +13,7 @@ class SheetMarksRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          vertical: 8.v,
-          horizontal: 8.h),
+      padding: EdgeInsets.symmetric(vertical: 8.v, horizontal: 8.h),
       child: GridView.builder(
         padding: EdgeInsets.zero,
         shrinkWrap: true,

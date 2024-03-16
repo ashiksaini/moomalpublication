@@ -28,14 +28,10 @@ class EventAndPressCard extends StatelessWidget {
             appBarTitle: _eventPressController.events[index].postTitle ?? '');
       },
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: 16.v,
-            horizontal: 8.h),
+        padding: EdgeInsets.symmetric(vertical: 16.v, horizontal: 8.h),
         child: ShadowContainer(
           containerChild: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: 16.v,
-                horizontal: 14.h),
+            padding: EdgeInsets.symmetric(vertical: 16.v, horizontal: 14.h),
             child: Row(
               children: [
                 CardImage(
@@ -46,8 +42,7 @@ class EventAndPressCard extends StatelessWidget {
                 const HorizontalGap(size: 12),
                 Flexible(
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 12.h),
+                    padding: EdgeInsets.symmetric(vertical: 12.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

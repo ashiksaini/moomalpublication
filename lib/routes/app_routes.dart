@@ -23,9 +23,10 @@ import 'package:moomalpublication/features/quiz/presentation/screens/quiz_test_s
 import 'package:moomalpublication/features/search_books/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
-import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
+import 'package:moomalpublication/features/thank_you_page/presentation/screen/order_success_screen.dart';
+import 'package:moomalpublication/features/thank_you_page/presentation/screen/thank_you_screen.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_detail_screen.dart';
 
@@ -34,7 +35,7 @@ class AppPages {
   static List<GetPage<dynamic>> pages = [
     GetPage(
       name: NameRoutes.splashScreen,
-      page: () => const SplashScreen(),
+      page: () => ThankYouScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -197,6 +198,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.pdfScreen,
       page: () => PdfViewerScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.thankYouPage,
+      page: () => ThankYouScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

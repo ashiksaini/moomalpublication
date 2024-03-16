@@ -22,9 +22,7 @@ class TabList extends StatelessWidget {
         : CustomRefreshIndicator(
             onRefreshCallback: () => onRefresh(),
             child: ListView.builder(
-              padding: EdgeInsets.symmetric(
-                  vertical: 26.h,
-                  horizontal: 15.h),
+              padding: EdgeInsets.symmetric(vertical: 26.h, horizontal: 15.h),
               itemCount: entries.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(

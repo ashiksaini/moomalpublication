@@ -32,8 +32,7 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius:
-                        BorderRadius.circular(15.r),
+                    borderRadius: BorderRadius.circular(15.r),
                   ),
                   height: 15.v,
                 ),
@@ -41,8 +40,7 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius:
-                        BorderRadius.circular(15.r),
+                    borderRadius: BorderRadius.circular(15.r),
                   ),
                   height: 15.v,
                   width: 100.h,
@@ -51,8 +49,7 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius:
-                        BorderRadius.circular(15.r),
+                    borderRadius: BorderRadius.circular(15.r),
                   ),
                   height: 20.v,
                   width: 70.h,
@@ -61,8 +58,7 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius:
-                        BorderRadius.circular(15.r),
+                    borderRadius: BorderRadius.circular(15.r),
                   ),
                   height: 20.v,
                 ),
@@ -72,8 +68,7 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColors.white,
-                      borderRadius:
-                          BorderRadius.circular(5.r),
+                      borderRadius: BorderRadius.circular(5.r),
                     ),
                     height: 30.v,
                     width: 120.h,

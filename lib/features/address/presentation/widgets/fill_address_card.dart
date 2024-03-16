@@ -53,12 +53,10 @@ class FillAddressCard extends StatelessWidget {
           keyboardType: keyboardType,
           controller: textEditingController,
           decoration: InputDecoration(
-            contentPadding:
-                EdgeInsets.symmetric(horizontal: 12.h),
+            contentPadding: EdgeInsets.symmetric(horizontal: 12.h),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(
-                  color: AppColors.black, width: 1.5.h),
+              borderSide: BorderSide(color: AppColors.black, width: 1.5.h),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

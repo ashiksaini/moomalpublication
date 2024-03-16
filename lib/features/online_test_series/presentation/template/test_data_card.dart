@@ -41,8 +41,7 @@ class TestDataCard extends StatelessWidget {
             itemCount: data.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: 10.v),
+                padding: EdgeInsets.symmetric(vertical: 10.v),
                 child: ResultSheetMarksCard(testResult: data[index]),
               );
             },

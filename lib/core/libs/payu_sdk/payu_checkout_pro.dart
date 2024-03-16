@@ -4,6 +4,8 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/libs/payu_sdk/hash_sevices.dart';
 import 'package:moomalpublication/core/utils/dialogs.dart';
 import 'package:moomalpublication/core/utils/utility.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:payu_checkoutpro_flutter/PayUConstantKeys.dart';
 import 'package:payu_checkoutpro_flutter/payu_checkoutpro_flutter.dart';
@@ -90,9 +92,12 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   @override
   onPaymentSuccess(response) {
-    showLottieDialog(
-        Get.context!, AppAssets.successAnimation, "payment_success".tr);
-    CustomLogger.logger.d(response.toString());
+    // showLottieDialog(
+    //     Get.context!, AppAssets.successAnimation, "payment_success".tr);
+    // CustomLogger.logger.d(response.toString());
+    // show thankyou page
+    AppRouting.offNamed(NameRoutes.thankYouPage);
+    //cart checkput
     _callBack();
     throw UnimplementedError();
   }

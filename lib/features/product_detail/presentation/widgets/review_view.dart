@@ -23,10 +23,7 @@ class ReviewView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-          right: 10.h,
-          top: 10.v,
-          bottom: 10.v),
+      padding: EdgeInsets.only(right: 10.h, top: 10.v, bottom: 10.v),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

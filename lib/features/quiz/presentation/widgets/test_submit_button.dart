@@ -21,11 +21,8 @@ class TestSubmitButton extends StatelessWidget {
               : _quizController.reTakeButton();
         },
         child: ShadowContainer(
-          margin: EdgeInsets.only(
-              top: 30.v, bottom: 20.v),
-          padding: EdgeInsets.symmetric(
-              vertical: 12.v,
-              horizontal: 25.h),
+          margin: EdgeInsets.only(top: 30.v, bottom: 20.v),
+          padding: EdgeInsets.symmetric(vertical: 12.v, horizontal: 25.h),
           backgroundColor: AppColors.orange,
           borderColor: AppColors.white,
           borderRadius: 6.r,

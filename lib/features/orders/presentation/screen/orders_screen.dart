@@ -37,7 +37,9 @@ class OrdersScreen extends StatelessWidget {
                                 children: [OrderCard()],
                               ),
                             )
-                          : Center(child: EmptyCartView(title: "no_item_ordered".tr)),
+                          : Center(
+                              child:
+                                  EmptyCartView(title: "no_item_ordered".tr)),
                 ),
               ),
             ],

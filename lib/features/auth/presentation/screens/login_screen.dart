@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
         behavior: NoGlowBehavior(),
         child: SingleChildScrollView(
           child: SizedBox(
-      height: SizeUtils.height,
+            height: SizeUtils.height,
             width: SizeUtils.width,
             child: Stack(
               children: [

@@ -92,9 +92,7 @@ class CustomDropDown1<T> extends StatelessWidget {
                           maxLines: 1,
                         ),
                       ),
-                      Divider(
-                          height: 2.v,
-                          thickness: 2.v),
+                      Divider(height: 2.v, thickness: 2.v),
                     ],
                   );
                 },

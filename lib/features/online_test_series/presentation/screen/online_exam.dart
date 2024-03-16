@@ -38,7 +38,9 @@ class OnlineExamScreen extends StatelessWidget {
                             child: customProgressIndicator(),
                           )
                         : overallResultController.overallPerformance.isEmpty
-                            ? Center(child: EmptyProductView(title: "no_test_result_found".tr))
+                            ? Center(
+                                child: EmptyProductView(
+                                    title: "no_test_result_found".tr))
                             : SingleChildScrollView(
                                 child: TestDataCard(
                                   title: 'online_exam'.tr,

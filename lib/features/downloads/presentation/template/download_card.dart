@@ -20,9 +20,7 @@ class DownloadCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: 30.v,
-            horizontal: 8.h),
+        padding: EdgeInsets.symmetric(vertical: 30.v, horizontal: 8.h),
         child: Obx(
           () => ListView.builder(
               shrinkWrap: true,

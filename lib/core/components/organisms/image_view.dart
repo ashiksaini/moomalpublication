@@ -16,9 +16,7 @@ class ImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      margin: EdgeInsets.symmetric(
-          horizontal: 5.h,
-          vertical: 5.v),
+      margin: EdgeInsets.symmetric(horizontal: 5.h, vertical: 5.v),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15.r),
         child: (image != null && image!.isNotEmpty)

@@ -45,8 +45,7 @@ TextFormField customTextFormField(
       fillColor: AppColors.white,
       filled: true,
       focusedBorder: OutlineInputBorder(
-        borderRadius:
-            BorderRadius.circular(borderRadius!.r),
+        borderRadius: BorderRadius.circular(borderRadius!.r),
         borderSide: const BorderSide(color: AppColors.orangeLight),
       ),
       border: OutlineInputBorder(
@@ -66,9 +65,7 @@ TextFormField customTextFormField(
               onTap: () =>
                   onPrefixIconClick != null ? onPrefixIconClick() : null,
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: 16.h,
-                    vertical: 12.v),
+                padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 12.v),
                 child: SvgPicture.asset(
                   prefixIcon,
                   height: 24.v,
@@ -82,9 +79,7 @@ TextFormField customTextFormField(
               onTap: () =>
                   onSuffixIconClick != null ? onSuffixIconClick() : null,
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: 16.h,
-                    vertical: 12.v),
+                padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 12.v),
                 child: SvgPicture.asset(
                   suffixIcon,
                   height: 24.v,

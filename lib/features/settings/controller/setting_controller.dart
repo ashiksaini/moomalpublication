@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
-import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/settings/data/constant/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/settings/data/constant/type_alias.dart';
 import 'package:moomalpublication/features/settings/data/services/setting_services.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';

@@ -28,9 +28,7 @@ class CustomBtn extends StatelessWidget {
         },
         child: Ink(
           child: Container(
-            padding: EdgeInsets.symmetric(
-                vertical: 12.v,
-                horizontal: 25.h),
+            padding: EdgeInsets.symmetric(vertical: 12.v, horizontal: 25.h),
             decoration: BoxDecoration(
               color: bgColor ?? AppColors.orange,
               borderRadius: BorderRadius.circular(

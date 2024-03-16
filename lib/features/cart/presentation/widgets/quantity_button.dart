@@ -51,8 +51,7 @@ class QuantityButton extends StatelessWidget {
           color: AppColors.white,
           border: Border.all(color: AppColors.grey.withOpacity(0.5)),
           boxShadow: [primaryBoxShadow()],
-          borderRadius:
-              BorderRadius.all(Radius.circular(5.h)),
+          borderRadius: BorderRadius.all(Radius.circular(5.h)),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
