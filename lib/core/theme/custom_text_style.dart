@@ -18,6 +18,51 @@ class CustomTextStyle {
         color: color,
       );
 
+  static textStyle16BoldCaladea(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: 16.fSize,
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.caladeaFont,
+        color: color,
+      );
+
+  static textStyle26BoldCaladea(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: 26.fSize,
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.caladeaFont,
+        color: color,
+      );
+
+  static textStyle20BoldCaladea(
+    BuildContext context, {
+    Color color = AppColors.grey,
+  }) =>
+      TextStyle(
+        fontSize: 20.fSize,
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.caladeaFont,
+        color: color,
+      );
+
+  static textStyle30BoldCaladea(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
+      TextStyle(
+          fontSize: 30.fSize,
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.caladeaFont,
+          color: color,
+          decorationColor: decorationColor,
+          decoration: decoration);
+
   /// Montagu Slab Font
   static TextStyle textStyle60BoldMontaguSlab(
     BuildContext context, {
@@ -147,12 +192,13 @@ class CustomTextStyle {
           TextDecoration decoration = TextDecoration.none,
           Color decorationColor = AppColors.black}) =>
       TextStyle(
-          fontSize: 20.fSize,
-          fontWeight: FontWeight.w700,
-          fontFamily: AppConstants.calibriFont,
-          color: color,
-          decorationColor: decorationColor,
-          decoration: decoration,);
+        fontSize: 20.fSize,
+        fontWeight: FontWeight.w700,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+        decorationColor: decorationColor,
+        decoration: decoration,
+      );
 
   static TextStyle textStyle20SemiBold(
     BuildContext context, {

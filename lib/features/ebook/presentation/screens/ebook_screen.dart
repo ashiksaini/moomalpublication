@@ -39,6 +39,8 @@ class EBookScreen extends StatelessWidget {
                     suffixIcon: AppAssets.icSearch,
                     onSuffixIconClick: () =>
                         AppRouting.toNamed(NameRoutes.searchScreen),
+                    prefixIcon: AppAssets.icBackArrow,
+                    onPrefixIconClick: () => AppRouting.navigateBack(),
                   ),
                   _ebookController.ebookCategoryResponse.value.isLoading ||
                           _ebookController.ebooksResponse.value.isLoading

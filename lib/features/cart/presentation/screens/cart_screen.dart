@@ -128,8 +128,7 @@ class _CartScreenState extends State<CartScreen> {
             child: _cartController.cartCheckoutResponse.value.isLoading
                 ? Container(
                     height: 45.h,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 45.h),
+                    padding: EdgeInsets.symmetric(horizontal: 45.h),
                     child: LottieBuilder.asset(
                       AppAssets.loadingAnimation,
                       fit: BoxFit.cover,

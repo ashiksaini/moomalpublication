@@ -65,6 +65,7 @@ class AppAssets {
   static const String icPhoneCall = "${pathSvg}ic_phone_call.svg";
   static const String icUser1 = "${pathSvg}ic_user1.svg";
   static const String icBox = "${pathSvg}ic_box.svg";
+  static const String icCategory = "${pathSvg}ic_category.svg";
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

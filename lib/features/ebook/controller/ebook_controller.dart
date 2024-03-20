@@ -5,8 +5,10 @@ import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
-import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/ebook/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/ebook/data/models/e_book_category_item/e_book_category_item.dart';
 import 'package:moomalpublication/features/ebook/data/services/ebooks_services.dart';
@@ -133,6 +135,11 @@ class EbookController extends BaseController {
               ],
             );
             if (addToCartResponse.data != null) {
+              showToast(
+                "item_added_to_cart".tr,
+                bgColor: AppColors.green,
+                textColor: AppColors.white,
+              );
               item.cartBtnType.value = CartBtnType.goToCart;
             }
           } else {

@@ -40,8 +40,7 @@ class QuizTestScreen extends StatelessWidget {
                       : SingleChildScrollView(
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                                vertical: 18.v,
-                                horizontal: 16.h),
+                                vertical: 18.v, horizontal: 16.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -50,8 +49,7 @@ class QuizTestScreen extends StatelessWidget {
                                   borderRadius: 6.r,
                                   containerChild: Padding(
                                     padding: EdgeInsets.symmetric(
-                                        vertical: 12.v,
-                                        horizontal: 12.h),
+                                        vertical: 12.v, horizontal: 12.h),
                                     child: _quizController.submitButton.isTrue
                                         ? CustomText(
                                             text:

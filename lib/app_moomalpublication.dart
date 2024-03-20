@@ -13,7 +13,6 @@ class MoomalPublication extends StatefulWidget {
 }
 
 class _MoomalPublicationState extends State<MoomalPublication> {
-
   GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override

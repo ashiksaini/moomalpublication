@@ -98,8 +98,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                                     ),
                                   ),
                             Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 10.v),
+                              padding: EdgeInsets.symmetric(vertical: 10.v),
                               child: _eventPressController
                                       .pressReleaseList.isNotEmpty
                                   ? ListView.builder(

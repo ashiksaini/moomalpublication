@@ -16,8 +16,7 @@ class SubmitButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.orange,
         boxShadow: [primaryBoxShadow()],
-        borderRadius:
-            BorderRadius.all(Radius.circular(10.h)),
+        borderRadius: BorderRadius.all(Radius.circular(10.h)),
       ),
       child: Padding(
           padding: EdgeInsets.symmetric(

@@ -24,8 +24,7 @@ class YearContainer extends StatelessWidget {
       child: Obx(
         () => Container(
           decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.all(Radius.circular(10.r)),
+              borderRadius: BorderRadius.all(Radius.circular(10.r)),
               color: _eventPressController.yearListData[yearIndex].clicked!
                   ? AppColors.orange
                   : AppColors.orangeLight),

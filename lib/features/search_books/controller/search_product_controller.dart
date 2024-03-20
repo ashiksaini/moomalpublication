@@ -4,8 +4,10 @@ import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
-import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/search_books/data/constant/type_alias.dart';
 import 'package:moomalpublication/features/search_books/data/services/search_product_services.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -80,6 +82,11 @@ class SearchProductController extends BaseController {
               ],
             );
             if (addToCartResponse.data != null) {
+              showToast(
+                "item_added_to_cart".tr,
+                bgColor: AppColors.green,
+                textColor: AppColors.white,
+              );
               item.cartBtnType.value = CartBtnType.goToCart;
             }
           } else {

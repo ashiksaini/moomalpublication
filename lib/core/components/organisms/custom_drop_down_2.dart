@@ -44,8 +44,7 @@ class CustomDropDown2<T> extends StatelessWidget {
             width: width ?? SizeUtils.width / 2.6,
             decoration: BoxDecoration(
               color: color,
-              borderRadius:
-                  BorderRadius.circular(borderRadius.r),
+              borderRadius: BorderRadius.circular(borderRadius.r),
               border: Border.all(color: borderColor),
             ),
             padding: EdgeInsets.symmetric(
@@ -99,9 +98,7 @@ class CustomDropDown2<T> extends StatelessWidget {
                           maxLines: 1,
                         ),
                       ),
-                      Divider(
-                          height: 2.v,
-                          thickness: 2.v),
+                      Divider(height: 2.v, thickness: 2.v),
                     ],
                   );
                 },

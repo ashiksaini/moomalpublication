@@ -11,12 +11,14 @@ class CategoryItem extends StatelessWidget {
   final String icon;
   final String title;
   final Function onClick;
+  final TextStyle? textStyle;
 
   const CategoryItem({
     super.key,
     required this.icon,
     required this.title,
     required this.onClick,
+    this.textStyle,
   });
 
   @override
@@ -43,7 +45,7 @@ class CategoryItem extends StatelessWidget {
           const VerticalGap(size: 10),
           CustomText(
             text: title,
-            textStyle: CustomTextStyle.textStyle20Regular(context),
+            textStyle: textStyle ?? CustomTextStyle.textStyle20Regular(context),
           ),
         ],
       ),

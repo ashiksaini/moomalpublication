@@ -5,8 +5,10 @@ import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
-import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/home/data/constants/drawer_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/drop_down_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
@@ -68,61 +70,71 @@ class HomeController extends BaseController {
   }
 
   void _initDrawerItemList() {
-    final downloadItem = DrawerItem(
-        icon: AppAssets.icDownload,
-        title: "downloads".tr,
-        drawerItemType: DrawerItemType.download);
+    // final downloadItem = DrawerItem(
+    //   icon: AppAssets.icDownload,
+    //   title: "downloads".tr,
+    //   drawerItemType: DrawerItemType.download,
+    // );
     final addressItem = DrawerItem(
-        icon: AppAssets.icAddress,
-        title: "addresses".tr,
-        drawerItemType: DrawerItemType.address);
+      icon: AppAssets.icAddress,
+      title: "addresses".tr,
+      drawerItemType: DrawerItemType.address,
+    );
     final orderItem = DrawerItem(
-        icon: AppAssets.icOrder,
-        title: "orders".tr,
-        drawerItemType: DrawerItemType.orders);
+      icon: AppAssets.icOrder,
+      title: "orders".tr,
+      drawerItemType: DrawerItemType.orders,
+    );
     final eventAndPressReleaseItem = DrawerItem(
-        icon: AppAssets.icEventAndPressRelease,
-        title: "event_and_press_release".tr,
-        drawerItemType: DrawerItemType.eventsAndPressRelease);
+      icon: AppAssets.icEventAndPressRelease,
+      title: "event_and_press_release".tr,
+      drawerItemType: DrawerItemType.eventsAndPressRelease,
+    );
     final testimonialItem = DrawerItem(
-        icon: AppAssets.icTestimonial,
-        title: "testimonial".tr,
-        drawerItemType: DrawerItemType.testimonial);
-    final quizItem = DrawerItem(
-        icon: AppAssets.icQuiz,
-        title: "quiz".tr,
-        drawerItemType: DrawerItemType.quiz);
+      icon: AppAssets.icTestimonial,
+      title: "testimonial".tr,
+      drawerItemType: DrawerItemType.testimonial,
+    );
+    // final quizItem = DrawerItem(
+    //   icon: AppAssets.icQuiz,
+    //   title: "quiz".tr,
+    //   drawerItemType: DrawerItemType.quiz,
+    // );
     final contactUsItem = DrawerItem(
-        icon: AppAssets.icContactUs,
-        title: "contact_us".tr,
-        drawerItemType: DrawerItemType.contactUs);
+      icon: AppAssets.icContactUs,
+      title: "contact_us".tr,
+      drawerItemType: DrawerItemType.contactUs,
+    );
     final settingItem = DrawerItem(
-        icon: AppAssets.icSettings,
-        title: "setting".tr,
-        drawerItemType: DrawerItemType.settings);
-    final onlineTestSeriesItem = DrawerItem(
-        icon: AppAssets.icReadingBook,
-        title: "online_test_series".tr,
-        drawerItemType: DrawerItemType.onlineTestSeries);
+      icon: AppAssets.icSettings,
+      title: "setting".tr,
+      drawerItemType: DrawerItemType.settings,
+    );
+    // final onlineTestSeriesItem = DrawerItem(
+    //   icon: AppAssets.icReadingBook,
+    //   title: "online_test_series".tr,
+    //   drawerItemType: DrawerItemType.onlineTestSeries,
+    // );
     // final overallResultItem = DrawerItem(
     //     icon: AppAssets.icReport,
     //     title: "overall_result".tr,
     //     drawerItemType: DrawerItemType.overallResult);
     final logoutItem = DrawerItem(
-        icon: AppAssets.icLogout,
-        title: "logout".tr,
-        drawerItemType: DrawerItemType.logout);
+      icon: AppAssets.icLogout,
+      title: "logout".tr,
+      drawerItemType: DrawerItemType.logout,
+    );
 
     drawerItems.addAll([
-      downloadItem,
+      // downloadItem,
       addressItem,
       orderItem,
       eventAndPressReleaseItem,
       testimonialItem,
-      quizItem,
+      // quizItem,
       contactUsItem,
       settingItem,
-      onlineTestSeriesItem,
+      // onlineTestSeriesItem,
       // overallResultItem,
       logoutItem,
     ]);
@@ -230,6 +242,11 @@ class HomeController extends BaseController {
               ],
             );
             if (addToCartResponse.data != null) {
+              showToast(
+                "item_added_to_cart".tr,
+                bgColor: AppColors.green,
+                textColor: AppColors.white,
+              );
               item.cartBtnType.value = CartBtnType.goToCart;
             }
           } else {

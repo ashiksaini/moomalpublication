@@ -9,6 +9,7 @@ import 'package:moomalpublication/features/auth/presentation/screens/reset_passw
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/contact_us/presentation/screen/contact_us_screen.dart';
 import 'package:moomalpublication/features/downloads/presentation/screens/download_screen.dart';
+import 'package:moomalpublication/features/ebook/presentation/screens/ebook_screen.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/detail_event_page.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
@@ -24,6 +25,7 @@ import 'package:moomalpublication/features/search_books/presentation/screens/sea
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
 import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
+import 'package:moomalpublication/features/subscribe/presentation/subscribe_now_screen.dart';
 import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -197,6 +199,18 @@ class AppPages {
     GetPage(
       name: NameRoutes.pdfScreen,
       page: () => PdfViewerScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.eBookScreen,
+      page: () => EBookScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.subscribeNowScreen,
+      page: () => SubscribeNowScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

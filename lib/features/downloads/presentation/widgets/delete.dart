@@ -18,9 +18,7 @@ class DeleteButton extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: 4.v,
-            horizontal: 19.h),
+        padding: EdgeInsets.symmetric(vertical: 4.v, horizontal: 19.h),
         child: CustomText(
             text: "delete".tr,
             textStyle:

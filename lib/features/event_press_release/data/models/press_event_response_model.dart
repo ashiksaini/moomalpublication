@@ -19,6 +19,4 @@ class PressEventResponseModel {
       featuredImage: json['featured_image'] as String?,
     );
   }
-
- 
 }
