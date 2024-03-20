@@ -333,4 +333,5 @@ final Map<String, String> enUS = {
   "news_letter": "News Letter",
   "news_letter_desc": "Get The Latest News from US!",
   "news_letter_subscribed_successfully" : "News letter subscribed Successfully",
+  "subscribe_now2": "Subscribe now"
 };

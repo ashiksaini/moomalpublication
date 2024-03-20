@@ -16,23 +16,19 @@ class SubscribeController extends BaseController {
   void onInit() async {
     super.onInit();
 
-    email = await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ?? "";
+    email =
+        await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ??
+            "";
   }
 
   void onSubscribe() async {
-subscribeResponse.value = ApiResponse.loading();
-      subscribeResponse.value = await SubscribeService.subscribe(email);
+    subscribeResponse.value = ApiResponse.loading();
+    subscribeResponse.value = await SubscribeService.subscribe(email);
 
-      if (subscribeResponse.value.data != null) {
-        if (subscribeResponse.value.data!.status!
-                .compareTo(AppConstants.successfulResponse) ==
-            0) {
-          showToast("news_letter_subscribed_successfully".tr);
-        } else {
-          showToast(subscribeResponse.value.data!.toString());
-        }
-      } else {
-        showToast(AppConstants.somethingWentWrong);
-      }
+    if (subscribeResponse.value.data != null) {
+      showToast("news_letter_subscribed_successfully".tr);
+    } else {
+      showToast(AppConstants.somethingWentWrong);
+    }
   }
 }

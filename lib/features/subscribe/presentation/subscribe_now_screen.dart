@@ -65,7 +65,7 @@ class SubscribeNowScreen extends StatelessWidget {
                       ),
                       VerticalGap(size: 50.v),
                       AuthBtn(
-                        title: "subscribe_now",
+                        title: "subscribe_now2".tr,
                         onClick: () {
                           if (!_subscribeController.subscribeResponse.value.isLoading) {
                             _subscribeController.onSubscribe();

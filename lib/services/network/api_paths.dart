@@ -31,5 +31,5 @@ class ApiPaths {
   static const String overAllResult = 'myplugin/v1/overall-result/';
   static const String address = 'wc/v3/customers/';
   static const String pressRelease = 'press/v1/press-year/';
-  static const String subscribe = 'wp-json/newsletter/v2/subscribers';
+  static const String subscribe = 'newsletter/v2/subscribers';
 }
