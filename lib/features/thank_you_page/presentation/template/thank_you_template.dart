@@ -21,14 +21,14 @@ class ThankYouPageTemplate extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 86.h),
             child: CustomText(
-              text: 'Thank you for your order',
+              text: 'thank_you_for_your_order',
               textStyle: CustomTextStyle.textStyle36Bold(context,
                   color: AppColors.white),
             ),
           ),
           const VerticalGap(size: 18),
           CustomText(
-            text: 'ORDER NUMBER: 13053',
+            text: 'order_number: 13053',
             textStyle: CustomTextStyle.textStyle14Bold(context,
                 decoration: TextDecoration.underline, color: AppColors.white),
           ),

@@ -43,12 +43,12 @@ class OrderDetailList extends StatelessWidget {
                 children: [
                   CustomText(
                     textAlign: TextAlign.start,
-                    text: 'Purchase: ${e.variantName}',
+                    text: 'purchase.tr : ${e.variantName}',
                     textStyle: CustomTextStyle.textStyle18Regular(context,
                         color: AppColors.black),
                   ),
                   CustomText(
-                    text: 'Product ID: ${e.variantId}',
+                    text: 'product_id : ${e.variantId}',
                     textStyle: CustomTextStyle.textStyle18Regular(context,
                         color: AppColors.black),
                   ),

@@ -37,7 +37,7 @@ class BillTemplate extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 140.h),
                 child: CustomText(
-                  text: 'Thank you for your order',
+                  text: 'thank_you_for_your_order',
                   textStyle: CustomTextStyle.textStyle24Bold(context,
                       color: AppColors.white),
                 ),
@@ -51,7 +51,7 @@ class BillTemplate extends StatelessWidget {
           child: Column(
             children: [
               spaceTextRegular(
-                  leftText: 'Order Number',
+                  leftText: 'order_number',
                   rightText: orderSuccessResponse.orderNumber ?? '',
                   context: context),
               const VerticalGap(size: 2),
@@ -61,18 +61,18 @@ class BillTemplate extends StatelessWidget {
               ),
               const VerticalGap(size: 10),
               spaceTextRegular(
-                  leftText: 'Date',
+                  leftText: 'date ',
                   rightText: DateTimeUtils.formatDate(
                     date: orderSuccessResponse.date ?? DateTime.now(),
                     formatType: AppConstants.dateFormatter,
                   ),
                   context: context),
               spaceTextRegular(
-                  leftText: 'Email',
+                  leftText: 'email',
                   rightText: orderSuccessResponse.email ?? '',
                   context: context),
               spaceTextRegular(
-                  leftText: 'Payment Method',
+                  leftText: 'payment_method',
                   rightText: orderSuccessResponse.paymentMethod ?? '',
                   context: context),
               const VerticalGap(size: 4),
@@ -81,7 +81,7 @@ class BillTemplate extends StatelessWidget {
                 color: AppColors.grey,
               ),
               spaceTextRegular(
-                  leftText: 'Total Amount',
+                  leftText: 'total_amount',
                   rightText: '₹ ${orderSuccessResponse.total ?? ''}',
                   context: context),
             ],

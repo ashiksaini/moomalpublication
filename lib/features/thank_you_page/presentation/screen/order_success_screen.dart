@@ -79,7 +79,7 @@ class OrderSuccessScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 12.v, left: 4.h),
             child: CustomText(
-                text: 'Billing Address',
+                text: 'billing_address',
                 textStyle: CustomTextStyle.textStyle20Bold(context,
                     color: AppColors.black)),
           ),

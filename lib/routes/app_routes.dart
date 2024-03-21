@@ -12,6 +12,8 @@ import 'package:moomalpublication/features/downloads/presentation/screens/downlo
 import 'package:moomalpublication/features/event_press_release/presentation/screen/detail_event_page.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
+import 'package:moomalpublication/features/my_orders/presentation/screen/ebook_order.dart';
+import 'package:moomalpublication/features/my_orders/presentation/screen/my_order.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
 import 'package:moomalpublication/features/online_test_series/presentation/screen/online_exam.dart';
 import 'package:moomalpublication/features/online_test_series/presentation/screen/overall_result_screen.dart';
@@ -35,7 +37,7 @@ class AppPages {
   static List<GetPage<dynamic>> pages = [
     GetPage(
       name: NameRoutes.splashScreen,
-      page: () => ThankYouScreen(),
+      page: () => EbookOrderScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

@@ -320,5 +320,17 @@ final Map<String, String> enUS = {
   "quiz_views": "Quiz Views",
   "quiz_taken": "Quiz Taken",
   "start_quiz": "Start Quiz",
-  "no_test_available": "No Test Available",
+
+  // Thank you page
+  "purchase": "Purchase",
+  "product_id": "Product ID",
+  "thank_you_for_your_order": "Thank you for your order",
+  "order_number": "ORDER NUMBER",
+  "DATE": "DATE",
+  "products": "Products",
+  "subtotal":"Subtotal",
+  "payment_method":"Payment Method",
+  "date":'Date',
+  "email":"Email",
+
 };
