@@ -20,6 +20,7 @@ class AppColors {
   static const Color redBright = Color(0xCCBD081C);
 
   static const Color orangeLight = Color(0xFFFDE9D7);
+  static const Color orangeLight1 = Color(0xFFFFF7EF);
   static const Color orangeLighter = Color.fromRGBO(255, 255, 255, 0.33);
 
   static const Color orangeDark = Color(0xFFE67C1D);

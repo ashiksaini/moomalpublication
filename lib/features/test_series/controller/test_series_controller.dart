@@ -3,7 +3,7 @@ import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
-import 'package:moomalpublication/features/home/data/models/drop_down_item.dart';
+import 'package:moomalpublication/features/test_series/data/constants/enums.dart';
 import 'package:moomalpublication/features/test_series/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/test_series/data/models/tab_bar_model.dart';
 import 'package:moomalpublication/features/test_series/data/models/term_model.dart';
@@ -25,19 +25,21 @@ class TestSeriesController extends BaseController {
   final RxList<TestSeriesResponseModel> testsSectional =
       RxList<TestSeriesResponseModel>();
 
-  List<DropdownItem<Term>> mockTestCategory = RxList<DropdownItem<Term>>();
-  late Rx<DropdownItem<Term>?> selectedMockTestCategory =
-      Rx<DropdownItem<Term>?>(null);
+  List<Term> mockTestCategory = RxList<Term>();
+  late Rx<Term?> selectedMockTestCategory =
+      Rx<Term?>(null);
 
-  List<DropdownItem<Term>> topicWiseCategory = RxList<DropdownItem<Term>>();
-  late Rx<DropdownItem<Term>?> selectedTopicWiseCategory =
-      Rx<DropdownItem<Term>?>(null);
+  List<Term> topicWiseCategory = RxList<Term>();
+  late Rx<Term?> selectedTopicWiseCategory =
+      Rx<Term?>(null);
+
+  Rx<TestSeriesMainTabType> selectedMainTestType =
+      Rx(TestSeriesMainTabType.all);
+  Rx<Term?> selectedTerm = Rx(null);
 
   @override
   void onInit() {
     super.onInit();
-    _setDefaultMockCategoryValue();
-    _setDefaultTopicWiseCategoryValue();
     _tabBarListGenerate();
     _getTestDropDownList();
     _getTestList();
@@ -72,7 +74,7 @@ class TestSeriesController extends BaseController {
         for (var category
             in testSeriesListResponse.value.data!.mockTestTerms!.values) {
           mockTestCategory
-              .add(DropdownItem(title: category.name ?? "", type: category));
+              .add(category);
         }
       }
 
@@ -80,7 +82,7 @@ class TestSeriesController extends BaseController {
         for (var category
             in testSeriesListResponse.value.data!.topicWiseTerms!.values) {
           topicWiseCategory
-              .add(DropdownItem(title: category.name ?? "", type: category));
+              .add(category);
         }
       }
     } else {
@@ -113,20 +115,6 @@ class TestSeriesController extends BaseController {
     }
   }
 
-  void onMockCategoryItemClick(DropdownItem<Term> item) {
-    selectedMockTestCategory.value = item;
-    _setDefaultTopicWiseCategoryValue();
-    _clearList();
-    _getTestList(category: selectedMockTestCategory.value?.type.termId ?? 0);
-  }
-
-  void onTopicCategoryItemClick(DropdownItem<Term> item) {
-    selectedTopicWiseCategory.value = item;
-    _setDefaultMockCategoryValue();
-    _clearList();
-    _getTestList(category: selectedTopicWiseCategory.value?.type.termId ?? 0);
-  }
-
   void _clearList() {
     testsAll.clear();
     testsFullLength.clear();
@@ -134,8 +122,6 @@ class TestSeriesController extends BaseController {
   }
 
   void onRefresh() {
-    _setDefaultMockCategoryValue();
-    _setDefaultTopicWiseCategoryValue();
     _clearList();
     _getTestList();
   }
@@ -150,13 +136,24 @@ class TestSeriesController extends BaseController {
     return query;
   }
 
-  void _setDefaultMockCategoryValue() {
-    selectedMockTestCategory.value =
-        DropdownItem(title: "mock_test_category".tr, type: Term());
+  void onMainTabsClick(TestSeriesMainTabType testSeriesMainTabType) {
+    selectedMainTestType.value = testSeriesMainTabType;
+    _clearList();
+
+    switch (testSeriesMainTabType) {
+      case TestSeriesMainTabType.all:
+      case TestSeriesMainTabType.subjests:
+      case TestSeriesMainTabType.topics:
+        _getTestList();
+    }
   }
 
-  void _setDefaultTopicWiseCategoryValue() {
-    selectedTopicWiseCategory.value =
-        DropdownItem(title: "topicwise_category".tr, type: Term());
+  void onSubTopicClick(Term term) {
+    selectedTerm.value?.isSelected.value = false;
+    term.isSelected.value = true;
+    selectedTerm.value = term;
+    
+    _clearList(); 
+    _getTestList(category: term.termId);
   }
 }

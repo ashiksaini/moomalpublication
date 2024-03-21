@@ -221,6 +221,8 @@ final Map<String, String> enUS = {
   "profile": "Profile",
   "my_profile": "My Profile",
   "user_name": "User Name",
+  "results": "Results",
+  "help_center": "Help Center",
 
   // Write Review ///////////////////////////////////////////////////////////
   "your_rating": "Your Rating",
@@ -256,6 +258,13 @@ final Map<String, String> enUS = {
   "overall_performace": "Overall Performance",
   "online_exam": "Online Exam",
   "reattempt": "Reattempt",
+  "overall_results": "Overall Result",
+  "subjects": "Subjects",
+  "topics": "Topics",
+  "current_affairs": "Current Affairs", 
+  "general_science" : "General Science",
+  "general" : "General", 
+  "railway": "Railway",
 
   // Payment ///////////////////////////////////////////////////////////
   "payment_error": "Payment Error",

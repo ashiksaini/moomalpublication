@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
-import 'package:moomalpublication/core/components/organisms/custom_drop_down_2.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/test_series/controller/test_series_controller.dart';
+import 'package:moomalpublication/features/test_series/data/constants/enums.dart';
 import 'package:moomalpublication/features/test_series/presentation/template/tab_list.dart';
+import 'package:moomalpublication/features/test_series/presentation/widgets/main_tab_item.dart';
+import 'package:moomalpublication/features/test_series/presentation/widgets/sub_tab_item.dart';
 import 'package:moomalpublication/features/test_series/presentation/widgets/tab_item.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -64,40 +67,16 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
                       : Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                top: 14.v,
-                                left: 10.h,
-                                right: 10.h,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomDropDown2(
-                                    borderColor: AppColors.orange,
-                                    items:
-                                        _testSeriesController.mockTestCategory,
-                                    selectedItem: _testSeriesController
-                                        .selectedMockTestCategory,
-                                    width: SizeUtils.width / 2.2,
-                                    onItemClick: _testSeriesController
-                                        .onMockCategoryItemClick,
-                                  ),
-                                  CustomDropDown2(
-                                    borderColor: AppColors.orange,
-                                    items:
-                                        _testSeriesController.topicWiseCategory,
-                                    selectedItem: _testSeriesController
-                                        .selectedTopicWiseCategory,
-                                    width: SizeUtils.width / 2.2,
-                                    onItemClick: _testSeriesController
-                                        .onTopicCategoryItemClick,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const VerticalGap(size: 30),
+                            _getMainTab(),
+                            if (_testSeriesController
+                                    .selectedMainTestType.value ==
+                                TestSeriesMainTabType.subjests)
+                              _getSubjectsSubTabs(),
+                            if (_testSeriesController
+                                    .selectedMainTestType.value ==
+                                TestSeriesMainTabType.topics)
+                              _getTopicsSubTabs(),
+                            const VerticalGap(size: 40),
                             TabBar(
                               unselectedLabelColor: AppColors.black,
                               labelColor: AppColors.orange,
@@ -167,6 +146,98 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _getTopicsSubTabs() {
+    return Container(
+      width: SizeUtils.width,
+      height: 40.v,
+      padding: EdgeInsets.symmetric(horizontal: 14.h),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemCount: _testSeriesController.topicWiseCategory.length,
+        itemBuilder: (_, index) {
+          return Padding(
+            padding: EdgeInsets.only(right: 10.h),
+            child: SubTabItem(
+              title: _testSeriesController.topicWiseCategory[index].name ?? "",
+              term: _testSeriesController.topicWiseCategory[index],
+              isSelected:
+                  _testSeriesController.topicWiseCategory[index].isSelected.value,
+              onClick: (term) =>
+                  _testSeriesController.onSubTopicClick(term),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _getSubjectsSubTabs() {
+    return Container(
+      width: SizeUtils.height,
+      height: 40.v,
+      padding: EdgeInsets.symmetric(horizontal: 14.h),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemCount: _testSeriesController.mockTestCategory.length,
+        itemBuilder: (_, index) {
+          return Padding(
+            padding: EdgeInsets.only(right: 10.h),
+            child: SubTabItem(
+              title: _testSeriesController.mockTestCategory[index].name ?? "",
+              term: _testSeriesController.mockTestCategory[index],
+              isSelected:
+                  _testSeriesController.mockTestCategory[index].isSelected.value,
+              onClick: (term) =>
+                  _testSeriesController.onSubTopicClick(term),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _getMainTab() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 14.h, vertical: 20.v),
+      child: Row(
+        children: [
+          MainTabItem(
+            title: "all".tr,
+            isSelected: _testSeriesController.selectedMainTestType.value ==
+                TestSeriesMainTabType.all,
+            onClick: (testSeriesMainTabType) =>
+                _testSeriesController.onMainTabsClick(testSeriesMainTabType),
+            testSeriesMainTabType: TestSeriesMainTabType.all,
+          ),
+          const HorizontalGap(size: 14),
+          Expanded(
+            child: MainTabItem(
+              title: "subjects".tr,
+              isSelected: _testSeriesController.selectedMainTestType.value ==
+                  TestSeriesMainTabType.subjests,
+              onClick: (testSeriesMainTabType) =>
+                  _testSeriesController.onMainTabsClick(testSeriesMainTabType),
+              testSeriesMainTabType: TestSeriesMainTabType.subjests,
+            ),
+          ),
+          const HorizontalGap(size: 14),
+          Expanded(
+            child: MainTabItem(
+              title: "topics".tr,
+              isSelected: _testSeriesController.selectedMainTestType.value ==
+                  TestSeriesMainTabType.topics,
+              onClick: (testSeriesMainTabType) =>
+                  _testSeriesController.onMainTabsClick(testSeriesMainTabType),
+              testSeriesMainTabType: TestSeriesMainTabType.topics,
+            ),
+          ),
+        ],
       ),
     );
   }
