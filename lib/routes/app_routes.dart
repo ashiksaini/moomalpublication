@@ -15,7 +15,6 @@ import 'package:moomalpublication/features/event_press_release/presentation/scre
 import 'package:moomalpublication/features/latest_news/presentation/screen/latest_news_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/my_orders/presentation/screen/ebook_order.dart';
-import 'package:moomalpublication/features/my_orders/presentation/screen/my_order.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
 import 'package:moomalpublication/features/results/presentation/screen/online_exam.dart';
 import 'package:moomalpublication/features/results/presentation/screen/overall_result_screen.dart';
@@ -30,7 +29,6 @@ import 'package:moomalpublication/features/settings/presentation/screens/setting
 import 'package:moomalpublication/features/subscribe/presentation/subscribe_now_screen.dart';
 import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
-import 'package:moomalpublication/features/thank_you_page/presentation/screen/order_success_screen.dart';
 import 'package:moomalpublication/features/thank_you_page/presentation/screen/thank_you_screen.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_detail_screen.dart';
