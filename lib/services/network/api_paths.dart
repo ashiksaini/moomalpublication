@@ -33,6 +33,6 @@ class ApiPaths {
   static const String pressRelease = 'press/v1/press-year/';
   static const String subscribe = 'newsletter/v2/subscribers';
   static const String latestNews = 'moomal/v1/posts/';
-  static const String orderSuccess = 'custom-namespace/v1/thankyou/13003';
+  static const String orderSuccess = 'custom-namespace/v1/thankyou/';
 
 }

@@ -10,13 +10,13 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class OrderSuccessService {
   OrderSuccessService._();
 
-  static Future<OrderSuccessResponseData> getOrderSuccessDetails() async {
+  static Future<OrderSuccessResponseData> getOrderSuccessDetails(String orderId) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
       try {
         final dio.Response<dynamic> response =
-            await DioClient.dioWithoutAuth!.get(ApiPaths.orderSuccess);
+            await DioClient.dioWithoutAuth!.get("${ApiPaths.orderSuccess}$orderId");
 
         final parsedResponse = OrderSuccessResponse.fromJson(
             response.data as Map<String, dynamic>);

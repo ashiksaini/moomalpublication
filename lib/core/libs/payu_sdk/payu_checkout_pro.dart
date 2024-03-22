@@ -13,6 +13,7 @@ import 'package:payu_checkoutpro_flutter/payu_checkoutpro_flutter.dart';
 class PayUCheckoutPro implements PayUCheckoutProProtocol {
   late PayUCheckoutProFlutter _checkoutProFlutter;
   late Function _callBack;
+  late String orderId;
 
   void init({Function? callBack}) {
     _checkoutProFlutter = PayUCheckoutProFlutter(this);
@@ -20,6 +21,8 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
   }
 
   Future<void> pay(String? totalPrice, String? orderId) async {
+    this.orderId = orderId ?? "";
+
     final payUPaymentParams = _getPayUPaymentParams(
         totalPrice ?? "1.0", orderId ?? Utility.generateTransactionId());
     final payUCheckoutProConfig = _getPayUCheckoutProConfig();
@@ -92,12 +95,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   @override
   onPaymentSuccess(response) {
-    // showLottieDialog(
-    //     Get.context!, AppAssets.successAnimation, "payment_success".tr);
-    // CustomLogger.logger.d(response.toString());
-    // show thankyou page
-    AppRouting.offNamed(NameRoutes.thankYouPage);
-    //cart checkput
+    AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     _callBack();
     throw UnimplementedError();
   }

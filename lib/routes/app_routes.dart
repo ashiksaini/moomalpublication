@@ -14,7 +14,6 @@ import 'package:moomalpublication/features/event_press_release/presentation/scre
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/latest_news/presentation/screen/latest_news_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
-import 'package:moomalpublication/features/my_orders/presentation/screen/ebook_order.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
 import 'package:moomalpublication/features/results/presentation/screen/online_exam.dart';
 import 'package:moomalpublication/features/results/presentation/screen/overall_result_screen.dart';
@@ -26,6 +25,7 @@ import 'package:moomalpublication/features/quiz/presentation/screens/quiz_test_s
 import 'package:moomalpublication/features/search_books/presentation/screens/search_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_detailed_screen.dart';
 import 'package:moomalpublication/features/settings/presentation/screens/setting_screen.dart';
+import 'package:moomalpublication/features/splash/presentation/screens/splash_screen.dart';
 import 'package:moomalpublication/features/subscribe/presentation/subscribe_now_screen.dart';
 import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
@@ -38,7 +38,7 @@ class AppPages {
   static List<GetPage<dynamic>> pages = [
     GetPage(
       name: NameRoutes.splashScreen,
-      page: () => EbookOrderScreen(),
+      page: () => const SplashScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
