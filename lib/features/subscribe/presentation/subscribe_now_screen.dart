@@ -67,12 +67,13 @@ class SubscribeNowScreen extends StatelessWidget {
                       AuthBtn(
                         title: "subscribe_now2".tr,
                         onClick: () {
-                          if (!_subscribeController.subscribeResponse.value.isLoading) {
+                          if (!_subscribeController
+                              .subscribeResponse.value.isLoading) {
                             _subscribeController.onSubscribe();
                           }
                         },
-                        isLoadingVisible:
-                            _subscribeController.subscribeResponse.value.isLoading,
+                        isLoadingVisible: _subscribeController
+                            .subscribeResponse.value.isLoading,
                       ),
                     ],
                   ),

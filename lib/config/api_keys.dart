@@ -83,7 +83,7 @@ class ApiKeys {
   static const String addressDataConsumerSecret =
       "cs_da6bd805deb37ba90d916c4807e027f9a0f4a830";
 
-      // Subscribe APi key
+  // Subscribe APi key
   static const String subscribeClientKey =
       "d85eab1d56f5a54bbaf85058542cf25c5ae3739a";
   static const String subscribeClientSecret =

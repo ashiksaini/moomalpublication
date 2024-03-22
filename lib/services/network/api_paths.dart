@@ -32,4 +32,5 @@ class ApiPaths {
   static const String address = 'wc/v3/customers/';
   static const String pressRelease = 'press/v1/press-year/';
   static const String subscribe = 'newsletter/v2/subscribers';
+  static const String latestNews = 'moomal/v1/posts/';
 }

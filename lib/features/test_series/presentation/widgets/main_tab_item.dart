@@ -29,8 +29,8 @@ class MainTabItem extends StatelessWidget {
         decoration: BoxDecoration(
             color: isSelected ? AppColors.orange : AppColors.white,
             borderRadius: BorderRadius.circular(10.r),
-            border:
-                Border.all(color: isSelected ? AppColors.white : AppColors.grey),
+            border: Border.all(
+                color: isSelected ? AppColors.white : AppColors.grey),
             boxShadow: isSelected ? [primaryBoxShadow()] : null),
         child: Center(
           child: CustomText(

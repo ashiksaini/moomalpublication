@@ -29,8 +29,8 @@ class SubTabItem extends StatelessWidget {
         decoration: BoxDecoration(
             color: isSelected ? AppColors.orangeLight1 : AppColors.white,
             borderRadius: BorderRadius.circular(5.r),
-            border:
-                Border.all(color: isSelected ? AppColors.white : AppColors.grey),
+            border: Border.all(
+                color: isSelected ? AppColors.white : AppColors.grey),
             boxShadow: isSelected ? [primaryBoxShadow()] : null),
         child: Center(
           child: CustomText(

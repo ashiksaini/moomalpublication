@@ -165,10 +165,9 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
             child: SubTabItem(
               title: _testSeriesController.topicWiseCategory[index].name ?? "",
               term: _testSeriesController.topicWiseCategory[index],
-              isSelected:
-                  _testSeriesController.topicWiseCategory[index].isSelected.value,
-              onClick: (term) =>
-                  _testSeriesController.onSubTopicClick(term),
+              isSelected: _testSeriesController
+                  .topicWiseCategory[index].isSelected.value,
+              onClick: (term) => _testSeriesController.onSubTopicClick(term),
             ),
           );
         },
@@ -191,10 +190,9 @@ class _TestSeriesScreenState extends State<TestSeriesScreen>
             child: SubTabItem(
               title: _testSeriesController.mockTestCategory[index].name ?? "",
               term: _testSeriesController.mockTestCategory[index],
-              isSelected:
-                  _testSeriesController.mockTestCategory[index].isSelected.value,
-              onClick: (term) =>
-                  _testSeriesController.onSubTopicClick(term),
+              isSelected: _testSeriesController
+                  .mockTestCategory[index].isSelected.value,
+              onClick: (term) => _testSeriesController.onSubTopicClick(term),
             ),
           );
         },

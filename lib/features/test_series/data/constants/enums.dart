@@ -8,6 +8,6 @@ enum TestSeriesSubTopicType {
   railway,
   general,
   currentAffairs,
-  gk, 
+  gk,
   generalScience,
 }

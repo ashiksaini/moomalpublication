@@ -22,16 +22,14 @@ class SubscribeService {
           clientSecret: ApiKeys.subscribeClientSecret,
         ).toJson();
 
-        final data = {
-          "email" : email
-        };
-        
+        final data = {"email": email};
+
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
             .post(ApiPaths.subscribe, queryParameters: query, data: data);
 
-        final parsedResponse =
-            SubscribeResponseData.fromJson(response.data as Map<String, dynamic>);
-            
+        final parsedResponse = SubscribeResponseData.fromJson(
+            response.data as Map<String, dynamic>);
+
         return SubscribeResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showToast(error.message.toString());

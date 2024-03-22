@@ -261,9 +261,9 @@ final Map<String, String> enUS = {
   "overall_results": "Overall Result",
   "subjects": "Subjects",
   "topics": "Topics",
-  "current_affairs": "Current Affairs", 
-  "general_science" : "General Science",
-  "general" : "General", 
+  "current_affairs": "Current Affairs",
+  "general_science": "General Science",
+  "general": "General",
   "railway": "Railway",
 
   // Payment ///////////////////////////////////////////////////////////
@@ -341,6 +341,9 @@ final Map<String, String> enUS = {
   // News Letter
   "news_letter": "News Letter",
   "news_letter_desc": "Get The Latest News from US!",
-  "news_letter_subscribed_successfully" : "News letter subscribed Successfully",
-  "subscribe_now2": "Subscribe now"
+  "news_letter_subscribed_successfully": "News letter subscribed Successfully",
+  "subscribe_now2": "Subscribe now",
+
+  // Latest News
+  "latest_news1" : "Latest News"
 };

@@ -62,7 +62,8 @@ class ProfileScreen extends StatelessWidget {
                         child: CustomChipButton(
                           icon: AppAssets.icOrder,
                           title: "orders".tr,
-                          onClick: () => AppRouting.toNamed(NameRoutes.orderScreen),
+                          onClick: () =>
+                              AppRouting.toNamed(NameRoutes.orderScreen),
                         ),
                       ),
                       const HorizontalGap(size: 20),
@@ -70,7 +71,8 @@ class ProfileScreen extends StatelessWidget {
                         child: CustomChipButton(
                           icon: AppAssets.icAddress,
                           title: "addresses".tr,
-                          onClick: () => AppRouting.toNamed(NameRoutes.addressesScreen),
+                          onClick: () =>
+                              AppRouting.toNamed(NameRoutes.addressesScreen),
                         ),
                       ),
                     ],
@@ -86,7 +88,8 @@ class ProfileScreen extends StatelessWidget {
                         child: CustomChipButton(
                           icon: AppAssets.icReadingBook,
                           title: "results".tr,
-                          onClick: () => AppRouting.toNamed(NameRoutes.overallResultScreen),
+                          onClick: () => AppRouting.toNamed(
+                              NameRoutes.overallResultScreen),
                         ),
                       ),
                       const HorizontalGap(size: 20),
@@ -94,7 +97,8 @@ class ProfileScreen extends StatelessWidget {
                         child: CustomChipButton(
                           icon: AppAssets.icInfo,
                           title: "help_center".tr,
-                          onClick: () => AppRouting.toNamed(NameRoutes.contactUsScreen),
+                          onClick: () =>
+                              AppRouting.toNamed(NameRoutes.contactUsScreen),
                         ),
                       ),
                     ],

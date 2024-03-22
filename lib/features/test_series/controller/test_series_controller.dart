@@ -26,12 +26,10 @@ class TestSeriesController extends BaseController {
       RxList<TestSeriesResponseModel>();
 
   List<Term> mockTestCategory = RxList<Term>();
-  late Rx<Term?> selectedMockTestCategory =
-      Rx<Term?>(null);
+  late Rx<Term?> selectedMockTestCategory = Rx<Term?>(null);
 
   List<Term> topicWiseCategory = RxList<Term>();
-  late Rx<Term?> selectedTopicWiseCategory =
-      Rx<Term?>(null);
+  late Rx<Term?> selectedTopicWiseCategory = Rx<Term?>(null);
 
   Rx<TestSeriesMainTabType> selectedMainTestType =
       Rx(TestSeriesMainTabType.all);
@@ -73,16 +71,14 @@ class TestSeriesController extends BaseController {
       if (testSeriesListResponse.value.data!.mockTestTerms != null) {
         for (var category
             in testSeriesListResponse.value.data!.mockTestTerms!.values) {
-          mockTestCategory
-              .add(category);
+          mockTestCategory.add(category);
         }
       }
 
       if (testSeriesListResponse.value.data!.topicWiseTerms != null) {
         for (var category
             in testSeriesListResponse.value.data!.topicWiseTerms!.values) {
-          topicWiseCategory
-              .add(category);
+          topicWiseCategory.add(category);
         }
       }
     } else {
@@ -152,8 +148,8 @@ class TestSeriesController extends BaseController {
     selectedTerm.value?.isSelected.value = false;
     term.isSelected.value = true;
     selectedTerm.value = term;
-    
-    _clearList(); 
+
+    _clearList();
     _getTestList(category: term.termId);
   }
 }
