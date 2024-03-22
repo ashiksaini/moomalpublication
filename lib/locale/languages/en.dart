@@ -345,5 +345,18 @@ final Map<String, String> enUS = {
   "subscribe_now2": "Subscribe now",
 
   // Latest News
-  "latest_news1" : "Latest News"
+  "latest_news1" : "Latest News",
+
+  // Thank you page
+  "purchase": "Purchase",
+  "product_id": "Product ID",
+  "thank_you_for_your_order": "Thank you for your order",
+  "order_number": "ORDER NUMBER",
+  "DATE": "DATE",
+  "products": "Products",
+  "subtotal":"Subtotal",
+  "payment_method":"Payment Method",
+  "date":'Date',
+  "email":"Email",
+
 };
