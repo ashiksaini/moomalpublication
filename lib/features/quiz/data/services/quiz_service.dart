@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/data/models/quiz_response_model.dart';
 import 'package:moomalpublication/features/quiz/data/models/test_response_model.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';

@@ -6,9 +6,15 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 
 class CustomOrangeButton extends StatelessWidget {
   const CustomOrangeButton(
-      {super.key, required this.onTapButton, required this.buttonText});
+      {super.key,
+      required this.onTapButton,
+      required this.buttonText,
+      this.radius,
+      this.customTextStyle});
   final Function onTapButton;
   final String buttonText;
+  final TextStyle? customTextStyle;
+  final double? radius;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,17 +25,16 @@ class CustomOrangeButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.orange,
           borderRadius: BorderRadius.all(
-            Radius.circular(10.r),
+            Radius.circular(radius?.r ?? 10.r),
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: 4.v,
-              horizontal: 24.h),
+          padding: EdgeInsets.symmetric(vertical: 4.v, horizontal: 24.h),
           child: CustomText(
               text: buttonText,
-              textStyle: CustomTextStyle.textStyle25Bold(context,
-                  color: Colors.white)),
+              textStyle: customTextStyle ??
+                  CustomTextStyle.textStyle25Bold(context,
+                      color: Colors.white)),
         ),
       ),
     );

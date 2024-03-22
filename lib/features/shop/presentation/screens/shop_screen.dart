@@ -51,7 +51,8 @@ class ShopScreen extends StatelessWidget {
                           crossAxisCount: 2,
                           crossAxisSpacing: 12.0.h,
                           mainAxisSpacing: 15.0.v,
-                          childAspectRatio: Utility.getChildAspectRation(context),
+                          childAspectRatio:
+                              Utility.getChildAspectRation(context),
                         ),
                         itemCount:
                             _shopController.productResponse.value.isLoading
@@ -79,8 +80,7 @@ class ShopScreen extends StatelessWidget {
                     // Load more
                     if (_shopController.isLoadingMore.value)
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 10.v),
+                        padding: EdgeInsets.symmetric(vertical: 10.v),
                         child: customProgressIndicator(),
                       ),
                   ],

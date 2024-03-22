@@ -33,9 +33,8 @@ class ContactUsScreen extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: 10.v,
-                      horizontal: 16.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.v, horizontal: 16.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -45,8 +44,7 @@ class ContactUsScreen extends StatelessWidget {
                           itemCount: contactUsController.address.length,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 10.v),
+                              padding: EdgeInsets.symmetric(vertical: 10.v),
                               child: ContactCard(
                                 contactImage: contactUsController
                                         .address[index].iconName ??

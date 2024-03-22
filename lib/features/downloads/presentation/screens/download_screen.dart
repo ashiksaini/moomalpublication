@@ -30,21 +30,23 @@ class DownloadScreen extends StatelessWidget {
               ),
               Obx(
                 () => Expanded(
-                  child:
-                      downloadController.downloadSeriesResponse.value.isLoading
-                          ? Center(child: customProgressIndicator())
-                          : downloadController.downloadList.isEmpty
-                              ? Center(child: EmptyCartView(title: "no_item_downloaded".tr))
-                              : SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      DownloadCard(
-                                        downloadList:
-                                            downloadController.downloadList,
-                                      )
-                                    ],
-                                  ),
-                                ),
+                  child: downloadController
+                          .downloadSeriesResponse.value.isLoading
+                      ? Center(child: customProgressIndicator())
+                      : downloadController.downloadList.isEmpty
+                          ? Center(
+                              child:
+                                  EmptyCartView(title: "no_item_downloaded".tr))
+                          : SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  DownloadCard(
+                                    downloadList:
+                                        downloadController.downloadList,
+                                  )
+                                ],
+                              ),
+                            ),
                 ),
               ),
             ],

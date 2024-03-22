@@ -116,7 +116,9 @@ class HomeScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SizedBox(width: 20.h,),
+            SizedBox(
+              width: 20.h,
+            ),
             Expanded(
               child: MainCategoryCard(
                 icon: AppAssets.icGrid,
@@ -124,7 +126,9 @@ class HomeScreen extends StatelessWidget {
                 onClick: () => AppRouting.toNamed(NameRoutes.allCategoryScreen),
               ),
             ),
-            SizedBox(width: 20.h,),
+            SizedBox(
+              width: 20.h,
+            ),
             Expanded(
               child: MainCategoryCard(
                 icon: AppAssets.icBook,
@@ -134,7 +138,9 @@ class HomeScreen extends StatelessWidget {
                     argument: 2),
               ),
             ),
-            SizedBox(width: 20.h,),
+            SizedBox(
+              width: 20.h,
+            ),
             Expanded(
               child: MainCategoryCard(
                 icon: AppAssets.icReport,
@@ -142,7 +148,9 @@ class HomeScreen extends StatelessWidget {
                 onClick: () => AppRouting.toNamed(NameRoutes.testSeriesScreen),
               ),
             ),
-            SizedBox(width: 20.h,),
+            SizedBox(
+              width: 20.h,
+            ),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/event_press_release/data/constants/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/event_press_release/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/event_press_release/data/models/event_response_model.dart';
 import 'package:moomalpublication/features/event_press_release/data/models/press_event_response_model.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';

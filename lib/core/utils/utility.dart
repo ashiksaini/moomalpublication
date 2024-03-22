@@ -14,7 +14,8 @@ class Utility {
       LoginResponseData data, bool rememberMe, String password) async {
     await SharedPreferencesHelper.setValue(
         SharedPreferenceKeys.username, data.username);
-        await SharedPreferencesHelper.setValue(SharedPreferenceKeys.userId, data.id);
+    await SharedPreferencesHelper.setValue(
+        SharedPreferenceKeys.userId, data.id);
     await SharedPreferencesHelper.setValue(
         SharedPreferenceKeys.email, data.email);
     await SharedPreferencesHelper.setValue(

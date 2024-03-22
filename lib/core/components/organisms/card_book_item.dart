@@ -54,9 +54,7 @@ class CardBookItem extends StatelessWidget {
     return Container(
       height: 195.adaptSize,
       width: 200.adaptSize,
-      margin: EdgeInsets.symmetric(
-          horizontal: 5.h,
-          vertical: 5.v),
+      margin: EdgeInsets.symmetric(horizontal: 5.h, vertical: 5.v),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15.r),
         child: (item.featuredImage?.url != null &&

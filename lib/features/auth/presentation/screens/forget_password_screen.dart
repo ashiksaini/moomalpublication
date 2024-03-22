@@ -31,7 +31,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                     onPrefixIconClick: () => AppRouting.navigateBack(),
                   ),
                 ),
-                
                 Expanded(
                   child: ScrollConfiguration(
                     behavior: NoGlowBehavior(),

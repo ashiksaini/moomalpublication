@@ -64,7 +64,10 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SvgPicture.asset(AppAssets.icTick, color: AppColors.white,),
+          SvgPicture.asset(
+            AppAssets.icTick,
+            color: AppColors.white,
+          ),
           const HorizontalGap(size: 4),
           CustomText(
             text: "reset_password_on_success".tr,
@@ -81,8 +84,8 @@ class ResetPasswordOnSuccessView extends StatelessWidget {
   Widget _getResetPasswordOnSuccessDesc(BuildContext context) {
     return CustomText(
       text: "reset_password_on_success_desc".tr,
-      textStyle:
-          CustomTextStyle.textStyle18BoldCaladea(context, color: AppColors.white),
+      textStyle: CustomTextStyle.textStyle18BoldCaladea(context,
+          color: AppColors.white),
       textAlign: TextAlign.start,
     );
   }

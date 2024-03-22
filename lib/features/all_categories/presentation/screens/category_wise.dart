@@ -45,8 +45,7 @@ class CategoryWiseScreen extends StatelessWidget {
                 // Load more
                 if (_categoryWiseController.isLoadingMore.value)
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 10.v),
+                    padding: EdgeInsets.symmetric(vertical: 10.v),
                     child: customProgressIndicator(),
                   ),
               ],

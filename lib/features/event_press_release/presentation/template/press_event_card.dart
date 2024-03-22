@@ -17,9 +17,7 @@ class PressEventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: 20.h,
-          vertical: 10.v),
+      padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.v),
       child: ShadowContainer(
         backgroundColor: withGradient ? null : AppColors.pinkLighter,
         borderColor: withGradient ? AppColors.greendark : AppColors.pinkDark,

@@ -129,8 +129,10 @@ class LoginView extends StatelessWidget {
             const HorizontalGap(size: 4),
             CustomText(
               text: "remember_me".tr,
-              textStyle: CustomTextStyle.textStyle18BoldCaladea(context,
-                  color: AppColors.white,),
+              textStyle: CustomTextStyle.textStyle18BoldCaladea(
+                context,
+                color: AppColors.white,
+              ),
             ),
           ],
         ),

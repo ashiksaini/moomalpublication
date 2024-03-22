@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/core/base/base_response.dart';
-import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/testimonial/data/constants/type_alias.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/testimonial/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/testimonial/data/models/testimonial_response_model.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';

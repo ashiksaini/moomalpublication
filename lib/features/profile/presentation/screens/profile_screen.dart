@@ -28,7 +28,9 @@ class ProfileScreen extends StatelessWidget {
                     Column(
                       children: [
                         const CircularContainer(),
-                        Container(height: 100.v,)
+                        Container(
+                          height: 100.v,
+                        )
                       ],
                     ),
                     Positioned(
@@ -38,11 +40,10 @@ class ProfileScreen extends StatelessWidget {
                       bottom: 0.v,
                       child: Center(
                         child: ProfilePicture(
-                            avatarUrl: _profileController.userAvatar.value,
-                          ),
+                          avatarUrl: _profileController.userAvatar.value,
+                        ),
                       ),
                     ),
-                    
                   ],
                 ),
                 Padding(

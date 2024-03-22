@@ -90,8 +90,7 @@ class DetailContainer extends StatelessWidget {
             const VerticalGap(size: 30),
 
             Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: 15.h),
+              padding: EdgeInsets.symmetric(horizontal: 15.h),
               child: WriteReviewView(
                 onClick: () {
                   showModalBottomSheet<ReviewBottomSheet>(
@@ -126,8 +125,7 @@ class DetailContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.orangeLight,
         boxShadow: [primaryBoxShadow()],
-        borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20.r)),
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(20.r)),
       ),
       child: Column(
         children: [

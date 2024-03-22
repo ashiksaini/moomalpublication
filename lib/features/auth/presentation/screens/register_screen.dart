@@ -33,8 +33,8 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: ScrollConfiguration(
-                    behavior: NoGlowBehavior(),
-                    child: SingleChildScrollView(child: RegisterView())),
+                      behavior: NoGlowBehavior(),
+                      child: SingleChildScrollView(child: RegisterView())),
                 ),
               ],
             )

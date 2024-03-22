@@ -10,7 +10,8 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
-import 'package:moomalpublication/core/utils/toast.dart';import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
 
 class PriceQuantity extends StatelessWidget {
   final ProductDetailController _productDetailController =
@@ -139,9 +140,7 @@ class PriceQuantity extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(
-                        height: 2.v,
-                        thickness: 2.v),
+                    Divider(height: 2.v, thickness: 2.v),
                   ],
                 );
               },
