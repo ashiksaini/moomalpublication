@@ -5,6 +5,7 @@ import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/item.dart';
 
@@ -32,10 +33,11 @@ class QuantityButton extends StatelessWidget {
 
   Widget quantityIncDecButton(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // Inc Desc view
         _getIncDescView(context),
+
+        HorizontalGap(size: 20.h),
 
         // Delete btn
         _getDeleteBtn(context),
@@ -58,9 +60,12 @@ class QuantityButton extends StatelessWidget {
             vertical: 2.h,
             horizontal: 8.h,
           ),
-          child: const Icon(
-            Icons.delete,
-            color: AppColors.red,
+          child: CustomText(
+            text: "delete".tr,
+            textStyle: CustomTextStyle.textStyle15Regular(
+              context,
+              color: AppColors.black,
+            ),
           ),
         ),
       ),

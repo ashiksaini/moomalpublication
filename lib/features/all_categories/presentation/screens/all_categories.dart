@@ -25,8 +25,6 @@ class AllCategoriesScreen extends StatelessWidget {
             children: [
               CustomAppbar(
                 title: "all_categories".tr,
-                prefixIcon: AppAssets.icBackArrow,
-                onPrefixIconClick: () => AppRouting.navigateBack(),
               ),
               SingleChildScrollView(
                 padding: EdgeInsets.symmetric(
@@ -36,7 +34,6 @@ class AllCategoriesScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         // Current Gk
                         _getCategoryItem(
@@ -61,7 +58,6 @@ class AllCategoriesScreen extends StatelessWidget {
                     ),
                     const VerticalGap(size: 50),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         // Exam Review
                         _getCategoryItem(
@@ -86,7 +82,6 @@ class AllCategoriesScreen extends StatelessWidget {
                     ),
                     const VerticalGap(size: 50),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         // New Books
                         _getCategoryItem(
@@ -120,13 +115,15 @@ class AllCategoriesScreen extends StatelessWidget {
   }
 
   Widget _getCategoryItem(String title, String icon, SharedData sharedData) {
-    return CategoryItem(
-      onClick: () => AppRouting.toNamed(
-        NameRoutes.categoryWiseScreen,
-        argument: sharedData,
+    return Expanded(
+      child: CategoryItem(
+        onClick: () => AppRouting.toNamed(
+          NameRoutes.categoryWiseScreen,
+          argument: sharedData,
+        ),
+        icon: icon,
+        title: title,
       ),
-      icon: icon,
-      title: title,
     );
   }
 }

@@ -29,6 +29,9 @@ class NameRoutes {
   static const String quizTestScreen = '/quizTestScreen';
   static const String onlineTestSeriesScreen = '/onlineTestSeriesScreen';
   static const String pdfScreen = '/pdfScreen';
+  static const String eBookScreen = '/eBookScreen';
+  static const String subscribeNowScreen = '/subscribeNowScreen';
+  static const String latestNewsScreen = '/latestNewsScreen';
   static const String thankYouPage = '/thankYouPage';
 
 

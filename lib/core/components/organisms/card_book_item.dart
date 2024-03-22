@@ -200,7 +200,7 @@ class CardBookItem extends StatelessWidget {
   Widget _getBookTitle(BuildContext context) {
     return CustomText(
       text: item.name,
-      textStyle: CustomTextStyle.textStyle16Bold(context),
+      textStyle: CustomTextStyle.textStyle16BoldCaladea(context),
       textAlign: TextAlign.start,
       maxLines: 2,
     );

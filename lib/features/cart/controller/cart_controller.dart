@@ -111,8 +111,10 @@ class CartController extends BaseController {
       } else {
         final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
         payUCheckoutPro.init(callBack: () => onRefresh());
-        payUCheckoutPro.pay(totals.value?.totalPrice,
-            cartCheckoutResponse.value.data!.orderKey);
+        payUCheckoutPro.pay(
+          totals.value?.totalPrice,
+          cartCheckoutResponse.value.data!.orderKey,
+        );
       }
     }
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/box_decorations.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/splash/presentation/template/splash_view.dart';
 
@@ -24,11 +23,12 @@ class SplashScreen extends StatelessWidget {
   }
 
   Widget _bg(BuildContext context) {
-    return SvgPicture.asset(
-      AppAssets.bgAuth,
-      height: SizeUtils.height,
+    return Container(
       width: SizeUtils.width,
-      fit: BoxFit.cover,
+      height: SizeUtils.height,
+      decoration: BoxDecoration(
+        gradient: gradientBg(context),
+      ),
     );
   }
 }

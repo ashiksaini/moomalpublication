@@ -37,7 +37,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   Future<void> _generateNavItems() async {
     final home = BottomNavItem(icon: AppAssets.icHome, label: 'home'.tr);
     final shop = BottomNavItem(icon: AppAssets.icShop, label: 'shop'.tr);
-    final ebook = BottomNavItem(icon: AppAssets.icEBook, label: 'ebook'.tr);
+    final ebook =
+        BottomNavItem(icon: AppAssets.icCategory, label: 'category'.tr);
     final cart = BottomNavItem(icon: AppAssets.icCart, label: 'cart'.tr);
     final profile =
         BottomNavItem(icon: AppAssets.icProfile, label: 'profile'.tr);

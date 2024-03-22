@@ -76,6 +76,12 @@ final Map<String, String> enUS = {
   "advance_filters": "Advance Filters",
   "course_type": "Course Type",
   "apply_filter": "Apply Filter",
+  "select_category": "Select Category",
+  "latest_news": "Latest\nNews",
+  "ebook_purchased": "E-Book\nPurchased",
+  "book_purchased": "Book\nPurchased",
+  "daily_quiz": "Daily\nQuiz",
+  "subscribe_now": "Subscribe\nNow",
 
   // Shop ////////////////////////////////////////////////////////////
   "shop": "Shop",
@@ -190,6 +196,7 @@ final Map<String, String> enUS = {
   "browse_product": "Browse Product",
   "quantity_cannot_exceed_the_limit": "Quantity cannot exceed 9999",
   "please_add_address_first": "Please add Address first",
+  "item_added_to_cart": "Item Added to Cart",
 
   // Search Screen ////////////////////////////////////////////////////////////
   "search_for_books_and_ebooks": "Search for Books and Ebooks",
@@ -214,6 +221,8 @@ final Map<String, String> enUS = {
   "profile": "Profile",
   "my_profile": "My Profile",
   "user_name": "User Name",
+  "results": "Results",
+  "help_center": "Help Center",
 
   // Write Review ///////////////////////////////////////////////////////////
   "your_rating": "Your Rating",
@@ -249,6 +258,13 @@ final Map<String, String> enUS = {
   "overall_performace": "Overall Performance",
   "online_exam": "Online Exam",
   "reattempt": "Reattempt",
+  "overall_results": "Overall Result",
+  "subjects": "Subjects",
+  "topics": "Topics",
+  "current_affairs": "Current Affairs",
+  "general_science": "General Science",
+  "general": "General",
+  "railway": "Railway",
 
   // Payment ///////////////////////////////////////////////////////////
   "payment_error": "Payment Error",
@@ -320,6 +336,16 @@ final Map<String, String> enUS = {
   "quiz_views": "Quiz Views",
   "quiz_taken": "Quiz Taken",
   "start_quiz": "Start Quiz",
+  "no_test_available": "No Test Available",
+
+  // News Letter
+  "news_letter": "News Letter",
+  "news_letter_desc": "Get The Latest News from US!",
+  "news_letter_subscribed_successfully": "News letter subscribed Successfully",
+  "subscribe_now2": "Subscribe now",
+
+  // Latest News
+  "latest_news1" : "Latest News",
 
   // Thank you page
   "purchase": "Purchase",

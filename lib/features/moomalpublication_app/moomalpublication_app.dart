@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/features/all_categories/presentation/screens/all_categories.dart';
 import 'package:moomalpublication/features/bottom_nav_bar/presentation/custom_bottom_nav_bar.dart';
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
-import 'package:moomalpublication/features/ebook/presentation/screens/ebook_screen.dart';
-import 'package:moomalpublication/features/home/presentation/screens/home_screen.dart';
+import 'package:moomalpublication/features/home/presentation/screens/home_screen2_.dart';
 import 'package:moomalpublication/features/profile/presentation/screens/profile_screen.dart';
 import 'package:moomalpublication/features/shop/presentation/screens/shop_screen.dart';
 
@@ -29,9 +29,9 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
 
   Future<void> _initPages() async {
     _pages = [
-      HomeScreen(),
+      HomeScreen2(),
       ShopScreen(),
-      EBookScreen(),
+      const AllCategoriesScreen(),
       const CartScreen(),
       ProfileScreen(),
     ];

@@ -8,8 +8,7 @@ LinearGradient gradientBg(BuildContext context) {
     end: Alignment.bottomCenter,
     colors: [
       AppColors.orangeDark,
-      AppColors.orange.withOpacity(0.8),
-      AppColors.greyDark,
+      AppColors.orangeDark.withOpacity(0.6),
     ],
   );
 }

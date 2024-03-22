@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
@@ -15,6 +16,7 @@ class ListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShadowContainer(
       borderRadius: 10.r,
+      borderColor: AppColors.greyLight,
       containerChild: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.h),
         child: Column(

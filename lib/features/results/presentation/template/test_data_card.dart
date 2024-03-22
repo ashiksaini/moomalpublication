@@ -3,8 +3,8 @@ import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/features/online_test_series/data/models/result.dart';
-import 'package:moomalpublication/features/online_test_series/presentation/template/result_sheet_marks_card.dart';
+import 'package:moomalpublication/features/results/data/models/result.dart';
+import 'package:moomalpublication/features/results/presentation/template/result_sheet_marks_card.dart';
 
 class TestDataCard extends StatelessWidget {
   final String title;

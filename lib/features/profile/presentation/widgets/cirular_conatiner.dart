@@ -11,7 +11,7 @@ class CircularContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeUtils.height / 4,
+      height: SizeUtils.height / 5,
       width: SizeUtils.width,
       decoration: BoxDecoration(
         color: AppColors.black,

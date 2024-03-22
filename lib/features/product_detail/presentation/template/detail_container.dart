@@ -161,7 +161,7 @@ class DetailContainer extends StatelessWidget {
           // Book Title
           CustomText(
             text: _productDetailController.productDetailData.value!.name,
-            textStyle: CustomTextStyle.textStyle30Bold(context),
+            textStyle: CustomTextStyle.textStyle30BoldCaladea(context),
             maxLines: 3,
           ),
           const VerticalGap(size: 5),

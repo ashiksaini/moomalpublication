@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class Term {
   final int? termId;
   final String? name;
@@ -9,6 +11,7 @@ class Term {
   final int? parent;
   final int? count;
   final String? filter;
+  RxBool isSelected = RxBool(false);
 
   Term({
     this.termId,
