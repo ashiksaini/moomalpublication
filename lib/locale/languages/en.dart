@@ -300,6 +300,7 @@ final Map<String, String> enUS = {
   'please_fill_all_required_fields': "please fill all required filed",
   'please_enter_a_valid_number': "please enter a valid number",
   "update": "Update",
+  "same_as_billing_address" : "Same as Billing Address",
 
   // Download
   "my_downloads": "My Downloads",

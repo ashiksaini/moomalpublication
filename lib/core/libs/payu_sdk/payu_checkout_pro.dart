@@ -79,6 +79,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   @override
   onPaymentCancel(Map? response) {
+    AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     showLottieDialog(
         Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
     CustomLogger.logger.w(response.toString());
@@ -95,7 +96,6 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   @override
   onPaymentSuccess(response) {
-    AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     _callBack();
     throw UnimplementedError();
   }
