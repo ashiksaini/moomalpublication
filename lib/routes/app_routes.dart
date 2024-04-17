@@ -14,6 +14,7 @@ import 'package:moomalpublication/features/event_press_release/presentation/scre
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/latest_news/presentation/screen/latest_news_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
+import 'package:moomalpublication/features/my_orders/presentation/screen/ebook_order.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
 import 'package:moomalpublication/features/results/presentation/screen/online_exam.dart';
 import 'package:moomalpublication/features/results/presentation/screen/overall_result_screen.dart';
@@ -225,6 +226,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.thankYouPage,
       page: () => ThankYouScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.ebookOrder,
+      page: () => EbookOrderScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

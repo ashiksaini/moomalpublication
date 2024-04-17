@@ -45,8 +45,8 @@ class CustomAppbar extends StatelessWidget {
               onTap: () => onPrefixIconClick!(),
               child: SvgPicture.asset(
                 prefixIcon!,
-                height: 24.v,
-                width: 24.h,
+                height: 40.v,
+                width: 40.h,
               ),
             ),
             const HorizontalGap(size: 12),

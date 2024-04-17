@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
 
 class OrderDetailCard extends StatelessWidget {
-  const OrderDetailCard({super.key});
+  const OrderDetailCard({super.key, required this.lineItem});
+  final LineItem lineItem;
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +19,18 @@ class OrderDetailCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomText(
-              text: 'Order Details',
+              text: 'order_details'.tr,
               textStyle: CustomTextStyle.textStyle15Bold(context,
                   color: AppColors.black)),
           const VerticalGap(size: 12),
           CustomText(
-              text: 'Price Details (x 1 item)',
+              text:
+                  '${'price_details'.tr} (x ${lineItem.quantity} ${'item'.tr})',
               textStyle: CustomTextStyle.textStyle15Bold(context,
                   color: AppColors.black)),
           const VerticalGap(size: 6),
           CustomText(
-              text: 'Product ID : 12354',
+              text: '${'product_id'.tr} : ${lineItem.id}',
               textStyle: CustomTextStyle.textStyle14Regular(
                 context,
                 fontStyle: FontStyle.italic,
@@ -41,14 +45,14 @@ class OrderDetailCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomText(
-                        text: 'SubTotal',
+                        text: 'subtotal'.tr,
                         textStyle: CustomTextStyle.textStyle14Regular(
                           context,
                           fontStyle: FontStyle.italic,
                           color: AppColors.black,
                         )),
                     CustomText(
-                        text: '15',
+                        text: '₹${lineItem.subtotal}',
                         textStyle: CustomTextStyle.textStyle14Bold(
                           context,
                           color: AppColors.black,
@@ -65,7 +69,7 @@ class OrderDetailCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomText(
-                  text: 'Total',
+                  text: 'total'.tr,
                   textStyle: CustomTextStyle.textStyle15Bold(
                     context,
                     color: AppColors.black,
@@ -73,7 +77,7 @@ class OrderDetailCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(right: 4.h),
                 child: CustomText(
-                    text: '15',
+                    text: '₹${lineItem.total}',
                     textStyle: CustomTextStyle.textStyle15Bold(
                       context,
                       color: AppColors.black,
@@ -82,7 +86,6 @@ class OrderDetailCard extends StatelessWidget {
             ],
           ),
           const VerticalGap(size: 14),
-         
         ],
       ),
     );

@@ -9,6 +9,7 @@ class OrderController extends BaseController {
   final Rx<OrderResponse> orderResponse = Rx(ApiResponse());
   final RxBool showBrowseProduct = true.obs;
   final RxList<OrderResponseModel> ordersList = RxList<OrderResponseModel>([]);
+  final Rx<OrderResponseModel> singleProduct = Rx(OrderResponseModel());
 
   @override
   void onInit() {

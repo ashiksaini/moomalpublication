@@ -13,8 +13,9 @@ import 'package:moomalpublication/routes/routing.dart';
 class LatestNewsScreen extends StatelessWidget {
   LatestNewsScreen({super.key});
 
-  final LatestNewsController _latestNewsController = Get.put(LatestNewsController());
-  
+  final LatestNewsController _latestNewsController =
+      Get.put(LatestNewsController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,21 +33,26 @@ class LatestNewsScreen extends StatelessWidget {
               ),
               Obx(
                 () => Expanded(
-                  child: _latestNewsController.latestNewsResponse.value.isLoading
+                  child: _latestNewsController
+                          .latestNewsResponse.value.isLoading
                       ? Center(child: customProgressIndicator())
                       : _latestNewsController.latestNews.isNotEmpty
                           ? ListView.builder(
-                            itemCount: _latestNewsController.latestNews.length,
-                            itemBuilder: (_, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 12.v),
-                                child: CardLatestNewsItem(latestNewsItem: _latestNewsController.latestNews[index],),
-                              );
-                            }
-                          )
+                              itemCount:
+                                  _latestNewsController.latestNews.length,
+                              itemBuilder: (_, index) {
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10.h, vertical: 12.v),
+                                  child: CardLatestNewsItem(
+                                    latestNewsItem:
+                                        _latestNewsController.latestNews[index],
+                                  ),
+                                );
+                              })
                           : Center(
-                              child:
-                                  EmptyProductView(title: "no_latest_news_available".tr)),
+                              child: EmptyProductView(
+                                  title: "no_latest_news_available".tr)),
                 ),
               ),
             ],
