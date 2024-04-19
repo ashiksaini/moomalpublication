@@ -9,21 +9,26 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/date_time_utils.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/my_orders/presentation/widgets/image_container.dart';
 import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class MyOrderCard extends StatelessWidget {
   const MyOrderCard(
       {super.key,
       required this.lineItem,
       this.datePaid,
-      required this.onTapCard});
+      required this.onTapCard,
+      required this.downloadLinks});
   final LineItem lineItem;
   final DateTime? datePaid;
   final Function onTapCard;
+  final List<String> downloadLinks;
 
   @override
   Widget build(BuildContext context) {
@@ -91,23 +96,20 @@ class MyOrderCard extends StatelessWidget {
                         const VerticalGap(size: 12),
                         Row(
                           children: [
-                            CustomOrangeButton(
-                              buttonText: "view".tr,
-                              onTapButton: () {},
-                              customTextStyle: CustomTextStyle.textStyle16Bold(
-                                  context,
-                                  color: AppColors.white),
-                              radius: 6,
-                            ),
-                            const HorizontalGap(size: 16),
-                            CustomOrangeButton(
-                              buttonText: "cancel_request".tr,
-                              onTapButton: () {},
-                              customTextStyle: CustomTextStyle.textStyle16Bold(
-                                  context,
-                                  color: AppColors.white),
-                              radius: 6,
-                            ),
+                            if (downloadLinks.isNotEmpty)
+                              CustomOrangeButton(
+                                buttonText: "view".tr,
+                                onTapButton: () {
+                                  AppRouting.toNamed(NameRoutes.pdfScreen,
+                                      argument: SharedData(
+                                          productName: lineItem.name,
+                                          productURL: downloadLinks[0]));
+                                },
+                                customTextStyle:
+                                    CustomTextStyle.textStyle16Bold(context,
+                                        color: AppColors.white),
+                                radius: 6,
+                              ),
                           ],
                         ),
                       ],

@@ -33,6 +33,7 @@ class OrderCard extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: MyOrderCard(
+                    downloadLinks: dataItem.downloadLinks ?? [],
                     lineItem: listItem,
                     datePaid: dataItem.datePaid,
                     onTapCard: () {
