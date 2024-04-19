@@ -93,9 +93,8 @@ class HomeScreen2 extends StatelessWidget {
                       context,
                       color: AppColors.black,
                     ),
-                    onClick: () => AppRouting.toNamed(
-                      NameRoutes.latestNewsScreen
-                    ),
+                    onClick: () =>
+                        AppRouting.toNamed(NameRoutes.latestNewsScreen),
                   ),
                 ),
               ],

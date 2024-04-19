@@ -2,18 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/date_time_utils.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/my_orders/presentation/widgets/image_container.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
 
 class MyOrderCard extends StatelessWidget {
-  const MyOrderCard({super.key});
+  const MyOrderCard(
+      {super.key,
+      required this.lineItem,
+      this.datePaid,
+      required this.onTapCard});
+  final LineItem lineItem;
+  final DateTime? datePaid;
+  final Function onTapCard;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +32,7 @@ class MyOrderCard extends StatelessWidget {
       child: ShadowContainer(
         borderRadius: 10,
         backgroundColor: AppColors.orange_100,
+        borderColor: AppColors.grey,
         containerChild: Column(
           children: [
             Padding(
@@ -32,11 +43,7 @@ class MyOrderCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomText(
-                      text: 'Order ID #458',
-                      textStyle: CustomTextStyle.textStyle12Medium(context,
-                          color: AppColors.black)),
-                  CustomText(
-                      text: 'Sold to Designer',
+                      text: '${'order_id'.tr} #${lineItem.id}',
                       textStyle: CustomTextStyle.textStyle12Medium(context,
                           color: AppColors.black)),
                 ],
@@ -51,52 +58,69 @@ class MyOrderCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const ImageContainer(),
-                  // const HorizontalGap(size: 40),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText(
-                          text: 'Current Affairs 1 Liner',
-                          textStyle: CustomTextStyle.textStyle20Bold(context,
-                              color: AppColors.black)),
-                      CustomText(
-                          text: '5 March 2024',
-                          textStyle: CustomTextStyle.textStyle10Regular(context,
-                              fontStyle: FontStyle.italic,
-                              color: AppColors.black)),
-                      const VerticalGap(size: 6),
-                      CustomText(
-                          text: 'Ebook',
-                          textStyle: CustomTextStyle.textStyle15Bold(context,
-                              color: AppColors.black)),
-                      const VerticalGap(size: 12),
-                      Row(
-                        children: [
-                          CustomOrangeButton(
-                            buttonText: "view".tr,
-                            onTapButton: () {},
-                            customTextStyle: CustomTextStyle.textStyle16Bold(
-                                context,
-                                color: AppColors.white),
-                            radius: 6,
-                          ),
-                          const HorizontalGap(size: 16),
-                          CustomOrangeButton(
-                            buttonText: "Cancel Request".tr,
-                            onTapButton: () {},
-                            customTextStyle: CustomTextStyle.textStyle16Bold(
-                                context,
-                                color: AppColors.white),
-                            radius: 6,
-                          ),
-                        ],
-                      ),
-                    ],
+                  ImageContainer(
+                    image: lineItem.image != null ? lineItem.image!.src : '',
                   ),
-                  SvgPicture.asset(
-                    AppAssets.icForwardArrow,
-                    width: 30.h,
+                  const HorizontalGap(size: 20),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText(
+                            textAlign: TextAlign.start,
+                            text: lineItem.name,
+                            textStyle: CustomTextStyle.textStyle20Bold(context,
+                                color: AppColors.black)),
+                        CustomText(
+                            text: DateTimeUtils.formatDateTime(
+                              inputDateString: datePaid.toString(),
+                              outputFormat: AppConstants.dateFormatter,
+                            ),
+                            textStyle: CustomTextStyle.textStyle10Regular(
+                                context,
+                                fontStyle: FontStyle.italic,
+                                color: AppColors.black)),
+                        const VerticalGap(size: 6),
+                        CustomText(
+                            text: lineItem.lineItemsMetaData != null &&
+                                    lineItem.lineItemsMetaData!.isNotEmpty
+                                ? lineItem.lineItemsMetaData![0].displayValue
+                                : '',
+                            textStyle: CustomTextStyle.textStyle15Bold(context,
+                                color: AppColors.black)),
+                        const VerticalGap(size: 12),
+                        Row(
+                          children: [
+                            CustomOrangeButton(
+                              buttonText: "view".tr,
+                              onTapButton: () {},
+                              customTextStyle: CustomTextStyle.textStyle16Bold(
+                                  context,
+                                  color: AppColors.white),
+                              radius: 6,
+                            ),
+                            const HorizontalGap(size: 16),
+                            CustomOrangeButton(
+                              buttonText: "cancel_request".tr,
+                              onTapButton: () {},
+                              customTextStyle: CustomTextStyle.textStyle16Bold(
+                                  context,
+                                  color: AppColors.white),
+                              radius: 6,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      onTapCard();
+                    },
+                    child: SvgPicture.asset(
+                      AppAssets.icForwardArrow,
+                      width: 30.h,
+                    ),
                   ),
                 ],
               ),

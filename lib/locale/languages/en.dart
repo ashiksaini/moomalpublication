@@ -187,6 +187,9 @@ final Map<String, String> enUS = {
   "my_cart": "My Cart",
   "quantity_txt": "Quantity :",
   "order_details": "Order Details",
+  "shipping_details":"Shipping Details",
+  "product_details":"Product Details",
+  "cancel_request":"Cancel Request",
   "items": "items",
   "product_total": "Product Total",
   "shipping_charges": "Shipping Charges",
@@ -318,6 +321,8 @@ final Map<String, String> enUS = {
   "name": "Name",
   "date_paid": "Date Paid",
   "price_no": "Price",
+  "view":"view",
+  "expire":"Expire",
 
   // Online Test Series and Overall Result
   "score": "Score",
@@ -330,6 +335,7 @@ final Map<String, String> enUS = {
   "order_id": "Order ID",
   "purchased_on": "Purchased On",
   "no_test_result_found": "No Test Result Found",
+
 
   // Quiz
   "admin": "Admin",
@@ -345,7 +351,7 @@ final Map<String, String> enUS = {
   "subscribe_now2": "Subscribe now",
 
   // Latest News
-  "latest_news1" : "Latest News",
+  "latest_news1": "Latest News",
 
   // Thank you page
   "purchase": "Purchase",
@@ -354,9 +360,12 @@ final Map<String, String> enUS = {
   "order_number": "ORDER NUMBER",
   "DATE": "DATE",
   "products": "Products",
-  "subtotal":"Subtotal",
-  "payment_method":"Payment Method",
-  "date":'Date',
-  "email":"Email",
-
+  "subtotal": "Subtotal",
+  "payment_method": "Payment Method",
+  "date": 'Date',
+  "email": "Email",
+  "price_details": "Price Details",
+  "item": "item",
+  "ebook_order":"Ebook Order",
+  "order_again":"Order Again",
 };
