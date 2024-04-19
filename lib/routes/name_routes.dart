@@ -33,6 +33,5 @@ class NameRoutes {
   static const String subscribeNowScreen = '/subscribeNowScreen';
   static const String latestNewsScreen = '/latestNewsScreen';
   static const String thankYouPage = '/thankYouPage';
-
-
+  static const String ebookOrder = '/ebookorder';
 }

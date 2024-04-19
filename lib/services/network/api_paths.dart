@@ -34,5 +34,4 @@ class ApiPaths {
   static const String subscribe = 'newsletter/v2/subscribers';
   static const String latestNews = 'moomal/v1/posts/';
   static const String orderSuccess = 'custom-namespace/v1/thankyou/';
-
 }

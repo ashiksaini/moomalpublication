@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/core/utils/toast.dart';
@@ -16,10 +15,12 @@ class LatestNewsServices {
         .haveInternetConnection
         .value) {
       try {
-        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .get(ApiPaths.latestNews);
+        final dio.Response<dynamic> response =
+            await DioClient.dioWithoutAuth!.get(ApiPaths.latestNews);
 
-        final parsedResponse = (response.data as List<dynamic>?)?.map((item) => LatestNewsItem.fromJson(item)).toList();
+        final parsedResponse = (response.data as List<dynamic>?)
+            ?.map((item) => LatestNewsItem.fromJson(item))
+            .toList();
 
         return LatestNewsResponse.success(parsedResponse);
       } on dio.DioException catch (error) {

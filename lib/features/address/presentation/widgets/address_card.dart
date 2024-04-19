@@ -77,7 +77,7 @@ class AddressCard extends StatelessWidget {
                 activeColor: AppColors.orange,
                 value: true,
                 onChanged: (value) {
-                 
+                  
                 },
               ),
             ),
