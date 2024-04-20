@@ -4,10 +4,16 @@ class OrderResponseModel {
   final DateTime? datePaid;
   final List<LineItem>? lineItems;
   final Shipping? shippingData;
+  final List<String>? downloadLinks;
 
-  OrderResponseModel({this.datePaid, this.lineItems, this.shippingData});
+  OrderResponseModel(
+      {this.datePaid, this.lineItems, this.shippingData, this.downloadLinks});
   factory OrderResponseModel.fromJson(Map<String, dynamic> json) =>
       OrderResponseModel(
+        downloadLinks: (json['download_links'] as List<dynamic>?)
+                ?.map((e) => e.toString())
+                .toList() ??
+            [],
         datePaid: json["date_paid"] == null
             ? null
             : DateTime.parse(json["date_paid"]),

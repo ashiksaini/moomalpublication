@@ -106,28 +106,28 @@ class EbookOrderScreen extends StatelessWidget {
                                             .singleProduct.value.shippingData ??
                                         Shipping()
                                     : Shipping()),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 20.v, horizontal: 14.h),
-                          child: ShadowContainer(
-                              borderColor: AppColors.white,
-                              backgroundColor: AppColors.orange,
-                              borderRadius: 10,
-                              containerChild: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 12.h),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CustomText(
-                                        text: 'order_again'.tr,
-                                        textStyle:
-                                            CustomTextStyle.textStyle22Bold(
-                                                context,
-                                                color: AppColors.black)),
-                                  ],
-                                ),
-                              )),
-                        )
+                        // Padding(
+                        //   padding: EdgeInsets.symmetric(
+                        //       vertical: 20.v, horizontal: 14.h),
+                        //   child: ShadowContainer(
+                        //       borderColor: AppColors.white,
+                        //       backgroundColor: AppColors.orange,
+                        //       borderRadius: 10,
+                        //       containerChild: Padding(
+                        //         padding: EdgeInsets.symmetric(vertical: 12.h),
+                        //         child: Row(
+                        //           mainAxisAlignment: MainAxisAlignment.center,
+                        //           children: [
+                        //             CustomText(
+                        //                 text: 'order_again'.tr,
+                        //                 textStyle:
+                        //                     CustomTextStyle.textStyle22Bold(
+                        //                         context,
+                        //                         color: AppColors.black)),
+                        //           ],
+                        //         ),
+                        //       )),
+                        // )
                       ],
                     ),
                   ),
