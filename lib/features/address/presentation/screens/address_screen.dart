@@ -75,6 +75,7 @@ class AddressScreen extends StatelessWidget {
                                     address: controller.shippingAddress.value,
                                     addressHeading: "shipping_address".tr,
                                     isShippingAddress: true,
+                                    onSameAsBillingAddressClick: controller.sameAsBillingAddress,
                                     onTap: () {
                                       AddressBottomSheet().bottomSheet(
                                         context: context,

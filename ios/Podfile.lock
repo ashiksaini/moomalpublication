@@ -15,12 +15,12 @@ PODS:
     - FlutterMacOS
   - payu_checkoutpro_flutter (1.0.1):
     - Flutter
-    - PayUIndia-CheckoutPro (~> 6.0)
+    - PayUIndia-CheckoutPro (~> 7.6)
   - PayUIndia-Analytics (3.0.0):
     - PayUIndia-NetworkReachability (~> 1.0)
   - PayUIndia-AssetLibrary (3.3.2)
   - PayUIndia-CardScanner (1.0.0)
-  - PayUIndia-CheckoutPro (6.0.1):
+  - PayUIndia-CheckoutPro (7.6):
     - PayUIndia-Analytics (= 3.0)
     - PayUIndia-AssetLibrary (~> 3.3)
     - PayUIndia-CardScanner (~> 1.0)

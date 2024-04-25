@@ -5,8 +5,6 @@ import 'package:moomalpublication/core/base/shipping_address.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
-import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
 
@@ -14,6 +12,7 @@ class AddressCard extends StatelessWidget {
   final String addressHeading;
   final dynamic address;
   final Function? onTap;
+  final Function? onSameAsBillingAddressClick;
   final bool isShippingAddress;
 
   late final BillingAddress billingAddress;
@@ -25,6 +24,7 @@ class AddressCard extends StatelessWidget {
     required this.address,
     required this.addressHeading,
     this.onTap,
+    this.onSameAsBillingAddressClick,
     this.isShippingAddress = false,
   }) {
     if (address is BillingAddress) {
@@ -65,33 +65,34 @@ class AddressCard extends StatelessWidget {
             decoration: TextDecoration.underline,
           ),
         ),
-
-        if (isShippingAddress) Row(
-          children: [
-            SizedBox(
-              height: 24.v,
-              width: 24.h,
-              child: Checkbox(
-                side: const BorderSide(color: AppColors.black),
-                checkColor: AppColors.white,
-                activeColor: AppColors.orange,
-                value: true,
-                onChanged: (value) {
-                  
-                },
-              ),
-            ),
-            const HorizontalGap(size: 4),
-            CustomText(
-              text: "same_as_billing_address".tr,
-              textStyle: CustomTextStyle.textStyle18BoldCaladea(
-                context,
-                color: AppColors.black,
-              ),
-            ),
-          ],
-        ),
-
+        // if (isShippingAddress)
+        //   Row(
+        //     children: [
+        //       SizedBox(
+        //         height: 24.v,
+        //         width: 24.h,
+        //         child: Checkbox(
+        //           side: const BorderSide(color: AppColors.black),
+        //           checkColor: AppColors.white,
+        //           activeColor: AppColors.orange,
+        //           value: true,
+        //           onChanged: (value) {
+        //             if (onSameAsBillingAddressClick != null) {
+        //               onSameAsBillingAddressClick!();
+        //             }
+        //           },
+        //         ),
+        //       ),
+        //       const HorizontalGap(size: 4),
+        //       CustomText(
+        //         text: "same_as_billing_address".tr,
+        //         textStyle: CustomTextStyle.textStyle18BoldCaladea(
+        //           context,
+        //           color: AppColors.black,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
         const VerticalGap(size: 10),
         CustomText(
           textAlign: TextAlign.start,

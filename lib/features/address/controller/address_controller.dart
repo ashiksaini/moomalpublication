@@ -184,7 +184,7 @@ class AdressController extends BaseController {
     phoneNumberIndex = billingAddressList.length - 2;
   }
 
-  void onSubmitBillingButton({required BuildContext context}) {
+  void onSubmitBillingButton({BuildContext? context}) {
     billingAllFieldsFilled.value = true;
     for (var addressController in billingAddressList) {
       final trimmedText = addressController.controller.text.trim();
@@ -219,7 +219,9 @@ class AdressController extends BaseController {
 
         _postAddressData(data);
 
-        Navigator.pop(context);
+        if (context != null) {
+          Navigator.pop(context);
+        }
       }
     } else {
       showToast("please_fill_all_required_fields".tr);
@@ -321,5 +323,9 @@ class AdressController extends BaseController {
     }
 
     return finalData;
+  }
+
+  void sameAsBillingAddress() {
+    onSubmitBillingButton();
   }
 }

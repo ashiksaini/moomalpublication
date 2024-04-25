@@ -8,14 +8,12 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/my_orders/presentation/template/order_detail_card.dart';
 import 'package:moomalpublication/features/my_orders/presentation/template/product_detail.dart';
 import 'package:moomalpublication/features/my_orders/presentation/template/shipping_detail_card.dart';
 import 'package:moomalpublication/features/orders/controllers/orders_controller.dart';
 import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
 import 'package:moomalpublication/features/orders/data/models/shipping.dart';
-import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class EbookOrderScreen extends StatelessWidget {
@@ -36,9 +34,6 @@ class EbookOrderScreen extends StatelessWidget {
                 title: 'ebook_order'.tr,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => AppRouting.navigateBack(),
-                suffixIcon: AppAssets.icSearch,
-                onSuffixIconClick: () =>
-                    AppRouting.toNamed(NameRoutes.searchScreen),
               ),
               const VerticalGap(size: 14),
               ScrollConfiguration(

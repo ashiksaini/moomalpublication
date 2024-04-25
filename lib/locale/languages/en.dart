@@ -322,7 +322,7 @@ final Map<String, String> enUS = {
   "name": "Name",
   "date_paid": "Date Paid",
   "price_no": "Price",
-  "view":"view",
+  "view":"View",
   "expire":"Expire",
 
   // Online Test Series and Overall Result

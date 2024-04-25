@@ -1,7 +1,7 @@
 name: moomalpublication
 description: A new Flutter project.
 publish_to: 'none' 
-version: 1.1.0+6
+version: 1.2.0+10
 
 environment:
   sdk: '>=3.1.2 <4.0.0'
@@ -16,7 +16,7 @@ dependencies:
   shared_preferences: ^2.2.2 
   intl: ^0.18.1
   shimmer: ^3.0.0
-  lottie: ^2.7.0 
+  lottie: ^3.1.0 
   cached_network_image: ^3.3.1
   flutter_svg: ^2.0.9
   cupertino_icons: ^1.0.6 
@@ -25,13 +25,13 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   url_launcher: ^6.2.2 
   flutter_html: ^3.0.0-beta.2
-  payu_checkoutpro_flutter: ^1.0.4
+  payu_checkoutpro_flutter: ^1.1.3
   crypto: ^3.0.3
   share_plus: ^7.2.1
   path_provider: ^2.1.2
   upgrader: ^9.0.0
-  syncfusion_flutter_pdfviewer: ^24.1.47
-  syncfusion_flutter_core: ^24.1.47
+  syncfusion_flutter_pdfviewer: ^23.2.6
+  syncfusion_flutter_core: ^23.2.6
   device_preview: ^1.1.0
   fluttertoast: ^8.2.4
   flutter_layout_grid: ^2.0.5
@@ -39,7 +39,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.2
 
 flutter:
   uses-material-design: true
