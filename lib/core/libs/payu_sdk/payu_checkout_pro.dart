@@ -4,11 +4,12 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/libs/payu_sdk/hash_sevices.dart';
 import 'package:moomalpublication/core/utils/dialogs.dart';
 import 'package:moomalpublication/core/utils/utility.dart';
-import 'package:moomalpublication/routes/name_routes.dart';
-import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:payu_checkoutpro_flutter/PayUConstantKeys.dart';
 import 'package:payu_checkoutpro_flutter/payu_checkoutpro_flutter.dart';
+
+import '../../../routes/name_routes.dart';
+import '../../../routes/routing.dart';
 
 class PayUCheckoutPro implements PayUCheckoutProProtocol {
   late PayUCheckoutProFlutter _checkoutProFlutter;
@@ -20,11 +21,11 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     _callBack = callBack!;
   }
 
-  Future<void> pay(String? totalPrice, String? orderId) async {
+  Future<void> pay(String? totalPrice, String? orderKey, String? orderId) async {
     this.orderId = orderId ?? "";
 
     final payUPaymentParams = _getPayUPaymentParams(
-        totalPrice ?? "1.0", orderId ?? Utility.generateTransactionId());
+        totalPrice ?? "1.0", orderKey ?? Utility.generateTransactionId());
     final payUCheckoutProConfig = _getPayUCheckoutProConfig();
 
     _checkoutProFlutter.openCheckoutScreen(
@@ -33,7 +34,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     );
   }
 
-  Map<String, dynamic> _getPayUPaymentParams(String amount, String orderId) {
+  Map<String, dynamic> _getPayUPaymentParams(String amount, String orderKey) {
     return {
       PayUPaymentParamKey.key: PayuPaymentConfig.key,
       PayUPaymentParamKey.amount: amount,
@@ -43,7 +44,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
       PayUPaymentParamKey.phone: PayuPaymentConfig.phNumber,
       PayUPaymentParamKey.environment: PayuPaymentConfig.env,
       PayUPaymentParamKey.transactionId:
-          orderId, // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
+          orderKey, // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
       PayUPaymentParamKey.userCredential: PayuPaymentConfig.userCredential,
       PayUPaymentParamKey.android_surl:
           "https://www.payumoney.com/mobileapp/payumoney/success.php",
@@ -79,7 +80,6 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   @override
   onPaymentCancel(Map? response) {
-    AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     showLottieDialog(
         Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
     CustomLogger.logger.w(response.toString());
@@ -96,6 +96,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   @override
   onPaymentSuccess(response) {
+    AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     _callBack();
     throw UnimplementedError();
   }

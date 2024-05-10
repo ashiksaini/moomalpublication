@@ -114,6 +114,7 @@ class CartController extends BaseController {
         payUCheckoutPro.pay(
           totals.value?.totalPrice,
           cartCheckoutResponse.value.data!.orderKey,
+          cartCheckoutResponse.value.data!.orderId.toString(),
         );
       }
     }

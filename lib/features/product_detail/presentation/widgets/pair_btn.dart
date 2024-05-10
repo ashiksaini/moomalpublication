@@ -130,7 +130,7 @@ class PairBuyBtn extends StatelessWidget {
                   color: AppColors.orangeDark,
                   boxShadow: [primaryBoxShadow()],
                 ),
-                child: SvgPicture.asset(AppAssets.icShopping),
+                child: SvgPicture.asset(AppAssets.icFlash),
               ),
               Expanded(
                 child: Padding(

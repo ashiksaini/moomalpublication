@@ -20,9 +20,9 @@ class ProfilePicture extends StatelessWidget {
           right: 0.h,
           top: 0.v,
           child: Padding(
-            padding: EdgeInsets.all(30.r),
+            padding: EdgeInsets.all(35.r),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(200.r),
+              borderRadius: BorderRadius.circular(5.r),
               child: CachedNetworkImage(
                 imageUrl: avatarUrl,
                 fit: BoxFit.cover,

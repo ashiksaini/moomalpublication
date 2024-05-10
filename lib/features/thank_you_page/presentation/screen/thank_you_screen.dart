@@ -22,7 +22,7 @@ class ThankYouScreen extends StatelessWidget {
             child: orderSuccessController.orderSuccessResponse.value.isLoading
                 ? Center(child: customProgressIndicator())
                 : orderSuccessController.thankYouScreeShow.value
-                    ? const ThankYouPageTemplate()
+                    ? ThankYouPageTemplate()
                     : OrderSuccessScreen()),
       ),
     );

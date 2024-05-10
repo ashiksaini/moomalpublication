@@ -3,8 +3,10 @@ import 'package:intl/intl.dart';
 class DateTimeUtils {
   DateTimeUtils._();
 
-  static String formatDate(
-      {required DateTime date, required String formatType}) {
+  static String formatDate({
+    required DateTime date,
+    required String formatType,
+  }) {
     try {
       final formatter = DateFormat(formatType);
       return formatter.format(date);
@@ -13,10 +15,24 @@ class DateTimeUtils {
     }
   }
 
-  static String formatDateTime(
-      {required String inputDateString, required String outputFormat}) {
+  static String formatDateTime({
+    required String inputDateString,
+    required String outputFormat,
+  }) {
     try {
       DateTime dateTime = DateTime.parse(inputDateString);
+      String formattedDate = DateFormat(outputFormat).format(dateTime);
+      return formattedDate;
+    } catch (e) {
+      return '';
+    }
+  }
+
+  static String getCurrentDate({
+    required String outputFormat,
+  }) {
+    try {
+      DateTime dateTime = DateTime.now();
       String formattedDate = DateFormat(outputFormat).format(dateTime);
       return formattedDate;
     } catch (e) {
