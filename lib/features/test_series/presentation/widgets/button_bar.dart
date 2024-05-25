@@ -3,7 +3,9 @@ import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
-import 'package:moomalpublication/core/utils/utility.dart';
+import 'package:moomalpublication/core/utils/shared_data.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class CustomButtonBar extends StatelessWidget {
   const CustomButtonBar(
@@ -44,7 +46,7 @@ class CustomButtonBar extends StatelessWidget {
           if (buttonVisibility)
             GestureDetector(
               onTap: () {
-                Utility.launchurl(permalink ?? '');
+                AppRouting.toNamed(NameRoutes.webView, argument: SharedData(testName: barText, testUrl: permalink));
               },
               child: Container(
                 decoration: BoxDecoration(
