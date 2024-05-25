@@ -6,7 +6,6 @@ import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
-import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 
@@ -131,7 +130,7 @@ mixin NetworkHandlingMixin {
 
   void printResponse(dio.Response<dynamic> response) {
     if (kDebugMode) {
-      CustomLogger.logger.w(
+      print(
           "*************************************** Response ***************************************\n"
           "Status Code: ${response.statusCode}\n"
           "Url: ${response.requestOptions.uri}\n"
@@ -143,7 +142,7 @@ mixin NetworkHandlingMixin {
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      CustomLogger.logger.w(
+      print(
           "*************************************** Request ***************************************\n"
           "Request Method: ${options.method}\n"
           "Request URL: ${options.uri}\n"

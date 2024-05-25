@@ -103,7 +103,7 @@ class CategoryWiseScreen extends StatelessWidget {
           height: 110.v,
           padding: EdgeInsets.symmetric(
             horizontal: 12.h,
-            vertical: 15.v,
+            vertical: 10.v,
           ),
           decoration: BoxDecoration(
               color: AppColors.greyLight,

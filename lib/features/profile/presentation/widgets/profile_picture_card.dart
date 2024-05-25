@@ -25,7 +25,7 @@ class ProfilePicture extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.r),
               child: CachedNetworkImage(
                 imageUrl: avatarUrl,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
           ),

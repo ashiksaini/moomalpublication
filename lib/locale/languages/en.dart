@@ -369,4 +369,6 @@ final Map<String, String> enUS = {
   "item": "item",
   "ebook_order":"Ebook Order",
   "order_again":"Order Again",
+  "online": "Online",
+  "go_to_orders": "Go To Orders"
 };
