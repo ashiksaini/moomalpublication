@@ -18,6 +18,7 @@ class MoomalPublicationApp extends StatefulWidget {
 
 class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
   int _selectedIndex = 0;
+  int _cartItemCount = 0;
   late List<Widget> _pages = [];
 
   @override
@@ -25,7 +26,8 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
     super.initState();
     _initPages();
 
-    Get.put(CartController());
+    Get.put(CartController(onCartItemCountChange: _onCartItemCountChange));
+
     _selectedIndex = Get.arguments ?? 0;
   }
 
@@ -34,7 +36,9 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
       HomeScreen2(),
       ShopScreen(),
       const AllCategoriesScreen(),
-      const CartScreen(),
+      CartScreen(
+        onCartItemCountChange: _onCartItemCountChange,
+      ),
       ProfileScreen(),
     ];
   }
@@ -45,6 +49,12 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
     });
   }
 
+  void _onCartItemCountChange(int cartItemCount) {
+    setState(() {
+      _cartItemCount = cartItemCount;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +62,7 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
       body: _pages[_selectedIndex],
       bottomNavigationBar: CustomBottomNavBar(
         selectedIndex: _selectedIndex,
+        cartItemCount: _cartItemCount,
         onTabChanged: _onTabChanged,
       ),
     );

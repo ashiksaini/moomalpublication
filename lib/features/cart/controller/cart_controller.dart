@@ -16,6 +16,11 @@ class CartController extends BaseController {
 
   final RxList<Item> cartItems = RxList();
   final Rx<Totals?> totals = Rx(null);
+  late final Function? _onCartItemCountChange;
+
+  CartController({Function? onCartItemCountChange}) {
+    _onCartItemCountChange = onCartItemCountChange;
+  }
 
   @override
   void onInit() {
@@ -35,6 +40,7 @@ class CartController extends BaseController {
         totals.value = null;
         cartItems.addAll(cartDataResponse.value.data!.items!);
         totals.value = cartDataResponse.value.data!.totals!;
+        _onCartItemCountChange!(cartItems.length);
       }
     }
   }

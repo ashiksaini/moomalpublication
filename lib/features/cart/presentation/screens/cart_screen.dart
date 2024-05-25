@@ -18,19 +18,25 @@ import 'package:moomalpublication/features/cart/presentation/widgets/order_detai
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 
 class CartScreen extends StatefulWidget {
-  const CartScreen({super.key});
+  final Function? onCartItemCountChange;
+
+  const CartScreen({super.key, this.onCartItemCountChange});
 
   @override
   State<CartScreen> createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
-  final CartController _cartController = Get.put(CartController());
+  // final CartController _cartController = Get.put(CartController());
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _cartController.onRefresh();
+    // _cartController.onRefresh();
+    
+    // if (_cartController.cartItems.isNotEmpty) {
+    //   widget.onCartItemCountChange!(_cartController.cartItems.length);
+    // }
   }
 
   @override
@@ -38,9 +44,11 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Obx(() {
+        child: GetX(
+          init: CartController(onCartItemCountChange: widget.onCartItemCountChange),
+          builder: (cartController) {
           return CustomRefreshIndicator(
-            onRefreshCallback: () => _cartController.onRefresh(),
+            onRefreshCallback: () => cartController.onRefresh(),
             child: Container(
               color: AppColors.white,
               child: Column(
@@ -49,14 +57,14 @@ class _CartScreenState extends State<CartScreen> {
                   // Appbar
                   CustomAppbar(title: "my_cart".tr),
 
-                  if (_cartController.cartDataResponse.value.isLoading) ...{
+                  if (cartController.cartDataResponse.value.isLoading) ...{
                     // Show Loading
                     Expanded(
                       child: Center(
                         child: customProgressIndicator(),
                       ),
                     ),
-                  } else if (_cartController.cartItems.isEmpty) ...{
+                  } else if (cartController.cartItems.isEmpty) ...{
                     // Show Empty View
                     Expanded(
                       child: Column(
@@ -75,9 +83,9 @@ class _CartScreenState extends State<CartScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                _getCartView(context),
+                                _getCartView(context, cartController),
                                 const VerticalGap(size: 30),
-                                _getOrderDetailView(context),
+                                _getOrderDetailView(context, cartController),
                                 const VerticalGap(size: 80),
                               ],
                             ),
@@ -86,7 +94,7 @@ class _CartScreenState extends State<CartScreen> {
                             bottom: 0,
                             left: 0,
                             right: 0,
-                            child: _getPlaceOrderView(context),
+                            child: _getPlaceOrderView(context, cartController),
                           ),
                         ],
                       ),
@@ -100,7 +108,7 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  Widget _getPlaceOrderView(BuildContext context) {
+  Widget _getPlaceOrderView(BuildContext context, CartController cartController) {
     return Container(
       width: SizeUtils.width,
       padding: EdgeInsets.only(
@@ -117,7 +125,7 @@ class _CartScreenState extends State<CartScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomText(
-            text: "₹${_cartController.totals.value?.totalPrice ?? ""}",
+            text: "₹${cartController.totals.value?.totalPrice ?? ""}",
             textStyle: CustomTextStyle.textStyle25Bold(context),
           ),
           Container(
@@ -125,7 +133,7 @@ class _CartScreenState extends State<CartScreen> {
               color: AppColors.green,
               borderRadius: BorderRadius.circular(10.r),
             ),
-            child: _cartController.cartCheckoutResponse.value.isLoading
+            child: cartController.cartCheckoutResponse.value.isLoading
                 ? Container(
                     height: 45.h,
                     padding: EdgeInsets.symmetric(horizontal: 45.h),
@@ -137,7 +145,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   )
                 : GestureDetector(
-                    onTap: () => _cartController.cartCheckout(),
+                    onTap: () => cartController.cartCheckout(),
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: 10.v,
@@ -156,20 +164,20 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  Widget _getOrderDetailView(BuildContext context) {
+  Widget _getOrderDetailView(BuildContext context, CartController cartController) {
     return ShadowContainer(
       margin: EdgeInsets.symmetric(
         horizontal: 10.h,
         vertical: 10.v,
       ),
       containerChild: OrderDetails(
-        totals: _cartController.totals.value!,
-        totalItems: _cartController.cartItems.length,
+        totals: cartController.totals.value!,
+        totalItems: cartController.cartItems.length,
       ),
     );
   }
 
-  Widget _getCartView(BuildContext context) {
+  Widget _getCartView(BuildContext context, CartController cartController) {
     return ShadowContainer(
       margin: EdgeInsets.symmetric(
         horizontal: 10.h,
@@ -178,11 +186,11 @@ class _CartScreenState extends State<CartScreen> {
       containerChild: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: _cartController.cartItems.length,
+        itemCount: cartController.cartItems.length,
         itemBuilder: (_, index) {
           return CartCard(
-            cartItem: _cartController.cartItems[index],
-            isLast: (index != _cartController.cartItems.length - 1),
+            cartItem: cartController.cartItems[index],
+            isLast: (index != cartController.cartItems.length - 1),
             quantityButton: true,
           );
         },
