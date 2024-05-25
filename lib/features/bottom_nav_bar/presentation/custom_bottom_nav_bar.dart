@@ -51,29 +51,27 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        return Wrap(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 8.v),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 6.0,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: _buildNavItems(),
-              ),
+    return Obx(() {
+      return Wrap(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 8.v),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  blurRadius: 6.0,
+                ),
+              ],
             ),
-          ],
-        );
-      }
-    );
+            child: Row(
+              children: _buildNavItems(),
+            ),
+          ),
+        ],
+      );
+    });
   }
 
   List<Widget> _buildNavItems() {
@@ -86,42 +84,45 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           onTap: () {
             widget.onTabChanged!(index);
           },
-          child:
-              Container(
-                color: Colors.white,
-                child: Column(
-                  children: [
-                    if (index == 3) ...{
-                      badges.Badge(
-                        badgeStyle:
-                            const badges.BadgeStyle(badgeColor: AppColors.orange),
-                        badgeContent: CustomText(
-                            text: _cartController.cartDataResponse.value.data?.items?.length.toString(),
-                            textStyle: CustomTextStyle.textStyle15Bold(context,
-                                color: AppColors.white)),
-                        child: SvgPicture.asset(
-                          navItem.icon,
-                          colorFilter: widget.selectedIndex == index
-                              ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
-                              : ColorFilter.mode(unselectedColor, BlendMode.srcIn),
-                        ),
-                      )
-                    } else ...{
-                      SvgPicture.asset(
-                        navItem.icon,
-                        colorFilter: widget.selectedIndex == index
-                            ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
-                            : ColorFilter.mode(unselectedColor, BlendMode.srcIn),
-                      ),
-                    },
-                    const VerticalGap(size: 2),
-                    CustomText(
-                      text: navItem.label,
-                      textStyle: CustomTextStyle.textStyle12Regular(context),
+          child: Container(
+            color: Colors.white,
+            child: Column(
+              children: [
+                if (index == 3) ...{
+                  badges.Badge(
+                    badgeStyle:
+                        const badges.BadgeStyle(badgeColor: AppColors.orange),
+                        //create fun ans send to cart screen
+                        // new scrren 
+                    badgeContent: CustomText(
+                        text: _cartController
+                            .cartDataResponse.value.data?.items?.length
+                            .toString(),
+                        textStyle: CustomTextStyle.textStyle15Bold(context,
+                            color: AppColors.white)),
+                    child: SvgPicture.asset(
+                      navItem.icon,
+                      colorFilter: widget.selectedIndex == index
+                          ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
+                          : ColorFilter.mode(unselectedColor, BlendMode.srcIn),
                     ),
-                  ],
+                  )
+                } else ...{
+                  SvgPicture.asset(
+                    navItem.icon,
+                    colorFilter: widget.selectedIndex == index
+                        ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
+                        : ColorFilter.mode(unselectedColor, BlendMode.srcIn),
+                  ),
+                },
+                const VerticalGap(size: 2),
+                CustomText(
+                  text: navItem.label,
+                  textStyle: CustomTextStyle.textStyle12Regular(context),
                 ),
-              ),
+              ],
+            ),
+          ),
         ),
       );
     }).toList();

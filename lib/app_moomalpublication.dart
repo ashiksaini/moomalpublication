@@ -31,7 +31,7 @@ class _MoomalPublicationState extends State<MoomalPublication> {
         translationsKeys: AppTranslation.translationKeys,
         title: "moomalpublication".tr,
         getPages: AppPages.pages,
-        initialRoute: NameRoutes.splashScreen,
+        initialRoute: NameRoutes.webView,
         theme: ThemeData(
           useMaterial3: true,
         ),

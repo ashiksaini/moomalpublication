@@ -31,6 +31,7 @@ import 'package:moomalpublication/features/subscribe/presentation/subscribe_now_
 import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/features/thank_you_page/presentation/screen/thank_you_screen.dart';
+import 'package:moomalpublication/features/web_view.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_detail_screen.dart';
 
@@ -232,6 +233,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.ebookOrder,
       page: () => EbookOrderScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+     GetPage(
+      name: NameRoutes.webView,
+      page: () => const WebViewPage(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
