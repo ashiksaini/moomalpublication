@@ -26,9 +26,15 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
     super.initState();
     _initPages();
 
-    Get.put(CartController(onCartItemCountChange: _onCartItemCountChange));
-
     _selectedIndex = Get.arguments ?? 0;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    CartController cartController =
+        Get.put(CartController(onCartItemCountChange: _onCartItemCountChange));
+    cartController.onRefresh();
   }
 
   Future<void> _initPages() async {

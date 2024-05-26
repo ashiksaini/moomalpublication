@@ -65,6 +65,7 @@ class CartController extends BaseController {
             cartDataResponse.value.data!.items!.isNotEmpty) {
           cartItems.value = cartDataResponse.value.data!.items!;
           totals.value = cartDataResponse.value.data!.totals!;
+          _onCartItemCountChange!(cartItems.length);
         }
       }
     }
@@ -86,6 +87,7 @@ class CartController extends BaseController {
             cartDataResponse.value.data!.items!.isNotEmpty) {
           cartItems.value = cartDataResponse.value.data!.items!;
           totals.value = cartDataResponse.value.data!.totals!;
+          _onCartItemCountChange!(cartItems.length);
         }
       }
     }
@@ -98,6 +100,7 @@ class CartController extends BaseController {
       if (cartDataResponse.value.data!.items != null) {
         cartItems.value = cartDataResponse.value.data!.items!;
         totals.value = cartDataResponse.value.data!.totals!;
+        _onCartItemCountChange!(cartItems.length);
       }
     }
   }

@@ -17,9 +17,9 @@ class OrderSuccessController extends BaseController {
   @override
   void onInit() async {
     super.onInit();
-    
+
     orderId = await Get.arguments;
-    
+
     _getOrderSuccesResponse();
   }
 

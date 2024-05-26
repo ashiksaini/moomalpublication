@@ -35,12 +35,12 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         const CircularContainer(),
                         Container(
-                          height: 80.v,
+                          height: 100.v,
                         )
                       ],
                     ),
                     Positioned(
-                      top: 120.v,
+                      top: 80.v,
                       left: 0.h,
                       right: 0.h,
                       bottom: 0.v,
@@ -52,7 +52,6 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const VerticalGap(size: 20),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.h),
                   child: Row(

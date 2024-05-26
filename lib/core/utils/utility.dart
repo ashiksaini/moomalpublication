@@ -65,6 +65,6 @@ class Utility {
 
   static double getChildAspectRation(BuildContext context) {
     return MediaQuery.of(context).size.width /
-        (MediaQuery.of(context).size.height / 1.12);
+        (MediaQuery.of(context).size.height);
   }
 }

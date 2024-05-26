@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/btn_add_to_cart.dart';
@@ -13,6 +14,7 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/core/utils/vertical_space.dart';
 
 class CardBookItem extends StatelessWidget {
   final Function onCartBtnClick;
@@ -52,16 +54,15 @@ class CardBookItem extends StatelessWidget {
 
   Widget _getImage(BuildContext context) {
     return Container(
-      height: 195.adaptSize,
+      height: 260.adaptSize,
       width: 200.adaptSize,
       margin: EdgeInsets.symmetric(horizontal: 5.h, vertical: 5.v),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15.r),
-        child: (item.featuredImage?.url != null &&
-                item.featuredImage!.url!.isNotEmpty)
+        child: (item.productImages?[0].src != null && item.productImages?[0].src!.isNotEmpty == true)
             ? CachedNetworkImage(
-                imageUrl: item.featuredImage!.url!,
-                fit: BoxFit.contain,
+                imageUrl: item.productImages?[0].src ?? "",
+                fit: BoxFit.cover,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },
@@ -95,33 +96,39 @@ class CardBookItem extends StatelessWidget {
             // Title
             _getBookTitle(context),
 
-            // Title
+            // Price
+            const VerticalGap(size: 4),
             _getBookPrice(context),
 
             // Variation selection
+            const VerticalGap(size: 5),
             _getVariationView(context),
 
             // Stars
-            ((item.ratingCount ?? 0) > 0)
-                ? _getStars(context)
-                : CustomText(
-                    text: "not_rated".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(
-                      context,
-                      color: AppColors.grey,
-                    ),
-                  ),
-            const Spacer(),
+            // ((item.ratingCount ?? 0) > 0)
+            //     ? _getStars(context)
+            //     : CustomText(
+            //         text: "not_rated".tr,
+            //         textStyle: CustomTextStyle.textStyle10Bold(
+            //           context,
+            //           color: AppColors.grey,
+            //         ),
+            //       ),
+            // const Spacer(),
 
             //Add to cart Btn
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.h),
-              child: BtnAddToCart(
-                cartBtnType: item.cartBtnType.value,
-                onClick: () {
-                  item.quantity++;
-                  onCartBtnClick(item);
-                },
+            const Spacer(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5.h),
+                child: BtnAddToCart(
+                  cartBtnType: item.cartBtnType.value,
+                  onClick: () {
+                    item.quantity++;
+                    onCartBtnClick(item);
+                  },
+                ),
               ),
             ),
           ],
@@ -182,7 +189,7 @@ class CardBookItem extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: item.ratingCount,
+        // itemCount: item.ratingCount,
         itemBuilder: (_, index) {
           return Container(
             margin: EdgeInsets.only(right: 2.h),
@@ -216,23 +223,19 @@ class CardBookItem extends StatelessWidget {
   }
 
   String _bookPrice() {
-    for (var variation in item.variations ?? []) {
+    for (ProductVariations variation in item.productVariations ?? []) {
       if (item.productVariationType.value == ProductVariation.ebook &&
-          variation.attributes?.attributePurchase
-                  ?.toLowerCase()
-                  .compareTo("ebook") ==
+          variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
-        return variation.price ?? "";
+        return variation.regularPrice.toString();
       }
 
       if (item.productVariationType.value == ProductVariation.book &&
-          variation.attributes?.attributePurchase
-                  ?.toLowerCase()
-                  .compareTo("book") ==
+          variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
-        return variation.price ?? "";
+        return variation.regularPrice.toString();
       }
     }
 

@@ -27,16 +27,12 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  // final CartController _cartController = Get.put(CartController());
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // _cartController.onRefresh();
-    
-    // if (_cartController.cartItems.isNotEmpty) {
-    //   widget.onCartItemCountChange!(_cartController.cartItems.length);
-    // }
+    CartController cartController = Get.put(
+        CartController(onCartItemCountChange: widget.onCartItemCountChange));
+    cartController.onRefresh();
   }
 
   @override
@@ -45,70 +41,74 @@ class _CartScreenState extends State<CartScreen> {
       backgroundColor: AppColors.black,
       body: SafeArea(
         child: GetX(
-          init: CartController(onCartItemCountChange: widget.onCartItemCountChange),
-          builder: (cartController) {
-          return CustomRefreshIndicator(
-            onRefreshCallback: () => cartController.onRefresh(),
-            child: Container(
-              color: AppColors.white,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Appbar
-                  CustomAppbar(title: "my_cart".tr),
+            init: CartController(
+                onCartItemCountChange: widget.onCartItemCountChange),
+            builder: (cartController) {
+              return CustomRefreshIndicator(
+                onRefreshCallback: () => cartController.onRefresh(),
+                child: Container(
+                  color: AppColors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Appbar
+                      CustomAppbar(title: "my_cart".tr),
 
-                  if (cartController.cartDataResponse.value.isLoading) ...{
-                    // Show Loading
-                    Expanded(
-                      child: Center(
-                        child: customProgressIndicator(),
-                      ),
-                    ),
-                  } else if (cartController.cartItems.isEmpty) ...{
-                    // Show Empty View
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          EmptyCartView(title: "no_items_in_cart".tr),
-                        ],
-                      ),
-                    )
-                  } else
-                    // Cart view
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _getCartView(context, cartController),
-                                const VerticalGap(size: 30),
-                                _getOrderDetailView(context, cartController),
-                                const VerticalGap(size: 80),
-                              ],
-                            ),
+                      if (cartController.cartDataResponse.value.isLoading) ...{
+                        // Show Loading
+                        Expanded(
+                          child: Center(
+                            child: customProgressIndicator(),
                           ),
-                          Positioned(
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            child: _getPlaceOrderView(context, cartController),
+                        ),
+                      } else if (cartController.cartItems.isEmpty) ...{
+                        // Show Empty View
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              EmptyCartView(title: "no_items_in_cart".tr),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          );
-        }),
+                        )
+                      } else
+                        // Cart view
+                        Expanded(
+                          child: Stack(
+                            children: [
+                              SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _getCartView(context, cartController),
+                                    const VerticalGap(size: 30),
+                                    _getOrderDetailView(
+                                        context, cartController),
+                                    const VerticalGap(size: 80),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                child:
+                                    _getPlaceOrderView(context, cartController),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              );
+            }),
       ),
     );
   }
 
-  Widget _getPlaceOrderView(BuildContext context, CartController cartController) {
+  Widget _getPlaceOrderView(
+      BuildContext context, CartController cartController) {
     return Container(
       width: SizeUtils.width,
       padding: EdgeInsets.only(
@@ -164,7 +164,8 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  Widget _getOrderDetailView(BuildContext context, CartController cartController) {
+  Widget _getOrderDetailView(
+      BuildContext context, CartController cartController) {
     return ShadowContainer(
       margin: EdgeInsets.symmetric(
         horizontal: 10.h,

@@ -44,7 +44,8 @@ class OrderSuccessScreen extends StatelessWidget {
                       context: context),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 20.v),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.h, vertical: 20.v),
                   child: colorContainer(
                       child: billingContainer(
                           context: context,
@@ -53,20 +54,31 @@ class OrderSuccessScreen extends StatelessWidget {
                       context: context),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.v, horizontal: 10.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.v, horizontal: 10.h),
                   child: GestureDetector(
                     onTap: () => AppRouting.offAllNamed(NameRoutes.orderScreen),
                     child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 15.v, horizontal: 10.h),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.v, horizontal: 10.h),
                       decoration: BoxDecoration(
-                        border: Border.all(),
-                        borderRadius: BorderRadius.circular(10.r)
-                      ),
+                          border: Border.all(),
+                          borderRadius: BorderRadius.circular(10.r)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomText(text: 'go_to_orders'.tr, textStyle: CustomTextStyle.textStyle18Bold(context, color: AppColors.black,),),
-                          SvgPicture.asset(AppAssets.icArrowRight, height: 18.v, width: 18.h,)
+                          CustomText(
+                            text: 'go_to_orders'.tr,
+                            textStyle: CustomTextStyle.textStyle18Bold(
+                              context,
+                              color: AppColors.black,
+                            ),
+                          ),
+                          SvgPicture.asset(
+                            AppAssets.icArrowRight,
+                            height: 18.v,
+                            width: 18.h,
+                          )
                         ],
                       ),
                     ),

@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class ProfilePicture extends StatelessWidget {
@@ -11,26 +10,26 @@ class ProfilePicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SvgPicture.asset(AppAssets.icUserPic),
-        Positioned(
-          left: 0.h,
-          bottom: 0.v,
-          right: 0.h,
-          top: 0.v,
-          child: Padding(
-            padding: EdgeInsets.all(35.r),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5.r),
-              child: CachedNetworkImage(
-                imageUrl: avatarUrl,
-                fit: BoxFit.contain,
-              ),
-            ),
+    return Positioned(
+      left: 0.h,
+      bottom: 0.v,
+      right: 0.h,
+      top: 0.v,
+      child: Container(
+        height: 150.v,
+        width: 150.h,
+        padding: EdgeInsets.all(2.adaptSize),
+        decoration: BoxDecoration(
+            border: Border.all(color: AppColors.orange),
+            shape: BoxShape.circle,
+            color: AppColors.white),
+        child: ClipOval(
+          child: CachedNetworkImage(
+            imageUrl: avatarUrl,
+            fit: BoxFit.cover,
           ),
         ),
-      ],
+      ),
     );
   }
 }

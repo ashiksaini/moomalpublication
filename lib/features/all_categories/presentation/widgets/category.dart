@@ -10,6 +10,7 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 class CategoryItem extends StatelessWidget {
   final String icon;
   final String title;
+  final double size;
   final Function onClick;
   final TextStyle? textStyle;
 
@@ -19,6 +20,7 @@ class CategoryItem extends StatelessWidget {
     required this.title,
     required this.onClick,
     this.textStyle,
+    this.size = 48
   });
 
   @override
@@ -38,8 +40,8 @@ class CategoryItem extends StatelessWidget {
             ),
             child: SvgPicture.asset(
               icon,
-              height: 48.v,
-              width: 48.h,
+              height: size.v,
+              width: size.h,
             ),
           ),
           const VerticalGap(size: 10),

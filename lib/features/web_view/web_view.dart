@@ -8,6 +8,9 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
+import '../../services/storage/shared_preferences_helper.dart';
+import '../../services/storage/shared_preferences_keys.dart';
+
 class WebViewPage extends StatefulWidget {
   const WebViewPage({super.key});
 
@@ -21,6 +24,7 @@ class _WebViewPageState extends State<WebViewPage> {
   String url = "";
   String testName = "";
   double progress = 0;
+  String authToken = "";
 
   @override
   void initState() {
@@ -29,6 +33,8 @@ class _WebViewPageState extends State<WebViewPage> {
     SharedData sharedData = Get.arguments;
     testName = sharedData.testName ?? "";
     url = sharedData.testUrl ?? "";
+
+    getAuthToken();
   }
 
   @override
@@ -48,36 +54,40 @@ class _WebViewPageState extends State<WebViewPage> {
               Container(
                 margin: EdgeInsets.only(top: 2.v),
                   child: progress < 1.0
-                      ? LinearProgressIndicator(value: progress, color: AppColors.orange,)
+                      ? LinearProgressIndicator(
+                          value: progress,
+                          color: AppColors.orange,
+                        )
                       : Container()),
               Expanded(
-                child: Container(
-                  margin: const EdgeInsets.all(10.0),
-                  child: InAppWebView(
-                    initialUrlRequest: URLRequest(
-                      url: WebUri(url),
-                    ),
-                    onWebViewCreated: (InAppWebViewController controller) {
-                      // _webViewController = controller;
-                    },
-                    onLoadStart: (InAppWebViewController controller, WebUri? uri) {
-                      setState(() {
-                        url = uri.toString();
-                      });
-                    },
-                    onLoadStop:
-                        (InAppWebViewController controller, WebUri? uri) async {
-                      setState(() {
-                        url = uri.toString();
-                      });
-                    },
-                    onProgressChanged:
-                        (InAppWebViewController controller, int progress) {
-                      setState(() {
-                        this.progress = progress / 100;
-                      });
+                child: InAppWebView(
+                  initialUrlRequest: URLRequest(
+                    url: WebUri(url),
+                    headers: {
+                      'Authorization': 'Bearer $authToken',
                     },
                   ),
+                  onWebViewCreated: (InAppWebViewController controller) {
+                    // _webViewController = controller;
+                  },
+                  onLoadStart:
+                      (InAppWebViewController controller, WebUri? uri) {
+                    setState(() {
+                      url = uri.toString();
+                    });
+                  },
+                  onLoadStop:
+                      (InAppWebViewController controller, WebUri? uri) async {
+                    setState(() {
+                      url = uri.toString();
+                    });
+                  },
+                  onProgressChanged:
+                      (InAppWebViewController controller, int progress) {
+                    setState(() {
+                      this.progress = progress / 100;
+                    });
+                  },
                 ),
               ),
             ],
@@ -85,5 +95,11 @@ class _WebViewPageState extends State<WebViewPage> {
         ),
       ),
     );
+  }
+
+  void getAuthToken() async {
+    authToken = (await SharedPreferencesHelper.getString(
+      SharedPreferenceKeys.token,
+    ))!;
   }
 }

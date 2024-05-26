@@ -3,7 +3,7 @@ class ApiPaths {
   static const String login = 'login-apis/moomal/login-call';
   static const String resetPassword = 'custom/v1/forget_password';
   static const String registerUser = 'moomalapi/v1/moomalcreateuser';
-  static const String products = 'moomal/v2/products';
+  static const String products = 'wc/v2/products';
   static const String searchProducts = 'wp/v2/search/';
   static const String productDetail = 'moomal/v2/product/';
   static const String productComments = '/moomal/v2/product-comments/';
@@ -13,7 +13,9 @@ class ApiPaths {
   static const String testimonial = 'testimonial/v1/testimonials/';
   static const String cartData = 'wc/store/cart';
   static const String addToCart = 'wc/store/cart/add-item';
-  static const String eventRelease = 'event/v1/events-year';
+  static const String eventRelease = 'https://moomalpublication.com/events-press-release/';
+  static const String mediaCoverage = 'https://moomalpublication.com/media/';
+  static const String pressRelease = 'https://moomalpublication.com/press/';
   static const String quizData = 'qsm/list_quiz';
   static const String testSeries = 'online_exam/v1/exams/';
   static const String testSeriesList = 'custom/v1/dashboard';
@@ -30,7 +32,6 @@ class ApiPaths {
   static const String download = 'moomal/v2/user-downloads';
   static const String overAllResult = 'myplugin/v1/overall-result/';
   static const String address = 'wc/v3/customers/';
-  static const String pressRelease = 'press/v1/press-year/';
   static const String subscribe = 'newsletter/v2/subscribers';
   static const String latestNews = 'moomal/v1/posts/';
   static const String orderSuccess = 'custom-namespace/v1/thankyou/';

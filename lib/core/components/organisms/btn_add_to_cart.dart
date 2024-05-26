@@ -47,8 +47,10 @@ class BtnAddToCart extends StatelessWidget {
             SvgPicture.asset(
               (cartBtnType == CartBtnType.addToCart)
                   ? AppAssets.icBookmark
-                  : AppAssets.icBookmarkFilled,
+                  : AppAssets.icArrowRight,
               color: AppColors.white,
+              height: 18.v,
+              width: 18.h,
             ),
           ],
         ),

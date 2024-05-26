@@ -1,8 +1,7 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:moomalpublication/core/base/product_item/product_image.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
-
-import 'featured_image.dart';
-import 'variation.dart';
 
 class ProductItem {
   int? id;
@@ -17,14 +16,16 @@ class ProductItem {
   String? permalink;
   List<dynamic>? categories;
   List<dynamic>? tags;
-  FeaturedImage? featuredImage;
-  List<Variation>? variations;
+  // FeaturedImage? featuredImage;
+  // List<Variation>? variations;
   Rx<CartBtnType> cartBtnType = Rx(CartBtnType.addToCart);
   Rx<ProductVariation> productVariationType = Rx(ProductVariation.ebook);
   bool isEbookAvailable = false;
   bool isBookAvailable = false;
   int quantity = 0;
-  int? ratingCount;
+  // int? ratingCount;
+  List<ProductVariations>? productVariations;
+  List<ProductImage>? productImages;
 
   ProductItem({
     this.id,
@@ -39,31 +40,38 @@ class ProductItem {
     this.tags,
     this.sku,
     this.permalink,
-    this.featuredImage,
-    this.variations,
-    this.ratingCount,
+    // this.featuredImage,
+    // this.variations,
+    // this.ratingCount,
+    this.productVariations,
+    this.productImages,
   });
 
   factory ProductItem.fromJson(Map<String, dynamic> json) => ProductItem(
-        id: json['id'] as int?,
-        name: json['name'] as String?,
-        description: json['description'] as String?,
-        price: json['price'] as String?,
-        regularPrice: json['regular_price'] as String?,
-        salePrice: json['sale_price'] as String?,
-        stockStatus: json['stock_status'] as String?,
-        type: json['type'] as String?,
-        sku: json['sku'] as String?,
-        permalink: json['permalink'] as String?,
-        categories: json['categories'] as List<dynamic>?,
-        tags: json['tags'] as List<dynamic>?,
-        featuredImage: json['featured_image'] == null
-            ? null
-            : FeaturedImage.fromJson(
-                json['featured_image'] as Map<String, dynamic>),
-        variations: (json['variations'] as List<dynamic>?)
-            ?.map((e) => Variation.fromJson(e as Map<String, dynamic>))
-            .toList(),
-        ratingCount: json['rating_count'] as int?,
-      );
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+      description: json['description'] as String?,
+      price: json['price'] as String?,
+      regularPrice: json['regular_price'] as String?,
+      salePrice: json['sale_price'] as String?,
+      stockStatus: json['stock_status'] as String?,
+      type: json['type'] as String?,
+      sku: json['sku'] as String?,
+      permalink: json['permalink'] as String?,
+      categories: json['categories'] as List<dynamic>?,
+      tags: json['tags'] as List<dynamic>?,
+      // featuredImage: json['featured_image'] == null
+      //     ? null
+      //     : FeaturedImage.fromJson(
+      //         json['featured_image'] as Map<String, dynamic>),
+      // variations: (json['variations'] as List<dynamic>?)
+      //     ?.map((e) => Variation.fromJson(e as Map<String, dynamic>))
+      //     .toList(),
+      // ratingCount: json['rating_count'] as int?,
+      productVariations: (json['product_variations'] as List<dynamic>?)
+          ?.map((e) => ProductVariations.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      productImages: (json['images'] as List<dynamic>?)
+          ?.map((e) => ProductImage.fromJson(e as Map<String, dynamic>))
+          .toList());
 }
