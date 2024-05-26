@@ -224,7 +224,7 @@ class AdressController extends BaseController {
         }
       }
     } else {
-      showToast("please_fill_all_required_fields".tr);
+      showErrorToast("please_fill_all_required_fields".tr);
     }
     billingAddressList.refresh();
   }
@@ -258,7 +258,7 @@ class AdressController extends BaseController {
 
       Navigator.pop(context);
     } else {
-      showToast("please_fill_all_required_fields".tr);
+      showErrorToast("please_fill_all_required_fields".tr);
     }
     shippingAddressList.refresh();
   }

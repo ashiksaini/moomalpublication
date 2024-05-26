@@ -93,8 +93,8 @@ class EBookScreen extends StatelessWidget {
                 ),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-            crossAxisSpacing: 15.0.h,
-            mainAxisSpacing: 15.0.h,
+                  crossAxisSpacing: 15.0.h,
+                  mainAxisSpacing: 15.0.h,
                   childAspectRatio: Utility.getChildAspectRation(context),
                 ),
                 itemCount: _ebookController.ebooksResponse.value.isLoading
@@ -112,7 +112,8 @@ class EBookScreen extends StatelessWidget {
                       child: CardBookItem(
                         item: _ebookController.ebooks[index],
                         onCartBtnClick: _ebookController.onCartBtnClick,
-              onBookVariationClick: _ebookController.onProductVariationClick,
+                        onBookVariationClick:
+                            _ebookController.onProductVariationClick,
                       ),
                     );
                   }

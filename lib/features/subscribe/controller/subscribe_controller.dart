@@ -28,7 +28,7 @@ class SubscribeController extends BaseController {
     if (subscribeResponse.value.data != null) {
       showToast("news_letter_subscribed_successfully".tr);
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 }

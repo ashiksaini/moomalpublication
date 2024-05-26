@@ -11,11 +11,13 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 class BtnAddToCart extends StatelessWidget {
   final CartBtnType cartBtnType;
   final Function onClick;
+  final bool isOutOfStock;
 
   const BtnAddToCart({
     super.key,
     required this.onClick,
     required this.cartBtnType,
+    this.isOutOfStock = false,
   });
 
   @override
@@ -27,7 +29,9 @@ class BtnAddToCart extends StatelessWidget {
           vertical: 5.v,
         ),
         decoration: BoxDecoration(
-          color: AppColors.orangeDark2,
+          color: isOutOfStock
+              ? AppColors.orangeDark2.withOpacity(0.6)
+              : AppColors.orangeDark2,
           border: Border.all(color: AppColors.yellow),
           borderRadius: BorderRadius.circular(5.r),
         ),

@@ -73,7 +73,8 @@ class SimilarProduct extends StatelessWidget {
                 child: CardBookItem(
                   item: _productDetailController.similarProducts[index],
                   onCartBtnClick: _productDetailController.onCartBtnClick,
-              onBookVariationClick: _productDetailController.onProductVariationClick,
+                  onBookVariationClick:
+                      _productDetailController.onProductVariationClick,
                 ),
               );
             }

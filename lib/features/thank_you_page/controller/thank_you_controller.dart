@@ -33,7 +33,7 @@ class OrderSuccessController extends BaseController {
       thankYouScreeShow.value = false;
       orderSuccessData.value = orderSuccessResponse.value.data!;
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 }

@@ -111,7 +111,7 @@ class CategoryWiseController extends BaseController {
       if (productResponse.value.data!.isEmpty) isLastPage.value = true;
       productList.addAll(productResponse.value.data ?? []);
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -192,7 +192,7 @@ class CategoryWiseController extends BaseController {
               cartController.onRefresh();
             }
           } else {
-            showToast("this_product_is_out_of_stock".tr);
+            showErrorToast("this_product_is_out_of_stock".tr);
           }
         }
         break;

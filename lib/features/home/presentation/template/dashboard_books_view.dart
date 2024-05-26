@@ -64,8 +64,8 @@ class DashboardBooksView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-            crossAxisSpacing: 15.0.h,
-            mainAxisSpacing: 15.0.h,
+        crossAxisSpacing: 15.0.h,
+        mainAxisSpacing: 15.0.h,
         childAspectRatio: Utility.getChildAspectRation(context),
       ),
       itemCount: isLoading ? loadingItemCount : data.length,

@@ -87,7 +87,8 @@ class CategoryWiseScreen extends StatelessWidget {
                 child: CardBookItem(
                   item: _categoryWiseController.productList[index],
                   onCartBtnClick: _categoryWiseController.onCartBtnClick,
-              onBookVariationClick: _categoryWiseController.onProductVariationClick,
+                  onBookVariationClick:
+                      _categoryWiseController.onProductVariationClick,
                 ),
               );
             }

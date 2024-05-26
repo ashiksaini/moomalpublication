@@ -59,7 +59,8 @@ class CardBookItem extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 5.h, vertical: 5.v),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15.r),
-        child: (item.productImages?[0].src != null && item.productImages?[0].src!.isNotEmpty == true)
+        child: (item.productImages?[0].src != null &&
+                item.productImages?[0].src!.isNotEmpty == true)
             ? CachedNetworkImage(
                 imageUrl: item.productImages?[0].src ?? "",
                 fit: BoxFit.cover,
@@ -123,6 +124,8 @@ class CardBookItem extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.h),
                 child: BtnAddToCart(
+                  isOutOfStock:
+                      (!item.isBookAvailable && !item.isEbookAvailable),
                   cartBtnType: item.cartBtnType.value,
                   onClick: () {
                     item.quantity++;
@@ -215,9 +218,13 @@ class CardBookItem extends StatelessWidget {
 
   Widget _getBookPrice(BuildContext context) {
     return CustomText(
-      text: "${"price".tr} ${_bookPrice()}",
-      textStyle:
-          CustomTextStyle.textStyle16Bold(context, color: AppColors.black),
+      text: (item.isBookAvailable || item.isEbookAvailable)
+          ? "${"price".tr} ${_bookPrice()}"
+          : "out_of_stock".tr,
+      textStyle: CustomTextStyle.textStyle16Bold(context,
+          color: (item.isBookAvailable || item.isEbookAvailable)
+              ? AppColors.black
+              : AppColors.red),
       textAlign: TextAlign.start,
     );
   }

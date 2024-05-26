@@ -2,6 +2,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
+import 'package:moomalpublication/core/base/product_item/attribute.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
@@ -36,14 +37,20 @@ class SearchProductServices {
 
         for (var element in parsedResponse) {
           if (element.productVariations?.isEmpty == true) {
-            element.isBookAvailable = true;
-
-            if ((element.isBookAvailable && element.isEbookAvailable) ||
-                element.isEbookAvailable) {
-              element.productVariationType.value = ProductVariation.ebook;
-            } else if (element.isBookAvailable) {
-              element.productVariationType.value = ProductVariation.book;
-            }
+            element.productVariations?.add(
+              ProductVariations(
+                id: element.id,
+                onSale: element.onSale,
+                regularPrice: element.regularPrice,
+                salePrice: element.salePrice,
+                sku: element.sku,
+                quantity: element.quantity.toString(),
+                stockStatus: element.stockStatus,
+                attributes: [
+                  Attribute(name: "purchase", slug: "purchase", option: "book")
+                ],
+              ),
+            );
           }
 
           for (ProductVariations variation in element.productVariations ?? []) {

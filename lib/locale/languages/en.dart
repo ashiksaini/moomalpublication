@@ -40,7 +40,7 @@ final Map<String, String> enUS = {
   "email_should_not_be_empty": "E-mail should not be empty",
   "privacy_policy_desc":
       "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
-  "privacy_policy": " privacy policy.",
+  "privacy_policy": " privacy policy",
 
   // Forget password //////////////////////////////////////////////////////////
   "reset_password": "Reset Password",
@@ -369,5 +369,7 @@ final Map<String, String> enUS = {
   "ebook_order": "Ebook Order",
   "order_again": "Order Again",
   "online": "Online",
-  "go_to_orders": "Go To Orders"
+  "go_to_orders": "Go To Orders",
+  "out_of_stock": "Out Of Stock",
+  "please_mark_atleast_one_question": "Please mark atleast one Question",
 };

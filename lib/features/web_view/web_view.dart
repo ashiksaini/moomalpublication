@@ -52,7 +52,7 @@ class _WebViewPageState extends State<WebViewPage> {
                 onPrefixIconClick: () => AppRouting.navigateBack(),
               ),
               Container(
-                margin: EdgeInsets.only(top: 2.v),
+                  margin: EdgeInsets.only(top: 2.v),
                   child: progress < 1.0
                       ? LinearProgressIndicator(
                           value: progress,

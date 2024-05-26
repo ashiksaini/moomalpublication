@@ -1,20 +1,22 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:moomalpublication/core/base/product_item/category_item.dart';
 import 'package:moomalpublication/core/base/product_item/product_image.dart';
 import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 
 class ProductItem {
-  int? id;
+  String? id;
   String? name;
   String? description;
   String? price;
   String? regularPrice;
   String? salePrice;
   String? stockStatus;
+  bool? onSale;
   String? type;
   String? sku;
   String? permalink;
-  List<dynamic>? categories;
+  List<CategoryItemR>? categories;
   List<dynamic>? tags;
   // FeaturedImage? featuredImage;
   // List<Variation>? variations;
@@ -38,6 +40,7 @@ class ProductItem {
     this.type,
     this.categories,
     this.tags,
+    this.onSale,
     this.sku,
     this.permalink,
     // this.featuredImage,
@@ -48,7 +51,7 @@ class ProductItem {
   });
 
   factory ProductItem.fromJson(Map<String, dynamic> json) => ProductItem(
-      id: json['id'] as int?,
+      id: json['id'].toString(),
       name: json['name'] as String?,
       description: json['description'] as String?,
       price: json['price'] as String?,
@@ -58,8 +61,11 @@ class ProductItem {
       type: json['type'] as String?,
       sku: json['sku'] as String?,
       permalink: json['permalink'] as String?,
-      categories: json['categories'] as List<dynamic>?,
+      categories: (json['categories'] as List<dynamic>?)
+          ?.map((e) => CategoryItemR.fromJson(e as Map<String, dynamic>))
+          .toList(),
       tags: json['tags'] as List<dynamic>?,
+      onSale: json['on_sale'] as bool?,
       // featuredImage: json['featured_image'] == null
       //     ? null
       //     : FeaturedImage.fromJson(

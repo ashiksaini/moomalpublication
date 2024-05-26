@@ -6,7 +6,6 @@ import 'package:moomalpublication/core/base/product_item/product_variations.dart
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
-import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
@@ -47,7 +46,7 @@ class ShopController extends BaseController {
       if (productResponse.value.data!.isEmpty) isLastPage.value = true;
       productList.addAll(productResponse.value.data ?? []);
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -106,15 +105,13 @@ class ShopController extends BaseController {
             if (addToCartResponse.data != null) {
               showToast(
                 "item_added_to_cart".tr,
-                bgColor: AppColors.green,
-                textColor: AppColors.white,
               );
               item.cartBtnType.value = CartBtnType.goToCart;
               CartController cartController = Get.find<CartController>();
               cartController.onRefresh();
             }
           } else {
-            showToast("this_product_is_out_of_stock".tr);
+            showErrorToast("this_product_is_out_of_stock".tr);
           }
         }
         break;

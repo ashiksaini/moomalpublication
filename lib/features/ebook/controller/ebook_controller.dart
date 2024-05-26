@@ -98,7 +98,7 @@ class EbookController extends BaseController {
               element.isEbookAvailable && !element.isBookAvailable)) ??
           []);
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -149,7 +149,7 @@ class EbookController extends BaseController {
               cartController.onRefresh();
             }
           } else {
-            showToast("this_product_is_out_of_stock".tr);
+            showErrorToast("this_product_is_out_of_stock".tr);
           }
         }
         break;

@@ -15,11 +15,15 @@ import 'package:moomalpublication/features/quiz/presentation/widgets/test_submit
 
 class QuizTestScreen extends StatelessWidget {
   QuizTestScreen({super.key});
+
+  final args = Get.arguments;
   final QuizController _quizController = Get.put(QuizController());
   final TimerModel timerModel = TimerModel();
 
   @override
   Widget build(BuildContext context) {
+    int index = args[0]['index'];
+
     return Scaffold(
       backgroundColor: AppColors.black,
       body: SafeArea(
@@ -28,7 +32,7 @@ class QuizTestScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomAppbar(
-                title: "Current Affair Quiz June 2021",
+                title: _quizController.quizList[index].quizName ?? '',
                 maxLine: 1,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => _quizController.onBackPress(),

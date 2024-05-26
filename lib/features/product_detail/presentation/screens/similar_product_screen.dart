@@ -40,8 +40,8 @@ class SimilarProductScreen extends StatelessWidget {
                   ),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-            crossAxisSpacing: 15.0.h,
-            mainAxisSpacing: 15.0.h,
+                    crossAxisSpacing: 15.0.h,
+                    mainAxisSpacing: 15.0.h,
                     childAspectRatio: Utility.getChildAspectRation(context),
                   ),
                   itemCount: _productDetailController
@@ -68,7 +68,8 @@ class SimilarProductScreen extends StatelessWidget {
                           item: _productDetailController.similarProducts[index],
                           onCartBtnClick:
                               _productDetailController.onCartBtnClick,
-              onBookVariationClick: _productDetailController.onProductVariationClick,
+                          onBookVariationClick:
+                              _productDetailController.onProductVariationClick,
                         ),
                       );
                     }

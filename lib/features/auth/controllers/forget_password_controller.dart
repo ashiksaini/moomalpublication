@@ -24,10 +24,10 @@ class ForgetPasswordController extends BaseController {
             0) {
           _navigateResetPasswordOnSuccessScreen();
         } else {
-          showToast(resetPasswordResponse.value.data!.message.toString());
+          showErrorToast(resetPasswordResponse.value.data!.message.toString());
         }
       } else {
-        showToast(AppConstants.somethingWentWrong);
+        showErrorToast(AppConstants.somethingWentWrong);
       }
     }
   }

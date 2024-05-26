@@ -1,10 +1,10 @@
 import 'attribute.dart';
 
 class ProductVariations {
-  int? id;
+  String? id;
   bool? onSale;
-  int? regularPrice;
-  int? salePrice;
+  String? regularPrice;
+  String? salePrice;
   String? sku;
   String? quantity;
   dynamic stock;
@@ -25,10 +25,10 @@ class ProductVariations {
 
   factory ProductVariations.fromJson(Map<String, dynamic> json) {
     return ProductVariations(
-      id: json['id'] as int?,
+      id: json['id'].toString(),
       onSale: json['on_sale'] as bool?,
-      regularPrice: json['regular_price'] as int?,
-      salePrice: json['sale_price'] as int?,
+      regularPrice: json['regular_price'].toString(),
+      salePrice: json['sale_price'].toString(),
       sku: json['sku'] as String?,
       quantity: json['quantity'] as String?,
       stock: json['stock'] as dynamic,

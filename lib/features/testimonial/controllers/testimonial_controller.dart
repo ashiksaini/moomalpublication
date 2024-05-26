@@ -30,10 +30,10 @@ class TestimonialController extends BaseController {
           testimonials.addAll(testimonialResponse.value.data!.data!);
         }
       } else {
-        showToast(testimonialResponse.value.data!.message.toString());
+        showErrorToast(testimonialResponse.value.data!.message.toString());
       }
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 }

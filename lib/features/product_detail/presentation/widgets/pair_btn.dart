@@ -37,6 +37,7 @@ class PairBuyBtn extends StatelessWidget {
         onTap: () => _productDetailController
             .onCartBtnClick(_productDetailController.productDetailData.value!),
         child: Container(
+          height: 50.v,
           decoration: const BoxDecoration(color: AppColors.yellow),
           child: Row(
             children: [
@@ -78,6 +79,7 @@ class PairBuyBtn extends StatelessWidget {
         onTap: () => _productDetailController
             .onCartBtnClick(_productDetailController.productDetailData.value!),
         child: Container(
+          height: 50.v,
           decoration: const BoxDecoration(color: AppColors.yellow),
           child: Row(
             children: [
@@ -118,6 +120,7 @@ class PairBuyBtn extends StatelessWidget {
       child: GestureDetector(
         onTap: () => _productDetailController.buyNow(),
         child: Container(
+          height: 50.v,
           decoration: const BoxDecoration(color: AppColors.orangeDark),
           child: Row(
             children: [

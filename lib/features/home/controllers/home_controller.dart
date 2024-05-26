@@ -53,13 +53,13 @@ class HomeController extends BaseController {
     _getUserInfo();
 
     _initDrawerItemList();
-    _initExamsList();
-    _initBookTypeList();
-    _initLanguagesList();
+    // _initExamsList();
+    // _initBookTypeList();
+    // _initLanguagesList();
 
-    _getExploreBooks();
-    _getNewArrivalBooks();
-    _getBestSellerBooks();
+    // _getExploreBooks();
+    // _getNewArrivalBooks();
+    // _getBestSellerBooks();
   }
 
   Future<void> _getUserInfo() async {
@@ -254,7 +254,7 @@ class HomeController extends BaseController {
               cartController.onRefresh();
             }
           } else {
-            showToast("this_product_is_out_of_stock".tr);
+            showErrorToast("this_product_is_out_of_stock".tr);
           }
         }
         break;

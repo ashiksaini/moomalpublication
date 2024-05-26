@@ -86,12 +86,12 @@ class CartCard extends StatelessWidget {
   Widget bookConatiner({required BuildContext context}) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: 10.h,
-        vertical: 15.v,
+        horizontal: 5.h,
+        vertical: 5.v,
       ),
       decoration: BoxDecoration(
         color: AppColors.greyLight,
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(15.r),
         boxShadow: [primaryBoxShadow()],
       ),
       child: ClipRRect(
@@ -99,9 +99,9 @@ class CartCard extends StatelessWidget {
         child: cartItem.images!.isNotEmpty
             ? CachedNetworkImage(
                 imageUrl: cartItem.images!.first.src!,
-                height: 130.adaptSize,
-                width: 100.adaptSize,
-                fit: BoxFit.contain,
+                height: 160.adaptSize,
+                width: 120.adaptSize,
+                fit: BoxFit.cover,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },

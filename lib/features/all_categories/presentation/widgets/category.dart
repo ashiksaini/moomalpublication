@@ -14,14 +14,13 @@ class CategoryItem extends StatelessWidget {
   final Function onClick;
   final TextStyle? textStyle;
 
-  const CategoryItem({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.onClick,
-    this.textStyle,
-    this.size = 48
-  });
+  const CategoryItem(
+      {super.key,
+      required this.icon,
+      required this.title,
+      required this.onClick,
+      this.textStyle,
+      this.size = 48});
 
   @override
   Widget build(BuildContext context) {

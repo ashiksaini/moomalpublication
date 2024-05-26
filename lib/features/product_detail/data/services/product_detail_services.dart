@@ -14,7 +14,8 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class ProductDetailServices {
   ProductDetailServices._();
 
-  static Future<ProductDetailResponse> getProductDetails(int productId) async {
+  static Future<ProductDetailResponse> getProductDetails(
+      String productId) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
@@ -38,7 +39,8 @@ class ProductDetailServices {
     }
   }
 
-  static Future<ProductReviewsResponse> getProductReviews(int productId) async {
+  static Future<ProductReviewsResponse> getProductReviews(
+      String productId) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
@@ -66,7 +68,8 @@ class ProductDetailServices {
     }
   }
 
-  static Future<SimilarProductResponse> getSimilarReviews(int productId) async {
+  static Future<SimilarProductResponse> getSimilarReviews(
+      String productId) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {

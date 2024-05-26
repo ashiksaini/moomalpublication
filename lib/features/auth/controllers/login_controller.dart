@@ -35,10 +35,10 @@ class LoginController extends BaseController {
               rememberMe.value, passwordTextEditingController.text);
           _navigateToHomeScreen();
         } else {
-          showToast(loginResponse.value.data!.message.toString());
+          showErrorToast(loginResponse.value.data!.message.toString());
         }
       } else {
-        showToast(AppConstants.somethingWentWrong);
+        showErrorToast(AppConstants.somethingWentWrong);
       }
     }
   }

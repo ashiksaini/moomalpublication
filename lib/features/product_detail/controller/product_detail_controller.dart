@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/core/base/product_item/category_item.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
@@ -26,7 +27,7 @@ class ProductDetailController extends BaseController {
       TextEditingController();
   late Rx<ProductItem?> productItem = Rx(null);
   late SharedData sharedData;
-  late int? productId;
+  late String? productId;
   String name = "";
   String email = "";
   double rating = 0.0;
@@ -73,8 +74,8 @@ class ProductDetailController extends BaseController {
     if (productItem.value != null) {
       if (productItem.value!.categories != null &&
           productItem.value!.categories!.isNotEmpty) {
-        for (var category in productItem.value!.categories!) {
-          categories.value += "$category,";
+        for (CategoryItemR category in productItem.value!.categories!) {
+          categories.value += "${category.name},";
         }
 
         if (categories.isNotEmpty) {
@@ -93,9 +94,9 @@ class ProductDetailController extends BaseController {
         : productItem.value?.sku ?? "not_define".tr;
   }
 
-  void _getData({String? tempProductName, int? tempProductId}) {
+  void _getData({String? tempProductName, String? tempProductId}) {
     productName.value = tempProductName ?? sharedData.productItem?.name ?? "";
-    productId = tempProductId ?? sharedData.productItem?.id ?? 0;
+    productId = (tempProductId ?? sharedData.productItem?.id ?? "");
 
     _getProductDetails();
     _getProductReviews();
@@ -213,7 +214,7 @@ class ProductDetailController extends BaseController {
               cartController.onRefresh();
             }
           } else {
-            showToast("this_product_is_out_of_stock".tr);
+            showErrorToast("this_product_is_out_of_stock".tr);
           }
         }
         break;
@@ -312,7 +313,7 @@ class ProductDetailController extends BaseController {
         AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
       }
     } else {
-      showToast("this_product_is_out_of_stock".tr);
+      showErrorToast("this_product_is_out_of_stock".tr);
     }
   }
 
