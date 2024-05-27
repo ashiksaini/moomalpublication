@@ -28,8 +28,9 @@ class _CartScreenState extends State<CartScreen> {
   final CartController _cartController = Get.put(CartController());
 
   @override
-  void didChangeDependencies() {
+  void didChangeDependencies() async {
     super.didChangeDependencies();
+    await Future.delayed(Duration(seconds: 10));
     _cartController.onRefresh();
   }
 

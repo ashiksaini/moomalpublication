@@ -81,6 +81,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                   child: (_eventPressController.eventResponse.value.isLoading)
                       ? Center(child: customProgressIndicator())
                       : TabBarView(
+                          physics: const NeverScrollableScrollPhysics(),
                           controller: _tabController,
                           children: [
                             _eventPressController.events.isNotEmpty
