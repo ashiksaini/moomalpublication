@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
-import 'package:moomalpublication/core/components/organisms/empty_product.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/features/event_press_release/controller/event_press_controller.dart';
-import 'package:moomalpublication/features/event_press_release/presentation/screen/media_coverage.dart';
-import 'package:moomalpublication/features/event_press_release/presentation/screen/press_event.dart';
-import 'package:moomalpublication/features/event_press_release/presentation/template/event_press_template.dart';
-import 'package:moomalpublication/features/event_press_release/presentation/template/year_list.dart';
 import 'package:moomalpublication/routes/routing.dart';
+import 'package:moomalpublication/services/network/api_paths.dart';
 
 class EventAndPressReleaseScreen extends StatefulWidget {
   const EventAndPressReleaseScreen({super.key});
@@ -28,6 +25,9 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
   final EventPressController _eventPressController =
       Get.put(EventPressController());
   late TabController _tabController;
+
+  double progress = 0;
+
   @override
   void initState() {
     super.initState();
@@ -50,7 +50,7 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                 maxLine: 1,
               ),
               const HorizontalGap(size: 20),
-              SizedBox(height: 90.v, child: YearList()),
+              // SizedBox(height: 90.v),
               TabBar(
                 unselectedLabelColor: AppColors.grey,
                 labelColor: AppColors.orange,
@@ -84,40 +84,15 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
                           physics: const NeverScrollableScrollPhysics(),
                           controller: _tabController,
                           children: [
-                            _eventPressController.events.isNotEmpty
-                                ? ListView.builder(
-                                    itemCount:
-                                        _eventPressController.events.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return EventAndPressCard(index: index);
-                                    },
-                                  )
-                                : Center(
-                                    child: EmptyProductView(
-                                      title: 'not_available'.tr,
-                                    ),
-                                  ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 10.v),
-                              child: _eventPressController
-                                      .pressReleaseList.isNotEmpty
-                                  ? ListView.builder(
-                                      physics: const BouncingScrollPhysics(),
-                                      itemCount: _eventPressController
-                                          .pressReleaseList.length,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return PressEvent(index: index);
-                                      },
-                                    )
-                                  : Center(
-                                      child: EmptyProductView(
-                                        title: 'not_available'.tr,
-                                      ),
-                                    ),
+                            inappView(
+                              url: ApiPaths.eventRelease,
                             ),
-                            const MediaCoverage(),
+                            inappView(
+                              url: ApiPaths.pressRelease,
+                            ),
+                            inappView(
+                              url: ApiPaths.mediaCoverage,
+                            ),
                           ],
                         ),
                 ),
@@ -126,6 +101,47 @@ class _EventAndPressReleaseScreenState extends State<EventAndPressReleaseScreen>
           ),
         ),
       ),
+    );
+  }
+
+  Widget inappView({String? url}) {
+    return Column(
+      children: [
+        Container(
+            margin: EdgeInsets.only(top: 2.v),
+            child: progress < 1.0
+                ? LinearProgressIndicator(
+                    value: progress,
+                    color: AppColors.orange,
+                  )
+                : Container()),
+        Expanded(
+          child: InAppWebView(
+            initialUrlRequest: URLRequest(
+              url: WebUri(url ?? ""),
+            ),
+            onWebViewCreated: (InAppWebViewController controller) {
+              // _webViewController = controller;
+            },
+            onLoadStart: (InAppWebViewController controller, WebUri? uri) {
+              setState(() {
+                url = uri.toString();
+              });
+            },
+            onLoadStop: (InAppWebViewController controller, WebUri? uri) async {
+              setState(() {
+                url = uri.toString();
+              });
+            },
+            onProgressChanged:
+                (InAppWebViewController controller, int progress) {
+              setState(() {
+                this.progress = progress / 100;
+              });
+            },
+          ),
+        ),
+      ],
     );
   }
 }

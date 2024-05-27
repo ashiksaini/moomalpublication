@@ -21,7 +21,7 @@ class CustomNavigationDrawer extends Drawer {
         children: [
           // Header
           SizedBox(
-            height: 150.v,
+            height: 120.v,
             child: DrawerHeader(
               margin: EdgeInsets.zero,
               padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 10.v),

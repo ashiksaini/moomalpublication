@@ -84,7 +84,8 @@ class BookItemCardShimmerSkeleton extends StatelessWidget {
 
   Widget _imageView(BuildContext context) {
     return Container(
-      height: 150.v,
+      height: 260.adaptSize,
+      width: 200.adaptSize,
       margin: EdgeInsets.symmetric(
         horizontal: 5.h,
         vertical: 5.v,

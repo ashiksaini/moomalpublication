@@ -23,14 +23,18 @@ class OrderDetailTemplate extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               spaceTextBold(
-                  leftText: 'order_details'.tr, rightText: '', context: context),
+                  leftText: 'order_details'.tr,
+                  rightText: '',
+                  context: context),
               Divider(
                 height: 1.h,
                 color: AppColors.grey,
               ),
               const VerticalGap(size: 6),
               spaceTextBold(
-                  leftText: 'products'.tr, rightText: 'total'.tr, context: context),
+                  leftText: 'products'.tr,
+                  rightText: 'total'.tr,
+                  context: context),
               const VerticalGap(size: 2),
               OrderDetailList(
                 orderDetail: orderSuccessResponse.orderDetails ?? [],
@@ -55,7 +59,9 @@ class OrderDetailTemplate extends StatelessWidget {
                 color: AppColors.grey,
               ),
               spaceTextBold(
-                  leftText: 'total'.tr, rightText: "₹${orderSuccessResponse.total ?? "0"}", context: context),
+                  leftText: 'total'.tr,
+                  rightText: "₹${orderSuccessResponse.total ?? "0"}",
+                  context: context),
             ],
           ),
         ),

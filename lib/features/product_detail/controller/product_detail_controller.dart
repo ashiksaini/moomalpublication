@@ -1,13 +1,16 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/core/base/product_item/category_item.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
 import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
@@ -24,7 +27,7 @@ class ProductDetailController extends BaseController {
       TextEditingController();
   late Rx<ProductItem?> productItem = Rx(null);
   late SharedData sharedData;
-  late int? productId;
+  late String? productId;
   String name = "";
   String email = "";
   double rating = 0.0;
@@ -71,8 +74,8 @@ class ProductDetailController extends BaseController {
     if (productItem.value != null) {
       if (productItem.value!.categories != null &&
           productItem.value!.categories!.isNotEmpty) {
-        for (var category in productItem.value!.categories!) {
-          categories.value += "$category,";
+        for (CategoryItemR category in productItem.value!.categories!) {
+          categories.value += "${category.name},";
         }
 
         if (categories.isNotEmpty) {
@@ -91,9 +94,9 @@ class ProductDetailController extends BaseController {
         : productItem.value?.sku ?? "not_define".tr;
   }
 
-  void _getData({String? tempProductName, int? tempProductId}) {
+  void _getData({String? tempProductName, String? tempProductId}) {
     productName.value = tempProductName ?? sharedData.productItem?.name ?? "";
-    productId = tempProductId ?? sharedData.productItem?.id ?? 0;
+    productId = (tempProductId ?? sharedData.productItem?.id ?? "");
 
     _getProductDetails();
     _getProductReviews();
@@ -109,10 +112,10 @@ class ProductDetailController extends BaseController {
       if (productDetailResponse.value.data != null) {
         productDetailData.value = productDetailResponse.value.data;
 
-        if (productDetailData.value!.variations != null &&
-            productDetailData.value!.variations!.isNotEmpty) {
-          for (var variation in productDetailData.value!.variations!) {
-            if (variation.attributes?.attributePurchase
+        if (productDetailData.value!.productVariations != null &&
+            productDetailData.value!.productVariations!.isNotEmpty) {
+          for (var variation in productDetailData.value!.productVariations!) {
+            if (variation.attributes?[0].option
                         ?.toLowerCase()
                         .compareTo("ebook") ==
                     0 &&
@@ -121,7 +124,7 @@ class ProductDetailController extends BaseController {
               productDetailData.value?.isEbookAvailable = true;
             }
 
-            if (variation.attributes?.attributePurchase
+            if (variation.attributes?[0].option
                         ?.toLowerCase()
                         .compareTo("book") ==
                     0 &&
@@ -186,7 +189,7 @@ class ProductDetailController extends BaseController {
         {
           if (item.isBookAvailable || item.isEbookAvailable) {
             final addToCartResponse = await CartServices.addToCart(
-              id: item.id.toString(),
+              id: _getVariationId(item, item.productVariationType.value),
               quantity: selectedQuantity.string,
               variations: [
                 VariationRequestData(
@@ -207,9 +210,11 @@ class ProductDetailController extends BaseController {
                 textColor: AppColors.white,
               );
               item.cartBtnType.value = CartBtnType.goToCart;
+              CartController cartController = Get.find<CartController>();
+              cartController.onRefresh();
             }
           } else {
-            showToast("this_product_is_out_of_stock".tr);
+            showErrorToast("this_product_is_out_of_stock".tr);
           }
         }
         break;
@@ -218,6 +223,26 @@ class ProductDetailController extends BaseController {
         AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
         break;
     }
+  }
+
+  String _getVariationId(ProductItem item, ProductVariation value) {
+    if (value == ProductVariation.ebook) {
+      for (var element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
+            0) {
+          return element.id!.toString();
+        }
+      }
+    } else {
+      for (var element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("book") ==
+            0) {
+          return element.id.toString();
+        }
+      }
+    }
+
+    return "";
   }
 
   void shareItem() {
@@ -262,7 +287,8 @@ class ProductDetailController extends BaseController {
     if (productDetailData.value!.isBookAvailable ||
         productDetailData.value!.isEbookAvailable) {
       final addToCartResponse = await CartServices.addToCart(
-        id: productDetailData.value!.id.toString(),
+        id: _getVariationId(productDetailData.value!,
+            productDetailData.value!.productVariationType.value),
         quantity: selectedQuantity.string,
         variations: [
           VariationRequestData(
@@ -282,30 +308,30 @@ class ProductDetailController extends BaseController {
           bgColor: AppColors.green,
           textColor: AppColors.white,
         );
+        CartController cartController = Get.find<CartController>();
+        cartController.onRefresh();
         AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
       }
     } else {
-      showToast("this_product_is_out_of_stock".tr);
+      showErrorToast("this_product_is_out_of_stock".tr);
     }
   }
 
   String _getVariationValue(ProductVariation value) {
     if (value == ProductVariation.ebook) {
-      for (var element in productDetailData.value!.variations!) {
-        if (element.attributes?.attributePurchase
-                ?.toLowerCase()
-                .compareTo("ebook") ==
+      for (ProductVariations element
+          in productDetailData.value!.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
             0) {
-          return element.attributes!.attributePurchase!;
+          return element.attributes![0].option!;
         }
       }
     } else {
-      for (var element in productDetailData.value!.variations!) {
-        if (element.attributes?.attributePurchase
-                ?.toLowerCase()
-                .compareTo("book") ==
+      for (ProductVariations element
+          in productDetailData.value!.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("book") ==
             0) {
-          return element.attributes!.attributePurchase!;
+          return element.attributes![0].option!;
         }
       }
     }

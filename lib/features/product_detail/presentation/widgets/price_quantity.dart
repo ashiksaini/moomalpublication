@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
@@ -170,28 +171,25 @@ class PriceQuantity extends StatelessWidget {
   }
 
   String _bookPrice() {
-    for (var variation
-        in _productDetailController.productDetailData.value?.variations ?? []) {
+    for (ProductVariations variation in _productDetailController
+            .productDetailData.value?.productVariations ??
+        []) {
       if (_productDetailController
                   .productDetailData.value?.productVariationType.value ==
               ProductVariation.ebook &&
-          variation.attributes?.attributePurchase
-                  ?.toLowerCase()
-                  .compareTo("ebook") ==
+          variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
-        return variation.price ?? "";
+        return variation.regularPrice.toString();
       }
 
       if (_productDetailController
                   .productDetailData.value?.productVariationType.value ==
               ProductVariation.book &&
-          variation.attributes?.attributePurchase
-                  ?.toLowerCase()
-                  .compareTo("book") ==
+          variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
-        return variation.price ?? "";
+        return variation.regularPrice.toString();
       }
     }
 

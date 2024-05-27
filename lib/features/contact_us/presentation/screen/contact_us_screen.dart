@@ -46,6 +46,10 @@ class ContactUsScreen extends StatelessWidget {
                             return Padding(
                               padding: EdgeInsets.symmetric(vertical: 10.v),
                               child: ContactCard(
+                                contactType: contactUsController
+                                    .address[index].contactType!,
+                                onContactClick:
+                                    contactUsController.onContactClick,
                                 contactImage: contactUsController
                                         .address[index].iconName ??
                                     AppAssets.icAddress,

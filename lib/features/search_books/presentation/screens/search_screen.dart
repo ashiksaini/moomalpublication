@@ -94,8 +94,8 @@ class SearchProductScreen extends StatelessWidget {
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 12.0.h,
-        mainAxisSpacing: 15.0.v,
+        crossAxisSpacing: 15.0.h,
+        mainAxisSpacing: 15.0.h,
         childAspectRatio: Utility.getChildAspectRation(context),
       ),
       itemCount: _searchProductController.searchBookResponse.value.isLoading
@@ -113,6 +113,8 @@ class SearchProductScreen extends StatelessWidget {
             child: CardBookItem(
               item: _searchProductController.searchedBooks[index],
               onCartBtnClick: _searchProductController.onCartBtnClick,
+              onBookVariationClick:
+                  _searchProductController.onProductVariationClick,
             ),
           );
         }

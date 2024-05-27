@@ -9,16 +9,17 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/bottom_nav_bar/data/models/nav_item.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final int? selectedIndex;
   final ValueChanged<int>? onTabChanged;
+  final int cartItemCount;
 
-  CustomBottomNavBar({
+  const CustomBottomNavBar({
     super.key,
     this.selectedIndex,
     this.onTabChanged,
+    this.cartItemCount = 0,
   });
 
   @override
@@ -29,11 +30,11 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   final Color selectedColor = AppColors.orange;
   final Color unselectedColor = AppColors.black;
   late List<BottomNavItem> _navItems = [];
-  final CartController _cartController = Get.put(CartController());
 
   @override
   void initState() {
     super.initState();
+
     _generateNavItems();
   }
 
@@ -51,27 +52,25 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return Wrap(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 8.v),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  blurRadius: 6.0,
-                ),
-              ],
-            ),
-            child: Row(
-              children: _buildNavItems(),
-            ),
+    return Wrap(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 8.v),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 6.0,
+              ),
+            ],
           ),
-        ],
-      );
-    });
+          child: Row(
+            children: _buildNavItems(),
+          ),
+        ),
+      ],
+    );
   }
 
   List<Widget> _buildNavItems() {
@@ -92,12 +91,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                   badges.Badge(
                     badgeStyle:
                         const badges.BadgeStyle(badgeColor: AppColors.orange),
-                        //create fun ans send to cart screen
-                        // new scrren 
                     badgeContent: CustomText(
-                        text: _cartController
-                            .cartDataResponse.value.data?.items?.length
-                            .toString(),
+                        text: widget.cartItemCount.toString(),
                         textStyle: CustomTextStyle.textStyle15Bold(context,
                             color: AppColors.white)),
                     child: SvgPicture.asset(

@@ -2,7 +2,9 @@ import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
+import 'package:moomalpublication/core/base/product_item/attribute.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/search_books/data/constant/type_alias.dart';
@@ -34,8 +36,25 @@ class SearchProductServices {
             .toList();
 
         for (var element in parsedResponse) {
-          for (var variation in element.variations ?? []) {
-            if (variation.attributes?.attributePurchase
+          if (element.productVariations?.isEmpty == true) {
+            element.productVariations?.add(
+              ProductVariations(
+                id: element.id,
+                onSale: element.onSale,
+                regularPrice: element.regularPrice,
+                salePrice: element.salePrice,
+                sku: element.sku,
+                quantity: element.quantity.toString(),
+                stockStatus: element.stockStatus,
+                attributes: [
+                  Attribute(name: "purchase", slug: "purchase", option: "book")
+                ],
+              ),
+            );
+          }
+
+          for (ProductVariations variation in element.productVariations ?? []) {
+            if (variation.attributes?[0].option
                         ?.toLowerCase()
                         .compareTo("ebook") ==
                     0 &&
@@ -44,7 +63,7 @@ class SearchProductServices {
               element.isEbookAvailable = true;
             }
 
-            if (variation.attributes?.attributePurchase
+            if (variation.attributes?[0].option
                         ?.toLowerCase()
                         .compareTo("book") ==
                     0 &&

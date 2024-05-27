@@ -17,9 +17,9 @@ class OrderSuccessController extends BaseController {
   @override
   void onInit() async {
     super.onInit();
-    
+
     orderId = await Get.arguments;
-    
+
     _getOrderSuccesResponse();
   }
 
@@ -33,7 +33,7 @@ class OrderSuccessController extends BaseController {
       thankYouScreeShow.value = false;
       orderSuccessData.value = orderSuccessResponse.value.data!;
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 }

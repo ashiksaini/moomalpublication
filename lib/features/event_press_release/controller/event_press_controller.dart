@@ -28,9 +28,9 @@ class EventPressController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    generateYearList();
-    _getEvents();
-    _getPressRelease();
+    // generateYearList();
+    // _getEvents();
+    // _getPressRelease();
   }
 
   void navigateSettingDetailScreen({required String appBarTitle}) {

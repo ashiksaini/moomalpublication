@@ -68,8 +68,8 @@ class CategoryWiseScreen extends StatelessWidget {
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 12.0,
-            mainAxisSpacing: 15.0,
+            crossAxisSpacing: 15.0.h,
+            mainAxisSpacing: 15.0.h,
             childAspectRatio: Utility.getChildAspectRation(context),
           ),
           itemCount: _categoryWiseController.productResponse.value.isLoading
@@ -87,6 +87,8 @@ class CategoryWiseScreen extends StatelessWidget {
                 child: CardBookItem(
                   item: _categoryWiseController.productList[index],
                   onCartBtnClick: _categoryWiseController.onCartBtnClick,
+                  onBookVariationClick:
+                      _categoryWiseController.onProductVariationClick,
                 ),
               );
             }

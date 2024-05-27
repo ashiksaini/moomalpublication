@@ -27,10 +27,10 @@ class RegisterController extends BaseController {
           Future.delayed(
               const Duration(seconds: 4), () => _navigateToLoginScreen());
         } else {
-          showToast(userRegisterResponse.value.data!.message.toString());
+          showErrorToast(userRegisterResponse.value.data!.message.toString());
         }
       } else {
-        showToast(AppConstants.somethingWentWrong);
+        showErrorToast(AppConstants.somethingWentWrong);
       }
     }
   }

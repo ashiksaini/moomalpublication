@@ -82,7 +82,7 @@ class TestSeriesController extends BaseController {
         }
       }
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -107,7 +107,7 @@ class TestSeriesController extends BaseController {
         }
       }
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 

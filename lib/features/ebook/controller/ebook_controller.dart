@@ -2,12 +2,14 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
 import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/ebook/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/ebook/data/models/e_book_category_item/e_book_category_item.dart';
@@ -92,9 +94,11 @@ class EbookController extends BaseController {
       ),
     );
     if (ebooksResponse.value.data != null) {
-      ebooks.addAll(ebooksResponse.value.data ?? []);
+      ebooks.addAll((ebooksResponse.value.data?.where((element) =>
+              element.isEbookAvailable && !element.isBookAvailable)) ??
+          []);
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -120,7 +124,7 @@ class EbookController extends BaseController {
         {
           if (item.isBookAvailable || item.isEbookAvailable) {
             final addToCartResponse = await CartServices.addToCart(
-              id: item.id.toString(),
+              id: _getVariationId(item, item.productVariationType.value),
               quantity: item.quantity.toString(),
               variations: [
                 VariationRequestData(
@@ -141,9 +145,11 @@ class EbookController extends BaseController {
                 textColor: AppColors.white,
               );
               item.cartBtnType.value = CartBtnType.goToCart;
+              CartController cartController = Get.find<CartController>();
+              cartController.onRefresh();
             }
           } else {
-            showToast("this_product_is_out_of_stock".tr);
+            showErrorToast("this_product_is_out_of_stock".tr);
           }
         }
         break;
@@ -156,21 +162,37 @@ class EbookController extends BaseController {
 
   String _getVariationValue(ProductItem item, ProductVariation value) {
     if (value == ProductVariation.ebook) {
-      for (var element in item.variations!) {
-        if (element.attributes?.attributePurchase
-                ?.toLowerCase()
-                .compareTo("ebook") ==
+      for (ProductVariations element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
             0) {
-          return element.attributes!.attributePurchase!;
+          return element.attributes![0].option!;
         }
       }
     } else {
-      for (var element in item.variations!) {
-        if (element.attributes?.attributePurchase
-                ?.toLowerCase()
-                .compareTo("book") ==
+      for (ProductVariations element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("book") ==
             0) {
-          return element.attributes!.attributePurchase!;
+          return element.attributes![0].option!;
+        }
+      }
+    }
+
+    return "";
+  }
+
+  String _getVariationId(ProductItem item, ProductVariation value) {
+    if (value == ProductVariation.ebook) {
+      for (ProductVariations element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
+            0) {
+          return element.id!.toString();
+        }
+      }
+    } else {
+      for (ProductVariations element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("book") ==
+            0) {
+          return element.id.toString();
         }
       }
     }
@@ -180,6 +202,9 @@ class EbookController extends BaseController {
 
   void onCategoryItemClick(DropdownItem<EBookCategoryItem> item) {
     selectedCategory.value = item;
+    _pageNo = 1;
+    isLastPage.value = false;
+
     ebooks.clear();
     _getCategoryWiseBooks();
   }

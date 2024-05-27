@@ -43,6 +43,14 @@ class Utility {
     }
   }
 
+  static Future<void> sendToWhatsapp(String phoneNumber) async {
+    launchurl("whatsapp://send?phone=$phoneNumber");
+  }
+
+  static Future<void> sendToGmail(String email) async {
+    launchurl("mailto:$email?subject=" "&body=" "");
+  }
+
   static String generateTransactionId() {
     // Maximum length of the transaction ID
     const int maxTransactionIdLength = 25;
@@ -65,6 +73,6 @@ class Utility {
 
   static double getChildAspectRation(BuildContext context) {
     return MediaQuery.of(context).size.width /
-        (MediaQuery.of(context).size.height / 1.12);
+        (MediaQuery.of(context).size.height);
   }
 }

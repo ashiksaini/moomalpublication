@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/box_decorations.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
@@ -21,100 +23,112 @@ class AllCategoriesScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           color: AppColors.white,
-          child: Column(
-            children: [
-              CustomAppbar(
-                title: "all_categories".tr,
-              ),
-              SingleChildScrollView(
-                padding: EdgeInsets.symmetric(
-                  vertical: 50.v,
-                  horizontal: 24.h,
+          child: Container(
+            height: SizeUtils.height,
+            width: SizeUtils.width,
+            decoration: BoxDecoration(
+              gradient: gradientBg(context),
+            ),
+            child: Column(
+              children: [
+                CustomAppbar(
+                  title: "all_categories".tr,
                 ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        // Current Gk
-                        _getCategoryItem(
-                          "current_gk".tr,
-                          AppAssets.icReadingBook,
-                          SharedData(
-                            categoryWiseAppBarTitle: "current_gk".tr,
-                            categoryId: AppConstants.currentGKCategoryId,
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          // Current Gk
+                          _getCategoryItem(
+                            context,
+                            "current_gk".tr,
+                            AppAssets.icReadingBook,
+                            SharedData(
+                              categoryWiseAppBarTitle: "current_gk".tr,
+                              categoryId: AppConstants.currentGKCategoryId,
+                            ),
                           ),
-                        ),
 
-                        // Rajasthan GK
-                        _getCategoryItem(
-                          "rajasthan_gk".tr,
-                          AppAssets.icUserboard,
-                          SharedData(
-                            categoryWiseAppBarTitle: "rajasthan_gk".tr,
-                            categoryId: AppConstants.rajasthanGKCategoryId,
+                          // Rajasthan GK
+                          _getCategoryItem(
+                            context,
+                            "rajasthan_gk".tr,
+                            AppAssets.icUserboard,
+                            SharedData(
+                              categoryWiseAppBarTitle: "rajasthan_gk".tr,
+                              categoryId: AppConstants.rajasthanGKCategoryId,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const VerticalGap(size: 50),
-                    Row(
-                      children: [
-                        // Exam Review
-                        _getCategoryItem(
-                          "exam_review".tr,
-                          AppAssets.icClipboard,
-                          SharedData(
-                            categoryWiseAppBarTitle: "exam_review".tr,
-                            categoryId: AppConstants.examReviewCategoryId,
+                        ],
+                      ),
+                      const VerticalGap(size: 50),
+                      Row(
+                        children: [
+                          // Exam Review
+                          _getCategoryItem(
+                            context,
+                            "exam_review".tr,
+                            AppAssets.icClipboard,
+                            SharedData(
+                              categoryWiseAppBarTitle: "exam_review".tr,
+                              categoryId: AppConstants.examReviewCategoryId,
+                            ),
                           ),
-                        ),
 
-                        // Reet Exam
-                        _getCategoryItem(
-                          "reet_exam".tr,
-                          AppAssets.icEdit,
-                          SharedData(
-                            categoryWiseAppBarTitle: "reet_exam".tr,
-                            categoryId: AppConstants.reetExamCategoryId,
+                          // Reet Exam
+                          _getCategoryItem(
+                            context,
+                            "reet_exam".tr,
+                            AppAssets.icEdit,
+                            SharedData(
+                              categoryWiseAppBarTitle: "reet_exam".tr,
+                              categoryId: AppConstants.reetExamCategoryId,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const VerticalGap(size: 50),
-                    Row(
-                      children: [
-                        // New Books
-                        _getCategoryItem(
-                          "new_books".tr,
-                          AppAssets.icOpenBook,
-                          SharedData(
-                            categoryWiseAppBarTitle: "new_books".tr,
-                            categoryId: AppConstants.newBookCategoryId,
+                        ],
+                      ),
+                      const VerticalGap(size: 50),
+                      Row(
+                        children: [
+                          // New Books
+                          _getCategoryItem(
+                            context,
+                            "new_books".tr,
+                            AppAssets.icOpenBook,
+                            SharedData(
+                              categoryWiseAppBarTitle: "new_books".tr,
+                              categoryId: AppConstants.newBookCategoryId,
+                            ),
                           ),
-                        ),
 
-                        // New Books
-                        _getCategoryItem(
-                          "model_papers".tr,
-                          AppAssets.icReport,
-                          SharedData(
-                            categoryWiseAppBarTitle: "model_papers".tr,
-                            categoryId: AppConstants.modalPaperCategoryId,
+                          // New Books
+                          _getCategoryItem(
+                            context,
+                            "model_papers".tr,
+                            AppAssets.icReport,
+                            SharedData(
+                              categoryWiseAppBarTitle: "model_papers".tr,
+                              categoryId: AppConstants.modalPaperCategoryId,
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _getCategoryItem(String title, String icon, SharedData sharedData) {
+  Widget _getCategoryItem(
+      BuildContext context, String title, String icon, SharedData sharedData) {
     return Expanded(
       child: CategoryItem(
         onClick: () => AppRouting.toNamed(
@@ -123,6 +137,11 @@ class AllCategoriesScreen extends StatelessWidget {
         ),
         icon: icon,
         title: title,
+        size: 58.0,
+        textStyle: CustomTextStyle.textStyle20BoldCaladea(
+          context,
+          color: AppColors.black,
+        ),
       ),
     );
   }

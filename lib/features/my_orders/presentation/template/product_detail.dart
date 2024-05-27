@@ -66,12 +66,12 @@ class ProductDetailCard extends StatelessWidget {
                           fontStyle: FontStyle.italic,
                           color: AppColors.black,
                         )),
-                    const VerticalGap(size: 6),
-                    CustomText(
-                        text: '${'expire'.tr} - Never',
-                        textStyle: CustomTextStyle.textStyle15Bold(context,
-                            color: AppColors.black)),
-                    const VerticalGap(size: 12),
+                    // const VerticalGap(size: 6),
+                    // CustomText(
+                    //     text: '${'expire'.tr} - Never',
+                    //     textStyle: CustomTextStyle.textStyle15Bold(context,
+                    //         color: AppColors.black)),
+                    const VerticalGap(size: 10),
                     Row(
                       children: [
                         CustomOrangeButton(

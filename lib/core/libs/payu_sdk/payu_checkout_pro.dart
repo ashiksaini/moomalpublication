@@ -21,7 +21,8 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     _callBack = callBack!;
   }
 
-  Future<void> pay(String? totalPrice, String? orderKey, String? orderId) async {
+  Future<void> pay(
+      String? totalPrice, String? orderKey, String? orderId) async {
     this.orderId = orderId ?? "";
 
     final payUPaymentParams = _getPayUPaymentParams(

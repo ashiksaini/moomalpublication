@@ -39,7 +39,8 @@ class ThankYouPageTemplate extends StatelessWidget {
                 decoration: TextDecoration.underline, color: AppColors.white),
           ),
           CustomText(
-            text: '${'date'.tr} : ${DateTimeUtils.getCurrentDate(outputFormat: "MMM dd, yyyy")}',
+            text:
+                '${'date'.tr} : ${DateTimeUtils.getCurrentDate(outputFormat: "MMM dd, yyyy")}',
             textStyle: CustomTextStyle.textStyle14Bold(context,
                 decoration: TextDecoration.underline, color: AppColors.white),
           )

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
@@ -67,7 +67,7 @@ class QuizController extends BaseController {
     answerList.clear();
     navigateQuizTestScreen(index: index);
     getTest().then((value) {
-      startTimer(duration: 50);
+      startTimer(duration: 60);
     });
   }
 
@@ -97,6 +97,7 @@ class QuizController extends BaseController {
 
   void startTimer({required int duration}) {
     counter.value = duration;
+    timer?.cancel();
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (counter.value > 0) {
         counter.value--;
@@ -124,19 +125,34 @@ class QuizController extends BaseController {
   }
 
   void checkAnswers() {
-    submitButton.value = false;
-    testTaken.value = true;
-    for (int i = 0; i < answerList.length; i++) {
-      for (int j = 0; j < answerList[i].length; j++) {
-        if (answerList[i][j].correctOrNot == true &&
-            selectedOptions[i].value == j) {
-          totalScore++;
+    if (_isAnySelected()) {
+      showErrorToast('please_mark_atleast_one_question'.tr);
+    } else {
+      submitButton.value = false;
+      testTaken.value = true;
+      for (int i = 0; i < answerList.length; i++) {
+        for (int j = 0; j < answerList[i].length; j++) {
+          if (answerList[i][j].correctOrNot == true &&
+              selectedOptions[i].value == j) {
+            totalScore++;
+          }
         }
       }
     }
   }
 
-  void reTakeButton() {}
+  void reTakeButton() {
+    testTaken.value = false;
+    totalScore = 0;
+    selectedOptions.clear();
+    submitButton.value = true;
+    counter.value = 0;
+    questionsList.clear();
+    answerList.clear();
+    getTest().then((value) {
+      startTimer(duration: 50);
+    });
+  }
 
   void onBackPress() {
     if (timer != null && timer!.isActive) {
@@ -144,55 +160,14 @@ class QuizController extends BaseController {
     }
     AppRouting.navigateBack();
   }
+
+  bool _isAnySelected() {
+    for (var element in selectedOptions) {
+      if (element != RxInt(-1)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
-
-// RxList<RxList<Options>> optionsList = <RxList<Options>>[].obs;
-// void _initializeOptions() {
-//   selectedOptions = List<int>.generate(questionsList.length, (index) => -1);
-
-//   for (int i = 0; i < questionsList.length; i++) {
-//     RxList<Options> options = <Options>[].obs;
-//     for (int j = 0; j < optionsName.length; j++) {
-//       options.add(Options(name: optionsName[j]));
-//     }
-//     optionsList.add(options);
-//   }
-// }
-
-// void selectedOption(
-//     {required int questionNumber, required int optionNumber}) {
-//   if (selectedOptions[questionNumber] == optionNumber) {
-//     optionsList[questionNumber][optionNumber].unSelectedOption();
-//     selectedOptions[questionNumber] = -1;
-//     optionsList.refresh();
-//     return;
-//   } else if (selectedOptions[questionNumber] != -1) {
-//     optionsList[questionNumber][selectedOptions[questionNumber]]
-//         .unSelectedOption();
-//     selectedOptions[questionNumber] = -1;
-//   }
-//   selectedOptions[questionNumber] = optionNumber;
-//   optionsList[questionNumber][optionNumber].selectedOption();
-//   optionsList.refresh();
-// }
-// class Options {
-//   Options(
-//       {required this.name,
-//       this.color = AppColors.greyLight,
-//       this.selected = false,
-//       this.notSelected = true});
-//   final String name;
-//   Color color;
-//   bool selected;
-//   final bool notSelected;
-
-//   void unSelectedOption() {
-//     color = AppColors.greyLight;
-//     selected = false;
-//   }
-
-//   void selectedOption() {
-//     color = AppColors.orange;
-//     selected = true;
-//   }
-// }
