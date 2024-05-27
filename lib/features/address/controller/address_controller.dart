@@ -23,12 +23,11 @@ class AdressController extends BaseController {
   int phoneNumberIndex = 0;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    await _getAddress();
     shippingAddressFiled();
     billingAddressFiled();
-
-    _getAddress();
   }
 
   Future<void> _getAddress() async {
@@ -46,21 +45,21 @@ class AdressController extends BaseController {
         AddressTextEditingController(
       name: 'first_name'.tr,
       hint: 'enter_first_name'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: shippingAddress.value?.firstName),
     );
 
     AddressTextEditingController lastNameController =
         AddressTextEditingController(
       name: 'last_name'.tr,
       hint: 'enter_last_name'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: shippingAddress.value?.lastName),
     );
 
     AddressTextEditingController companyNameController =
         AddressTextEditingController(
       name: 'company_name'.tr,
       hint: 'enter_company_name'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: shippingAddress.value?.company),
       optional: true,
     );
 
@@ -68,27 +67,27 @@ class AdressController extends BaseController {
         AddressTextEditingController(
       name: 'street_address'.tr,
       hint: 'enter_street_address'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: shippingAddress.value?.state),
     );
 
     AddressTextEditingController townCityController =
         AddressTextEditingController(
       name: 'town_city'.tr,
       hint: 'enter_town_city'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: shippingAddress.value?.state),
     );
 
     AddressTextEditingController stateController = AddressTextEditingController(
       name: 'state'.tr,
       hint: 'enter_state'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: shippingAddress.value?.state),
     );
 
     AddressTextEditingController pinCodeController =
         AddressTextEditingController(
       name: 'pin_code'.tr,
       hint: 'enter_pin_code'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: shippingAddress.value?.postcode),
       keyboardType: TextInputType.number,
     );
 
@@ -108,21 +107,21 @@ class AdressController extends BaseController {
         AddressTextEditingController(
       name: 'first_name'.tr,
       hint: 'enter_first_name'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.firstName),
     );
 
     AddressTextEditingController lastNameController =
         AddressTextEditingController(
       name: 'last_name'.tr,
       hint: 'enter_last_name'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.lastName),
     );
 
     AddressTextEditingController companyNameController =
         AddressTextEditingController(
       name: 'company_name'.tr,
       hint: 'enter_company_name'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.company),
       optional: true,
     );
 
@@ -130,34 +129,34 @@ class AdressController extends BaseController {
         AddressTextEditingController(
       name: 'street_address'.tr,
       hint: 'enter_street_address'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.address1),
     );
 
     AddressTextEditingController townCityController =
         AddressTextEditingController(
       name: 'town_city'.tr,
       hint: 'enter_town_city'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.address2),
     );
 
     AddressTextEditingController stateController = AddressTextEditingController(
       name: 'state'.tr,
       hint: 'enter_state'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.state),
     );
 
     AddressTextEditingController pinCodeController =
         AddressTextEditingController(
       name: 'pin_code'.tr,
       hint: 'enter_pin_code'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.postcode),
       keyboardType: TextInputType.number,
     );
 
     AddressTextEditingController phoneController = AddressTextEditingController(
       name: 'phone'.tr,
       hint: 'enter_phone'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.phone),
       keyboardType: TextInputType.number,
     );
 
@@ -165,7 +164,7 @@ class AdressController extends BaseController {
         AddressTextEditingController(
       name: 'email_address'.tr,
       hint: 'enter_email_address'.tr,
-      controller: TextEditingController(),
+      controller: TextEditingController(text: billingAddress.value?.email),
     );
 
     billingAddressList.addAll([
