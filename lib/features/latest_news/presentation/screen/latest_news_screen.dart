@@ -33,26 +33,33 @@ class LatestNewsScreen extends StatelessWidget {
               ),
               Obx(
                 () => Expanded(
-                  child: _latestNewsController
-                          .latestNewsResponse.value.isLoading
-                      ? Center(child: customProgressIndicator())
-                      : _latestNewsController.latestNews.isNotEmpty
-                          ? ListView.builder(
-                              itemCount:
-                                  _latestNewsController.latestNews.length,
-                              itemBuilder: (_, index) {
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10.h, vertical: 12.v),
-                                  child: CardLatestNewsItem(
-                                    latestNewsItem:
-                                        _latestNewsController.latestNews[index],
-                                  ),
-                                );
-                              })
-                          : Center(
-                              child: EmptyProductView(
-                                  title: "no_latest_news_available".tr)),
+                  child:
+                      _latestNewsController.latestNewsResponse.value.isLoading
+                          ? Center(child: customProgressIndicator())
+                          : _latestNewsController.latestNews.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount:
+                                      _latestNewsController.latestNews.length,
+                                  itemBuilder: (_, index) {
+                                    return Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.h, vertical: 12.v),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          _latestNewsController
+                                              .navigateNewsDetailScreen(
+                                                  index: index);
+                                        },
+                                        child: CardLatestNewsItem(
+                                          latestNewsItem: _latestNewsController
+                                              .latestNews[index],
+                                        ),
+                                      ),
+                                    );
+                                  })
+                              : Center(
+                                  child: EmptyProductView(
+                                      title: "no_latest_news_available".tr)),
                 ),
               ),
             ],

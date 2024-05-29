@@ -13,6 +13,7 @@ import 'package:moomalpublication/features/ebook/presentation/screens/ebook_scre
 import 'package:moomalpublication/features/event_press_release/presentation/screen/detail_event_page.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/latest_news/presentation/screen/latest_news_screen.dart';
+import 'package:moomalpublication/features/latest_news/presentation/screen/news_detail_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/my_orders/presentation/screen/ebook_order.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
@@ -239,6 +240,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.webView,
       page: () => const WebViewPage(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+     GetPage(
+      name: NameRoutes.newsDetailScreen,
+      page: () => NewsDetailScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

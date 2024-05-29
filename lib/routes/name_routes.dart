@@ -35,4 +35,6 @@ class NameRoutes {
   static const String thankYouPage = '/thankYouPage';
   static const String ebookOrder = '/ebookorder';
   static const String webView = '/webview';
+  static const String newsDetailScreen = '/newsDetailScreen';
+
 }
