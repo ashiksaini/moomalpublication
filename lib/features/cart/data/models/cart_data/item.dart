@@ -1,8 +1,8 @@
 import 'package:moomalpublication/features/cart/data/models/cart_data/extensions.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/image.dart';
+import 'package:moomalpublication/features/cart/data/models/cart_data/item_totals.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/prices.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/quantity_limits.dart';
-import 'package:moomalpublication/features/cart/data/models/cart_data/totals.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/variation.dart';
 
 class Item {
@@ -23,7 +23,7 @@ class Item {
   List<Variation>? variation;
   List<Map<String, dynamic>>? itemData;
   Prices? prices;
-  Totals? totals;
+  ItemTotals? itemTotals;
   String? catalogVisibility;
   Extensions? extensions;
 
@@ -45,7 +45,7 @@ class Item {
     this.variation,
     this.itemData,
     this.prices,
-    this.totals,
+    this.itemTotals,
     this.catalogVisibility,
     this.extensions,
   });
@@ -70,15 +70,17 @@ class Item {
         images: (json['images'] as List<dynamic>?)
             ?.map((item) => Image.fromJson(item as Map<String, dynamic>))
             .toList(),
-        // variation: (json['variation'] as List<dynamic>?)?.map((item) => Variation.fromJson(item as Map<String, dynamic>)).toList(),
+        variation: (json['variation'] as List<dynamic>?)
+            ?.map((item) => Variation.fromJson(item as Map<String, dynamic>))
+            .toList(),
         itemData: (json['item_data'] as List<dynamic>?)
             ?.map((e) => e as Map<String, dynamic>)
             .toList(),
         prices: json['prices'] != null
             ? Prices.fromJson(json['prices'] as Map<String, dynamic>)
             : null,
-        totals: json['totals'] != null
-            ? Totals.fromJson(json['totals'] as Map<String, dynamic>)
+        itemTotals: json['totals'] != null
+            ? ItemTotals.fromJson(json['totals'] as Map<String, dynamic>)
             : null,
         catalogVisibility: json['catalog_visibility'] as String?,
         // extensions: json['extensions'] as Map<String, dynamic>?,

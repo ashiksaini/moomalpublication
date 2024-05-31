@@ -179,12 +179,16 @@ class CustomTextStyle {
   static textStyle16Bold(
     BuildContext context, {
     Color color = AppColors.grey,
+    TextDecoration? textDecoration,
+    Color textDecorationColor = AppColors.black,
   }) =>
       TextStyle(
         fontSize: 16.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.calibriFont,
         color: color,
+        decoration: textDecoration,
+        decorationColor: textDecorationColor
       );
 
   static textStyle18Bold(

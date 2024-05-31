@@ -58,5 +58,7 @@ class BaseController extends GetxController {
     ProductVariation variation,
   ) async {
     item.productVariationType.value = variation;
+    item.cartBtnType.value = CartBtnType.addToCart;
+    item.quantity = 0;
   }
 }

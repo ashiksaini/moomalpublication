@@ -10,7 +10,7 @@ import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
-import 'package:moomalpublication/features/my_orders/presentation/widgets/image_container.dart';
+import 'package:moomalpublication/features/orders/presentation/widgets/image_container.dart';
 import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';

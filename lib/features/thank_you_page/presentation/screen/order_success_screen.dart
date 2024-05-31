@@ -57,7 +57,7 @@ class OrderSuccessScreen extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(vertical: 10.v, horizontal: 10.h),
                   child: GestureDetector(
-                    onTap: () => AppRouting.offAllNamed(NameRoutes.orderScreen),
+                    onTap: () => AppRouting.offNamed(NameRoutes.orderScreen),
                     child: Container(
                       padding: EdgeInsets.symmetric(
                           vertical: 15.v, horizontal: 10.h),

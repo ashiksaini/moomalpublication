@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
@@ -7,9 +8,9 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/features/address/controller/address_controller.dart';
 import 'package:moomalpublication/features/address/presentation/template/address_bottom_sheet.dart';
-import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/address_card.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -99,8 +100,9 @@ class AddressScreen extends StatelessWidget {
                   );
                 },
               ),
-              bottomButton(
-                  context: context, onTap: controller.onTapAddressButton),
+              if (controller.isCheckoutBtnVisible.value)
+                bottomButton(
+                    context: context, onTap: controller.onTapAddressButton),
             ],
           ),
         ),
@@ -116,18 +118,28 @@ class AddressScreen extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 12.v, horizontal: 14.h),
         child: ShadowContainer(
-          backgroundColor: AppColors.orange,
+          backgroundColor: AppColors.green,
           borderRadius: 10.h,
-          containerChild: Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 15.h),
-              child: CustomText(
-                text: "",
-                textStyle: CustomTextStyle.textStyle22Bold(
-                  context,
-                  color: AppColors.black,
+          containerChild: Padding(
+            padding: EdgeInsets.symmetric(vertical: 15.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomText(
+                  text: "proceed_to_checkout".tr,
+                  textStyle: CustomTextStyle.textStyle22Bold(
+                    context,
+                    color: AppColors.white,
+                  ),
                 ),
-              ),
+                const HorizontalGap(size: 15),
+                SvgPicture.asset(
+                  AppAssets.icArrowRight,
+                  color: AppColors.white,
+                  height: 18.v,
+                  width: 18.h,
+                )
+              ],
             ),
           ),
         ),

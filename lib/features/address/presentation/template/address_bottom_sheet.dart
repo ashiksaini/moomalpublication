@@ -16,7 +16,6 @@ class AddressBottomSheet {
     required String headerText,
     required RxList<AddressTextEditingController> addressList,
     required Function onSubmitButton,
-    
   }) {
     Widget addressBottomSheet = SizedBox(
       height: SizeUtils.height / 1.3,

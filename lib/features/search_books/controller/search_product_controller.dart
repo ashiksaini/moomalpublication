@@ -6,10 +6,12 @@ import 'package:moomalpublication/core/base/product_item/product_variations.dart
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
 import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
+import 'package:moomalpublication/features/home/data/models/products_request_data.dart';
 import 'package:moomalpublication/features/search_books/data/constant/type_alias.dart';
 import 'package:moomalpublication/features/search_books/data/services/search_product_services.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -21,36 +23,85 @@ class SearchProductController extends BaseController {
   RxString searchedText = RxString("");
   Rx<SearchBooksResponse> searchBookResponse = Rx(ApiResponse());
   RxList<ProductItem> searchedBooks = RxList([]);
+  int _pageNo = 1;
+  RxBool isLastPage = RxBool(false);
+  RxBool isLoadingMore = RxBool(false);
+  ScrollController scrollController = ScrollController();
 
   @override
   void onInit() {
     super.onInit();
 
-    debounce(searchedText, (_) => _initDebounce(),
+    debounce(searchedText, (searchedText) => _initDebounce(searchedText),
         time: const Duration(seconds: 1));
+    scrollController.addListener(_scrollListener);
   }
 
-  void _initDebounce() {
-    _getSearchedBook();
+  void _initDebounce(String? searchedText) {
+    if (searchedText.isNotNullAndEmpty) {
+      onRefresh();
+    } else {
+      _getSearchedBook();
+    }
   }
 
   Future<void> _getSearchedBook() async {
-    if (searchedText.value.isNotEmpty) {
+    if (_pageNo < 2) {
       searchBookResponse.value = ApiResponse.loading();
+    }
 
+    if (searchedText.value.isNotEmpty) {
+      isLoadingMore.value = false;
       searchBookResponse.value = await SearchProductServices.getSearchedBook(
-          search: searchedText.string);
+        search: searchedText.string,
+        query: ProductRequestData(perPage: 10, page: _pageNo).toJson(),
+      );
       if (searchBookResponse.value.data != null) {
         if (searchBookResponse.value.data!.isNotEmpty) {
           searchedBooks.addAll(searchBookResponse.value.data!);
+        } else {
+          isLastPage.value = true;
         }
       }
     }
   }
 
-  void onTextChanged(String? text) {
+  Future<void> loadMoreData() async {
+    if (!isLoadingMore.value && !isLastPage.value) {
+      isLoadingMore.value = true;
+    }
+
+    Future.delayed(const Duration(seconds: 1), () {
+      if (!isLastPage.value) {
+        ++_pageNo;
+        _getSearchedBook();
+      }
+    });
+  }
+
+  void _scrollListener() {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
+      loadMoreData();
+    }
+  }
+
+  Future<void> onRefresh() async {
+    _pageNo = 1;
+    isLastPage.value = false;
+    searchedText.value = "";
     searchedBooks.clear();
-    searchedText.value = text!;
+    textEditingController.clear();
+    searchBookResponse.value = ApiResponse();
+  }
+
+  void onTextChanged(String? text) {
+    if (text.isNotNullAndEmpty) {
+      onRefresh();
+    } else {
+      searchedBooks.clear();
+      searchedText.value = text!;
+    }
   }
 
   void onItemClick(int index, ProductItem data) {

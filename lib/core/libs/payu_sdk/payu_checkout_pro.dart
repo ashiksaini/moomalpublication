@@ -4,6 +4,7 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/libs/payu_sdk/hash_sevices.dart';
 import 'package:moomalpublication/core/utils/dialogs.dart';
 import 'package:moomalpublication/core/utils/utility.dart';
+import 'package:moomalpublication/features/orders/data/services/get_orders_services.dart';
 import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:payu_checkoutpro_flutter/PayUConstantKeys.dart';
 import 'package:payu_checkoutpro_flutter/payu_checkoutpro_flutter.dart';
@@ -72,33 +73,39 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
   }
 
   @override
-  onError(Map? response) {
-    showLottieDialog(
-        Get.context!, AppAssets.failedAnimation, "payment_error".tr);
+  onError(Map? response) async{
+    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_error".tr);
     CustomLogger.logger.e(response.toString());
+
+    await GetOrderService.updateOrderStatus(orderId, {"status": "failed"});
     throw UnimplementedError();
   }
 
   @override
-  onPaymentCancel(Map? response) {
+  onPaymentCancel(Map? response) async {
     showLottieDialog(
         Get.context!, AppAssets.failedAnimation, "payment_cancel".tr);
     CustomLogger.logger.w(response.toString());
+
+    await GetOrderService.updateOrderStatus(orderId, {"status": "cancelled"});
     throw UnimplementedError();
   }
 
   @override
-  onPaymentFailure(response) {
+  onPaymentFailure(response) async {
     showLottieDialog(
         Get.context!, AppAssets.failedAnimation, "payment_failed".tr);
     CustomLogger.logger.e(response.toString());
+
+    await GetOrderService.updateOrderStatus(orderId, {"status": "failed"});
     throw UnimplementedError();
   }
 
   @override
-  onPaymentSuccess(response) {
+  onPaymentSuccess(response) async {
     AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     _callBack();
+    await GetOrderService.updateOrderStatus(orderId, {"status": "completed"});
     throw UnimplementedError();
   }
 }

@@ -69,8 +69,9 @@ class EbookController extends BaseController {
 
     if (ebookCategoryResponse.value.data != null) {
       for (var category in ebookCategoryResponse.value.data!) {
-        ebookCategories
-            .add(DropdownItem(title: category.name ?? "", type: category));
+        if (category.id?.compareTo(15) != 0) {
+          ebookCategories.add(DropdownItem(title: category.name ?? "", type: category));
+        }
       }
 
       if (ebookCategories.isNotEmpty) {

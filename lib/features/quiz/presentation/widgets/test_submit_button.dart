@@ -17,7 +17,7 @@ class TestSubmitButton extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           _quizController.submitButton.value
-              ? _quizController.checkAnswers()
+              ? _quizController.checkAnswers(false)
               : _quizController.reTakeButton();
         },
         child: ShadowContainer(

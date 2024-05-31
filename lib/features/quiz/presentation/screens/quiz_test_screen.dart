@@ -9,6 +9,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/data/models/timer_model.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/questions_list_card.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/test_submit_button.dart';
@@ -32,7 +33,7 @@ class QuizTestScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomAppbar(
-                title: _quizController.quizList[index].quizName ?? '',
+                title: (_quizController.selectedQuizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizName :  _quizController.economicQuizList[index].quizName) ?? "",
                 maxLine: 1,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => _quizController.onBackPress(),

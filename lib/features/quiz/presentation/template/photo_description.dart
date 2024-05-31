@@ -6,6 +6,7 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/start_button.dart';
 
@@ -37,19 +38,19 @@ class PhotoDescription extends StatelessWidget {
           ),
           VerticalGap(size: 18.v),
           CustomText(
-            text: "${'name'.tr}: ${_quizController.quizList[index].quizName}",
+            text: "${'name'.tr}: ${_quizController.selectedQuizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizName : _quizController.economicQuizList[index].quizName}",
             textStyle: CustomTextStyle.textStyle15Bold(context),
             textAlign: TextAlign.start,
           ),
           CustomText(
             text:
-                "${'quiz_views'.tr}: ${_quizController.quizList[index].quizViews}",
+                "${'quiz_views'.tr}: ${_quizController.selectedQuizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizViews : _quizController.economicQuizList[index].quizViews}",
             textStyle: CustomTextStyle.textStyle15Bold(context),
             textAlign: TextAlign.start,
           ),
           CustomText(
             text:
-                "${'quiz_taken'.tr}: ${_quizController.quizList[index].quizTaken}",
+                "${'quiz_taken'.tr}: ${_quizController.selectedQuizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizTaken : _quizController.economicQuizList[index].quizTaken}",
             textStyle: CustomTextStyle.textStyle15Bold(context),
             textAlign: TextAlign.start,
           ),

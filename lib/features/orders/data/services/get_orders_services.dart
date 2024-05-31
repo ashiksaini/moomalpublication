@@ -43,4 +43,29 @@ class GetOrderService {
       return OrderResponse();
     }
   }
+
+  static Future<OrderUpdateResponse> updateOrderStatus(String? orderId, Map<String, dynamic>? updateStatusData) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final query = KeyRequestData(
+          consumerKey: ApiKeys.updateCartProductsConsumerKey,
+          consumerSecret: ApiKeys.updateCartProductsConsumerSecret,
+        ).toJson();
+
+        final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
+            .post("${ApiPaths.orders}$orderId", queryParameters: query, data: updateStatusData);
+        final parsedResponse = OrderResponseModel.fromJson(response.data);
+
+        return OrderUpdateResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showToast(error.message.toString());
+        return OrderUpdateResponse();
+      }
+    } else {
+      showToast("no_internet_access".tr);
+      return OrderUpdateResponse();
+    }
+  }
 }

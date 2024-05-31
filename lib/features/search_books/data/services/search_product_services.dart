@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
-import 'package:moomalpublication/config/api_keys.dart';
-import 'package:moomalpublication/core/base/key_request_data.dart';
 import 'package:moomalpublication/core/base/product_item/attribute.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/base/product_item/product_variations.dart';
@@ -15,20 +13,15 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class SearchProductServices {
   SearchProductServices._();
 
-  static Future<SearchBooksResponse> getSearchedBook({String? search}) async {
+  static Future<SearchBooksResponse> getSearchedBook({String? search, Map<String, dynamic>? query}) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
       try {
-        final query = KeyRequestData(
-          consumerKey: ApiKeys.searchBookConsumerKey,
-          consumerSecret: ApiKeys.searchBookConsumerSecret,
-        ).toJson();
-
-        query.addIf(search != null, "search", search);
+        query?.addIf(search != null, "search", search);
 
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .get(ApiPaths.searchProducts, queryParameters: query);
+            .get(ApiPaths.products, queryParameters: query);
         final parsedResponse = (response.data as List<dynamic>?)!
             .map(
               (item) => ProductItem.fromJson(item as Map<String, dynamic>),

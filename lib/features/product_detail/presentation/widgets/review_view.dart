@@ -64,8 +64,7 @@ class ReviewView extends StatelessWidget {
           CustomText(
             text: productReview.content,
             textStyle: CustomTextStyle.textStyle15Bold(context),
-                            textAlign: TextAlign.start,
-
+            textAlign: TextAlign.start,
           ),
         ],
       ),

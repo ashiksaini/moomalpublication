@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
-import 'package:moomalpublication/core/libs/payu_sdk/payu_checkout_pro.dart';
+import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/item.dart';
@@ -72,22 +72,26 @@ class CartController extends BaseController {
   }
 
   Future<void> onInc(Item cartItem) async {
-    int quantity = cartItem.quantity ?? 0;
-    ++quantity;
-
-    if (quantity == 9999) {
-      showToast("quantity_cannot_exceed_the_limit".tr);
+    if (cartItem.variation?[0].value?.toLowerCase().compareTo("ebook") == 0) {
+      showErrorToast("ebook_quantity_cannot_be_more_than_one".tr);
     } else {
-      cartDataResponse.value = await CartServices.updateItem(
-          id: cartItem.id.toString(),
-          quantity: quantity.toString(),
-          key: cartItem.key);
-      if (cartDataResponse.value.data != null) {
-        if (cartDataResponse.value.data!.items != null &&
-            cartDataResponse.value.data!.items!.isNotEmpty) {
-          cartItems.value = cartDataResponse.value.data!.items!;
-          totals.value = cartDataResponse.value.data!.totals!;
-          _onCartItemCountChange!(cartItems.length);
+      int quantity = cartItem.quantity ?? 0;
+      ++quantity;
+
+      if (quantity == 9999) {
+        showToast("quantity_cannot_exceed_the_limit".tr);
+      } else {
+        cartDataResponse.value = await CartServices.updateItem(
+            id: cartItem.id.toString(),
+            quantity: quantity.toString(),
+            key: cartItem.key);
+        if (cartDataResponse.value.data != null) {
+          if (cartDataResponse.value.data!.items != null &&
+              cartDataResponse.value.data!.items!.isNotEmpty) {
+            cartItems.value = cartDataResponse.value.data!.items!;
+            totals.value = cartDataResponse.value.data!.totals!;
+            _onCartItemCountChange!(cartItems.length);
+          }
         }
       }
     }
@@ -110,22 +114,15 @@ class CartController extends BaseController {
 
     cartCheckoutResponse.value = await CartServices.checkout();
     if (cartCheckoutResponse.value.data != null) {
-      if (cartCheckoutResponse.value.data!.billingAddress?.firstName?.isEmpty ==
-              true ||
-          cartCheckoutResponse
-                  .value.data!.shippingAddress?.firstName?.isEmpty ==
-              true) {
-        showToast("please_add_address_first".tr);
-        AppRouting.toNamed(NameRoutes.addressesScreen);
-      } else {
-        final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
-        payUCheckoutPro.init(callBack: () => onRefresh());
-        payUCheckoutPro.pay(
-          totals.value?.totalPrice,
-          cartCheckoutResponse.value.data!.orderKey,
-          cartCheckoutResponse.value.data!.orderId.toString(),
-        );
-      }
+      AppRouting.toNamed(
+        NameRoutes.addressesScreen,
+        argument: SharedData(
+          onCartCallBack: onRefresh,
+          totalPrice: totals.value?.totalPrice,
+          orderId: cartCheckoutResponse.value.data!.orderId.toString(),
+          orderKey: cartCheckoutResponse.value.data!.orderKey,
+        ),
+      );
     }
   }
 }

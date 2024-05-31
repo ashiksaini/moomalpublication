@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/options_card.dart';
@@ -21,11 +20,19 @@ class QuestionListCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Obx(
-            () => CustomText(
-              textAlign: TextAlign.start,
-              text:
-                  '${(questionNumberIndex + 1).toString()}. ${_quizController.questionsList[questionNumberIndex]}',
-              textStyle: CustomTextStyle.textStyle15Bold(context),
+            () => Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // CustomText(
+                //   textAlign: TextAlign.start,
+                //   text:
+                //       (questionNumberIndex + 1).toString(),
+                //   textStyle: CustomTextStyle.textStyle15Bold(context),
+                // ),
+
+                Expanded(child: Html(data: _quizController.questionsList[questionNumberIndex].value))
+              ],
             ),
           ),
           ListView.builder(

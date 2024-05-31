@@ -6,6 +6,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/photo_description.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -25,7 +26,7 @@ class QuizDetailScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomAppbar(
-                title: _quizController.quizList[index].quizName ?? '',
+                title: (_quizController.selectedQuizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizName :  _quizController.economicQuizList[index].quizName) ?? "",
                 maxLine: 1,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => AppRouting.navigateBack(),

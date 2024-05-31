@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/auth/data/models/login_response_data.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
@@ -72,7 +73,6 @@ class Utility {
   }
 
   static double getChildAspectRation(BuildContext context) {
-    return MediaQuery.of(context).size.width /
-        (MediaQuery.of(context).size.height);
+    return SizeUtils.width / (SizeUtils.height * 1.06);
   }
 }

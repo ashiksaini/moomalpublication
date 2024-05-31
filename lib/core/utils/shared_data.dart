@@ -13,6 +13,11 @@ class SharedData {
   String? testName;
   String? testUrl;
 
+  Function? onCartCallBack;
+  String? orderKey;
+  String? orderId;
+  String? totalPrice;
+
   SharedData({
     this.productItem,
     this.categoryWiseAppBarTitle,
@@ -22,5 +27,9 @@ class SharedData {
     this.productURL,
     this.testName,
     this.testUrl,
+    this.onCartCallBack,
+    this.orderId,
+    this.orderKey,
+    this.totalPrice,
   });
 }

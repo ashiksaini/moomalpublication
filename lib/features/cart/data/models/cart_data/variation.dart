@@ -1,11 +1,14 @@
 class Variation {
-  Variation();
+  String? attribute;
+  String? value;
 
-  factory Variation.fromJson(Map<String, dynamic> json) {
-    throw UnimplementedError('Variation.fromJson($json) is not implemented');
-  }
+  Variation({
+    this.attribute,
+    this.value,
+  });
 
-  Map<String, dynamic> toJson() {
-    throw UnimplementedError();
-  }
+  factory Variation.fromJson(Map<String, dynamic> json) => Variation(
+        attribute: json['attribute'] as String?,
+        value: json['value'] as String?,
+      );
 }

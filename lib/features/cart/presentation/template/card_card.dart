@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -55,13 +54,41 @@ class CartCard extends StatelessWidget {
                     children: [
                       CustomText(
                         textAlign: TextAlign.left,
-                        text: cartItem.name,
-                        maxLines: 2,
-                        textStyle: CustomTextStyle.textStyle20Bold(context),
+                        text:
+                            "${cartItem.name} - ${cartItem.variation?[0].value}",
+                        maxLines: 3,
+                        textStyle:
+                            CustomTextStyle.textStyle20BoldCaladea(context),
                       ),
-                      CustomText(
-                        text: "₹${cartItem.prices?.price}",
-                        textStyle: CustomTextStyle.textStyle20Bold(context),
+                      Row(
+                        children: [
+                          CustomText(
+                            text: 'price_1'.tr,
+                            textStyle: CustomTextStyle.textStyle18Bold(context),
+                          ),
+                          CustomText(
+                            text:
+                                " : ${cartItem.prices?.currencySymbol}${cartItem.prices?.price}",
+                            textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                                context,
+                                color: AppColors.black),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          CustomText(
+                            text: 'total_price'.tr,
+                            textStyle: CustomTextStyle.textStyle18Bold(context),
+                          ),
+                          CustomText(
+                            text:
+                                " : ${cartItem.itemTotals?.currencySymbol}${cartItem.itemTotals?.lineTotal}",
+                            textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                                context,
+                                color: AppColors.black),
+                          ),
+                        ],
                       ),
                       const VerticalGap(size: 10),
                       if (quantityButton) QuantityButton(cartItem: cartItem),
@@ -92,7 +119,6 @@ class CartCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.greyLight,
         borderRadius: BorderRadius.circular(15.r),
-        boxShadow: [primaryBoxShadow()],
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10.r),

@@ -372,4 +372,8 @@ final Map<String, String> enUS = {
   "go_to_orders": "Go To Orders",
   "out_of_stock": "Out Of Stock",
   "please_mark_atleast_one_question": "Please mark atleast one Question",
+  "proceed_to_checkout": "Proceed to Checkout",
+  "price_1": "Price",
+  "total_price": "Total Price",
+  "times_up": "Times Up !"
 };

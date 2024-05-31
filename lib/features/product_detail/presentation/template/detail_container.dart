@@ -98,19 +98,20 @@ class DetailContainer extends StatelessWidget {
                   ),
                   const VerticalGap(size: 4),
 
-                  Html(data: _productDetailController.productDetailData.value?.description),
-                //   CustomText(
-                //   text: ,
-                //   textStyle: CustomTextStyle.textStyle20Bold(
-                //     context,
-                //     color: AppColors.black.withOpacity(0.7),
-                //   ),
-                //     textAlign: TextAlign.start,
-                // )
+                  Html(
+                      data: _productDetailController
+                          .productDetailData.value?.description),
+                  //   CustomText(
+                  //   text: ,
+                  //   textStyle: CustomTextStyle.textStyle20Bold(
+                  //     context,
+                  //     color: AppColors.black.withOpacity(0.7),
+                  //   ),
+                  //     textAlign: TextAlign.start,
+                  // )
                 ],
               ),
             ),
-
 
             const VerticalGap(size: 30),
 

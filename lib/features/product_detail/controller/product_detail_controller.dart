@@ -56,7 +56,7 @@ class ProductDetailController extends BaseController {
     _getUserInfo();
 
     _getCategories();
-    _getSKU();
+    _getSKU(productItem.value!, productItem.value!.productVariationType.value);
 
     _getData();
   }
@@ -88,10 +88,26 @@ class ProductDetailController extends BaseController {
     }
   }
 
-  void _getSKU() {
-    sku.value = productItem.value?.sku?.isNotNullAndEmpty == true
-        ? "not_define".tr
-        : productItem.value?.sku ?? "not_define".tr;
+  void _getSKU(ProductItem item, ProductVariation variation) {
+    String tempSku = _bookSku(item, variation);
+    sku.value = tempSku.isNotNullAndEmpty == true ? "not_define".tr : tempSku;
+  }
+
+  String _bookSku(ProductItem item, ProductVariation variation) {
+    for (ProductVariations variation
+        in productItem.value?.productVariations ?? []) {
+      if (item.productVariationType.value == ProductVariation.book &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
+              0) {
+        return variation.sku.toString();
+      } else if (item.productVariationType.value == ProductVariation.ebook &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
+              0) {
+        return variation.sku.toString();
+      }
+    }
+
+    return productItem.value?.sku ?? "";
   }
 
   void _getData({String? tempProductName, String? tempProductId}) {
@@ -148,11 +164,13 @@ class ProductDetailController extends BaseController {
     }
   }
 
+  @override
   Future<void> onProductVariationClick(
     ProductItem item,
     ProductVariation variation,
   ) async {
     item.productVariationType.value = variation;
+    _getSKU(item, variation);
   }
 
   Future<void> _getProductReviews() async {

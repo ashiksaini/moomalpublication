@@ -10,6 +10,7 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/date_time_utils.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/thank_you_page/data/models/order_succes_response/order_succes_response.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class BillTemplate extends StatelessWidget {
   const BillTemplate({super.key, required this.orderSuccessResponse});
@@ -29,12 +30,15 @@ class BillTemplate extends StatelessWidget {
             height: 250.v,
             color: AppColors.green_100,
             child: Column(children: [
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: SvgPicture.asset(AppAssets.icBackArrow),
-                  )),
+              GestureDetector(
+                onTap: () => AppRouting.navigateBack(),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: SvgPicture.asset(AppAssets.icBackArrow),
+                    )),
+              ),
               const VerticalGap(size: 20),
               SvgPicture.asset(
                 AppAssets.icCheck,

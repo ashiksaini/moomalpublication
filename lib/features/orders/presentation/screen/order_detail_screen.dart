@@ -8,13 +8,14 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/my_orders/presentation/template/order_detail_card.dart';
-import 'package:moomalpublication/features/my_orders/presentation/template/product_detail.dart';
-import 'package:moomalpublication/features/my_orders/presentation/template/shipping_detail_card.dart';
 import 'package:moomalpublication/features/orders/controllers/orders_controller.dart';
 import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
 import 'package:moomalpublication/features/orders/data/models/shipping.dart';
 import 'package:moomalpublication/routes/routing.dart';
+
+import '../template/order_detail_card.dart';
+import '../template/product_detail.dart';
+import '../template/shipping_detail_card.dart';
 
 class EbookOrderScreen extends StatelessWidget {
   EbookOrderScreen({super.key});
@@ -31,7 +32,7 @@ class EbookOrderScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppbar(
-                title: 'ebook_order'.tr,
+                title: 'order_details'.tr,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => AppRouting.navigateBack(),
               ),

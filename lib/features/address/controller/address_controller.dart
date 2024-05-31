@@ -3,10 +3,15 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/billing_address.dart';
 import 'package:moomalpublication/core/base/shipping_address.dart';
+import 'package:moomalpublication/core/libs/payu_sdk/payu_checkout_pro.dart';
+import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/address/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/address/data/models/address_model.dart';
 import 'package:moomalpublication/features/address/data/services/address_services.dart';
+import 'package:moomalpublication/features/orders/data/services/get_orders_services.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class AdressController extends BaseController {
@@ -17,14 +22,34 @@ class AdressController extends BaseController {
   Rx<ShippingAddress?> shippingAddress = Rx(null);
   RxBool shippingAllFieldsFilled = RxBool(true);
   RxBool billingAllFieldsFilled = RxBool(true);
+  RxBool isCheckoutBtnVisible = RxBool(false);
   Map<String, String> billingFormData = {};
   Map<String, String> shippingFormData = {};
   int emailIndex = 0;
   int phoneNumberIndex = 0;
 
+  late Function? onCartCallBack;
+  late String? totalPrice;
+  late String? orderId;
+  late String? orderKey;
+
   @override
   void onInit() async {
     super.onInit();
+
+    SharedData? sharedData = Get.arguments;
+
+    if (sharedData == null) {
+      isCheckoutBtnVisible.value = false;
+    } else {
+      isCheckoutBtnVisible.value = true;
+
+      onCartCallBack = sharedData.onCartCallBack;
+      totalPrice = sharedData.totalPrice;
+      orderId = sharedData.orderId;
+      orderKey = sharedData.orderKey;
+    }
+
     await _getAddress();
     shippingAddressFiled();
     billingAddressFiled();
@@ -67,14 +92,14 @@ class AdressController extends BaseController {
         AddressTextEditingController(
       name: 'street_address'.tr,
       hint: 'enter_street_address'.tr,
-      controller: TextEditingController(text: shippingAddress.value?.state),
+      controller: TextEditingController(text: shippingAddress.value?.address1),
     );
 
     AddressTextEditingController townCityController =
         AddressTextEditingController(
       name: 'town_city'.tr,
       hint: 'enter_town_city'.tr,
-      controller: TextEditingController(text: shippingAddress.value?.state),
+      controller: TextEditingController(text: shippingAddress.value?.city),
     );
 
     AddressTextEditingController stateController = AddressTextEditingController(
@@ -136,7 +161,7 @@ class AdressController extends BaseController {
         AddressTextEditingController(
       name: 'town_city'.tr,
       hint: 'enter_town_city'.tr,
-      controller: TextEditingController(text: billingAddress.value?.address2),
+      controller: TextEditingController(text: billingAddress.value?.city),
     );
 
     AddressTextEditingController stateController = AddressTextEditingController(
@@ -328,7 +353,19 @@ class AdressController extends BaseController {
     onSubmitBillingButton();
   }
 
-  void onTapAddressButton(){
-    
+  void onTapAddressButton() async {
+    if (totalPrice?.startsWith("0") == true) {
+      await GetOrderService.updateOrderStatus(orderId, {"status": "completed"});
+      AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
+    } else {
+      final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
+      payUCheckoutPro.init(callBack: () => onCartCallBack!());
+      payUCheckoutPro.pay(
+        totalPrice,
+        orderKey,
+        orderId,
+      );
+      AppRouting.navigateBack();
+    }
   }
 }

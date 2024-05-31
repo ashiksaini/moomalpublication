@@ -53,33 +53,49 @@ class CardBookItem extends StatelessWidget {
   }
 
   Widget _getImage(BuildContext context) {
-    return Container(
-      height: 260.adaptSize,
-      width: 200.adaptSize,
-      margin: EdgeInsets.symmetric(horizontal: 5.h, vertical: 5.v),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(15.r),
-        child: (item.productImages?[0].src != null &&
-                item.productImages?[0].src!.isNotEmpty == true)
-            ? CachedNetworkImage(
-                imageUrl: item.productImages?[0].src ?? "",
-                fit: BoxFit.cover,
-                placeholder: (context, url) {
-                  return Center(child: customProgressIndicator());
-                },
-              )
-            : Container(
-                width: SizeUtils.width,
-                color: AppColors.greyLight,
-                child: Center(
-                  child: CustomText(
-                    text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context,
-                        color: AppColors.black),
+    return Stack(
+      children: [
+        Container(
+          height: 260.adaptSize,
+          width: 200.adaptSize,
+          margin: EdgeInsets.symmetric(horizontal: 5.h, vertical: 5.v),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15.r),
+            child: (item.productImages?[0].src != null &&
+                    item.productImages?[0].src!.isNotEmpty == true)
+                ? CachedNetworkImage(
+                    imageUrl: item.productImages?[0].src ?? "",
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) {
+                      return Center(child: customProgressIndicator());
+                    },
+                  )
+                : Container(
+                    width: SizeUtils.width,
+                    color: AppColors.greyLight,
+                    child: Center(
+                      child: CustomText(
+                        text: "no_image_preview_available".tr,
+                        textStyle: CustomTextStyle.textStyle10Bold(context,
+                            color: AppColors.black),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-      ),
+          ),
+        ),
+
+        if (_isbookOnSale()) Positioned(
+          right: 0,
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.orange,
+              borderRadius: BorderRadius.only(topRight: Radius.circular(20.r))
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 4.v),
+            child: CustomText(text: "SALE", textStyle: CustomTextStyle.textStyle14Bold(context, color: AppColors.white)),
+          ),
+        )
+      ],
     );
   }
 
@@ -217,15 +233,52 @@ class CardBookItem extends StatelessWidget {
   }
 
   Widget _getBookPrice(BuildContext context) {
-    return CustomText(
-      text: (item.isBookAvailable || item.isEbookAvailable)
-          ? "${"price".tr} ${_bookPrice()}"
-          : "out_of_stock".tr,
-      textStyle: CustomTextStyle.textStyle16Bold(context,
-          color: (item.isBookAvailable || item.isEbookAvailable)
-              ? AppColors.black
-              : AppColors.red),
-      textAlign: TextAlign.start,
+    return Row(
+      children: [
+        if (item.isBookAvailable || item.isEbookAvailable) ...{
+          CustomText(
+            text: "${"price_1".tr} : ",
+            textStyle: CustomTextStyle.textStyle16Bold(
+              context,
+              color: AppColors.black,
+            ),
+            textAlign: TextAlign.start,
+          ),
+          CustomText(
+            text: "₹${_bookPrice()}",
+            textStyle: (_isbookOnSale())
+                ? CustomTextStyle.textStyle16Bold(context,
+                    color: AppColors.red,
+                    textDecoration: TextDecoration.lineThrough,
+                    textDecorationColor: AppColors.red)
+                : CustomTextStyle.textStyle16Bold(
+                    context,
+                    color: AppColors.black,
+                  ),
+            textAlign: TextAlign.start,
+          ),
+          if (_isbookOnSale()) ...{
+            const HorizontalGap(size: 8),
+            CustomText(
+              text: "₹${_bookSalePrice()}",
+              textStyle: CustomTextStyle.textStyle18Bold(
+                context,
+                color: AppColors.black,
+              ),
+              textAlign: TextAlign.start,
+            ),
+          }
+        } else ...{
+          CustomText(
+            text: "out_of_stock".tr,
+            textStyle: CustomTextStyle.textStyle16Bold(
+              context,
+              color: AppColors.red,
+            ),
+            textAlign: TextAlign.start,
+          ),
+        }
+      ],
     );
   }
 
@@ -247,5 +300,45 @@ class CardBookItem extends StatelessWidget {
     }
 
     return item.price ?? "";
+  }
+
+  String _bookSalePrice() {
+    for (ProductVariations variation in item.productVariations ?? []) {
+      if (item.productVariationType.value == ProductVariation.ebook &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.salePrice.toString();
+      }
+
+      if (item.productVariationType.value == ProductVariation.book &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.salePrice.toString();
+      }
+    }
+
+    return item.salePrice ?? "";
+  }
+
+  bool _isbookOnSale() {
+    for (ProductVariations variation in item.productVariations ?? []) {
+      if (item.productVariationType.value == ProductVariation.ebook &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.onSale ?? false;
+      }
+
+      if (item.productVariationType.value == ProductVariation.book &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.onSale ?? false;
+      }
+    }
+
+    return item.onSale ?? false;
   }
 }

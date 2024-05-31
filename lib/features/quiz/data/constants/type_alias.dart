@@ -4,3 +4,8 @@ import 'package:moomalpublication/services/network/api_reponse.dart';
 
 typedef QuizResponse = ApiResponse<List<QuizResponseModel>>;
 typedef TestResponse = ApiResponse<TestQuestionsResponseModel>;
+
+enum QuizType {
+  currentAffairQuiz,
+  economicsQuiz
+}

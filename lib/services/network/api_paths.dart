@@ -13,7 +13,8 @@ class ApiPaths {
   static const String testimonial = 'testimonial/v1/testimonials/';
   static const String cartData = 'wc/store/cart';
   static const String addToCart = 'wc/store/cart/add-item';
-  static const String eventRelease = 'https://moomalpublication.com/events-press-release/';
+  static const String eventRelease =
+      'https://moomalpublication.com/events-press-release/';
   static const String mediaCoverage = 'https://moomalpublication.com/media/';
   static const String pressRelease = 'https://moomalpublication.com/press/';
   static const String quizData = 'qsm/list_quiz';
@@ -24,8 +25,9 @@ class ApiPaths {
   static const String eBookProductCategory = 'wc/v3/products/categories';
   static const String productCategoryWiseBook = 'wc/v3/products/categories';
   static const String quizTest = 'online_exam/v1/exam/';
-  static const String orders = 'wc/v3/orders';
-  static const String privacyPolicy = 'https://moomalpublication.com/privacy-policy/';
+  static const String orders = 'wc/v3/orders/';
+  static const String privacyPolicy =
+      'https://moomalpublication.com/privacy-policy/';
   static const String checkout = 'wc/store/checkout';
   static const String deleteAccount = 'wc/v3/customers/';
   static const String download = 'moomal/v2/user-downloads';
