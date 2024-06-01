@@ -29,7 +29,7 @@ class SearchProductScreen extends StatelessWidget {
         backgroundColor: AppColors.black,
         body: SafeArea(
           child: CustomRefreshIndicator(
-              onRefreshCallback: () => _searchProductController.onRefresh(),
+            onRefreshCallback: () => _searchProductController.onRefresh(),
             child: Container(
               color: AppColors.white,
               child: Column(
@@ -68,7 +68,8 @@ class SearchProductScreen extends StatelessWidget {
                             hint: "search_for_books_and_ebooks".tr,
                             hintTextStyle:
                                 CustomTextStyle.textStyle15Bold(context),
-                            onTextChange: _searchProductController.onTextChanged,
+                            onTextChange:
+                                _searchProductController.onTextChanged,
                             textInputAction: TextInputAction.done,
                           ),
                         ),
@@ -84,11 +85,11 @@ class SearchProductScreen extends StatelessWidget {
                   ),
 
                   // Load more
-                    if (_searchProductController.isLoadingMore.value)
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.v),
-                        child: customProgressIndicator(),
-                      ),
+                  if (_searchProductController.isLoadingMore.value)
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10.v),
+                      child: customProgressIndicator(),
+                    ),
                 ],
               ),
             ),
@@ -100,8 +101,7 @@ class SearchProductScreen extends StatelessWidget {
 
   Widget _getBooksDataView(BuildContext context) {
     return GridView.builder(
-
-                        controller: _searchProductController.scrollController,
+      controller: _searchProductController.scrollController,
       padding: EdgeInsets.symmetric(
         horizontal: 10.h,
         vertical: 10.v,

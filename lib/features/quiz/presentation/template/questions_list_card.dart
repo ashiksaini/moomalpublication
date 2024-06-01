@@ -31,7 +31,10 @@ class QuestionListCard extends StatelessWidget {
                 //   textStyle: CustomTextStyle.textStyle15Bold(context),
                 // ),
 
-                Expanded(child: Html(data: _quizController.questionsList[questionNumberIndex].value))
+                Expanded(
+                    child: Html(
+                        data: _quizController
+                            .questionsList[questionNumberIndex].value))
               ],
             ),
           ),

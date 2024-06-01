@@ -55,7 +55,7 @@ class CartCard extends StatelessWidget {
                       CustomText(
                         textAlign: TextAlign.left,
                         text:
-                            '${cartItem.name} ${(cartItem.variation?.isNotEmpty == true) ? (" - ${cartItem.variation?[0].value}") : "" }',
+                            '${cartItem.name} ${(cartItem.variation?.isNotEmpty == true) ? (" - ${cartItem.variation?[0].value}") : ""}',
                         maxLines: 3,
                         textStyle:
                             CustomTextStyle.textStyle20BoldCaladea(context),

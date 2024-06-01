@@ -44,7 +44,8 @@ class GetOrderService {
     }
   }
 
-  static Future<OrderUpdateResponse> updateOrderStatus(String? orderId, Map<String, dynamic>? updateStatusData) async {
+  static Future<OrderUpdateResponse> updateOrderStatus(
+      String? orderId, Map<String, dynamic>? updateStatusData) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
@@ -55,7 +56,8 @@ class GetOrderService {
         ).toJson();
 
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .post("${ApiPaths.orders}$orderId", queryParameters: query, data: updateStatusData);
+            .post("${ApiPaths.orders}$orderId",
+                queryParameters: query, data: updateStatusData);
         final parsedResponse = OrderResponseModel.fromJson(response.data);
 
         return OrderUpdateResponse.success(parsedResponse);

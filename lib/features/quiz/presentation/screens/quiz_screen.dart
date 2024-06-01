@@ -85,15 +85,21 @@ class _QuizScreenState extends State<QuizScreen>
                           controller: _tabController,
                           children: [
                             ListView.builder(
-                              itemCount: _quizController.currentAffairsquizList.length,
+                              itemCount:
+                                  _quizController.currentAffairsquizList.length,
                               itemBuilder: (BuildContext context, int index) {
-                                return CurrentAffairQuizCard(index: index, quizType: QuizType.currentAffairQuiz);
+                                return CurrentAffairQuizCard(
+                                    index: index,
+                                    quizType: QuizType.currentAffairQuiz);
                               },
                             ),
                             ListView.builder(
-                              itemCount: _quizController.economicQuizList.length,
+                              itemCount:
+                                  _quizController.economicQuizList.length,
                               itemBuilder: (BuildContext context, int index) {
-                                return CurrentAffairQuizCard(index: index, quizType: QuizType.economicsQuiz);
+                                return CurrentAffairQuizCard(
+                                    index: index,
+                                    quizType: QuizType.economicsQuiz);
                               },
                             ),
                           ],

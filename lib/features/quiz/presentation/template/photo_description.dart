@@ -38,7 +38,8 @@ class PhotoDescription extends StatelessWidget {
           ),
           VerticalGap(size: 18.v),
           CustomText(
-            text: "${'name'.tr}: ${_quizController.selectedQuizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizName : _quizController.economicQuizList[index].quizName}",
+            text:
+                "${'name'.tr}: ${_quizController.selectedQuizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizName : _quizController.economicQuizList[index].quizName}",
             textStyle: CustomTextStyle.textStyle15Bold(context),
             textAlign: TextAlign.start,
           ),

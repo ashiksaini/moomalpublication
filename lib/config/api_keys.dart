@@ -77,12 +77,12 @@ class ApiKeys {
   static const String orderConsumerSecret =
       "cs_0e0f1736ccfc3b4c5d9f2dc658e03cf4e6db17f8";
 
-   // Update Orders APi key
+  // Update Orders APi key
   static const String updateOrderConsumerKey =
       "ck_e2f6f01e1cf1ecdaf2afa9fe1e6d79f9e564c3db";
   static const String updateOrderConsumerSecret =
       "cs_0cc8258ffd6d6b5110f150f4ea8ad04845c6c9cc";
-  
+
   // Address APi key
   static const String addressDataConsumerKey =
       "ck_48165835470bf5835058798d6f9f1049cbbf0c08";

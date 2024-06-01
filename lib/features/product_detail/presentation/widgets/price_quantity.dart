@@ -48,7 +48,8 @@ class PriceQuantity extends StatelessWidget {
         boxShadow: [primaryBoxShadow()],
       ),
       child: CustomText(
-        text: "${"price".tr}${_isbookOnSale() ? _bookSalePrice() : _bookPrice()}",
+        text:
+            "${"price".tr}${_isbookOnSale() ? _bookSalePrice() : _bookPrice()}",
         textStyle: CustomTextStyle.textStyle25Bold(
           context,
           color: AppColors.black,
@@ -198,9 +199,11 @@ class PriceQuantity extends StatelessWidget {
 
   String _bookSalePrice() {
     for (ProductVariations variation in _productDetailController
-            .productDetailData.value?.productVariations ?? []) {
+            .productDetailData.value?.productVariations ??
+        []) {
       if (_productDetailController
-            .productDetailData.value?.productVariationType.value == ProductVariation.ebook &&
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.ebook &&
           variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
@@ -208,7 +211,8 @@ class PriceQuantity extends StatelessWidget {
       }
 
       if (_productDetailController
-            .productDetailData.value?.productVariationType.value == ProductVariation.book &&
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.book &&
           variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
@@ -216,15 +220,16 @@ class PriceQuantity extends StatelessWidget {
       }
     }
 
-    return _productDetailController
-            .productDetailData.value?.salePrice ?? "";
+    return _productDetailController.productDetailData.value?.salePrice ?? "";
   }
 
   bool _isbookOnSale() {
     for (ProductVariations variation in _productDetailController
-            .productDetailData.value?.productVariations ?? []) {
+            .productDetailData.value?.productVariations ??
+        []) {
       if (_productDetailController
-            .productDetailData.value?.productVariationType.value == ProductVariation.ebook &&
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.ebook &&
           variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
@@ -232,7 +237,8 @@ class PriceQuantity extends StatelessWidget {
       }
 
       if (_productDetailController
-            .productDetailData.value?.productVariationType.value == ProductVariation.book &&
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.book &&
           variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
@@ -240,7 +246,6 @@ class PriceQuantity extends StatelessWidget {
       }
     }
 
-    return _productDetailController
-            .productDetailData.value?.onSale ?? false;
+    return _productDetailController.productDetailData.value?.onSale ?? false;
   }
 }

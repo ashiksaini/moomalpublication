@@ -13,7 +13,8 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class SearchProductServices {
   SearchProductServices._();
 
-  static Future<SearchBooksResponse> getSearchedBook({String? search, Map<String, dynamic>? query}) async {
+  static Future<SearchBooksResponse> getSearchedBook(
+      {String? search, Map<String, dynamic>? query}) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {

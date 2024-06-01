@@ -31,14 +31,17 @@ class QuizController extends BaseController {
     if (quizResponse.value.data != null) {
       currentAffairsquizList.clear();
       economicQuizList.clear();
-      currentAffairsquizList.addAll(quizResponse.value.data!.where((element) => element.quizName?.toLowerCase().contains("affairs") == true));
-      economicQuizList.addAll(quizResponse.value.data!.where((element) => element.quizName?.toLowerCase().contains("economics") == true));
+      currentAffairsquizList.addAll(quizResponse.value.data!.where((element) =>
+          element.quizName?.toLowerCase().contains("affairs") == true));
+      economicQuizList.addAll(quizResponse.value.data!.where((element) =>
+          element.quizName?.toLowerCase().contains("economics") == true));
     } else {
       showToast(AppConstants.somethingWentWrong);
     }
   }
 
-  void navigateQuizDetailScreen({required int index, required QuizType quizType}) {
+  void navigateQuizDetailScreen(
+      {required int index, required QuizType quizType}) {
     selectedQuizType = quizType;
     AppRouting.toNamed(NameRoutes.quizTestDetailScreen, argument: [
       {"index": index}
@@ -161,7 +164,7 @@ class QuizController extends BaseController {
   }
 
   void onBackPress() {
-      timer?.cancel();
+    timer?.cancel();
     AppRouting.navigateBack();
   }
 

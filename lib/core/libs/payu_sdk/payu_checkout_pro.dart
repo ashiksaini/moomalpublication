@@ -73,8 +73,9 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
   }
 
   @override
-  onError(Map? response) async{
-    showLottieDialog(Get.context!, AppAssets.failedAnimation, "payment_error".tr);
+  onError(Map? response) async {
+    showLottieDialog(
+        Get.context!, AppAssets.failedAnimation, "payment_error".tr);
     CustomLogger.logger.e(response.toString());
 
     await GetOrderService.updateOrderStatus(orderId, {"status": "failed"});

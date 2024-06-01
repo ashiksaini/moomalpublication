@@ -20,18 +20,22 @@ class CurrentAffairQuizCard extends StatelessWidget {
   final QuizType quizType;
   final QuizController _quizController = Get.find<QuizController>();
 
-  CurrentAffairQuizCard({super.key, required this.index, required this.quizType});
+  CurrentAffairQuizCard(
+      {super.key, required this.index, required this.quizType});
 
   @override
   Widget build(BuildContext context) {
     String date = DateTimeUtils.formatDate(
-      date: quizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].lastActivity! : _quizController.economicQuizList[index].lastActivity!,
+      date: quizType == QuizType.currentAffairQuiz
+          ? _quizController.currentAffairsquizList[index].lastActivity!
+          : _quizController.economicQuizList[index].lastActivity!,
       formatType: AppConstants.dateFormatter,
     );
 
     return GestureDetector(
       onTap: () {
-        _quizController.navigateQuizDetailScreen(index: index, quizType: quizType);
+        _quizController.navigateQuizDetailScreen(
+            index: index, quizType: quizType);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -60,7 +64,11 @@ class CurrentAffairQuizCard extends StatelessWidget {
                       children: [
                         CustomText(
                           textAlign: TextAlign.left,
-                          text: quizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizName : _quizController.economicQuizList[index].quizName,
+                          text: quizType == QuizType.currentAffairQuiz
+                              ? _quizController
+                                  .currentAffairsquizList[index].quizName
+                              : _quizController
+                                  .economicQuizList[index].quizName,
                           maxLines: 4,
                           textStyle: CustomTextStyle.textStyle20Bold(
                             context,

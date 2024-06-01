@@ -37,5 +37,4 @@ class NameRoutes {
   static const String webView = '/webview';
   static const String newsDetailScreen = '/newsDetailScreen';
   static const String newtestSeriesScreen = '/newtestSeriesScreen';
-
 }

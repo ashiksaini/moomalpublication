@@ -46,7 +46,7 @@ class CustomButtonBar extends StatelessWidget {
           if (buttonVisibility)
             GestureDetector(
               onTap: () {
-                AppRouting.toNamed(NameRoutes.webView,
+                AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
                     argument:
                         SharedData(testName: barText, testUrl: permalink));
               },

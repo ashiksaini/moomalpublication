@@ -33,7 +33,11 @@ class QuizTestScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomAppbar(
-                title: (_quizController.selectedQuizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizName :  _quizController.economicQuizList[index].quizName) ?? "",
+                title: (_quizController.selectedQuizType ==
+                            QuizType.currentAffairQuiz
+                        ? _quizController.currentAffairsquizList[index].quizName
+                        : _quizController.economicQuizList[index].quizName) ??
+                    "",
                 maxLine: 1,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => _quizController.onBackPress(),

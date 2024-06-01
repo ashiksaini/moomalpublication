@@ -377,11 +377,11 @@ final Map<String, String> enUS = {
   "total_price": "Total Price",
   "times_up": "Times Up !",
 
-
   //New test
-  "time_left":"Time Left",
-  "question_type_multiple_choice_questions":"Questions Type: Multiple Choice Questions",
-  "question_no":"Question No ",
-  "previous":"Previous",
-  "save&Next":"Save & Next",
+  "time_left": "Time Left",
+  "question_type_multiple_choice_questions":
+      "Questions Type: Multiple Choice Questions",
+  "question_no": "Question No ",
+  "previous": "Previous",
+  "save&Next": "Save & Next",
 };

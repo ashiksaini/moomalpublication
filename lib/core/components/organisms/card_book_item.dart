@@ -83,18 +83,21 @@ class CardBookItem extends StatelessWidget {
                   ),
           ),
         ),
-
-        if (_isbookOnSale()) Positioned(
-          right: 0,
-          child: Container(
-            decoration: BoxDecoration(
-              color: AppColors.orange,
-              borderRadius: BorderRadius.only(topRight: Radius.circular(20.r))
+        if (_isbookOnSale())
+          Positioned(
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: AppColors.orange,
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(20.r))),
+              padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 4.v),
+              child: CustomText(
+                  text: "SALE",
+                  textStyle: CustomTextStyle.textStyle14Bold(context,
+                      color: AppColors.white)),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 4.v),
-            child: CustomText(text: "SALE", textStyle: CustomTextStyle.textStyle14Bold(context, color: AppColors.white)),
-          ),
-        )
+          )
       ],
     );
   }
