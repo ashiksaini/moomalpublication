@@ -375,5 +375,13 @@ final Map<String, String> enUS = {
   "proceed_to_checkout": "Proceed to Checkout",
   "price_1": "Price",
   "total_price": "Total Price",
-  "times_up": "Times Up !"
+  "times_up": "Times Up !",
+
+
+  //New test
+  "time_left":"Time Left",
+  "question_type_multiple_choice_questions":"Questions Type: Multiple Choice Questions",
+  "question_no":"Question No ",
+  "previous":"Previous",
+  "save&Next":"Save & Next",
 };

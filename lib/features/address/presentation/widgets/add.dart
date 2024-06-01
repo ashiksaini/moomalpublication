@@ -10,11 +10,13 @@ class CustomOrangeButton extends StatelessWidget {
       required this.onTapButton,
       required this.buttonText,
       this.radius,
+      this.color = AppColors.orange,
       this.customTextStyle});
   final Function onTapButton;
   final String buttonText;
   final TextStyle? customTextStyle;
   final double? radius;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -23,7 +25,7 @@ class CustomOrangeButton extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.orange,
+          color: color,
           borderRadius: BorderRadius.all(
             Radius.circular(radius?.r ?? 10.r),
           ),
