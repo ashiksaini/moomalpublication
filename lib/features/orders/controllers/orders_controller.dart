@@ -21,7 +21,7 @@ class OrderController extends BaseController {
     orderResponse.value = ApiResponse.loading();
     orderResponse.value = await GetOrderService.getOrders();
     if (orderResponse.value.data != null) {
-      ordersList.value = orderResponse.value.data?.where((element) => element.);
+      ordersList.value = orderResponse.value.data!;
       showBrowseProduct.value = true;
     } else {
       showBrowseProduct.value = false;
