@@ -7,7 +7,6 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/latest_news/controller/latest_news_controller.dart';
 import 'package:moomalpublication/features/latest_news/presentation/widget/newsDescription.dart';
-import 'package:moomalpublication/features/quiz/presentation/template/photo_description.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class NewsDetailScreen extends StatelessWidget {

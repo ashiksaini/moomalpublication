@@ -37,7 +37,7 @@ class CartCard extends StatelessWidget {
             bottom: 20.h,
           ),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // book
               bookConatiner(context: context),
@@ -55,7 +55,7 @@ class CartCard extends StatelessWidget {
                       CustomText(
                         textAlign: TextAlign.left,
                         text:
-                            "${cartItem.name} - ${cartItem.variation?[0].value}",
+                            '${cartItem.name} ${(cartItem.variation?.isNotEmpty == true) ? (" - ${cartItem.variation?[0].value}") : "" }',
                         maxLines: 3,
                         textStyle:
                             CustomTextStyle.textStyle20BoldCaladea(context),
@@ -125,7 +125,7 @@ class CartCard extends StatelessWidget {
         child: cartItem.images!.isNotEmpty
             ? CachedNetworkImage(
                 imageUrl: cartItem.images!.first.src!,
-                height: 160.adaptSize,
+                height: 170.adaptSize,
                 width: 120.adaptSize,
                 fit: BoxFit.cover,
                 placeholder: (context, url) {
@@ -133,8 +133,8 @@ class CartCard extends StatelessWidget {
                 },
               )
             : Container(
-                height: 130.v,
-                width: 100.h,
+                height: 150.adaptSize,
+                width: 120.adaptSize,
                 color: AppColors.greyLight,
                 child: Center(
                   child: CustomText(

@@ -34,6 +34,6 @@ class ApiPaths {
   static const String overAllResult = 'myplugin/v1/overall-result/';
   static const String address = 'wc/v3/customers/';
   static const String subscribe = 'newsletter/v2/subscribers';
-  static const String latestNews = 'moomal/v1/posts/';
+  static const String latestNews = 'wp/v2/posts/';
   static const String orderSuccess = 'custom-namespace/v1/thankyou/';
 }

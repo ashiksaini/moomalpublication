@@ -27,8 +27,8 @@ class ProductImage {
         dateCreatedGmt: json['date_created_gmt'] as String?,
         dateModified: json['date_modified'] as String?,
         dateModifiedGmt: json['date_modified_gmt'] as String?,
-        src: json['src'] as String?,
-        name: json['name'] as String?,
+        src: json['src'].toString(),
+        name: json['name'].toString(),
         alt: json['alt'] as String?,
         position: json['position'] as int?,
       );
