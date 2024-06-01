@@ -12,11 +12,9 @@ import 'package:moomalpublication/routes/routing.dart';
 class NewsDetailScreen extends StatelessWidget {
   NewsDetailScreen({super.key});
 
-  final args = Get.arguments;
   final LatestNewsController _newsController = Get.find<LatestNewsController>();
   @override
   Widget build(BuildContext context) {
-    int index = args[0]['index'];
     return Scaffold(
       backgroundColor: AppColors.black,
       body: SafeArea(
@@ -25,7 +23,7 @@ class NewsDetailScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomAppbar(
-                title: _newsController.latestNews[index].title ?? '',
+                title: _newsController.latestNewsItem.title?.rendered ?? '',
                 maxLine: 1,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => AppRouting.navigateBack(),
@@ -38,9 +36,7 @@ class NewsDetailScreen extends StatelessWidget {
                       horizontal: 30.h,
                     ),
                     child: ShadowContainer(
-                      containerChild: NewsDescription(
-                        index: index,
-                      ),
+                      containerChild: NewsDescription(),
                     ),
                   ),
                 ),

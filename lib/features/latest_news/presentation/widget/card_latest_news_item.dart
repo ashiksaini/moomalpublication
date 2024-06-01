@@ -5,11 +5,11 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
-import 'package:moomalpublication/features/latest_news/data/model/latest_news_item/latest_news_item.dart';
+import 'package:moomalpublication/features/latest_news/data/model/latest_news_item1/latest_news_item1/latest_news_item1.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.dart';
 
 class CardLatestNewsItem extends StatelessWidget {
-  final LatestNewsItem latestNewsItem;
+  final LatestNewsItem1 latestNewsItem;
 
   const CardLatestNewsItem({
     super.key,
@@ -25,7 +25,7 @@ class CardLatestNewsItem extends StatelessWidget {
           child: Row(
             children: [
               CardImage(
-                image: latestNewsItem.featuredImage?.thumbnail ?? "",
+                image: latestNewsItem.featuredImageUrl ?? "",
                 borderColor: AppColors.grey,
               ),
               const HorizontalGap(size: 16),
@@ -35,7 +35,7 @@ class CardLatestNewsItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CustomText(
-                      text: latestNewsItem.title,
+                      text: latestNewsItem.title?.rendered ?? '',
                       textStyle: CustomTextStyle.textStyle18BoldCaladea(
                         context,
                         color: AppColors.black,
@@ -44,7 +44,7 @@ class CardLatestNewsItem extends StatelessWidget {
                     ),
                     const VerticalGap(size: 10),
                     CustomText(
-                      text: latestNewsItem.content,
+                      text: latestNewsItem.content?.rendered ?? '',
                       textStyle:
                           CustomTextStyle.textStyle18BoldCaladea(context),
                       maxLines: 4,

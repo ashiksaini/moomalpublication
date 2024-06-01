@@ -24,8 +24,8 @@ class TestOptionsCard extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: _quizController.answerList[questionNumber].selectedOption
-                    .contains(optionNumber)
+            color: _quizController.answerList[questionNumber].selectedOption ==
+                    optionNumber
                 ? AppColors.orange
                 : AppColors.greyLight,
             shape: BoxShape.circle,

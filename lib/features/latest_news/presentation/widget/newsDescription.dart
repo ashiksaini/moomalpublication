@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/latest_news/controller/latest_news_controller.dart';
@@ -9,9 +11,8 @@ import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.
 class NewsDescription extends StatelessWidget {
   NewsDescription({
     super.key,
-    required this.index,
   });
-  final int index;
+
   final LatestNewsController _newsController = Get.find<LatestNewsController>();
 
   @override
@@ -28,30 +29,22 @@ class NewsDescription extends StatelessWidget {
         children: [
           Center(
             child: CardImage(
-              image:
-                  _newsController.latestNewsItem.featuredImage?.thumbnail ?? '',
+              image: _newsController.latestNewsItem.featuredImageUrl ?? '',
               borderColor: AppColors.orange,
             ),
           ),
           VerticalGap(size: 18.v),
-          // CustomText(
-          //   text: "${'name'.tr}: ${_quizController.quizList[index].quizName}",
-          //   textStyle: CustomTextStyle.textStyle15Bold(context),
-          //   textAlign: TextAlign.start,
-          // ),
-          // CustomText(
-          //   text:
-          //       "${'quiz_views'.tr}: ${_quizController.quizList[index].quizViews}",
-          //   textStyle: CustomTextStyle.textStyle15Bold(context),
-          //   textAlign: TextAlign.start,
-          // ),
-          // CustomText(
-          //   text:
-          //       "${'quiz_taken'.tr}: ${_quizController.quizList[index].quizTaken}",
-          //   textStyle: CustomTextStyle.textStyle15Bold(context),
-          //   textAlign: TextAlign.start,
-          // ),
-          // VerticalGap(size: 18.v),
+          CustomText(
+            text: _newsController.latestNewsItem.title?.rendered ?? '',
+            textStyle: CustomTextStyle.textStyle15Bold(context),
+            textAlign: TextAlign.start,
+          ),
+          VerticalGap(size: 18.v),
+          CustomText(
+            text: _newsController.latestNewsItem.content?.rendered ?? '',
+            textStyle: CustomTextStyle.textStyle15Bold(context),
+            textAlign: TextAlign.start,
+          ),
         ],
       ),
     );

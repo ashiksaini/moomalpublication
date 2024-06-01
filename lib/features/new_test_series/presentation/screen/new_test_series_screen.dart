@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:moomalpublication/core/components/organisms/app_bar.dart';
+import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -9,6 +11,7 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
 import 'package:moomalpublication/features/new_test_series/controller/new_test_series_controller.dart';
 import 'package:moomalpublication/features/new_test_series/presentation/template/test_options_card.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class NewTestSeriesScreen extends StatelessWidget {
   NewTestSeriesScreen({super.key});
@@ -25,6 +28,12 @@ class NewTestSeriesScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  CustomAppbar(
+                    title: _quizController.sharedData.testName ?? '',
+                    maxLine: 1,
+                    prefixIcon: AppAssets.icBackArrow,
+                    onPrefixIconClick: () => AppRouting.navigateBack(),
+                  ),
                   Row(
                     children: [
                       Expanded(
@@ -118,12 +127,18 @@ class NewTestSeriesScreen extends StatelessWidget {
                           ],
                         ),
                         const VerticalGap(size: 20),
-                        CustomOrangeButton(
-                          onTapButton: () {
-                            _quizController.onTapSaveNext();
-                          },
-                          buttonText: 'submit'.tr,
-                          radius: 20,
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomOrangeButton(
+                                onTapButton: () {
+                                  _quizController.onTapSaveNext();
+                                },
+                                buttonText: 'submit'.tr,
+                                radius: 20,
+                              ),
+                            ),
+                          ],
                         )
                       ],
                     ),

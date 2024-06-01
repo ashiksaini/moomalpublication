@@ -2,7 +2,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/latest_news/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/latest_news/data/model/latest_news_item/latest_news_item.dart';
+import 'package:moomalpublication/features/latest_news/data/model/latest_news_item1/latest_news_item1/latest_news_item1.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
@@ -19,7 +19,7 @@ class LatestNewsServices {
             await DioClient.dioWithoutAuth!.get(ApiPaths.latestNews);
 
         final parsedResponse = (response.data as List<dynamic>?)
-            ?.map((item) => LatestNewsItem.fromJson(item))
+            ?.map((item) => LatestNewsItem1.fromJson(item))
             .toList();
 
         return LatestNewsResponse.success(parsedResponse);
