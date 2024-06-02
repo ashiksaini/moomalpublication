@@ -16,7 +16,7 @@ class LatestNewsServices {
         .value) {
       try {
         final dio.Response<dynamic> response =
-            await DioClient.dioWithoutAuth!.get(ApiPaths.latestNews);
+            await DioClient.dioWithAuth!.get(ApiPaths.latestNews);
 
         final parsedResponse = (response.data as List<dynamic>?)
             ?.map((item) => LatestNewsItem1.fromJson(item))

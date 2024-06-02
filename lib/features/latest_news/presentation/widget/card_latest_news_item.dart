@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
-import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/latest_news/data/model/latest_news_item1/latest_news_item1/latest_news_item1.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.dart';
@@ -29,28 +29,34 @@ class CardLatestNewsItem extends StatelessWidget {
                 borderColor: AppColors.grey,
               ),
               const HorizontalGap(size: 16),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CustomText(
-                      text: latestNewsItem.title?.rendered ?? '',
-                      textStyle: CustomTextStyle.textStyle18BoldCaladea(
-                        context,
-                        color: AppColors.black,
+              Expanded(
+                child: SizedBox(
+                  height: 150.v,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      CustomText(
+                        text: latestNewsItem.title?.rendered ?? '',
+                        textStyle: CustomTextStyle.textStyle18BoldCaladea(
+                          context,
+                          color: AppColors.black,
+                        ),
+                        textAlign: TextAlign.start,
                       ),
-                      textAlign: TextAlign.start,
-                    ),
-                    const VerticalGap(size: 10),
-                    CustomText(
-                      text: latestNewsItem.content?.rendered ?? '',
-                      textStyle:
-                          CustomTextStyle.textStyle18BoldCaladea(context),
-                      maxLines: 4,
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
+                      const Spacer(),
+                      // Html(data: latestNewsItem.content?.rendered ?? ''),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: CustomText(
+                          text: 'Read More ...',
+                          textStyle: CustomTextStyle.textStyle14Bold(context),
+                          maxLines: 4,
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],

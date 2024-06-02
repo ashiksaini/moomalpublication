@@ -10,8 +10,9 @@ import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model1/line_item.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model1/order_response_model1.dart';
 import 'package:moomalpublication/features/orders/presentation/widgets/image_container.dart';
-import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -21,7 +22,7 @@ class ProductDetailCard extends StatelessWidget {
       required this.orderResponseModel,
       required this.lineItem,
       required this.datePaid});
-  final OrderResponseModel orderResponseModel;
+  final OrderResponseModel1 orderResponseModel;
   final LineItem lineItem;
   final String datePaid;
 

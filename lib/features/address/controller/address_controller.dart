@@ -9,6 +9,7 @@ import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/address/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/address/data/models/address_model.dart';
 import 'package:moomalpublication/features/address/data/services/address_services.dart';
+import 'package:moomalpublication/features/orders/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/orders/data/services/get_orders_services.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -18,6 +19,7 @@ class AdressController extends BaseController {
   RxList<AddressTextEditingController> billingAddressList = RxList();
   RxList<AddressTextEditingController> shippingAddressList = RxList();
   Rx<AddressDataResponse> addressDataResponse = Rx(ApiResponse());
+  Rx<OrderUpdateResponse> updateStatusDataResponse = Rx(ApiResponse());
   Rx<BillingAddress?> billingAddress = Rx(null);
   Rx<ShippingAddress?> shippingAddress = Rx(null);
   RxBool shippingAllFieldsFilled = RxBool(true);
@@ -355,9 +357,16 @@ class AdressController extends BaseController {
 
   void onTapAddressButton() async {
     if (totalPrice?.startsWith("0") == true) {
-      await GetOrderService.updateOrderStatus(orderId, {"status": "completed"});
+      updateStatusDataResponse.value = ApiResponse.loading();
+      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "pending"});
+
+      updateStatusDataResponse.value = ApiResponse.loading();
+      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "completed"});
       AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     } else {
+      updateStatusDataResponse.value = ApiResponse.loading();
+      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "pending"});
+
       final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
       payUCheckoutPro.init(callBack: () => onCartCallBack!());
       payUCheckoutPro.pay(

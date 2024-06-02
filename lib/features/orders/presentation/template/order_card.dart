@@ -2,10 +2,12 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/orders/controllers/orders_controller.dart';
-import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model1/order_response_model1.dart';
 import 'package:moomalpublication/features/orders/presentation/template/my_order_card.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
+
+import '../../data/models/order_response_model1/line_item.dart';
 
 class OrderCard extends StatelessWidget {
   OrderCard({super.key});
@@ -21,7 +23,7 @@ class OrderCard extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: orderController.ordersList.length,
               itemBuilder: (context, index) {
-                OrderResponseModel dataItem = orderController.ordersList[index];
+                OrderResponseModel1 dataItem = orderController.ordersList[index];
                 LineItem listItem = LineItem();
 
                 if (dataItem.lineItems != null &&
@@ -36,6 +38,7 @@ class OrderCard extends StatelessWidget {
                     downloadLinks: dataItem.downloadLinks ?? [],
                     lineItem: listItem,
                     datePaid: dataItem.datePaid,
+                    status: dataItem.status,
                     onTapCard: () {
                       orderController.singleProduct.value = dataItem;
                       AppRouting.toNamed(NameRoutes.ebookOrder);

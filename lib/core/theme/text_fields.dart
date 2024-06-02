@@ -30,6 +30,7 @@ TextFormField customTextFormField(
     cursorWidth: 2.h,
     cursorRadius: Radius.circular(2.r),
     keyboardType: textInputType,
+    textAlign: TextAlign.start,
     textInputAction: textInputAction,
     readOnly: isReadOnly,
     onChanged: (value) {

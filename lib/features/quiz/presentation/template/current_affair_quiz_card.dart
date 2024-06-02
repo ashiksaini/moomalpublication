@@ -53,7 +53,8 @@ class CurrentAffairQuizCard extends StatelessWidget {
                 CardImage(
                   image: "",
                   borderColor: AppColors.blue,
-                  height: 130.v,
+                  height: 150.v,
+                  width: 120.h,
                 ),
                 HorizontalGap(size: 12.h),
                 Flexible(

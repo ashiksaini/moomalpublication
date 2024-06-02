@@ -39,7 +39,7 @@ class SearchProductServices {
                 salePrice: element.salePrice,
                 sku: element.sku,
                 quantity: element.quantity.toString(),
-                stockStatus: element.stockStatus,
+                stockStatus: (element.stockStatus == null) ? (element.inStock == true) ? "instock" : "outofstock" : element.stockStatus,
                 attributes: [
                   Attribute(name: "purchase", slug: "purchase", option: "book")
                 ],

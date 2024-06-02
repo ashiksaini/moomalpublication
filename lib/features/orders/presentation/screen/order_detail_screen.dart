@@ -9,7 +9,7 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/orders/controllers/orders_controller.dart';
-import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model1/line_item.dart';
 import 'package:moomalpublication/features/orders/data/models/shipping.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -99,7 +99,7 @@ class EbookOrderScreen extends StatelessWidget {
                                         orderController.singleProduct.value
                                             .lineItems!.isNotEmpty
                                     ? orderController
-                                            .singleProduct.value.shippingData ??
+                                            .singleProduct.value.shipping ??
                                         Shipping()
                                     : Shipping()),
                         // Padding(

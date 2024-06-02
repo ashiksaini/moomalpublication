@@ -1,10 +1,5 @@
 import 'content.dart';
-import 'excerpt.dart';
-import 'guid.dart';
-import 'links.dart';
-import 'meta.dart';
 import 'title.dart';
-import 'yoast_head_json.dart';
 
 class LatestNewsItem1 {
   int? id;

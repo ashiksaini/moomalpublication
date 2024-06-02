@@ -13,6 +13,7 @@ class ProductItem {
   String? salePrice;
   String? stockStatus;
   bool? onSale;
+  bool? inStock;
   String? type;
   String? sku;
   String? permalink;
@@ -41,6 +42,7 @@ class ProductItem {
     this.categories,
     this.tags,
     this.onSale,
+    this.inStock,
     this.sku,
     this.permalink,
     // this.featuredImage,
@@ -66,6 +68,7 @@ class ProductItem {
           .toList(),
       tags: json['tags'] as List<dynamic>?,
       onSale: json['on_sale'] as bool?,
+      inStock: json['in_stock'] as bool?,
       // featuredImage: json['featured_image'] == null
       //     ? null
       //     : FeaturedImage.fromJson(

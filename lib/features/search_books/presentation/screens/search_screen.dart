@@ -37,7 +37,7 @@ class SearchProductScreen extends StatelessWidget {
                   Stack(
                     children: [
                       Container(
-                        height: 60.v,
+                        height: 80.v,
                         decoration: BoxDecoration(
                           color: AppColors.black,
                           borderRadius: BorderRadius.only(

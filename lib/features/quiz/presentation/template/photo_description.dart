@@ -30,10 +30,12 @@ class PhotoDescription extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Center(
+          Center(
             child: CardImage(
               image: "",
               borderColor: AppColors.orange,
+              height: 350.adaptSize,
+              width: 290.adaptSize,
             ),
           ),
           VerticalGap(size: 18.v),

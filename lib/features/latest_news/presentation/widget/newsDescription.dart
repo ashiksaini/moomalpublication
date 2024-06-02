@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/latest_news/controller/latest_news_controller.dart';
@@ -31,20 +30,24 @@ class NewsDescription extends StatelessWidget {
             child: CardImage(
               image: _newsController.latestNewsItem.featuredImageUrl ?? '',
               borderColor: AppColors.orange,
+              height: 350.adaptSize,
+              width: 290.adaptSize,
             ),
           ),
           VerticalGap(size: 18.v),
-          CustomText(
-            text: _newsController.latestNewsItem.title?.rendered ?? '',
-            textStyle: CustomTextStyle.textStyle15Bold(context),
-            textAlign: TextAlign.start,
-          ),
-          VerticalGap(size: 18.v),
-          CustomText(
-            text: _newsController.latestNewsItem.content?.rendered ?? '',
-            textStyle: CustomTextStyle.textStyle15Bold(context),
-            textAlign: TextAlign.start,
-          ),
+          Html(data: _newsController.latestNewsItem.title?.rendered ?? ''),
+          // CustomText(
+          //   text: _newsController.latestNewsItem.title?.rendered ?? '',
+          //   textStyle: CustomTextStyle.textStyle15Bold(context),
+          //   textAlign: TextAlign.start,
+          // ),
+          // VerticalGap(size: 10.v),
+          Html(data: _newsController.latestNewsItem.content?.rendered ?? ''),
+          // CustomText(
+          //   text: _newsController.latestNewsItem.content?.rendered ?? '',
+          //   textStyle: CustomTextStyle.textStyle15Bold(context),
+          //   textAlign: TextAlign.start,
+          // ),
         ],
       ),
     );

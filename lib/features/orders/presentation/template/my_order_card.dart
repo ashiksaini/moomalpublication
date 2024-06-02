@@ -13,8 +13,8 @@ import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model1/line_item.dart';
 import 'package:moomalpublication/features/orders/presentation/widgets/image_container.dart';
-import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -24,11 +24,12 @@ class MyOrderCard extends StatelessWidget {
       required this.lineItem,
       this.datePaid,
       required this.onTapCard,
-      required this.downloadLinks});
+      required this.downloadLinks, this.status});
   final LineItem lineItem;
   final DateTime? datePaid;
   final Function onTapCard;
   final List<String> downloadLinks;
+  final String? status;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class MyOrderCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomText(
-                      text: '${'order_id'.tr} #${lineItem.id}',
+                      text: '${'order_id'.tr} #${lineItem.id} (${status?.toUpperCase() ?? ""})',
                       textStyle: CustomTextStyle.textStyle12Medium(context,
                           color: AppColors.black)),
                 ],
@@ -87,9 +88,9 @@ class MyOrderCard extends StatelessWidget {
                                 color: AppColors.black)),
                         const VerticalGap(size: 6),
                         CustomText(
-                            text: lineItem.lineItemsMetaData != null &&
-                                    lineItem.lineItemsMetaData!.isNotEmpty
-                                ? lineItem.lineItemsMetaData![0].displayValue
+                            text: lineItem.metaData != null &&
+                                    lineItem.metaData!.isNotEmpty
+                                ? lineItem.metaData![0].displayValue
                                 : '',
                             textStyle: CustomTextStyle.textStyle15Bold(context,
                                 color: AppColors.black)),

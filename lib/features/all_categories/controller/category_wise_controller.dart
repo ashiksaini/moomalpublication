@@ -97,7 +97,7 @@ class CategoryWiseController extends BaseController {
     }
 
     isLoadingMore.value = false;
-    productResponse.value = await GetProductServices.getProducts(
+    productResponse.value = await GetProductServices.getProductsV3(
       query: ProductRequestData(
         perPage: 20,
         page: _pageNo,

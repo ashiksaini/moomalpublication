@@ -137,7 +137,7 @@ class DetailContainer extends StatelessWidget {
             ),
             const VerticalGap(size: 30),
 
-            SimilarProduct(),
+            if (_productDetailController.similarProducts.isNotEmpty) SimilarProduct(),
           ],
         ),
       ),

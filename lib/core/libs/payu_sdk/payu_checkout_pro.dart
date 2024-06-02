@@ -24,6 +24,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   Future<void> pay(
       String? totalPrice, String? orderKey, String? orderId) async {
+        print("order_id $orderId");
     this.orderId = orderId ?? "";
 
     final payUPaymentParams = _getPayUPaymentParams(
@@ -106,7 +107,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
   onPaymentSuccess(response) async {
     AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     _callBack();
-    await GetOrderService.updateOrderStatus(orderId, {"status": "completed"});
+    await GetOrderService.updateOrderStatus(orderId, {"status": "processing"});
     throw UnimplementedError();
   }
 }

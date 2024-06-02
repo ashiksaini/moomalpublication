@@ -5,7 +5,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/orders/data/models/order_response_model.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model1/line_item.dart';
 
 class OrderDetailCard extends StatelessWidget {
   const OrderDetailCard({super.key, required this.lineItem});
