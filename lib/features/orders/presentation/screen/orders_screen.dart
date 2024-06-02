@@ -5,8 +5,12 @@ import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/components/organisms/empty_cart_view.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/features/orders/controllers/orders_controller.dart';
+import 'package:moomalpublication/features/orders/data/constants/enums.dart';
 import 'package:moomalpublication/features/orders/presentation/template/order_card.dart';
+import 'package:moomalpublication/features/orders/presentation/widgets/orders_main_tab_item.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -27,6 +31,7 @@ class OrdersScreen extends StatelessWidget {
                 title: 'orders'.tr,
                 maxLine: 1,
               ),
+              _getMainTab(),
               Obx(
                 () => Expanded(
                   child: orderController.orderResponse.value.isLoading
@@ -44,6 +49,48 @@ class OrdersScreen extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _getMainTab() {
+    return Obx(
+      () => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 14.h, vertical: 20.v),
+        child: Row(
+          children: [
+            OrdersMainTabItem(
+              title: "ebook_purchase".tr,
+              isSelected: orderController.selectedMainTestType.value ==
+                  OrdersMainTabType.ebook,
+              onClick: (orderMainTabType) =>
+                  orderController.onMainTabsClick(orderMainTabType),
+              orderMainTabType: OrdersMainTabType.ebook,
+            ),
+            const HorizontalGap(size: 14),
+            Expanded(
+              child: OrdersMainTabItem(
+                title: "book_purchase".tr,
+                isSelected: orderController.selectedMainTestType.value ==
+                    OrdersMainTabType.book,
+                onClick: (orderMainTabType) =>
+                    orderController.onMainTabsClick(orderMainTabType),
+                orderMainTabType: OrdersMainTabType.book,
+              ),
+            ),
+            const HorizontalGap(size: 14),
+            Expanded(
+              child: OrdersMainTabItem(
+                title: "test_series".tr,
+                isSelected: orderController.selectedMainTestType.value ==
+                    OrdersMainTabType.test,
+                onClick: (orderMainTabType) =>
+                    orderController.onMainTabsClick(orderMainTabType),
+                orderMainTabType: OrdersMainTabType.test,
+              ),
+            ),
+          ],
         ),
       ),
     );
