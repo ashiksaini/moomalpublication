@@ -324,6 +324,8 @@ final Map<String, String> enUS = {
   "price_no": "Price",
   "view": "View",
   "expire": "Expire",
+  "ebook_purchase":"Ebook\nPurchase",
+  "book_purchase":"Book\nPurchase",
 
   // Online Test Series and Overall Result
   "score": "Score",
@@ -384,4 +386,5 @@ final Map<String, String> enUS = {
   "question_no": "Question No ",
   "previous": "Previous",
   "save&Next": "Save & Next",
+
 };

@@ -61,7 +61,7 @@ class OrdersScreen extends StatelessWidget {
         child: Row(
           children: [
             OrdersMainTabItem(
-              title: "all".tr,
+              title: "ebook_purchase".tr,
               isSelected: orderController.selectedMainTestType.value ==
                   OrdersMainTabType.ebook,
               onClick: (orderMainTabType) =>
@@ -71,7 +71,7 @@ class OrdersScreen extends StatelessWidget {
             const HorizontalGap(size: 14),
             Expanded(
               child: OrdersMainTabItem(
-                title: "subjects".tr,
+                title: "book_purchase".tr,
                 isSelected: orderController.selectedMainTestType.value ==
                     OrdersMainTabType.book,
                 onClick: (orderMainTabType) =>
@@ -82,7 +82,7 @@ class OrdersScreen extends StatelessWidget {
             const HorizontalGap(size: 14),
             Expanded(
               child: OrdersMainTabItem(
-                title: "topics".tr,
+                title: "test_series".tr,
                 isSelected: orderController.selectedMainTestType.value ==
                     OrdersMainTabType.test,
                 onClick: (orderMainTabType) =>

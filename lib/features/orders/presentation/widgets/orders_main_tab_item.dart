@@ -25,7 +25,7 @@ class OrdersMainTabItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onClick(orderMainTabType),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30.h, vertical: 12.v),
+        padding: EdgeInsets.symmetric(horizontal: 26.h, vertical: 12.v),
         decoration: BoxDecoration(
             color: isSelected ? AppColors.orange : AppColors.white,
             borderRadius: BorderRadius.circular(10.r),
