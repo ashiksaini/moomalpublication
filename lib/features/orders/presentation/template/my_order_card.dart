@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -12,7 +13,7 @@ import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
-import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
+import 'package:moomalpublication/features/orders/data/constants/enums.dart';
 import 'package:moomalpublication/features/orders/data/models/order_response_model1/line_item.dart';
 import 'package:moomalpublication/features/orders/presentation/widgets/image_container.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
@@ -24,7 +25,8 @@ class MyOrderCard extends StatelessWidget {
       required this.lineItem,
       this.datePaid,
       required this.onTapCard,
-      required this.downloadLinks, this.status});
+      required this.downloadLinks,
+      this.status});
   final LineItem lineItem;
   final DateTime? datePaid;
   final Function onTapCard;
@@ -35,11 +37,18 @@ class MyOrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.h),
-      child: ShadowContainer(
-        borderRadius: 10,
-        backgroundColor: AppColors.orange_100,
-        borderColor: AppColors.grey,
-        containerChild: Column(
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.orange_100,
+          border: Border.all(
+            color: AppColors.grey,
+          ),
+          boxShadow: [primaryBoxShadow()],
+          borderRadius: BorderRadius.all(Radius.circular(
+            10.r,
+          )),
+        ),
+        child: Column(
           children: [
             Padding(
               padding: EdgeInsets.symmetric(
@@ -49,9 +58,20 @@ class MyOrderCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomText(
-                      text: '${'order_id'.tr} #${lineItem.id} (${status?.toUpperCase() ?? ""})',
+                      text: '${'order_id'.tr} #${lineItem.id}',
                       textStyle: CustomTextStyle.textStyle12Medium(context,
                           color: AppColors.black)),
+                  if (status?.toLowerCase().compareTo("completed") == 0) ...{
+                    CustomText(
+                        text: '(${status?.toUpperCase() ?? ""})',
+                        textStyle: CustomTextStyle.textStyle14Bold(context,
+                            color: AppColors.green))
+                  } else ...{
+                    CustomText(
+                        text: '(${status?.toUpperCase() ?? ""})',
+                        textStyle: CustomTextStyle.textStyle14Bold(context,
+                            color: AppColors.orange))
+                  },
                 ],
               ),
             ),
@@ -95,35 +115,43 @@ class MyOrderCard extends StatelessWidget {
                             textStyle: CustomTextStyle.textStyle15Bold(context,
                                 color: AppColors.black)),
                         const VerticalGap(size: 12),
-                        Row(
-                          children: [
-                            if (downloadLinks.isNotEmpty)
-                              CustomOrangeButton(
-                                buttonText: "view".tr,
-                                onTapButton: () {
-                                  AppRouting.toNamed(NameRoutes.pdfScreen,
-                                      argument: SharedData(
-                                          productName: lineItem.name,
-                                          productURL: downloadLinks[0]));
-                                },
-                                customTextStyle:
-                                    CustomTextStyle.textStyle16Bold(context,
-                                        color: AppColors.white),
-                                radius: 6,
-                              ),
-                          ],
-                        ),
+                        if (lineItem.ordersMainTabType ==
+                            OrdersMainTabType.ebook) ...{
+                          CustomOrangeButton(
+                            buttonText: "view".tr,
+                            onTapButton: () {
+                              AppRouting.toNamed(NameRoutes.pdfScreen,
+                                  argument: SharedData(
+                                      productName: lineItem.name,
+                                      productURL: downloadLinks[0]));
+                            },
+                            customTextStyle: CustomTextStyle.textStyle16Bold(
+                                context,
+                                color: AppColors.white),
+                            radius: 6,
+                          )
+                        } else if (lineItem.ordersMainTabType ==
+                            OrdersMainTabType.test) ...{
+                          CustomOrangeButton(
+                            buttonText: "start_test".tr,
+                            onTapButton: () {
+                              AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
+                                  argument: SharedData(
+                                      productName: lineItem.name,
+                                      productURL: lineItem.link));
+                            },
+                            customTextStyle: CustomTextStyle.textStyle16Bold(
+                                context,
+                                color: AppColors.white),
+                            radius: 6,
+                          )
+                        },
                       ],
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      onTapCard();
-                    },
-                    child: SvgPicture.asset(
-                      AppAssets.icForwardArrow,
-                      width: 30.h,
-                    ),
+                  SvgPicture.asset(
+                    AppAssets.icForwardArrow,
+                    width: 30.h,
                   ),
                 ],
               ),

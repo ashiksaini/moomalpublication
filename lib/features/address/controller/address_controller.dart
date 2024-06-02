@@ -361,7 +361,8 @@ class AdressController extends BaseController {
       updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "pending"});
 
       updateStatusDataResponse.value = ApiResponse.loading();
-      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "completed"});
+      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "processing"});
+      
       AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     } else {
       updateStatusDataResponse.value = ApiResponse.loading();

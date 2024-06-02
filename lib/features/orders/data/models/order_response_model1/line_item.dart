@@ -1,10 +1,14 @@
+import 'package:moomalpublication/features/orders/data/constants/enums.dart';
+import 'package:moomalpublication/features/orders/data/models/order_response_model1/billing.dart';
+import 'package:moomalpublication/features/orders/data/models/shipping.dart';
+
 import 'image.dart';
 import 'meta_datum.dart';
 
 class LineItem {
-  int? id;
+  String? id;
   String? name;
-  int? productId;
+  String? productId;
   int? variationId;
   int? quantity;
   String? taxClass;
@@ -18,6 +22,12 @@ class LineItem {
   int? price;
   Image? image;
   String? parentName;
+  String? status;
+  String? link;
+  DateTime? datePaid;
+  Billing? billing;
+  Shipping? shipping;
+  OrdersMainTabType? ordersMainTabType;
 
   LineItem({
     this.id,
@@ -36,12 +46,18 @@ class LineItem {
     this.price,
     this.image,
     this.parentName,
+    this.status,
+    this.link,
+    this.datePaid,
+    this.shipping,
+    this.billing,
+    this.ordersMainTabType,
   });
 
   factory LineItem.fromJson(Map<String, dynamic> json) => LineItem(
-        id: json['id'] as int?,
+        id: json['id'].toString(),
         name: json['name'] as String?,
-        productId: json['product_id'] as int?,
+        productId: json['product_id'].toString(),
         variationId: json['variation_id'] as int?,
         quantity: json['quantity'] as int?,
         taxClass: json['tax_class'] as String?,

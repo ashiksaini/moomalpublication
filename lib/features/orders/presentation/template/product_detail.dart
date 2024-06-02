@@ -10,19 +10,15 @@ import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/add.dart';
+import 'package:moomalpublication/features/orders/data/constants/enums.dart';
 import 'package:moomalpublication/features/orders/data/models/order_response_model1/line_item.dart';
-import 'package:moomalpublication/features/orders/data/models/order_response_model1/order_response_model1.dart';
 import 'package:moomalpublication/features/orders/presentation/widgets/image_container.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class ProductDetailCard extends StatelessWidget {
   const ProductDetailCard(
-      {super.key,
-      required this.orderResponseModel,
-      required this.lineItem,
-      required this.datePaid});
-  final OrderResponseModel1 orderResponseModel;
+      {super.key, required this.lineItem, required this.datePaid});
   final LineItem lineItem;
   final String datePaid;
 
@@ -38,9 +34,9 @@ class ProductDetailCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ImageContainer(
-                image: orderResponseModel.lineItems != null
-                    ? orderResponseModel.lineItems![0].image!.src ?? ''
-                    : '',
+                image: lineItem.image!.src ?? '',
+                height: 200.v,
+                width: 150.h,
               ),
               const HorizontalGap(size: 10),
               Expanded(
@@ -67,46 +63,41 @@ class ProductDetailCard extends StatelessWidget {
                           fontStyle: FontStyle.italic,
                           color: AppColors.black,
                         )),
-                    // const VerticalGap(size: 6),
-                    // CustomText(
-                    //     text: '${'expire'.tr} - Never',
-                    //     textStyle: CustomTextStyle.textStyle15Bold(context,
-                    //         color: AppColors.black)),
                     const VerticalGap(size: 10),
-                    Row(
-                      children: [
-                        CustomOrangeButton(
-                          buttonText: "view".tr,
-                          onTapButton: () {
-                            AppRouting.toNamed(NameRoutes.pdfScreen,
-                                argument: SharedData(
-                                    productName: lineItem.name,
-                                    productURL:
-                                        orderResponseModel.downloadLinks?[0]));
-                          },
-                          customTextStyle: CustomTextStyle.textStyle16Bold(
-                              context,
-                              color: AppColors.white),
-                          radius: 6,
-                        ),
-                        // const HorizontalGap(size: 16),
-                        // CustomOrangeButton(
-                        //   buttonText: "cancel_request".tr,
-                        //   onTapButton: () {},
-                        //   customTextStyle: CustomTextStyle.textStyle16Bold(
-                        //       context,
-                        //       color: AppColors.white),
-                        //   radius: 6,
-                        // ),
-                      ],
-                    ),
+                    if (lineItem.ordersMainTabType ==
+                        OrdersMainTabType.ebook) ...{
+                      CustomOrangeButton(
+                        buttonText: "view".tr,
+                        onTapButton: () {
+                          AppRouting.toNamed(NameRoutes.pdfScreen,
+                              argument: SharedData(
+                                  productName: lineItem.name,
+                                  productURL: lineItem.link));
+                        },
+                        customTextStyle: CustomTextStyle.textStyle16Bold(
+                            context,
+                            color: AppColors.white),
+                        radius: 6,
+                      )
+                    } else if (lineItem.ordersMainTabType ==
+                        OrdersMainTabType.test) ...{
+                      CustomOrangeButton(
+                        buttonText: "start_test".tr,
+                        onTapButton: () {
+                          AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
+                              argument: SharedData(
+                                  productName: lineItem.name,
+                                  productURL: lineItem.link));
+                        },
+                        customTextStyle: CustomTextStyle.textStyle16Bold(
+                            context,
+                            color: AppColors.white),
+                        radius: 6,
+                      )
+                    },
                   ],
                 ),
               ),
-              // SvgPicture.asset(
-              //   AppAssets.icForwardArrow,
-              //   width: 30.h,
-              // ),
             ],
           ),
           const VerticalGap(size: 18),

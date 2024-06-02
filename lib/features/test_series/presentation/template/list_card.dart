@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
+import 'package:moomalpublication/features/test_series/data/constants/enums.dart';
 import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
 import 'package:moomalpublication/features/test_series/presentation/widgets/button_bar.dart';
 import 'package:moomalpublication/features/test_series/presentation/widgets/marks_row.dart';
@@ -22,14 +23,14 @@ class ListCard extends StatelessWidget {
         child: Column(
           children: [
             CustomButtonBar(
-              buttonText:
-                  (entry.freePaid == 'paid') ? 'buy_now'.tr : 'start_test'.tr,
+              buttonText: entry.testAvailbilityType == TestAvailbilityType.paid ? 'buy_now'.tr : 'start_test'.tr,
               barText: entry.postTitle ?? '',
               permalink: entry.permalink,
+              entry: entry,
             ),
             MarksRow(
               entry: entry,
-              showPrice: (entry.freePaid == 'paid') ? true : false,
+              showPrice: entry.testAvailbilityType == TestAvailbilityType.paid ? true : false,
             ),
           ],
         ),

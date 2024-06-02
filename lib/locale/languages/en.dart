@@ -110,6 +110,8 @@ final Map<String, String> enUS = {
   "not_available": "Not Available",
   "ebook_quantity_cannot_be_more_than_one":
       "E Book quantity cannot be more than 1",
+  "test_quantity_cannot_be_more_than_one":
+      "Test quantity cannot be more than 1",
 
   // Drawer ///////////////////////////////////////////////////////////////////
   "downloads": "Downloads",

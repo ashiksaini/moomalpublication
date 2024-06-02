@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
@@ -111,39 +112,55 @@ class AddressScreen extends StatelessWidget {
   }
 
   Widget bottomButton({Function? onTap, required BuildContext context}) {
-    return GestureDetector(
-      onTap: () {
-        onTap?.call();
-      },
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 12.v, horizontal: 14.h),
-        child: ShadowContainer(
-          backgroundColor: AppColors.green,
-          borderRadius: 10.h,
-          containerChild: Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomText(
-                  text: "proceed_to_checkout".tr,
-                  textStyle: CustomTextStyle.textStyle22Bold(
-                    context,
-                    color: AppColors.white,
-                  ),
-                ),
-                const HorizontalGap(size: 15),
-                SvgPicture.asset(
-                  AppAssets.icArrowRight,
-                  color: AppColors.white,
-                  height: 18.v,
-                  width: 18.h,
-                )
-              ],
+    return Obx(() {
+      return GestureDetector(
+        onTap: () {
+          onTap?.call();
+        },
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 12.v, horizontal: 14.h),
+          child: ShadowContainer(
+            backgroundColor: AppColors.green,
+            borderRadius: 10.h,
+            containerChild: Padding(
+              padding: EdgeInsets.symmetric(vertical: 15.h),
+              child: controller.updateStatusDataResponse.value.isLoading
+                  ? SizedBox(
+                      width: SizeUtils.width,
+                      height: 45.v,
+                      child: LottieBuilder.asset(
+                        AppAssets.loadingAnimation,
+                        fit: BoxFit.contain,
+                        filterQuality: FilterQuality.high,
+                      ),
+                    )
+                  : SizedBox(
+                      width: SizeUtils.width,
+                      height: 45.v,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomText(
+                            text: "proceed_to_checkout".tr,
+                            textStyle: CustomTextStyle.textStyle22Bold(
+                              context,
+                              color: AppColors.white,
+                            ),
+                          ),
+                          const HorizontalGap(size: 15),
+                          SvgPicture.asset(
+                            AppAssets.icArrowRight,
+                            color: AppColors.white,
+                            height: 18.v,
+                            width: 18.h,
+                          )
+                        ],
+                      ),
+                    ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -35,7 +35,7 @@ class OrdersMainTabItem extends StatelessWidget {
         child: Center(
           child: CustomText(
             text: title,
-            textStyle: CustomTextStyle.textStyle20Bold(
+            textStyle: CustomTextStyle.textStyle16Bold(
               context,
               color: isSelected ? AppColors.white : AppColors.grey,
             ),

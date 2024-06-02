@@ -24,7 +24,6 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
 
   Future<void> pay(
       String? totalPrice, String? orderKey, String? orderId) async {
-        print("order_id $orderId");
     this.orderId = orderId ?? "";
 
     final payUPaymentParams = _getPayUPaymentParams(
@@ -47,7 +46,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
       PayUPaymentParamKey.phone: PayuPaymentConfig.phNumber,
       PayUPaymentParamKey.environment: PayuPaymentConfig.env,
       PayUPaymentParamKey.transactionId:
-          orderKey, // transactionId Cannot be null or empty and should be unique for each transaction. Maximum allowed length is 25 characters. It cannot contain special characters like: -_/
+          orderKey,
       PayUPaymentParamKey.userCredential: PayuPaymentConfig.userCredential,
       PayUPaymentParamKey.android_surl:
           "https://www.payumoney.com/mobileapp/payumoney/success.php",

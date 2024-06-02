@@ -37,6 +37,39 @@ class CartServices {
           _saveNonceTokenToLocal(response.headers.value("nonce"));
         }
 
+        final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
+
+        // parsedResponse.
+
+        return CartDataResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showToast(error.message.toString());
+        return CartDataResponse();
+      }
+    } else {
+      showToast("no_internet_access".tr);
+      return CartDataResponse();
+    }
+  }
+
+  static Future<CartDataResponse> addToCart(
+      {String? id,
+      String? quantity,
+      List<VariationRequestData>? variations}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final query = KeyRequestData(
+          consumerSecret: ApiKeys.addToCartConsumerSecret,
+        ).toJson();
+
+        final data =
+            AddToCartReqData(id: id, quantity: quantity, variations: variations)
+                .toJson();
+        final dio.Dio dioo = await _getDio();
+        final dio.Response<dynamic> response = await dioo
+            .post(ApiPaths.addToCart, data: data, queryParameters: query);
         final parsedResponse =
             CartData.fromJson(response.data as Map<String, dynamic>);
 
@@ -51,7 +84,7 @@ class CartServices {
     }
   }
 
-  static Future<CartDataResponse> addToCart(
+  static Future<CartDataResponse> testaAddToCart(
       {String? id,
       String? quantity,
       List<VariationRequestData>? variations}) async {

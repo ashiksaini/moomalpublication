@@ -57,7 +57,7 @@ class GetOrderService {
         ).toJson();
 
         final dio.Response<dynamic> response = await DioClient.dioWithoutAuth!
-            .post("${ApiPaths.orders}$orderId",
+            .put("${ApiPaths.orders}$orderId",
                 queryParameters: query, data: updateStatusData);
         final parsedResponse = OrderResponseModel.fromJson(response.data);
 

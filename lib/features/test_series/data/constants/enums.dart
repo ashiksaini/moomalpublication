@@ -11,3 +11,8 @@ enum TestSeriesSubTopicType {
   gk,
   generalScience,
 }
+
+enum TestAvailbilityType {
+  free,
+  paid,
+}

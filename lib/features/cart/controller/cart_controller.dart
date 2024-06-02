@@ -72,9 +72,9 @@ class CartController extends BaseController {
   }
 
   Future<void> onInc(Item cartItem) async {
-    if (cartItem.variation?[0].value?.toLowerCase().compareTo("ebook") == 0) {
+    if (cartItem.variation?.elementAtOrNull(0)?.value?.toLowerCase().compareTo("ebook") == 0) {
       showErrorToast("ebook_quantity_cannot_be_more_than_one".tr);
-    } else {
+    } else if (cartItem.variation?.elementAtOrNull(0)?.value?.toLowerCase().compareTo("book") == 0) {
       int quantity = cartItem.quantity ?? 0;
       ++quantity;
 
@@ -94,6 +94,8 @@ class CartController extends BaseController {
           }
         }
       }
+    } else {
+      showErrorToast("test_quantity_cannot_be_more_than_one".tr);
     }
   }
 

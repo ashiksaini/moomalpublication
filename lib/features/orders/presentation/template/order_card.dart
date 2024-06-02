@@ -40,7 +40,7 @@ class OrderCard extends StatelessWidget {
                     datePaid: dataItem.datePaid,
                     status: dataItem.status,
                     onTapCard: () {
-                      orderController.singleProduct.value = dataItem;
+                      // orderController.singleProduct.value = dataItem;
                       AppRouting.toNamed(NameRoutes.ebookOrder);
                     },
                   ),

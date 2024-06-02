@@ -3,6 +3,7 @@ import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/test_series/data/constants/enums.dart';
 import 'package:moomalpublication/features/test_series/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/test_series/data/models/tab_bar_model.dart';
@@ -93,15 +94,16 @@ class TestSeriesController extends BaseController {
 
     if (testSeriesResponse.value.data != null &&
         testSeriesResponse.value.data!.isNotEmpty) {
+        _clearList();
       for (var test in testSeriesResponse.value.data!) {
+        test.testAvailbilityType = (test.freePaid == 'paid') ? TestAvailbilityType.paid : TestAvailbilityType.free;
+
         testsAll.add(test);
 
         if (test.testTypeTerms!.isNotEmpty) {
-          if (test.testTypeTerms!
-              .containsWithIgnoreCases(AppConstants.sectional)) {
+          if (test.testTypeTerms!.containsWithIgnoreCases(AppConstants.sectional)) {
             testsSectional.add(test);
-          } else if (test.testTypeTerms!
-              .containsWithIgnoreCases(AppConstants.fullLength)) {
+          } else if (test.testTypeTerms!.containsWithIgnoreCases(AppConstants.fullLength)) {
             testsFullLength.add(test);
           }
         }
@@ -151,5 +153,9 @@ class TestSeriesController extends BaseController {
 
     _clearList();
     _getTestList(category: term.termId);
+  }
+
+  void buyTest() async {
+    await CartServices.testaAddToCart();
   }
 }

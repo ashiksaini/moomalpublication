@@ -31,7 +31,7 @@ class CustomOrangeButton extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 4.v, horizontal: 24.h),
+          padding: EdgeInsets.symmetric(vertical: 8.v, horizontal: 24.h),
           child: CustomText(
               text: buttonText,
               textStyle: customTextStyle ??

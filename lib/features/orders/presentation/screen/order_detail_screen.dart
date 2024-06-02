@@ -9,7 +9,6 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/orders/controllers/orders_controller.dart';
-import 'package:moomalpublication/features/orders/data/models/order_response_model1/line_item.dart';
 import 'package:moomalpublication/features/orders/data/models/shipping.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -55,75 +54,22 @@ class EbookOrderScreen extends StatelessWidget {
                         const VerticalGap(size: 12),
                         ScrollConfiguration(
                           behavior: NoGlowBehavior(),
-                          child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: orderController
-                                          .singleProduct.value.lineItems !=
-                                      null
-                                  ? orderController
-                                      .singleProduct.value.lineItems!.length
-                                  : 0,
-                              itemBuilder: (context, index) {
-                                return ProductDetailCard(
-                                  orderResponseModel:
-                                      orderController.singleProduct.value,
-                                  lineItem: orderController
-                                              .singleProduct.value.lineItems !=
-                                          null
-                                      ? orderController
-                                          .singleProduct.value.lineItems![index]
-                                      : LineItem(),
-                                  datePaid: orderController
-                                      .singleProduct.value.datePaid
-                                      .toString(),
-                                );
-                              }),
+                          child: ProductDetailCard(
+                            lineItem: orderController.singleProduct.value,
+                            datePaid: orderController
+                                .singleProduct.value.datePaid
+                                .toString(),
+                          ),
                         ),
                         const Divider(height: 1),
                         const VerticalGap(size: 12),
                         OrderDetailCard(
-                          lineItem:
-                              orderController.singleProduct.value.lineItems !=
-                                          null &&
-                                      orderController.singleProduct.value
-                                          .lineItems!.isNotEmpty
-                                  ? orderController
-                                      .singleProduct.value.lineItems![0]
-                                  : LineItem(),
+                          lineItem: orderController.singleProduct.value,
                         ),
                         ShippingDetailCard(
                             shipping:
-                                orderController.singleProduct.value.lineItems !=
-                                            null &&
-                                        orderController.singleProduct.value
-                                            .lineItems!.isNotEmpty
-                                    ? orderController
-                                            .singleProduct.value.shipping ??
-                                        Shipping()
-                                    : Shipping()),
-                        // Padding(
-                        //   padding: EdgeInsets.symmetric(
-                        //       vertical: 20.v, horizontal: 14.h),
-                        //   child: ShadowContainer(
-                        //       borderColor: AppColors.white,
-                        //       backgroundColor: AppColors.orange,
-                        //       borderRadius: 10,
-                        //       containerChild: Padding(
-                        //         padding: EdgeInsets.symmetric(vertical: 12.h),
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.center,
-                        //           children: [
-                        //             CustomText(
-                        //                 text: 'order_again'.tr,
-                        //                 textStyle:
-                        //                     CustomTextStyle.textStyle22Bold(
-                        //                         context,
-                        //                         color: AppColors.black)),
-                        //           ],
-                        //         ),
-                        //       )),
-                        // )
+                                orderController.singleProduct.value.shipping ??
+                                    Shipping()),
                       ],
                     ),
                   ),
