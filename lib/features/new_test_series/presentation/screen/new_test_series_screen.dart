@@ -130,14 +130,14 @@ class NewTestSeriesScreen extends StatelessWidget {
               .answers
               ?.length,
           itemBuilder: (context, optionIndex) {
-            return GestureDetector(
-              onTap: () {
-                _quizController.onTapAnswer(
-                  optionNumber: optionIndex,
-                );
-              },
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.h),
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.h),
+              child: GestureDetector(
+                onTap: () {
+                  _quizController.onTapAnswer(
+                    optionNumber: optionIndex,
+                  );
+                },
                 child: TestOptionsCard(
                   optionNumber: optionIndex,
                   questionNumber: _quizController.visibleQuestionIndex.value,

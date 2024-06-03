@@ -87,23 +87,27 @@ class QuizController extends BaseController {
             ? currentAffairsquizList[selectedIndex].id
             : economicQuizList[selectedIndex].id));
     if (testResponse.value.data != null) {
-      for (var qa in testResponse.value.data!.questionsAndAnswers!) {
-        questionsList.add(RxString(qa.question.toString()));
+      if (testResponse.value.data!.questionsAndAnswers != null) {
+        for (var qa in testResponse.value.data!.questionsAndAnswers!) {
+          questionsList.add(RxString(qa.question.toString()));
 
-        final RxList<Answer> answers = RxList<Answer>(
-          qa.answers!
-              .map<Answer>((answer) => Answer(
-                    answer: answer.answer.toString(),
-                    correctOrNot: answer.correctOrNot,
-                  ))
-              .toList(),
-        );
+          final RxList<Answer> answers = RxList<Answer>(
+            qa.answers!
+                .map<Answer>((answer) => Answer(
+                      answer: answer.answer.toString(),
+                      correctOrNot: answer.correctOrNot,
+                    ))
+                .toList(),
+          );
 
-        answerList.add(answers);
+          answerList.add(answers);
+        }
+        _initializeOptions();
+      } else {
+        showErrorToast("no_question_answer_available".tr);
       }
-      _initializeOptions();
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 

@@ -46,7 +46,7 @@ class QuizService {
         .value) {
       try {
         final dio.Response<dynamic> response =
-            await DioClient.dioWithoutAuth!.get('${ApiPaths.quizTest}$id');
+            await DioClient.dioWithoutAuth!.get('${ApiPaths.quizTest}${id ?? "5233"}');
 
         final parsedResponse = TestQuestionsResponseModel.fromJson(
             response.data as Map<String, dynamic>);

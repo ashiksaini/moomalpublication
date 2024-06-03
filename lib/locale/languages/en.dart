@@ -393,4 +393,6 @@ final Map<String, String> enUS = {
   "test_summary" : "Test Summary",
   "your_rank": "Your Rank",
   "your_marks": "Your Marks",
+  "no_question_answer_available": "No Questions and Answer available",
+  "buying_coming_soon": "Buying Test Coming Soon",
 };
