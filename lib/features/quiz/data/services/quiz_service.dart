@@ -3,10 +3,14 @@ import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/data/models/quiz_response_model.dart';
+import 'package:moomalpublication/features/quiz/data/models/test_post_data.dart';
 import 'package:moomalpublication/features/quiz/data/models/test_response_model.dart';
+import 'package:moomalpublication/features/quiz/data/models/test_result_response_data.dart';
 import 'package:moomalpublication/services/internet_connectivity/internet_connectivity.dart';
 import 'package:moomalpublication/services/network/api_paths.dart';
 import 'package:moomalpublication/services/network/dio_client.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class QuizService {
   QuizService._();
@@ -36,13 +40,13 @@ class QuizService {
     }
   }
 
-  static Future<TestResponse> getTestList() async {
+  static Future<TestResponse> getTestList(String? id) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
       try {
         final dio.Response<dynamic> response =
-            await DioClient.dioWithoutAuth!.get('${ApiPaths.quizTest}5933');
+            await DioClient.dioWithoutAuth!.get('${ApiPaths.quizTest}$id');
 
         final parsedResponse = TestQuestionsResponseModel.fromJson(
             response.data as Map<String, dynamic>);
@@ -54,6 +58,74 @@ class QuizService {
     } else {
       showToast("no_internet_access".tr);
       return TestResponse();
+    }
+  }
+
+  static Future<TestPostResponse> postTestData(
+      String? onlinePostId, String? timeLeft, List<String> anwers) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final userId =
+            await SharedPreferencesHelper.getInt(SharedPreferenceKeys.userId);
+
+        final data = TestPostData(
+          userId: userId.toString(),
+          testId: onlinePostId,
+          timeLeft: timeLeft,
+          anwers: anwers,
+        ).toJson();
+
+        final dio.Response<dynamic> response = await DioClient.dioWithAuth!
+            .post(ApiPaths.insertTestData, data: data);
+
+        if (response.statusCode == 200) {
+          return TestPostResponse.success(true);
+        } else {
+          return TestPostResponse.success(false);
+        }
+      } on dio.DioException catch (error) {
+        showToast(error.message.toString());
+        return TestPostResponse.success(false);
+      }
+    } else {
+      showToast("no_internet_access".tr);
+      return TestPostResponse.success(false);
+    }
+  }
+
+  static Future<TestResultResponse> getTestResult(String? onlinePostId) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final userId =
+            await SharedPreferencesHelper.getInt(SharedPreferenceKeys.userId);
+
+        final data = TestPostData(
+          userId: userId.toString(),
+          testId: onlinePostId,
+        ).toJson();
+
+        final dio.Response<dynamic> response =
+            await DioClient.dioWithAuth!.post(ApiPaths.testResult, data: data);
+
+        final parsedResponse = TestResultResponseData.fromJson(
+            response.data as Map<String, dynamic>);
+
+        if (response.statusCode == 200) {
+          return TestResultResponse.success(parsedResponse);
+        } else {
+          return TestResultResponse();
+        }
+      } on dio.DioException catch (error) {
+        showToast(error.message.toString());
+        return TestResultResponse();
+      }
+    } else {
+      showToast("no_internet_access".tr);
+      return TestResultResponse();
     }
   }
 }

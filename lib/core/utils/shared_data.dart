@@ -1,4 +1,5 @@
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 
 class SharedData {
@@ -12,6 +13,7 @@ class SharedData {
 
   String? testName;
   String? testUrl;
+  TestSeriesResponseModel? testModel;
 
   Function? onCartCallBack;
   String? orderKey;
@@ -27,6 +29,7 @@ class SharedData {
     this.productURL,
     this.testName,
     this.testUrl,
+    this.testModel,
     this.onCartCallBack,
     this.orderId,
     this.orderKey,

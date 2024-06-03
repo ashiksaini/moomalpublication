@@ -56,23 +56,20 @@ class CustomButtonBar extends StatelessWidget {
               onTap: () {
                 if (entry?.testAvailbilityType == TestAvailbilityType.free) {
                   AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
-                      argument:
-                          SharedData(testName: barText, testUrl: permalink));
+                      argument: SharedData(testModel: entry));
                 } else {
-                  _testSeriesController.buyTest();
+                  _testSeriesController.buyTest(entry);
                 }
               },
               child: Container(
+                height: 40.v,
+                padding: EdgeInsets.symmetric(horizontal: 20.h),
                 decoration: BoxDecoration(
                   color: AppColors.skinDark,
                   border: Border.all(color: AppColors.skinDark),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 8.v,
-                    horizontal: 25.h,
-                  ),
+                child: Center(
                   child: CustomText(
                     text: buttonText,
                     textStyle: CustomTextStyle.textStyle16Bold(

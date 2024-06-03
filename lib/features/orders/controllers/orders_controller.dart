@@ -46,14 +46,15 @@ class OrderController extends BaseController {
   }
 
   void parseOrderList() {
+    _parseBookSeries();
     _parseEBookSeries();
     _parseTestSeries();
-    _parseBookSeries();
   }
 
   void _parseTestSeries() {
     for (OrderResponseModel1 order in ordersList) {
-      if (order.status?.toLowerCase().compareTo("completed") == 0 &&
+      if ((order.status?.toLowerCase().compareTo("processing") == 0 ||
+              order.status?.toLowerCase().compareTo("completed") == 0) &&
           order.lineItems?.isNotEmpty == true) {
         for (LineItem lineItem in order.lineItems ?? []) {
           if (lineItem.productId?.toLowerCase().compareTo("5772") == 0) {
@@ -79,27 +80,22 @@ class OrderController extends BaseController {
           order?.lineItems?.isNotEmpty == true) {
         for (int j = 0; j < (order?.lineItems?.length ?? 0); j++) {
           LineItem? lineItem = order?.lineItems?.elementAtOrNull(j);
+          if (lineItem?.productId?.toLowerCase().compareTo("5772") != 0) {
+            if (lineItem != null &&
+                (lineItem.metaData
+                        ?.elementAtOrNull(0)
+                        ?.value
+                        ?.toLowerCase()
+                        .compareTo("ebook") !=
+                    0)) {
+              lineItem.status = order?.status;
+              lineItem.datePaid = order?.datePaid;
+              lineItem.billing = order?.billing;
+              lineItem.shipping = order?.shipping;
+              lineItem.ordersMainTabType = OrdersMainTabType.book;
 
-          if (lineItem != null &&
-              (lineItem.metaData
-                          ?.elementAtOrNull(0)
-                          ?.value
-                          ?.toLowerCase()
-                          .compareTo("book") ==
-                      0 ||
-                  lineItem.metaData
-                          ?.elementAtOrNull(1)
-                          ?.value
-                          ?.toLowerCase()
-                          .compareTo("book") ==
-                      0)) {
-            lineItem.status = order?.status;
-            lineItem.datePaid = order?.datePaid;
-            lineItem.billing = order?.billing;
-            lineItem.shipping = order?.shipping;
-            lineItem.ordersMainTabType = OrdersMainTabType.book;
-
-            bookPurchase.add(lineItem);
+              bookPurchase.add(lineItem);
+            }
           }
         }
       }
@@ -116,36 +112,29 @@ class OrderController extends BaseController {
           order?.downloadLinks?.isNotEmpty == true) {
         for (int j = 0; j < (order?.lineItems?.length ?? 0); j++) {
           LineItem? lineItem = order?.lineItems?.elementAtOrNull(j);
+          if (lineItem?.productId?.toLowerCase().compareTo("5772") != 0) {
+            if (lineItem != null &&
+                (lineItem.metaData
+                        ?.elementAtOrNull(0)
+                        ?.value
+                        ?.toLowerCase()
+                        .compareTo("ebook") ==
+                    0)) {
+              lineItem.status = order?.status;
+              lineItem.link = order?.downloadLinks?.elementAtOrNull(j);
+              lineItem.datePaid = order?.datePaid;
+              lineItem.billing = order?.billing;
+              lineItem.shipping = order?.shipping;
+              lineItem.ordersMainTabType = OrdersMainTabType.ebook;
 
-          if (lineItem != null &&
-              (lineItem.metaData
-                          ?.elementAtOrNull(0)
-                          ?.value
-                          ?.toLowerCase()
-                          .compareTo("ebook") ==
-                      0 ||
-                  lineItem.metaData
-                          ?.elementAtOrNull(1)
-                          ?.value
-                          ?.toLowerCase()
-                          .compareTo("ebook") ==
-                      0)) {
-            lineItem.status = order?.status;
-            lineItem.link = order?.downloadLinks?.elementAtOrNull(j);
-            lineItem.datePaid = order?.datePaid;
-            lineItem.billing = order?.billing;
-            lineItem.shipping = order?.shipping;
-            lineItem.ordersMainTabType = OrdersMainTabType.ebook;
-
-            ebookPurchase.add(lineItem);
+              ebookPurchase.add(lineItem);
+            }
           }
         }
       }
     }
   }
 }
-
-
 
 /**
  * 

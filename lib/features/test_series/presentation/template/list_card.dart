@@ -23,14 +23,18 @@ class ListCard extends StatelessWidget {
         child: Column(
           children: [
             CustomButtonBar(
-              buttonText: entry.testAvailbilityType == TestAvailbilityType.paid ? 'buy_now'.tr : 'start_test'.tr,
+              buttonText: entry.testAvailbilityType == TestAvailbilityType.paid
+                  ? 'buy_now'.tr
+                  : 'start_test'.tr,
               barText: entry.postTitle ?? '',
               permalink: entry.permalink,
               entry: entry,
             ),
             MarksRow(
               entry: entry,
-              showPrice: entry.testAvailbilityType == TestAvailbilityType.paid ? true : false,
+              showPrice: entry.testAvailbilityType == TestAvailbilityType.paid
+                  ? true
+                  : false,
             ),
           ],
         ),

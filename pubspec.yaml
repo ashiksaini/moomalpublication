@@ -32,6 +32,7 @@ dependencies:
   upgrader: ^9.0.0
   syncfusion_flutter_pdfviewer: ^23.2.6
   syncfusion_flutter_core: ^23.2.6
+  syncfusion_flutter_charts: ^23.2.6
   device_preview: ^1.1.0
   fluttertoast: ^8.2.4
   flutter_layout_grid: ^2.0.5

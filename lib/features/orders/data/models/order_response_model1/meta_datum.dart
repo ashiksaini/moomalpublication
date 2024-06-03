@@ -5,7 +5,8 @@ class MetaDatum {
   String? displayValue;
   String? displayKey;
 
-  MetaDatum({this.id, this.key, this.value, this.displayValue, this.displayKey});
+  MetaDatum(
+      {this.id, this.key, this.value, this.displayValue, this.displayKey});
 
   factory MetaDatum.fromJson(Map<String, dynamic> json) => MetaDatum(
         id: json['id'] as int?,

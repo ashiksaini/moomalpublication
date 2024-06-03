@@ -72,30 +72,37 @@ class CartController extends BaseController {
   }
 
   Future<void> onInc(Item cartItem) async {
-    if (cartItem.variation?.elementAtOrNull(0)?.value?.toLowerCase().compareTo("ebook") == 0) {
-      showErrorToast("ebook_quantity_cannot_be_more_than_one".tr);
-    } else if (cartItem.variation?.elementAtOrNull(0)?.value?.toLowerCase().compareTo("book") == 0) {
-      int quantity = cartItem.quantity ?? 0;
-      ++quantity;
-
-      if (quantity == 9999) {
-        showToast("quantity_cannot_exceed_the_limit".tr);
+    if (cartItem.id?.compareTo("5772") == 0) {
+      showErrorToast("test_quantity_cannot_be_more_than_one".tr);
+    } else {
+      if (cartItem.variation
+              ?.elementAtOrNull(0)
+              ?.value
+              ?.toLowerCase()
+              .compareTo("ebook") ==
+          0) {
+        showErrorToast("ebook_quantity_cannot_be_more_than_one".tr);
       } else {
-        cartDataResponse.value = await CartServices.updateItem(
-            id: cartItem.id.toString(),
-            quantity: quantity.toString(),
-            key: cartItem.key);
-        if (cartDataResponse.value.data != null) {
-          if (cartDataResponse.value.data!.items != null &&
-              cartDataResponse.value.data!.items!.isNotEmpty) {
-            cartItems.value = cartDataResponse.value.data!.items!;
-            totals.value = cartDataResponse.value.data!.totals!;
-            _onCartItemCountChange!(cartItems.length);
+        int quantity = cartItem.quantity ?? 0;
+        ++quantity;
+
+        if (quantity == 9999) {
+          showToast("quantity_cannot_exceed_the_limit".tr);
+        } else {
+          cartDataResponse.value = await CartServices.updateItem(
+              id: cartItem.id.toString(),
+              quantity: quantity.toString(),
+              key: cartItem.key);
+          if (cartDataResponse.value.data != null) {
+            if (cartDataResponse.value.data!.items != null &&
+                cartDataResponse.value.data!.items!.isNotEmpty) {
+              cartItems.value = cartDataResponse.value.data!.items!;
+              totals.value = cartDataResponse.value.data!.totals!;
+              _onCartItemCountChange!(cartItems.length);
+            }
           }
         }
       }
-    } else {
-      showErrorToast("test_quantity_cannot_be_more_than_one".tr);
     }
   }
 

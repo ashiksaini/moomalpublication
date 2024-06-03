@@ -1,3 +1,4 @@
+import 'package:moomalpublication/core/base/test_meta_data.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 
 class AddToCartReqData {
@@ -5,12 +6,14 @@ class AddToCartReqData {
   String? quantity;
   String? key;
   List<VariationRequestData>? variations;
+  List<KeyValueData>? metaData;
 
   AddToCartReqData({
     this.id,
     this.quantity,
     this.key,
     this.variations,
+    this.metaData,
   });
 
   Map<String, dynamic> toJson() {
@@ -25,6 +28,16 @@ class AddToCartReqData {
               .map((variation) => VariationRequestData(
                     attribute: variation.attribute,
                     value: variation.value,
+                  ).toJson())
+              .toList());
+    }
+    if (metaData != null) {
+      data.putIfAbsent(
+          'meta_data',
+          () => metaData!
+              .map((metaData) => KeyValueData(
+                    key: metaData.key,
+                    value: metaData.value,
                   ).toJson())
               .toList());
     }

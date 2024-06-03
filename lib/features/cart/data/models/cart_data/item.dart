@@ -9,7 +9,7 @@ class Item {
   String? key;
   String? name;
   int? quantity;
-  int? id;
+  String? id;
   QuantityLimits? quantityLimits;
   String? shortDescription;
   String? description;
@@ -54,7 +54,7 @@ class Item {
         key: json['key'] as String?,
         name: json['name'] as String?,
         quantity: json['quantity'] as int?,
-        id: json['id'] as int?,
+        id: json['id'].toString(),
         quantityLimits: json['quantity_limits'] != null
             ? QuantityLimits.fromJson(
                 json['quantity_limits'] as Map<String, dynamic>)

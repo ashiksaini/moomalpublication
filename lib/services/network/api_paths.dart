@@ -18,7 +18,7 @@ class ApiPaths {
       'https://moomalpublication.com/events-press-release/';
   static const String mediaCoverage = 'https://moomalpublication.com/media/';
   static const String pressRelease = 'https://moomalpublication.com/press/';
-  static const String quizData = 'qsm/list_quiz';
+  static const String quizData = 'qsm/list_quiz_modified';
   static const String testSeries = 'online_exam/v1/exams/';
   static const String testSeriesList = 'custom/v1/dashboard';
   static const String updateCartItem = 'wc/store/cart/update-item';
@@ -37,4 +37,6 @@ class ApiPaths {
   static const String subscribe = 'newsletter/v2/subscribers';
   static const String latestNews = 'wp/v2/posts/';
   static const String orderSuccess = 'custom-namespace/v1/thankyou/';
+  static const String insertTestData = 'moomal-api/v1/insert-mock-test-data';
+  static const String testResult = 'moomal-api/v1/mock-test-result';
 }

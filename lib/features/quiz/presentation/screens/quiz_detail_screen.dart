@@ -17,7 +17,7 @@ class QuizDetailScreen extends StatelessWidget {
   final QuizController _quizController = Get.find<QuizController>();
   @override
   Widget build(BuildContext context) {
-    int index = args[0]['index'];
+    _quizController.selectedIndex = args[0]['index'];
     return Scaffold(
       backgroundColor: AppColors.black,
       body: SafeArea(
@@ -28,8 +28,13 @@ class QuizDetailScreen extends StatelessWidget {
               CustomAppbar(
                 title: (_quizController.selectedQuizType ==
                             QuizType.currentAffairQuiz
-                        ? _quizController.currentAffairsquizList[index].quizName
-                        : _quizController.economicQuizList[index].quizName) ??
+                        ? _quizController
+                            .currentAffairsquizList[
+                                _quizController.selectedIndex]
+                            .quizName
+                        : _quizController
+                            .economicQuizList[_quizController.selectedIndex]
+                            .quizName) ??
                     "",
                 maxLine: 1,
                 prefixIcon: AppAssets.icBackArrow,
@@ -44,7 +49,7 @@ class QuizDetailScreen extends StatelessWidget {
                     ),
                     child: ShadowContainer(
                       containerChild: PhotoDescription(
-                        index: index,
+                        index: _quizController.selectedIndex,
                       ),
                     ),
                   ),

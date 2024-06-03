@@ -84,7 +84,7 @@ class ProductDetailCard extends StatelessWidget {
                       CustomOrangeButton(
                         buttonText: "start_test".tr,
                         onTapButton: () {
-                          AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
+                          AppRouting.toNamed(NameRoutes.webView,
                               argument: SharedData(
                                   productName: lineItem.name,
                                   productURL: lineItem.link));

@@ -68,6 +68,8 @@ class AppAssets {
   static const String icCategory = "${pathSvg}ic_category.svg";
   static const String icInfo = "${pathSvg}ic_info.svg";
   static const String icCheck = "${pathSvg}ic_check.svg";
+  static const String icRank = "${pathSvg}ic_rank.svg";
+  static const String icMarks = "${pathSvg}ic_marks.svg";
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

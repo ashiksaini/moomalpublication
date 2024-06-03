@@ -135,10 +135,10 @@ class MyOrderCard extends StatelessWidget {
                           CustomOrangeButton(
                             buttonText: "start_test".tr,
                             onTapButton: () {
-                              AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
+                              AppRouting.toNamed(NameRoutes.webView,
                                   argument: SharedData(
-                                      productName: lineItem.name,
-                                      productURL: lineItem.link));
+                                      testName: lineItem.name,
+                                      testUrl: lineItem.link));
                             },
                             customTextStyle: CustomTextStyle.textStyle16Bold(
                                 context,

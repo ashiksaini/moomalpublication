@@ -64,6 +64,7 @@ class QuizController extends BaseController {
   RxInt counter = 0.obs;
   RxBool submitButton = true.obs;
   Timer? timer;
+  int selectedIndex = -1;
 
   void startTest({required int index}) async {
     testTaken.value = false;
@@ -81,7 +82,10 @@ class QuizController extends BaseController {
 
   Future<void> getTest() async {
     testResponse.value = ApiResponse.loading();
-    testResponse.value = await QuizService.getTestList();
+    testResponse.value = await QuizService.getTestList(
+        (selectedQuizType == QuizType.currentAffairQuiz
+            ? currentAffairsquizList[selectedIndex].id
+            : economicQuizList[selectedIndex].id));
     if (testResponse.value.data != null) {
       for (var qa in testResponse.value.data!.questionsAndAnswers!) {
         questionsList.add(RxString(qa.question.toString()));

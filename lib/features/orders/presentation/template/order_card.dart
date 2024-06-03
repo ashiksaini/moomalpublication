@@ -23,7 +23,8 @@ class OrderCard extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: orderController.ordersList.length,
               itemBuilder: (context, index) {
-                OrderResponseModel1 dataItem = orderController.ordersList[index];
+                OrderResponseModel1 dataItem =
+                    orderController.ordersList[index];
                 LineItem listItem = LineItem();
 
                 if (dataItem.lineItems != null &&

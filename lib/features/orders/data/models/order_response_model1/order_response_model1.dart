@@ -115,11 +115,11 @@ class OrderResponseModel1 {
       version: json['version'] as String?,
       pricesIncludeTax: json['prices_include_tax'] as bool?,
       dateCreated: json['date_created'] == null
-            ? null
-            : DateTime.parse(json["date_created"]),
+          ? null
+          : DateTime.parse(json["date_created"]),
       dateModified: json['date_modified'] == null
-            ? null
-            : DateTime.parse(json["date_modified"]),
+          ? null
+          : DateTime.parse(json["date_modified"]),
       discountTotal: json['discount_total'] as String?,
       discountTax: json['discount_tax'] as String?,
       shippingTotal: json['shipping_total'] as String?,
@@ -143,11 +143,10 @@ class OrderResponseModel1 {
       createdVia: json['created_via'] as String?,
       customerNote: json['customer_note'] as String?,
       dateCompleted: json['date_completed'] == null
-            ? null
-            : DateTime.parse(json["date_completed"]),
-      datePaid: json['date_paid'] == null
-            ? null
-            : DateTime.parse(json["date_paid"]),
+          ? null
+          : DateTime.parse(json["date_completed"]),
+      datePaid:
+          json['date_paid'] == null ? null : DateTime.parse(json["date_paid"]),
       cartHash: json['cart_hash'] as String?,
       number: json['number'] as String?,
       metaData: (json['meta_data'] as List<dynamic>?)

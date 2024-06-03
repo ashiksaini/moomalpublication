@@ -13,7 +13,7 @@ void showLottieDialog(BuildContext context, String animation, String title) {
       borderRadius: BorderRadius.circular(10.r),
     ),
     child: Container(
-      height: 290.v,
+      height: 300.v,
       width: 200.h,
       padding: EdgeInsets.symmetric(
         vertical: 10.v,
@@ -26,10 +26,12 @@ void showLottieDialog(BuildContext context, String animation, String title) {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          LottieBuilder.asset(
-            animation,
-            fit: BoxFit.contain,
-            height: 200.v,
+          Center(
+            child: LottieBuilder.asset(
+              animation,
+              fit: BoxFit.contain,
+              height: 190.v,
+            ),
           ),
           const VerticalGap(size: 20),
           CustomText(

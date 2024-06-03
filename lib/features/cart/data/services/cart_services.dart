@@ -3,6 +3,7 @@ import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/add_to_cart_request_data.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
+import 'package:moomalpublication/core/base/test_meta_data.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
@@ -37,7 +38,8 @@ class CartServices {
           _saveNonceTokenToLocal(response.headers.value("nonce"));
         }
 
-        final parsedResponse = CartData.fromJson(response.data as Map<String, dynamic>);
+        final parsedResponse =
+            CartData.fromJson(response.data as Map<String, dynamic>);
 
         // parsedResponse.
 
@@ -85,9 +87,7 @@ class CartServices {
   }
 
   static Future<CartDataResponse> testaAddToCart(
-      {String? id,
-      String? quantity,
-      List<VariationRequestData>? variations}) async {
+      {String? id, String? quantity, List<KeyValueData>? metaData}) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
@@ -97,7 +97,7 @@ class CartServices {
         ).toJson();
 
         final data =
-            AddToCartReqData(id: id, quantity: quantity, variations: variations)
+            AddToCartReqData(id: id, quantity: quantity, metaData: metaData)
                 .toJson();
         final dio.Dio dioo = await _getDio();
         final dio.Response<dynamic> response = await dioo

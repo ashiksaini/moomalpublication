@@ -43,12 +43,14 @@ class CustomTextStyle {
   static textStyle20BoldCaladea(
     BuildContext context, {
     Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
   }) =>
       TextStyle(
         fontSize: 20.fSize,
         fontWeight: FontWeight.w700,
         fontFamily: AppConstants.caladeaFont,
         color: color,
+        decoration: decoration
       );
 
   static textStyle30BoldCaladea(BuildContext context,

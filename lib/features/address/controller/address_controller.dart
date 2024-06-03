@@ -358,15 +358,18 @@ class AdressController extends BaseController {
   void onTapAddressButton() async {
     if (totalPrice?.startsWith("0") == true) {
       updateStatusDataResponse.value = ApiResponse.loading();
-      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "pending"});
+      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(
+          orderId, {"status": "pending"});
 
       updateStatusDataResponse.value = ApiResponse.loading();
-      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "processing"});
-      
+      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(
+          orderId, {"status": "processing"});
+
       AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     } else {
       updateStatusDataResponse.value = ApiResponse.loading();
-      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(orderId, {"status": "pending"});
+      updateStatusDataResponse.value = await GetOrderService.updateOrderStatus(
+          orderId, {"status": "pending"});
 
       final PayUCheckoutPro payUCheckoutPro = PayUCheckoutPro();
       payUCheckoutPro.init(callBack: () => onCartCallBack!());

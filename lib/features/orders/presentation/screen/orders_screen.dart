@@ -85,8 +85,8 @@ class OrdersScreen extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 20),
           child: GestureDetector(
             onTap: () {
-                orderController.singleProduct.value = lineItem[index];
-                AppRouting.toNamed(NameRoutes.ebookOrder);
+              orderController.singleProduct.value = lineItem[index];
+              AppRouting.toNamed(NameRoutes.ebookOrder);
             },
             child: MyOrderCard(
               downloadLinks: [lineItem[index].link ?? ""],

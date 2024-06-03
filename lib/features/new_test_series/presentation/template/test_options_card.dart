@@ -24,7 +24,7 @@ class TestOptionsCard extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: _quizController.answerList[questionNumber].selectedOption ==
+            color: _quizController.questions[questionNumber].selectedOption ==
                     optionNumber
                 ? AppColors.orange
                 : AppColors.greyLight,
@@ -43,23 +43,10 @@ class TestOptionsCard extends StatelessWidget {
             child: CustomText(
                 textAlign: TextAlign.start,
                 text: _quizController
-                    .answerList[questionNumber].options[optionNumber]
+                    .questions[questionNumber].answers![optionNumber].answer
                     .toString(),
                 textStyle: CustomTextStyle.textStyle18Bold(context,
-                    color: AppColors.black
-                    // _quizController.testTaken.isFalse
-                    //     ? AppColors.black
-                    //     : _quizController
-                    //                 .answerList[questionNumber][optionNumber]
-                    //                 .correctOrNot ==
-                    //             true
-                    //         ? AppColors.green
-                    //         : _quizController.selectedOptions[questionNumber]
-                    //                     .value ==
-                    //                 optionNumber
-                    //             ? AppColors.red
-                    //             : AppColors.black,
-                    )),
+                    color: AppColors.black)),
           ),
         ),
       ],

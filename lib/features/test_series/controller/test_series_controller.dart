@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/core/base/test_meta_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/utils/extensions.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/test_series/data/constants/enums.dart';
 import 'package:moomalpublication/features/test_series/data/constants/type_alias.dart';
@@ -10,6 +12,8 @@ import 'package:moomalpublication/features/test_series/data/models/tab_bar_model
 import 'package:moomalpublication/features/test_series/data/models/term_model.dart';
 import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
 import 'package:moomalpublication/features/test_series/data/services/test_series_service.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class TestSeriesController extends BaseController {
@@ -35,6 +39,8 @@ class TestSeriesController extends BaseController {
   Rx<TestSeriesMainTabType> selectedMainTestType =
       Rx(TestSeriesMainTabType.all);
   Rx<Term?> selectedTerm = Rx(null);
+
+  final Rx<CartDataResponse> cartDataResponse = Rx(ApiResponse());
 
   @override
   void onInit() {
@@ -94,16 +100,20 @@ class TestSeriesController extends BaseController {
 
     if (testSeriesResponse.value.data != null &&
         testSeriesResponse.value.data!.isNotEmpty) {
-        _clearList();
+      _clearList();
       for (var test in testSeriesResponse.value.data!) {
-        test.testAvailbilityType = (test.freePaid == 'paid') ? TestAvailbilityType.paid : TestAvailbilityType.free;
+        test.testAvailbilityType = (test.freePaid == 'paid')
+            ? TestAvailbilityType.paid
+            : TestAvailbilityType.free;
 
         testsAll.add(test);
 
         if (test.testTypeTerms!.isNotEmpty) {
-          if (test.testTypeTerms!.containsWithIgnoreCases(AppConstants.sectional)) {
+          if (test.testTypeTerms!
+              .containsWithIgnoreCases(AppConstants.sectional)) {
             testsSectional.add(test);
-          } else if (test.testTypeTerms!.containsWithIgnoreCases(AppConstants.fullLength)) {
+          } else if (test.testTypeTerms!
+              .containsWithIgnoreCases(AppConstants.fullLength)) {
             testsFullLength.add(test);
           }
         }
@@ -155,7 +165,21 @@ class TestSeriesController extends BaseController {
     _getTestList(category: term.termId);
   }
 
-  void buyTest() async {
-    await CartServices.testaAddToCart();
+  void buyTest(TestSeriesResponseModel? entry) async {
+    cartDataResponse.value = ApiResponse.loading();
+    cartDataResponse.value =
+        await CartServices.testaAddToCart(id: "5772", quantity: "1", metaData: [
+      KeyValueData(
+        key: "exam_id",
+        value: entry?.id.toString(),
+      )
+    ]);
+
+    if (cartDataResponse.value.data != null) {
+      AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
+    } else {
+      showErrorToast(cartDataResponse.value.data?.errors.toString() ??
+          AppConstants.somethingWentWrong);
+    }
   }
 }

@@ -90,7 +90,7 @@ class ProductDetailServices {
             )
             .toList();
 
-            for (ProductItem element in parsedResponse) {
+        for (ProductItem element in parsedResponse) {
           if (element.productVariations?.isEmpty == true) {
             element.productVariations?.add(
               ProductVariations(
@@ -100,7 +100,11 @@ class ProductDetailServices {
                 salePrice: element.salePrice,
                 sku: element.sku,
                 quantity: element.quantity.toString(),
-                stockStatus: (element.stockStatus == null) ? (element.inStock == true) ? "instock" : "outofstock" : element.stockStatus,
+                stockStatus: (element.stockStatus == null)
+                    ? (element.inStock == true)
+                        ? "instock"
+                        : "outofstock"
+                    : element.stockStatus,
                 attributes: [
                   Attribute(name: "purchase", slug: "purchase", option: "book")
                 ],
@@ -135,7 +139,7 @@ class ProductDetailServices {
             }
           }
         }
-        
+
         return SimilarProductResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showToast(error.message.toString());

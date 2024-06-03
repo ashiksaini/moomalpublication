@@ -2,97 +2,59 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/core/constants/app_constants.dart';
+import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/core/utils/dialogs.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
-import 'package:moomalpublication/features/new_test_series/data/model/quiz_question_list.dart';
+import 'package:moomalpublication/features/new_test_series/presentation/screen/test_result_screen.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
+import 'package:moomalpublication/features/quiz/data/models/question_answer_model.dart';
+import 'package:moomalpublication/features/quiz/data/models/test_result_response_data.dart';
+import 'package:moomalpublication/features/quiz/data/services/quiz_service.dart';
+import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
+import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class NewTestSeriesController extends BaseController {
-  late SharedData sharedData;
-
-  RxInt noOfQuestion = RxInt(0);
-  RxList<QuizQuestions> answerList = RxList();
-  RxBool saveNext = RxBool(false);
-  RxBool previous = RxBool(false);
+  late SharedData? sharedData;
+  late TestSeriesResponseModel? testSeriesResponseModel;
+  final Rx<TestResponse> testResponse = Rx(TestResponse());
+  final Rx<TestPostResponse> testSubmitResponse = Rx(TestPostResponse());
+  final Rx<TestResultResponse> testResultResponse = Rx(TestResultResponse());
+  final RxList<QuestionsAndAnswer> questions = RxList();
+  final Rx<TestResultResponseData> testResultResponseData =
+      Rx(TestResultResponseData());
   RxInt counter = 0.obs;
+  RxBool submitButton = true.obs;
   Timer? timer;
+  RxInt visibleQuestionIndex = RxInt(0);
+  final RxList<ChartData> chartData = RxList();
 
   @override
   void onInit() {
     super.onInit();
-    sharedData = Get.arguments as SharedData;
+    sharedData = Get.arguments as SharedData?;
+    testSeriesResponseModel = sharedData?.testModel;
 
-    getQuestionsList();
-
-    startTimer(duration: 60);
+    getTest();
   }
 
-  void getQuestionsList() {
-    answerList.add(QuizQuestions(
-      options: ["A", "B", "C", "D"],
-      question:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-    ));
-    answerList.add(QuizQuestions(
-      options: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,",
-        "B",
-        "CA",
-        "D"
-      ],
-      question:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-    ));
-    answerList.add(QuizQuestions(
-      options: ["AA", "BA", "CE", "D"],
-      question: "jdfhgjdhjk",
-    ));
-    answerList.add(QuizQuestions(
-      options: ["A!", "BJ", "CS", "D"],
-      question:
-          "fjhdgxvcbx gdausfjbvhsgdfuihsk vbsdgfhskcnmzbvsdjh vbgfhalsknm",
-    ));
-  }
+  Future<void> getTest() async {
+    questions.clear();
+    testResponse.value = ApiResponse.loading();
+    testResponse.value =
+        await QuizService.getTestList(testSeriesResponseModel?.id.toString());
 
-  void onTapAnswer({required int optionNumber}) {
-    if (answerList[noOfQuestion.value].selectedOption == optionNumber) {
-      answerList[noOfQuestion.value].selectedOption = null;
+    if (testResponse.value.data != null) {
+      questions.addAll(testResponse.value.data?.questionsAndAnswers ?? []);
+      startTimer(
+          duration:
+              (int.parse(testSeriesResponseModel?.maximumTime ?? "0") * 60));
     } else {
-      answerList[noOfQuestion.value].selectedOption = optionNumber;
-    }
-    answerList.refresh();
-  }
-
-  void onTapPrevious() {
-    if (noOfQuestion > 0) {
-      noOfQuestion--;
-      previousHandle();
-    } else {
-      previous.value = false;
-    }
-  }
-
-  void onTapSaveNext() {
-    if (noOfQuestion < answerList.length - 1) {
-      noOfQuestion++;
-      previous.value = true;
-    } else {
-      saveNext.value = false;
-    }
-  }
-
-  void previousHandle() {
-    if (noOfQuestion.value == 0) {
-      previous.value = false;
-    } else {
-      previous.value = true;
-    }
-  }
-
-  List<int?> answers = [];
-  void onSubmit() {
-    for (int i = 0; i < answerList.length; i++) {}
-    for (var x in answerList) {
-      answers.add(x.selectedOption);
+      showToast(AppConstants.somethingWentWrong);
     }
   }
 
@@ -104,9 +66,92 @@ class NewTestSeriesController extends BaseController {
         counter.value--;
       } else {
         timer.cancel();
-        showErrorToast('times_up'.tr);
-        // call on Submit
+        onTapSubmit();
       }
     });
+  }
+
+  void onTapSaveNext() {
+    if (visibleQuestionIndex.value <
+        (testSeriesResponseModel?.questionCount ?? 0)) {
+      visibleQuestionIndex.value++;
+    } else {
+      showToast("test_completed_please_submit".tr);
+    }
+  }
+
+  void onTapPrevious() {
+    if (visibleQuestionIndex.value > -1) {
+      visibleQuestionIndex.value--;
+    }
+  }
+
+  void onTapSubmit() async {
+    timer?.cancel();
+
+    testSubmitResponse.value = ApiResponse.loading();
+    testSubmitResponse.value = await QuizService.postTestData(
+      testSeriesResponseModel?.id.toString(),
+      ((int.parse(testSeriesResponseModel?.maximumTime ?? "0") * 60) - counter.value)
+          .toString(),
+      _getAnswers(),
+    );
+
+    if (testSubmitResponse.value.data != null) {
+      showLottieDialog(Get.context!, AppAssets.successAnimation,
+          "test_submitted_successfully".tr);
+      Future.delayed(const Duration(milliseconds: 2002), () {
+        AppRouting.offAndToNamed(NameRoutes.testResultScreen);
+      });
+    } else {
+      showToast(AppConstants.somethingWentWrong);
+    }
+  }
+
+  void onTapAnswer({required int optionNumber}) {
+    if (visibleQuestionIndex.value != -1) {
+      questions[visibleQuestionIndex.value].selectedOption = optionNumber;
+    }
+  }
+
+  List<String> _getAnswers() {
+    final List<String> answers = [];
+
+    for (var question in questions) {
+      answers.add((question.selectedOption == -1
+          ? ""
+          : question.selectedOption.toString()));
+    }
+
+    return answers;
+  }
+
+  void getResult() async {
+    testResultResponse.value = ApiResponse.loading();
+    testResultResponse.value = await QuizService.getTestResult(
+      testSeriesResponseModel?.id.toString(),
+    );
+
+    if (testResultResponse.value.data != null) {
+      testResultResponseData.value =
+          testResultResponse.value.data ?? TestResultResponseData();
+
+      parseResponse();
+    } else {
+      showToast(AppConstants.somethingWentWrong);
+    }
+  }
+  
+  void parseResponse() {
+    chartData.clear();
+
+    chartData.addAll(
+      [
+        ChartData('total'.tr, (testResultResponseData.value.total ?? 0).toDouble(), AppColors.orange),
+        ChartData('correct'.tr, (testResultResponseData.value.correct ?? 0).toDouble(), AppColors.green),
+        ChartData('incorrect'.tr, (testResultResponseData.value.incorrect ?? 0).toDouble(), AppColors.red),
+        ChartData('skipped'.tr, (testResultResponseData.value.skipped ?? 0).toDouble(), AppColors.pinkLighter),
+      ]
+    );
   }
 }

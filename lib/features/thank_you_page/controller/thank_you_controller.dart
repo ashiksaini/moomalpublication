@@ -5,6 +5,7 @@ import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/thank_you_page/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/thank_you_page/data/models/order_succes_response/order_succes_response.dart';
 import 'package:moomalpublication/features/thank_you_page/data/services/order_succes_response.dart';
+import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class OrderSuccessController extends BaseController {
@@ -34,6 +35,7 @@ class OrderSuccessController extends BaseController {
       orderSuccessData.value = orderSuccessResponse.value.data!;
     } else {
       showErrorToast(AppConstants.somethingWentWrong);
+      AppRouting.navigateBack();
     }
   }
 }

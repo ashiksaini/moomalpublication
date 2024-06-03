@@ -16,6 +16,7 @@ import 'package:moomalpublication/features/latest_news/presentation/screen/lates
 import 'package:moomalpublication/features/latest_news/presentation/screen/news_detail_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
 import 'package:moomalpublication/features/new_test_series/presentation/screen/new_test_series_screen.dart';
+import 'package:moomalpublication/features/new_test_series/presentation/screen/test_result_screen.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/order_detail_screen.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
 import 'package:moomalpublication/features/results/presentation/screen/online_exam.dart';
@@ -253,6 +254,12 @@ class AppPages {
     GetPage(
       name: NameRoutes.newtestSeriesScreen,
       page: () => NewTestSeriesScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.testResultScreen,
+      page: () => TestResultScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

@@ -227,6 +227,7 @@ final Map<String, String> enUS = {
   "my_profile": "My Profile",
   "user_name": "User Name",
   "results": "Results",
+  "result": "Result",
   "help_center": "Help Center",
 
   // Write Review ///////////////////////////////////////////////////////////
@@ -326,8 +327,8 @@ final Map<String, String> enUS = {
   "price_no": "Price",
   "view": "View",
   "expire": "Expire",
-  "ebook_purchase":"Ebook\nPurchase",
-  "book_purchase":"Book\nPurchase",
+  "ebook_purchase": "Ebook\nPurchase",
+  "book_purchase": "Book\nPurchase",
 
   // Online Test Series and Overall Result
   "score": "Score",
@@ -383,10 +384,13 @@ final Map<String, String> enUS = {
 
   //New test
   "time_left": "Time Left",
-  "question_type_multiple_choice_questions":
-      "Questions Type: Multiple Choice Questions",
+  "question_type_multiple_choice_questions": "Multiple Choice Questions",
   "question_no": "Question No ",
   "previous": "Previous",
   "save&Next": "Save & Next",
-
+  "test_submitted_successfully": "Test Submitted\n Successfully",
+  "test_completed_please_submit": "Test Completed Please Submit",
+  "test_summary" : "Test Summary",
+  "your_rank": "Your Rank",
+  "your_marks": "Your Marks",
 };

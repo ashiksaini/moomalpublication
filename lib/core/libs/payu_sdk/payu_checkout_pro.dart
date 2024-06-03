@@ -45,8 +45,7 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
       PayUPaymentParamKey.email: PayuPaymentConfig.email,
       PayUPaymentParamKey.phone: PayuPaymentConfig.phNumber,
       PayUPaymentParamKey.environment: PayuPaymentConfig.env,
-      PayUPaymentParamKey.transactionId:
-          orderKey,
+      PayUPaymentParamKey.transactionId: orderKey,
       PayUPaymentParamKey.userCredential: PayuPaymentConfig.userCredential,
       PayUPaymentParamKey.android_surl:
           "https://www.payumoney.com/mobileapp/payumoney/success.php",
@@ -69,7 +68,6 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
   generateHash(Map response) {
     _checkoutProFlutter.hashGenerated(hash: HashService.generateHash(response));
     CustomLogger.logger.d(response.toString());
-    throw UnimplementedError();
   }
 
   @override
@@ -79,7 +77,6 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     CustomLogger.logger.e(response.toString());
 
     await GetOrderService.updateOrderStatus(orderId, {"status": "failed"});
-    throw UnimplementedError();
   }
 
   @override
@@ -89,7 +86,6 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     CustomLogger.logger.w(response.toString());
 
     await GetOrderService.updateOrderStatus(orderId, {"status": "cancelled"});
-    throw UnimplementedError();
   }
 
   @override
@@ -99,7 +95,6 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     CustomLogger.logger.e(response.toString());
 
     await GetOrderService.updateOrderStatus(orderId, {"status": "failed"});
-    throw UnimplementedError();
   }
 
   @override
@@ -107,6 +102,5 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     AppRouting.offNamed(NameRoutes.thankYouPage, argument: orderId);
     _callBack();
     await GetOrderService.updateOrderStatus(orderId, {"status": "processing"});
-    throw UnimplementedError();
   }
 }

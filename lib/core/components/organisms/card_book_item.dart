@@ -61,7 +61,8 @@ class CardBookItem extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 5.h, vertical: 5.v),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15.r),
-            child: (item.productImages?.isNotEmpty == true && item.productImages?[0].src != null &&
+            child: (item.productImages?.isNotEmpty == true &&
+                    item.productImages?[0].src != null &&
                     item.productImages?[0].src!.isNotEmpty == true)
                 ? CachedNetworkImage(
                     imageUrl: item.productImages?[0].src ?? "",
