@@ -87,7 +87,7 @@ class QuizController extends BaseController {
             ? currentAffairsquizList[selectedIndex].id
             : economicQuizList[selectedIndex].id));
     if (testResponse.value.data != null) {
-      if (testResponse.value.data!.questionsAndAnswers != null) {
+      if (testResponse.value.data!.questionsAndAnswers != null && testResponse.value.data!.questionsAndAnswers?.isNotEmpty == true) {
         for (var qa in testResponse.value.data!.questionsAndAnswers!) {
           questionsList.add(RxString(qa.question.toString()));
 
@@ -105,9 +105,13 @@ class QuizController extends BaseController {
         _initializeOptions();
       } else {
         showErrorToast("no_question_answer_available".tr);
+        timer?.cancel();
+        AppRouting.navigateBack();
       }
     } else {
       showErrorToast(AppConstants.somethingWentWrong);
+      timer?.cancel();
+      AppRouting.navigateBack();
     }
   }
 
