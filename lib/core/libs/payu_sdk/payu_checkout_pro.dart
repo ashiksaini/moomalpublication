@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/config/payu_payment_config.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/libs/payu_sdk/hash_sevices.dart';
+import 'package:moomalpublication/core/libs/payu_sdk/models/payment.dart';
 import 'package:moomalpublication/core/utils/dialogs.dart';
-import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/orders/data/services/get_orders_services.dart';
 import 'package:moomalpublication/services/logger/custom_logger.dart';
 import 'package:payu_checkoutpro_flutter/PayUConstantKeys.dart';
@@ -22,12 +22,10 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     _callBack = callBack!;
   }
 
-  Future<void> pay(
-      String? totalPrice, String? orderKey, String? orderId) async {
-    this.orderId = orderId ?? "";
+  Future<void> pay(Payment payment) async {
+    orderId = payment.orderId;
 
-    final payUPaymentParams = _getPayUPaymentParams(
-        totalPrice ?? "1.0", orderKey ?? Utility.generateTransactionId());
+    final payUPaymentParams = _getPayUPaymentParams(payment);
     final payUCheckoutProConfig = _getPayUCheckoutProConfig();
 
     _checkoutProFlutter.openCheckoutScreen(
@@ -36,16 +34,16 @@ class PayUCheckoutPro implements PayUCheckoutProProtocol {
     );
   }
 
-  Map<String, dynamic> _getPayUPaymentParams(String amount, String orderKey) {
+  Map<String, dynamic> _getPayUPaymentParams(Payment payment) {
     return {
       PayUPaymentParamKey.key: PayuPaymentConfig.key,
-      PayUPaymentParamKey.amount: amount,
       PayUPaymentParamKey.productInfo: PayuPaymentConfig.merchantName,
-      PayUPaymentParamKey.firstName: PayuPaymentConfig.merchantName,
-      PayUPaymentParamKey.email: PayuPaymentConfig.email,
-      PayUPaymentParamKey.phone: PayuPaymentConfig.phNumber,
+      PayUPaymentParamKey.amount: payment.amount,
+      PayUPaymentParamKey.firstName: payment.firstName,
+      PayUPaymentParamKey.email: payment.email,
+      PayUPaymentParamKey.phone: payment.phNumber,
+      PayUPaymentParamKey.transactionId: payment.orderKey,
       PayUPaymentParamKey.environment: PayuPaymentConfig.env,
-      PayUPaymentParamKey.transactionId: orderKey,
       PayUPaymentParamKey.userCredential: PayuPaymentConfig.userCredential,
       PayUPaymentParamKey.android_surl:
           "https://www.payumoney.com/mobileapp/payumoney/success.php",
