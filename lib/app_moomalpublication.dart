@@ -20,7 +20,7 @@ class _MoomalPublicationState extends State<MoomalPublication> {
   @override
   void initState() {
     super.initState();
-    _checkUpdate();
+    // _checkUpdate();
   }
 
   void _checkUpdate() {
