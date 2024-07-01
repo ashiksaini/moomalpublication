@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -92,7 +93,8 @@ class NewTestSeriesController extends BaseController {
     testSubmitResponse.value = ApiResponse.loading();
     testSubmitResponse.value = await QuizService.postTestData(
       testSeriesResponseModel?.id.toString(),
-      ((int.parse(testSeriesResponseModel?.maximumTime ?? "0") * 60) - counter.value)
+      ((int.parse(testSeriesResponseModel?.maximumTime ?? "0") * 60) -
+              counter.value)
           .toString(),
       _getAnswers(),
     );
@@ -141,17 +143,45 @@ class NewTestSeriesController extends BaseController {
       showToast(AppConstants.somethingWentWrong);
     }
   }
-  
+
+  String formatString(String input) {
+    List<String> parts = input.split('/');
+    double firstPart = double.parse(parts[0]);
+    double secondPart = double.parse(parts[1]);
+
+    String firstPartFormatted = formatDouble(firstPart);
+    String secondPartFormatted = formatDouble(secondPart);
+    return '$firstPartFormatted/$secondPartFormatted';
+  }
+
+  String formatDouble(double value) {
+    if (value == 0.0) {
+      return '0';
+    }
+    final formatter = NumberFormat('##.00');
+    return formatter.format(value);
+  }
+
   void parseResponse() {
     chartData.clear();
 
-    chartData.addAll(
-      [
-        ChartData('total'.tr, (testResultResponseData.value.total ?? 0).toDouble(), AppColors.orange),
-        ChartData('correct'.tr, (testResultResponseData.value.correct ?? 0).toDouble(), AppColors.green),
-        ChartData('incorrect'.tr, (testResultResponseData.value.incorrect ?? 0).toDouble(), AppColors.red),
-        ChartData('skipped'.tr, (testResultResponseData.value.skipped ?? 0).toDouble(), AppColors.pinkLighter),
-      ]
-    );
+    chartData.addAll([
+      ChartData(
+          'total'.tr,
+          (testResultResponseData.value.total ?? 0).toDouble(),
+          AppColors.orange),
+      ChartData(
+          'correct'.tr,
+          (testResultResponseData.value.correct ?? 0).toDouble(),
+          AppColors.green),
+      ChartData(
+          'incorrect'.tr,
+          (testResultResponseData.value.incorrect ?? 0).toDouble(),
+          AppColors.red),
+      ChartData(
+          'skipped'.tr,
+          (testResultResponseData.value.skipped ?? 0).toDouble(),
+          AppColors.pinkLighter),
+    ]);
   }
 }

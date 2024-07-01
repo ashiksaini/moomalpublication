@@ -59,48 +59,74 @@ class _TestResultScreenState extends State<TestResultScreen> {
                           child: customProgressIndicator(),
                         )
                       : Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 10.v),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                          
-                            Container(
-                              decoration: BoxDecoration(
-                                color: AppColors.orange_100,
-                                border: Border.all(color: AppColors.greyLight),
-                                borderRadius: BorderRadius.circular(10.r)
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10.h, vertical: 10.v),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: AppColors.orange_100,
+                                    border:
+                                        Border.all(color: AppColors.greyLight),
+                                    borderRadius: BorderRadius.circular(10.r)),
+                                child: SfCircularChart(
+                                    legend: const Legend(
+                                        isVisible: true,
+                                        alignment: ChartAlignment.center,
+                                        position: LegendPosition.right),
+                                    tooltipBehavior: _tooltipBehavior,
+                                    title: ChartTitle(
+                                        text: 'test_summary'.tr,
+                                        textStyle: CustomTextStyle
+                                            .textStyle20BoldCaladea(context,
+                                                color: AppColors.black,
+                                                decoration:
+                                                    TextDecoration.underline),
+                                        alignment: ChartAlignment.near),
+                                    series: <CircularSeries>[
+                                      DoughnutSeries<ChartData, String>(
+                                        dataSource: _quizController.chartData,
+                                        pointColorMapper: (ChartData data, _) =>
+                                            data.color,
+                                        xValueMapper: (ChartData data, _) =>
+                                            data.x,
+                                        yValueMapper: (ChartData data, _) =>
+                                            data.y,
+                                      )
+                                    ]),
                               ),
-                              child: SfCircularChart(
-                                  legend: const Legend(isVisible: true, alignment: ChartAlignment.center, position: LegendPosition.right),
-                                  tooltipBehavior: _tooltipBehavior,
-                                  title: ChartTitle(
-                                    text: 'test_summary'.tr,
-                                    textStyle: CustomTextStyle.textStyle20BoldCaladea(context, color: AppColors.black, decoration: TextDecoration.underline),
-                                    alignment: ChartAlignment.near
-                                  ),
-                                  series: <CircularSeries>[
-                                    DoughnutSeries<ChartData, String>(
-                                      dataSource: _quizController.chartData,
-                                      pointColorMapper: (ChartData data, _) =>
-                                          data.color,
-                                      xValueMapper: (ChartData data, _) => data.x,
-                                      yValueMapper: (ChartData data, _) => data.y,
-                                    )
-                                  ]),
-                            ),
-
-                            const VerticalGap(size: 20),
-                            CustomText(text: 'result'.tr, textStyle: CustomTextStyle.textStyle20BoldCaladea(context, color: AppColors.black, decoration: TextDecoration.underline)),
-
-                            const VerticalGap(size: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [ResultView(resultType: ResultType.score, value: "${_quizController.testResultResponseData.value.score}"),
-                              ResultView(resultType: ResultType.rank, value: "${_quizController.testResultResponseData.value.rank}")],
-                            )
-                          ], 
+                              const VerticalGap(size: 20),
+                              CustomText(
+                                  text: 'result'.tr,
+                                  textStyle:
+                                      CustomTextStyle.textStyle20BoldCaladea(
+                                          context,
+                                          color: AppColors.black,
+                                          decoration:
+                                              TextDecoration.underline)),
+                              const VerticalGap(size: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  ResultView(
+                                      resultType: ResultType.score,
+                                      value: _quizController.formatString(
+                                          _quizController.testResultResponseData
+                                                  .value.score ??
+                                              "/")),
+                                  ResultView(
+                                      resultType: ResultType.rank,
+                                      value: _quizController.formatString(
+                                          _quizController.testResultResponseData
+                                                  .value.rank ??
+                                              "/"))
+                                ],
+                              )
+                            ],
+                          ),
                         ),
-                      ),
                 ),
               ),
             ],
