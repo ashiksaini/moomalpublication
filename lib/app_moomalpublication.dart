@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:get/get.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -20,7 +21,8 @@ class _MoomalPublicationState extends State<MoomalPublication> {
   @override
   void initState() {
     super.initState();
-    // _checkUpdate();
+    FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
+    _checkUpdate();
   }
 
   void _checkUpdate() {

@@ -158,7 +158,7 @@ class NewTestSeriesController extends BaseController {
     if (value == 0.0) {
       return '0';
     }
-    final formatter = NumberFormat('##.00');
+    final formatter = NumberFormat('0.00');
     return formatter.format(value);
   }
 

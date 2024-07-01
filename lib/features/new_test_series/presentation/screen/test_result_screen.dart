@@ -118,10 +118,10 @@ class _TestResultScreenState extends State<TestResultScreen> {
                                               "/")),
                                   ResultView(
                                       resultType: ResultType.rank,
-                                      value: _quizController.formatString(
+                                      value: 
                                           _quizController.testResultResponseData
                                                   .value.rank ??
-                                              "/"))
+                                              "/")
                                 ],
                               )
                             ],
