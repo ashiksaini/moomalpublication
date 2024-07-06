@@ -22,6 +22,7 @@ TextFormField customTextFormField(
   bool isPasswordField = false,
   bool isPasswordVisible = false,
   bool isReadOnly = false,
+  bool enableBorder = true,
   double? borderRadius = 20,
 }) {
   return TextFormField(
@@ -45,12 +46,25 @@ TextFormField customTextFormField(
       contentPadding: EdgeInsets.only(right: 10.h),
       fillColor: AppColors.white,
       filled: true,
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(borderRadius!.r),
-        borderSide: const BorderSide(color: AppColors.orangeLight),
-      ),
-      border: OutlineInputBorder(
+      enabledBorder:  enableBorder ? OutlineInputBorder(
         borderSide: const BorderSide(color: AppColors.grey),
+        borderRadius: BorderRadius.circular(borderRadius!.r),
+      ) : OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.white),
+        borderRadius: BorderRadius.circular(borderRadius!.r),
+      ),
+      focusedBorder: enableBorder ? OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius.r),
+        borderSide: const BorderSide(color: AppColors.orangeLight),
+      ) : OutlineInputBorder(
+        borderRadius: BorderRadius.circular(borderRadius.r),
+        borderSide: const BorderSide(color: AppColors.white),
+      ),
+      border: enableBorder ? OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.grey),
+        borderRadius: BorderRadius.circular(borderRadius.r),
+      ) : OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.white),
         borderRadius: BorderRadius.circular(borderRadius.r),
       ),
       labelText: label,

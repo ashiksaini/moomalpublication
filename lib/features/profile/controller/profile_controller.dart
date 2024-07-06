@@ -30,6 +30,10 @@ class ProfileController extends BaseController {
   }
 
   Future getImageFromGallery() async {
-      image.value = await _picker.pickImage(source: ImageSource.gallery);
+      var res = await _picker.pickImage(source: ImageSource.gallery);
+
+      if (res != null) {
+        image.value = res;
+      }
     }
 }

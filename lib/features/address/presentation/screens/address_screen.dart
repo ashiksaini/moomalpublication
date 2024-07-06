@@ -10,6 +10,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/address/controller/address_controller.dart';
 import 'package:moomalpublication/features/address/presentation/template/address_bottom_sheet.dart';
 import 'package:moomalpublication/features/address/presentation/widgets/address_card.dart';
@@ -75,6 +76,7 @@ class AddressScreen extends StatelessWidget {
                                       );
                                     },
                                   ),
+                                  const VerticalGap(size: 15),
                                   AddressCard(
                                     address: controller.shippingAddress.value,
                                     addressHeading: "shipping_address".tr,

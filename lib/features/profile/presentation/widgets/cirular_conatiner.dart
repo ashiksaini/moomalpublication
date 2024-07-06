@@ -11,13 +11,12 @@ class CircularContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeUtils.height / 5,
       width: SizeUtils.width,
       decoration: BoxDecoration(
         color: AppColors.black,
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(250.v),
-          bottomRight: Radius.circular(250.v),
+          bottomLeft: Radius.circular(20.v),
+          bottomRight: Radius.circular(20.v),
         ),
       ),
       child: CustomText(
@@ -26,7 +25,6 @@ class CircularContainer extends StatelessWidget {
           context,
           color: AppColors.white,
         ),
-        textAlign: TextAlign.center,
       ),
     );
   }

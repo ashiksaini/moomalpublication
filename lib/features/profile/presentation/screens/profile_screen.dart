@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -8,7 +9,6 @@ import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/profile/controller/profile_controller.dart';
 import 'package:moomalpublication/features/profile/presentation/template/name_template.dart';
 import 'package:moomalpublication/features/profile/presentation/widgets/chip_button.dart';
-import 'package:moomalpublication/features/profile/presentation/widgets/cirular_conatiner.dart';
 import 'package:moomalpublication/features/profile/presentation/widgets/profile_picture_card.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
@@ -29,33 +29,43 @@ class ProfileScreen extends StatelessWidget {
             color: AppColors.orangeLight1,
             child: Column(
               children: [
-                Stack(
-                  children: [
-                    Column(
-                      children: [
-                        const CircularContainer(),
-                        Container(
-                          height: 100.v,
-                        )
-                      ],
-                    ),
-                    Positioned(
-                      top: 80.v,
-                      left: 0.h,
-                      right: 0.h,
-                      bottom: 0.v,
-                      child: Center(
-                        child: GestureDetector(
-                          onTap: () => _profileController.getImageFromGallery(),
-                          child: ProfilePicture(
-                            avatarUrl: _profileController.userAvatar.value,
-                            filePath: _profileController.image.value?.path,
-                          ),
-                        ),
+                // Appbar
+                CustomAppbar(
+                  title: 'my_profile'.tr,
+                ),
+
+                const VerticalGap(size: 50),
+
+                Positioned(
+                  top: 80.v,
+                  left: 0.h,
+                  right: 0.h,
+                  bottom: 0.v,
+                  child: Center(
+                    child: GestureDetector(
+                      onTap: () => _profileController.getImageFromGallery(),
+                      child: ProfilePicture(
+                        avatarUrl: _profileController.userAvatar.value,
+                        filePath: _profileController.image.value?.path,
                       ),
                     ),
-                  ],
+                  ),
                 ),
+
+                const VerticalGap(size: 20),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.h,
+                  ),
+                  child: NameTemplate(
+                    userName: _profileController.userName.value,
+                    userEmail: _profileController.userEmail.value,
+                  ),
+                ),
+
+                const VerticalGap(size: 30),
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.h),
                   child: Row(
@@ -107,16 +117,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.h,
-                    vertical: 24.v,
-                  ),
-                  child: NameTemplate(
-                    userName: _profileController.userName.value,
-                    userEmail: _profileController.userEmail.value,
-                  ),
-                ),
+                
               ],
             ),
           );
