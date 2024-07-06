@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
@@ -6,7 +7,9 @@ import 'package:moomalpublication/services/storage/shared_preferences_keys.dart'
 class ProfileController extends BaseController {
   RxString userName = RxString("");
   RxString userEmail = RxString("");
-  RxString userAvatar = RxString("");
+  Rx<String?> userAvatar = Rx(null);
+  final ImagePicker _picker = ImagePicker();
+  Rx<XFile?> image = Rx(null);
 
   @override
   void onInit() {
@@ -23,7 +26,10 @@ class ProfileController extends BaseController {
         await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ??
             "";
     userAvatar.value = await SharedPreferencesHelper.getString(
-            SharedPreferenceKeys.avatarUrl) ??
-        "";
+            SharedPreferenceKeys.avatarUrl);
   }
+
+  Future getImageFromGallery() async {
+      image.value = await _picker.pickImage(source: ImageSource.gallery);
+    }
 }

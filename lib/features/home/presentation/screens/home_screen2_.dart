@@ -3,10 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/box_decorations.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/all_categories/presentation/widgets/category.dart';
 import 'package:moomalpublication/features/home/controllers/home_controller.dart';
@@ -68,7 +70,12 @@ class HomeScreen2 extends StatelessWidget {
                       context,
                       color: AppColors.black,
                     ),
-                    onClick: () => AppRouting.toNamed(NameRoutes.eBookScreen),
+                    onClick: () => AppRouting.toNamed(
+                      NameRoutes.BookScreen,
+                      argument: SharedData(
+                        productVariations: ProductVariation.ebook,
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -79,9 +86,11 @@ class HomeScreen2 extends StatelessWidget {
                       context,
                       color: AppColors.black,
                     ),
-                    onClick: () => AppRouting.offAllNamed(
-                      NameRoutes.moomalpublicationApp,
-                      argument: 1,
+                    onClick: () => AppRouting.toNamed(
+                      NameRoutes.BookScreen,
+                      argument: SharedData(
+                        productVariations: ProductVariation.book,
+                      ),
                     ),
                   ),
                 ),

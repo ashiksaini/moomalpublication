@@ -9,7 +9,7 @@ import 'package:moomalpublication/features/auth/presentation/screens/reset_passw
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/contact_us/presentation/screen/contact_us_screen.dart';
 import 'package:moomalpublication/features/downloads/presentation/screens/download_screen.dart';
-import 'package:moomalpublication/features/ebook/presentation/screens/ebook_screen.dart';
+import 'package:moomalpublication/features/book/presentation/screens/book_screen.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/detail_event_page.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
 import 'package:moomalpublication/features/latest_news/presentation/screen/latest_news_screen.dart';
@@ -210,8 +210,8 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
-      name: NameRoutes.eBookScreen,
-      page: () => EBookScreen(),
+      name: NameRoutes.BookScreen,
+      page: () => BookScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

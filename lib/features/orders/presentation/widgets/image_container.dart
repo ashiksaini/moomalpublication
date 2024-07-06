@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
-import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/core/theme/custom_text_style.dart';
+import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class ImageContainer extends StatelessWidget {
@@ -33,12 +31,14 @@ class ImageContainer extends StatelessWidget {
               )
             : Container(
                 width: SizeUtils.width,
-                color: AppColors.greyLight,
+                color: Colors.grey.shade100,
                 child: Center(
-                  child: CustomText(
-                    text: "no_image_preview_available".tr,
-                    textStyle: CustomTextStyle.textStyle10Bold(context,
-                        color: AppColors.black),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      AppAssets.icLogo,
+                      height: 50.v,
+                      width: 50.h,
+                    ),
                   ),
                 ),
               ),

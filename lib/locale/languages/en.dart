@@ -396,4 +396,9 @@ final Map<String, String> enUS = {
   "your_marks": "Your Marks",
   "no_question_answer_available": "No Questions and Answer available",
   "buying_coming_soon": "Buying Test Coming Soon",
+  "syllabus": "Syllabus",
+  "videos": "Videos",
+  "some_error_occured_while_downloading_please_try_again": "Downloading Failed! Please try again",
+  "downloading_complete": "Downloading Complete",
+  "downloading": "Downloading",
 };

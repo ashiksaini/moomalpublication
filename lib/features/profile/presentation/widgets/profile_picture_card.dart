@@ -1,11 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class ProfilePicture extends StatelessWidget {
-  final String avatarUrl;
+  final String? avatarUrl;
+  final String? filePath;
 
-  const ProfilePicture({super.key, required this.avatarUrl});
+  const ProfilePicture({super.key, this.avatarUrl, this.filePath});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class ProfilePicture extends StatelessWidget {
           color: AppColors.white),
       child: CircleAvatar(
         backgroundColor: AppColors.white,
-        backgroundImage: NetworkImage(avatarUrl),
+        backgroundImage: filePath != null ? FileImage(File(filePath!)) as ImageProvider : NetworkImage(avatarUrl!),
       ),
     );
   }

@@ -62,6 +62,11 @@ class LatestNewsItem1 {
   });
 
   factory LatestNewsItem1.fromJson(Map<String, dynamic> json) {
+    String val = "";
+    if (json['featured_image_url'] != null && json['featured_image_url'] is String) {
+      val = json['featured_image_url'];
+    }
+    
     return LatestNewsItem1(
       id: json['id'] as int?,
       title: json['title'] == null
@@ -70,7 +75,7 @@ class LatestNewsItem1 {
       content: json['content'] == null
           ? null
           : Content.fromJson(json['content'] as Map<String, dynamic>),
-      featuredImageUrl: json['featured_image_url'] as String?,
+      featuredImageUrl: val,
       // date: json['date'] as String?,
       // dateGmt: json['date_gmt'] as String?,
       // guid: json['guid'] == null

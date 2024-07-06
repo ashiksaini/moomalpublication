@@ -1,1 +1,1 @@
-enum ContactType { email, phoneNumber }
+enum ContactType { email, phoneNumber, facebook, youtube }

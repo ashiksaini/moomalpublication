@@ -73,12 +73,12 @@ class CardBookItem extends StatelessWidget {
                   )
                 : Container(
                     width: SizeUtils.width,
-                    color: AppColors.greyLight,
+                    color: Colors.grey.shade100,
                     child: Center(
-                      child: CustomText(
-                        text: "no_image_preview_available".tr,
-                        textStyle: CustomTextStyle.textStyle10Bold(context,
-                            color: AppColors.black),
+                      child: SvgPicture.asset(
+                        AppAssets.icLogo,
+                        height: 80.v,
+                        width: 80.h,
                       ),
                     ),
                   ),

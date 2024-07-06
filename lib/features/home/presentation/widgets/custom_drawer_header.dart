@@ -27,7 +27,7 @@ class CustomDrawerHeader extends StatelessWidget {
             imageUrl: userImage,
             height: 56.adaptSize,
             width: 56.adaptSize,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           ),
         ),
         const HorizontalGap(size: 10),

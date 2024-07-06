@@ -180,12 +180,14 @@ class DetailContainer extends StatelessWidget {
                 : Container(
                     height: 300.adaptSize,
                     width: 220.adaptSize,
-                    color: AppColors.greyLight,
+                    color: Colors.grey.shade100,
                     child: Center(
-                      child: CustomText(
-                        text: "no_image_preview_available".tr,
-                        textStyle: CustomTextStyle.textStyle10Bold(context,
-                            color: AppColors.black),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          AppAssets.icLogo,
+                          height: 100.v,
+                          width: 100.h,
+                        ),
                       ),
                     ),
                   ),

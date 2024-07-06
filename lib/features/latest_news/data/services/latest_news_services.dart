@@ -10,13 +10,13 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class LatestNewsServices {
   LatestNewsServices._();
 
-  static Future<LatestNewsResponse> getLatestNews() async {
+  static Future<LatestNewsResponse> getLatestNews({Map<String, dynamic>? queryParams}) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
       try {
         final dio.Response<dynamic> response =
-            await DioClient.dioWithAuth!.get(ApiPaths.latestNews);
+            await DioClient.dioWithAuth!.get(ApiPaths.latestNews, queryParameters: queryParams);
 
         final parsedResponse = (response.data as List<dynamic>?)
             ?.map((item) => LatestNewsItem1.fromJson(item))

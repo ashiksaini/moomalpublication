@@ -45,8 +45,12 @@ class ProfileScreen extends StatelessWidget {
                       right: 0.h,
                       bottom: 0.v,
                       child: Center(
-                        child: ProfilePicture(
-                          avatarUrl: _profileController.userAvatar.value,
+                        child: GestureDetector(
+                          onTap: () => _profileController.getImageFromGallery(),
+                          child: ProfilePicture(
+                            avatarUrl: _profileController.userAvatar.value,
+                            filePath: _profileController.image.value?.path,
+                          ),
                         ),
                       ),
                     ),

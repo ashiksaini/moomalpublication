@@ -44,7 +44,7 @@ class ContactCard extends StatelessWidget {
                 ),
                 const HorizontalGap(size: 6),
                 CustomText(
-                  text: '$contactText:',
+                  text: contactText,
                   textStyle: CustomTextStyle.textStyle22Bold(
                     context,
                     color: AppColors.orange,

@@ -28,7 +28,7 @@ class LatestNewsScreen extends StatelessWidget {
               CustomAppbar(
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => AppRouting.navigateBack(),
-                title: 'latest_news1'.tr,
+                title: _latestNewsController.title.value,
                 maxLine: 1,
               ),
               Obx(

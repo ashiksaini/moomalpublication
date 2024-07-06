@@ -29,14 +29,33 @@ class ContactUsController extends BaseController {
             '<strong><u> +91 70144 10554 </u> (For any Technical issue WhatsApp only)</strong>',
         contactType: ContactType.phoneNumber,
       ),
+      Address(
+        iconName: AppAssets.icFacebook,
+        addressHeader: 'Facebook',
+        addressDescription:
+            '<strong><u> Moomal Publication Facebook Page</strong>',
+        contactType: ContactType.facebook,
+      ),
+      Address(
+        iconName: AppAssets.icYouTube,
+        addressHeader: 'YouTube',
+        addressDescription:
+            '<strong><u> Moomal Publication Youtube Channel</strong>',
+        contactType: ContactType.youtube,
+      ),
     ];
   }
 
   void onContactClick(ContactType contactType) {
-    if (contactType == ContactType.email) {
-      Utility.sendToGmail('info@moomalpublication.com');
-    } else {
-      Utility.sendToWhatsapp("+917014410554");
+    switch(contactType) {
+      case ContactType.email:
+        Utility.sendToGmail('info@moomalpublication.com');
+      case ContactType.phoneNumber:
+        Utility.sendToWhatsapp("+917014410554");
+      case ContactType.facebook:
+        Utility.launchurl("https://www.facebook.com/moomalpublication/");
+      case ContactType.youtube:
+        Utility.launchurl("https://www.youtube.com/channel/UCduYPnmD429wIzMFsiKUmLA");
     }
   }
 }

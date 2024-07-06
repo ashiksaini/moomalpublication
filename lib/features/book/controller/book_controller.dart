@@ -11,9 +11,9 @@ import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
 import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
-import 'package:moomalpublication/features/ebook/data/constants/type_alias.dart';
-import 'package:moomalpublication/features/ebook/data/models/e_book_category_item/e_book_category_item.dart';
-import 'package:moomalpublication/features/ebook/data/services/ebooks_services.dart';
+import 'package:moomalpublication/features/book/data/constants/type_alias.dart';
+import 'package:moomalpublication/features/book/data/models/e_book_category_item/e_book_category_item.dart';
+import 'package:moomalpublication/features/book/data/services/books_services.dart';
 import 'package:moomalpublication/features/home/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/home/data/models/drop_down_item.dart';
 import 'package:moomalpublication/features/home/data/models/products_request_data.dart';
@@ -22,7 +22,8 @@ import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
-class EbookController extends BaseController {
+class BookController extends BaseController {
+  late SharedData? _sharedData;
   Rx<EBookCategoryResponse> ebookCategoryResponse = Rx(ApiResponse());
   final Rx<ProductResponse> ebooksResponse = Rx(ProductResponse());
 
@@ -32,12 +33,17 @@ class EbookController extends BaseController {
   RxBool isLastPage = RxBool(false);
   RxBool isLoadingMore = RxBool(false);
 
+  RxString title = RxString("");
+
   int _pageNo = 1;
   ScrollController scrollController = ScrollController();
 
   @override
   void onInit() {
     super.onInit();
+    _sharedData = Get.arguments as SharedData?;
+
+    title.value = _sharedData?.productVariations == ProductVariation.ebook ? "ebook".tr : "book".tr;
 
     _initCategoriesList();
     scrollController.addListener(_scrollListener);
@@ -96,8 +102,10 @@ class EbookController extends BaseController {
       ),
     );
     if (ebooksResponse.value.data != null) {
-      ebooks.addAll((ebooksResponse.value.data?.where((element) =>
+      ebooks.addAll(_sharedData?.productVariations == ProductVariation.ebook ? (ebooksResponse.value.data?.where((element) =>
               element.isEbookAvailable && !element.isBookAvailable)) ??
+          [] : (ebooksResponse.value.data?.where((element) =>
+              element.isBookAvailable && !element.isEbookAvailable)) ??
           []);
     } else {
       showErrorToast(AppConstants.somethingWentWrong);

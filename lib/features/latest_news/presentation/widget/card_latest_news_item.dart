@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -36,14 +37,15 @@ class CardLatestNewsItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      CustomText(
-                        text: latestNewsItem.title?.rendered ?? '',
-                        textStyle: CustomTextStyle.textStyle18BoldCaladea(
-                          context,
-                          color: AppColors.black,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
+                      Html(data: latestNewsItem.title?.rendered ?? '',),
+                      // CustomText(
+                      //   text: latestNewsItem.title?.rendered ?? '',
+                      //   textStyle: CustomTextStyle.textStyle18BoldCaladea(
+                      //     context,
+                      //     color: AppColors.black,
+                      //   ),
+                      //   textAlign: TextAlign.start,
+                      // ),
                       const Spacer(),
                       // Html(data: latestNewsItem.content?.rendered ?? ''),
                       Align(

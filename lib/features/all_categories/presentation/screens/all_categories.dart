@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/box_decorations.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -112,6 +113,48 @@ class AllCategoriesScreen extends StatelessWidget {
                             SharedData(
                               categoryWiseAppBarTitle: "model_papers".tr,
                               categoryId: AppConstants.modalPaperCategoryId,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const VerticalGap(size: 50),
+                      Row(
+                        children: [
+                          // Syllabus
+                          Expanded(
+                            child: CategoryItem(
+                              onClick: () => AppRouting.toNamed(
+                                NameRoutes.latestNewsScreen,
+                                argument: SharedData(
+                                  type: Type.syllabus,
+                                ),
+                              ),
+                              icon: AppAssets.icOpenBook,
+                              title: "syllabus".tr,
+                              size: 58.0,
+                              textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                                context,
+                                color: AppColors.black,
+                              ),
+                            ),
+                          ),
+
+                          // Videos
+                          Expanded(
+                            child: CategoryItem(
+                              onClick: () => AppRouting.toNamed(
+                                NameRoutes.latestNewsScreen,
+                                argument: SharedData(
+                                  type: Type.video,
+                                ),
+                              ),
+                              icon: AppAssets.icVideos,
+                              title: "videos".tr,
+                              size: 58.0,
+                              textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                                context,
+                                color: AppColors.black,
+                              ),
                             ),
                           ),
                         ],

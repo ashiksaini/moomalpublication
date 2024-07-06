@@ -12,15 +12,15 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/theme/shimmer/shimmer_skeleton_book_item.dart';
 import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
-import 'package:moomalpublication/features/ebook/controller/ebook_controller.dart';
-import 'package:moomalpublication/features/ebook/data/models/e_book_category_item/e_book_category_item.dart';
+import 'package:moomalpublication/features/book/controller/book_controller.dart';
+import 'package:moomalpublication/features/book/data/models/e_book_category_item/e_book_category_item.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
-class EBookScreen extends StatelessWidget {
-  EBookScreen({super.key});
+class BookScreen extends StatelessWidget {
+  BookScreen({super.key});
 
-  final EbookController _ebookController = Get.put(EbookController());
+  final BookController _bookController = Get.put(BookController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,21 +29,21 @@ class EBookScreen extends StatelessWidget {
       body: SafeArea(
         child: Obx(() {
           return CustomRefreshIndicator(
-            onRefreshCallback: () => _ebookController.onRefresh(),
+            onRefreshCallback: () => _bookController.onRefresh(),
             child: Container(
               color: AppColors.white,
               child: Column(
                 children: [
                   CustomAppbar(
-                    title: "ebooks".tr,
+                    title:  _bookController.title.value,
                     suffixIcon: AppAssets.icSearch,
                     onSuffixIconClick: () =>
                         AppRouting.toNamed(NameRoutes.searchScreen),
                     prefixIcon: AppAssets.icBackArrow,
                     onPrefixIconClick: () => AppRouting.navigateBack(),
                   ),
-                  _ebookController.ebookCategoryResponse.value.isLoading ||
-                          _ebookController.ebooksResponse.value.isLoading
+                  _bookController.ebookCategoryResponse.value.isLoading ||
+                          _bookController.ebooksResponse.value.isLoading
                       ? _showLoading(context)
                       : _showData(context),
                 ],
@@ -64,15 +64,15 @@ class EBookScreen extends StatelessWidget {
           CustomDropDown2<EBookCategoryItem>(
             borderRadius: 10,
             borderColor: AppColors.orange,
-            items: _ebookController.ebookCategories,
-            selectedItem: _ebookController.selectedCategory,
-            onItemClick: _ebookController.onCategoryItemClick,
+            items: _bookController.ebookCategories,
+            selectedItem: _bookController.selectedCategory,
+            onItemClick: _bookController.onCategoryItemClick,
             width: SizeUtils.width - 20.h,
           ),
           const VerticalGap(size: 4),
 
           // Data view
-          if (_ebookController.ebooks.isEmpty) ...{
+          if (_bookController.ebooks.isEmpty) ...{
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -86,7 +86,7 @@ class EBookScreen extends StatelessWidget {
           } else
             Expanded(
               child: GridView.builder(
-                controller: _ebookController.scrollController,
+                controller: _bookController.scrollController,
                 padding: EdgeInsets.symmetric(
                   horizontal: 10.h,
                   vertical: 12.v,
@@ -97,23 +97,23 @@ class EBookScreen extends StatelessWidget {
                   mainAxisSpacing: 15.0.h,
                   childAspectRatio: Utility.getChildAspectRation(context),
                 ),
-                itemCount: _ebookController.ebooksResponse.value.isLoading
+                itemCount: _bookController.ebooksResponse.value.isLoading
                     ? 20
-                    : _ebookController.ebooks.length,
+                    : _bookController.ebooks.length,
                 itemBuilder: (context, index) {
-                  if (_ebookController.ebooksResponse.value.isLoading) {
+                  if (_bookController.ebooksResponse.value.isLoading) {
                     return const BookItemShimmerSkeleton();
                   } else {
                     return GestureDetector(
                       onTap: () {
-                        _ebookController.onItemClick(
-                            index, _ebookController.ebooks[index]);
+                        _bookController.onItemClick(
+                            index, _bookController.ebooks[index]);
                       },
                       child: CardBookItem(
-                        item: _ebookController.ebooks[index],
-                        onCartBtnClick: _ebookController.onCartBtnClick,
+                        item: _bookController.ebooks[index],
+                        onCartBtnClick: _bookController.onCartBtnClick,
                         onBookVariationClick:
-                            _ebookController.onProductVariationClick,
+                            _bookController.onProductVariationClick,
                       ),
                     );
                   }
@@ -122,7 +122,7 @@ class EBookScreen extends StatelessWidget {
             ),
 
           // Load more
-          if (_ebookController.isLoadingMore.value)
+          if (_bookController.isLoadingMore.value)
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10.v),
               child: customProgressIndicator(),

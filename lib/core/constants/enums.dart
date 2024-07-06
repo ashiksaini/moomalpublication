@@ -11,3 +11,9 @@ enum SortBy {
 }
 
 enum ProductVariation { ebook, book }
+
+enum Type {
+  video,
+  latestNews,
+  syllabus,
+}
