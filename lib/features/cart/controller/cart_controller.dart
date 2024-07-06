@@ -129,7 +129,7 @@ class CartController extends BaseController {
           onCartCallBack: onRefresh,
           totalPrice: totals.value?.totalPrice,
           orderId: cartCheckoutResponse.value.data!.orderId.toString(),
-          orderKey: cartCheckoutResponse.value.data!.orderKey,
+          orderKey: cartCheckoutResponse.value.data!.orderId.toString(),
         ),
       );
     }

@@ -36,130 +36,133 @@ class AllCategoriesScreen extends StatelessWidget {
                   title: "all_categories".tr,
                 ),
                 Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          // Current Gk
-                          _getCategoryItem(
-                            context,
-                            "current_gk".tr,
-                            AppAssets.icReadingBook,
-                            SharedData(
-                              categoryWiseAppBarTitle: "current_gk".tr,
-                              categoryId: AppConstants.currentGKCategoryId,
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.symmetric(vertical: 20.v),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            // Current Gk
+                            _getCategoryItem(
+                              context,
+                              "current_gk".tr,
+                              AppAssets.icReadingBook,
+                              SharedData(
+                                categoryWiseAppBarTitle: "current_gk".tr,
+                                categoryId: AppConstants.currentGKCategoryId,
+                              ),
                             ),
-                          ),
-
-                          // Rajasthan GK
-                          _getCategoryItem(
-                            context,
-                            "rajasthan_gk".tr,
-                            AppAssets.icUserboard,
-                            SharedData(
-                              categoryWiseAppBarTitle: "rajasthan_gk".tr,
-                              categoryId: AppConstants.rajasthanGKCategoryId,
+                  
+                            // Rajasthan GK
+                            _getCategoryItem(
+                              context,
+                              "rajasthan_gk".tr,
+                              AppAssets.icUserboard,
+                              SharedData(
+                                categoryWiseAppBarTitle: "rajasthan_gk".tr,
+                                categoryId: AppConstants.rajasthanGKCategoryId,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const VerticalGap(size: 50),
-                      Row(
-                        children: [
-                          // Exam Review
-                          _getCategoryItem(
-                            context,
-                            "exam_review".tr,
-                            AppAssets.icClipboard,
-                            SharedData(
-                              categoryWiseAppBarTitle: "exam_review".tr,
-                              categoryId: AppConstants.examReviewCategoryId,
+                          ],
+                        ),
+                        const VerticalGap(size: 50),
+                        Row(
+                          children: [
+                            // Exam Review
+                            _getCategoryItem(
+                              context,
+                              "exam_review".tr,
+                              AppAssets.icClipboard,
+                              SharedData(
+                                categoryWiseAppBarTitle: "exam_review".tr,
+                                categoryId: AppConstants.examReviewCategoryId,
+                              ),
                             ),
-                          ),
-
-                          // Reet Exam
-                          _getCategoryItem(
-                            context,
-                            "reet_exam".tr,
-                            AppAssets.icEdit,
-                            SharedData(
-                              categoryWiseAppBarTitle: "reet_exam".tr,
-                              categoryId: AppConstants.reetExamCategoryId,
+                  
+                            // Reet Exam
+                            _getCategoryItem(
+                              context,
+                              "reet_exam".tr,
+                              AppAssets.icEdit,
+                              SharedData(
+                                categoryWiseAppBarTitle: "reet_exam".tr,
+                                categoryId: AppConstants.reetExamCategoryId,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const VerticalGap(size: 50),
-                      Row(
-                        children: [
-                          // New Books
-                          _getCategoryItem(
-                            context,
-                            "new_books".tr,
-                            AppAssets.icOpenBook,
-                            SharedData(
-                              categoryWiseAppBarTitle: "new_books".tr,
-                              categoryId: AppConstants.newBookCategoryId,
+                          ],
+                        ),
+                        const VerticalGap(size: 50),
+                        Row(
+                          children: [
+                            // New Books
+                            _getCategoryItem(
+                              context,
+                              "new_books".tr,
+                              AppAssets.icOpenBook,
+                              SharedData(
+                                categoryWiseAppBarTitle: "new_books".tr,
+                                categoryId: AppConstants.newBookCategoryId,
+                              ),
                             ),
-                          ),
-
-                          // New Books
-                          _getCategoryItem(
-                            context,
-                            "model_papers".tr,
-                            AppAssets.icReport,
-                            SharedData(
-                              categoryWiseAppBarTitle: "model_papers".tr,
-                              categoryId: AppConstants.modalPaperCategoryId,
+                  
+                            // New Books
+                            _getCategoryItem(
+                              context,
+                              "model_papers".tr,
+                              AppAssets.icReport,
+                              SharedData(
+                                categoryWiseAppBarTitle: "model_papers".tr,
+                                categoryId: AppConstants.modalPaperCategoryId,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const VerticalGap(size: 50),
-                      Row(
-                        children: [
-                          // Syllabus
-                          Expanded(
-                            child: CategoryItem(
-                              onClick: () => AppRouting.toNamed(
-                                NameRoutes.latestNewsScreen,
-                                argument: SharedData(
-                                  type: Type.syllabus,
+                          ],
+                        ),
+                        const VerticalGap(size: 50),
+                        Row(
+                          children: [
+                            // Syllabus
+                            Expanded(
+                              child: CategoryItem(
+                                onClick: () => AppRouting.toNamed(
+                                  NameRoutes.latestNewsScreen,
+                                  argument: SharedData(
+                                    type: Type.syllabus,
+                                  ),
+                                ),
+                                icon: AppAssets.icOpenBook,
+                                title: "syllabus".tr,
+                                size: 58.0,
+                                textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                                  context,
+                                  color: AppColors.black,
                                 ),
                               ),
-                              icon: AppAssets.icOpenBook,
-                              title: "syllabus".tr,
-                              size: 58.0,
-                              textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                                context,
-                                color: AppColors.black,
-                              ),
                             ),
-                          ),
-
-                          // Videos
-                          Expanded(
-                            child: CategoryItem(
-                              onClick: () => AppRouting.toNamed(
-                                NameRoutes.latestNewsScreen,
-                                argument: SharedData(
-                                  type: Type.video,
+                  
+                            // Videos
+                            Expanded(
+                              child: CategoryItem(
+                                onClick: () => AppRouting.toNamed(
+                                  NameRoutes.latestNewsScreen,
+                                  argument: SharedData(
+                                    type: Type.video,
+                                  ),
+                                ),
+                                icon: AppAssets.icVideos,
+                                title: "videos".tr,
+                                size: 58.0,
+                                textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                                  context,
+                                  color: AppColors.black,
                                 ),
                               ),
-                              icon: AppAssets.icVideos,
-                              title: "videos".tr,
-                              size: 58.0,
-                              textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                                context,
-                                color: AppColors.black,
-                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

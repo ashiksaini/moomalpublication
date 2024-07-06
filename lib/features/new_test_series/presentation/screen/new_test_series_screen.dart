@@ -25,72 +25,76 @@ class NewTestSeriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.black,
       body: SafeArea(
-        child: Obx(
-          () => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomAppbar(
-                title: _quizController.testSeriesResponseModel?.postTitle ?? '',
-                maxLine: 1,
-                prefixIcon: AppAssets.icBackArrow,
-                onPrefixIconClick: () {
-                  AppRouting.navigateBack();
-                },
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8.v, horizontal: 14.h),
-                color: AppColors.orangeLight,
-                child: Row(
-                  children: [
-                    CustomText(
-                      textAlign: TextAlign.left,
-                      text:
-                          "${'time_left'.tr} : ${DateTimeUtils.getFormattedTime(_quizController.counter.value)}",
-                      textStyle: CustomTextStyle.textStyle20Bold(
-                        context,
-                        color: AppColors.black,
-                      ),
-                    ),
-                    const Spacer(),
-                    CustomText(
-                      textAlign: TextAlign.left,
-                      text:
-                          "(${_quizController.visibleQuestionIndex.value + 1} / ${_quizController.questions.length}) ",
-                      textStyle: CustomTextStyle.textStyle20Bold(
-                        context,
-                        color: AppColors.black,
-                      ),
-                    ),
-                  ],
+        child: Container(
+          color: AppColors.white,
+          child: Obx(
+            () => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomAppbar(
+                  title: _quizController.testSeriesResponseModel?.postTitle ?? '',
+                  maxLine: 1,
+                  prefixIcon: AppAssets.icBackArrow,
+                  onPrefixIconClick: () {
+                    AppRouting.navigateBack();
+                  },
                 ),
-              ),
-              Expanded(
-                child: ScrollConfiguration(
-                  behavior: NoGlowBehavior(),
-                  child: _quizController.testResponse.value.isLoading
-                      ? Center(
-                          child: customProgressIndicator(),
-                        )
-                      : SingleChildScrollView(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 12.h, vertical: 10.v),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _getQuestionView(context),
-                                const VerticalGap(size: 100),
-                                _getNavigationBtn(),
-                                const VerticalGap(size: 20),
-                                _getSubmitBtn()
-                              ],
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 8.v, horizontal: 14.h),
+                  color: AppColors.orangeLight,
+                  child: Row(
+                    children: [
+                      CustomText(
+                        textAlign: TextAlign.left,
+                        text:
+                            "${'time_left'.tr} : ${DateTimeUtils.getFormattedTime(_quizController.counter.value)}",
+                        textStyle: CustomTextStyle.textStyle20Bold(
+                          context,
+                          color: AppColors.black,
+                        ),
+                      ),
+                      const Spacer(),
+                      CustomText(
+                        textAlign: TextAlign.left,
+                        text:
+                            "(${_quizController.visibleQuestionIndex.value + 1} / ${_quizController.questions.length}) ",
+                        textStyle: CustomTextStyle.textStyle20Bold(
+                          context,
+                          color: AppColors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ScrollConfiguration(
+                    behavior: NoGlowBehavior(),
+                    child: _quizController.testResponse.value.isLoading
+                        ? Center(
+                            child: customProgressIndicator(),
+                          )
+                        : SingleChildScrollView(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12.h, vertical: 10.v),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  _getQuestionView(context),
+                                  const VerticalGap(size: 100),
+                                  _getNavigationBtn(),
+                                  const VerticalGap(size: 20),
+                                  _getSubmitBtn()
+                                ],
+                              ),
                             ),
                           ),
-                        ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
