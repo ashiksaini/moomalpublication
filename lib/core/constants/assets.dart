@@ -73,6 +73,10 @@ class AppAssets {
   static const String icFacebook = "${pathSvg}ic_facebook.svg";
   static const String icYouTube = "${pathSvg}ic_youtube.svg";
   static const String icVideos = "${pathSvg}ic_videos.svg";
+  static const String icPdf = "${pathSvg}ic_pdf.svg";
+  static const String icPlay = "${pathSvg}ic_play.svg";
+
+
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

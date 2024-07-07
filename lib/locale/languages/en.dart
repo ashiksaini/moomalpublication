@@ -358,6 +358,7 @@ final Map<String, String> enUS = {
   // Latest News
   "latest_news1": "Latest News",
   "no_latest_news_available":"No Latest News Available",
+  "watch":"Watch",
 
   // Thank you page
   "purchase": "Purchase",
