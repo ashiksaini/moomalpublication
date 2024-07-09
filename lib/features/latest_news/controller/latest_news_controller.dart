@@ -10,7 +10,7 @@ import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
 
 class LatestNewsController extends BaseController {
-  late SharedData? _sharedData;
+  late SharedData? sharedData;
   Rx<LatestNewsResponse> latestNewsResponse = Rx(ApiResponse());
   RxList<LatestNewsItem1> latestNews = RxList();
   LatestNewsItem1 latestNewsItem = LatestNewsItem1();
@@ -20,9 +20,9 @@ class LatestNewsController extends BaseController {
   void onInit() {
     super.onInit();
 
-    _sharedData = Get.arguments as SharedData?;
+    sharedData = Get.arguments as SharedData?;
 
-    title.value = _sharedData?.type == Type.syllabus ? "syllabus".tr : _sharedData?.type == Type.video ? "videos".tr  :"latest_news1".tr; 
+    title.value = sharedData?.type == Type.syllabus ? "syllabus".tr : sharedData?.type == Type.video ? "videos".tr  :"latest_news1".tr; 
 
     _getLatestNews();
   }
@@ -47,6 +47,6 @@ class LatestNewsController extends BaseController {
   void _getNewsDetail() {}
   
   Map<String, String>? _getCategory() {
-    return _sharedData?.type == Type.syllabus ? { "category": "74"}  : _sharedData?.type == Type.video ? { "category": "75"} : null;
+    return sharedData?.type == Type.syllabus ? { "category": "74"}  : sharedData?.type == Type.video ? { "category": "75"} : null;
   }
 }

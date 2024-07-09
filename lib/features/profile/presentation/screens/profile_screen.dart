@@ -36,18 +36,12 @@ class ProfileScreen extends StatelessWidget {
 
                 const VerticalGap(size: 50),
 
-                Positioned(
-                  top: 80.v,
-                  left: 0.h,
-                  right: 0.h,
-                  bottom: 0.v,
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () => _profileController.getImageFromGallery(),
-                      child: ProfilePicture(
-                        avatarUrl: _profileController.userAvatar.value,
-                        filePath: _profileController.image.value?.path,
-                      ),
+                Center(
+                  child: GestureDetector(
+                    onTap: () => _profileController.getImageFromGallery(),
+                    child: ProfilePicture(
+                      avatarUrl: _profileController.userAvatar.value,
+                      filePath: _profileController.image.value?.path,
                     ),
                   ),
                 ),

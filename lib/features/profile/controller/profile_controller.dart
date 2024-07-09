@@ -15,7 +15,16 @@ class ProfileController extends BaseController {
   void onInit() {
     super.onInit();
 
+    _getUserProfile();
     _getUserInfo();
+  }
+
+  Future<void> _getUserProfile() async {
+    String? path = await SharedPreferencesHelper.getString(SharedPreferenceKeys.profilePic);
+
+    if (path != null) {
+      image.value = XFile(path);
+    }
   }
 
   Future<void> _getUserInfo() async {
@@ -25,6 +34,7 @@ class ProfileController extends BaseController {
     userEmail.value =
         await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ??
             "";
+            
     userAvatar.value = await SharedPreferencesHelper.getString(
             SharedPreferenceKeys.avatarUrl);
   }
@@ -34,6 +44,7 @@ class ProfileController extends BaseController {
 
       if (res != null) {
         image.value = res;
+        SharedPreferencesHelper.setValue(SharedPreferenceKeys.profilePic, res.path);
       }
     }
 }

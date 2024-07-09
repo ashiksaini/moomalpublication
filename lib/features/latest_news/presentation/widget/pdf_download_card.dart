@@ -1,51 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
-import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
+import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
+import 'package:moomalpublication/features/latest_news/data/model/latest_news_item1/latest_news_item1/latest_news_item1.dart';
 
 class PdfDownloadCard extends StatelessWidget {
-  final String pdfText;
-  final Function onClickDownload;
+  final LatestNewsItem1 latestNewsItem;
   const PdfDownloadCard(
-      {super.key, required this.pdfText, required this.onClickDownload});
+      {super.key, required this.latestNewsItem});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 12.v),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              SvgPicture.asset(
-                AppAssets.icPdf,
+    return ShadowContainer(
+      containerChild: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 12.v),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+                SvgPicture.asset(
+                  AppAssets.icPdf,
+                  height: 32.v,
+                  width: 32.h,
+                ),
+                HorizontalGap(size: 20.h),
+                Expanded(child: Html(data: "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>")),
+            GestureDetector(
+              onTap: () {
+                // onClickDownload();
+              },
+              child: SvgPicture.asset(
+                AppAssets.icDownload,
                 height: 32.v,
                 width: 32.h,
+                color: AppColors.orange,
               ),
-              HorizontalGap(size: 20.h),
-              Text(
-                pdfText,
-                style: CustomTextStyle.textStyle22Bold(context,
-                    color: AppColors.black),
-              ),
-            ],
-          ),
-          GestureDetector(
-            onTap: () {
-              onClickDownload();
-            },
-            child: SvgPicture.asset(
-              AppAssets.icDownload,
-              height: 32.v,
-              width: 32.h,
-              color: AppColors.black.withOpacity(0.86),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

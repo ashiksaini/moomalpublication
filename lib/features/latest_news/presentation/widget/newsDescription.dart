@@ -35,7 +35,7 @@ class NewsDescription extends StatelessWidget {
             ),
           ),
           VerticalGap(size: 18.v),
-          Html(data: _newsController.latestNewsItem.title?.rendered ?? ''),
+          Html(data: "<strong><h3>${_newsController.latestNewsItem.title?.rendered ?? ""}</h3></strong>"),
           // CustomText(
           //   text: _newsController.latestNewsItem.title?.rendered ?? '',
           //   textStyle: CustomTextStyle.textStyle15Bold(context),
