@@ -5,6 +5,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
+import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/test_series/controller/test_series_controller.dart';
 import 'package:moomalpublication/features/test_series/data/constants/enums.dart';
 import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
@@ -55,6 +56,7 @@ class CustomButtonBar extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 if (buttonText.toLowerCase().compareTo("reattempt") == 0) {
+                  showErrorToast("Coming soon");
                 } else {
                   if (entry?.testAvailbilityType == TestAvailbilityType.free) {
                     AppRouting.toNamed(NameRoutes.newtestSeriesScreen,

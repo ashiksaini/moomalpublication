@@ -39,33 +39,28 @@ class WatchEventCard extends StatelessWidget {
                       data:
                           "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>"),
                   VerticalGap(size: 15.v),
-                  GestureDetector(
-                    onTap: () {
-                      // onClickNews();
-                    },
-                    child: Container(
-                      color: AppColors.originalRed,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 16.h, vertical: 5.v),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SvgPicture.asset(
-                              AppAssets.icPlay,
-                              height: 24.v,
-                              width: 24.h,
-                              color: AppColors.white,
-                            ),
-                            HorizontalGap(size: 6.h),
-                            CustomText(
-                              text: "watch".tr,
-                              textStyle: CustomTextStyle.textStyle22Bold(
-                                  context,
-                                  color: AppColors.white),
-                            ),
-                          ],
-                        ),
+                  Container(
+                    color: AppColors.originalRed,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.h, vertical: 5.v),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SvgPicture.asset(
+                            AppAssets.icPlay,
+                            height: 24.v,
+                            width: 24.h,
+                            color: AppColors.white,
+                          ),
+                          HorizontalGap(size: 6.h),
+                          CustomText(
+                            text: "watch".tr,
+                            textStyle: CustomTextStyle.textStyle22Bold(
+                                context,
+                                color: AppColors.white),
+                          ),
+                        ],
                       ),
                     ),
                   ),
