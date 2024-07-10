@@ -12,6 +12,7 @@ import 'package:moomalpublication/features/downloads/presentation/screens/downlo
 import 'package:moomalpublication/features/book/presentation/screens/book_screen.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/detail_event_page.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
+import 'package:moomalpublication/features/follow_us/presentation/follow_us_screen.dart';
 import 'package:moomalpublication/features/latest_news/presentation/screen/latest_news_screen.dart';
 import 'package:moomalpublication/features/latest_news/presentation/screen/news_detail_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
@@ -247,7 +248,7 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.newsDetailScreen,
-      page: () => NewsDetailScreen(),
+      page: () => const NewsDetailScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -259,7 +260,13 @@ class AppPages {
     ),
     GetPage(
       name: NameRoutes.testResultScreen,
-      page: () => TestResultScreen(),
+      page: () => const TestResultScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.followUs,
+      page: () => const FollowUsScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

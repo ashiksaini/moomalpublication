@@ -20,7 +20,8 @@ class ProfileController extends BaseController {
   }
 
   Future<void> _getUserProfile() async {
-    String? path = await SharedPreferencesHelper.getString(SharedPreferenceKeys.profilePic);
+    String? path = await SharedPreferencesHelper.getString(
+        SharedPreferenceKeys.profilePic);
 
     if (path != null) {
       image.value = XFile(path);
@@ -34,17 +35,18 @@ class ProfileController extends BaseController {
     userEmail.value =
         await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ??
             "";
-            
-    userAvatar.value = await SharedPreferencesHelper.getString(
-            SharedPreferenceKeys.avatarUrl);
+
+    userAvatar.value =
+        await SharedPreferencesHelper.getString(SharedPreferenceKeys.avatarUrl);
   }
 
   Future getImageFromGallery() async {
-      var res = await _picker.pickImage(source: ImageSource.gallery);
+    var res = await _picker.pickImage(source: ImageSource.gallery);
 
-      if (res != null) {
-        image.value = res;
-        SharedPreferencesHelper.setValue(SharedPreferenceKeys.profilePic, res.path);
-      }
+    if (res != null) {
+      image.value = res;
+      SharedPreferencesHelper.setValue(
+          SharedPreferenceKeys.profilePic, res.path);
     }
+  }
 }

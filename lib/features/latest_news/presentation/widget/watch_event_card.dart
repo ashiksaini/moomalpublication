@@ -15,9 +15,7 @@ import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.
 
 class WatchEventCard extends StatelessWidget {
   final LatestNewsItem1 latestNewsItem;
-  const WatchEventCard(
-      {super.key,
-      required this.latestNewsItem});
+  const WatchEventCard({super.key, required this.latestNewsItem});
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +26,18 @@ class WatchEventCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CardImage(
-                image: latestNewsItem.featuredImageUrl ?? "",
-                borderColor: AppColors.grey,
-              ),
+              image: latestNewsItem.featuredImageUrl ?? "",
+              borderColor: AppColors.grey,
+            ),
             HorizontalGap(size: 20.h),
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Html(data: "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>"),
+                  Html(
+                      data:
+                          "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>"),
                   VerticalGap(size: 15.v),
                   GestureDetector(
                     onTap: () {
@@ -46,8 +46,8 @@ class WatchEventCard extends StatelessWidget {
                     child: Container(
                       color: AppColors.originalRed,
                       child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16.h, vertical: 5.v),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 16.h, vertical: 5.v),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -60,7 +60,8 @@ class WatchEventCard extends StatelessWidget {
                             HorizontalGap(size: 6.h),
                             CustomText(
                               text: "watch".tr,
-                              textStyle: CustomTextStyle.textStyle22Bold(context,
+                              textStyle: CustomTextStyle.textStyle22Bold(
+                                  context,
                                   color: AppColors.white),
                             ),
                           ],

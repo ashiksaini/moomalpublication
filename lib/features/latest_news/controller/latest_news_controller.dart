@@ -22,14 +22,19 @@ class LatestNewsController extends BaseController {
 
     sharedData = Get.arguments as SharedData?;
 
-    title.value = sharedData?.type == Type.syllabus ? "syllabus".tr : sharedData?.type == Type.video ? "videos".tr  :"latest_news1".tr; 
+    title.value = sharedData?.type == Type.syllabus
+        ? "syllabus".tr
+        : sharedData?.type == Type.video
+            ? "videos".tr
+            : "latest_news1".tr;
 
     _getLatestNews();
   }
 
   Future<void> _getLatestNews() async {
     latestNewsResponse.value = ApiResponse.loading();
-    latestNewsResponse.value = await LatestNewsServices.getLatestNews(queryParams: _getCategory());
+    latestNewsResponse.value =
+        await LatestNewsServices.getLatestNews(queryParams: _getCategory());
     if (latestNewsResponse.value.data != null) {
       if (latestNewsResponse.value.data!.isNotEmpty) {
         latestNews.addAll(latestNewsResponse.value.data ?? []);
@@ -45,8 +50,12 @@ class LatestNewsController extends BaseController {
   }
 
   void _getNewsDetail() {}
-  
+
   Map<String, String>? _getCategory() {
-    return sharedData?.type == Type.syllabus ? { "categories": "74"}  : sharedData?.type == Type.video ? { "categories": "75"} : null;
+    return sharedData?.type == Type.syllabus
+        ? {"categories": "74"}
+        : sharedData?.type == Type.video
+            ? {"categories": "75"}
+            : {"categories": "73"};
   }
 }

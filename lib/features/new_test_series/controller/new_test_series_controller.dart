@@ -32,6 +32,7 @@ class NewTestSeriesController extends BaseController {
   RxBool submitButton = true.obs;
   Timer? timer;
   RxInt visibleQuestionIndex = RxInt(0);
+  RxString title = RxString("");
   final RxList<ChartData> chartData = RxList();
 
   @override
@@ -51,6 +52,9 @@ class NewTestSeriesController extends BaseController {
 
     if (testResponse.value.data != null) {
       questions.addAll(testResponse.value.data?.questionsAndAnswers ?? []);
+      title.value = testResponse.value.data?.postTitle ?? "";
+      testSeriesResponseModel?.questionCount =
+          (testResponse.value.data?.questionsAndAnswers?.length ?? 0) - 1;
       startTimer(
           duration:
               (int.parse(testSeriesResponseModel?.maximumTime ?? "0") * 60));

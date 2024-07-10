@@ -54,11 +54,14 @@ class CustomButtonBar extends StatelessWidget {
           if (buttonVisibility)
             GestureDetector(
               onTap: () {
-                if (entry?.testAvailbilityType == TestAvailbilityType.free) {
-                  AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
-                      argument: SharedData(testModel: entry));
+                if (buttonText.toLowerCase().compareTo("reattempt") == 0) {
                 } else {
-                  _testSeriesController.buyTest(entry);
+                  if (entry?.testAvailbilityType == TestAvailbilityType.free) {
+                    AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
+                        argument: SharedData(testModel: entry));
+                  } else {
+                    _testSeriesController.buyTest(entry);
+                  }
                 }
               },
               child: Container(

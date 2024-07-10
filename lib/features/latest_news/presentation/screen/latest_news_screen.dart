@@ -36,53 +36,53 @@ class LatestNewsScreen extends StatelessWidget {
               ),
               Obx(
                 () => Expanded(
-                  child: _latestNewsController
-                          .latestNewsResponse.value.isLoading
-                      ? Center(child: customProgressIndicator())
-                      : _latestNewsController.latestNews.isNotEmpty
-                          ? ListView.builder(
-                              itemCount:
-                                  _latestNewsController.latestNews.length,
-                              itemBuilder: (_, index) {
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10.h, vertical: 8.v),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      _latestNewsController
-                                          .navigateNewsDetailScreen(
-                                              index: index);
-                                    },
-                                    child: _latestNewsController
-                                                .sharedData?.type ==
-                                            Type.syllabus
-                                        ? PdfDownloadCard(
-                                            latestNewsItem: 
-                                                    _latestNewsController
-                                                        .latestNews[index],
-                                          )
-                                        : _latestNewsController
+                  child:
+                      _latestNewsController.latestNewsResponse.value.isLoading
+                          ? Center(child: customProgressIndicator())
+                          : _latestNewsController.latestNews.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount:
+                                      _latestNewsController.latestNews.length,
+                                  itemBuilder: (_, index) {
+                                    return Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.h, vertical: 8.v),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          _latestNewsController
+                                              .navigateNewsDetailScreen(
+                                                  index: index);
+                                        },
+                                        child: _latestNewsController
                                                     .sharedData?.type ==
-                                                Type.video
-                                            ? WatchEventCard(
-                                                latestNewsItem: 
-                                                    _latestNewsController
-                                                        .latestNews[index],
-                                              )
-                                            : CardLatestNewsItem(
+                                                Type.syllabus
+                                            ? PdfDownloadCard(
                                                 latestNewsItem:
                                                     _latestNewsController
                                                         .latestNews[index],
-                                              ),
+                                              )
+                                            : _latestNewsController
+                                                        .sharedData?.type ==
+                                                    Type.video
+                                                ? WatchEventCard(
+                                                    latestNewsItem:
+                                                        _latestNewsController
+                                                            .latestNews[index],
+                                                  )
+                                                : CardLatestNewsItem(
+                                                    latestNewsItem:
+                                                        _latestNewsController
+                                                            .latestNews[index],
+                                                  ),
+                                      ),
+                                    );
+                                  },
+                                )
+                              : Center(
+                                  child: EmptyProductView(
+                                    title: "no_latest_news_available".tr,
                                   ),
-                                );
-                              },
-                            )
-                          : Center(
-                              child: EmptyProductView(
-                                title: "no_latest_news_available".tr,
-                              ),
-                            ),
+                                ),
                 ),
               ),
             ],

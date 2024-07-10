@@ -76,18 +76,19 @@ class QuizController extends BaseController {
     answerList.clear();
     navigateQuizTestScreen(index: index);
     getTest().then((value) {
-      startTimer(duration: 60);
+      startTimer(duration: 300);
     });
   }
 
   Future<void> getTest() async {
     testResponse.value = ApiResponse.loading();
-    testResponse.value = await QuizService.getTestList(
+    testResponse.value = await QuizService.getTestList1(
         (selectedQuizType == QuizType.currentAffairQuiz
             ? currentAffairsquizList[selectedIndex].id
             : economicQuizList[selectedIndex].id));
     if (testResponse.value.data != null) {
-      if (testResponse.value.data!.questionsAndAnswers != null && testResponse.value.data!.questionsAndAnswers?.isNotEmpty == true) {
+      if (testResponse.value.data!.questionsAndAnswers != null &&
+          testResponse.value.data!.questionsAndAnswers?.isNotEmpty == true) {
         for (var qa in testResponse.value.data!.questionsAndAnswers!) {
           questionsList.add(RxString(qa.question.toString()));
 

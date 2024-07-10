@@ -15,12 +15,11 @@ void main() {
   Get.put(InternetConnectivityController());
 
   CustomPermissionHandler.requestPermissions([
-      RequiredPermission.notification,
-      RequiredPermission.manageExternalStorage,
-      RequiredPermission.storage,
-      RequiredPermission.packageInstall
-    ]);
-
+    RequiredPermission.notification,
+    RequiredPermission.manageExternalStorage,
+    RequiredPermission.storage,
+    RequiredPermission.packageInstall
+  ]);
 
   AppConfig.init();
 

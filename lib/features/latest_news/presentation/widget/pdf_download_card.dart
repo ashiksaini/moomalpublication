@@ -4,14 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/downloader.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/latest_news/data/model/latest_news_item1/latest_news_item1/latest_news_item1.dart';
 
 class PdfDownloadCard extends StatelessWidget {
   final LatestNewsItem1 latestNewsItem;
-  const PdfDownloadCard(
-      {super.key, required this.latestNewsItem});
+  const PdfDownloadCard({super.key, required this.latestNewsItem});
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +22,19 @@ class PdfDownloadCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           children: [
-                SvgPicture.asset(
-                  AppAssets.icPdf,
-                  height: 32.v,
-                  width: 32.h,
-                ),
-                HorizontalGap(size: 20.h),
-                Expanded(child: Html(data: "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>")),
+            SvgPicture.asset(
+              AppAssets.icPdf,
+              height: 32.v,
+              width: 32.h,
+            ),
+            HorizontalGap(size: 20.h),
+            Expanded(
+                child: Html(
+                    data:
+                        "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>")),
             GestureDetector(
               onTap: () {
-                // onClickDownload();
+                Donwloader.downloadFile(latestNewsItem.title?.rendered?.toString() ?? "", latestNewsItem.featuredImageUrl ?? "");
               },
               child: SvgPicture.asset(
                 AppAssets.icDownload,

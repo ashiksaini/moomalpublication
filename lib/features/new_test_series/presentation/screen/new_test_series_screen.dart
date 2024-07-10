@@ -34,7 +34,7 @@ class NewTestSeriesScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomAppbar(
-                  title: _quizController.testSeriesResponseModel?.postTitle ?? '',
+                  title: _quizController.title.value,
                   maxLine: 1,
                   prefixIcon: AppAssets.icBackArrow,
                   onPrefixIconClick: () {
@@ -42,7 +42,8 @@ class NewTestSeriesScreen extends StatelessWidget {
                   },
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 8.v, horizontal: 14.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 8.v, horizontal: 14.h),
                   color: AppColors.orangeLight,
                   child: Row(
                     children: [

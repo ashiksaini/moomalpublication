@@ -16,6 +16,7 @@ import 'package:moomalpublication/features/address/presentation/widgets/add.dart
 import 'package:moomalpublication/features/orders/data/constants/enums.dart';
 import 'package:moomalpublication/features/orders/data/models/order_response_model1/line_item.dart';
 import 'package:moomalpublication/features/orders/presentation/widgets/image_container.dart';
+import 'package:moomalpublication/features/test_series/data/models/test_series_response_model.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -135,10 +136,14 @@ class MyOrderCard extends StatelessWidget {
                           CustomOrangeButton(
                             buttonText: "start_test".tr,
                             onTapButton: () {
-                              AppRouting.toNamed(NameRoutes.webView,
+                              AppRouting.toNamed(NameRoutes.newtestSeriesScreen,
                                   argument: SharedData(
-                                      testName: lineItem.name,
-                                      testUrl: lineItem.link));
+                                      testModel: TestSeriesResponseModel(
+                                          id: int.tryParse(
+                                              lineItem.metaData?[0].value ??
+                                                  "0"),
+                                          maximumTime: "180",
+                                          postTitle: lineItem.name)));
                             },
                             customTextStyle: CustomTextStyle.textStyle16Bold(
                                 context,

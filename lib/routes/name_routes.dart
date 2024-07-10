@@ -38,4 +38,5 @@ class NameRoutes {
   static const String newsDetailScreen = '/newsDetailScreen';
   static const String newtestSeriesScreen = '/newtestSeriesScreen';
   static const String testResultScreen = '/testResultScreen';
+  static const String followUs = '/followUs';
 }

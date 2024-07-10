@@ -63,10 +63,11 @@ class LatestNewsItem1 {
 
   factory LatestNewsItem1.fromJson(Map<String, dynamic> json) {
     String val = "";
-    if (json['featured_image_url'] != null && json['featured_image_url'] is String) {
+    if (json['featured_image_url'] != null &&
+        json['featured_image_url'] is String) {
       val = json['featured_image_url'];
     }
-    
+
     return LatestNewsItem1(
       id: json['id'] as int?,
       title: json['title'] == null

@@ -54,7 +54,7 @@ class AllCategoriesScreen extends StatelessWidget {
                                 categoryId: AppConstants.currentGKCategoryId,
                               ),
                             ),
-                  
+
                             // Rajasthan GK
                             _getCategoryItem(
                               context,
@@ -80,7 +80,7 @@ class AllCategoriesScreen extends StatelessWidget {
                                 categoryId: AppConstants.examReviewCategoryId,
                               ),
                             ),
-                  
+
                             // Reet Exam
                             _getCategoryItem(
                               context,
@@ -106,7 +106,7 @@ class AllCategoriesScreen extends StatelessWidget {
                                 categoryId: AppConstants.newBookCategoryId,
                               ),
                             ),
-                  
+
                             // New Books
                             _getCategoryItem(
                               context,
@@ -134,13 +134,14 @@ class AllCategoriesScreen extends StatelessWidget {
                                 icon: AppAssets.icOpenBook,
                                 title: "syllabus".tr,
                                 size: 58.0,
-                                textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                                textStyle:
+                                    CustomTextStyle.textStyle20BoldCaladea(
                                   context,
                                   color: AppColors.black,
                                 ),
                               ),
                             ),
-                  
+
                             // Videos
                             Expanded(
                               child: CategoryItem(
@@ -153,7 +154,8 @@ class AllCategoriesScreen extends StatelessWidget {
                                 icon: AppAssets.icVideos,
                                 title: "videos".tr,
                                 size: 58.0,
-                                textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                                textStyle:
+                                    CustomTextStyle.textStyle20BoldCaladea(
                                   context,
                                   color: AppColors.black,
                                 ),

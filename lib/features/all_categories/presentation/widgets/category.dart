@@ -41,6 +41,7 @@ class CategoryItem extends StatelessWidget {
               icon,
               height: size.v,
               width: size.h,
+              color: AppColors.orange,
             ),
           ),
           const VerticalGap(size: 10),

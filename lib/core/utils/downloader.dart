@@ -8,6 +8,7 @@ class Donwloader {
   Donwloader._();
 
   static Future<void> downloadFile(String name, String url) async {
+    bool isStarted = false;
     CustomPermissionHandler.requestPermissions([
       RequiredPermission.notification,
       RequiredPermission.manageExternalStorage,
@@ -20,8 +21,9 @@ class Donwloader {
       url: url,
       name: name,
       onProgress: (fileName, progress) {
-        if (progress > 1) {
+        if (!isStarted) {
           showToast("downloading".tr);
+          isStarted = true;
         }
       },
       onDownloadCompleted: (String path) {
@@ -29,8 +31,7 @@ class Donwloader {
         OpenFile.open(path);
       },
       onDownloadError: (String error) {
-        showToast(
-            "some_error_occured_while_downloading_please_try_again".tr);
+        showToast("some_error_occured_while_downloading_please_try_again".tr);
       },
     );
   }

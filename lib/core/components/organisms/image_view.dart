@@ -30,8 +30,12 @@ class ImageView extends StatelessWidget {
                 color: Colors.grey.shade100,
                 child: Center(
                   child: Center(
-                      child: SvgPicture.asset(AppAssets.icLogo, height: 50.v, width: 50.h,),
+                    child: SvgPicture.asset(
+                      AppAssets.icLogo,
+                      height: 50.v,
+                      width: 50.h,
                     ),
+                  ),
                 ),
               ),
       ),

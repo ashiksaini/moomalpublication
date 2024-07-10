@@ -75,8 +75,9 @@ class AppAssets {
   static const String icVideos = "${pathSvg}ic_videos.svg";
   static const String icPdf = "${pathSvg}ic_pdf.svg";
   static const String icPlay = "${pathSvg}ic_play.svg";
-
-
+  static const String icTelegram = "${pathSvg}ic_telegram.svg";
+  static const String icWhatsapp = "${pathSvg}ic_whatsapp.svg";
+  static const String icYoutube1 = "${pathSvg}ic_youtube1.svg";
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

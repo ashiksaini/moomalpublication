@@ -37,7 +37,9 @@ class CardLatestNewsItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                       Html(data: "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>"),
+                      Html(
+                          data:
+                              "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>"),
                       // CustomText(
                       //   text: latestNewsItem.title?.rendered ?? '',
                       //   textStyle: CustomTextStyle.textStyle18BoldCaladea(

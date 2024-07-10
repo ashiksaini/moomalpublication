@@ -376,7 +376,8 @@ class AdressController extends BaseController {
       payUCheckoutPro.init(callBack: () => onCartCallBack!());
       payUCheckoutPro.pay(
         Payment(
-          firstName: "${billingAddress.value?.firstName} ${billingAddress.value?.lastName}",
+          firstName:
+              "${billingAddress.value?.firstName} ${billingAddress.value?.lastName}",
           email: "${billingAddress.value?.email}",
           phNumber: "${billingAddress.value?.phone}",
           amount: totalPrice ?? "",

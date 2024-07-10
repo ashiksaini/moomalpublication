@@ -78,8 +78,8 @@ final Map<String, String> enUS = {
   "apply_filter": "Apply Filter",
   "select_category": "Select Category",
   "latest_news": "Latest\nNews",
-  "ebook_purchased": "E-Book\nPurchased",
-  "book_purchased": "Book\nPurchased",
+  "ebook_purchased": "E-Book\nPurchase",
+  "book_purchased": "Book\nPurchase",
   "daily_quiz": "Daily\nQuiz",
   "subscribe_now": "Subscribe\nNow",
 
@@ -358,8 +358,8 @@ final Map<String, String> enUS = {
 
   // Latest News
   "latest_news1": "Latest News",
-  "no_latest_news_available":"No Latest News Available",
-  "watch":"Watch",
+  "no_latest_news_available": "No Latest News Available",
+  "watch": "Watch",
 
   // Thank you page
   "purchase": "Purchase",
@@ -393,14 +393,15 @@ final Map<String, String> enUS = {
   "save&Next": "Save & Next",
   "test_submitted_successfully": "Test Submitted\n Successfully",
   "test_completed_please_submit": "Test Completed Please Submit",
-  "test_summary" : "Test Summary",
+  "test_summary": "Test Summary",
   "your_rank": "Your Rank",
   "your_marks": "Your Marks",
   "no_question_answer_available": "No Questions and Answer available",
   "buying_coming_soon": "Buying Test Coming Soon",
   "syllabus": "Syllabus",
   "videos": "Videos",
-  "some_error_occured_while_downloading_please_try_again": "Downloading Failed! Please try again",
+  "some_error_occured_while_downloading_please_try_again":
+      "Downloading Failed! Please try again",
   "downloading_complete": "Downloading Complete",
   "downloading": "Downloading",
 };

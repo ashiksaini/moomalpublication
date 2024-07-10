@@ -43,7 +43,9 @@ class BookController extends BaseController {
     super.onInit();
     _sharedData = Get.arguments as SharedData?;
 
-    title.value = _sharedData?.productVariations == ProductVariation.ebook ? "ebook".tr : "book".tr;
+    title.value = _sharedData?.productVariations == ProductVariation.ebook
+        ? "ebook".tr
+        : "book".tr;
 
     _initCategoriesList();
     scrollController.addListener(_scrollListener);
@@ -102,11 +104,13 @@ class BookController extends BaseController {
       ),
     );
     if (ebooksResponse.value.data != null) {
-      ebooks.addAll(_sharedData?.productVariations == ProductVariation.ebook ? (ebooksResponse.value.data?.where((element) =>
-              element.isEbookAvailable && !element.isBookAvailable)) ??
-          [] : (ebooksResponse.value.data?.where((element) =>
-              element.isBookAvailable && !element.isEbookAvailable)) ??
-          []);
+      ebooks.addAll(_sharedData?.productVariations == ProductVariation.ebook
+          ? (ebooksResponse.value.data?.where((element) =>
+                  element.isEbookAvailable && !element.isBookAvailable)) ??
+              []
+          : (ebooksResponse.value.data?.where((element) =>
+                  element.isBookAvailable && !element.isEbookAvailable)) ??
+              []);
     } else {
       showErrorToast(AppConstants.somethingWentWrong);
     }

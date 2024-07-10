@@ -95,7 +95,7 @@ class QuantityButton extends StatelessWidget {
                   bottomLeft: Radius.circular(5.r),
                 ),
               ),
-              child: const Icon(Icons.remove),
+              child: const Center(child: Icon(Icons.remove, size: 24.0,)),
             ),
           ),
           Container(
@@ -119,7 +119,6 @@ class QuantityButton extends StatelessWidget {
             onTap: () => _cartController.onInc(cartItem),
             child: Container(
               height: 30.v,
-              padding: EdgeInsets.all(2.h),
               decoration: BoxDecoration(
                 color: AppColors.greyLight,
                 border: Border.all(color: AppColors.grey.withOpacity(0.5)),
@@ -128,7 +127,7 @@ class QuantityButton extends StatelessWidget {
                   bottomRight: Radius.circular(5.r),
                 ),
               ),
-              child: const Icon(Icons.add),
+              child: const Center(child: Icon(Icons.add, size: 24.0,)),
             ),
           ),
         ],

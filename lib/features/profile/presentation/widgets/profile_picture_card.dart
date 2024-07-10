@@ -22,7 +22,9 @@ class ProfilePicture extends StatelessWidget {
           color: AppColors.white),
       child: CircleAvatar(
         backgroundColor: AppColors.white,
-        backgroundImage: filePath != null ? FileImage(File(filePath!)) as ImageProvider : NetworkImage(avatarUrl!),
+        backgroundImage: filePath != null
+            ? FileImage(File(filePath!)) as ImageProvider
+            : NetworkImage(avatarUrl!),
       ),
     );
   }

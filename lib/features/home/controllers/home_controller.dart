@@ -373,6 +373,7 @@ class HomeController extends BaseController {
             ),
           );
         }
+        break;
       case DrawerItemType.videos:
         {
           AppRouting.toNamed(
@@ -382,8 +383,10 @@ class HomeController extends BaseController {
             ),
           );
         }
+        break;
       case DrawerItemType.followUs:
-      // TODO: Handle this case.
+        AppRouting.toNamed(NameRoutes.followUs);
+        break;
     }
   }
 

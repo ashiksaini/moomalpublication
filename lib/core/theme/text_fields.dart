@@ -46,27 +46,33 @@ TextFormField customTextFormField(
       contentPadding: EdgeInsets.only(right: 10.h),
       fillColor: AppColors.white,
       filled: true,
-      enabledBorder:  enableBorder ? OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.grey),
-        borderRadius: BorderRadius.circular(borderRadius!.r),
-      ) : OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.white),
-        borderRadius: BorderRadius.circular(borderRadius!.r),
-      ),
-      focusedBorder: enableBorder ? OutlineInputBorder(
-        borderRadius: BorderRadius.circular(borderRadius.r),
-        borderSide: const BorderSide(color: AppColors.orangeLight),
-      ) : OutlineInputBorder(
-        borderRadius: BorderRadius.circular(borderRadius.r),
-        borderSide: const BorderSide(color: AppColors.white),
-      ),
-      border: enableBorder ? OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.grey),
-        borderRadius: BorderRadius.circular(borderRadius.r),
-      ) : OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.white),
-        borderRadius: BorderRadius.circular(borderRadius.r),
-      ),
+      enabledBorder: enableBorder
+          ? OutlineInputBorder(
+              borderSide: const BorderSide(color: AppColors.grey),
+              borderRadius: BorderRadius.circular(borderRadius!.r),
+            )
+          : OutlineInputBorder(
+              borderSide: const BorderSide(color: AppColors.white),
+              borderRadius: BorderRadius.circular(borderRadius!.r),
+            ),
+      focusedBorder: enableBorder
+          ? OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius.r),
+              borderSide: const BorderSide(color: AppColors.orangeLight),
+            )
+          : OutlineInputBorder(
+              borderRadius: BorderRadius.circular(borderRadius.r),
+              borderSide: const BorderSide(color: AppColors.white),
+            ),
+      border: enableBorder
+          ? OutlineInputBorder(
+              borderSide: const BorderSide(color: AppColors.grey),
+              borderRadius: BorderRadius.circular(borderRadius.r),
+            )
+          : OutlineInputBorder(
+              borderSide: const BorderSide(color: AppColors.white),
+              borderRadius: BorderRadius.circular(borderRadius.r),
+            ),
       labelText: label,
       labelStyle: labelTextStyle ??
           CustomTextStyle.textStyle25Bold(context,

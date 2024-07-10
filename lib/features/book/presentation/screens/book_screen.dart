@@ -35,7 +35,7 @@ class BookScreen extends StatelessWidget {
               child: Column(
                 children: [
                   CustomAppbar(
-                    title:  _bookController.title.value,
+                    title: _bookController.title.value,
                     suffixIcon: AppAssets.icSearch,
                     onSuffixIconClick: () =>
                         AppRouting.toNamed(NameRoutes.searchScreen),

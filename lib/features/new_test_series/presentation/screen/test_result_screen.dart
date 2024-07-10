@@ -47,7 +47,8 @@ class _TestResultScreenState extends State<TestResultScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomAppbar(
-                  title: _quizController.testSeriesResponseModel?.postTitle ?? '',
+                  title:
+                      _quizController.testSeriesResponseModel?.postTitle ?? '',
                   maxLine: 1,
                   prefixIcon: AppAssets.icBackArrow,
                   onPrefixIconClick: () {
@@ -70,14 +71,16 @@ class _TestResultScreenState extends State<TestResultScreen> {
                                 Container(
                                   decoration: BoxDecoration(
                                       color: AppColors.orange_100,
-                                      border:
-                                          Border.all(color: AppColors.greyLight),
-                                      borderRadius: BorderRadius.circular(10.r)),
+                                      border: Border.all(
+                                          color: AppColors.greyLight),
+                                      borderRadius:
+                                          BorderRadius.circular(10.r)),
                                   child: SfCircularChart(
                                       legend: const Legend(
-                                          isVisible: true,
-                                          alignment: ChartAlignment.center,
-                                          position: LegendPosition.right),
+                                        isVisible: true,
+                                        alignment: ChartAlignment.center,
+                                        position: LegendPosition.right,
+                                      ),
                                       tooltipBehavior: _tooltipBehavior,
                                       title: ChartTitle(
                                           text: 'test_summary'.tr,
@@ -90,8 +93,8 @@ class _TestResultScreenState extends State<TestResultScreen> {
                                       series: <CircularSeries>[
                                         DoughnutSeries<ChartData, String>(
                                           dataSource: _quizController.chartData,
-                                          pointColorMapper: (ChartData data, _) =>
-                                              data.color,
+                                          pointColorMapper:
+                                              (ChartData data, _) => data.color,
                                           xValueMapper: (ChartData data, _) =>
                                               data.x,
                                           yValueMapper: (ChartData data, _) =>
@@ -116,15 +119,18 @@ class _TestResultScreenState extends State<TestResultScreen> {
                                     ResultView(
                                         resultType: ResultType.score,
                                         value: _quizController.formatString(
-                                            _quizController.testResultResponseData
-                                                    .value.score ??
+                                            _quizController
+                                                    .testResultResponseData
+                                                    .value
+                                                    .score ??
                                                 "/")),
                                     ResultView(
                                         resultType: ResultType.rank,
-                                        value: 
-                                            _quizController.testResultResponseData
-                                                    .value.rank ??
-                                                "/")
+                                        value: _quizController
+                                                .testResultResponseData
+                                                .value
+                                                .rank ??
+                                            "/")
                                   ],
                                 )
                               ],

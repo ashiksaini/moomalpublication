@@ -7,7 +7,7 @@ class TestSeriesResponseModel {
   final String? maximumTime;
   final String? totalMarks;
   final List<String>? testTypeTerms;
-  final int? questionCount;
+  int? questionCount;
   final String? permalink;
   final String? price;
   final String? freePaid;
