@@ -25,7 +25,7 @@ class LatestNewsScreen extends StatelessWidget {
       backgroundColor: AppColors.black,
       body: SafeArea(
         child: Container(
-          color: AppColors.white,
+          color: AppColors.white1,
           child: Column(
             children: [
               CustomAppbar(
@@ -46,7 +46,7 @@ class LatestNewsScreen extends StatelessWidget {
                               itemBuilder: (_, index) {
                                 return Padding(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 10.h, vertical: 12.v),
+                                      horizontal: 10.h, vertical: 8.v),
                                   child: GestureDetector(
                                     onTap: () {
                                       _latestNewsController

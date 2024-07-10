@@ -121,6 +121,7 @@ final Map<String, String> enUS = {
   "testimonial": "Testimonial",
   "quiz": "Quiz",
   "contact_us": "Contact Us",
+  "follow_us": "Follow Us",
   "setting": "Setting",
   "online_test_series": "Online Test Series",
   "overall_result": "Overall Result",

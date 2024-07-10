@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/molecules/custom_btn.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -12,6 +13,7 @@ import 'package:moomalpublication/features/profile/presentation/widgets/chip_but
 import 'package:moomalpublication/features/profile/presentation/widgets/profile_picture_card.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -111,7 +113,18 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                
+                const Spacer(),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 15.h, vertical: 40.v),
+                  child: CustomBtn(
+                    title: "logout".tr,
+                    onTap: () {
+                      SharedPreferencesHelper.clearSharedPrefExcept();
+                      AppRouting.offAllNamed(NameRoutes.splashScreen);
+                    },
+                  ),
+                )
               ],
             ),
           );

@@ -6,6 +6,7 @@ class AppColors {
   AppColors._();
 
   static const Color white = Color(0xFFFFFFFF);
+  static const Color white1 = Color(0xFFF3F5F7);
   static const Color black = Color(0xFF000000);
   static const Color grey = Color(0xFF797777);
   static const Color greyLighter = Color.fromRGBO(255, 255, 255, 0.486);

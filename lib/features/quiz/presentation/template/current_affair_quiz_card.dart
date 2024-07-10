@@ -39,7 +39,7 @@ class CurrentAffairQuizCard extends StatelessWidget {
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: 16.v,
+          vertical: 8.v,
           horizontal: 8.h,
         ),
         child: ShadowContainer(

@@ -87,6 +87,16 @@ class HomeController extends BaseController {
       title: "orders".tr,
       drawerItemType: DrawerItemType.orders,
     );
+    final syllabus = DrawerItem(
+      icon: AppAssets.icBook,
+      title: "syllabus".tr,
+      drawerItemType: DrawerItemType.syllabus,
+    );
+    final videos = DrawerItem(
+      icon: AppAssets.icVideos,
+      title: "videos".tr,
+      drawerItemType: DrawerItemType.videos,
+    );
     final eventAndPressReleaseItem = DrawerItem(
       icon: AppAssets.icEventAndPressRelease,
       title: "event_and_press_release".tr,
@@ -106,6 +116,11 @@ class HomeController extends BaseController {
       icon: AppAssets.icContactUs,
       title: "contact_us".tr,
       drawerItemType: DrawerItemType.contactUs,
+    );
+    final followUs = DrawerItem(
+      icon: AppAssets.icContactUs,
+      title: "follow_us".tr,
+      drawerItemType: DrawerItemType.followUs,
     );
     final settingItem = DrawerItem(
       icon: AppAssets.icSettings,
@@ -131,10 +146,13 @@ class HomeController extends BaseController {
       // downloadItem,
       addressItem,
       orderItem,
+      syllabus,
+      videos,
       eventAndPressReleaseItem,
       testimonialItem,
       // quizItem,
       contactUsItem,
+      followUs,
       settingItem,
       // onlineTestSeriesItem,
       overallResultItem,
@@ -346,6 +364,26 @@ class HomeController extends BaseController {
         }
 
         break;
+      case DrawerItemType.syllabus:
+        {
+          AppRouting.toNamed(
+            NameRoutes.latestNewsScreen,
+            argument: SharedData(
+              type: Type.syllabus,
+            ),
+          );
+        }
+      case DrawerItemType.videos:
+        {
+          AppRouting.toNamed(
+            NameRoutes.latestNewsScreen,
+            argument: SharedData(
+              type: Type.video,
+            ),
+          );
+        }
+      case DrawerItemType.followUs:
+      // TODO: Handle this case.
     }
   }
 

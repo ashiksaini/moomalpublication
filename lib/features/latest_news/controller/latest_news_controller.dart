@@ -47,6 +47,6 @@ class LatestNewsController extends BaseController {
   void _getNewsDetail() {}
   
   Map<String, String>? _getCategory() {
-    return sharedData?.type == Type.syllabus ? { "category": "74"}  : sharedData?.type == Type.video ? { "category": "75"} : null;
+    return sharedData?.type == Type.syllabus ? { "categories": "74"}  : sharedData?.type == Type.video ? { "categories": "75"} : null;
   }
 }
