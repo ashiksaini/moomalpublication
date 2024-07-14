@@ -29,9 +29,14 @@ class NameRoutes {
   static const String quizTestScreen = '/quizTestScreen';
   static const String onlineTestSeriesScreen = '/onlineTestSeriesScreen';
   static const String pdfScreen = '/pdfScreen';
-  static const String eBookScreen = '/eBookScreen';
+  static const String BookScreen = '/BookScreen';
   static const String subscribeNowScreen = '/subscribeNowScreen';
   static const String latestNewsScreen = '/latestNewsScreen';
   static const String thankYouPage = '/thankYouPage';
   static const String ebookOrder = '/ebookorder';
+  static const String webView = '/webview';
+  static const String newsDetailScreen = '/newsDetailScreen';
+  static const String newtestSeriesScreen = '/newtestSeriesScreen';
+  static const String testResultScreen = '/testResultScreen';
+  static const String followUs = '/followUs';
 }

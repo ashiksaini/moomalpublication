@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -10,6 +12,8 @@ import 'package:moomalpublication/features/thank_you_page/controller/thank_you_c
 import 'package:moomalpublication/features/thank_you_page/data/models/order_succes_response/order_succes_response.dart';
 import 'package:moomalpublication/features/thank_you_page/presentation/template/bill_template.dart';
 import 'package:moomalpublication/features/thank_you_page/presentation/template/order_detail_template.dart';
+import 'package:moomalpublication/routes/name_routes.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class OrderSuccessScreen extends StatelessWidget {
   OrderSuccessScreen({super.key});
@@ -39,9 +43,9 @@ class OrderSuccessScreen extends StatelessWidget {
                               orderSuccessController.orderSuccessData.value),
                       context: context),
                 ),
-                const VerticalGap(size: 28),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.h, vertical: 20.v),
                   child: colorContainer(
                       child: billingContainer(
                           context: context,
@@ -49,6 +53,37 @@ class OrderSuccessScreen extends StatelessWidget {
                               orderSuccessController.orderSuccessData.value),
                       context: context),
                 ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.v, horizontal: 10.h),
+                  child: GestureDetector(
+                    onTap: () => AppRouting.offNamed(NameRoutes.orderScreen),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.v, horizontal: 10.h),
+                      decoration: BoxDecoration(
+                          border: Border.all(),
+                          borderRadius: BorderRadius.circular(10.r)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomText(
+                            text: 'go_to_orders'.tr,
+                            textStyle: CustomTextStyle.textStyle18Bold(
+                              context,
+                              color: AppColors.black,
+                            ),
+                          ),
+                          SvgPicture.asset(
+                            AppAssets.icArrowRight,
+                            height: 18.v,
+                            width: 18.h,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -72,14 +107,14 @@ class OrderSuccessScreen extends StatelessWidget {
       {required BuildContext context,
       required OrderSuccessResponse orderSuccessResponse}) {
     return Padding(
-      padding: EdgeInsets.only(left: 10.h),
+      padding: EdgeInsets.only(left: 10.h, right: 10.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.only(top: 12.v, left: 4.h),
             child: CustomText(
-                text: 'billing_address',
+                text: 'billing_address'.tr,
                 textStyle: CustomTextStyle.textStyle20Bold(context,
                     color: AppColors.black)),
           ),
@@ -94,24 +129,24 @@ class OrderSuccessScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  text: orderSuccessResponse.billingAddress!.name ?? '',
+                  text: orderSuccessResponse.billingAddress?.name ?? '',
                   textStyle: CustomTextStyle.textStyle16MediumTrio(context,
                       color: AppColors.black),
                 ),
                 CustomText(
-                    text: orderSuccessResponse.billingAddress!.address ?? '',
+                    text: orderSuccessResponse.billingAddress?.address ?? '',
                     textStyle: CustomTextStyle.textStyle16MediumTrio(context,
                         color: AppColors.black)),
                 CustomText(
-                    text: orderSuccessResponse.billingAddress!.state ?? '',
+                    text: orderSuccessResponse.billingAddress?.state ?? '',
                     textStyle: CustomTextStyle.textStyle16MediumTrio(context,
                         color: AppColors.black)),
                 CustomText(
-                    text: orderSuccessResponse.billingAddress!.mobile ?? '',
+                    text: orderSuccessResponse.billingAddress?.mobile ?? '',
                     textStyle: CustomTextStyle.textStyle16MediumTrio(context,
                         color: AppColors.black)),
                 CustomText(
-                    text: orderSuccessResponse.billingAddress!.email ?? '',
+                    text: orderSuccessResponse.billingAddress?.email ?? '',
                     textStyle: CustomTextStyle.textStyle16MediumTrio(context,
                         color: AppColors.black)),
               ],

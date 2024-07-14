@@ -3,10 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/box_decorations.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/all_categories/presentation/widgets/category.dart';
 import 'package:moomalpublication/features/home/controllers/home_controller.dart';
@@ -33,113 +35,170 @@ class HomeScreen2 extends StatelessWidget {
           gradient: gradientBg(context),
         ),
         child: SafeArea(
-            child: Column(
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: GestureDetector(
-                onTap: () =>
-                    _homeController.globalKey.currentState!.openDrawer(),
-                child: SvgPicture.asset(AppAssets.icHamburger),
+            child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                  onTap: () =>
+                      _homeController.globalKey.currentState!.openDrawer(),
+                  child: SvgPicture.asset(AppAssets.icHamburger),
+                ),
               ),
-            ),
-            const VerticalGap(size: 20),
-            SvgPicture.asset(
-              AppAssets.icLogo,
-              height: 190.v,
-              width: 190.h,
-            ),
-            const VerticalGap(size: 40),
-            CustomText(
-              text: "select_category".tr,
-              textStyle: CustomTextStyle.textStyle26BoldCaladea(
-                context,
-                color: AppColors.white,
+              const VerticalGap(size: 20),
+              SvgPicture.asset(
+                AppAssets.icLogo,
+                height: 90.v,
+                width: 90.h,
               ),
-            ),
-            const VerticalGap(size: 40),
-            Row(
-              children: [
-                Expanded(
-                  child: CategoryItem(
-                    icon: AppAssets.icReadingBook,
-                    title: "ebook_purchased".tr,
-                    textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                      context,
-                      color: AppColors.black,
-                    ),
-                    onClick: () => AppRouting.toNamed(NameRoutes.eBookScreen),
-                  ),
+              const VerticalGap(size: 40),
+              CustomText(
+                text: "select_category".tr,
+                textStyle: CustomTextStyle.textStyle26BoldCaladea(
+                  context,
+                  color: AppColors.white,
                 ),
-                Expanded(
-                  child: CategoryItem(
-                    icon: AppAssets.icUserboard,
-                    title: "book_purchased".tr,
-                    textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                      context,
-                      color: AppColors.black,
-                    ),
-                    onClick: () => AppRouting.offAllNamed(
-                      NameRoutes.moomalpublicationApp,
-                      argument: 1,
+              ),
+              const VerticalGap(size: 40),
+              Row(
+                children: [
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icReadingBook,
+                      title: "ebook_purchased".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () => AppRouting.toNamed(
+                        NameRoutes.BookScreen,
+                        argument: SharedData(
+                          productVariations: ProductVariation.ebook,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: CategoryItem(
-                    icon: AppAssets.icClipboard,
-                    title: "latest_news".tr,
-                    textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                      context,
-                      color: AppColors.black,
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icUserboard,
+                      title: "book_purchased".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () => AppRouting.toNamed(
+                        NameRoutes.BookScreen,
+                        argument: SharedData(
+                          productVariations: ProductVariation.book,
+                        ),
+                      ),
                     ),
-                    onClick: () =>
-                        AppRouting.toNamed(NameRoutes.latestNewsScreen),
                   ),
-                ),
-              ],
-            ),
-            const VerticalGap(size: 30),
-            Row(
-              children: [
-                Expanded(
-                  child: CategoryItem(
-                    icon: AppAssets.icEdit,
-                    title: "daily_quiz".tr,
-                    textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                      context,
-                      color: AppColors.black,
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icClipboard,
+                      title: "latest_news".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () =>
+                          AppRouting.toNamed(NameRoutes.latestNewsScreen),
                     ),
-                    onClick: () => AppRouting.toNamed(NameRoutes.quizScreen),
                   ),
-                ),
-                Expanded(
-                  child: CategoryItem(
-                    icon: AppAssets.icOpenBook,
-                    title: "test_series".tr,
-                    textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                      context,
-                      color: AppColors.black,
+                ],
+              ),
+              const VerticalGap(size: 30),
+              Row(
+                children: [
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icEdit,
+                      title: "daily_quiz".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () => AppRouting.toNamed(NameRoutes.quizScreen),
                     ),
-                    onClick: () =>
-                        AppRouting.toNamed(NameRoutes.testSeriesScreen),
                   ),
-                ),
-                Expanded(
-                  child: CategoryItem(
-                    icon: AppAssets.icReport,
-                    title: "subscribe_now".tr,
-                    textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                      context,
-                      color: AppColors.black,
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icOpenBook,
+                      title: "test_series".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () =>
+                          AppRouting.toNamed(NameRoutes.testSeriesScreen),
                     ),
-                    onClick: () =>
-                        AppRouting.toNamed(NameRoutes.subscribeNowScreen),
                   ),
-                ),
-              ],
-            )
-          ],
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icReport,
+                      title: "subscribe_now".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () =>
+                          AppRouting.toNamed(NameRoutes.subscribeNowScreen),
+                    ),
+                  ),
+                ],
+              ),
+              const VerticalGap(size: 30),
+              Row(
+                children: [
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icBook,
+                      title: "syllabus".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () => AppRouting.toNamed(
+                        NameRoutes.latestNewsScreen,
+                        argument: SharedData(
+                          type: Type.syllabus,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icVideos,
+                      title: "videos".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () => AppRouting.toNamed(
+                        NameRoutes.latestNewsScreen,
+                        argument: SharedData(
+                          type: Type.video,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: CategoryItem(
+                      icon: AppAssets.icContactUs,
+                      title: "follow_us".tr,
+                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                        context,
+                        color: AppColors.black,
+                      ),
+                      onClick: () => AppRouting.toNamed(NameRoutes.followUs),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         )),
       ),
     );

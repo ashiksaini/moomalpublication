@@ -6,6 +6,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/photo_description.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -16,7 +17,7 @@ class QuizDetailScreen extends StatelessWidget {
   final QuizController _quizController = Get.find<QuizController>();
   @override
   Widget build(BuildContext context) {
-    int index = args[0]['index'];
+    _quizController.selectedIndex = args[0]['index'];
     return Scaffold(
       backgroundColor: AppColors.black,
       body: SafeArea(
@@ -25,7 +26,16 @@ class QuizDetailScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomAppbar(
-                title: _quizController.quizList[index].quizName ?? '',
+                title: (_quizController.selectedQuizType ==
+                            QuizType.currentAffairQuiz
+                        ? _quizController
+                            .currentAffairsquizList[
+                                _quizController.selectedIndex]
+                            .quizName
+                        : _quizController
+                            .economicQuizList[_quizController.selectedIndex]
+                            .quizName) ??
+                    "",
                 maxLine: 1,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => AppRouting.navigateBack(),
@@ -39,7 +49,7 @@ class QuizDetailScreen extends StatelessWidget {
                     ),
                     child: ShadowContainer(
                       containerChild: PhotoDescription(
-                        index: index,
+                        index: _quizController.selectedIndex,
                       ),
                     ),
                   ),

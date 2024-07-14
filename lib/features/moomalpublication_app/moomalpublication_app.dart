@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/features/all_categories/presentation/screens/all_categories.dart';
 import 'package:moomalpublication/features/bottom_nav_bar/presentation/custom_bottom_nav_bar.dart';
+import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/home/presentation/screens/home_screen2_.dart';
 import 'package:moomalpublication/features/profile/presentation/screens/profile_screen.dart';
@@ -17,6 +18,7 @@ class MoomalPublicationApp extends StatefulWidget {
 
 class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
   int _selectedIndex = 0;
+  int _cartItemCount = 0;
   late List<Widget> _pages = [];
 
   @override
@@ -27,12 +29,22 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
     _selectedIndex = Get.arguments ?? 0;
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    CartController cartController =
+        Get.put(CartController(onCartItemCountChange: _onCartItemCountChange));
+    cartController.onRefresh();
+  }
+
   Future<void> _initPages() async {
     _pages = [
       HomeScreen2(),
       ShopScreen(),
       const AllCategoriesScreen(),
-      const CartScreen(),
+      CartScreen(
+        onCartItemCountChange: _onCartItemCountChange,
+      ),
       ProfileScreen(),
     ];
   }
@@ -43,6 +55,12 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
     });
   }
 
+  void _onCartItemCountChange(int cartItemCount) {
+    setState(() {
+      _cartItemCount = cartItemCount;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +68,7 @@ class _MoomalPublicationAppState extends State<MoomalPublicationApp> {
       body: _pages[_selectedIndex],
       bottomNavigationBar: CustomBottomNavBar(
         selectedIndex: _selectedIndex,
+        cartItemCount: _cartItemCount,
         onTabChanged: _onTabChanged,
       ),
     );

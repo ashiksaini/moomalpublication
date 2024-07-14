@@ -9,12 +9,16 @@ import 'package:moomalpublication/features/auth/presentation/screens/reset_passw
 import 'package:moomalpublication/features/cart/presentation/screens/cart_screen.dart';
 import 'package:moomalpublication/features/contact_us/presentation/screen/contact_us_screen.dart';
 import 'package:moomalpublication/features/downloads/presentation/screens/download_screen.dart';
-import 'package:moomalpublication/features/ebook/presentation/screens/ebook_screen.dart';
+import 'package:moomalpublication/features/book/presentation/screens/book_screen.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/detail_event_page.dart';
 import 'package:moomalpublication/features/event_press_release/presentation/screen/event_press_release_screen.dart';
+import 'package:moomalpublication/features/follow_us/presentation/follow_us_screen.dart';
 import 'package:moomalpublication/features/latest_news/presentation/screen/latest_news_screen.dart';
+import 'package:moomalpublication/features/latest_news/presentation/screen/news_detail_screen.dart';
 import 'package:moomalpublication/features/moomalpublication_app/moomalpublication_app.dart';
-import 'package:moomalpublication/features/my_orders/presentation/screen/ebook_order.dart';
+import 'package:moomalpublication/features/new_test_series/presentation/screen/new_test_series_screen.dart';
+import 'package:moomalpublication/features/new_test_series/presentation/screen/test_result_screen.dart';
+import 'package:moomalpublication/features/orders/presentation/screen/order_detail_screen.dart';
 import 'package:moomalpublication/features/orders/presentation/screen/orders_screen.dart';
 import 'package:moomalpublication/features/results/presentation/screen/online_exam.dart';
 import 'package:moomalpublication/features/results/presentation/screen/overall_result_screen.dart';
@@ -31,6 +35,7 @@ import 'package:moomalpublication/features/subscribe/presentation/subscribe_now_
 import 'package:moomalpublication/features/test_series/presentation/screen/test_series_screen.dart';
 import 'package:moomalpublication/features/testimonial/presentation/screens/testimonial.dart';
 import 'package:moomalpublication/features/thank_you_page/presentation/screen/thank_you_screen.dart';
+import 'package:moomalpublication/features/web_view/web_view.dart';
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/features/quiz/presentation/screens/quiz_detail_screen.dart';
 
@@ -206,8 +211,8 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 200),
     ),
     GetPage(
-      name: NameRoutes.eBookScreen,
-      page: () => EBookScreen(),
+      name: NameRoutes.BookScreen,
+      page: () => BookScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),
@@ -232,6 +237,36 @@ class AppPages {
     GetPage(
       name: NameRoutes.ebookOrder,
       page: () => EbookOrderScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.webView,
+      page: () => const WebViewPage(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.newsDetailScreen,
+      page: () => const NewsDetailScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.newtestSeriesScreen,
+      page: () => NewTestSeriesScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.testResultScreen,
+      page: () => const TestResultScreen(),
+      transition: Transition.rightToLeft,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: NameRoutes.followUs,
+      page: () => const FollowUsScreen(),
       transition: Transition.rightToLeft,
       transitionDuration: const Duration(milliseconds: 200),
     ),

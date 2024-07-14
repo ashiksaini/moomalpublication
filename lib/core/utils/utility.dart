@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/auth/data/models/login_response_data.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
@@ -43,6 +44,14 @@ class Utility {
     }
   }
 
+  static Future<void> sendToWhatsapp(String phoneNumber) async {
+    launchurl("whatsapp://send?phone=$phoneNumber");
+  }
+
+  static Future<void> sendToGmail(String email) async {
+    launchurl("mailto:$email?subject=" "&body=" "");
+  }
+
   static String generateTransactionId() {
     // Maximum length of the transaction ID
     const int maxTransactionIdLength = 25;
@@ -64,7 +73,6 @@ class Utility {
   }
 
   static double getChildAspectRation(BuildContext context) {
-    return MediaQuery.of(context).size.width /
-        (MediaQuery.of(context).size.height / 1.12);
+    return SizeUtils.width / (SizeUtils.height * 1.06);
   }
 }

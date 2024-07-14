@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/atoms/custom_progress_indicator.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
+import 'package:moomalpublication/core/components/atoms/refersh_indicator.dart';
 import 'package:moomalpublication/core/components/organisms/card_book_item.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -26,59 +28,70 @@ class SearchProductScreen extends StatelessWidget {
       return Scaffold(
         backgroundColor: AppColors.black,
         body: SafeArea(
-          child: Container(
-            color: AppColors.white,
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: 60.v,
-                      decoration: BoxDecoration(
-                        color: AppColors.black,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20.r),
-                          bottomRight: Radius.circular(20.r),
+          child: CustomRefreshIndicator(
+            onRefreshCallback: () => _searchProductController.onRefresh(),
+            child: Container(
+              color: AppColors.white,
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        height: 80.v,
+                        decoration: BoxDecoration(
+                          color: AppColors.black,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20.r),
+                            bottomRight: Radius.circular(20.r),
+                          ),
                         ),
                       ),
+                      Positioned(
+                        bottom: 10,
+                        left: 0,
+                        right: 0,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.h,
+                          ),
+                          child: customTextFormField(
+                            context,
+                            _searchProductController.textEditingController,
+                            prefixIcon: AppAssets.icBackSmall,
+                            onPrefixIconClick: () => AppRouting.navigateBack(),
+                            suffixIcon: AppAssets.icClose,
+                            onSuffixIconClick: () {
+                              _searchProductController.textEditingController
+                                  .clear();
+                              _searchProductController.searchedBooks.clear();
+                            },
+                            hint: "search_for_books_and_ebooks".tr,
+                            hintTextStyle:
+                                CustomTextStyle.textStyle15Bold(context),
+                            onTextChange:
+                                _searchProductController.onTextChanged,
+                            textInputAction: TextInputAction.done,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Expanded(
+                    child: _searchProductController.searchedBooks.isNotEmpty ||
+                            _searchProductController
+                                .searchBookResponse.value.isLoading
+                        ? _getBooksDataView(context)
+                        : _getCenterSearchView(context),
+                  ),
+
+                  // Load more
+                  if (_searchProductController.isLoadingMore.value)
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 10.v),
+                      child: customProgressIndicator(),
                     ),
-                    Positioned(
-                      bottom: 10,
-                      left: 0,
-                      right: 0,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10.h,
-                        ),
-                        child: customTextFormField(
-                          context,
-                          _searchProductController.textEditingController,
-                          prefixIcon: AppAssets.icBackSmall,
-                          onPrefixIconClick: () => AppRouting.navigateBack(),
-                          suffixIcon: AppAssets.icClose,
-                          onSuffixIconClick: () {
-                            _searchProductController.textEditingController
-                                .clear();
-                            _searchProductController.searchedBooks.clear();
-                          },
-                          hint: "search_for_books_and_ebooks".tr,
-                          hintTextStyle:
-                              CustomTextStyle.textStyle15Bold(context),
-                          onTextChange: _searchProductController.onTextChanged,
-                          textInputAction: TextInputAction.done,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                Expanded(
-                  child: _searchProductController.searchedBooks.isNotEmpty ||
-                          _searchProductController
-                              .searchBookResponse.value.isLoading
-                      ? _getBooksDataView(context)
-                      : _getCenterSearchView(context),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -88,14 +101,15 @@ class SearchProductScreen extends StatelessWidget {
 
   Widget _getBooksDataView(BuildContext context) {
     return GridView.builder(
+      controller: _searchProductController.scrollController,
       padding: EdgeInsets.symmetric(
         horizontal: 10.h,
         vertical: 10.v,
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 12.0.h,
-        mainAxisSpacing: 15.0.v,
+        crossAxisSpacing: 15.0.h,
+        mainAxisSpacing: 15.0.h,
         childAspectRatio: Utility.getChildAspectRation(context),
       ),
       itemCount: _searchProductController.searchBookResponse.value.isLoading
@@ -113,6 +127,8 @@ class SearchProductScreen extends StatelessWidget {
             child: CardBookItem(
               item: _searchProductController.searchedBooks[index],
               onCartBtnClick: _searchProductController.onCartBtnClick,
+              onBookVariationClick:
+                  _searchProductController.onProductVariationClick,
             ),
           );
         }

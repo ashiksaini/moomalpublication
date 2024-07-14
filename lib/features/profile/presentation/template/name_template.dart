@@ -28,10 +28,6 @@ class NameTemplate extends StatelessWidget {
           hintText: userEmail,
           isReadOnly: true,
         ),
-        // SizedBox(
-        //   height: 72.v,
-        // ),
-        // const SubmitButton(),
       ],
     );
   }

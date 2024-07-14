@@ -36,7 +36,9 @@ class OverallResultScreen extends StatelessWidget {
                             .overallResultResponse.value.isLoading
                         ? Center(child: customProgressIndicator())
                         : overallResultController.overallPerformance.isEmpty
-                            ? EmptyProductView(title: "no_test_result_found".tr)
+                            ? Center(
+                                child: EmptyProductView(
+                                    title: "no_test_result_found".tr))
                             : SingleChildScrollView(
                                 child: TestDataCard(
                                   title: 'overall_performace'.tr,

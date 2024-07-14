@@ -68,6 +68,16 @@ class AppAssets {
   static const String icCategory = "${pathSvg}ic_category.svg";
   static const String icInfo = "${pathSvg}ic_info.svg";
   static const String icCheck = "${pathSvg}ic_check.svg";
+  static const String icRank = "${pathSvg}ic_rank.svg";
+  static const String icMarks = "${pathSvg}ic_marks.svg";
+  static const String icFacebook = "${pathSvg}ic_facebook.svg";
+  static const String icYouTube = "${pathSvg}ic_youtube.svg";
+  static const String icVideos = "${pathSvg}ic_videos.svg";
+  static const String icPdf = "${pathSvg}ic_pdf.svg";
+  static const String icPlay = "${pathSvg}ic_play.svg";
+  static const String icTelegram = "${pathSvg}ic_telegram.svg";
+  static const String icWhatsapp = "${pathSvg}ic_whatsapp.svg";
+  static const String icYoutube1 = "${pathSvg}ic_youtube1.svg";
 
   // Animation
   static String loadingAnimation = "${animation}loading.json";

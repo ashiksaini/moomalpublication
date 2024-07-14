@@ -10,4 +10,5 @@ class SharedPreferenceKeys {
   static const String rememberMe = 'rememberMe';
   static const String token = 'token';
   static const String nonce = 'nonce';
+  static const String profilePic = 'profilePic';
 }

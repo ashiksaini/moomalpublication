@@ -2,7 +2,10 @@ import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
+import 'package:moomalpublication/core/base/product_item/attribute.dart';
 import 'package:moomalpublication/core/base/product_item/product_item.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/product_detail/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/product_detail/data/models/product_review.dart';
@@ -14,7 +17,8 @@ import 'package:moomalpublication/services/network/dio_client.dart';
 class ProductDetailServices {
   ProductDetailServices._();
 
-  static Future<ProductDetailResponse> getProductDetails(int productId) async {
+  static Future<ProductDetailResponse> getProductDetails(
+      String productId) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
@@ -38,7 +42,8 @@ class ProductDetailServices {
     }
   }
 
-  static Future<ProductReviewsResponse> getProductReviews(int productId) async {
+  static Future<ProductReviewsResponse> getProductReviews(
+      String productId) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
@@ -66,7 +71,8 @@ class ProductDetailServices {
     }
   }
 
-  static Future<SimilarProductResponse> getSimilarReviews(int productId) async {
+  static Future<SimilarProductResponse> getSimilarReviews(
+      String productId) async {
     if (getx.Get.find<InternetConnectivityController>()
         .haveInternetConnection
         .value) {
@@ -83,6 +89,57 @@ class ProductDetailServices {
               (item) => ProductItem.fromJson(item as Map<String, dynamic>),
             )
             .toList();
+
+        for (ProductItem element in parsedResponse) {
+          if (element.productVariations?.isEmpty == true) {
+            element.productVariations?.add(
+              ProductVariations(
+                id: element.id,
+                onSale: element.onSale,
+                regularPrice: element.regularPrice,
+                salePrice: element.salePrice,
+                sku: element.sku,
+                quantity: element.quantity.toString(),
+                stockStatus: (element.stockStatus == null)
+                    ? (element.inStock == true)
+                        ? "instock"
+                        : "outofstock"
+                    : element.stockStatus,
+                attributes: [
+                  Attribute(name: "purchase", slug: "purchase", option: "book")
+                ],
+              ),
+            );
+          }
+
+          for (ProductVariations variation in element.productVariations ?? []) {
+            if (variation.attributes?[0].option
+                        ?.toLowerCase()
+                        .compareTo("ebook") ==
+                    0 &&
+                variation.stockStatus?.toLowerCase().compareTo("instock") ==
+                    0) {
+              element.isEbookAvailable = true;
+            }
+
+            if (variation.attributes?[0].option
+                        ?.toLowerCase()
+                        .compareTo("book") ==
+                    0 &&
+                variation.stockStatus?.toLowerCase().compareTo("instock") ==
+                    0) {
+              element.isBookAvailable = true;
+            }
+
+            if ((element.isBookAvailable && element.isEbookAvailable) ||
+                element.isEbookAvailable) {
+              element.productVariationType.value = ProductVariation.ebook;
+            } else if (element.isBookAvailable) {
+              element.productVariationType.value = ProductVariation.book;
+            }
+          }
+        }
+
         return SimilarProductResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showToast(error.message.toString());

@@ -18,3 +18,18 @@ void showToast(
       textColor: AppColors.white,
       fontSize: 16.0.h);
 }
+
+void showErrorToast(
+  String title, {
+  Color? bgColor,
+  Color? textColor,
+}) {
+  Fluttertoast.showToast(
+      msg: title,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: AppColors.red,
+      textColor: AppColors.white,
+      fontSize: 16.0.h);
+}

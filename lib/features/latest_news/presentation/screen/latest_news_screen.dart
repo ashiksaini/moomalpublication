@@ -4,10 +4,13 @@ import 'package:moomalpublication/core/components/atoms/custom_progress_indicato
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/components/organisms/empty_product.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/features/latest_news/controller/latest_news_controller.dart';
 import 'package:moomalpublication/features/latest_news/presentation/widget/card_latest_news_item.dart';
+import 'package:moomalpublication/features/latest_news/presentation/widget/pdf_download_card.dart';
+import 'package:moomalpublication/features/latest_news/presentation/widget/watch_event_card.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
 class LatestNewsScreen extends StatelessWidget {
@@ -22,37 +25,64 @@ class LatestNewsScreen extends StatelessWidget {
       backgroundColor: AppColors.black,
       body: SafeArea(
         child: Container(
-          color: AppColors.white,
+          color: AppColors.white1,
           child: Column(
             children: [
               CustomAppbar(
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => AppRouting.navigateBack(),
-                title: 'latest_news1'.tr,
+                title: _latestNewsController.title.value,
                 maxLine: 1,
               ),
               Obx(
                 () => Expanded(
-                  child: _latestNewsController
-                          .latestNewsResponse.value.isLoading
-                      ? Center(child: customProgressIndicator())
-                      : _latestNewsController.latestNews.isNotEmpty
-                          ? ListView.builder(
-                              itemCount:
-                                  _latestNewsController.latestNews.length,
-                              itemBuilder: (_, index) {
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10.h, vertical: 12.v),
-                                  child: CardLatestNewsItem(
-                                    latestNewsItem:
-                                        _latestNewsController.latestNews[index],
+                  child:
+                      _latestNewsController.latestNewsResponse.value.isLoading
+                          ? Center(child: customProgressIndicator())
+                          : _latestNewsController.latestNews.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount:
+                                      _latestNewsController.latestNews.length,
+                                  itemBuilder: (_, index) {
+                                    return Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.h, vertical: 8.v),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          _latestNewsController
+                                              .navigateNewsDetailScreen(
+                                                  index: index);
+                                        },
+                                        child: _latestNewsController
+                                                    .sharedData?.type ==
+                                                Type.syllabus
+                                            ? PdfDownloadCard(
+                                                latestNewsItem:
+                                                    _latestNewsController
+                                                        .latestNews[index],
+                                              )
+                                            : _latestNewsController
+                                                        .sharedData?.type ==
+                                                    Type.video
+                                                ? WatchEventCard(
+                                                    latestNewsItem:
+                                                        _latestNewsController
+                                                            .latestNews[index],
+                                                  )
+                                                : CardLatestNewsItem(
+                                                    latestNewsItem:
+                                                        _latestNewsController
+                                                            .latestNews[index],
+                                                  ),
+                                      ),
+                                    );
+                                  },
+                                )
+                              : Center(
+                                  child: EmptyProductView(
+                                    title: "no_latest_news_available".tr,
                                   ),
-                                );
-                              })
-                          : Center(
-                              child: EmptyProductView(
-                                  title: "no_latest_news_available".tr)),
+                                ),
                 ),
               ),
             ],

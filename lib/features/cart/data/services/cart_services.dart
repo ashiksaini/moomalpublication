@@ -3,6 +3,7 @@ import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/add_to_cart_request_data.dart';
 import 'package:moomalpublication/core/base/key_request_data.dart';
+import 'package:moomalpublication/core/base/test_meta_data.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 import 'package:moomalpublication/features/cart/data/constants/type_alias.dart';
@@ -40,6 +41,8 @@ class CartServices {
         final parsedResponse =
             CartData.fromJson(response.data as Map<String, dynamic>);
 
+        // parsedResponse.
+
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
         showToast(error.message.toString());
@@ -65,6 +68,36 @@ class CartServices {
 
         final data =
             AddToCartReqData(id: id, quantity: quantity, variations: variations)
+                .toJson();
+        final dio.Dio dioo = await _getDio();
+        final dio.Response<dynamic> response = await dioo
+            .post(ApiPaths.addToCart, data: data, queryParameters: query);
+        final parsedResponse =
+            CartData.fromJson(response.data as Map<String, dynamic>);
+
+        return CartDataResponse.success(parsedResponse);
+      } on dio.DioException catch (error) {
+        showToast(error.message.toString());
+        return CartDataResponse();
+      }
+    } else {
+      showToast("no_internet_access".tr);
+      return CartDataResponse();
+    }
+  }
+
+  static Future<CartDataResponse> testaAddToCart(
+      {String? id, String? quantity, List<KeyValueData>? metaData}) async {
+    if (getx.Get.find<InternetConnectivityController>()
+        .haveInternetConnection
+        .value) {
+      try {
+        final query = KeyRequestData(
+          consumerSecret: ApiKeys.addToCartConsumerSecret,
+        ).toJson();
+
+        final data =
+            AddToCartReqData(id: id, quantity: quantity, metaData: metaData)
                 .toJson();
         final dio.Dio dioo = await _getDio();
         final dio.Response<dynamic> response = await dioo

@@ -26,6 +26,7 @@ class SharedPreferencesHelper {
     bool rememberMe = await getBool(SharedPreferenceKeys.rememberMe);
     String userName = await getString(SharedPreferenceKeys.username) ?? "";
     String password = await getString(SharedPreferenceKeys.password) ?? "";
+    String profilePic = await getString(SharedPreferenceKeys.profilePic) ?? "";
 
     if (await _preferences.clear() == false) {
       return false;
@@ -35,6 +36,7 @@ class SharedPreferencesHelper {
     setValue(SharedPreferenceKeys.rememberMe, rememberMe);
     setValue(SharedPreferenceKeys.username, userName);
     setValue(SharedPreferenceKeys.password, password);
+    setValue(SharedPreferenceKeys.profilePic, profilePic);
 
     return true;
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/base/product_item/product_item.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
 
 class BaseController extends GetxController {
@@ -49,5 +51,14 @@ class BaseController extends GetxController {
     }
 
     isPasswordVisible.value = !isPasswordVisible.value;
+  }
+
+  Future<void> onProductVariationClick(
+    ProductItem item,
+    ProductVariation variation,
+  ) async {
+    item.productVariationType.value = variation;
+    item.cartBtnType.value = CartBtnType.addToCart;
+    item.quantity = 0;
   }
 }

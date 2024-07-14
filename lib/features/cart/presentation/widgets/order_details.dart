@@ -7,6 +7,8 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/data/models/cart_data/totals.dart';
 
+// 7073389833
+
 class OrderDetails extends StatelessWidget {
   final Totals totals;
   final int totalItems;

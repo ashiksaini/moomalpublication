@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -8,6 +9,7 @@ import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
 import 'package:moomalpublication/core/utils/toast.dart';
+import 'package:moomalpublication/features/cart/controller/cart_controller.dart';
 import 'package:moomalpublication/features/cart/data/services/cart_services.dart';
 import 'package:moomalpublication/features/home/data/constants/drawer_item_type.dart';
 import 'package:moomalpublication/features/home/data/constants/drop_down_item_type.dart';
@@ -51,13 +53,13 @@ class HomeController extends BaseController {
     _getUserInfo();
 
     _initDrawerItemList();
-    _initExamsList();
-    _initBookTypeList();
-    _initLanguagesList();
+    // _initExamsList();
+    // _initBookTypeList();
+    // _initLanguagesList();
 
-    _getExploreBooks();
-    _getNewArrivalBooks();
-    _getBestSellerBooks();
+    // _getExploreBooks();
+    // _getNewArrivalBooks();
+    // _getBestSellerBooks();
   }
 
   Future<void> _getUserInfo() async {
@@ -85,6 +87,16 @@ class HomeController extends BaseController {
       title: "orders".tr,
       drawerItemType: DrawerItemType.orders,
     );
+    final syllabus = DrawerItem(
+      icon: AppAssets.icBook,
+      title: "syllabus".tr,
+      drawerItemType: DrawerItemType.syllabus,
+    );
+    final videos = DrawerItem(
+      icon: AppAssets.icVideos,
+      title: "videos".tr,
+      drawerItemType: DrawerItemType.videos,
+    );
     final eventAndPressReleaseItem = DrawerItem(
       icon: AppAssets.icEventAndPressRelease,
       title: "event_and_press_release".tr,
@@ -104,6 +116,11 @@ class HomeController extends BaseController {
       icon: AppAssets.icContactUs,
       title: "contact_us".tr,
       drawerItemType: DrawerItemType.contactUs,
+    );
+    final followUs = DrawerItem(
+      icon: AppAssets.icContactUs,
+      title: "follow_us".tr,
+      drawerItemType: DrawerItemType.followUs,
     );
     final settingItem = DrawerItem(
       icon: AppAssets.icSettings,
@@ -129,10 +146,13 @@ class HomeController extends BaseController {
       // downloadItem,
       addressItem,
       orderItem,
+      syllabus,
+      videos,
       eventAndPressReleaseItem,
       testimonialItem,
       // quizItem,
       contactUsItem,
+      followUs,
       settingItem,
       // onlineTestSeriesItem,
       overallResultItem,
@@ -227,7 +247,7 @@ class HomeController extends BaseController {
         {
           if (item.isBookAvailable || item.isEbookAvailable) {
             final addToCartResponse = await CartServices.addToCart(
-              id: item.id.toString(),
+              id: _getVariationId(item, item.productVariationType.value),
               quantity: item.quantity.toString(),
               variations: [
                 VariationRequestData(
@@ -248,9 +268,11 @@ class HomeController extends BaseController {
                 textColor: AppColors.white,
               );
               item.cartBtnType.value = CartBtnType.goToCart;
+              CartController cartController = Get.find<CartController>();
+              cartController.onRefresh();
             }
           } else {
-            showToast("this_product_is_out_of_stock".tr);
+            showErrorToast("this_product_is_out_of_stock".tr);
           }
         }
         break;
@@ -263,21 +285,17 @@ class HomeController extends BaseController {
 
   String _getVariationValue(ProductItem item, ProductVariation value) {
     if (value == ProductVariation.ebook) {
-      for (var element in item.variations!) {
-        if (element.attributes?.attributePurchase
-                ?.toLowerCase()
-                .compareTo("ebook") ==
+      for (ProductVariations element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
             0) {
-          return element.attributes!.attributePurchase!;
+          return element.attributes![0].option!;
         }
       }
     } else {
-      for (var element in item.variations!) {
-        if (element.attributes?.attributePurchase
-                ?.toLowerCase()
-                .compareTo("book") ==
+      for (ProductVariations element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("book") ==
             0) {
-          return element.attributes!.attributePurchase!;
+          return element.attributes![0].option!;
         }
       }
     }
@@ -285,11 +303,24 @@ class HomeController extends BaseController {
     return "";
   }
 
-  Future<void> onProductVariationClick(
-    ProductItem item,
-    ProductVariation variation,
-  ) async {
-    item.productVariationType.value = variation;
+  String _getVariationId(ProductItem item, ProductVariation value) {
+    if (value == ProductVariation.ebook) {
+      for (ProductVariations element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
+            0) {
+          return element.id!.toString();
+        }
+      }
+    } else {
+      for (ProductVariations element in item.productVariations!) {
+        if (element.attributes?[0].option?.toLowerCase().compareTo("book") ==
+            0) {
+          return element.id.toString();
+        }
+      }
+    }
+
+    return "";
   }
 
   void onDrawerItemClick(DrawerItemType drawerItemType) {
@@ -332,6 +363,29 @@ class HomeController extends BaseController {
           AppRouting.offAllNamed(NameRoutes.splashScreen);
         }
 
+        break;
+      case DrawerItemType.syllabus:
+        {
+          AppRouting.toNamed(
+            NameRoutes.latestNewsScreen,
+            argument: SharedData(
+              type: Type.syllabus,
+            ),
+          );
+        }
+        break;
+      case DrawerItemType.videos:
+        {
+          AppRouting.toNamed(
+            NameRoutes.latestNewsScreen,
+            argument: SharedData(
+              type: Type.video,
+            ),
+          );
+        }
+        break;
+      case DrawerItemType.followUs:
+        AppRouting.toNamed(NameRoutes.followUs);
         break;
     }
   }

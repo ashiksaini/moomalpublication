@@ -40,7 +40,7 @@ final Map<String, String> enUS = {
   "email_should_not_be_empty": "E-mail should not be empty",
   "privacy_policy_desc":
       "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our",
-  "privacy_policy": " privacy policy.",
+  "privacy_policy": " privacy policy",
 
   // Forget password //////////////////////////////////////////////////////////
   "reset_password": "Reset Password",
@@ -78,8 +78,8 @@ final Map<String, String> enUS = {
   "apply_filter": "Apply Filter",
   "select_category": "Select Category",
   "latest_news": "Latest\nNews",
-  "ebook_purchased": "E-Book\nPurchased",
-  "book_purchased": "Book\nPurchased",
+  "ebook_purchased": "E-Book\nPurchase",
+  "book_purchased": "Book\nPurchase",
   "daily_quiz": "Daily\nQuiz",
   "subscribe_now": "Subscribe\nNow",
 
@@ -110,6 +110,8 @@ final Map<String, String> enUS = {
   "not_available": "Not Available",
   "ebook_quantity_cannot_be_more_than_one":
       "E Book quantity cannot be more than 1",
+  "test_quantity_cannot_be_more_than_one":
+      "Test quantity cannot be more than 1",
 
   // Drawer ///////////////////////////////////////////////////////////////////
   "downloads": "Downloads",
@@ -119,6 +121,7 @@ final Map<String, String> enUS = {
   "testimonial": "Testimonial",
   "quiz": "Quiz",
   "contact_us": "Contact Us",
+  "follow_us": "Follow Us",
   "setting": "Setting",
   "online_test_series": "Online Test Series",
   "overall_result": "Overall Result",
@@ -187,9 +190,9 @@ final Map<String, String> enUS = {
   "my_cart": "My Cart",
   "quantity_txt": "Quantity :",
   "order_details": "Order Details",
-  "shipping_details":"Shipping Details",
-  "product_details":"Product Details",
-  "cancel_request":"Cancel Request",
+  "shipping_details": "Shipping Details",
+  "product_details": "Product Details",
+  "cancel_request": "Cancel Request",
   "items": "items",
   "product_total": "Product Total",
   "shipping_charges": "Shipping Charges",
@@ -225,6 +228,7 @@ final Map<String, String> enUS = {
   "my_profile": "My Profile",
   "user_name": "User Name",
   "results": "Results",
+  "result": "Result",
   "help_center": "Help Center",
 
   // Write Review ///////////////////////////////////////////////////////////
@@ -303,6 +307,7 @@ final Map<String, String> enUS = {
   'please_fill_all_required_fields': "please fill all required filed",
   'please_enter_a_valid_number': "please enter a valid number",
   "update": "Update",
+  "same_as_billing_address": "Same as Billing Address",
 
   // Download
   "my_downloads": "My Downloads",
@@ -321,8 +326,10 @@ final Map<String, String> enUS = {
   "name": "Name",
   "date_paid": "Date Paid",
   "price_no": "Price",
-  "view":"view",
-  "expire":"Expire",
+  "view": "View",
+  "expire": "Expire",
+  "ebook_purchase": "Ebook\nPurchase",
+  "book_purchase": "Book\nPurchase",
 
   // Online Test Series and Overall Result
   "score": "Score",
@@ -335,7 +342,6 @@ final Map<String, String> enUS = {
   "order_id": "Order ID",
   "purchased_on": "Purchased On",
   "no_test_result_found": "No Test Result Found",
-
 
   // Quiz
   "admin": "Admin",
@@ -352,6 +358,8 @@ final Map<String, String> enUS = {
 
   // Latest News
   "latest_news1": "Latest News",
+  "no_latest_news_available": "No Latest News Available",
+  "watch": "Watch",
 
   // Thank you page
   "purchase": "Purchase",
@@ -366,6 +374,34 @@ final Map<String, String> enUS = {
   "email": "Email",
   "price_details": "Price Details",
   "item": "item",
-  "ebook_order":"Ebook Order",
-  "order_again":"Order Again",
+  "ebook_order": "Ebook Order",
+  "order_again": "Order Again",
+  "online": "Online",
+  "go_to_orders": "Go To Orders",
+  "out_of_stock": "Out Of Stock",
+  "please_mark_atleast_one_question": "Please mark atleast one Question",
+  "proceed_to_checkout": "Proceed to Checkout",
+  "price_1": "Price",
+  "total_price": "Total Price",
+  "times_up": "Times Up !",
+
+  //New test
+  "time_left": "Time Left",
+  "question_type_multiple_choice_questions": "Multiple Choice Questions",
+  "question_no": "Question No ",
+  "previous": "Previous",
+  "save&Next": "Save & Next",
+  "test_submitted_successfully": "Test Submitted\n Successfully",
+  "test_completed_please_submit": "Test Completed Please Submit",
+  "test_summary": "Test Summary",
+  "your_rank": "Your Rank",
+  "your_marks": "Your Marks",
+  "no_question_answer_available": "No Questions and Answer available",
+  "buying_coming_soon": "Buying Test Coming Soon",
+  "syllabus": "Syllabus",
+  "videos": "Videos",
+  "some_error_occured_while_downloading_please_try_again":
+      "Downloading Failed! Please try again",
+  "downloading_complete": "Downloading Complete",
+  "downloading": "Downloading",
 };

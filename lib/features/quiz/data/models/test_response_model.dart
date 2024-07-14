@@ -22,8 +22,5 @@ class TestQuestionsResponseModel {
             ? []
             : List<QuestionsAndAnswer>.from(json["questions_and_answers"]!
                 .map((x) => QuestionsAndAnswer.fromJson(x))),
-        // questionsAndAnswers: (json["questions_and_answers"] as List<dynamic>?)
-        //     ?.map((e) => QuestionsAndAnswer.fromJson(e as Map<String, dynamic>))
-        //     .toList(),
       );
 }

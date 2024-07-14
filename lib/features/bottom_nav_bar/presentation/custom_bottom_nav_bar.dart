@@ -8,15 +8,18 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/bottom_nav_bar/data/models/nav_item.dart';
+import 'package:badges/badges.dart' as badges;
 
 class CustomBottomNavBar extends StatefulWidget {
   final int? selectedIndex;
   final ValueChanged<int>? onTabChanged;
+  final int cartItemCount;
 
   const CustomBottomNavBar({
     super.key,
     this.selectedIndex,
     this.onTabChanged,
+    this.cartItemCount = 0,
   });
 
   @override
@@ -31,6 +34,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   void initState() {
     super.initState();
+
     _generateNavItems();
   }
 
@@ -83,12 +87,29 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             color: Colors.white,
             child: Column(
               children: [
-                SvgPicture.asset(
-                  navItem.icon,
-                  colorFilter: widget.selectedIndex == index
-                      ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
-                      : ColorFilter.mode(unselectedColor, BlendMode.srcIn),
-                ),
+                if (index == 3) ...{
+                  badges.Badge(
+                    badgeStyle:
+                        const badges.BadgeStyle(badgeColor: AppColors.orange),
+                    badgeContent: CustomText(
+                        text: widget.cartItemCount.toString(),
+                        textStyle: CustomTextStyle.textStyle15Bold(context,
+                            color: AppColors.white)),
+                    child: SvgPicture.asset(
+                      navItem.icon,
+                      colorFilter: widget.selectedIndex == index
+                          ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
+                          : ColorFilter.mode(unselectedColor, BlendMode.srcIn),
+                    ),
+                  )
+                } else ...{
+                  SvgPicture.asset(
+                    navItem.icon,
+                    colorFilter: widget.selectedIndex == index
+                        ? ColorFilter.mode(selectedColor, BlendMode.srcIn)
+                        : ColorFilter.mode(unselectedColor, BlendMode.srcIn),
+                  ),
+                },
                 const VerticalGap(size: 2),
                 CustomText(
                   text: navItem.label,

@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
@@ -47,7 +48,8 @@ class PriceQuantity extends StatelessWidget {
         boxShadow: [primaryBoxShadow()],
       ),
       child: CustomText(
-        text: "${"price".tr}${_bookPrice()}",
+        text:
+            "${"price".tr}${_isbookOnSale() ? _bookSalePrice() : _bookPrice()}",
         textStyle: CustomTextStyle.textStyle25Bold(
           context,
           color: AppColors.black,
@@ -107,7 +109,7 @@ class PriceQuantity extends StatelessWidget {
               if (_productDetailController
                       .productDetailData.value!.productVariationType.value ==
                   ProductVariation.ebook) {
-                showToast("ebook_quantity_cannot_be_more_than_one".tr);
+                showErrorToast("ebook_quantity_cannot_be_more_than_one".tr);
               } else {
                 _productDetailController.selectedQuantity.value = item;
               }
@@ -170,31 +172,80 @@ class PriceQuantity extends StatelessWidget {
   }
 
   String _bookPrice() {
-    for (var variation
-        in _productDetailController.productDetailData.value?.variations ?? []) {
+    for (ProductVariations variation in _productDetailController
+            .productDetailData.value?.productVariations ??
+        []) {
       if (_productDetailController
                   .productDetailData.value?.productVariationType.value ==
               ProductVariation.ebook &&
-          variation.attributes?.attributePurchase
-                  ?.toLowerCase()
-                  .compareTo("ebook") ==
+          variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
-        return variation.price ?? "";
+        return variation.regularPrice.toString();
       }
 
       if (_productDetailController
                   .productDetailData.value?.productVariationType.value ==
               ProductVariation.book &&
-          variation.attributes?.attributePurchase
-                  ?.toLowerCase()
-                  .compareTo("book") ==
+          variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
               0 &&
           variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
-        return variation.price ?? "";
+        return variation.regularPrice.toString();
       }
     }
 
     return _productDetailController.productDetailData.value?.price ?? "";
+  }
+
+  String _bookSalePrice() {
+    for (ProductVariations variation in _productDetailController
+            .productDetailData.value?.productVariations ??
+        []) {
+      if (_productDetailController
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.ebook &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.salePrice.toString();
+      }
+
+      if (_productDetailController
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.book &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.salePrice.toString();
+      }
+    }
+
+    return _productDetailController.productDetailData.value?.salePrice ?? "";
+  }
+
+  bool _isbookOnSale() {
+    for (ProductVariations variation in _productDetailController
+            .productDetailData.value?.productVariations ??
+        []) {
+      if (_productDetailController
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.ebook &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("ebook") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.onSale ?? false;
+      }
+
+      if (_productDetailController
+                  .productDetailData.value?.productVariationType.value ==
+              ProductVariation.book &&
+          variation.attributes?[0].option?.toLowerCase().compareTo("book") ==
+              0 &&
+          variation.stockStatus?.toLowerCase().compareTo("instock") == 0) {
+        return variation.onSale ?? false;
+      }
+    }
+
+    return _productDetailController.productDetailData.value?.onSale ?? false;
   }
 }

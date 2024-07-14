@@ -12,27 +12,34 @@ import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.dart';
 
 class CurrentAffairQuizCard extends StatelessWidget {
-  CurrentAffairQuizCard({super.key, required this.index});
   final int index;
+  final QuizType quizType;
   final QuizController _quizController = Get.find<QuizController>();
+
+  CurrentAffairQuizCard(
+      {super.key, required this.index, required this.quizType});
 
   @override
   Widget build(BuildContext context) {
     String date = DateTimeUtils.formatDate(
-      date: _quizController.quizList[index].lastActivity!,
+      date: quizType == QuizType.currentAffairQuiz
+          ? _quizController.currentAffairsquizList[index].lastActivity!
+          : _quizController.economicQuizList[index].lastActivity!,
       formatType: AppConstants.dateFormatter,
     );
 
     return GestureDetector(
       onTap: () {
-        _quizController.navigateQuizDetailScreen(index: index);
+        _quizController.navigateQuizDetailScreen(
+            index: index, quizType: quizType);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: 16.v,
+          vertical: 8.v,
           horizontal: 8.h,
         ),
         child: ShadowContainer(
@@ -46,7 +53,8 @@ class CurrentAffairQuizCard extends StatelessWidget {
                 CardImage(
                   image: "",
                   borderColor: AppColors.blue,
-                  height: 130.v,
+                  height: 150.v,
+                  width: 120.h,
                 ),
                 HorizontalGap(size: 12.h),
                 Flexible(
@@ -57,7 +65,11 @@ class CurrentAffairQuizCard extends StatelessWidget {
                       children: [
                         CustomText(
                           textAlign: TextAlign.left,
-                          text: _quizController.quizList[index].quizName,
+                          text: quizType == QuizType.currentAffairQuiz
+                              ? _quizController
+                                  .currentAffairsquizList[index].quizName
+                              : _quizController
+                                  .economicQuizList[index].quizName,
                           maxLines: 4,
                           textStyle: CustomTextStyle.textStyle20Bold(
                             context,
@@ -86,7 +98,7 @@ class CurrentAffairQuizCard extends StatelessWidget {
                         VerticalGap(size: 20.h),
                         CustomText(
                           text:
-                              "${'quiz_views'.tr}: ${_quizController.quizList[index].quizViews}",
+                              "${'quiz_views'.tr}: ${quizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizViews : _quizController.economicQuizList[index].quizViews}",
                           textStyle: CustomTextStyle.textStyle15Bold(
                             context,
                             color: AppColors.black,
@@ -95,7 +107,7 @@ class CurrentAffairQuizCard extends StatelessWidget {
                         ),
                         CustomText(
                           text:
-                              "${'quiz_taken'.tr}: ${_quizController.quizList[index].quizTaken}",
+                              "${'quiz_taken'.tr}: ${quizType == QuizType.currentAffairQuiz ? _quizController.currentAffairsquizList[index].quizTaken : _quizController.economicQuizList[index].quizTaken}",
                           textStyle: CustomTextStyle.textStyle15Bold(
                             context,
                             color: AppColors.black,

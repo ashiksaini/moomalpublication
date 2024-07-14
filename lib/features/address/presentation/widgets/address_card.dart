@@ -12,6 +12,8 @@ class AddressCard extends StatelessWidget {
   final String addressHeading;
   final dynamic address;
   final Function? onTap;
+  final Function? onSameAsBillingAddressClick;
+  final bool isShippingAddress;
 
   late final BillingAddress billingAddress;
   late final ShippingAddress shippingAddress;
@@ -22,6 +24,8 @@ class AddressCard extends StatelessWidget {
     required this.address,
     required this.addressHeading,
     this.onTap,
+    this.onSameAsBillingAddressClick,
+    this.isShippingAddress = false,
   }) {
     if (address is BillingAddress) {
       billingAddress = address;
@@ -61,6 +65,34 @@ class AddressCard extends StatelessWidget {
             decoration: TextDecoration.underline,
           ),
         ),
+        // if (isShippingAddress)
+        //   Row(
+        //     children: [
+        //       SizedBox(
+        //         height: 24.v,
+        //         width: 24.h,
+        //         child: Checkbox(
+        //           side: const BorderSide(color: AppColors.black),
+        //           checkColor: AppColors.white,
+        //           activeColor: AppColors.orange,
+        //           value: true,
+        //           onChanged: (value) {
+        //             if (onSameAsBillingAddressClick != null) {
+        //               onSameAsBillingAddressClick!();
+        //             }
+        //           },
+        //         ),
+        //       ),
+        //       const HorizontalGap(size: 4),
+        //       CustomText(
+        //         text: "same_as_billing_address".tr,
+        //         textStyle: CustomTextStyle.textStyle18BoldCaladea(
+        //           context,
+        //           color: AppColors.black,
+        //         ),
+        //       ),
+        //     ],
+        //   ),
         const VerticalGap(size: 10),
         CustomText(
           textAlign: TextAlign.start,

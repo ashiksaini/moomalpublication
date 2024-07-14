@@ -25,7 +25,7 @@ class DownloadController extends BaseController {
       downloadList.clear();
       downloadList.addAll(downloadSeriesResponse.value.data!);
     } else {
-      showToast(AppConstants.somethingWentWrong);
+      showErrorToast(AppConstants.somethingWentWrong);
     }
   }
 }

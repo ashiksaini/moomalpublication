@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
 import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
@@ -6,13 +7,25 @@ import 'package:moomalpublication/services/storage/shared_preferences_keys.dart'
 class ProfileController extends BaseController {
   RxString userName = RxString("");
   RxString userEmail = RxString("");
-  RxString userAvatar = RxString("");
+  Rx<String?> userAvatar = Rx(null);
+  final ImagePicker _picker = ImagePicker();
+  Rx<XFile?> image = Rx(null);
 
   @override
   void onInit() {
     super.onInit();
 
+    _getUserProfile();
     _getUserInfo();
+  }
+
+  Future<void> _getUserProfile() async {
+    String? path = await SharedPreferencesHelper.getString(
+        SharedPreferenceKeys.profilePic);
+
+    if (path != null) {
+      image.value = XFile(path);
+    }
   }
 
   Future<void> _getUserInfo() async {
@@ -22,8 +35,18 @@ class ProfileController extends BaseController {
     userEmail.value =
         await SharedPreferencesHelper.getString(SharedPreferenceKeys.email) ??
             "";
-    userAvatar.value = await SharedPreferencesHelper.getString(
-            SharedPreferenceKeys.avatarUrl) ??
-        "";
+
+    userAvatar.value =
+        await SharedPreferencesHelper.getString(SharedPreferenceKeys.avatarUrl);
+  }
+
+  Future getImageFromGallery() async {
+    var res = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (res != null) {
+      image.value = res;
+      SharedPreferencesHelper.setValue(
+          SharedPreferenceKeys.profilePic, res.path);
+    }
   }
 }

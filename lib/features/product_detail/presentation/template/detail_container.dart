@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/bottom_sheets/review_bottom_sheet.dart';
@@ -16,7 +17,6 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/product_detail/controller/product_detail_controller.dart';
-import 'package:moomalpublication/features/product_detail/presentation/template/book_detail_tabbar.dart';
 import 'package:moomalpublication/features/product_detail/presentation/template/similar_product.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/book_type_grid.dart';
 import 'package:moomalpublication/features/product_detail/presentation/widgets/price_quantity.dart';
@@ -78,11 +78,41 @@ class DetailContainer extends StatelessWidget {
             const VerticalGap(size: 8),
 
             // Book Details
-            BookDetailTabBar(
-              description:
-                  _productDetailController.productDetailData.value?.description,
-              information: "not_available".tr,
+            // BookDetailTabBar(
+            //   description:
+            //       _productDetailController.productDetailData.value?.description,
+            //   information: "not_available".tr,
+            // ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Title
+                  CustomText(
+                    text: "description".tr,
+                    textStyle: CustomTextStyle.textStyle25Bold(
+                      context,
+                      color: AppColors.black,
+                    ),
+                  ),
+                  const VerticalGap(size: 4),
+
+                  Html(
+                      data: _productDetailController
+                          .productDetailData.value?.description),
+                  //   CustomText(
+                  //   text: ,
+                  //   textStyle: CustomTextStyle.textStyle20Bold(
+                  //     context,
+                  //     color: AppColors.black.withOpacity(0.7),
+                  //   ),
+                  //     textAlign: TextAlign.start,
+                  // )
+                ],
+              ),
             ),
+
             const VerticalGap(size: 30),
 
             // Book Overview
@@ -107,7 +137,8 @@ class DetailContainer extends StatelessWidget {
             ),
             const VerticalGap(size: 30),
 
-            SimilarProduct(),
+            if (_productDetailController.similarProducts.isNotEmpty)
+              SimilarProduct(),
           ],
         ),
       ),
@@ -132,26 +163,31 @@ class DetailContainer extends StatelessWidget {
           // Book Image
           ClipRRect(
             borderRadius: BorderRadius.circular(15.r),
-            child: _productDetailController
-                    .productDetailData.value!.featuredImage!.url!.isNotEmpty
+            child: _productDetailController.productDetailData.value!
+                        .productImages?[0].src?.isNotEmpty ==
+                    true
                 ? CachedNetworkImage(
                     imageUrl: _productDetailController
-                        .productDetailData.value!.featuredImage!.url!,
-                    height: 300.adaptSize,
-                    width: 220.adaptSize,
-                    fit: BoxFit.contain,
+                            .productDetailData.value!.productImages?[0].src ??
+                        "",
+                    height: 340.adaptSize,
+                    width: 260.adaptSize,
+                    fit: BoxFit.cover,
                     placeholder: (context, url) {
                       return Center(child: customProgressIndicator());
                     },
                   )
                 : Container(
-                    width: SizeUtils.width,
-                    color: AppColors.greyLight,
+                    height: 300.adaptSize,
+                    width: 220.adaptSize,
+                    color: Colors.grey.shade100,
                     child: Center(
-                      child: CustomText(
-                        text: "no_image_preview_available".tr,
-                        textStyle: CustomTextStyle.textStyle10Bold(context,
-                            color: AppColors.black),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          AppAssets.icLogo,
+                          height: 100.v,
+                          width: 100.h,
+                        ),
                       ),
                     ),
                   ),
@@ -255,7 +291,7 @@ class DetailContainer extends StatelessWidget {
               color: AppColors.black,
             ),
           ),
-          const VerticalGap(size: 8),
+          const VerticalGap(size: 4),
 
           // Details
           _productDetailController.productReviews.isEmpty

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/constants/app_constants.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
@@ -9,6 +10,7 @@ import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/date_time_utils.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/thank_you_page/data/models/order_succes_response/order_succes_response.dart';
+import 'package:moomalpublication/routes/routing.dart';
 
 class BillTemplate extends StatelessWidget {
   const BillTemplate({super.key, required this.orderSuccessResponse});
@@ -25,9 +27,18 @@ class BillTemplate extends StatelessWidget {
           ),
           child: Container(
             width: SizeUtils.width,
-            height: SizeUtils.width / 2,
+            height: 250.v,
             color: AppColors.green_100,
             child: Column(children: [
+              GestureDetector(
+                onTap: () => AppRouting.navigateBack(),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: SvgPicture.asset(AppAssets.icBackArrow),
+                    )),
+              ),
               const VerticalGap(size: 20),
               SvgPicture.asset(
                 AppAssets.icCheck,
@@ -37,7 +48,7 @@ class BillTemplate extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 140.h),
                 child: CustomText(
-                  text: 'thank_you_for_your_order',
+                  text: 'thank_you_for_your_order'.tr,
                   textStyle: CustomTextStyle.textStyle24Bold(context,
                       color: AppColors.white),
                 ),
@@ -51,7 +62,7 @@ class BillTemplate extends StatelessWidget {
           child: Column(
             children: [
               spaceTextRegular(
-                  leftText: 'order_number',
+                  leftText: 'order_number'.tr,
                   rightText: orderSuccessResponse.orderNumber ?? '',
                   context: context),
               const VerticalGap(size: 2),
@@ -61,18 +72,18 @@ class BillTemplate extends StatelessWidget {
               ),
               const VerticalGap(size: 10),
               spaceTextRegular(
-                  leftText: 'date ',
+                  leftText: 'date'.tr,
                   rightText: DateTimeUtils.formatDate(
                     date: orderSuccessResponse.date ?? DateTime.now(),
                     formatType: AppConstants.dateFormatter,
                   ),
                   context: context),
               spaceTextRegular(
-                  leftText: 'email',
+                  leftText: 'email'.tr,
                   rightText: orderSuccessResponse.email ?? '',
                   context: context),
               spaceTextRegular(
-                  leftText: 'payment_method',
+                  leftText: 'payment_method'.tr,
                   rightText: orderSuccessResponse.paymentMethod ?? '',
                   context: context),
               const VerticalGap(size: 4),
@@ -81,7 +92,7 @@ class BillTemplate extends StatelessWidget {
                 color: AppColors.grey,
               ),
               spaceTextRegular(
-                  leftText: 'total_amount',
+                  leftText: 'total_amount'.tr,
                   rightText: '₹ ${orderSuccessResponse.total ?? ''}',
                   context: context),
             ],

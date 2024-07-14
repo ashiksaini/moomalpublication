@@ -7,19 +7,23 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/date_time_utils.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
-import 'package:moomalpublication/features/quiz/data/models/timer_model.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/questions_list_card.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/test_submit_button.dart';
 
 class QuizTestScreen extends StatelessWidget {
   QuizTestScreen({super.key});
+
+  final args = Get.arguments;
   final QuizController _quizController = Get.put(QuizController());
-  final TimerModel timerModel = TimerModel();
 
   @override
   Widget build(BuildContext context) {
+    int index = args[0]['index'];
+
     return Scaffold(
       backgroundColor: AppColors.black,
       body: SafeArea(
@@ -28,7 +32,11 @@ class QuizTestScreen extends StatelessWidget {
           child: Column(
             children: [
               CustomAppbar(
-                title: "Current Affair Quiz June 2021",
+                title: (_quizController.selectedQuizType ==
+                            QuizType.currentAffairQuiz
+                        ? _quizController.currentAffairsquizList[index].quizName
+                        : _quizController.economicQuizList[index].quizName) ??
+                    "",
                 maxLine: 1,
                 prefixIcon: AppAssets.icBackArrow,
                 onPrefixIconClick: () => _quizController.onBackPress(),
@@ -53,7 +61,7 @@ class QuizTestScreen extends StatelessWidget {
                                     child: _quizController.submitButton.isTrue
                                         ? CustomText(
                                             text:
-                                                '${'timer'.tr} - ${timerModel.formattedTime(_quizController.counter.value)}',
+                                                '${'timer'.tr} - ${DateTimeUtils.getFormattedTime(_quizController.counter.value)}',
                                             textStyle:
                                                 CustomTextStyle.textStyle20Bold(
                                                     context,

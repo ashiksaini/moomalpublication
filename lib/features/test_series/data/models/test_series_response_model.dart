@@ -1,3 +1,5 @@
+import 'package:moomalpublication/features/test_series/data/constants/enums.dart';
+
 class TestSeriesResponseModel {
   final int? id;
   final String? postTitle;
@@ -5,10 +7,11 @@ class TestSeriesResponseModel {
   final String? maximumTime;
   final String? totalMarks;
   final List<String>? testTypeTerms;
-  final int? questionCount;
+  int? questionCount;
   final String? permalink;
   final String? price;
   final String? freePaid;
+  TestAvailbilityType? testAvailbilityType;
 
   TestSeriesResponseModel({
     this.id,
@@ -21,6 +24,7 @@ class TestSeriesResponseModel {
     this.permalink,
     this.price,
     this.freePaid,
+    this.testAvailbilityType,
   });
 
   factory TestSeriesResponseModel.fromJson(Map<String, dynamic> json) =>

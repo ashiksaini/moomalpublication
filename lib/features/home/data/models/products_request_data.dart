@@ -25,7 +25,7 @@ class ProductRequestData {
     final Map<String, dynamic> data = {};
 
     if (category != null) data.putIfAbsent('category', () => category);
-    if (orderBy != null) data.putIfAbsent('orderBy', () => orderBy);
+    if (orderBy != null) data.putIfAbsent('orderby', () => orderBy);
     if (order != null) data.putIfAbsent('order', () => order);
     if (perPage != null) data.putIfAbsent('per_page', () => perPage);
     if (page != null) data.putIfAbsent('page', () => page);

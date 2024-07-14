@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
@@ -43,12 +44,12 @@ class OrderDetailList extends StatelessWidget {
                 children: [
                   CustomText(
                     textAlign: TextAlign.start,
-                    text: 'purchase.tr : ${e.variantName}',
+                    text: '${'purchase'.tr} : ${e.variantName}',
                     textStyle: CustomTextStyle.textStyle18Regular(context,
                         color: AppColors.black),
                   ),
                   CustomText(
-                    text: 'product_id : ${e.variantId}',
+                    text: '${'product_id'.tr} : ${e.variantId}',
                     textStyle: CustomTextStyle.textStyle18Regular(context,
                         color: AppColors.black),
                   ),

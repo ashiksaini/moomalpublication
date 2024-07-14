@@ -1,36 +1,31 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 
 class ProfilePicture extends StatelessWidget {
-  final String avatarUrl;
+  final String? avatarUrl;
+  final String? filePath;
 
-  const ProfilePicture({super.key, required this.avatarUrl});
+  const ProfilePicture({super.key, this.avatarUrl, this.filePath});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SvgPicture.asset(AppAssets.icUserPic),
-        Positioned(
-          left: 0.h,
-          bottom: 0.v,
-          right: 0.h,
-          top: 0.v,
-          child: Padding(
-            padding: EdgeInsets.all(30.r),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(200.r),
-              child: CachedNetworkImage(
-                imageUrl: avatarUrl,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-      ],
+    return Container(
+      height: 150.v,
+      width: 150.h,
+      padding: EdgeInsets.all(2.adaptSize),
+      decoration: BoxDecoration(
+          border: Border.all(color: AppColors.orange),
+          shape: BoxShape.circle,
+          color: AppColors.white),
+      child: CircleAvatar(
+        backgroundColor: AppColors.white,
+        backgroundImage: filePath != null
+            ? FileImage(File(filePath!)) as ImageProvider
+            : NetworkImage(avatarUrl!),
+      ),
     );
   }
 }

@@ -8,6 +8,7 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/quiz/controller/quiz_controller.dart';
+import 'package:moomalpublication/features/quiz/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/quiz/presentation/template/current_affair_quiz_card.dart';
 import 'package:moomalpublication/routes/routing.dart';
 
@@ -84,15 +85,21 @@ class _QuizScreenState extends State<QuizScreen>
                           controller: _tabController,
                           children: [
                             ListView.builder(
-                              itemCount: _quizController.quizList.length,
+                              itemCount:
+                                  _quizController.currentAffairsquizList.length,
                               itemBuilder: (BuildContext context, int index) {
-                                return CurrentAffairQuizCard(index: index);
+                                return CurrentAffairQuizCard(
+                                    index: index,
+                                    quizType: QuizType.currentAffairQuiz);
                               },
                             ),
                             ListView.builder(
-                              itemCount: _quizController.quizList.length,
+                              itemCount:
+                                  _quizController.economicQuizList.length,
                               itemBuilder: (BuildContext context, int index) {
-                                return CurrentAffairQuizCard(index: index);
+                                return CurrentAffairQuizCard(
+                                    index: index,
+                                    quizType: QuizType.economicsQuiz);
                               },
                             ),
                           ],

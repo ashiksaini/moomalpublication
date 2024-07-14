@@ -26,7 +26,7 @@ class NameCardField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 18.v),
+      padding: EdgeInsets.only(bottom: 15.v),
       child: ShadowContainer(
         borderRadius: 10.r,
         containerChild: customTextFormField(
@@ -38,6 +38,7 @@ class NameCardField extends StatelessWidget {
           label: label,
           isReadOnly: isReadOnly,
           isPasswordField: isPassword,
+          enableBorder: false,
           hintTextStyle: CustomTextStyle.textStyle22Bold(context),
         ),
       ),

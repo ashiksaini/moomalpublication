@@ -43,13 +43,14 @@ class CustomTextStyle {
   static textStyle20BoldCaladea(
     BuildContext context, {
     Color color = AppColors.grey,
+    TextDecoration decoration = TextDecoration.none,
   }) =>
       TextStyle(
-        fontSize: 20.fSize,
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.caladeaFont,
-        color: color,
-      );
+          fontSize: 20.fSize,
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.caladeaFont,
+          color: color,
+          decoration: decoration);
 
   static textStyle30BoldCaladea(BuildContext context,
           {Color color = AppColors.grey,
@@ -179,13 +180,16 @@ class CustomTextStyle {
   static textStyle16Bold(
     BuildContext context, {
     Color color = AppColors.grey,
+    TextDecoration? textDecoration,
+    Color textDecorationColor = AppColors.black,
   }) =>
       TextStyle(
-        fontSize: 16.fSize,
-        fontWeight: FontWeight.w700,
-        fontFamily: AppConstants.calibriFont,
-        color: color,
-      );
+          fontSize: 16.fSize,
+          fontWeight: FontWeight.w700,
+          fontFamily: AppConstants.calibriFont,
+          color: color,
+          decoration: textDecoration,
+          decorationColor: textDecorationColor);
 
   static textStyle18Bold(
     BuildContext context, {
@@ -222,6 +226,18 @@ class CustomTextStyle {
         decoration: decoration,
       );
 
+  static textStyle20StrongBold(BuildContext context,
+          {Color color = AppColors.grey,
+          TextDecoration decoration = TextDecoration.none,
+          Color decorationColor = AppColors.black}) =>
+      TextStyle(
+        fontSize: 20.fSize,
+        fontWeight: FontWeight.w900,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+        decorationColor: decorationColor,
+        decoration: decoration,
+      );
   static TextStyle textStyle20SemiBold(
     BuildContext context, {
     Color color = AppColors.grey,
@@ -354,6 +370,16 @@ class CustomTextStyle {
           color: color,
           decorationColor: decorationColor,
           decoration: decoration);
+  static TextStyle textStyle24Medium(
+    BuildContext context, {
+    Color color = AppColors.black,
+  }) =>
+      TextStyle(
+        fontSize: 24.fSize,
+        fontWeight: FontWeight.w600,
+        fontFamily: AppConstants.calibriFont,
+        color: color,
+      );
   static textStyle14Bold(
     BuildContext context, {
     Color color = AppColors.grey,

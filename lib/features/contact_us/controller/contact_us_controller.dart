@@ -1,6 +1,8 @@
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/contact_us/data/address_model.dart';
+import 'package:moomalpublication/features/contact_us/data/constants/emuns.dart';
 
 class ContactUsController extends BaseController {
   List<Address> address = [];
@@ -13,20 +15,48 @@ class ContactUsController extends BaseController {
 
   void generateAddressList() {
     address = [
+      Address(
+        iconName: AppAssets.icEmail,
+        addressHeader: 'EMAIL',
+        addressDescription:
+            '<strong><u> info@moomalpublication.com </u></strong>',
+        contactType: ContactType.email,
+      ),
+      Address(
+        iconName: AppAssets.icPhoneCall,
+        addressHeader: 'PHONE',
+        addressDescription:
+            '<strong><u> +91 70144 10554 </u> (For any Technical issue WhatsApp only)</strong>',
+        contactType: ContactType.phoneNumber,
+      ),
       // Address(
-      //     iconName: AppAssets.icLocation,
-      //     addressHeader: 'ADDRESS',
-      //     addressDescription:
-      //         '50, Agrasen Nagar, Near Mahesh Nagar Phatak, Jaipur, (Rajasthan) 302015'),
-      Address(
-          iconName: AppAssets.icEmail,
-          addressHeader: 'EMAIL',
-          addressDescription: 'info@moomalpublication.com'),
-      Address(
-          iconName: AppAssets.icPhoneCall,
-          addressHeader: 'PHONE',
-          addressDescription:
-              '+91 70144 10554 (For any Technical issue WhatsApp only)'),
+      //   iconName: AppAssets.icFacebook,
+      //   addressHeader: 'Facebook',
+      //   addressDescription:
+      //       '<strong><u> Moomal Publication Facebook Page</strong>',
+      //   contactType: ContactType.facebook,
+      // ),
+      // Address(
+      //   iconName: AppAssets.icYouTube,
+      //   addressHeader: 'YouTube',
+      //   addressDescription:
+      //       '<strong><u> Moomal Publication Youtube Channel</strong>',
+      //   contactType: ContactType.youtube,
+      // ),
     ];
+  }
+
+  void onContactClick(ContactType contactType) {
+    switch (contactType) {
+      case ContactType.email:
+        Utility.sendToGmail('info@moomalpublication.com');
+      case ContactType.phoneNumber:
+        Utility.sendToWhatsapp("+917014410554");
+      case ContactType.facebook:
+        Utility.launchurl("https://www.facebook.com/moomalpublication/");
+      case ContactType.youtube:
+        Utility.launchurl(
+            "https://www.youtube.com/channel/UCduYPnmD429wIzMFsiKUmLA");
+    }
   }
 }

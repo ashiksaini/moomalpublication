@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
-import 'package:moomalpublication/core/theme/box_shadows.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
@@ -49,10 +48,11 @@ class QuantityButton extends StatelessWidget {
     return GestureDetector(
       onTap: () => _cartController.onDeleteItem(cartItem),
       child: Container(
+        height: 30.v,
         decoration: BoxDecoration(
           color: AppColors.white,
           border: Border.all(color: AppColors.grey.withOpacity(0.5)),
-          boxShadow: [primaryBoxShadow()],
+          // boxShadow: [primaryBoxShadow()],
           borderRadius: BorderRadius.all(Radius.circular(5.h)),
         ),
         child: Padding(
@@ -60,11 +60,13 @@ class QuantityButton extends StatelessWidget {
             vertical: 2.h,
             horizontal: 8.h,
           ),
-          child: CustomText(
-            text: "delete".tr,
-            textStyle: CustomTextStyle.textStyle15Regular(
-              context,
-              color: AppColors.black,
+          child: Center(
+            child: CustomText(
+              text: "delete".tr,
+              textStyle: CustomTextStyle.textStyle15Medium(
+                context,
+                color: AppColors.black,
+              ),
             ),
           ),
         ),
@@ -75,13 +77,15 @@ class QuantityButton extends StatelessWidget {
   Widget _getIncDescView(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.r),
-          boxShadow: [primaryBoxShadow()]),
+        borderRadius: BorderRadius.circular(5.r),
+        // boxShadow: [primaryBoxShadow()]
+      ),
       child: Row(
         children: [
           GestureDetector(
             onTap: () => _cartController.onDesc(cartItem),
             child: Container(
+              height: 30.v,
               padding: EdgeInsets.all(2.h),
               decoration: BoxDecoration(
                 color: AppColors.greyLight,
@@ -91,10 +95,11 @@ class QuantityButton extends StatelessWidget {
                   bottomLeft: Radius.circular(5.r),
                 ),
               ),
-              child: const Icon(Icons.remove),
+              child: const Center(child: Icon(Icons.remove, size: 24.0,)),
             ),
           ),
           Container(
+            height: 30.v,
             padding: EdgeInsets.symmetric(horizontal: 10.h),
             decoration: BoxDecoration(
               color: AppColors.white,
@@ -113,7 +118,7 @@ class QuantityButton extends StatelessWidget {
           GestureDetector(
             onTap: () => _cartController.onInc(cartItem),
             child: Container(
-              padding: EdgeInsets.all(2.h),
+              height: 30.v,
               decoration: BoxDecoration(
                 color: AppColors.greyLight,
                 border: Border.all(color: AppColors.grey.withOpacity(0.5)),
@@ -122,7 +127,7 @@ class QuantityButton extends StatelessWidget {
                   bottomRight: Radius.circular(5.r),
                 ),
               ),
-              child: const Icon(Icons.add),
+              child: const Center(child: Icon(Icons.add, size: 24.0,)),
             ),
           ),
         ],
