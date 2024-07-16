@@ -53,9 +53,9 @@ class LatestNewsController extends BaseController {
 
   Map<String, String>? _getCategory() {
     return sharedData?.type == Type.syllabus
-        ? {"categories": "74"}
+        ? {"categories": "75"}
         : sharedData?.type == Type.video
-            ? {"categories": "75"}
+            ? {"categories": "74"}
             : {"categories": "73"};
   }
 }

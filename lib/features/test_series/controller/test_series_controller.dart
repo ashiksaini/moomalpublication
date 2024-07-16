@@ -176,7 +176,11 @@ class TestSeriesController extends BaseController {
       KeyValueData(
         key: "exam_id",
         value: entry?.id.toString(),
-      )
+        ),
+        KeyValueData(
+        key: "exam_price",
+        value: entry?.price.toString(),
+        )
     ]);
 
     if (cartDataResponse.value.data != null) {
