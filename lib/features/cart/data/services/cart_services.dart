@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart' as dio;
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/add_to_cart_request_data.dart';
@@ -45,7 +46,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        debugPrint(error.toString());
         return CartDataResponse();
       }
     } else {

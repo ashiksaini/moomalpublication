@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/components/molecules/custom_btn.dart';
 import 'package:moomalpublication/core/components/organisms/app_bar.dart';
 import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
+import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
@@ -120,8 +122,63 @@ class ProfileScreen extends StatelessWidget {
                   child: CustomBtn(
                     title: "logout".tr,
                     onTap: () {
-                      SharedPreferencesHelper.clearSharedPrefExcept();
-                      AppRouting.offAllNamed(NameRoutes.splashScreen);
+                      Get.defaultDialog(
+                        backgroundColor: AppColors.white,
+                        title: 'Are you sure?',
+                        middleText: 'You want to Logout from the Moomal App',
+                        middleTextStyle: CustomTextStyle.textStyle16MediumTrio(
+                            context,
+                            color: AppColors.black),
+                        titleStyle: CustomTextStyle.textStyle20BoldCaladea(
+                          context,
+                          color: AppColors.black,
+                        ),
+                        textConfirm: 'Logout',
+                        textCancel: 'Cancel',
+                        confirmTextColor: Colors.white,
+                        radius: 10,
+                        buttonColor: AppColors.orange,
+                        cancelTextColor: AppColors.orange,
+                        cancel: GestureDetector(
+                          onTap: () {
+                            AppRouting.navigateBack();
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 10.v),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.orange),
+                                borderRadius: BorderRadius.circular(5.r)),
+                            child: Center(
+                              child: CustomText(
+                                text: "Cancel",
+                                textStyle: CustomTextStyle.textStyle14Bold(
+                                    context,
+                                    color: AppColors.orange),
+                              ),
+                            ),
+                          ),
+                        ),
+                        confirm: GestureDetector(
+                          onTap: () {
+                            SharedPreferencesHelper.clearSharedPrefExcept();
+                            AppRouting.offAllNamed(NameRoutes.splashScreen);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 10.v),
+                            decoration: BoxDecoration(
+                                color: AppColors.orange,
+                                borderRadius: BorderRadius.circular(5.r)),
+                            child: Center(
+                              child: CustomText(
+                                text: "Logout",
+                                textStyle: CustomTextStyle.textStyle14Bold(
+                                    context,
+                                    color: AppColors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
                     },
                   ),
                 )

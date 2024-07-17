@@ -7,6 +7,7 @@ import 'package:moomalpublication/core/constants/assets.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/core/utils/no_glow_behaviour.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/new_test_series/controller/new_test_series_controller.dart';
@@ -76,11 +77,51 @@ class _TestResultScreenState extends State<TestResultScreen> {
                                       borderRadius:
                                           BorderRadius.circular(10.r)),
                                   child: SfCircularChart(
-                                      legend: const Legend(
-                                        isVisible: true,
-                                        alignment: ChartAlignment.center,
-                                        position: LegendPosition.right,
-                                      ),
+                                      legend: Legend(
+                                          isVisible: true,
+                                          alignment: ChartAlignment.far,
+                                          position: LegendPosition.right,
+                                          legendItemBuilder: (String name,
+                                              dynamic series,
+                                              dynamic point,
+                                              int index) {
+                                            return Container(
+                                              margin: const EdgeInsets.only(
+                                                  bottom: 10),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    width: 50.h,
+                                                    child: CustomText(
+                                                      text:
+                                                          "${(double.parse(point.text.toString()).toInt())}",
+                                                      textStyle: CustomTextStyle
+                                                          .textStyle16Bold(
+                                                              context,
+                                                              color: AppColors
+                                                                  .black),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: 20.v,
+                                                    width: 20.h,
+                                                    decoration: BoxDecoration(
+                                                        color: point.color,
+                                                        shape: BoxShape.circle),
+                                                  ),
+                                                  const HorizontalGap(size: 10),
+                                                  CustomText(
+                                                      text: name,
+                                                      textStyle: CustomTextStyle
+                                                          .textStyle14Bold(
+                                                              context))
+                                                ],
+                                              ),
+                                            );
+                                          }),
                                       tooltipBehavior: _tooltipBehavior,
                                       title: ChartTitle(
                                           text: 'test_summary'.tr,

@@ -172,19 +172,19 @@ class NewTestSeriesController extends BaseController {
     chartData.addAll([
       ChartData(
           'total'.tr,
-          (testResultResponseData.value.total ?? 0).toDouble(),
+          (testResultResponseData.value.total ?? 0.0).toDouble(),
           AppColors.orange),
       ChartData(
           'correct'.tr,
-          (testResultResponseData.value.correct ?? 0).toDouble(),
+          (testResultResponseData.value.correct ?? 0.0).toDouble(),
           AppColors.green),
       ChartData(
           'incorrect'.tr,
-          (testResultResponseData.value.incorrect ?? 0).toDouble(),
+          (testResultResponseData.value.incorrect ?? 0.0).toDouble(),
           AppColors.red),
       ChartData(
           'skipped'.tr,
-          (testResultResponseData.value.skipped ?? 0).toDouble(),
+          (testResultResponseData.value.skipped ?? 0.0).toDouble(),
           AppColors.pinkLighter),
     ]);
   }

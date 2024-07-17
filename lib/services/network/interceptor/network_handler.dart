@@ -19,7 +19,6 @@ mixin NetworkHandlingMixin {
     switch (statusCode) {
       case 400:
         {
-          showToast(AppConstants.badRequest);
           handler.next(error);
         }
         break;
@@ -61,7 +60,7 @@ mixin NetworkHandlingMixin {
 
       case 500:
         {
-          showToast(AppConstants.internalServerError);
+          // showToast(AppConstants.internalServerError);
           handler.next(error);
         }
         break;
