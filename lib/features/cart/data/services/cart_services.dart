@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart' as dio;
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart' as getx;
 import 'package:moomalpublication/config/api_keys.dart';
 import 'package:moomalpublication/core/base/add_to_cart_request_data.dart';
@@ -31,6 +30,16 @@ class CartServices {
           consumerSecret: ApiKeys.getCartProductsConsumerSecret,
         ).toJson();
 
+        String examId = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examId) ??
+            "";
+        String examPrice = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examPrice) ??
+            "";
+
+        query.addIf(examId.isNotEmpty, "exam_id", examId);
+        query.addIf(examPrice.isNotEmpty, "exam_price", examPrice);
+
         final dio.Response<dynamic> response = await DioClient.dioWithAuth!
             .get(ApiPaths.cartData, queryParameters: query);
 
@@ -46,7 +55,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        debugPrint(error.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -78,7 +87,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -97,6 +106,11 @@ class CartServices {
           consumerSecret: ApiKeys.addToCartConsumerSecret,
         ).toJson();
 
+        query.addIf((metaData?.isNotEmpty == true && metaData?.length == 2),
+            "exam_id", metaData?[0].value);
+        query.addIf((metaData?.isNotEmpty == true && metaData?.length == 2),
+            "exam_price", metaData?[1].value);
+
         final data =
             AddToCartReqData(id: id, quantity: quantity, metaData: metaData)
                 .toJson();
@@ -108,7 +122,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -138,7 +152,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -166,7 +180,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -188,7 +202,7 @@ class CartServices {
 
         return CartCheckoutResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartCheckoutResponse();
       }
     } else {

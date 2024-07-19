@@ -60,7 +60,7 @@ mixin NetworkHandlingMixin {
 
       case 500:
         {
-          // showToast(AppConstants.internalServerError);
+          AppRouting.offAllNamed(NameRoutes.moomalpublicationApp);
           handler.next(error);
         }
         break;
@@ -141,7 +141,7 @@ mixin NetworkHandlingMixin {
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      print(
+      print(  
           "*************************************** Request ***************************************\n"
           "Request Method: ${options.method}\n"
           "Request URL: ${options.uri}\n"
