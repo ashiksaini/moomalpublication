@@ -76,6 +76,16 @@ class CartServices {
           consumerSecret: ApiKeys.addToCartConsumerSecret,
         ).toJson();
 
+        String examId = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examId) ??
+            "";
+        String examPrice = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examPrice) ??
+            "";
+
+        query.addIf(examId.isNotEmpty, "exam_id", examId);
+        query.addIf(examPrice.isNotEmpty, "exam_price", examPrice);
+
         final data =
             AddToCartReqData(id: id, quantity: quantity, variations: variations)
                 .toJson();
@@ -142,6 +152,16 @@ class CartServices {
           consumerSecret: ApiKeys.updateCartProductsConsumerSecret,
         ).toJson();
 
+        String examId = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examId) ??
+            "";
+        String examPrice = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examPrice) ??
+            "";
+
+        query.addIf(examId.isNotEmpty, "exam_id", examId);
+        query.addIf(examPrice.isNotEmpty, "exam_price", examPrice);
+
         final data =
             AddToCartReqData(id: id, quantity: quantity, key: key).toJson();
         final dio.Dio dioo = await _getDio();
@@ -170,6 +190,16 @@ class CartServices {
           consumerKey: ApiKeys.deleteCartProductsConsumerKey,
           consumerSecret: ApiKeys.deleteCartProductsConsumerSecret,
         ).toJson();
+
+        String examId = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examId) ??
+            "";
+        String examPrice = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examPrice) ??
+            "";
+
+        query.addIf(examId.isNotEmpty, "exam_id", examId);
+        query.addIf(examPrice.isNotEmpty, "exam_price", examPrice);
 
         final data = AddToCartReqData(id: id, key: key).toJson();
         final dio.Dio dioo = await _getDio();

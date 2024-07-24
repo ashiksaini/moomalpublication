@@ -11,7 +11,7 @@ class LatestNewsItem1 {
   // String? slug;
   // String? status;
   // String? type;
-  // String? link;
+  String? link;
   Title? title;
   Content? content;
   // Excerpt? excerpt;
@@ -44,7 +44,7 @@ class LatestNewsItem1 {
     // this.slug,
     // this.status,
     // this.type,
-    // this.link,
+    this.link,
     // this.excerpt,
     // this.author,
     // this.featuredMedia,
@@ -87,7 +87,7 @@ class LatestNewsItem1 {
       // slug: json['slug'] as String?,
       // status: json['status'] as String?,
       // type: json['type'] as String?,
-      // link: json['link'] as String?,
+      link: json['link'] as String?,
       // excerpt: json['excerpt'] == null
       //     ? null
       //     : Excerpt.fromJson(json['excerpt'] as Map<String, dynamic>),

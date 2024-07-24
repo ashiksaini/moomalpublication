@@ -1,4 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:moomalpublication/core/components/atoms/custom_text.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
@@ -8,12 +9,14 @@ import 'package:moomalpublication/core/utils/horizontal_space.dart';
 
 class CustomDrawerHeader extends StatelessWidget {
   final String userImage;
+  final String? filePath;
   final String userName;
 
   const CustomDrawerHeader({
     super.key,
     required this.userImage,
     required this.userName,
+    this.filePath
   });
 
   @override
@@ -21,13 +24,21 @@ class CustomDrawerHeader extends StatelessWidget {
     return Row(
       children: [
         // User Profile Image
-        ClipRRect(
-          borderRadius: BorderRadius.circular(28.r),
-          child: CachedNetworkImage(
-            imageUrl: userImage,
-            height: 56.adaptSize,
-            width: 56.adaptSize,
-            fit: BoxFit.cover,
+        Container(
+          height: 56.adaptSize,
+          width: 56.adaptSize,
+          padding: EdgeInsets.all(2.adaptSize),
+          decoration: BoxDecoration(
+              border: Border.all(color: AppColors.orange),
+              shape: BoxShape.circle,
+              color: AppColors.white),
+          child: CircleAvatar(
+            radius: 28.r,
+            backgroundImage: (filePath != null && filePath?.isNotEmpty == true)
+                ? FileImage(File(filePath!)) as ImageProvider
+                : NetworkImage(
+                    userImage,
+                  ),
           ),
         ),
         const HorizontalGap(size: 10),

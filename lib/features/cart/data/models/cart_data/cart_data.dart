@@ -13,7 +13,7 @@ class CartData {
   BillingAddress? billingAddress;
   List<Item>? items;
   int? itemsCount;
-  int? itemsWeight;
+  double? itemsWeight;
   List<dynamic>? crossSells;
   bool? needsPayment;
   bool? needsShipping;
@@ -62,7 +62,7 @@ class CartData {
             ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
             .toList(),
         itemsCount: json['items_count'] as int?,
-        itemsWeight: json['items_weight'] as int?,
+        // itemsWeight: json['items_weight'] as double?,
         crossSells: json['cross_sells'] as List<dynamic>?,
         needsPayment: json['needs_payment'] as bool?,
         needsShipping: json['needs_shipping'] as bool?,

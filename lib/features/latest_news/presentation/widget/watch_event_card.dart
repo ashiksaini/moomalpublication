@@ -8,14 +8,16 @@ import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
-import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
+import 'package:moomalpublication/features/latest_news/controller/latest_news_controller.dart';
 import 'package:moomalpublication/features/latest_news/data/model/latest_news_item1/latest_news_item1/latest_news_item1.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.dart';
 
 class WatchEventCard extends StatelessWidget {
   final LatestNewsItem1 latestNewsItem;
-  const WatchEventCard({super.key, required this.latestNewsItem});
+  final LatestNewsController _latestNewsController =
+      Get.put(LatestNewsController());
+  WatchEventCard({super.key, required this.latestNewsItem});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,11 @@ class WatchEventCard extends StatelessWidget {
             CardImage(
               image: latestNewsItem.featuredImageUrl ?? "",
               borderColor: AppColors.grey,
+              borderRadius: 0,
+              width: 160.h,
+              height: 120.v,
             ),
-            HorizontalGap(size: 20.h),
+            HorizontalGap(size: 10.h),
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -38,29 +43,33 @@ class WatchEventCard extends StatelessWidget {
                   Html(
                       data:
                           "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>"),
-                  VerticalGap(size: 15.v),
-                  Container(
-                    color: AppColors.originalRed,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 16.h, vertical: 5.v),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SvgPicture.asset(
-                            AppAssets.icPlay,
-                            height: 24.v,
-                            width: 24.h,
-                            color: AppColors.white,
-                          ),
-                          HorizontalGap(size: 6.h),
-                          CustomText(
-                            text: "watch".tr,
-                            textStyle: CustomTextStyle.textStyle22Bold(
-                                context,
-                                color: AppColors.white),
-                          ),
-                        ],
+                  GestureDetector(
+                    onTap: () {
+                      _latestNewsController.getLink(latestNewsItem);
+                    },
+                    child: Container(
+                      color: AppColors.originalRed,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 16.h, vertical: 5.v),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SvgPicture.asset(
+                              AppAssets.icPlay,
+                              height: 24.v,
+                              width: 24.h,
+                              color: AppColors.white,
+                            ),
+                            HorizontalGap(size: 6.h),
+                            CustomText(
+                              text: "watch".tr,
+                              textStyle: CustomTextStyle.textStyle22Bold(
+                                  context,
+                                  color: AppColors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

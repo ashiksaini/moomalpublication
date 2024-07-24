@@ -115,16 +115,17 @@ final Map<String, String> enUS = {
 
   // Drawer ///////////////////////////////////////////////////////////////////
   "downloads": "Downloads",
-  "addresses": "Addresses",
-  "orders": "Orders",
+  "addresses": "My Addresses",
+  "orders": "My Orders",
   "event_and_press_release": "Event And Press Release",
-  "testimonial": "Testimonial",
+  "testimonial": "Testimonials",
   "quiz": "Quiz",
   "contact_us": "Contact Us",
   "follow_us": "Follow Us",
+  "follow_us1": "Follow\nUs",
   "setting": "Setting",
   "online_test_series": "Online Test Series",
-  "overall_result": "Overall Result",
+  "overall_result": "My Test Result",
   "logout": "Logout",
 
   // Testimonial //////////////////////////////////////////////////////////////

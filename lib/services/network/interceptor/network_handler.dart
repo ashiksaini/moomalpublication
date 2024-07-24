@@ -141,7 +141,7 @@ mixin NetworkHandlingMixin {
 
   void printRequest(dio.RequestOptions options) {
     if (kDebugMode) {
-      print(  
+      print(
           "*************************************** Request ***************************************\n"
           "Request Method: ${options.method}\n"
           "Request URL: ${options.uri}\n"

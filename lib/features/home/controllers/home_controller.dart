@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
@@ -48,12 +49,15 @@ class HomeController extends BaseController {
 
   RxString userName = RxString("");
   RxString userAvatar = RxString("");
+  Rx<XFile?> image = Rx(null);
 
   @override
   void onInit() {
     super.onInit();
 
     _getUserInfo();
+
+    _getUserProfile();
 
     _initDrawerItemList();
     // _initExamsList();
@@ -63,6 +67,15 @@ class HomeController extends BaseController {
     // _getExploreBooks();
     // _getNewArrivalBooks();
     // _getBestSellerBooks();
+  }
+
+  Future<void> _getUserProfile() async {
+    String? path = await SharedPreferencesHelper.getString(
+        SharedPreferenceKeys.profilePic);
+
+    if (path != null) {
+      image.value = XFile(path);
+    }
   }
 
   Future<void> _getUserInfo() async {
@@ -147,18 +160,18 @@ class HomeController extends BaseController {
 
     drawerItems.addAll([
       // downloadItem,
-      addressItem,
       orderItem,
+      overallResultItem,
+      addressItem,
       syllabus,
       videos,
-      eventAndPressReleaseItem,
       testimonialItem,
+      eventAndPressReleaseItem,
       // quizItem,
-      contactUsItem,
-      followUs,
       settingItem,
+      followUs,
+      contactUsItem,
       // onlineTestSeriesItem,
-      overallResultItem,
       logoutItem,
     ]);
   }

@@ -186,8 +186,10 @@ class TestSeriesController extends BaseController {
     ]);
 
     if (cartDataResponse.value.data != null) {
-      await SharedPreferencesHelper.setValue(SharedPreferenceKeys.examId, entry?.id.toString());
-      await SharedPreferencesHelper.setValue(SharedPreferenceKeys.examPrice, entry?.price.toString());
+      await SharedPreferencesHelper.setValue(
+          SharedPreferenceKeys.examId, entry?.id.toString());
+      await SharedPreferencesHelper.setValue(
+          SharedPreferenceKeys.examPrice, entry?.price.toString());
       AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
     } else {
       showErrorToast(cartDataResponse.value.data?.errors.toString() ??

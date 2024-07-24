@@ -95,7 +95,11 @@ class QuantityButton extends StatelessWidget {
                   bottomLeft: Radius.circular(5.r),
                 ),
               ),
-              child: const Center(child: Icon(Icons.remove, size: 24.0,)),
+              child: const Center(
+                  child: Icon(
+                Icons.remove,
+                size: 24.0,
+              )),
             ),
           ),
           Container(
@@ -127,7 +131,11 @@ class QuantityButton extends StatelessWidget {
                   bottomRight: Radius.circular(5.r),
                 ),
               ),
-              child: const Center(child: Icon(Icons.add, size: 24.0,)),
+              child: const Center(
+                  child: Icon(
+                Icons.add,
+                size: 24.0,
+              )),
             ),
           ),
         ],

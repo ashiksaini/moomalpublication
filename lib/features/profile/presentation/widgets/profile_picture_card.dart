@@ -31,18 +31,20 @@ class ProfilePicture extends StatelessWidget {
                 : NetworkImage(avatarUrl!),
           ),
         ),
-
         Positioned(
-          bottom: 5,
-          right: 0,
-          child: Container(
-            padding: EdgeInsets.all(5.adaptSize),
-            width: 40.h, height: 40.v,
-            decoration: BoxDecoration(
-              color: AppColors.white.withOpacity(0.8),
-              shape: BoxShape.circle
-            ),
-            child: SvgPicture.asset(AppAssets.icEdit1, color: AppColors.orange,)))
+            bottom: 5,
+            right: 0,
+            child: Container(
+                padding: EdgeInsets.all(5.adaptSize),
+                width: 40.h,
+                height: 40.v,
+                decoration: BoxDecoration(
+                    color: AppColors.white.withOpacity(0.8),
+                    shape: BoxShape.circle),
+                child: SvgPicture.asset(
+                  AppAssets.icEdit1,
+                  color: AppColors.orange,
+                )))
       ],
     );
   }

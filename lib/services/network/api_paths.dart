@@ -37,6 +37,7 @@ class ApiPaths {
   static const String address = 'wc/v3/customers/';
   static const String subscribe = 'newsletter/v2/subscribers';
   static const String latestNews = 'wp/v2/posts/';
+  static const String video = 'moomal/v1/posts/';
   static const String orderSuccess = 'custom-namespace/v1/thankyou/';
   static const String insertTestData = 'moomal-api/v1/insert-mock-test-data';
   static const String testResult = 'moomal-api/v1/mock-test-result';
