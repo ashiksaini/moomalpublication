@@ -113,11 +113,11 @@ class HomeController extends BaseController {
       title: "videos".tr,
       drawerItemType: DrawerItemType.videos,
     );
-    final eventAndPressReleaseItem = DrawerItem(
-      icon: AppAssets.icEventAndPressRelease,
-      title: "event_and_press_release".tr,
-      drawerItemType: DrawerItemType.eventsAndPressRelease,
-    );
+    // final eventAndPressReleaseItem = DrawerItem(
+    //   icon: AppAssets.icEventAndPressRelease,
+    //   title: "event_and_press_release".tr,
+    //   drawerItemType: DrawerItemType.eventsAndPressRelease,
+    // );
     final testimonialItem = DrawerItem(
       icon: AppAssets.icTestimonial,
       title: "testimonial".tr,
@@ -134,7 +134,7 @@ class HomeController extends BaseController {
       drawerItemType: DrawerItemType.contactUs,
     );
     final followUs = DrawerItem(
-      icon: AppAssets.icContactUs,
+      icon: AppAssets.icUser,
       title: "follow_us".tr,
       drawerItemType: DrawerItemType.followUs,
     );
@@ -166,7 +166,7 @@ class HomeController extends BaseController {
       syllabus,
       videos,
       testimonialItem,
-      eventAndPressReleaseItem,
+      // eventAndPressReleaseItem,
       // quizItem,
       settingItem,
       followUs,

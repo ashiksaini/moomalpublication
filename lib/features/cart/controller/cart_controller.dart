@@ -9,8 +9,6 @@ import 'package:moomalpublication/features/cart/data/services/cart_services.dart
 import 'package:moomalpublication/routes/name_routes.dart';
 import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
-import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
-import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class CartController extends BaseController {
   final Rx<CartDataResponse> cartDataResponse = Rx(ApiResponse());
@@ -113,8 +111,6 @@ class CartController extends BaseController {
         id: cartItem.id.toString(), key: cartItem.key);
     if (cartDataResponse.value.data != null) {
       if (cartDataResponse.value.data!.items != null) {
-        await SharedPreferencesHelper.remove(SharedPreferenceKeys.examId);
-        await SharedPreferencesHelper.remove(SharedPreferenceKeys.examPrice);
         cartItems.value = cartDataResponse.value.data!.items!;
         totals.value = cartDataResponse.value.data!.totals!;
         _onCartItemCountChange!(cartItems.length);

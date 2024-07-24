@@ -123,9 +123,9 @@ final Map<String, String> enUS = {
   "contact_us": "Contact Us",
   "follow_us": "Follow Us",
   "follow_us1": "Follow\nUs",
-  "setting": "Setting",
+  "setting": "Settings",
   "online_test_series": "Online Test Series",
-  "overall_result": "My Test Result",
+  "overall_result": "My Test Results",
   "logout": "Logout",
 
   // Testimonial //////////////////////////////////////////////////////////////
