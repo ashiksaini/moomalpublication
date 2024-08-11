@@ -30,6 +30,16 @@ class CartServices {
           consumerSecret: ApiKeys.getCartProductsConsumerSecret,
         ).toJson();
 
+        String examId = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examId) ??
+            "";
+        String examPrice = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examPrice) ??
+            "";
+
+        query.addIf(examId.isNotEmpty, "exam_id", examId);
+        query.addIf(examPrice.isNotEmpty, "exam_price", examPrice);
+
         final dio.Response<dynamic> response = await DioClient.dioWithAuth!
             .get(ApiPaths.cartData, queryParameters: query);
 
@@ -45,7 +55,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -66,6 +76,16 @@ class CartServices {
           consumerSecret: ApiKeys.addToCartConsumerSecret,
         ).toJson();
 
+        String examId = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examId) ??
+            "";
+        String examPrice = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examPrice) ??
+            "";
+
+        query.addIf(examId.isNotEmpty, "exam_id", examId);
+        query.addIf(examPrice.isNotEmpty, "exam_price", examPrice);
+
         final data =
             AddToCartReqData(id: id, quantity: quantity, variations: variations)
                 .toJson();
@@ -77,7 +97,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -96,6 +116,11 @@ class CartServices {
           consumerSecret: ApiKeys.addToCartConsumerSecret,
         ).toJson();
 
+        query.addIf((metaData?.isNotEmpty == true && metaData?.length == 2),
+            "exam_id", metaData?[0].value);
+        query.addIf((metaData?.isNotEmpty == true && metaData?.length == 2),
+            "exam_price", metaData?[1].value);
+
         final data =
             AddToCartReqData(id: id, quantity: quantity, metaData: metaData)
                 .toJson();
@@ -107,7 +132,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -127,6 +152,16 @@ class CartServices {
           consumerSecret: ApiKeys.updateCartProductsConsumerSecret,
         ).toJson();
 
+        String examId = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examId) ??
+            "";
+        String examPrice = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examPrice) ??
+            "";
+
+        query.addIf(examId.isNotEmpty, "exam_id", examId);
+        query.addIf(examPrice.isNotEmpty, "exam_price", examPrice);
+
         final data =
             AddToCartReqData(id: id, quantity: quantity, key: key).toJson();
         final dio.Dio dioo = await _getDio();
@@ -137,7 +172,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -156,6 +191,16 @@ class CartServices {
           consumerSecret: ApiKeys.deleteCartProductsConsumerSecret,
         ).toJson();
 
+        String examId = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examId) ??
+            "";
+        String examPrice = await SharedPreferencesHelper.getString(
+                SharedPreferenceKeys.examPrice) ??
+            "";
+
+        query.addIf(examId.isNotEmpty, "exam_id", examId);
+        query.addIf(examPrice.isNotEmpty, "exam_price", examPrice);
+
         final data = AddToCartReqData(id: id, key: key).toJson();
         final dio.Dio dioo = await _getDio();
         final dio.Response<dynamic> response = await dioo
@@ -165,7 +210,7 @@ class CartServices {
 
         return CartDataResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartDataResponse();
       }
     } else {
@@ -187,7 +232,7 @@ class CartServices {
 
         return CartCheckoutResponse.success(parsedResponse);
       } on dio.DioException catch (error) {
-        showToast(error.message.toString());
+        showToast((error.response?.data?['message'].toString()) ?? "");
         return CartCheckoutResponse();
       }
     } else {

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/constants/enums.dart';
 import 'package:moomalpublication/core/utils/shared_data.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/features/latest_news/data/constants/type_alias.dart';
 import 'package:moomalpublication/features/latest_news/data/model/latest_news_item1/latest_news_item1/latest_news_item1.dart';
 import 'package:moomalpublication/features/latest_news/data/services/latest_news_services.dart';
@@ -12,6 +13,7 @@ import 'package:moomalpublication/services/network/api_reponse.dart';
 class LatestNewsController extends BaseController {
   late SharedData? sharedData;
   Rx<LatestNewsResponse> latestNewsResponse = Rx(ApiResponse());
+  Rx<VideosResponse> videosResponse = Rx(ApiResponse());
   RxList<LatestNewsItem1> latestNews = RxList();
   LatestNewsItem1 latestNewsItem = LatestNewsItem1();
   RxString title = RxString("");
@@ -53,9 +55,17 @@ class LatestNewsController extends BaseController {
 
   Map<String, String>? _getCategory() {
     return sharedData?.type == Type.syllabus
-        ? {"categories": "74"}
+        ? {"categories": "75"}
         : sharedData?.type == Type.video
-            ? {"categories": "75"}
+            ? {"categories": "74"}
             : {"categories": "73"};
+  }
+
+  Future<void> getLink(LatestNewsItem1 latestNewsItem) async {
+    videosResponse.value = ApiResponse.loading();
+    videosResponse.value = await LatestNewsServices.getVideo(latestNewsItem.id.toString());
+    if (videosResponse.value.data != null) {
+      Utility.launchurl(videosResponse.value.data?.content ?? "");
+    }
   }
 }

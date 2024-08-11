@@ -34,7 +34,9 @@ class PdfDownloadCard extends StatelessWidget {
                         "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>")),
             GestureDetector(
               onTap: () {
-                Donwloader.downloadFile(latestNewsItem.title?.rendered?.toString() ?? "", latestNewsItem.featuredImageUrl ?? "");
+                Donwloader.downloadFile(
+                    latestNewsItem.title?.rendered?.toString() ?? "",
+                    latestNewsItem.featuredImageUrl ?? "");
               },
               child: SvgPicture.asset(
                 AppAssets.icDownload,

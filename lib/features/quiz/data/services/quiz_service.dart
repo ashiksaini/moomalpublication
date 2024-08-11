@@ -81,35 +81,33 @@ class QuizService {
 
             List<Answer> answer = [];
             bool isCorrectAnswerFound = false;
-            for(int j = 0; j < (item['answers'] as List<dynamic>).length; j++) {
+            for (int j = 0;
+                j < (item['answers'] as List<dynamic>).length;
+                j++) {
               var answerItem = item['answers'][j];
               if (answerItem[2] == 1) {
                 isCorrectAnswerFound = true;
-              } 
+              }
 
               if (answer.length < 3) {
                 answer.add(Answer(
-                  answer: answerItem[0],
-                  correctOrNot: answerItem[2] == 1
-                ));
+                    answer: answerItem[0], correctOrNot: answerItem[2] == 1));
               } else if (isCorrectAnswerFound) {
                 answer.add(Answer(
-                  answer: answerItem[0],
-                  correctOrNot: answerItem[2] == 1
-                ));
+                    answer: answerItem[0], correctOrNot: answerItem[2] == 1));
               }
             }
 
             questionsAndAnswers.add(QuestionsAndAnswer(
-              question: item['question_title'],
-              answers: answer
-            ));
+                question: item['question_title'], answers: answer));
           }
         }
 
         parsedResponse = TestQuestionsResponseModel(
-          id: ((response.data as List<dynamic>)[index] as Map<String, dynamic>)['id'],
-          postTitle: ((response.data as List<dynamic>)[index] as Map<String, dynamic>)['quiz_name'],
+          id: ((response.data as List<dynamic>)[index]
+              as Map<String, dynamic>)['id'],
+          postTitle: ((response.data as List<dynamic>)[index]
+              as Map<String, dynamic>)['quiz_name'],
           postContent: "",
           questionsAndAnswers: questionsAndAnswers,
         );

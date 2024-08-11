@@ -19,6 +19,8 @@ import 'package:moomalpublication/routes/routing.dart';
 // import 'package:moomalpublication/routes/name_routes.dart';
 // import 'package:moomalpublication/routes/routing.dart';
 import 'package:moomalpublication/services/network/api_reponse.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_helper.dart';
+import 'package:moomalpublication/services/storage/shared_preferences_keys.dart';
 
 class TestSeriesController extends BaseController {
   List<TabBarModel> tabBarList = [];
@@ -176,10 +178,18 @@ class TestSeriesController extends BaseController {
       KeyValueData(
         key: "exam_id",
         value: entry?.id.toString(),
+      ),
+      KeyValueData(
+        key: "exam_price",
+        value: entry?.price.toString(),
       )
     ]);
 
     if (cartDataResponse.value.data != null) {
+      await SharedPreferencesHelper.setValue(
+          SharedPreferenceKeys.examId, entry?.id.toString());
+      await SharedPreferencesHelper.setValue(
+          SharedPreferenceKeys.examPrice, entry?.price.toString());
       AppRouting.offAllNamed(NameRoutes.moomalpublicationApp, argument: 3);
     } else {
       showErrorToast(cartDataResponse.value.data?.errors.toString() ??

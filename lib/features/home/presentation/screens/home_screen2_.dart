@@ -135,16 +135,27 @@ class HomeScreen2 extends StatelessWidget {
                           AppRouting.toNamed(NameRoutes.testSeriesScreen),
                     ),
                   ),
+                  // Expanded(
+                  //   child: CategoryItem(
+                  //     icon: AppAssets.icReport,
+                  //     title: "subscribe_now".tr,
+                  //     textStyle: CustomTextStyle.textStyle20BoldCaladea(
+                  //       context,
+                  //       color: AppColors.black,
+                  //     ),
+                  //     onClick: () =>
+                  //         AppRouting.toNamed(NameRoutes.subscribeNowScreen),
+                  //   ),
+                  // ),
                   Expanded(
                     child: CategoryItem(
-                      icon: AppAssets.icReport,
-                      title: "subscribe_now".tr,
+                      icon: AppAssets.icContactUs,
+                      title: "follow_us1".tr,
                       textStyle: CustomTextStyle.textStyle20BoldCaladea(
                         context,
                         color: AppColors.black,
                       ),
-                      onClick: () =>
-                          AppRouting.toNamed(NameRoutes.subscribeNowScreen),
+                      onClick: () => AppRouting.toNamed(NameRoutes.followUs),
                     ),
                   ),
                 ],
@@ -185,15 +196,7 @@ class HomeScreen2 extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: CategoryItem(
-                      icon: AppAssets.icContactUs,
-                      title: "follow_us".tr,
-                      textStyle: CustomTextStyle.textStyle20BoldCaladea(
-                        context,
-                        color: AppColors.black,
-                      ),
-                      onClick: () => AppRouting.toNamed(NameRoutes.followUs),
-                    ),
+                    child: Container(),
                   ),
                 ],
               )

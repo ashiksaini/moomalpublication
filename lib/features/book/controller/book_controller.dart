@@ -80,12 +80,14 @@ class BookController extends BaseController {
         if (category.id?.compareTo(15) != 0) {
           ebookCategories
               .add(DropdownItem(title: category.name ?? "", type: category));
+
+          if (category.id?.compareTo(20) == 0) {
+            selectedCategory.value = ebookCategories.last;
+          }
         }
       }
 
       if (ebookCategories.isNotEmpty) {
-        selectedCategory.value = ebookCategories.first;
-
         _getCategoryWiseBooks();
       }
     }

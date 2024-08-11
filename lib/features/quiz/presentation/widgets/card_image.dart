@@ -12,11 +12,15 @@ class CardImage extends StatelessWidget {
     required this.borderColor,
     this.height,
     this.width,
+    this.borderRadius,
+    this.boxFit,
   });
   final String image;
   final Color borderColor;
   final double? height;
   final double? width;
+  final double? borderRadius;
+  final BoxFit? boxFit;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +32,11 @@ class CardImage extends StatelessWidget {
         vertical: 5.v,
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(15.r),
+        borderRadius: BorderRadius.circular(borderRadius ?? 15.r),
         child: (image.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: image,
-                fit: BoxFit.cover,
+                fit: boxFit ?? BoxFit.cover,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },

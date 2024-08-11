@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/home/controllers/home_controller.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/custom_drawer_header.dart';
 import 'package:moomalpublication/features/home/presentation/widgets/drawer_item.dart';
@@ -21,20 +22,27 @@ class CustomNavigationDrawer extends Drawer {
         children: [
           // Header
           SizedBox(
-            height: 120.v,
+            height: 150.v,
             child: DrawerHeader(
               margin: EdgeInsets.zero,
-              padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 10.v),
-              child: CustomDrawerHeader(
-                userImage: _homeController.userAvatar.value,
-                userName: _homeController.userName.value,
+              child: Obx(
+                () {
+                  return CustomDrawerHeader(
+                    userImage: _homeController.userAvatar.value,
+                    userName: _homeController.userName.value,
+                    filePath: _homeController.image.value?.path,
+                  );
+                }
               ),
             ),
           ),
 
+          const VerticalGap(size: 20),
+
           // Builder
           Expanded(
             child: ListView.builder(
+              padding: EdgeInsets.zero,
               itemCount: _homeController.drawerItems.length,
               itemBuilder: (_, index) {
                 return Container(

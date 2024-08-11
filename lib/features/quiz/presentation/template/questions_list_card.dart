@@ -33,15 +33,15 @@ class QuestionListCard extends StatelessWidget {
 
                 Expanded(
                     child: Html(
-                        data: "${questionNumberIndex + 1}. ${_quizController
-                            .questionsList[questionNumberIndex].value}"))
+                        data:
+                            "${questionNumberIndex + 1}. ${_quizController.questionsList[questionNumberIndex].value}"))
               ],
             ),
           ),
           ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount:  _quizController.optionsName.length,
+              itemCount: _quizController.optionsName.length,
               itemBuilder: (context, optionIndex) {
                 return GestureDetector(
                   onTap: () {
