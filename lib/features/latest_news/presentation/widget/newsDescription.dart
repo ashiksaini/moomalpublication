@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:moomalpublication/core/theme/colors.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
+import 'package:moomalpublication/core/utils/utility.dart';
 import 'package:moomalpublication/core/utils/vertical_space.dart';
 import 'package:moomalpublication/features/latest_news/controller/latest_news_controller.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.dart';
@@ -44,7 +45,18 @@ class NewsDescription extends StatelessWidget {
           //   textAlign: TextAlign.start,
           // ),
           // VerticalGap(size: 10.v),
-          Html(data: _newsController.latestNewsItem.content?.rendered ?? ''),
+          Html(
+            data: _newsController.latestNewsItem.content?.rendered ?? '',
+            onAnchorTap: (url, attributes, element) {
+              Utility.launchurl(url ?? "");
+            },
+            style: {
+              "img": Style(
+                height: Height(350.v),
+                width: Width(SizeUtils.width - 100)
+              ),
+            },
+          ),
           // CustomText(
           //   text: _newsController.latestNewsItem.content?.rendered ?? '',
           //   textStyle: CustomTextStyle.textStyle15Bold(context),

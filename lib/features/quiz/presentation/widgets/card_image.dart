@@ -13,12 +13,14 @@ class CardImage extends StatelessWidget {
     this.height,
     this.width,
     this.borderRadius,
+    this.boxFit,
   });
   final String image;
   final Color borderColor;
   final double? height;
   final double? width;
   final double? borderRadius;
+  final BoxFit? boxFit;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class CardImage extends StatelessWidget {
         child: (image.isNotEmpty)
             ? CachedNetworkImage(
                 imageUrl: image,
-                fit: BoxFit.cover,
+                fit: boxFit ?? BoxFit.cover,
                 placeholder: (context, url) {
                   return Center(child: customProgressIndicator());
                 },

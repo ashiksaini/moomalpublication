@@ -9,23 +9,14 @@ class ProfileController extends BaseController {
   RxString userEmail = RxString("");
   Rx<String?> userAvatar = Rx(null);
   final ImagePicker _picker = ImagePicker();
-  Rx<XFile?> image = Rx(null);
 
   @override
   void onInit() {
     super.onInit();
 
-    _getUserProfile();
+    getUserProfile();
+    
     _getUserInfo();
-  }
-
-  Future<void> _getUserProfile() async {
-    String? path = await SharedPreferencesHelper.getString(
-        SharedPreferenceKeys.profilePic);
-
-    if (path != null) {
-      image.value = XFile(path);
-    }
   }
 
   Future<void> _getUserInfo() async {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:moomalpublication/core/base/base_controller.dart';
 import 'package:moomalpublication/core/base/product_item/product_variations.dart';
 import 'package:moomalpublication/core/base/variation_request_data.dart';
@@ -49,7 +48,6 @@ class HomeController extends BaseController {
 
   RxString userName = RxString("");
   RxString userAvatar = RxString("");
-  Rx<XFile?> image = Rx(null);
 
   @override
   void onInit() {
@@ -57,7 +55,7 @@ class HomeController extends BaseController {
 
     _getUserInfo();
 
-    _getUserProfile();
+    getUserProfile();
 
     _initDrawerItemList();
     // _initExamsList();
@@ -69,14 +67,7 @@ class HomeController extends BaseController {
     // _getBestSellerBooks();
   }
 
-  Future<void> _getUserProfile() async {
-    String? path = await SharedPreferencesHelper.getString(
-        SharedPreferenceKeys.profilePic);
-
-    if (path != null) {
-      image.value = XFile(path);
-    }
-  }
+  
 
   Future<void> _getUserInfo() async {
     userName.value = await SharedPreferencesHelper.getString(

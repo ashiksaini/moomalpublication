@@ -57,7 +57,7 @@ class CardBookItem extends StatelessWidget {
       children: [
         Container(
           height: 260.adaptSize,
-          width: 200.adaptSize,
+          width: 300.adaptSize,
           margin: EdgeInsets.symmetric(horizontal: 5.h, vertical: 5.v),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15.r),
@@ -66,7 +66,7 @@ class CardBookItem extends StatelessWidget {
                     item.productImages?[0].src!.isNotEmpty == true)
                 ? CachedNetworkImage(
                     imageUrl: item.productImages?[0].src ?? "",
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                     placeholder: (context, url) {
                       return Center(child: customProgressIndicator());
                     },

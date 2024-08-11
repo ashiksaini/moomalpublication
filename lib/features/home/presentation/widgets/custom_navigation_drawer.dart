@@ -25,10 +25,14 @@ class CustomNavigationDrawer extends Drawer {
             height: 150.v,
             child: DrawerHeader(
               margin: EdgeInsets.zero,
-              child: CustomDrawerHeader(
-                userImage: _homeController.userAvatar.value,
-                userName: _homeController.userName.value,
-                filePath: _homeController.image.value?.path,
+              child: Obx(
+                () {
+                  return CustomDrawerHeader(
+                    userImage: _homeController.userAvatar.value,
+                    userName: _homeController.userName.value,
+                    filePath: _homeController.image.value?.path,
+                  );
+                }
               ),
             ),
           ),
