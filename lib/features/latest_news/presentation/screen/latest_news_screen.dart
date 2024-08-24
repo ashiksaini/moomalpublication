@@ -49,9 +49,11 @@ class LatestNewsScreen extends StatelessWidget {
                                           horizontal: 10.h, vertical: 8.v),
                                       child: GestureDetector(
                                         onTap: () {
-                                          _latestNewsController
-                                              .navigateNewsDetailScreen(
-                                                  index: index);
+                                          if (_latestNewsController.sharedData?.type != Type.video) {
+                                            _latestNewsController
+                                                .navigateNewsDetailScreen(
+                                                    index: index);
+                                          }
                                         },
                                         child: _latestNewsController
                                                     .sharedData?.type ==

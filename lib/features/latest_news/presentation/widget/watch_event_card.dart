@@ -9,13 +9,15 @@ import 'package:moomalpublication/core/theme/custom_text_style.dart';
 import 'package:moomalpublication/core/theme/dimen.dart';
 import 'package:moomalpublication/core/utils/horizontal_space.dart';
 import 'package:moomalpublication/features/cart/presentation/widgets/shadow_container.dart';
+import 'package:moomalpublication/features/latest_news/controller/latest_news_controller.dart';
 import 'package:moomalpublication/features/latest_news/data/model/latest_news_item1/latest_news_item1/latest_news_item1.dart';
 import 'package:moomalpublication/features/quiz/presentation/widgets/card_image.dart';
 
 class WatchEventCard extends StatelessWidget {
   final LatestNewsItem1 latestNewsItem;
+  final LatestNewsController _latestNewsController = Get.put(LatestNewsController());
 
-  const WatchEventCard({super.key, required this.latestNewsItem});
+  WatchEventCard({super.key, required this.latestNewsItem});
 
   @override
   Widget build(BuildContext context) {
@@ -42,28 +44,33 @@ class WatchEventCard extends StatelessWidget {
                   Html(
                       data:
                           "<strong>${latestNewsItem.title?.rendered ?? ""}</strong>"),
-                  Container(
-                    color: AppColors.originalRed,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 16.h, vertical: 5.v),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SvgPicture.asset(
-                            AppAssets.icPlay,
-                            height: 24.v,
-                            width: 24.h,
-                            color: AppColors.white,
-                          ),
-                          HorizontalGap(size: 6.h),
-                          CustomText(
-                            text: "watch".tr,
-                            textStyle: CustomTextStyle.textStyle22Bold(
-                                context,
-                                color: AppColors.white),
-                          ),
-                        ],
+                  GestureDetector(
+                    onTap: () {
+                      _latestNewsController.getLink(latestNewsItem);
+                    },
+                    child: Container(
+                      color: AppColors.originalRed,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 16.h, vertical: 5.v),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SvgPicture.asset(
+                              AppAssets.icPlay,
+                              height: 24.v,
+                              width: 24.h,
+                              color: AppColors.white,
+                            ),
+                            HorizontalGap(size: 6.h),
+                            CustomText(
+                              text: "watch".tr,
+                              textStyle: CustomTextStyle.textStyle22Bold(
+                                  context,
+                                  color: AppColors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
